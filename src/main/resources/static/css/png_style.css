@@ -1,1 +1,872 @@
 @import url(common.css);
+
+/*
+*{
+    margin: 0; padding: 0;
+}
+*/
+
+/* 관리자 페이지 메인 */
+/*--------------------------------------*/
+/* 탑 시작 */
+.p_top{
+    /* background-color: beige; */
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+}
+
+.p_top .p_title{
+    position: absolute;
+    /* background-color: #E6E6E6; */
+    width: 200px;
+    height: 70px;
+    text-align: center;
+    line-height: 65px;
+    left: 15px;
+}
+
+.p_top .p_title h2{
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    color: #424242
+}
+
+.p_top .p_title .p_line{
+    position: absolute;
+    background-color: #E6E6E6;
+    width: 200px;
+    height: 1px;
+    top: 10px;
+}
+
+.p_top .p_search{
+    /* background-color: aquamarine; */
+    position: absolute;
+    top: 30px;
+    left: 430px;
+    width: 500px;
+    height: 60px;
+    text-align: center;
+    line-height: 65px;
+    border: 2px solid #424242;
+    border-radius: 10px;
+}
+
+.p_top .p_search i{
+    position: absolute;
+    content: "\f0f3";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 30px;
+    color: #424242;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 10px;
+}
+
+.p_top .p_search input{
+    position: absolute;
+    width: 440px;
+    height: 50px;
+    top: 3px;
+    left: 50px;
+    border: none;
+    outline: none;
+}
+
+.p_top .p_inform a{
+    position: absolute;
+    top: 50px;
+    right: 120px;
+    content: "\f0f3";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 30px;
+    color: #424242;
+    transition-duration: 0.5;
+}
+
+.p_top .p_inform a:hover{
+    color: #01DFD7;
+}
+
+.p_top .p_inform:hover{
+    text-decoration: none;
+    color: #01DFD7;
+}
+/*--------------------------------------*/
+/* 탑 끝 */
+
+
+/* 컨테이너1 시작 */
+/*--------------------------------------*/
+.p_container1{
+    /* background-color: bisque; */
+    position: absolute;
+    height: 100%;
+    top: 100px;
+}
+
+/* 섹션1 시작 */
+.p_container1 .p_section1{
+    background-color: #424242;
+    margin-left: 15px;
+    margin-bottom: 30px;
+    text-align: center;
+    line-height: 50px;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.p_container1 .p_section1 i{
+    position: absolute;
+    top: 15px;
+    left: -40px;
+    right: 120px;
+    content: "\f009";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 20px;
+    color: #01DFD7;
+}
+
+.p_container1 .p_section1 h3{
+    position: absolute;
+    top: 15px;
+    left: 70px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #01DFD7;;
+}
+/* 섹션1 끝 */
+
+/* 섹션2 시작 */
+.p_container1 .p_section2{
+    /* background-color: #F6CED8; */
+    margin-bottom: 70px;
+    margin-left: 10px;
+    width: 100%;
+    height: 120px;
+}
+        
+.p_container1 .p_section2 h3{
+    font-size: 12px;
+}
+
+.p_container1 .p_section2 ul{
+    margin-top: 10px;
+    margin-left: 35px;
+    font-size: 15px;
+    list-style: none;
+}
+
+.p_container1 .p_section2 a{
+ 	color:#424242;
+    transition-duration: 0.5;
+}
+
+.p_container1 .p_section2 a:hover{
+    text-decoration: none;
+    color: #01DFD7;
+}
+
+.p_container1 .p_section2 .p_icon1{
+    position: absolute;
+    content: "\e131";
+    font-family: "Font Awesome 5 Free";
+    left: 15px;
+    top: 113px;
+    color: #424242;
+}
+
+.p_container1 .p_section2 .p_icon2{
+    position: absolute;
+    content: "\f201";
+    font-family: "Font Awesome 5 Free";
+    left: 15px;
+    top: 153px;
+    color: #424242;
+}
+
+.p_container1 .p_section2 .p_icon3{
+    position: absolute;
+    content: "\f304";
+    font-family: "Font Awesome 5 Free";
+    left: 15px;
+    top: 188px;
+    color: #424242;
+}
+
+.p_container1 .p_section2 ul li{
+    margin-top: 15px;
+}
+
+.p_container1 .p_section2 .p_line{
+    position: relative;
+    background-color: #E6E6E6;
+    width: 230px;
+    height: 1px;
+    top: 20px;
+}
+/* 섹션2 끝 */
+
+/* 섹션3 시작 */
+.p_container1 .p_section3{
+    /* background-color: #F5A9F2; */
+    margin-bottom: 70px;
+    margin-left: 10px;
+    width: 100%;
+    height: 120px;
+}
+
+.p_container1 .p_section3 h3{
+    font-size: 12px;
+}
+
+.p_container1 .p_section3 ul{
+    margin-top: 10px;
+    margin-left: 35px;
+    font-size: 15px;
+    list-style: none;
+}
+
+.p_container1 .p_section3 ul li{
+    margin-top: 15px;
+}
+
+.p_container1 .p_section3 a{
+    color: #424242;
+    transition-duration: 0.5;
+}
+
+.p_container1 .p_section3 a:hover{
+    text-decoration: none;
+    color: #01DFD7;
+}
+
+.p_container1 .p_section3 .p_icon1{
+    position: absolute;
+    content: "\f3ff";
+    font-family: "Font Awesome 5 Free";
+    left: 15px;
+    top: 302px;
+    color: #424242;
+}
+
+.p_container1 .p_section3 .p_icon2{
+    position: absolute;
+    content: "\f007";
+    font-family: "Font Awesome 5 Free";
+    left: 15px;
+    top: 340px;
+    color: #424242;
+}
+
+.p_container1 .p_section3 .p_icon3{
+    position: absolute;
+    content: "\f500";
+    font-family: "Font Awesome 5 Free";
+    left: 15px;
+    top: 377px;
+    color: #424242;
+}
+
+.p_container1 .p_section3 .p_line{
+    position: relative;
+    background-color: #E6E6E6;
+    width: 230px;
+    height: 1px;
+    top: 20px;
+}
+/* 섹션3 끝 */
+
+/* 섹션4 시작 */
+.p_container1 .p_section4{
+    /* background-color: #A9A9F5; */
+    margin-bottom: 30px;
+    margin-left: 10px;
+    width: 100%;
+    height: 120px;
+}
+
+.p_container1 .p_section4 h3{
+    font-size: 12px;
+}
+
+.p_container1 .p_section4 ul{
+    margin-top: 10px;
+    margin-left: 35px;
+    font-size: 15px;
+    list-style: none;
+}
+
+.p_container1 .p_section4 ul li{
+    margin-top: 15px;
+}
+
+.p_container1 .p_section4 a{
+    color: #424242;
+    transition-duration: 0.5;
+}
+
+.p_container1 .p_section4 a:hover{
+    text-decoration: none;
+    color: #01DFD7;
+}
+
+.p_container1 .p_section4 .p_icon1{
+    position: absolute;
+    content: "\f500";
+    font-family: "Font Awesome 5 Free";
+    left: 15px;
+    top: 493px;
+    color: #424242;
+}
+
+.p_container1 .p_section4 .p_icon2{
+    position: absolute;
+    content: "\f075";
+    font-family: "Font Awesome 5 Free";
+    left: 15px;
+    top: 531px;
+    color: #424242;
+}
+
+.p_container1 .p_section4 .p_icon3{
+    position: absolute;
+    content: "\f249";
+    font-family: "Font Awesome 5 Free";
+    left: 15px;
+    top: 568px;
+    color: #424242;
+}
+
+.p_container1 .p_section4 .p_line{
+    position: relative;
+    background-color: #E6E6E6;
+    width: 230px;
+    height: 1px;
+    top: 20px;
+}
+/* 섹션4 끝 */
+
+/* 섹션5 시작 */
+.p_container1 .p_section5{
+    /* background-color: #A9F5D0; */
+    width: 100%;
+    height: 50px;
+    margin-top: 150px;
+    margin-left: 10px;
+}
+
+.p_container1 .p_section5 i{
+    position: absolute;
+    content: "\f013";
+    font-family: "Font Awesome 5 Free";
+    left: 15px;
+    top: 733px;
+    color: #424242;
+}
+
+.p_container1 .p_section5 a{
+    font-size: 12px;
+    margin-left: 35px;
+    color: #424242;
+    transition-duration: 0.5;
+}
+
+.p_container1 .p_section5 a:hover{
+    text-decoration: none;
+    color: #01DFD7;
+}
+
+/* 섹션5 끝 */
+/*--------------------------------------*/
+/* 컨테이너1 끝 */
+
+
+/* 컨테이너2 시작 */
+/*--------------------------------------*/
+.p_container2{
+    /* background-color: aqua; */
+    position: absolute;
+    width: 1400px;
+    height: 350px;
+    top: 100px;
+    right: 100px;
+
+}
+
+/* 섹션1 시작 */
+.p_container2 .p_section1{
+    /* background-color: beige; */
+    position: absolute;
+    width: 450px;
+    height: 240px;
+    left: 50px;
+    top: 50px;
+}
+
+.p_container2 .p_section1 .p_icon1{
+    position: absolute;
+    content: "\e533";
+    font-family: "Font Awesome 5 Free";
+    margin-top: 3px;
+    margin-right: 10px;
+    font-size: 30px;
+    color: #424242;
+    top: 47px;
+    left: 2px;
+}
+
+.p_container2 .p_section1 .p_menu1{
+    /* background-color: #E6E6E6; */
+    width: 200px;
+    height: 100px;
+}
+
+.p_container2 .p_section1 .p_menu1 i{
+    /* background-color: aqua; */
+    position: absolute;
+    top: 50px;
+}
+
+.p_container2 .p_section1 .p_menu1 h3{
+    /* background-color: aquamarine; */
+    position: absolute;
+    left: 50px;
+    top: 50px;
+}
+
+.p_container2 .p_section1 .p_menu2{
+    /* background-color: bisque; */
+    position: absolute;
+    top: 100px;
+    width: 200px;
+    height: 100px;
+}
+
+.p_container2 .p_section1 .p_menu2 p{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.p_container2 .p_section1 .p_menu2 span{
+    color: #01DFD7;
+}
+
+.p_container2 .p_section1 .p_menu3{
+    /* background-color: blueviolet; */
+    position: absolute;
+    width: 180px;
+    height: 150px;
+    top: 80px;
+    right: 0px;
+}
+
+.p_container2 .p_section1 .p_menu3 progress{
+    width: 180px;
+    height: 70px;
+    position: absolute;
+    top: 20px;
+}
+
+.p_container2 .p_section1 .p_menu3 span{
+    position: absolute;
+    right: 10px;
+    bottom: 40px;
+    font-size: 25px;
+}
+
+/* 섹션1 끝 */
+
+/* 섹션2 시작 */
+.p_container2 .p_section2{
+    /* background-color: blanchedalmond; */
+    position: absolute;
+    width: 700px;
+    height: 330px;
+    right: 50px;
+    top: 20px;
+}
+
+.p_container2 .p_section2 .p_menu1{
+    /* background-color: aqua; */
+    position: absolute;
+    width: 200px;
+    height: 40px;
+}
+
+.p_container2 .p_section2 .p_menu1 h3{
+    position: absolute;
+    left: 15px;
+}
+
+.p_container2 .p_section2 .p_menu2{
+    /* background-color: aqua; */
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    top: 10px;
+    right: 20px;
+}
+
+.p_container2 .p_section2 .p_menu2 a{
+    text-decoration: none;
+    color: black;
+    transition-duration: 0.5;
+}
+
+.p_container2 .p_section2 .p_menu2 a:hover{
+    color: #01DFD7;
+    text-decoration: none;
+}
+
+.p_container2 .p_section2 .p_menu3{
+    /* background-color: aliceblue; */
+    position: absolute;
+    width: 680px;
+    height: 290px;
+    top: 40px;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie1{
+    /* background-color: beige; */
+    width: 32%;
+    height: 290px;
+    float: left;
+    margin-right: 2%;
+    box-shadow: 5px 5px 5px #424242;
+    border-radius: 10px;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie1 img{
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    left: 20px;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie1 p{
+    position: relative;
+    left: 20px;
+    margin-bottom: 5px;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie1 .p_p{
+    color: #01DFD7;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie1 button{
+    position: relative;
+    background-color: #01DFD7;
+    left: 80px;
+    top: 10px;
+    width: 34xp;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie1 a{
+    text-decoration: none;
+    color: #424242;
+    transition-duration: 0.5;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie1 a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie2{
+    /* background-color: beige; */
+    width: 32%;
+    height: 290px;
+    float: left;
+    margin-right: 2%;
+    box-shadow: 5px 5px 5px #424242;
+    border-radius: 10px;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie2 img{
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    left: 20px;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie2 p{
+    position: relative;
+    left: 20px;
+    margin-bottom: 5px;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie2 .p_p{
+    color: #01DFD7;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie2 button{
+    position: relative;
+    background-color: #01DFD7;
+    left: 80px;
+    top: 10px;
+    width: 34xp;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie2 a{
+    text-decoration: none;
+    color: #424242;
+    transition-duration: 0.5;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie2 a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie3 {
+    /* background-color: beige; */
+    width: 32%;
+    height: 290px;
+    float: left;
+    box-shadow: 5px 5px 5px #424242;
+    border-radius: 10px;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie3 img{
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    left: 20px;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie3 p{
+    position: relative;
+    left: 20px;
+    margin-bottom: 5px;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie3 .p_p{
+    color: #01DFD7;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie3 button{
+    position: relative;
+    background-color: #01DFD7;
+    left: 80px;
+    top: 10px;
+    width: 34xp;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie3 a{
+    text-decoration: none;
+    color: #424242;
+    transition-duration: 0.5;
+}
+
+.p_container2 .p_section2 .p_menu3 .p_movie3 a:hover{
+    text-decoration: none;
+    color: white;
+}
+/* 섹션2 끝*/
+/*--------------------------------------*/
+/* 컨테이너2 끝 */
+
+/* 컨테이너3 시작 */
+/*--------------------------------------*/
+.p_container3{
+    /* background-color:whitesmoke; */
+    position: absolute;
+    width: 1400px;
+    height: 400px;
+    bottom: 50px;
+    right: 100px;
+}
+
+/* 섹션2 시작 */
+.p_container3 .p_section2{
+    /* background-color: aqua; */
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 110px;
+    height: 40px;
+    border: 1px solid #424242;
+    border-radius: 10px;
+}
+
+.p_container3 .p_section2 a{
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 25px;
+    font-size: 15px;
+    color: #424242;
+    text-decoration: none;
+    transition-duration: 0.5;
+}
+
+.p_container3 .p_section2 a:hover{
+    text-decoration: none;
+    color: #01DFD7;
+}
+
+.p_container3 .p_section2 .p_icon1{
+    position: absolute;
+    content: "\f0b0";
+    font-family: "Font Awesome 5 Free";
+    font-size: 20px;
+    color: #424242;
+    left: 65px;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+/* 섹션2 끝 */
+
+
+/* 섹션3 시작 */
+.p_container3 .p_section3 .table{
+    /* background-color: bisque; */
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    top: 20px;
+}
+
+.p_container3 .p_section3 .table div{
+    /* background-color: aquamarine; */
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.p_container3 .p_section3 .table div img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.p_container3 .p_section3 .table .p_name1{
+    position: absolute;
+    top: 65px;
+    left: 320px;
+}
+
+.p_container3 .p_section3 .table .p_name2{
+    position: absolute;
+    top: 120px;
+    left: 320px;
+}
+
+.p_container3 .p_section3 .table .p_name3{
+    position: absolute;
+    top: 175px;
+    left: 320px;
+}
+
+.p_container3 .p_section3 .table .p_name4{
+    position: absolute;
+    top: 230px;
+    left: 320px;
+}
+/* 섹션3 끝 */
+
+/* 섹션4 시작 */
+.p_container3 .p_section4{
+    /* background-color: antiquewhite; */
+    position: absolute;
+    left: 50%;
+    top: 350px;
+    width: 100%;
+    transform: translate(-50%, 0);
+}
+
+.p_container3 .p_section4 ul{
+    margin-right: 10px;
+}
+
+.p_container3 .p_section4 .p_previous{
+    position: absolute;
+    left: 2%;
+}
+
+.p_container3 .p_section4 .p_next{
+    position: absolute;
+    right: 2%;
+}
+
+.p_container3 .p_section4 .p_paging{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin-right: 15px;
+}
+/* 섹션4 끝 */
+/* 컨테이너3 끝  저장 */
+/*--------------------------------------*/
+/* 관리자 페이지 메인 */
+
+
+
+/* 관리자 페이지 등록 허가 */
+/*--------------------------------------*/
+.p_register_container2{
+    background-color: antiquewhite;
+    position: relative;
+    width: 1200px;
+    height: 600px;
+    top: 210px;
+    left: 440px;
+}
+
+.p_register_container2 .p_section1{
+    background-color: #01DFD7;
+    height: 50%;
+}
+
+
+.p_section1 .p_menu1{
+    float: left;
+    width: 23%;
+    height: 300px;
+    background-color: white;
+    margin-right: 2%;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.p_section1 .p_menu1 img{
+    width: 30px;
+    height: 50px;
+    width: 200px;
+    height: 160px;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.p_section1 .p_menu1 p{
+    background-color: #E6E6E6;
+
+}
+
+
+/* 관리자 페이지 등록 허가 */
+
