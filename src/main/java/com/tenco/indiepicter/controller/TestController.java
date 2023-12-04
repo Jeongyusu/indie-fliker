@@ -20,5 +20,10 @@ public class TestController {
     public void test1(@RequestBody @Valid JoinDTO joinDTO, Errors errors){
         log.debug("진입");
     }
+    
+    @GetMapping("/test")
+    public String test(){
+    	return "main/main";
+    }
 
 }
