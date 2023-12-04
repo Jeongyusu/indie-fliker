@@ -827,23 +827,22 @@
 
 
 /* 관리자 페이지 등록 허가 */
-/*--------------------------------------*/
+/*---------------------------------------------------------------------*/
 .p_register_container2{
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
     position: relative;
     width: 1200px;
-    height: 600px;
+    height: 640px;
     top: 210px;
     left: 440px;
 }
 
 .p_register_container2 .p_section1{
-    background-color: #01DFD7;
+    /* background-color: #01DFD7; */
     height: 50%;
 }
 
-
-.p_section1 .p_menu1{
+.p_register_container2 .p_section1 .p_menu1{
     float: left;
     width: 23%;
     height: 300px;
@@ -851,9 +850,11 @@
     margin-right: 2%;
     border-radius: 15px;
     text-align: center;
+    box-shadow: rgb(66, 66, 66) 5px 5px 5px;
+    border-radius: 10px;
 }
 
-.p_section1 .p_menu1 img{
+.p_register_container2 .p_section1 .p_menu1 img{
     width: 30px;
     height: 50px;
     width: 200px;
@@ -862,11 +863,55 @@
     border-radius: 15px;
 }
 
-.p_section1 .p_menu1 p{
-    background-color: #E6E6E6;
+.p_register_container2 .p_section1 .p_menu1 p{
+    /* background-color: #E6E6E6; */
+}
 
+.p_register_container2 .p_section2{
+    /* background-color:aquamarine; */
+    height: 50%;
 }
 
 
-/* 관리자 페이지 등록 허가 */
+.p_register_container2 .p_section2 .p_menu2{
+    float: left;
+    width: 23%;
+    height: 300px;
+    background-color: white;
+    margin-right: 2%;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: rgb(66, 66, 66) 5px 5px 5px;
+    border-radius: 10px;
+}
+
+.p_register_container2 .p_section2 .p_menu2 img{
+    width: 30px;
+    height: 50px;
+    width: 200px;
+    height: 160px;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.p_register_container2 .p_section2 .p_menu2 p{
+    /* background-color: #E6E6E6; */
+}
+
+.p_register_container2 button{
+    background-color: #01DFD7;
+    border: none;
+    border-radius: 5px;
+    width: 120px;
+    height: 30px;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+.p_register_container2 button:hover{
+    text-decoration: none;
+    color: white;
+}
+/*---------------------------------------------------------------------*/
+/* 관리자 페이지 등록 허가 2023-12-04 작업 중 */
 
