@@ -1,1 +1,141 @@
 @import url(common.css);
+
+body {
+    overflow-x: hidden;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    color: inherit;
+    text-decoration: none;
+    caret-color: transparent;
+}
+
+.l_mint {
+    color: #00C4C4;
+}
+
+#l_banner {
+    background: #A5E5E6;
+}
+
+.l_banner_item {
+    min-height: 8rem;
+}
+
+.l_banner_item .d-block {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.l_banner_item h1 {
+    margin-bottom: 1.5rem;
+}
+
+.l_banner_item p {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+
+/* funding style */
+.l_effect_underline {
+    color: #000000;
+    text-decoration: none;
+    position: relative;
+    margin: 0 10%; 
+}
+
+.l_effect_underline:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 1em;
+  width: 100%;
+  border-bottom: 2px solid;
+  margin-top: 15px;
+  opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: scale(0,1);
+	transform: scale(0,1);
+}
+
+.l_effect_underline:hover:after {
+  opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+.l_movie_card {
+  max-width: 60rem;
+  margin: 4vh auto;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.l_movie_card img {
+  width: 100%;
+  /*transition: transform 0.5s ease;*/
+}
+
+/*
+.l_movie_card:hover img {
+  transform: scale(1.1);
+}
+*/
+
+
+/* sidebar style */
+.l_side_link {
+    color: inherit;
+    text-decoration: none;
+    caret-color: transparent;
+}
+
+.l_side_link:hover {
+    color : inherit;
+}
+
+.l_item_title {
+    margin: 15px;
+    font-size: 12px;
+}
+
+.l_hr {
+    border: 1px solid #d1d1df
+}
+
+#l_sidebar {
+    width: 250px;
+    padding: 20px;
+    font-size: 14px;
+    color: #585874;
+}
+
+#l_sidebar .sidebar-header {
+    font-family: 'Inter', sans-serif;
+    font-size: 30px;
+    text-align: center;
+    padding: 28px;
+    color: black;
+}
+
+#l_sidebar .nav .nav-item .nav-link {
+    border-radius: 10px;
+    padding: .7rem 1rem;
+    height: 45px;
+}
+
+#l_sidebar .nav .nav-item .nav-link i {
+    margin-right: 8px;  
+}
+
+#l_sidebar .nav .nav-item .nav-link:hover {
+    font-weight: bold;
+    color: #00C4C4;
+    background-color: #F2F4F6;
+}
+
+#l_sidebar .nav .nav-item .nav-link:hover i svg path {
+    fill: #00C4C4;
+}
