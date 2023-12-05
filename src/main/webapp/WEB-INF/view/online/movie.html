@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영화 시청</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link href="../../../../resources/static/css/lsr_style.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container text-center">
+        <div class="video-container mt-5 d-flex justify-content-center">
+            <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" controls controlsList="nodownload" class="mx-auto"></video>
+        </div>
+    </div>
+
+    <div class="col-md-4 position-fixed" style="top: 10px; right: 10px;">
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body">
+                <div class="h6">
+                    '그대들은 어떻게 살 것인가'<br/>
+                    감독님과 만나는 즐거운 시간
+                </div>
+                <div class="p">
+                    자유로운 대화를 나눠보세요<br/>
+                    선착순 입장이므로 양해 부탁드립니다 :)
+                </div>
+                 <div class="mt-2 pt-2 border-top">
+                    <a href="" class="btn">실시간 채팅 입장하기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav id="l_online_navbar">
+        <ul>
+            <li>주요정보</li>
+            <li>영화 평론</li>
+            <li>예고편</li>
+        </ul>
+        </nav>
+    </div>
+    <div class="container">
+
+        <div class="l_information mt-4">
+            <div class="h4 mb-4">화재로 어머니를 잃은 11살 소년 ‘마히토’는 아버지와 함께 어머니의 고향으로 간다.</div>
+            <div class="p mb-5">어머니에 대한 그리움과 새로운 보금자리에 적응하느라 힘들어하던 ‘마히토’ 앞에
+                정체를 알 수 없는 왜가리 한 마리가 나타나고, 저택에서 일하는 일곱 할멈으로부터 왜가리가 살고 있는 탑에 대한 신비로운 이야기를 듣게 된다.
+                그러던 어느 날, ‘마히토’는 사라져버린 새엄마 ‘나츠코’를 찾기 위해 탑으로 들어가고,
+                왜가리가 안내하는 대로 이세계(異世界)의 문을 통과하는데…!</div>
+            <div class="h5">그대들은 어떻게 살 것인가에 대한 9,734개의 이야기가 있어요!</div>    
+        </div>
+        
+        <div class="l_participant d-flex align-items-center">
+            <div class="d-flex flex-column">
+            <img src="https://dummyimage.com/100/000/fff.jpg" alt="IndiFlinker" class="m-2">
+            <span>인디픽커</span>
+            </div>
+            <div class="l_chat_message col-md-10">
+                <div style="font-size: small;">그대들은 어떻게 살 것인가 재미있게 보셨나요? 영화의 어떤 점이 좋았는지 이야기해주세요.</div>
+            </div>
+        </div>
+
+        <div class="l_participant d-flex align-items-center">
+            <div class="d-flex flex-column">
+                <img src="https://dummyimage.com/100/000/fff.jpg" alt="IndiFlinker" class="m-2">
+                <span>idididididi</span>
+            </div>
+            <div class="l_chat_message row col-md-10 align-items-center">
+                <div class="col-md-11" style="font-size: small;">
+                    <input type="text" class="l_message_input" style="border: none; background: transparent; width: calc(100% - 30px);"
+                    placeholder="메시지 입력...">
+                </div>
+                <div class="col-1">
+                    <div class="dropup">
+                        <button class="btn btn-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="20" viewBox="0 0 20 20">
+                                <path d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
+                            </svg>
+                        </button>
+                        <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">관람평쓰기</a></li>
+                        <li><a class="dropdown-item" href="#">수정하기</a></li>
+                        <li><a class="dropdown-item" href="#">삭제하기</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <!-- footer -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+
+<script>
+    var myToast = new bootstrap.Toast(document.querySelector('.toast'));
+    myToast.show();
+</script>
+
+</html>
