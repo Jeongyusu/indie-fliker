@@ -1,5 +1,5 @@
 @import url(common.css);
-/*공용 css*/
+/*자주쓰는 css*/
 .k_font_weight_bold{
 	font-weight: bold;
 }
@@ -403,4 +403,5 @@ div.main i {
 			text-decoration-line: underline;
 		}
 		/*마이페이지*/
+		
 		
