@@ -516,6 +516,11 @@ body, html {
     border-right: 0.5px solid var(--line_01);
 }
 
+.n_movie_calendar #n_activeCal {
+    width: 0;
+    border: none;
+}
+
 .n_select_day_movies {
     width: 50%;
     flex-direction: column;
@@ -527,14 +532,13 @@ body, html {
     margin: 0;
 }
 
-.n_select_day_movies #result {
+.n_select_day_movies #n_otherInput {
     border: none;
-    background-color: transparent;
+    background: var(--def_wh);
     font-size: 18px;
-    color: var(--primary_01);
     font-weight: bold;
     text-align: center;
-    margin-top: 12px;
+    color: var(--primary_01);
 }
 
 #n_day_movies_form {
@@ -563,11 +567,12 @@ body, html {
 #n_movie_time .n_start_time {
     font-weight: bold;
     color: var(--def_bl);
+    font-size: 14px;
 }
 
 #n_movie_time .n_end_time {
     color: var(--def_bl);
-    font-size: 13px;
+    font-size: 12px;
 }
 
 #n_day_movies_form #n_movie_title {
@@ -591,13 +596,13 @@ body, html {
 }
 
 #n_seat_count .n_possible_seat {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
     color: var(--primary_01);
 }
 
 #n_seat_count .n_all_seat {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
 }
 /*/////////////////////////////////////////////////////*/
@@ -630,7 +635,7 @@ body, html {
 }
 
 #n_movie_title p {
-    font-size: 20px;
+    font-size: 14px;
     font-weight: bold;
 }
 

@@ -5,12 +5,13 @@
     <title>결제 하기</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="/icomoon/style.css">
-    <link rel="stylesheet" href="/css/rome.css">
+
+    <!-- 달력 -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
 
     <!-- css -->
     <link href="../../../../css/neh_style.css" rel="stylesheet">
@@ -34,12 +35,10 @@
         </div>
         <div id="n_select_day">
             <div class="n_movie_calendar">
-                <form action="#" class="row">
-                    <div id="inline_cal"></div>
-                </form>
+                <input type="hidden" id="n_activeCal" disabled>
             </div>
             <div class="n_select_day_movies">
-                <input type="text" id="result" placeholder="날짜를 선택해주세요" disabled="">
+                <input type="text" id="n_otherInput" placeholder="날짜를 선택해주세요" disabled="">
                 <form id="n_day_movies_form">
                     <button type="submit" id="select_movie_button">
                         <div id="n_day_movies">
@@ -65,15 +64,24 @@
 
 
 <script>
-    function change() {
-        let dayValue = document.querySelector("#result").value;
-        console.log("dayValue: " + dayValue);
-    }
+    let activeCal = document.querySelector("#n_activeCal");
+    let otherInput = document.querySelector("#n_otherInput");
+
+    flatpickr(activeCal, {
+        minDate: '2023-12-21',  // 지정 가능한 최소 날짜
+        maxDate: '2023-12-28',  // 지정 가능한 최대 날짜
+        locale: 'ko',           // 한국어로 달력 출력
+        inline: true,           // 항상 달력 활성화
+        onChange: function(selectedDates, dateStr, instance) {
+            otherInput.value = dateStr;
+            console.log('selectedDates 날짜:', selectedDates);
+            // [Thu Dec 21 2023 00:00:00 GMT+0900 (한국 표준시)]
+            console.log('dateStr 날짜:', dateStr);
+            // 2023-12-21
+            console.log('instance 날짜:', instance);
+            // 리스트
+        },
+    });
 </script>
-<%--<script src="/js/jquery-3.3.1.min.js"></script>--%>
-<%--<script src="/js/popper.min.js"></script>--%>
-<%--<script src="/js/bootstrap.min.js"></script>--%>
-<%--<script src="/js/rome.js"></script>--%>
-<%--<script src="/js/main.js"></script>--%>
 </body>
 </html>
