@@ -1,40 +1,4 @@
-/*@import url(common.css);*/
-
-:root {
-    --primary_01: #4BE2A7;
-    --primary_02: #8AF9CD;
-    --point_01: #D9FFF0;
-    --point_02: #8D48FF;
-    --point_03: #E2D0FF;
-    --point_04: #ea6161;
-    --point_05: #28d1b3;
-    --line_01: #dcdcdc;
-    --font_01: #333;
-    --font_02: #9f9f9f;
-    --font_03: #7f7f7f;
-    --back_01: #f7f7f7;
-    --back_02: #efefef;
-    --def_wh: #fff;
-    --def_bl: #000;
-}
-
-/*swiper*/
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
+@import url(common.css);
 
 /* onlineDetail */
 body, html {
@@ -43,13 +7,15 @@ body, html {
     font-size: 100%;
     font: inherit;
 }
-ol, ul {
-    list-style: none;
-}
+
 .container-fluid {
     display: flex;
     align-items: center;
     max-width: 1280px;
+}
+
+.col-sm-7 p {
+    margin-bottom: 5px;
 }
 
 .body {
@@ -60,8 +26,12 @@ ol, ul {
     margin: 40px auto;
 }
 
+.n_first_movie_img #n_movie_img{
+    width: 100%;
+}
+
 #n_fund_attention {
-    background-color: #f9fafb;
+    background-color: var(--back_02);
     border-radius: 8px;
     padding: 16px;
     margin: 40px 0;
@@ -98,41 +68,41 @@ ol, ul {
 .n_attention {
     margin-top: 14px;
     border-top: solid;
-    border-top-color: dimgray;
+    border-top-color: var(--font_02);
     border-width: thin;
 }
-.n_attention p{
+.n_attention #n_info{
     padding: 0 0 0 4px;
     margin: 14px 0 0 0;
-    font-size: 13px;
+    font-size: 12px;
 }
 #n_movie_info {
     margin: 40px 0 0
 }
 #n_movie_info h3 {
-    color: black;
+    color: var(--def_bl);
     font-weight: bold;
     margin: 0 0 20px;
 }
 #n_movie_info h4, #n_more_movie h4 {
-    color: dimgray;
+    color: var(--font_03);
     font-weight: bold;
 }
 #n_movie_info h5 {
-    color: black;
+    color: var(--def_bl);
     padding: 14px;
     margin: 0;
     font-weight: bold;
 }
 #n_movie_info p {
-    color: dimgray;
+    color: var(--font_03);
     padding: 0 14px;
-    margin: 0;
     font-weight: 500;
 }
 #n_movie_info .n_movie_text {
     padding: 40px 0;
 }
+
 #n_movie_info .n_movie_img {
     padding: 40px 0;
 }
@@ -146,22 +116,22 @@ ol, ul {
 }
 .n_movie_text th {
     width: 20%;
-    background-color: lightgrey;
+    background-color: var(--back_02);
     text-align: center;
-    color: grey;
+    color: var(--font_03);
 }
 .n_movie_text td {
     width: 30%;
-    color: dimgray;
+    color: var(--font_03);
 }
 #n_toggle_button {
     width: 100%;
     border: solid 0.5px;
-    border-color: #4be2a7;
+    border-color: var(--primary_01);
     border-radius: 8px;
     height: 50px;
     background: transparent;
-    color: #4be2a7;
+    color: var(--primary_01);
     margin: 0px 0 40px;
 }
 #n_more_movie{
@@ -174,16 +144,16 @@ ol, ul {
 }
 #n_more_movie .n_more_movie {
     width: 25%;
+    margin-bottom: 30px;
 }
+
 #n_more_movie .n_more_movie img {
     width: 100%;
 }
-.n_movie_list {
-    padding-top: 20px;
-}
+
 .n_more_movie .n_achieve {
     font-size: 18px;
-    color: #4be2a7;
+    color: var(--primary_01);
     font-weight: bold;
 }
 .n_more_movie .n_title {
@@ -203,7 +173,7 @@ ol, ul {
 }
 .n_more_movie .n_directer {
     font-size: 12px;
-    color: dimgray;
+    color: var(--font_02);
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -214,12 +184,12 @@ ol, ul {
     justify-content: flex-start;
     border-bottom: solid;
     border-width: thin;
-    border-color: lightgrey;
+    border-color: var(--back_02);
     padding: 0 0 16px;
 }
 
 .n_movie_category #n_sharp{
-    color: #4be2a7;
+    color: var(--primary_01);
     font-size: 14px;
     padding-right: 5px;
 }
@@ -237,7 +207,7 @@ ol, ul {
     justify-content: flex-start;
     margin: 16px 0;
     font-weight: bold;
-    color: dimgray;
+    color: var(--font_02);
     font-size: 14px;
 }
 .n_sell_img img {
@@ -252,19 +222,19 @@ ol, ul {
 .n_movie_title #n_state {
     font-weight: bold;
     font-size: 20px;
-    color: red;
+    color: var(--point_04);
     padding-right: 5px;
 }
 
 .n_movie_title #n_title {
     font-weight: bold;
     font-size: 20px;
-    color: black;
+    color: var(--def_bl);
 }
 
 .n_movie_content {
     font-size: 13px;
-    color: dimgray;
+    color: var(--font_02);
     margin: 20px 0;
 }
 .n_sell_archive{
@@ -282,19 +252,19 @@ ol, ul {
 .n_sell_archive #n_percent{
     font-size: 24px;
     font-weight: bold;
-    color: #4be2a7;
+    color: var(--primary_01);
 }
 .n_sell_archive #n_per_comment{
     font-weight: 500;
-    color: #4be2a7;
+    color: var(--primary_01);
     display: flex;
     padding: 0 14px 0 0;
 }
 .n_sell_archive #n_dday{
     height: 27px;
     padding: 0 8px;
-    background-color: #d9fff0;
-    color: #4be2a7;
+    background-color: var(--back_02);
+    color: var(--primary_01);
     border-radius: 8px;
 }
 
@@ -319,19 +289,19 @@ ol, ul {
 .n_sell_fund_state #n_price{
     font-size: 24px;
     font-weight: bold;
-    color: black;
+    color: var(--def_bl);
 }
 .n_sell_fund_state #n_pri_comment{
     font-weight: 500;
-    color: black;
+    color: var(--def_bl);
     display: flex;
     padding: 0 14px 0 0;
 }
 .n_sell_fund_state #n_play{
     height: 27px;
     padding: 0 8px;
-    background-color: lightgrey;
-    color: black;
+    background-color: var(--def_wh);
+    color: var(--def_bl);
     border-radius: 8px;
 }
 
@@ -352,7 +322,7 @@ ol, ul {
 
 .n_sell_period #n_fund_type p, #n_period p {
     padding: 3px 0;
-    color: dimgray;
+    color: var(--font_02);
     font-weight: 500;
 }
 
@@ -367,17 +337,27 @@ ol, ul {
     font-weight: bold;
     padding-bottom: 10px;
 }
-#n_sell_ticket h6{
-    font-weight: bold;
+
+#n_sell_ticket #ticket_title {
+    color: var(--point_04);
 }
+
+.n_ticket_type #price {
+    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 10px;
+
+}
+
 .n_ticket_type {
     font-size: 13px;
     border: solid;
     border-width: thin;
-    border-color: lightgrey;
+    border-color: var(--line_01);
     border-radius: 10px;
     padding: 20px;
 }
+
 #n_sell_button {
     display: flex;
     align-items: center;
@@ -387,7 +367,7 @@ ol, ul {
     height: 60px;
     background-color: transparent;
     border-radius: 8px;
-    border-color: lightgrey;
+    border-color: var(--line_01);
     box-shadow: none;
     margin: 0 12px 0 0;
     border-width: thin;
@@ -397,13 +377,60 @@ ol, ul {
     width: 22px;
 }
 #n_sell_button .buy_button {
-    background-color: #4be2a7;
+    background-color: var(--point_05);
     height: 60px;
     width: 92%;
     border-radius: 8px;
     border-color: transparent;
-    color: white;
+    color: var(--def_wh);
     font-size: 20px;
 }
 
 /* offlineDetail */
+
+.n_ticket_count {
+    display: flex;
+    justify-content: end;
+}
+
+.n_ticket_count .n_count_button {
+    display: flex;
+    align-items: center;
+    border: solid;
+    border-width: thin;
+    border-radius: 4px;
+    border-color: var(--line_01);
+    width: 98px;
+    height: 30px;
+    text-align: center;
+}
+.n_count_button #n_minus_button {
+    border: none;
+    width: 33%;
+    background: none;
+    border-right: solid;
+    border-color: var(--line_01);
+    border-width: thin;
+    height: 30px;
+}
+.n_count_button .n_count {
+    width: 33%;
+}
+
+.n_count_button #n_plus_button {
+    border: none;
+    width: 33%;
+    background: none;
+    border-left: solid;
+    border-color: var(--line_01);
+    border-width: thin;
+    height: 30px;
+}
+
+.n_theater_info, .n_parking_info {
+    font-weight: bold;
+}
+.n_name {
+    color: var(--point_04);
+    font-weight: bold;
+}
