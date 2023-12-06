@@ -27,7 +27,7 @@ body, html {
 .n_first_movie_img #n_movie_img{
     width: 100%;
 }
-
+.n_fund_attention {
     border-radius: 8px;
     padding: 16px;
     margin: 40px 0;
