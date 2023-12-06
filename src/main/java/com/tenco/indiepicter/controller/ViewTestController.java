@@ -11,6 +11,7 @@ public class ViewTestController {
         return "fund/onlineDetail";
     }
 
+
     @GetMapping("/offline-detail")
     public String offlineDetail(){
         return "fund/offlineDetail";

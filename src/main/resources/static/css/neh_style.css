@@ -1,3 +1,4 @@
+
 @import url(common.css);
 
 /* onlineDetail */
@@ -14,10 +15,6 @@ body, html {
     max-width: 1280px;
 }
 
-.col-sm-7 p {
-    margin-bottom: 5px;
-}
-
 .body {
     width: 100%;
 }
@@ -26,12 +23,11 @@ body, html {
     margin: 40px auto;
 }
 
+
 .n_first_movie_img #n_movie_img{
     width: 100%;
 }
 
-#n_fund_attention {
-    background-color: var(--back_02);
     border-radius: 8px;
     padding: 16px;
     margin: 40px 0;
@@ -68,6 +64,7 @@ body, html {
 .n_attention {
     margin-top: 14px;
     border-top: solid;
+
     border-top-color: var(--font_02);
     border-width: thin;
 }
@@ -154,7 +151,8 @@ body, html {
 .n_more_movie .n_achieve {
     font-size: 18px;
     color: var(--primary_01);
-    font-weight: bold;
+
+  font-weight: bold;
 }
 .n_more_movie .n_title {
     display: block;
@@ -346,7 +344,6 @@ body, html {
     font-weight: bold;
     font-size: 20px;
     padding-bottom: 10px;
-
 }
 
 .n_ticket_type {
