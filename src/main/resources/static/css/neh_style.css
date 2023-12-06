@@ -1,1 +1,409 @@
-@import url(common.css);
+/*@import url(common.css);*/
+
+:root {
+    --primary_01: #4BE2A7;
+    --primary_02: #8AF9CD;
+    --point_01: #D9FFF0;
+    --point_02: #8D48FF;
+    --point_03: #E2D0FF;
+    --point_04: #ea6161;
+    --point_05: #28d1b3;
+    --line_01: #dcdcdc;
+    --font_01: #333;
+    --font_02: #9f9f9f;
+    --font_03: #7f7f7f;
+    --back_01: #f7f7f7;
+    --back_02: #efefef;
+    --def_wh: #fff;
+    --def_bl: #000;
+}
+
+/*swiper*/
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/* onlineDetail */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-size: 100%;
+    font: inherit;
+}
+ol, ul {
+    list-style: none;
+}
+.container-fluid {
+    display: flex;
+    align-items: center;
+    max-width: 1280px;
+}
+
+.body {
+    width: 100%;
+}
+
+.row {
+    margin: 40px auto;
+}
+
+#n_fund_attention {
+    background-color: #f9fafb;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 40px 0;
+}
+#n_fund_attention ul {
+    display: flex;
+    position: relative;
+    margin: 0;
+    flex-shrink: 0;
+    cursor: pointer;
+    padding: 0 0 0 4px;
+    height: 54px;
+    text-align: center;
+    overflow: hidden;
+}
+#n_fund_attention li{
+    margin-right: 30px;
+    list-style: none;
+    flex-basis: min-content;
+    font-size: 13px;
+}
+.n_fund{
+    display: inline-block;
+    margin-bottom: 4px;
+    width: 32px;
+    height: 32px;
+}
+.n_refund{
+    display: inline-block;
+    margin-bottom: 4px;
+    width: 32px;
+    height: 32px;
+}
+.n_attention {
+    margin-top: 14px;
+    border-top: solid;
+    border-top-color: dimgray;
+    border-width: thin;
+}
+.n_attention p{
+    padding: 0 0 0 4px;
+    margin: 14px 0 0 0;
+    font-size: 13px;
+}
+#n_movie_info {
+    margin: 40px 0 0
+}
+#n_movie_info h3 {
+    color: black;
+    font-weight: bold;
+    margin: 0 0 20px;
+}
+#n_movie_info h4, #n_more_movie h4 {
+    color: dimgray;
+    font-weight: bold;
+}
+#n_movie_info h5 {
+    color: black;
+    padding: 14px;
+    margin: 0;
+    font-weight: bold;
+}
+#n_movie_info p {
+    color: dimgray;
+    padding: 0 14px;
+    margin: 0;
+    font-weight: 500;
+}
+#n_movie_info .n_movie_text {
+    padding: 40px 0;
+}
+#n_movie_info .n_movie_img {
+    padding: 40px 0;
+}
+#n_movie_info .n_movie_img img {
+    width: 100%;
+    padding: 0 14px 20px;
+}
+#n_director_img {
+    width: 50%;
+    padding: 0 14px;
+}
+.n_movie_text th {
+    width: 20%;
+    background-color: lightgrey;
+    text-align: center;
+    color: grey;
+}
+.n_movie_text td {
+    width: 30%;
+    color: dimgray;
+}
+#n_toggle_button {
+    width: 100%;
+    border: solid 0.5px;
+    border-color: #4be2a7;
+    border-radius: 8px;
+    height: 50px;
+    background: transparent;
+    color: #4be2a7;
+    margin: 0px 0 40px;
+}
+#n_more_movie{
+    margin-top: 40px;
+}
+#n_more_movie p {
+    margin: 5px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#n_more_movie .n_more_movie {
+    width: 25%;
+}
+#n_more_movie .n_more_movie img {
+    width: 100%;
+}
+.n_movie_list {
+    padding-top: 20px;
+}
+.n_more_movie .n_achieve {
+    font-size: 18px;
+    color: #4be2a7;
+    font-weight: bold;
+}
+.n_more_movie .n_title {
+    display: block;
+    font-weight: bold;
+    font-size: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.n_more_movie .n_content{
+    display: block;
+    font-size: 13px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.n_more_movie .n_directer {
+    font-size: 12px;
+    color: dimgray;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.n_movie_category {
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: solid;
+    border-width: thin;
+    border-color: lightgrey;
+    padding: 0 0 16px;
+}
+
+.n_movie_category #n_sharp{
+    color: #4be2a7;
+    font-size: 14px;
+    padding-right: 5px;
+}
+.n_movie_category #n_category{
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.col-sm-5 p {
+    margin: 0;
+}
+
+.n_sell_img{
+    display: flex;
+    justify-content: flex-start;
+    margin: 16px 0;
+    font-weight: bold;
+    color: dimgray;
+    font-size: 14px;
+}
+.n_sell_img img {
+    padding-right: 5px;
+}
+.n_movie_title {
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px 0;
+}
+
+.n_movie_title #n_state {
+    font-weight: bold;
+    font-size: 20px;
+    color: red;
+    padding-right: 5px;
+}
+
+.n_movie_title #n_title {
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+}
+
+.n_movie_content {
+    font-size: 13px;
+    color: dimgray;
+    margin: 20px 0;
+}
+.n_sell_archive{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px 0;
+}
+.n_sell_archive span{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.n_sell_archive #n_percent{
+    font-size: 24px;
+    font-weight: bold;
+    color: #4be2a7;
+}
+.n_sell_archive #n_per_comment{
+    font-weight: 500;
+    color: #4be2a7;
+    display: flex;
+    padding: 0 14px 0 0;
+}
+.n_sell_archive #n_dday{
+    height: 27px;
+    padding: 0 8px;
+    background-color: #d9fff0;
+    color: #4be2a7;
+    border-radius: 8px;
+}
+
+.n_sell_archive #n_dday p{
+    font-size: 11px;
+    height: 12px;
+}
+
+.n_sell_fund_state {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.n_sell_fund_state span{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.n_sell_fund_state #n_price{
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+.n_sell_fund_state #n_pri_comment{
+    font-weight: 500;
+    color: black;
+    display: flex;
+    padding: 0 14px 0 0;
+}
+.n_sell_fund_state #n_play{
+    height: 27px;
+    padding: 0 8px;
+    background-color: lightgrey;
+    color: black;
+    border-radius: 8px;
+}
+
+.n_sell_fund_state #n_play p{
+    font-size: 11px;
+    height: 12px;
+}
+.n_sell_period {
+    width: 70%;
+    font-size: 14px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.n_sell_period #n_fund_type, #n_period {
+    display: block;
+}
+
+.n_sell_period #n_fund_type p, #n_period p {
+    padding: 3px 0;
+    color: dimgray;
+    font-weight: 500;
+}
+
+.n_sell_period #n_fund_type {
+    margin: 0 55px 0 0;
+}
+
+#n_sell_ticket {
+    margin: 30px 0 20px;
+}
+#n_sell_ticket h5{
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+#n_sell_ticket h6{
+    font-weight: bold;
+}
+.n_ticket_type {
+    font-size: 13px;
+    border: solid;
+    border-width: thin;
+    border-color: lightgrey;
+    border-radius: 10px;
+    padding: 20px;
+}
+#n_sell_button {
+    display: flex;
+    align-items: center;
+}
+#n_sell_button .bookmark_button{
+    width: 13%;
+    height: 60px;
+    background-color: transparent;
+    border-radius: 8px;
+    border-color: lightgrey;
+    box-shadow: none;
+    margin: 0 12px 0 0;
+    border-width: thin;
+}
+#n_sell_button .bookmark_button img {
+    height: 22px;
+    width: 22px;
+}
+#n_sell_button .buy_button {
+    background-color: #4be2a7;
+    height: 60px;
+    width: 92%;
+    border-radius: 8px;
+    border-color: transparent;
+    color: white;
+    font-size: 20px;
+}
+
+/* offlineDetail */
