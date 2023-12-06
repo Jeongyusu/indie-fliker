@@ -13,4 +13,6 @@ public class ManagerController {
 		return "manager/manager_main";
 	}
 	
+	
+	
 }
