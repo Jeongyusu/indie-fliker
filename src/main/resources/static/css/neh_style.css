@@ -469,8 +469,8 @@ body, html {
 .n_pay_step_choice{
     width: 114px;
     height: 68px;
-    background-color: green;
-    color: white;
+    background-color: var(--primary_01);
+    color: var(--def_wh);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -481,21 +481,21 @@ body, html {
 .n_pay_step_p {
     width: 114px;
     height: 68px;
-    background-color: white;
-    color: dimgray;
+    background-color: var(--def_wh);
+    color: var(--font_02);
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 40px;
     font-size: 16px;
-    border: 1px dashed lightgray;
+    border: 1px dashed var(--line_01);
     padding: 0;
 }
 
 #n_select_day {
     display: flex;
     margin-top: 40px;
-    border: 0.5px solid lightgray;
+    border: 0.5px solid var(--line_01);
     border-radius: 20px;
 }
 
@@ -504,7 +504,7 @@ body, html {
     display: flex;
     justify-content: center;
     padding: 34px;
-    border-right: 0.5px solid lightgray;
+    border-right: 0.5px solid var(--line_01);
 }
 
 .n_select_day_movies {
@@ -522,7 +522,7 @@ body, html {
     border: none;
     background-color: transparent;
     font-size: 18px;
-    color: green;
+    color: var(--primary_01);
     font-weight: bold;
     text-align: center;
     margin-top: 12px;
@@ -533,7 +533,7 @@ body, html {
     padding-bottom: 10px;
     border-bottom: solid;
     border-width: thin;
-    border-color: lightgray;
+    border-color: var(--line_01);
 }
 
 #n_day_movies_form #select_movie_button {
@@ -553,17 +553,17 @@ body, html {
 
 #n_movie_time .n_start_time {
     font-weight: bold;
-    color: black;
+    color: var(--def_bl);
 }
 
 #n_movie_time .n_end_time {
-    color: black;
+    color: var(--def_bl);
     font-size: 13px;
 }
 
 #n_day_movies_form #n_movie_title {
     font-size: 16px;
-    color: black;
+    color: var(--def_bl);
 }
 
 #n_seat {
@@ -576,7 +576,7 @@ body, html {
     padding: 2px 4px;
     border: solid;
     border-width: thin;
-    border-color: lightgray;
+    border-color: var(--back_02);
     border-radius: 3px;
     width: 55px;
 }
@@ -584,7 +584,7 @@ body, html {
 #n_seat_count .n_possible_seat {
     font-size: 12px;
     font-weight: bold;
-    color: green;
+    color: var(--primary_01);
 }
 
 #n_seat_count .n_all_seat {
@@ -605,7 +605,7 @@ body, html {
 
 .n_pay {
     width: 50%;
-    border: 0.5px solid lightgray;
+    border: 0.5px solid var(--back_02);
     border-radius: 20px;
     padding: 35px;
 }
@@ -646,7 +646,7 @@ body, html {
 .n_movie_place #n_place {
     font-size: 16px;
     font-weight: bold;
-    color: red;
+    color: var(--point_04);
 }
 
 .n_movie_place #n_address, #n_number {
@@ -654,7 +654,7 @@ body, html {
 }
 
 .n_people_and_pay {
-    background-color: lightgray;
+    background-color: var(--back_02);
     padding: 30px;
     border-radius: 15px;
 }
@@ -679,7 +679,7 @@ body, html {
 }
 
 .n_total_pay #n_price {
-    color: green;
+    color: var(--primary_01);
 }
 
 #n_payment{
@@ -695,9 +695,9 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--def_wh);
     height: 60px;
-    background-color: dimgray;
+    background-color: var(--font_01);
 }
 #n_select_movie h5 {
     margin: 0;
@@ -714,16 +714,17 @@ body, html {
     height: 190px;
 }
 
-.n_movie_img {
+.n_select_form #n_movie_img {
     border-radius: 10px;
     margin-right: 24px;
     width: 43%;
 }
-.n_ticket_type {
+.n_form_check_detail #n_ticket_type {
     display: flex;
     font-size: 20px;
     font-weight: bold;
-    color: green;
+    color: var(--primary_01);
+    margin-bottom: 15px;
 }
 .n_form_check_detail p{
     overflow: hidden;
@@ -733,6 +734,7 @@ body, html {
 .n_form_check_detail #n_movie_title {
     font-size: 20px;
     font-weight: bold;
+    margin-bottom: 28px;
 }
 
 .n_form_check_detail #n_movie_content{
@@ -743,9 +745,9 @@ body, html {
     -webkit-box-orient: vertical;
 }
 
-.n_show_period {
+.n_form_check_detail .n_show_period {
     display: flex;
-    color: dimgray;
+    color: var(--font_02);
     font-weight: bold;
 }
 .n_show_period img {
@@ -755,7 +757,7 @@ body, html {
 .n_select_price{
     display: flex;
     flex-direction: column;
-    background: lightgray;
+    background: var(--back_02);
     border-radius: 10px;
     padding: 22px;
     margin: 24px 0;
@@ -772,7 +774,7 @@ body, html {
 }
 .n_donation {
     padding: 0;
-    margin: 25px 0px;
+    margin: 25px 0;
     width: 90%;
 }
 .n_donation .n_info {
@@ -785,7 +787,7 @@ body, html {
 }
 .n_info .n_donation_comment {
     font-size: 14px;
-    color: dimgray;
+    color: var(--font_02);
 }
 .n_donation_price {
     display: flex;
@@ -802,20 +804,27 @@ body, html {
 }
 .n_total_price #n_total_price {
     font-weight: bold;
-    color: green;
+    color: var(--primary_01);
     padding-left: 5px;
 }
 .n_total_comment {
     font-weight: bold;
-    color: dimgray;
+    color: var(--font_02);
 }
-#next_button {
+#n_next_button {
     background-color: green;
     width: 17%;
     border: none;
     padding: 13px 0;
-    color: white;
+    color: var(--def_wh);
     border-radius: 5px;
     font-weight: bold;
     margin-top: 10px;
+}
+
+#n_on_pay_button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
 }
