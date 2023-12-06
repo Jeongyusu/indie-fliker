@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -82,10 +84,10 @@
                 <div class="p_line"></div>
             </div>
 
-            <!-- <div class="p_section5">
+            <div class="p_section5">
                 <i class="fa-solid fa-gear p_icon1"></i>
                 <a href="">환경설정</a>
-            </div> -->
+            </div>
 
         </div>
         <!--컨테이너1 끝-->
