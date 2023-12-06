@@ -1,9 +1,11 @@
-<!DOCTYPE html>
-<html lang="ko">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+    <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 페이지 - 메인( main ) 완료!</title>
+    <title>관리자 페이지 - 메인( main )</title>
     
     <!-- style.css와 연결 -->
     <link rel="stylesheet" href="../../../../resources/static/css/style.css">
@@ -82,10 +84,10 @@
                 <div class="p_line"></div>
             </div>
 
-            <!-- <div class="p_section5">
+            <div class="p_section5">
                 <i class="fa-solid fa-gear p_icon1"></i>
                 <a href="">환경설정</a>
-            </div> -->
+            </div>
 
         </div>
         <!--컨테이너1 끝-->
@@ -253,6 +255,8 @@
             </div>
         </div>
         <!--컨테이너3 끝-->
+
+
 
     </div>
     
