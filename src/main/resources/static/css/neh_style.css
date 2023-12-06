@@ -1,7 +1,7 @@
 
 @import url(common.css);
 
-/* onlineDetail */
+/* on-detail */
 body, html {
     height: 100%;
     margin: 0;
@@ -379,7 +379,8 @@ body, html {
     font-size: 20px;
 }
 
-/* offlineDetail */
+/*/////////////////////////////////////////////////////*/
+/* off-detail */
 
 .n_ticket_count {
     display: flex;
@@ -427,8 +428,8 @@ body, html {
     color: var(--point_04);
     font-weight: bold;
 }
-
-/*onlinePayment*/
+/*/////////////////////////////////////////////////////*/
+/*select_day*/
 .n_custom_fluid {
     width: 900px;
     padding-right: 15px;
@@ -590,8 +591,8 @@ body, html {
     font-size: 12px;
     font-weight: bold;
 }
-
-/* offlinePayment */
+/*/////////////////////////////////////////////////////*/
+/* off_payment */
 #n_select_movie_pay {
     display: flex;
     justify-content: center;
@@ -624,13 +625,13 @@ body, html {
     font-weight: bold;
 }
 
-.n_movie_day #day {
+.n_movie_day #n_day {
     font-weight: bold;
     font-size: 16px;
     margin-right: 10px;
 }
 
-.n_movie_day #time {
+.n_movie_day #n_time {
     font-size: 13px;
     text-align: center;
     align-items: center;
@@ -642,13 +643,13 @@ body, html {
     margin: 14px 0;
 }
 
-.n_movie_place #place {
+.n_movie_place #n_place {
     font-size: 16px;
     font-weight: bold;
     color: red;
 }
 
-.n_movie_place #address, #number {
+.n_movie_place #n_address, #n_number {
     font-size: 12px;
 }
 
@@ -677,7 +678,7 @@ body, html {
     font-weight: bold;
 }
 
-.n_total_pay #price {
+.n_total_pay #n_price {
     color: green;
 }
 
@@ -686,4 +687,135 @@ body, html {
     align-items: center;
     justify-content: space-around;
     margin: 60px 0 0;
+}
+/*/////////////////////////////////////////////////////*/
+/* on_payment */
+
+#n_select_movie {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    height: 60px;
+    background-color: dimgray;
+}
+#n_select_movie h5 {
+    margin: 0;
+}
+
+.n_select_row {
+    margin: 40px auto;
+    max-width: 830px;
+}
+
+.n_select_form {
+    display: flex;
+    padding: 0;
+    height: 190px;
+}
+
+.n_movie_img {
+    border-radius: 10px;
+    margin-right: 24px;
+    width: 43%;
+}
+.n_ticket_type {
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    color: green;
+}
+.n_form_check_detail p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.n_form_check_detail #n_movie_title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.n_form_check_detail #n_movie_content{
+    font-size: 14px;
+    margin-bottom: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.n_show_period {
+    display: flex;
+    color: dimgray;
+    font-weight: bold;
+}
+.n_show_period img {
+    margin: 0 6px 0 0;
+}
+
+.n_select_price{
+    display: flex;
+    flex-direction: column;
+    background: lightgray;
+    border-radius: 10px;
+    padding: 22px;
+    margin: 24px 0;
+}
+.n_select_price #n_ticket_title {
+    font-size: 16px;
+    font-weight: bold;
+}
+.n_select_price #n_select_price {
+    display: flex;
+    align-content: normal;
+    justify-content: flex-end;
+    font-weight: bold;
+}
+.n_donation {
+    padding: 0;
+    margin: 25px 0px;
+    width: 90%;
+}
+.n_donation .n_info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.n_info #n_donation_title{
+    font-weight: bold;
+}
+.n_info .n_donation_comment {
+    font-size: 14px;
+    color: dimgray;
+}
+.n_donation_price {
+    display: flex;
+    justify-content: end;
+    align-items: baseline;
+}
+.n_donation_price input {
+    width: 15%;
+    font-size: 14px;
+}
+.n_total_price {
+    display: flex;
+    justify-content: center;
+}
+.n_total_price #n_total_price {
+    font-weight: bold;
+    color: green;
+    padding-left: 5px;
+}
+.n_total_comment {
+    font-weight: bold;
+    color: dimgray;
+}
+#next_button {
+    background-color: green;
+    width: 17%;
+    border: none;
+    padding: 13px 0;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 10px;
 }
