@@ -1,9 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 페이지 - 등록 허가( register ) 완료!</title>
+    <title>관리자 페이지 - 등록 / 삭제 ( update_delete ) 완료!</title>
     
     <!-- style.css와 연결 -->
     <link rel="stylesheet" href="../../../../resources/static/css/style.css">
@@ -21,7 +23,7 @@
 </head>
 <body>
 
-	<div class="p_main">
+    <div class="p_main">
         <!--탑 시작-->
         <div class="p_top">
 
@@ -82,10 +84,10 @@
                 <div class="p_line"></div>
             </div>
 
-            <!-- <div class="p_section5">
+            <div class="p_section5">
                 <i class="fa-solid fa-gear p_icon1"></i>
                 <a href="">환경설정</a>
-            </div> -->
+            </div>
 
         </div>
         <!--컨테이너1 끝-->
@@ -93,92 +95,92 @@
 
 
         <!--컨테이너2 시작-->
-        <div class="p_register_container2">
+        <div class="p_update_delete_container2">
 
             <div class="p_section1">
                 <div class="p_menu1">
-                    <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
+                    <img src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="">
                     <p>영화 제목</p>
-                    <p>감독 정보</p>
-                    <a href=""><button>영화 등록 하기</button></a>
+                    <a href=""><button class="p_button1">영화 수정</button></a>
+                    <a href=""><button class="p_button2">영화 삭제</button></a>                  
                 </div>
                 <div class="p_menu1">
-                    <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
+                    <img src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="">
                     <p>영화 제목</p>
-                    <p>감독 정보</p>
-                    <a href=""><button>영화 등록 하기</button></a>
+                    <a href=""><button class="p_button1">영화 수정</button></a>
+                    <a href=""><button class="p_button2">영화 삭제</button></a>   
                 </div>
                 <div class="p_menu1">
-                    <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
+                    <img src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="">
                     <p>영화 제목</p>
-                    <p>감독 정보</p>
-                    <a href=""><button>영화 등록 하기</button></a>
+                    <a href=""><button class="p_button1">영화 수정</button></a>
+                    <a href=""><button class="p_button2">영화 삭제</button></a>    
                 </div>
                 <div class="p_menu1">
-                    <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
+                    <img src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="">
                     <p>영화 제목</p>
-                    <p>감독 정보</p>
-                    <a href=""><button>영화 등록 하기</button></a>
+                    <a href=""><button class="p_button1">영화 수정</button></a>
+                    <a href=""><button class="p_button2">영화 삭제</button></a>    
                 </div>
             </div>
 
             <div class="p_section2">
                 <div class="p_menu2">
-                    <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
+                    <img src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="">
                     <p>영화 제목</p>
-                    <p>감독 정보</p>
-                    <a href=""><button>영화 등록 하기</button></a>
+                    <a href=""><button class="p_button1">영화 수정</button></a>
+                    <a href=""><button class="p_button2">영화 삭제</button></a>    
                 </div>
                 <div class="p_menu2">
-                    <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
+                    <img src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="">
                     <p>영화 제목</p>
-                    <p>감독 정보</p>
-                    <a href=""><button>영화 등록 하기</button></a>
+                    <a href=""><button class="p_button1">영화 수정</button></a>
+                    <a href=""><button class="p_button2">영화 삭제</button></a>   
                 </div>
                 <div class="p_menu2">
-                    <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
+                    <img src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="">
                     <p>영화 제목</p>
-                    <p>감독 정보</p>
-                    <a href=""><button>영화 등록 하기</button></a>
+                    <a href=""><button class="p_button1">영화 수정</button></a>
+                    <a href=""><button class="p_button2">영화 삭제</button></a>    
                 </div>
                 <div class="p_menu2">
-                    <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
+                    <img src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="">
                     <p>영화 제목</p>
-                    <p>감독 정보</p>
-                    <a href=""><button>영화 등록 하기</button></a>
+                    <a href=""><button class="p_button1">영화 수정</button></a>
+                    <a href=""><button class="p_button2">영화 삭제</button></a>    
                 </div>
-            </div>
-            
-            <div class="p_register_bottom">
-                <nav aria-label="...">
-                    <ul class="pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link previous" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item active paging" aria-current="page" style="color:#01DFD7;">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">4</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">5</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link next" href="#">Next</a>
-                    </li>
-                    </ul>
-                </nav>  
             </div>
             
         </div>
         <!--컨테이너2 끝-->
+
+        <div class="p_update_delete_bottom">
+            <nav aria-label="...">
+                <ul class="pagination">
+                <li class="page-item disabled">
+                    <a class="page-link previous" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item paging">
+                    <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item active paging" aria-current="page" style="color:#01DFD7;">
+                    <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item paging">
+                    <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item paging">
+                    <a class="page-link" href="#">4</a>
+                </li>
+                <li class="page-item paging">
+                    <a class="page-link" href="#">5</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link next" href="#">Next</a>
+                </li>
+                </ul>
+            </nav>  
+        </div>
         
 	</div>
 </body>

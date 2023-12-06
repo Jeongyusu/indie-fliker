@@ -2,72 +2,228 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>마이페이지</title>
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-
-        .profile-container {
-            max-width: 600px;
-            margin: auto;
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        .profile-img {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
-
-        .profile-details {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .btn-edit {
-            background-color: #007bff;
-            color: white;
-        }
-
-        .btn-edit:hover {
-            background-color: #0056b3;
-        }
-
-        .btn-logout {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        .btn-logout:hover {
-            background-color: #bd2130;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>마이페이지</title>
+	<link href="../../../../resources/static/css/khy_style.css" rel="stylesheet">
 </head>
+<style>
+	.k_left_my {
+		margin-left: 200px;
+		top: 200px;
+		position: relative;
+		text-align: center;
+		margin-right: 1500px;
+	}
+
+	.k_left_my hr {
+		opacity: 0.3;
+		margin-top: 20px;
+	}
+
+	.k_update_login-container {
+		max-width: 1000px;
+		margin: auto;
+		margin-left: 500px;
+		margin-top: -120px;
+		height: 1000px;
+	}
+
+	.k_m_name {
+		margin-top: 15px;
+		font-weight: bold;
+	}
+
+	.k_m_button {
+		background: none;
+		border: none;
+		outline: none;
+		cursor: pointer;
+	}
+
+	.k_m_vip {
+		margin-top: 15px;
+		background-color: rgb(236, 236, 236);
+		border-radius: 10px;
+		width: 80px;
+		height: 30px;
+		border: none;
+	}
+
+	.k_m_kakao {
+		margin-top: 10px;
+		background: none;
+		border: none;
+		outline: none;
+		cursor: pointer;
+	}
+
+	.k_m_logout {
+		display: block;
+		margin-top: 15px;
+		height: 40px;
+		background-color: white;
+		border-radius: 10px;
+		cursor: pointer;
+		width: 200px;
+		border: 1px solid rgb(192, 192, 192);
+	}
+
+	.k_couponpack,
+	.k_invite,
+	.k_invite-text {
+		width: 100%;
+		text-align: left;
+	}
+
+	.k_m_couponpack {
+		background-color: white;
+		height: 40px;
+		border-radius: 10px;
+		border: 1px solid rgb(192, 192, 192);
+	}
+
+	.k_invite-container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	.k_invite {
+		margin-top: 15px;
+		height: 80px;
+		border-radius: 5px;
+		background-color: #f9fafb;
+		border: 1px solid rgb(192, 192, 192);
+		width: 30%;
+	}
+
+	.k_invite-text {
+		margin-top: 15px;
+		height: 80px;
+		border-radius: 5px;
+		background-color: rgb(255, 255, 255);
+		border: 1px solid rgb(192, 192, 192);
+		margin-left: 20px;
+	}
+
+	.k_m_hr {
+		opacity: 0.3;
+	}
+
+	.k_i_group {
+		margin-top: 15px;
+		height: 80px;
+		border-radius: 5px;
+		background-color: rgb(255, 255, 255);
+		border: 1px solid rgb(192, 192, 192);
+		width: 70%;
+		margin-left: 30px;
+	}
+
+
+
+	.k_see_movie {
+		margin-top: 30px;
+		border-radius: 10px;
+		border: none;
+		background-color: #a5e5e6;
+		width: 100%;
+		height: 60px;
+		cursor: pointer;
+	}
+
+	.k_invite-group {
+		margin-left: 80px;
+		
+	}
+
+	.k_my_active,
+	.k_c_center {
+		margin-top: 30px;
+		font-weight: bold;
+	}
+
+	.k_like_list {
+		margin-top: 20px;
+		height: 35px;
+		border: none;
+		background-color: white;
+		cursor: pointer;
+	}
+
+	.k_c_center_list {
+		margin-top: 20px;
+		height: 35px;
+		border: none;
+		background-color: white;
+		cursor: pointer;
+	}
+
+	.k_c_center_list_set {
+		height: 35px;
+		border: none;
+		background-color: white;
+		cursor: pointer;
+	}
+
+	.k_c_center_second_list {
+		margin-top: 20px;
+		height: 35px;
+		border: none;
+		background-color: white;
+		cursor: pointer;
+		margin-left: 400px;
+	}
+</style>
 
 <body>
+	<div class="k_left_my">
+		<img class="k_profile" src="../../../../resources/static/images/icons/gamst.jpg" alt="My Image">
+		<div class="k_m_name">인디인디님 <button class="k_m_button">〉</button></div>
+		<button class="k_m_vip">VIP</button>
+		<hr>
+		<button class="k_m_kakao">카카오로 로그인 중</button>
+		<button class="k_m_logout">로그아웃</button>
+	</div>
 
-    <div class="container profile-container">
-        <img class="profile-img" src="path/to/your/profile-image.jpg" alt="Profile Image">
-        <div class="profile-details">
-            <p><strong>사용자명:</strong> John Doe</p>
-            <p><strong>Email:</strong> john@example.com</p>
-            <p><strong>전화번호:</strong> 010-1234-5678</p>
-            <p><strong>소개:</strong> 안녕하세요! 반갑습니다.</p>
-        </div>
-        <a href="#" class="btn btn-edit">프로필 편집</a>
-        <a href="#" class="btn btn-logout">로그아웃</a>
-    </div>
+	<div class="k_update_login-container">
+		<button class="k_couponpack k_m_couponpack">세 번 결제로 VIP 혜택과 쿠폰팩 지급〉</button>
+		<div class="k_invite-container">
+			<button class="k_invite">나의 초청권 현황 n장</button>
+			<div class="k_i_group">
+				<span class="k_invite-group" style="font-weight: bold;">온라인 펀딩
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+				</span>
+				<span class="k_invite-group">오프라인 상영</span>
+
+				<span class="k_invite-group">찜한 목록</span>
+			</div>
+
+		</div>
+		<button class="k_see_movie">인디픽터에서
+			<div class="k_font_weight_bold">온라인 상영 시작한 영화 보러가기</div>
+		</button>
+		<div class="k_my_active">
+			나의 활동
+		</div>
+		<button class="k_like_list">♡ 찜한 목록〉</button>
+		<hr class="k_m_hr">
+		<div class="k_c_center">고객센터</div>
+		<div>
+			<button class="k_c_center_list">자주 묻는 질문〉</button>
+			<button class="k_c_center_second_list">공지사항〉</button>
+		</div>
+		<hr class="k_m_hr">
+		<div>
+			<button class="k_c_center_list">회원 정보 수정〉</button>
+			<button class="k_c_center_second_list">회원 탈퇴〉</button>
+		</div>
+		<hr class="k_m_hr">
+		<button class="k_c_center_list_set">설정〉</button>
+		<hr class="k_m_hr">
+
+	</div>
 
 </body>
 
