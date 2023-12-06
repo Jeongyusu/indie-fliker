@@ -1,8 +1,8 @@
 @import url(reset.css);
 
 :root {
-    --primary_01: #8AF9CD;
-    --primary_02: #4BE2A7;
+    --primary_01: #4BE2A7;
+    --primary_02: #8AF9CD;
     --point_01: #D9FFF0;
     --point_02: #8D48FF;
     --point_03: #E2D0FF;
