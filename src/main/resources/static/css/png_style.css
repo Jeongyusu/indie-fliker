@@ -1,20 +1,15 @@
 @import url(common.css);
 
-/*
+/* 오전 커밋 */
 *{
     margin: 0; padding: 0;
 }
-*/
 
 /* 관리자 페이지 메인 */
 /*--------------------------------------*/
 /* 탑 시작 */
 .p_top{
     /* background-color: beige; */
-    position: absolute;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
     width: 100%;
     height: 100px;
 }
@@ -26,6 +21,7 @@
     height: 70px;
     text-align: center;
     line-height: 65px;
+    top: 15px;
     left: 15px;
 }
 
@@ -37,8 +33,8 @@
 }
 
 .p_top .p_title .p_line{
-    position: absolute;
     background-color: #E6E6E6;
+    position: absolute;
     width: 200px;
     height: 1px;
     top: 10px;
@@ -94,11 +90,6 @@
 .p_top .p_inform a:hover{
     color: #01DFD7;
 }
-
-.p_top .p_inform:hover{
-    text-decoration: none;
-    color: #01DFD7;
-}
 /*--------------------------------------*/
 /* 탑 끝 */
 
@@ -114,93 +105,95 @@
 
 /* 섹션1 시작 */
 .p_container1 .p_section1{
-    background-color: #424242;
-    margin-left: 15px;
+    /* background-color: #FE2E64; */
     margin-bottom: 30px;
-    text-align: center;
-    line-height: 50px;
-    width: 100%;
+    width: 250px;
     height: 50px;
-    border-radius: 10px;
+
+}
+
+.p_container1 .p_section1 .p_dashboard{
+    position: absolute;
+    background-color: #424242;
+    right: 35px;
+    top: 0px;
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
 }
 
 .p_container1 .p_section1 i{
     position: absolute;
-    top: 15px;
-    left: -40px;
-    right: 120px;
+    top: 13px;
+    left: 20px;
     content: "\f009";
     font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    font-size: 20px;
+    font-size: 25px;
     color: #01DFD7;
 }
 
-.p_container1 .p_section1 h3{
+.p_container1 .p_section1 a{
     position: absolute;
-    top: 15px;
-    left: 70px;
-    font-size: 15px;
-    font-weight: bold;
-    color: #01DFD7;;
+    top: 11px;
+    left: 68px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #01DFD7;
+    transition-duration: 0.2s;
 }
+
+.p_container1 .p_section1 a:hover{
+    color:white;
+}
+
 /* 섹션1 끝 */
 
 /* 섹션2 시작 */
 .p_container1 .p_section2{
     /* background-color: #F6CED8; */
-    margin-bottom: 70px;
-    margin-left: 10px;
     width: 100%;
-    height: 120px;
+    height: 150px;
 }
         
 .p_container1 .p_section2 h3{
+    margin-left: 15px;
     font-size: 12px;
 }
 
 .p_container1 .p_section2 ul{
     margin-top: 10px;
-    margin-left: 35px;
+    margin-left: 20px;
     font-size: 15px;
     list-style: none;
 }
 
-.p_container1 .p_section2 a{
- 	color:#424242;
-    transition-duration: 0.5;
-}
-
-.p_container1 .p_section2 a:hover{
-    text-decoration: none;
-    color: #01DFD7;
-}
-
 .p_container1 .p_section2 .p_icon1{
-    position: absolute;
     content: "\e131";
     font-family: "Font Awesome 5 Free";
-    left: 15px;
-    top: 113px;
     color: #424242;
 }
 
 .p_container1 .p_section2 .p_icon2{
-    position: absolute;
     content: "\f201";
     font-family: "Font Awesome 5 Free";
-    left: 15px;
-    top: 153px;
     color: #424242;
 }
 
 .p_container1 .p_section2 .p_icon3{
-    position: absolute;
     content: "\f304";
     font-family: "Font Awesome 5 Free";
-    left: 15px;
-    top: 188px;
     color: #424242;
+}
+
+.p_container1 .p_section2 a{
+    margin-left: 10px;
+    color:#424242;
+    transition-duration: 0.2s;
+}
+
+.p_container1 .p_section2 a:hover{
+   text-decoration: none;
+   color: #01DFD7;
 }
 
 .p_container1 .p_section2 ul li{
@@ -208,7 +201,6 @@
 }
 
 .p_container1 .p_section2 .p_line{
-    position: relative;
     background-color: #E6E6E6;
     width: 230px;
     height: 1px;
@@ -219,19 +211,20 @@
 /* 섹션3 시작 */
 .p_container1 .p_section3{
     /* background-color: #F5A9F2; */
-    margin-bottom: 70px;
-    margin-left: 10px;
+    position: relative;
     width: 100%;
-    height: 120px;
+    height: 150px;
+    top: 15px;
 }
 
 .p_container1 .p_section3 h3{
+    margin-left: 15px;
     font-size: 12px;
 }
 
 .p_container1 .p_section3 ul{
     margin-top: 10px;
-    margin-left: 35px;
+    margin-left: 20px;
     font-size: 15px;
     list-style: none;
 }
@@ -241,8 +234,9 @@
 }
 
 .p_container1 .p_section3 a{
+    margin-left: 10px;
     color: #424242;
-    transition-duration: 0.5;
+    transition-duration: 0.2s;
 }
 
 .p_container1 .p_section3 a:hover{
@@ -251,34 +245,24 @@
 }
 
 .p_container1 .p_section3 .p_icon1{
-    position: absolute;
     content: "\f3ff";
     font-family: "Font Awesome 5 Free";
-    left: 15px;
-    top: 302px;
     color: #424242;
 }
 
 .p_container1 .p_section3 .p_icon2{
-    position: absolute;
     content: "\f007";
     font-family: "Font Awesome 5 Free";
-    left: 15px;
-    top: 340px;
     color: #424242;
 }
 
 .p_container1 .p_section3 .p_icon3{
-    position: absolute;
     content: "\f500";
     font-family: "Font Awesome 5 Free";
-    left: 15px;
-    top: 377px;
     color: #424242;
 }
 
 .p_container1 .p_section3 .p_line{
-    position: relative;
     background-color: #E6E6E6;
     width: 230px;
     height: 1px;
@@ -289,19 +273,20 @@
 /* 섹션4 시작 */
 .p_container1 .p_section4{
     /* background-color: #A9A9F5; */
-    margin-bottom: 30px;
-    margin-left: 10px;
+    position: relative;
     width: 100%;
-    height: 120px;
+    height: 150px;
+    top: 35px;
 }
 
 .p_container1 .p_section4 h3{
+    margin-left: 15px;
     font-size: 12px;
 }
 
 .p_container1 .p_section4 ul{
     margin-top: 10px;
-    margin-left: 35px;
+    margin-left: 20px;
     font-size: 15px;
     list-style: none;
 }
@@ -311,8 +296,9 @@
 }
 
 .p_container1 .p_section4 a{
+    margin-left: 10px;
     color: #424242;
-    transition-duration: 0.5;
+    transition-duration: 0.2s;
 }
 
 .p_container1 .p_section4 a:hover{
@@ -321,34 +307,24 @@
 }
 
 .p_container1 .p_section4 .p_icon1{
-    position: absolute;
     content: "\f500";
     font-family: "Font Awesome 5 Free";
-    left: 15px;
-    top: 493px;
     color: #424242;
 }
 
 .p_container1 .p_section4 .p_icon2{
-    position: absolute;
     content: "\f075";
     font-family: "Font Awesome 5 Free";
-    left: 15px;
-    top: 531px;
     color: #424242;
 }
 
 .p_container1 .p_section4 .p_icon3{
-    position: absolute;
     content: "\f249";
     font-family: "Font Awesome 5 Free";
-    left: 15px;
-    top: 568px;
     color: #424242;
 }
 
 .p_container1 .p_section4 .p_line{
-    position: relative;
     background-color: #E6E6E6;
     width: 230px;
     height: 1px;
@@ -366,19 +342,19 @@
 }
 
 .p_container1 .p_section5 i{
-    position: absolute;
+    position: relative;
+    top: 1px;
+    margin-left: 35px;
     content: "\f013";
     font-family: "Font Awesome 5 Free";
-    left: 15px;
-    top: 733px;
     color: #424242;
 }
 
 .p_container1 .p_section5 a{
     font-size: 12px;
-    margin-left: 35px;
+    margin-left: 5px;
     color: #424242;
-    transition-duration: 0.5;
+    transition-duration: 0.2s;
 }
 
 .p_container1 .p_section5 a:hover{
@@ -395,12 +371,11 @@
 /*--------------------------------------*/
 .p_container2{
     /* background-color: aqua; */
-    position: absolute;
+    position: relative;
     width: 1400px;
-    height: 350px;
-    top: 100px;
-    right: 100px;
-
+    height: 380px;
+    top: 0px;
+    left: 350px;
 }
 
 /* 섹션1 시작 */
@@ -413,7 +388,7 @@
     top: 50px;
 }
 
-.p_container2 .p_section1 .p_icon1{
+.p_container2 .p_section1 i{
     position: absolute;
     content: "\e533";
     font-family: "Font Awesome 5 Free";
@@ -426,9 +401,11 @@
 }
 
 .p_container2 .p_section1 .p_menu1{
-    /* background-color: #E6E6E6; */
+    /* background-color: bisque; */
+    position: absolute;
+    top: 0px;
     width: 200px;
-    height: 100px;
+    height: 100%;
 }
 
 .p_container2 .p_section1 .p_menu1 i{
@@ -444,24 +421,20 @@
     top: 50px;
 }
 
-.p_container2 .p_section1 .p_menu2{
-    /* background-color: bisque; */
+.p_container2 .p_section1 .p_menu1 p{
     position: absolute;
     top: 100px;
-    width: 200px;
-    height: 100px;
-}
-
-.p_container2 .p_section1 .p_menu2 p{
     font-size: 30px;
     font-weight: bold;
 }
 
-.p_container2 .p_section1 .p_menu2 span{
+.p_container2 .p_section1 .p_menu1 span{
+    position: absolute;
+    top: 150px;
     color: #01DFD7;
 }
 
-.p_container2 .p_section1 .p_menu3{
+.p_container2 .p_section1 .p_menu2{
     /* background-color: blueviolet; */
     position: absolute;
     width: 180px;
@@ -470,14 +443,14 @@
     right: 0px;
 }
 
-.p_container2 .p_section1 .p_menu3 progress{
+.p_container2 .p_section1 .p_menu2 progress{
     width: 180px;
     height: 70px;
     position: absolute;
     top: 20px;
 }
 
-.p_container2 .p_section1 .p_menu3 span{
+.p_container2 .p_section1 .p_menu2 span{
     position: absolute;
     right: 10px;
     bottom: 40px;
@@ -491,9 +464,9 @@
     /* background-color: blanchedalmond; */
     position: absolute;
     width: 700px;
-    height: 330px;
+    height: 350px;
     right: 50px;
-    top: 20px;
+    top: -10px;
 }
 
 .p_container2 .p_section2 .p_menu1{
@@ -505,7 +478,7 @@
 
 .p_container2 .p_section2 .p_menu1 h3{
     position: absolute;
-    left: 15px;
+    left: 0px;
 }
 
 .p_container2 .p_section2 .p_menu2{
@@ -513,14 +486,14 @@
     position: absolute;
     width: 50px;
     height: 30px;
-    top: 10px;
-    right: 20px;
+    top: 5px;
+    right: 50px;
 }
 
 .p_container2 .p_section2 .p_menu2 a{
     text-decoration: none;
     color: black;
-    transition-duration: 0.5;
+    transition-duration: 0.2s;
 }
 
 .p_container2 .p_section2 .p_menu2 a:hover{
@@ -530,15 +503,15 @@
 
 .p_container2 .p_section2 .p_menu3{
     /* background-color: aliceblue; */
-    position: absolute;
+    position: relative;
     width: 680px;
     height: 290px;
     top: 40px;
 }
 
-.p_container2 .p_section2 .p_menu3 .p_movie1{
+.p_container2 .p_section2 .p_menu3 .p_movie{
     /* background-color: beige; */
-    width: 32%;
+    width: 30%;
     height: 290px;
     float: left;
     margin-right: 2%;
@@ -546,144 +519,48 @@
     border-radius: 10px;
 }
 
-.p_container2 .p_section2 .p_menu3 .p_movie1 img{
-    position: relative;
+.p_container2 .p_section2 .p_menu3 .p_movie img{
     width: 180px;
     height: 180px;
     border-radius: 10px;
-    left: 20px;
+    margin-left: 12px;
+    margin-top: 10px;
 }
 
-.p_container2 .p_section2 .p_menu3 .p_movie1 p{
-    position: relative;
-    left: 20px;
-    margin-bottom: 5px;
+.p_container2 .p_section2 .p_menu3 .p_movie p{
+    margin: 5px 10px;
+    overflow: hidden; /* 넘치는 내용을 감추기 */
+    white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+    text-overflow: ellipsis; /* 텍스트가 넘칠 경우 마침표로 표시 */
 }
 
-.p_container2 .p_section2 .p_menu3 .p_movie1 .p_p{
+.p_container2 .p_section2 .p_menu3 .p_movie .p_p{
     color: #01DFD7;
+    overflow: hidden; /* 넘치는 내용을 감추기 */
+    white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+    text-overflow: ellipsis; /* 텍스트가 넘칠 경우 마침표로 표시 */
 }
 
-.p_container2 .p_section2 .p_menu3 .p_movie1 button{
-    position: relative;
+.p_container2 .p_section2 .p_menu3 .p_movie button{
     background-color: #01DFD7;
-    left: 80px;
-    top: 10px;
-    width: 34xp;
+    width: 160px;
     height: 30px;
     border-radius: 5px;
     border: none;
+    margin-left: 20px;
 }
 
-.p_container2 .p_section2 .p_menu3 .p_movie1 a{
+.p_container2 .p_section2 .p_menu3 .p_movie a{
     text-decoration: none;
     color: #424242;
-    transition-duration: 0.5;
+    transition-duration: 0.2s;
 }
 
-.p_container2 .p_section2 .p_menu3 .p_movie1 a:hover{
+.p_container2 .p_section2 .p_menu3 .p_movie a:hover{
     text-decoration: none;
     color: white;
 }
 
-.p_container2 .p_section2 .p_menu3 .p_movie2{
-    /* background-color: beige; */
-    width: 32%;
-    height: 290px;
-    float: left;
-    margin-right: 2%;
-    box-shadow: 5px 5px 5px #424242;
-    border-radius: 10px;
-}
-
-.p_container2 .p_section2 .p_menu3 .p_movie2 img{
-    position: relative;
-    width: 180px;
-    height: 180px;
-    border-radius: 10px;
-    left: 20px;
-}
-
-.p_container2 .p_section2 .p_menu3 .p_movie2 p{
-    position: relative;
-    left: 20px;
-    margin-bottom: 5px;
-}
-
-.p_container2 .p_section2 .p_menu3 .p_movie2 .p_p{
-    color: #01DFD7;
-}
-
-.p_container2 .p_section2 .p_menu3 .p_movie2 button{
-    position: relative;
-    background-color: #01DFD7;
-    left: 80px;
-    top: 10px;
-    width: 34xp;
-    height: 30px;
-    border-radius: 5px;
-    border: none;
-}
-
-.p_container2 .p_section2 .p_menu3 .p_movie2 a{
-    text-decoration: none;
-    color: #424242;
-    transition-duration: 0.5;
-}
-
-.p_container2 .p_section2 .p_menu3 .p_movie2 a:hover{
-    text-decoration: none;
-    color: white;
-}
-
-.p_container2 .p_section2 .p_menu3 .p_movie3 {
-    /* background-color: beige; */
-    width: 32%;
-    height: 290px;
-    float: left;
-    box-shadow: 5px 5px 5px #424242;
-    border-radius: 10px;
-}
-
-.p_container2 .p_section2 .p_menu3 .p_movie3 img{
-    position: relative;
-    width: 180px;
-    height: 180px;
-    border-radius: 10px;
-    left: 20px;
-}
-
-.p_container2 .p_section2 .p_menu3 .p_movie3 p{
-    position: relative;
-    left: 20px;
-    margin-bottom: 5px;
-}
-
-.p_container2 .p_section2 .p_menu3 .p_movie3 .p_p{
-    color: #01DFD7;
-}
-
-.p_container2 .p_section2 .p_menu3 .p_movie3 button{
-    position: relative;
-    background-color: #01DFD7;
-    left: 80px;
-    top: 10px;
-    width: 34xp;
-    height: 30px;
-    border-radius: 5px;
-    border: none;
-}
-
-.p_container2 .p_section2 .p_menu3 .p_movie3 a{
-    text-decoration: none;
-    color: #424242;
-    transition-duration: 0.5;
-}
-
-.p_container2 .p_section2 .p_menu3 .p_movie3 a:hover{
-    text-decoration: none;
-    color: white;
-}
 /* 섹션2 끝*/
 /*--------------------------------------*/
 /* 컨테이너2 끝 */
@@ -691,22 +568,22 @@
 /* 컨테이너3 시작 */
 /*--------------------------------------*/
 .p_container3{
-    /* background-color:whitesmoke; */
-    position: absolute;
+    /* background-color: whitesmoke; */
+    position: relative;
     width: 1400px;
-    height: 400px;
-    bottom: 50px;
-    right: 100px;
+    height: 385px;
+    bottom: 30px;
+    left: 350px;
 }
 
 /* 섹션2 시작 */
 .p_container3 .p_section2{
     /* background-color: aqua; */
     position: absolute;
-    top: 0px;
+    top: 20px;
     right: 0px;
-    width: 110px;
-    height: 40px;
+    width: 80px;
+    height: 30px;
     border: 1px solid #424242;
     border-radius: 10px;
 }
@@ -715,11 +592,11 @@
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
-    left: 25px;
+    left: 10px;
     font-size: 15px;
     color: #424242;
     text-decoration: none;
-    transition-duration: 0.5;
+    transition-duration: 0.2s;
 }
 
 .p_container3 .p_section2 a:hover{
@@ -727,13 +604,13 @@
     color: #01DFD7;
 }
 
-.p_container3 .p_section2 .p_icon1{
+.p_container3 .p_section2 i{
     position: absolute;
     content: "\f0b0";
     font-family: "Font Awesome 5 Free";
-    font-size: 20px;
+    font-size: 15px;
     color: #424242;
-    left: 65px;
+    left: 50px;
     top: 50%;
     transform: translate(0, -50%);
 }
@@ -750,18 +627,11 @@
     top: 20px;
 }
 
-.p_container3 .p_section3 .table div{
+.p_container3 .p_section3 .table img{
     /* background-color: aquamarine; */
     width: 30px;
     height: 30px;
     border-radius: 50%;
-}
-
-.p_container3 .p_section3 .table div img{
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
 }
 
 .p_container3 .p_section3 .table .p_name1{
@@ -770,27 +640,10 @@
     left: 320px;
 }
 
-.p_container3 .p_section3 .table .p_name2{
-    position: absolute;
-    top: 120px;
-    left: 320px;
-}
-
-.p_container3 .p_section3 .table .p_name3{
-    position: absolute;
-    top: 175px;
-    left: 320px;
-}
-
-.p_container3 .p_section3 .table .p_name4{
-    position: absolute;
-    top: 230px;
-    left: 320px;
-}
 /* 섹션3 끝 */
 
 /* 섹션4 시작 */
-.p_container3 .p_section4{
+.p_container3 .p_bottom{
     /* background-color: antiquewhite; */
     position: absolute;
     left: 50%;
@@ -799,42 +652,42 @@
     transform: translate(-50%, 0);
 }
 
-.p_container3 .p_section4 ul{
+.p_container3 .p_bottom ul{
     margin-right: 10px;
 }
 
-.p_container3 .p_section4 .p_previous{
+.p_container3 .p_bottom .p_previous{
     position: absolute;
     left: 2%;
 }
 
-.p_container3 .p_section4 .p_next{
+.p_container3 .p_bottom .p_next{
     position: absolute;
     right: 2%;
 }
 
-.p_container3 .p_section4 .p_paging{
-    position: relative;
+.p_main_bottom{
+    position: absolute;
+    top: 395px;
     left: 50%;
     transform: translate(-50%, 0);
-    margin-right: 15px;
 }
 /* 섹션4 끝 */
 /* 컨테이너3 끝  저장 */
-/*--------------------------------------*/
+/*---------------------------------------------------------------------*/
 /* 관리자 페이지 메인 */
 
 
 
-/* 관리자 페이지 등록 허가 */
+/* 관리자 페이지 등록 허가 ( register )*/
 /*---------------------------------------------------------------------*/
 .p_register_container2{
     /* background-color: antiquewhite; */
     position: relative;
     width: 1200px;
     height: 640px;
-    top: 210px;
-    left: 440px;
+    top: 60px;
+    left: 420px;
 }
 
 .p_register_container2 .p_section1{
@@ -912,6 +765,672 @@
     text-decoration: none;
     color: white;
 }
-/*---------------------------------------------------------------------*/
-/* 관리자 페이지 등록 허가 2023-12-04 작업 중 */
 
+.p_register_bottom{
+    position: relative;
+    top: 20px;
+    left: 420px;
+}
+/*---------------------------------------------------------------------*/
+/* 관리자 페이지 등록 허가 ( register )*/
+
+
+
+/* 관리자 페이지 현황 확인 ( check )*/
+/*---------------------------------------------------------------------*/
+.p_check_container2{
+    /* background-color: antiquewhite; */
+    position: relative;
+    width: 1300px;
+    height: 650px;
+    top: 50px;
+    left: 380px;
+}
+
+.p_check_container2 .p_title{
+    margin-bottom: 30px;
+}
+
+.p_check_container2 .p_box{
+	/* background-color: #E6E6E6; */
+    margin-bottom: 20px;
+    width: 100%;
+    height: 180px;
+    border-radius: 15px;
+    box-shadow: rgb(66 66 66) 5px 5px 5px;
+}
+
+.p_check_container2 .p_box img{
+	/* background-color: black; */
+    width: 180px;
+    height: 150px;
+    margin-top: 14px;
+    margin-left: 18px;
+    border-radius: 15px;
+}
+
+.p_check_container2 .p_box .p_list{
+    /* background-color: bisque; */
+    position: relative;
+    bottom: 150px;
+    left: 240px;
+}
+
+.p_check_container2 .p_box .p_list .p_flex{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.p_check_container2 .p_box .p_list .p_p1{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.p_check_container2 .p_box .p_list .p_p2{
+    font-size: 15px;
+}
+
+.p_check_container2 .p_box .p_list .p_p3{
+    color: #01DFD7;
+    position: relative;
+    font-size: 30px;
+    font-weight: bold;
+    bottom: 15px;
+}
+
+.p_check_container2 .p_box .p_list .p_p4{
+    color: #01DFD7;
+    position: relative;
+    top: 5px;
+    left: 10px;
+}
+
+.p_check_container2 .p_box .p_list .p_p5{
+    color: #01DFD7;
+    position: relative;
+    top: 0px;
+    left: 25px;
+    background-color: #A9F5F2;
+    width: 90px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 5px;
+}
+
+.p_check_container2 .p_box .p_list .p_p6{
+    position: relative;
+    bottom: 30px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.p_check_container2 .p_box .p_list .p_p7{
+    position: relative;
+    bottom: 12px;
+    left: 10px;
+}
+
+.p_check_container2 .p_box .p_list .p_p8{
+    color:#424242;
+    position: relative;
+    bottom: 20px;
+    left: 35px;
+    background-color:#E6E6E6;
+    width: 90px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 5px;
+}
+
+.p_check_bottom{
+    position: relative;
+    top: 20px;
+    left: 420px;
+}
+/*---------------------------------------------------------------------*/
+/* 관리자 페이지 현황 확인 ( check )*/
+
+
+/* 관리자 페이지 초청권 ( invitation )*/
+/*---------------------------------------------------------------------*/
+.p_invitation_container2{
+    /* background-color: antiquewhite; */
+    position: relative;
+    width: 1300px;
+    height: 550px;
+    top: 120px;
+    left: 380px;
+}
+
+.p_invitation_container2 .p_filter{
+    position: absolute;
+    right: 20px;
+    top: 0px;
+    width: 100px;
+    height: 40px;
+}
+
+.p_invitation_container2 .p_filter button{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    background-color: transparent;
+}
+
+.p_invitation_container2 .p_filter button:hover{
+    color: #01DFD7;
+}
+
+.p_invitation_container2 .p_filter span{
+    position: relative;
+    right: 15px;
+}
+
+.p_invitation_container2 .p_filter i{
+    position: absolute;
+    content: "\f0b0";
+    font-family: "Font Awesome 5 Free";
+    font-size: 20px;
+    color: #424242;
+    top: 10px;
+    right: 15px;
+}
+
+.p_invitation_container2 .p_section1{
+    position: relative;
+    top: 20px;
+}
+
+.p_invitation_container2 .p_section1 .table img{
+    background-color: #01DFD7;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+.p_invitation_container2 .p_section1 .table .p_name{
+    position: relative;
+    bottom: 27px;
+    left: 40px;
+}
+
+.p_invitation_bottom{
+    position: relative;
+    top: 20px;
+    left: 420px;
+}
+/*---------------------------------------------------------------------*/
+/* 관리자 페이지 초청권 ( invitation ) */
+
+
+/* 관리자 페이지 감상평 관리 ( review )*/
+/*---------------------------------------------------------------------*/
+.p_review_container2{
+    /* background-color: antiquewhite; */
+    position: relative;
+    top: 60px;
+    left: 370px;
+    width: 1300px;
+    height: 650px;
+}
+
+.p_review_container2 .p_title{
+    /* background-color: #424242; */
+    width: 100%;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.p_review_container2 .p_title h3{
+    font-weight: bold;
+}
+
+.p_review_container2 .p_title h4{
+    color: red;
+}
+
+.p_review_container2 .p_section1{
+    /* background-color: bisque; */
+    top: 100px;
+    left: 0px;
+    width: 1300px;
+    height: 550px;
+}
+
+.p_review_container2 .p_section1 .p_list{
+    /* background-color: darkgoldenrod; */
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.p_review_container2 .p_section1 .p_list .p_frofile{
+    /* background-color: cadetblue; */
+    top: 0px;
+    left: 0px;
+    width: 70px;
+    height: 100%;
+}
+
+.p_review_container2 .p_section1 .p_list .p_frofile img{
+    /* background-color: black; */
+    position: relative;
+    top: 0px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.p_review_container2 .p_section1 .p_list .p_frofile p{
+    position: relative;
+    top: 3px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 10px;
+    overflow: hidden; /* 넘치는 내용을 감추기 */
+    white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+    text-overflow: ellipsis; /* 텍스트가 넘칠 경우 마침표로 표시 */
+}
+
+.p_review_container2 .p_section1 .p_score{
+    /* background-color: brown; */
+    position: relative;
+    bottom: 60px;
+    left: 85px;
+    width: 70px;
+    height: 100%;
+    text-align: center;
+}
+
+.p_review_container2 .p_section1 .p_list .p_score span{
+    /* color: #01DFD7; */
+    font-size: 20px;
+}
+
+.p_review_container2 .p_section1 .p_list .p_coment{
+    background-color: #01DFD7;
+    position: relative;
+    bottom: 120px;
+    left: 170px;
+    width: 1150px;
+    height: 100%;
+    line-height: 55px;
+    border-radius: 15px;
+}
+
+.p_review_container2 .p_section1 .p_list .p_coment p{
+    position: relative;
+    width: 1000px;
+    left: 20px;
+    overflow: hidden; /* 넘치는 내용을 감추기 */
+    white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+    text-overflow: ellipsis; /* 텍스트가 넘칠 경우 마침표로 표시 */
+}
+
+.p_review_container2 .p_section1 .p_list .p_delet{
+    /* background-color: darkmagenta; */
+    position: relative;
+    bottom: 180px;
+    left: 1230px;
+    width: 70px;
+    height: 100%;
+    text-align: center;
+    line-height: 60px;
+}
+
+.p_review_container2 .p_section1 .p_list .p_delet button{
+    background-color: transparent;
+    border: none;
+    color: red;
+}
+
+.p_review_bottom{
+    position: relative;
+    top: 100px;
+    left: 900px;
+}
+/*---------------------------------------------------------------------*/
+/* 관리자 페이지 감상평 관리 ( review ) */
+
+
+
+/* 관리자 페이지 펀딩 등록 삭제 */
+/*---------------------------------------------------------------------*/
+.p_update_delete_container2{
+    /* background-color: antiquewhite; */
+    position: relative;
+    width: 1200px;
+    height: 640px;
+    top: 80px;
+    left: 400px;
+}
+
+.p_update_delete_container2 .p_section1{
+    /* background-color: #01DFD7; */
+    height: 50%;
+}
+
+.p_update_delete_container2 .p_section1 .p_menu1{
+    float: left;
+    width: 23%;
+    height: 300px;
+    background-color: white;
+    margin-right: 2%;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: rgb(66, 66, 66) 5px 5px 5px;
+    border-radius: 10px;
+}
+
+.p_update_delete_container2 .p_section1 .p_menu1 img{
+    width: 30px;
+    height: 50px;
+    width: 200px;
+    height: 160px;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.p_update_delete_container2 .p_section1 .p_menu1 p{
+    /* background-color: #E6E6E6; */
+}
+
+.p_update_delete_container2 .p_section2{
+    /* background-color:aquamarine; */
+    height: 50%;
+}
+
+.p_update_delete_container2 .p_section2 .p_menu2{
+    float: left;
+    width: 23%;
+    height: 300px;
+    background-color: white;
+    margin-right: 2%;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: rgb(66, 66, 66) 5px 5px 5px;
+    border-radius: 10px;
+}
+
+.p_update_delete_container2 .p_section2 .p_menu2 img{
+    width: 30px;
+    height: 50px;
+    width: 200px;
+    height: 160px;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.p_update_delete_container2 .p_section2 .p_menu2 p{
+    /* background-color: #E6E6E6; */
+}
+
+.p_update_delete_container2 button{
+    background-color: #01DFD7;
+    border: none;
+    border-radius: 5px;
+    width: 120px;
+    height: 30px;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+.p_update_delete_container2 button:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.p_update_delete_container2 .p_section1 p{
+    position: relative;
+    top: 20px;
+}
+
+.p_update_delete_container2 .p_section1 button{
+    position: relative;
+    top: 20px;
+}
+
+.p_update_delete_container2 .p_section2 p{
+    position: relative;
+    top: 20px;
+}
+
+.p_update_delete_container2 .p_section2 button{
+    position: relative;
+    top: 20px;
+}
+
+.p_update_delete_container2 .p_button1{
+    background-color: #01DFD7;
+}
+
+.p_update_delete_container2 .p_button2{
+    background-color: #FE2E64;
+}
+
+.p_update_delete_bottom{
+    position: relative;
+    top: 100px;
+    left: 820px;
+}
+/*---------------------------------------------------------------------*/
+/* 관리자 페이지 펀딩 등록 삭제 */
+
+
+
+/* 관리자 페이지 오프라인 기간 설정 */
+/*---------------------------------------------------------------------*/
+.p_playday_container2{
+    /* background-color: antiquewhite; */
+    position: relative;
+    width: 1200px;
+    height: 640px;
+    top: 70px;
+    left: 420px;
+}
+
+.p_playday_container2 .p_section1{
+    /* background-color: #01DFD7; */
+    height: 50%;
+}
+
+.p_playday_container2 .p_section1 .p_menu1{
+    float: left;
+    width: 23%;
+    height: 300px;
+    background-color: white;
+    margin-right: 2%;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: rgb(66, 66, 66) 5px 5px 5px;
+    border-radius: 10px;
+}
+
+.p_playday_container2 .p_section1 .p_menu1 img{
+    width: 30px;
+    height: 50px;
+    width: 200px;
+    height: 160px;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.p_playday_container2 .p_section1 .p_menu1 p{
+    /* background-color: #E6E6E6; */
+}
+
+.p_playday_container2 .p_section2{
+    /* background-color:aquamarine; */
+    height: 50%;
+}
+
+
+.p_playday_container2 .p_section2 .p_menu2{
+    float: left;
+    width: 23%;
+    height: 300px;
+    background-color: white;
+    margin-right: 2%;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: rgb(66, 66, 66) 5px 5px 5px;
+    border-radius: 10px;
+}
+
+.p_playday_container2 .p_section2 .p_menu2 img{
+    width: 30px;
+    height: 50px;
+    width: 200px;
+    height: 160px;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.p_playday_container2 .p_section2 .p_menu2 p{
+    /* background-color: #E6E6E6; */
+}
+
+.p_playday_container2 button{
+    background-color: #01DFD7;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+    height: 30px;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+.p_playday_container2 button:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.p_playday_bottom{
+    position: relative;
+    top: 100px;
+    left: 840px;
+}
+/*---------------------------------------------------------------------*/
+/* 관리자 페이지 오프라인 기간 설정 */
+
+
+
+/* 관리자 페이지 채팅방 */
+/*---------------------------------------------------------------------*/
+.p_chatting_container2{
+    /* background-color: antiquewhite; */
+    position: relative;
+    width: 1200px;
+    height: 640px;
+    top: 60px;
+    left: 420px;
+}
+
+.p_chatting_container2 .p_section1{
+    /* background-color: #01DFD7; */
+    height: 50%;
+}
+
+.p_chatting_container2 .p_section1 .p_menu1{
+    float: left;
+    width: 23%;
+    height: 300px;
+    background-color: white;
+    margin-right: 2%;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: rgb(66, 66, 66) 5px 5px 5px;
+    border-radius: 10px;
+}
+
+.p_chatting_container2 .p_section1 .p_menu1 img{
+    width: 30px;
+    height: 50px;
+    width: 200px;
+    height: 160px;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.p_chatting_container2 .p_section1 .p_menu1 .p_p1{
+    /* background-color: yellow; */
+    position: relative;
+    top: 10px;
+    left: 12px;
+    font-weight: bold;
+    width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.p_chatting_container2 .p_section1 .p_menu1 .p_p2{
+        /* background-color: yellow; */
+        position: relative;
+        top: 10px;
+        left: 12px;
+        font-weight: bold;
+        width: 250px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: #01DFD7;
+}
+
+.p_chatting_container2 .p_section2{
+    /* background-color:aquamarine; */
+    height: 50%;
+}
+
+.p_chatting_container2 .p_section2 .p_menu2{
+    float: left;
+    width: 23%;
+    height: 300px;
+    background-color: white;
+    margin-right: 2%;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: rgb(66, 66, 66) 5px 5px 5px;
+    border-radius: 10px;
+}
+
+.p_chatting_container2 .p_section2 .p_menu2 img{
+    width: 30px;
+    height: 50px;
+    width: 200px;
+    height: 160px;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.p_chatting_container2 .p_section2 .p_menu2 p{
+    /* background-color: #E6E6E6; */
+}
+
+.p_chatting_container2 button{
+    background-color: #01DFD7;
+    border: none;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+.p_chatting_container2 button:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.p_chatting_bottom{
+    position: relative;
+    top: 90px;
+    left: 835px;
+}
+/*---------------------------------------------------------------------*/
+/* 관리자 페이지 채팅방 */
