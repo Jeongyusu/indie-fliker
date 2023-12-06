@@ -5,7 +5,7 @@
 }
 /*로그인 페이지*/
 body {
-	background-color: #f8f9fa;
+	background-color: #ffffff;
 }
 
 .k_login {
@@ -402,5 +402,5 @@ div.main i {
 			outline: none;
 			text-decoration-line: underline;
 		}
-		
+		/*마이페이지*/
 		
