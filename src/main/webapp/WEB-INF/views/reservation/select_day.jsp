@@ -36,6 +36,8 @@
         <div id="n_select_day">
             <div class="n_movie_calendar">
                 <input type="hidden" id="n_activeCal" disabled>
+                <input type="hidden" id="n_firstDay">
+                <input type="hidden" id="n_lastDay">
             </div>
             <div class="n_select_day_movies">
                 <input type="text" id="n_otherInput" placeholder="날짜를 선택해주세요" disabled="">
@@ -66,10 +68,12 @@
 <script>
     let activeCal = document.querySelector("#n_activeCal");
     let otherInput = document.querySelector("#n_otherInput");
+    let firstDay = document.querySelector("#n_firstDay");
+    let lastDay = document.querySelector("#n_lastDay");
 
     flatpickr(activeCal, {
-        minDate: '2023-12-21',  // 지정 가능한 최소 날짜
-        maxDate: '2023-12-28',  // 지정 가능한 최대 날짜
+        minDate: firstDay,  // 지정 가능한 최소 날짜
+        maxDate: lastDay,  // 지정 가능한 최대 날짜
         locale: 'ko',           // 한국어로 달력 출력
         inline: true,           // 항상 달력 활성화
         onChange: function(selectedDates, dateStr, instance) {
