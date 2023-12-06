@@ -11,16 +11,23 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- css -->
     <link href="../../../../css/neh_style.css" rel="stylesheet">
+    <style>
+        .container-fluid {
+            display: flex;
+            align-items: center;
+            max-width: 1280px;
+        }
+    </style>
 </head>
 <body>
 <div class="container-fluid">
-    <div class="body">
-        <div class="row justify-content-center">
+    <div class="body n_body">
+        <div class="row justify-content-center n_row">
             <!-- 펀딩 영화 상세 내용-->
             <div class="col-sm-7">
                 <!-- 펀딩 영화 대표 이미지 -->
                 <div class="n_first_movie_img">
-                    <img id="n_movie_img" src="/images/moviePhoto/theBoy1.jpg">
+                    <img id="n_movie_img" src="/images/moviePhoto/the_boy1.jpg">
                 </div>
                 <!-- 펀드/환불 설명 -->
                 <div id="n_fund_attention">
@@ -63,14 +70,14 @@
                     </div>
                     <div class="n_movie_img">
                         <h3>포토</h3>
-                        <img src="/images/moviePhoto/theBoy1.jpg">
-                        <img src="/images/moviePhoto/theBoy2.jpg">
-                        <img src="/images/moviePhoto/theBoy3.jpg">
+                        <img src="/images/moviePhoto/the_boy1.jpg">
+                        <img src="/images/moviePhoto/the_boy2.jpg">
+                        <img src="/images/moviePhoto/the_boy3.jpg">
                     </div>
                     <span id="n_toggleMore" style="display: none">
                         <div class="n_movie_text">
                             <h3>감독 작품 경력</h3>
-                            <img id="n_director_img" src="/images/movieDirector/theBoyMiyazaki.jpg">
+                            <img id="n_director_img" src="/images/movieDirector/the_boy_miyazaki.jpg">
                             <h5>미야자키 하야오</h5>
                             <p>
                                 [저주소년](2022)</br>
@@ -146,56 +153,56 @@
                     <h4>기대되는 좋은 영화들</h4>
                     <div class="row n_movie_list">
                         <div class="n_more_movie">
-                            <img src="/images/moviePoster/theBoyPoster1.jpg">
+                            <img src="/images/moviePoster/the_boy_poster1.jpg">
                             <p class="n_achieve">70%달성</p>
                             <p class="n_title">3월의 휴가</p>
                             <p class="n_content">“따님은 어머님을 보거나 목소리를 들을 수 없고요.</p>
                             <p class="n_directer">육상효</p>
                         </div>
                         <div class="n_more_movie">
-                            <img src="/images/moviePoster/theBoyPoster1.jpg">
+                            <img src="/images/moviePoster/the_boy_poster1.jpg">
                             <p class="n_achieve">70%달성</p>
                             <p class="n_title">3월의 휴가</p>
                             <p class="n_content">“따님은 어머님을 보거나 목소리를 들을 수 없고요.</p>
                             <p class="n_directer">육상효</p>
                         </div>
                         <div class="n_more_movie">
-                            <img src="/images/moviePoster/theBoyPoster1.jpg">
+                            <img src="/images/moviePoster/the_boy_poster1.jpg">
                             <p class="n_achieve">70%달성</p>
                             <p class="n_title">3월의 휴가</p>
                             <p class="n_content">“따님은 어머님을 보거나 목소리를 들을 수 없고요.</p>
                             <p class="n_directer">육상효</p>
                         </div>
                         <div class="n_more_movie">
-                            <img src="/images/moviePoster/theBoyPoster1.jpg">
+                            <img src="/images/moviePoster/the_boy_poster1.jpg">
                             <p class="n_achieve">70%달성</p>
                             <p class="n_title">3월의 휴가</p>
                             <p class="n_content">“따님은 어머님을 보거나 목소리를 들을 수 없고요.</p>
                             <p class="n_directer">육상효</p>
                         </div>
                         <div class="n_more_movie">
-                            <img src="/images/moviePoster/theBoyPoster1.jpg">
+                            <img src="/images/moviePoster/the_boy_poster1.jpg">
                             <p class="n_achieve">70%달성</p>
                             <p class="n_title">3월의 휴가</p>
                             <p class="n_content">“따님은 어머님을 보거나 목소리를 들을 수 없고요.</p>
                             <p class="n_directer">육상효</p>
                         </div>
                         <div class="n_more_movie">
-                            <img src="/images/moviePoster/theBoyPoster1.jpg">
+                            <img src="/images/moviePoster/the_boy_poster1.jpg">
                             <p class="n_achieve">70%달성</p>
                             <p class="n_title">3월의 휴가</p>
                             <p class="n_content">“따님은 어머님을 보거나 목소리를 들을 수 없고요.</p>
                             <p class="n_directer">육상효</p>
                         </div>
                         <div class="n_more_movie">
-                            <img src="/images/moviePoster/theBoyPoster1.jpg">
+                            <img src="/images/moviePoster/the_boy_poster1.jpg">
                             <p class="n_achieve">70%달성</p>
                             <p class="n_title">3월의 휴가</p>
                             <p class="n_content">“따님은 어머님을 보거나 목소리를 들을 수 없고요.</p>
                             <p class="n_directer">육상효</p>
                         </div>
                         <div class="n_more_movie">
-                            <img src="/images/moviePoster/theBoyPoster1.jpg">
+                            <img src="/images/moviePoster/the_boy_poster1.jpg">
                             <p class="n_achieve">70%달성</p>
                             <p class="n_title">3월의 휴가</p>
                             <p class="n_content">“따님은 어머님을 보거나 목소리를 들을 수 없고요.</p>
@@ -205,7 +212,7 @@
                 </div>
             </div>
             <!-- 결제 관련 상세 내역-->
-            <div class="col-sm-5">
+            <div class="col-sm-5 n_col_sm_5">
                 <div id="n_sell_info">
                     <div class="n_movie_category">
                         <p id="n_sharp">#</p>
