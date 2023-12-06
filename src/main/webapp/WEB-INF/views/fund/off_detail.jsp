@@ -9,15 +9,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<%--    슬라이더 css--%>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<%--    슬라이더 js--%>
+    <!-- css -->
     <link href="../../../../css/neh_style.css" rel="stylesheet">
+    <style>
+        .container-fluid {
+            display: flex;
+            align-items: center;
+            max-width: 1280px;
+        }
+    </style>
 </head>
 <body>
 <div class="container-fluid">
-    <div class="body">
-        <div class="row justify-content-center">
+    <div class="body n_body">
+        <div class="row justify-content-center n_row">
             <!-- 펀딩 영화 상세 내용-->
             <div class="col-sm-7">
                 <!-- 펀딩 영화 대표 이미지 -->
