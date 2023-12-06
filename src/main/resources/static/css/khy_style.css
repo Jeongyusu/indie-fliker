@@ -1,1 +1,406 @@
 @import url(common.css);
+/*공용 css*/
+.k_font_weight_bold{
+	font-weight: bold;
+}
+/*로그인 페이지*/
+body {
+	background-color: #f8f9fa;
+}
+
+.k_login {
+	font-weight: bold;
+	margin-top: 250px;
+	font-size: 30px;
+}
+
+.k_login-container {
+	max-width: 400px;
+	margin: auto;
+	margin-top: 100px;
+}
+
+.k_forget {
+	margin-top: 15px;
+	display: block;
+	font-size: small;
+	opacity: 0.7;
+	text-align: right;
+}
+
+
+.k_no_id_aligin {
+	text-align: center;
+	margin-top: 50px;
+}
+
+.k_no_id {
+	display: inline-block;
+	font-weight: bold;
+}
+
+.k_join {
+	display: inline-block;
+	margin-left: 10px;
+	color: #00c4c4;
+	text-decoration-line: underline;
+}
+
+.k_email {
+	margin-top: 30px;
+	background-color: #e7f9f9;
+	color: #00c4c4;
+	border: none;
+}
+
+.k_email button {
+	margin-top: 30px;
+	background-color: #e7f9f9;
+	color: #00c4c4;
+	border: none;
+	height: 50px;
+}
+
+.k_email button:hover,
+.k_email button:active,
+.k_email button:focus {
+	background-color: #e7f9f9;
+	color: #00c4c4;
+	border: none;
+	box-shadow: none;
+	outline: none;
+}
+
+.k_kakao {
+	margin-top: 10px;
+}
+
+.k_kakao-btn {
+	background-image: url('../../../resources/static/images/icons/kakao_login_medium_wide.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 50px;
+	border: none;
+	padding: 0;
+}
+
+.k_easyjoin {
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.k_kakao-btn:hover {
+	background-color: #ffd200;
+}
+
+/*회원가입 페이지*/
+
+
+.k_login-container {
+	max-width: 400px;
+	margin: auto;
+	margin-top: 150px;
+}
+.k_join_bottom{
+	margin-bottom: 15px;
+}
+.k_join_radius {
+	border-radius: 5px;
+}
+
+.k_form-group {
+	margin-top: 20px;
+}
+
+.k_form-group .k_input-group {
+	display: flex;
+}
+
+.k_form-group .k_input-group input {
+	flex: 1;
+	margin-right: 5px;
+}
+
+.k_pwd_backcolor {
+	background-color: #f6f6f6;
+	;
+}
+.k_pwd_input_margin{
+	margin-top: 10px;
+}
+.k_validation {
+	background-color: #99e7e7;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	height: 38px;
+	font-size: 12px;
+	width: 70px;
+}
+
+.k_complete {
+	margin-top: 30px;
+	background-color: #99e7e7;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+}
+
+.k_complete button {
+	background-color: #99e7e7;
+	color: white;
+	border: none;
+	height: 50px;
+}
+
+.k_complete button:hover,
+.k_complete button:active,
+.k_complete button:focus {
+	background-color: #99e7e7;
+	color: white;
+	border: none;
+	box-shadow: none;
+	outline: none;
+}
+
+.k_input {
+	margin-top: 10px;
+	border-radius: 5px;
+}
+
+.eyes {
+    position: absolute;
+    top: 10px;
+    bottom: 0;
+    right: 5px;
+    margin: auto 2px;
+    height: 30px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.eyes2{
+	position: absolute;
+    top: 35px;
+    bottom: 0;
+    right: 780px; /* 위치 조정 */
+    margin: auto 2px;
+    height: 30px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+div.main {
+	position: relative;
+	padding: 20px;
+}
+
+div.main input {
+	width: 300px;
+	height: 30px;
+	background-color: black;
+	border: 0;
+	color: white;
+	text-indent: 10px;
+}
+
+div.main i {
+	position: absolute;
+	left: 75%;
+	top: 27px;
+	color: orange;
+}
+
+/* 간편 회원가입 페이지 */
+.k_easyjoin_main {
+	margin-top: 250px;
+	
+}
+.k_s_info{
+	font-weight: bold;
+	
+}
+.k_easyjoin_font {
+	font-weight: bold;
+	font-size: 30px;
+	margin-bottom: 15px;
+}
+
+.k_easy_validation {
+	background-color: #00c4c4;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	height: 38px;
+	font-size: 12px;
+	width: 70px;
+	margin-left: 5px;
+}
+
+.k_complete {
+	margin-top: 30px;
+	background-color: #99e7e7;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+}
+
+.complete button {
+	background-color: #00c4c4;
+	color: white;
+	border: none;
+	height: 50px;
+}
+
+.complete button:hover,
+.complete button:active,
+.complete button:focus {
+	background-color: #00c4c4;
+	color: white;
+	border: none;
+	box-shadow: none;
+	outline: none;
+}
+
+.k_change {
+	border-radius: 5px;
+	background-color: #f6f6f6;
+}
+
+.k_input {
+	margin-top: 10px;
+	border-radius: 5px;
+}
+
+.sub-text {
+	opacity: 0.7;
+
+}
+
+.k_tel {
+	font-weight: bold;
+
+}
+
+.k_input_name {
+	margin-top: 10px;
+}
+/* 프로필 수정 페이지 */
+		.k_update_login-container {
+			max-width: 400px;
+			margin: auto;
+			margin-top: 100px;
+		}
+        .k_profile_set{
+			font-weight: bold;
+			 margin-bottom: 20px;
+			 font-size: 25px;
+		}
+		.k_p_validation {
+			background-color: #00c4c4;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			height: 38px;
+			font-size: 12px;
+			width: 70px;
+			margin-left: 5px;
+		}
+        .k_change_delete{
+			text-decoration-line: underline;
+		}
+		.complete {
+			margin-top: 30px;
+			text-align: center;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.complete button {
+			background-color: #00c4c4;
+			color: white;
+			border: none;
+			height: 50px;
+			width: calc(50% - 5px);
+		}
+
+		.complete button:hover,
+		.complete button:active,
+		.complete button:focus {
+			background-color: #00c4c4;
+			color: white;
+			border: none;
+			box-shadow: none;
+			outline: none;
+		}
+        .k_p_margin{
+			margin-top: 15px;
+		}
+		.k_input {
+			margin-top: 10px;
+			border-radius: 5px;
+		}
+
+		.sub-text {
+			opacity: 0.7;
+		}
+
+		.k_profile {
+			border-radius: 50%;
+			width: 100px;
+			height: 100px;
+			object-fit: cover;
+		}
+		.k_profile-container {
+			text-align: center;
+		}
+		.k_button-container {
+			text-align: center;
+			margin-top: 10px;
+			background: none;
+			display: flex;
+			justify-content: center;
+		}
+
+		.k_button-container button {
+			border: none;
+			padding: 0;
+			font-size: inherit;
+			background: none;
+			color: black;
+			transition: color 0.3s ease;
+			margin-right: 10px;
+		}
+
+		.k_button-container button.btn-primary,
+		.k_button-container button.btn-danger {
+			border: none;
+			padding: 0;
+			font-size: inherit;
+			background: none;
+			color: black;
+			transition: color 0.3s ease, border-bottom 0.3s ease;
+			margin-right: 10px;
+			outline: none;
+		}
+
+		.k_button-container button.btn-primary:hover,
+		.k_button-container button.btn-primary:active,
+		.k_button-container button.btn-primary:focus,
+		.k_button-container button.btn-danger:hover,
+		.k_button-container button.btn-danger:active,
+		.k_button-container button.btn-danger:focus {
+			color: inherit;
+			background: none;
+			box-shadow: none;
+			outline: none;
+			text-decoration-line: underline;
+		}
+		
+		
