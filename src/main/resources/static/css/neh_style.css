@@ -19,6 +19,7 @@ body, html {
 
 .n_first_movie_img #n_movie_img{
     width: 100%;
+    height: 100%;
 }
 
 #n_fund_attention {
@@ -77,10 +78,11 @@ body, html {
     font-weight: bold;
     margin: 0 0 20px;
 }
-#n_movie_info h4, #n_more_movie h4 {
+#n_movie_info h4 {
     color: var(--font_03);
     font-weight: bold;
 }
+
 #n_movie_info h5 {
     color: var(--def_bl);
     padding: 14px;
@@ -128,8 +130,15 @@ body, html {
     margin: 0px 0 40px;
 }
 #n_more_movie{
-    margin-top: 40px;
+    margin-top: 20px;
 }
+
+#n_more_movie h4 {
+    color: var(--font_03);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
 #n_more_movie p {
     margin: 5px 0;
     overflow: hidden;
@@ -178,7 +187,7 @@ body, html {
     justify-content: flex-start;
     border-bottom: solid;
     border-width: thin;
-    border-color: var(--back_02);
+    border-color: var(--line_01);
     padding: 0 0 16px;
 }
 
@@ -257,8 +266,8 @@ body, html {
 .n_sell_archive #n_dday{
     height: 27px;
     padding: 0 8px;
-    background-color: var(--back_02);
-    color: var(--primary_01);
+    background-color: var(--point_01);
+    color: var(--point_05);
     border-radius: 8px;
 }
 
@@ -294,7 +303,7 @@ body, html {
 .n_sell_fund_state #n_play{
     height: 27px;
     padding: 0 8px;
-    background-color: var(--def_wh);
+    background-color: var(--back_02);
     color: var(--def_bl);
     border-radius: 8px;
 }
@@ -576,7 +585,7 @@ body, html {
     padding: 2px 4px;
     border: solid;
     border-width: thin;
-    border-color: var(--back_02);
+    border-color: var(--line_01);
     border-radius: 3px;
     width: 55px;
 }
@@ -605,7 +614,7 @@ body, html {
 
 .n_pay {
     width: 50%;
-    border: 0.5px solid var(--back_02);
+    border: 0.5px solid var(--line_01);
     border-radius: 20px;
     padding: 35px;
 }
@@ -809,7 +818,7 @@ body, html {
 }
 .n_total_comment {
     font-weight: bold;
-    color: var(--font_02);
+    color: var(--font_01);
 }
 #n_next_button {
     background-color: green;
@@ -827,4 +836,108 @@ body, html {
     display: flex;
     justify-content: center;
     margin-top: 30px;
+}
+
+/* reservation_ticket */
+#n_reservation_ticket {
+    background-image: url("../images/icons/ticket_image.svg");
+    background-size: cover;
+    width: 100%;
+    height: 257px;
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.n_detail span {
+    display: flex;
+}
+
+#n_reservation_ticket .n_movie_img {
+    margin: 0 94px 0 10px;
+}
+
+#n_reservation_ticket .n_movie_img img {
+    width: 154px;
+    height: 218px;
+}
+
+.n_reservation_detail {
+    width: 34%;
+    margin-right: 94px;
+}
+
+.n_reservation_detail p {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.n_reservation_detail #n_comment p {
+    color: green;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.n_reservation_detail .n_title {
+    padding-right: 22px;
+}
+
+.n_seat_number {
+    padding-right: 8px;
+}
+
+.n_detail #n_day, #n_place{
+    padding-right: 8px;
+    font-weight: bold;
+}
+
+.n_reservation_number {
+    width: 22%;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+}
+
+.n_reservation_number #n_title {
+    font-size: 20px;
+    font-weight: bold;
+    color: dimgray;
+}
+
+.n_reservation_number #n_number {
+    font-size: 20px;
+    font-weight: bold;
+    color: green;
+}
+
+#n_reservation_list_button {
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+}
+
+#n_reservation_list_button #n_button {
+    border: none;
+    padding: 16px 50px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: green;
+    border-radius: 10px;
+}
+
+#n_attention_comment {
+    border: 0.5px solid var(--line_01);
+    padding: 26px 26px 16px 26px;
+}
+
+#n_attention_comment p {
+    margin-bottom: 10px;
+}
+
+#n_attention_comment .n_comment {
+    font-size: 14px;
+    padding-left: 10px;
 }
