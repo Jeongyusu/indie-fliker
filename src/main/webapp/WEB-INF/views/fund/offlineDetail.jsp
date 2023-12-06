@@ -9,7 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <!-- css -->
+<%--    슬라이더 css--%>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<%--    슬라이더 js--%>
     <link href="../../../../css/neh_style.css" rel="stylesheet">
 </head>
 <body>
@@ -68,77 +70,77 @@
                         <img src="/images/moviePhoto/theBoy3.jpg">
                     </div>
                     <span id="n_toggleMore" style="display: none">
-                        <div class="n_movie_text">
-                            <h3>감독 작품 경력</h3>
-                            <img id="n_director_img" src="/images/movieDirector/theBoyMiyazaki.jpg">
-                            <h5>미야자키 하야오</h5>
-                            <p>
-                                [저주소년](2022)</br>
-                                [먼지요정 후와 무](2022)</br>
-                                [춤추는 개구리](2018)</br>
-                                [구어 구워](2013)</br>
-                                [오목어](2012)</br>
-                                [그믈](2009)[소이연](2007)</br>
-                                [볼록이 이야기](2003)</br>
-                                천지영[저주소년](2022)</br>
-                                [먼지요정 후와 무](2022)</br>
-                            </p>
-                        </div>
-                        <div class="n_movie_text">
-                            <h3>영화제 상영 및 수상작</h3>
-                            <p>
-                                Palm Springs International ShortFest - Best Animated Short(2022)</br>
-                                Bengaluru International Short Film Festival - Second runner up Prize(2022)</br>
-                                제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>
-                                제24회 정동진독립영화제(2022)</br>
-                                제12회 서울배리어프리영화제(2022)</br>
-                                2022 Nshville Film Festival(2022)</br>
-                                2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)</br>
-                                2022 Animage International Animation Festival(2022)</br>
-                                2022 Foyle Film Festival(2022)</br>
-                                2022 Lanterna Mágica International Animation Festival(2022)</br>
-                                2023 Tashkent International AnimationForum - Best Family Short Animation Film(2023)</br>
-                                2023 Flickerfest International Short Film Festival(2023)</br>
-                                2023 Winter Cicle Film Festival(2023)</br>
-                                2023 New York International Children's Film Festival(2023)</br>
-                            </p>
-                        </div>
-                        <div class="n_movie_text">
-                            <h3>스태프</h3>
-                            <table class="table table-bordered">
-                                <tbody>
-                                <tr>
-                                    <th>감독</th>
-                                    <td>Doe</td>
-                                    <th>각본</th>
-                                    <td>Doe</td>
-                                </tr>
-                                <tr>
-                                    <th>촬영</th>
-                                    <td>Moe</td>
-                                    <th>조명</th>
-                                    <td>Doe</td>
-                                </tr>
-                                <tr>
-                                    <th>미술</th>
-                                    <td>Dooley</td>
-                                    <th>편집</th>
-                                    <td>Doe</td>
-                                </tr>
-                                <tr>
-                                    <th>사운드</th>
-                                    <td>Dooley</td>
-                                    <th>음악</th>
-                                    <td>Doe</td>
-                                </tr>
-                                <tr>
-                                    <th>의상</th>
-                                    <td colspan="3">Dooley</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </span>
+                            <div class="n_movie_text">
+                                <h3>감독 작품 경력</h3>
+                                <img id="n_director_img" src="/images/movieDirector/theBoyMiyazaki.jpg">
+                                <h5>미야자키 하야오</h5>
+                                <p>
+                                    [저주소년](2022)</br>
+                                    [먼지요정 후와 무](2022)</br>
+                                    [춤추는 개구리](2018)</br>
+                                    [구어 구워](2013)</br>
+                                    [오목어](2012)</br>
+                                    [그믈](2009)[소이연](2007)</br>
+                                    [볼록이 이야기](2003)</br>
+                                    천지영[저주소년](2022)</br>
+                                    [먼지요정 후와 무](2022)</br>
+                                </p>
+                            </div>
+                            <div class="n_movie_text">
+                                <h3>영화제 상영 및 수상작</h3>
+                                <p>
+                                    Palm Springs International ShortFest - Best Animated Short(2022)</br>
+                                    Bengaluru International Short Film Festival - Second runner up Prize(2022)</br>
+                                    제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>
+                                    제24회 정동진독립영화제(2022)</br>
+                                    제12회 서울배리어프리영화제(2022)</br>
+                                    2022 Nshville Film Festival(2022)</br>
+                                    2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)</br>
+                                    2022 Animage International Animation Festival(2022)</br>
+                                    2022 Foyle Film Festival(2022)</br>
+                                    2022 Lanterna Mágica International Animation Festival(2022)</br>
+                                    2023 Tashkent International AnimationForum - Best Family Short Animation Film(2023)</br>
+                                    2023 Flickerfest International Short Film Festival(2023)</br>
+                                    2023 Winter Cicle Film Festival(2023)</br>
+                                    2023 New York International Children's Film Festival(2023)</br>
+                                </p>
+                            </div>
+                            <div class="n_movie_text">
+                                <h3>스태프</h3>
+                                <table class="table table-bordered">
+                                    <tbody>
+                                    <tr>
+                                        <th>감독</th>
+                                        <td>Doe</td>
+                                        <th>각본</th>
+                                        <td>Doe</td>
+                                    </tr>
+                                    <tr>
+                                        <th>촬영</th>
+                                        <td>Moe</td>
+                                        <th>조명</th>
+                                        <td>Doe</td>
+                                    </tr>
+                                    <tr>
+                                        <th>미술</th>
+                                        <td>Dooley</td>
+                                        <th>편집</th>
+                                        <td>Doe</td>
+                                    </tr>
+                                    <tr>
+                                        <th>사운드</th>
+                                        <td>Dooley</td>
+                                        <th>음악</th>
+                                        <td>Doe</td>
+                                    </tr>
+                                    <tr>
+                                        <th>의상</th>
+                                        <td colspan="3">Dooley</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </span>
                     <button id="n_toggle_button" onclick="toggleMore()">프로젝트 더 보기</button>
                 </div>
                 <!-- 기대되는 영화 목록 -->
@@ -206,17 +208,16 @@
             </div>
             <!-- 결제 관련 상세 내역-->
             <div class="col-sm-5">
-                <div id="n_sell_info">
+                <div class="n_sell_info">
                     <div class="n_movie_category">
                         <p id="n_sharp">#</p>
                         <p id="n_category">애니메이션</p>
                     </div>
                     <div class="n_sell_img">
                         <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik05LjYxNTIzIDQuNzg0OTVDOS42MTUyMyA0Ljc4NDk1IDEzLjA3NTIgNC4yNTk5NSAxNC4xNjAyIDMuMDY5OTVDMTQuODI1MiAyLjMzOTk1IDE0LjE1NTIgMS4yOTQ5NSAxMy4xOTUyIDEuNTM5OTVDMTIuNDU1MiAxLjcyNDk1IDExLjMxMDIgMi40MDk5NSA5LjYxNTIzIDQuNzg0OTVaIiBzdHJva2U9IiMwMDhFOTEiIHN0cm9rZS13aWR0aD0iMS4yOCIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTEwLjM4NDggNC43ODQ5NUMxMC4zODQ4IDQuNzg0OTUgNi45MjQ4MSA0LjI1OTk1IDUuODM5ODEgMy4wNjk5NUM1LjE3NDgxIDIuMzM5OTUgNS44NDQ4MSAxLjI5NDk1IDYuODA0ODEgMS41Mzk5NUM3LjUzOTgxIDEuNzI0OTUgOC42ODQ4MSAyLjQwOTk1IDEwLjM4NDggNC43ODQ5NVoiIHN0cm9rZT0iIzAwOEU5MSIgc3Ryb2tlLXdpZHRoPSIxLjI4Ii8+CjxwYXRoIGQ9Ik0xNi4yMjQ1IDE4LjAxNDlIMy43Njk1M0MzLjA3OTUzIDE4LjAxNDkgMi41MTk1MyAxNy40NTQ5IDIuNTE5NTMgMTYuNzY0OVY1LjQxOTkxQzIuNTE5NTMgNC43OTQ5MSAzLjAyOTUzIDQuMjg0OTEgMy42NTQ1MyA0LjI4NDkxSDE2LjMzNDVDMTYuOTU5NSA0LjI4NDkxIDE3LjQ2OTYgNC43OTQ5MSAxNy40Njk2IDUuNDE5OTFWMTYuNzY0OUMxNy40NzQ1IDE3LjQ0OTkgMTYuOTA5NSAxOC4wMTQ5IDE2LjIyNDUgMTguMDE0OVoiIGZpbGw9IiM0Q0RBREEiLz4KPHBhdGggZD0iTTE3Ljk4OTkgOC40Nzk5VjUuNTI0OUMxNy45ODk5IDQuODM0OSAxNy40Mjk5IDQuMjc0OSAxNi43Mzk5IDQuMjc0OUgzLjI1NDg4QzIuNTY0ODggNC4yNzQ5IDIuMDA0ODggNC44MzQ5IDIuMDA0ODggNS41MjQ5VjguNDc5OUgxNy45ODk5WiIgZmlsbD0iIzAwQkVCRSIvPgo8cGF0aCBkPSJNOS45ODUzNSA0LjIxOTk3VjE4LjAxNSIgc3Ryb2tlPSIjMDA4RTkxIiBzdHJva2Utd2lkdGg9IjEuMjgiLz4KPC9zdmc+Cg==">
-                        <p>펀딩</p>
+                        <p>개봉완료! 현재 오프라인 상영중!</p>
                     </div>
                     <div class="n_movie_title">
-                        <p id="n_state">[상영중]</p>
                         <p id="n_title">그대들은 어떻게 살 것인가?</p>
                     </div>
                     <div class="n_movie_content">
@@ -238,37 +239,38 @@
                     </div>
                     <div class="n_sell_period">
                             <span id="n_fund_type">
-                                <p>진행기간</p>
-                                <p>온라인 상영 예정일</p>
+                                <p id="n_fund_period">진행기간</p>
+                                <p id="n_show_period">오프라인 상영 기간</p>
                             </span>
                         <span id="n_period">
                                 <p>23.08.30 ~ 23.12.13</p>
-                                <p>23.10.15</p>
+                                <p>23.10.15 ~ 23.10.30</p>
                             </span>
                     </div>
                 </div>
                 <div id="n_sell_ticket">
                     <div>
-                        <h5>온라인 티켓 구매</h5>
+                        <h5 id="ticket_title">오프라인 티켓 구매</h5>
                         <div class="n_ticket_type">
-                            <p id="price">8000원</p>
-                            <p>[온라인 티켓]</p>
-                            <p>독립·예술영화를 아끼고 사랑하는 관객들을 위한 온라인 상영 관람 티켓</p>
+                            <p id="price">9000원</p>
+                            <p>[오프라인 티켓]</p>
+                            <p>독립·예술영화를 아끼고 사랑하는 관객들을 위한 오프라인 상영 관람 티켓</p>
                             </br>
+                            <div class="n_ticket_count">
+                                <div class="n_count_button">
+                                    <button id="n_minus_button" onclick="count('minus')" disabled>-</button>
+                                    <p class="n_count">0</p>
+                                    <button id="n_plus_button" onclick="count('plus')">+</button>
+                                </div>
+                            </div>
                             </br>
-                            <p>리워드 제공 형식</br>
-                                - 개봉 전 영화일 경우, 개봉 후 안내 문자가 발송됩니다.</br>
-                                - 개봉 후 처음 관람부터 4일간 무제한 관람이 가능합니다.</br>
-                                - 구매하신 영화는 마이페이지 - 결제내역에서 관람이 가능합니다.</br>
-                            </p>
+                            <p class="n_theater_info">- 영화관 안내</p>
+                            <p class="n_name">그린 아트 시네마</p>
+                            <p class="n_address">부산광역시 부산진구 부전제2동 521-10</p>
+                            <p class="n_number">051-000-0000</p>
                             </br>
-                            </br>
-                            <p>
-                                티켓 구매 형식</br>
-                                - 온라인 티켓은 재 구매가 가능합니다.</br>
-                                - 온라인 티켓은 구매 기간은 펀딩 총 기간동안 구매 가능합니다.</br>
-                                - 펀딩의 총 기간은 영화 개봉 전 ~ 개봉 후 상영기간입니다.</br>
-                            </p>
+                            <p class="n_parking_info">- 주차장 안내</p>
+                            <p id="n_parking_detail">주차장이 협소할 수 있으니, 양해 부탁드립니다.</p>
                         </div>
                     </div>
                 </div>
@@ -278,7 +280,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>s
 </div>
 </body>
 <script>
@@ -312,6 +314,28 @@
         } else {
             moreContent.style.display = "none";
         }
+    }
+    // 티켓 수량 버튼
+    function count(type){
+        let minusButton = document.querySelector("#n_minus_button");
+        let count = document.querySelector(".n_count");
+        let number = count.innerHTML; // 0
+
+        if(type == "plus"){
+            number = parseInt(number) + 1;
+        }else{
+            number = parseInt(number) - 1;
+        }
+
+        if(number <= 0){
+            minusButton.disabled = true;
+        }else {
+            minusButton.disabled = false;
+        }
+
+        // 계산 끝난 number를 count.innerHTML에 지정하기
+        count.innerHTML = number;
+        console.log("number : " + number);
     }
 </script>
 </html>
