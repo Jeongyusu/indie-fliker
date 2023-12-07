@@ -1,11 +1,11 @@
 @import url(common.css);
-/*공용 css*/
+/*자주쓰는 css*/
 .k_font_weight_bold{
 	font-weight: bold;
 }
 /*로그인 페이지*/
-body {
-	background-color: #f8f9fa;
+.k_body {
+	background-color: #ffffff;
 }
 
 .k_login {
@@ -402,5 +402,191 @@ div.main i {
 			outline: none;
 			text-decoration-line: underline;
 		}
+		/*마이페이지*/
+			.k_left_my {
+		margin-left: 50px;
+		top: 200px;
+		position: relative;
+		text-align: center;
+		margin-right: 1500px;
+	}
+
+	.k_left_my_hr {
+		opacity: 0.3;
+		margin-top: 20px;
+		width: 50%;
+	}
+
+	.k_update_login-container {
+		max-width: 1000px;
+		margin: auto;
+		margin-left: 500px;
+		margin-top: -120px;
+		height: 1000px;
+	}
+
+	.k_m_name {
+		margin-top: 15px;
+		font-weight: bold;
+	}
+
+	.k_m_button {
+		background: none;
+		border: none;
+		outline: none;
+		cursor: pointer;
+	}
+
+	.k_m_vip {
+		margin-top: 15px;
+		background-color: rgb(236, 236, 236);
+		border-radius: 10px;
+		width: 80px;
+		height: 30px;
+		border: none;
+	}
+
+	.k_m_kakao {
+		margin-top: 10px;
+		background: none;
+		border: none;
+		outline: none;
+		cursor: pointer;
+	}
+
+	.k_m_logout {
+		display: block;
+		margin-top: 15px;
+		height: 40px;
+		background-color: white;
+		border-radius: 10px;
+		cursor: pointer;
+		width: 200px;
+		border: 1px solid rgb(192, 192, 192);
+		margin-left: 180px;
+	}
+
+	.k_couponpack,
+	.k_invite,
+	.k_invite-text {
+		width: 100%;
+		text-align: left;
+	}
+
+	.k_m_couponpack {
+		background-color: white;
+		height: 40px;
+		border-radius: 10px;
+		border: 1px solid rgb(192, 192, 192);
+		cursor: pointer;
+	}
+
+	.k_invite-container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	.k_invite {
+		margin-top: 15px;
+		height: 80px;
+		border-radius: 5px;
+		background-color: #f9fafb;
+		border: 1px solid rgb(192, 192, 192);
+		width: 30%;
+	}
+
+	.k_invite-text {
+		margin-top: 15px;
+		height: 80px;
+		border-radius: 5px;
+		background-color: rgb(255, 255, 255);
+		border: 1px solid rgb(192, 192, 192);
+		margin-left: 20px;
+	}
+
+	.k_m_hr {
+		opacity: 0.3;
+	}
+
+	   .k_i_group {
+        margin-top: 15px;
+        height: 80px;
+        border-radius: 5px;
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(192, 192, 192);
+        width: 70%;
+        margin-left: 20px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .k_invite-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 10px;
+        position: relative; /* 상대 위치 지정 */
+    }
+
+    .k_invite-group:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        height: 60px; /* 수직선의 높이 조절 */
+        width: 1px; /* 수직선의 너비 조절 */
+        background-color: rgb(204, 204, 204); /* 수직선 색상 지정 */
+        right: -60px; /* 수직선 우측으로 이동하여 간격 조절 */
+        top: -35%; /* 수직선의 상단 위치 조절 */
+        
+    }
+
+	.k_see_movie {
+		margin-top: 30px;
+		border-radius: 10px;
+		border: none;
+		background-color: #a5e5e6;
+		width: 100%;
+		height: 60px;
+		cursor: pointer;
+	}
+
+	.k_my_active,
+	.k_c_center {
+		margin-top: 30px;
+		font-weight: bold;
+	}
+
+	.k_like_list {
+		margin-top: 20px;
+		height: 35px;
+		border: none;
+		background-color: white;
+		cursor: pointer;
+	}
+
+	.k_c_center_list {
+		margin-top: 20px;
+		height: 35px;
+		border: none;
+		background-color: white;
+		cursor: pointer;
+	}
+
+	.k_c_center_list_set {
+		height: 35px;
+		border: none;
+		background-color: white;
+		cursor: pointer;
+	}
+
+	.k_c_center_second_list {
+		margin-top: 20px;
+		height: 35px;
+		border: none;
+		background-color: white;
+		cursor: pointer;
+		margin-left: 400px;
+	}
 		
 		
