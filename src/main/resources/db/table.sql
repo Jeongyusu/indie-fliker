@@ -6,7 +6,7 @@ create table user_tb(
                         pic varchar(300),
                         grade enum('NORMAL', 'VIP') not null,
                         tel varchar(30) not null,
-                        gubun enum('NORMAL', 'DIRECTOR', 'ADMIN') not null,
+                        gubun enum('NORMAL', 'DIRECTOR', 'ADMIN'),
                         created_at timestamp not null default now()
 );
 

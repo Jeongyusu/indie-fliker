@@ -588,5 +588,186 @@ div.main i {
 		cursor: pointer;
 		margin-left: 400px;
 	}
-		
-		
+
+		/*자주 묻는 질문 페이지*/
+ .k_ask_container {
+	 max-width: 400px;
+	 margin: auto;
+	 margin-top: 150px;
+ }
+
+.k_ask_main {
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 40px;
+	font-size: 35px;
+}
+
+.k_search-container {
+	display: flex;
+	max-width: 400px;
+	width: 100%;
+	border: 2px solid #000;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.k_search-input {
+	flex: 1;
+	padding: 10px;
+	border: none;
+	font-size: 16px;
+}
+
+.k_search-button {
+	padding: 10px;
+	color: white;
+	border: none;
+	border-radius: 0 4px 4px 0;
+	cursor: pointer;
+	font-size: 16px;
+	width: 10%;
+}
+
+.k_ask_hr {
+	margin-top: 30px;
+	opacity: 0.7;
+}
+
+.k_ask_s_container {
+	max-width: 750px;
+	margin: auto;
+	margin-top: 30px;
+}
+
+.k_btn_group {
+	display: flex;
+	align-items: center;
+}
+
+.k_btn {
+	height: 35px;
+	width: 70%;
+	background-color: white;
+	border: 2px solid #01DFD7;
+	box-shadow: none;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.k_btn:not(:last-child) {
+	border-right: none;
+}
+
+.k_btn:hover,
+.k_btn:active {
+	background-color: #01DFD7;
+	color: white;
+}
+
+.k_a_btn-primary {
+	height: 35px;
+	width: 70%;
+	background-color: white;
+	border-color: #01DFD7;
+	box-shadow: none;
+}
+
+.k_a_btn_mem_button {
+	border-radius: 4px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	border-right: none;
+}
+
+.k_a_btn_mem_vip {
+	border-radius: 4px;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.k_b_b_none {
+	border-right: none;
+}
+
+.k_member_info {
+	margin-top: 30px;
+	color: #01DFD7;
+	font-weight: bold;
+}
+
+.k_member_how_info {
+	margin-top: 7px;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+}
+
+.k_clickMe {
+	cursor: pointer;
+	padding: 10px;
+	background-color: white;
+	color: rgb(128, 128, 128);
+	display: inline-block;
+	margin: 10px;
+}
+
+.k_clickMeSymbol {
+	margin-left: 450px;
+	border: none;
+	background-color: white;
+    cursor: pointer;
+
+}
+
+.k_hiddenDiv {
+	display: none;
+	padding: 20px;
+	background-color: rgb(128, 128, 128);
+	color: #fff;
+	margin: 10px;
+}
+.k_a_l{
+	margin-top: 15px;
+}
+.k_ask_ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	margin-top: 50px;
+}
+.k_ask_li {
+	margin-right: 40px;
+	opacity: 0.7;
+}
+.k_ask_a{
+
+}
+
+  /*공지 사항*/
+.k_notice_hr{
+	margin-top: 100px;
+}
+.k_notice_import{
+	margin-top: 30px;
+	color: #01DFD7;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.k_notice_service{
+
+	font-weight: bold;
+}
+.k_notice_time{
+	margin-top: 15px;
+	opacity: 0.7;
+	font-size: 12px;
+}
+.k_notice_s_hr{
+	margin-top: 15px;
+	opacity: 0.7;
+}
+/*공지 상세 보기*/
