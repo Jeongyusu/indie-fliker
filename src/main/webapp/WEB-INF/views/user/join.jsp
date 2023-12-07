@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,40 +19,50 @@
 			<div class="k_form-group ">
 				<div class="k_join_bottom">이메일</div>
 				<div class="k_input-group input">
-					<input type="text" class="form-control k_join_radius" id="username" placeholder="이메일 계정"
-						onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일 입력'">
+					<input type="email" class="form-control k_join_radius" id="userEmail"
+						placeholder="이메일 형식에 맞게 입력하세요."
+						onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일을 입력하세요.'">
 					<button class="k_validation">인증하기</button>
 				</div>
 			</div>
-			<div class="k_form-group">
-				<div class="k_join_bottom">이름</div>
-				<input type="password" class="form-control input" id="password" placeholder="이름 입력"
-					onfocus="this.placeholder = ''" onblur="this.placeholder = '이름 입력'">
-			</div>
+			
 			<div class="k_form-group">
 				<div class="k_join_bottom">비밀번호</div>
 				<div class="input-group k_input">
-					<input type="password" class="form-control input k_pwd_backcolor" id="password"
-						placeholder="비밀번호 입력" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 입력'">
+					<input type="password" class="form-control input k_pwd_backcolor" id="password1"
+						placeholder="비밀번호를 입력하세요."
+						 onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 입력를 입력하세요.'">
 					<div class="eyes" id="togglePassword1">
 						<i class="fa fa-eye fa-lg"></i>
 					</div>
 				</div>
-				<input type="password" class="form-control input k_pwd_backcolor k_pwd_input_margin"
-					id="password-confirm" placeholder="비밀번호 확인" onfocus="this.placeholder = ''"
-					onblur="this.placeholder = '비밀번호 확인'">
+				
+				<input type="password" class="form-control input k_pwd_backcolor k_pwd_input_margin" id="password2"
+					placeholder="비밀번호 확인" 
+					onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 확인'">
 				<div class="eyes2" id="togglePassword2">
 					<i class="fa fa-eye fa-lg"></i>
 				</div>
 			</div>
+			
+			<div class="k_form-group">
+				<div class="k_join_bottom">이름</div>
+				<input type="text" class="form-control input" id="username"
+					placeholder="이름을 입력하세요."
+					onfocus="this.placeholder = ''" onblur="this.placeholder = '이름 입력을 입력하세요.'">
+			</div>
+			
 			<div class="k_form-group">
 				<div class="k_join_bottom">전화번호</div>
-				<input type="password" class="form-control input" id="password" placeholder="전화번호 입력"
+				<input type="text" class="form-control input" id="tel"
+					placeholder="전화번호 입력를 입력하세요."
 					onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 입력'">
 			</div>
+			
 			<div class="k_complete text-center">
 				<button type="submit" class="btn btn-primary btn-block">약관 동의 후 가입 완료하기</button>
 			</div>
+			
 		</form>
 	</div>
 
