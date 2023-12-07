@@ -11,16 +11,16 @@ import java.sql.Timestamp;
 public class VipReview {
     private Integer id;
     private String content;
-    private Timestamp created_at;
+    private Timestamp createdAt;
     private Integer point;
     private Integer userId;
     private Integer fundingId;
 
     @Builder
-    public VipReview(Integer id, String content, Timestamp created_at, Integer point, Integer userId, Integer fundingId) {
+    public VipReview(Integer id, String content, Timestamp createdAt, Integer point, Integer userId, Integer fundingId) {
         this.id = id;
         this.content = content;
-        this.created_at = created_at;
+        this.createdAt = createdAt;
         this.point = point;
         this.userId = userId;
         this.fundingId = fundingId;

@@ -10,19 +10,19 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class Funding {
     private Integer id;
-    private Integer target_price;
-    private Integer price_per_onetime;
-    private Integer people_count;
+    private Integer targetPrice;
+    private Integer pricePerOnetime;
+    private Integer peopleCount;
     private Timestamp releaseDate;
     private Timestamp endDate;
     private Integer movieId;
 
     @Builder
-    public Funding(Integer id, Integer target_price, Integer price_per_onetime, Integer people_count, Timestamp releaseDate, Timestamp endDate, Integer movieId) {
+    public Funding(Integer id, Integer targetPrice, Integer pricePerOnetime, Integer peopleCount, Timestamp releaseDate, Timestamp endDate, Integer movieId) {
         this.id = id;
-        this.target_price = target_price;
-        this.price_per_onetime = price_per_onetime;
-        this.people_count = people_count;
+        this.targetPrice = targetPrice;
+        this.pricePerOnetime = pricePerOnetime;
+        this.peopleCount = peopleCount;
         this.releaseDate = releaseDate;
         this.endDate = endDate;
         this.movieId = movieId;
