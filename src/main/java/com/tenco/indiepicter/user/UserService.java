@@ -32,7 +32,10 @@ public class UserService {
 		
 	}
 	
-	// 로그인
+	// 이메일 중복 검사
+		public boolean selectId(String userEmail) {
+			return this.userRepository.selectId(userEmail);
+		}
 	
 	
 	// 회원 전체 조회
