@@ -37,13 +37,13 @@
                     <p>그대들은 어떻게 살 것인가?</p>
                 </div>
                 <div class="n_movie_day">
-                    <p id="day">2023.01.02</p>
-                    <p id="time">15:05 ~ 17:03</p>
+                    <p id="n_day">2023.01.02</p>
+                    <p id="n_time">15:05 ~ 17:03</p>
                 </div>
                 <div class="n_movie_place">
-                    <p id="place">그린 아트 시네마</p>
-                    <p id="address">부산광역시 부산진구 부전제2동 521-10</p>
-                    <p id="number">051.000.0000</p>
+                    <p id="n_place">그린 아트 시네마</p>
+                    <p id="n_address">부산광역시 부산진구 부전제2동 521-10</p>
+                    <p id="n_number">051.000.0000</p>
                 </div>
                 <div class="n_people_and_pay">
                     <div class="n_people">
@@ -51,7 +51,7 @@
                     </div>
                     <div class="n_total_pay">
                         <p>최종 결제 금액</p>
-                        <p id="price">21,000원</p>
+                        <p id="n_price">21,000원</p>
                     </div>
                 </div>
                 <div id="n_payment">
