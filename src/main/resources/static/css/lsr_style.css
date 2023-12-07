@@ -268,9 +268,13 @@
 }
 
 /* online */
+.l_green {
+	color: var(--point_05);	
+}
+
  #l_online_navbar {
     width: 100%;
-    color: var(--primary_02);
+    color: var(--point_05);
     font-weight: bold;
     letter-spacing: 0.025em;
     margin-top: 1rem;

@@ -1,12 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
+<head>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>채팅방</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link href="../../../../resources/static/css/lsr_style.css" rel="stylesheet">
+    <link href="../../../../css/lsr_style.css" rel="stylesheet">
 </head>
+
 <body style="overflow: hidden;">
     <!-- value = ${userId} 로 받을거임, 채팅방도 ${movieTitle} 이런식으로 받을 예정 -->
     <input id="userId" value="sara" type="hidden" />
@@ -23,14 +27,14 @@
                 <div class="card bg-light border-0">
                     <div class="card-title l_mint m-2"># 그대들은 어떻게 살 것인가</div>
                     <img src="https://dummyimage.com/160x230/000/fff.jpg" alt="채팅방 이미지" class="img-fluid m-2">
-                    <p class="card-text ms-2" style="font-size: small;">감독 : 미야자키 하야오<br/>
+                    <div class="p card-text ms-2" style="font-size: small;">감독 : 미야자키 하야오<br/>
                         장르 : 미야자키 하야오<br/>
                         등급 : 미야자키 하야오<br/>
-                        개봉일 : 미야자키 하야오</p>
+                        개봉일 : 미야자키 하야오</div>
                     </div>
-                    <p class="mt-4"># 하울의 움직이는 성</p>
-                    <p># 서울의 봄</p>
-                    <p># 3일의 휴가</p>
+                    <div class="p mt-4"># 하울의 움직이는 성</div>
+                    <div class="p"># 서울의 봄</div>
+                    <div class="p"># 3일의 휴가</div>
                     
                 </div>
                 
@@ -41,7 +45,7 @@
                 </div>
                 
             <div class="col-md-2 l_chat_section l_hide_on_small">
-                <h5 class="my-4">참여 인원</h5>
+                <div class="h5 my-4">참여 인원</div>
                 <div class="l_participants_list">
                     <div class="l_participant d-flex align-items-center">
                         <img src="https://dummyimage.com/100/000/fff.jpg" alt="참가자1">
@@ -72,6 +76,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
-    <script src="../../../../resources/static/js/lsr/chatroom.js"></script>
+    <script src="../../../../js/lsr/chatroom.js"></script>
 </body>
 </html>
