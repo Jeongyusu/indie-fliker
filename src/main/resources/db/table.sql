@@ -29,8 +29,8 @@ create table movie_tb(
                          running_grade enum('전체 관람가', '12세 이상 관람가', '15세 이상 관람가','청소년 관람 불가', '제한상영가') not null,
                          director varchar(20) not null,
                          actor varchar(200) not null,
-                         direct_careers varchar(500),
-                         direct_awards_film varchar(500),
+                         director_careers varchar(500),
+                         director_awards_film varchar(500),
                          online_release_date Date,
                          online_end_date Date,
                          offline_release_date Date,
@@ -171,7 +171,7 @@ create table payment_tb(
 create table refund_tb(
                           id int auto_increment primary key,
                           refund_payment int not null,
-                          refunded_at date not null default now(),
+                          refunded_at datetime not null default now(),
                           payment_id int not null,
                           foreign KEY(payment_id) references payment_tb(id)
 );
@@ -195,6 +195,6 @@ create table notice_tb(
                           notice_title varchar(20) not null,
                           content varchar(200) not null,
                           category varchar(20) not null,
-                          created_at date not null default now()
+                          created_at datetime not null default now()
 );
 
