@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -5,8 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>영화목록</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  <link href="../../../../resources/static/css/lsr_style.css" rel="stylesheet">
+  <link href="../../../../css/lsr_style.css" rel="stylesheet">
 </head>
+
 <body class="l_body">
   <!-- 배너 object-fit: contain 아니면 cover 고민중 -->
   <div class="banner-container" style="background: linear-gradient(to bottom, #201111, #2b2626);">
@@ -41,7 +44,7 @@
       </div>
       <div class="h4 card-title l_mint mt-3">75% 달성</div>
       <div class="h5 card-text mt-2">[아이다]</div>
-      <div class="p card-text mt-2">Quos, magni minus. Consectetur error sed quae magnam ut id mollitia ullam.</div>
+      <div class="card-text mt-2">Quos, magni minus. Consectetur error sed quae magnam ut id mollitia ullam.</div>
       <figcaption class="figure-caption">감독이름</figcaption>
     </div>
     
@@ -51,7 +54,7 @@
       </div>
       <div class="h4 card-title l_mint mt-3">75% 달성</div>
       <div class="h5 card-text mt-2">[아이다]</div>
-      <div class="p card-text mt-2">Quos, magni minus. Consectetur error sed quae magnam ut id mollitia ullam.</div>
+      <div class="card-text mt-2">Quos, magni minus. Consectetur error sed quae magnam ut id mollitia ullam.</div>
       <figcaption class="figure-caption">감독이름</figcaption>
     </div>
     <div class="col my-4">
@@ -60,7 +63,7 @@
       </div>
       <div class="h4 card-title l_mint mt-3">75% 달성</div>
       <div class="h5 card-text mt-2">[아이다]</div>
-      <div class="p card-text mt-2">Quos, magni minus. Consectetur error sed quae magnam ut id mollitia ullam.</div>
+      <div class="card-text mt-2">Quos, magni minus. Consectetur error sed quae magnam ut id mollitia ullam.</div>
       <figcaption class="figure-caption">감독이름</figcaption>
     </div>
     <div class="col my-4">
@@ -69,7 +72,7 @@
       </div>
       <div class="h4 card-title l_mint mt-3">75% 달성</div>
       <div class="h5 card-text mt-2">[아이다]</div>
-      <div class="p card-text mt-2">Quos, magni minus. Consectetur error sed quae magnam ut id mollitia ullam.</div>
+      <div class="card-text mt-2">Quos, magni minus. Consectetur error sed quae magnam ut id mollitia ullam.</div>
       <figcaption class="figure-caption">감독이름</figcaption>
     </div>
     <div class="col my-4">
@@ -78,7 +81,7 @@
       </div>
       <div class="h4 card-title l_mint mt-3">75% 달성</div>
       <div class="h5 card-text mt-2">[아이다]</div>
-      <div class="p card-text mt-2">Quos, magni minus. Consectetur error sed quae magnam ut id mollitia ullam.</div>
+      <div class="card-text mt-2">Quos, magni minus. Consectetur error sed quae magnam ut id mollitia ullam.</div>
       <figcaption class="figure-caption">감독이름</figcaption>
     </div>
 

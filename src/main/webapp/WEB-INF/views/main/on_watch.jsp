@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>영화 시청</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="../../../../resources/static/css/lsr_style.css" rel="stylesheet">
+    <link href="../../../../css/lsr_style.css" rel="stylesheet">
 </head>
 <body>
 
@@ -19,11 +21,11 @@
             <div class="col-4">
                 <div class="l_chat_section l_hide_on_small border-0"  style="max-width: 250px;">
                     <div class="card bg-light border-0">
-                        <p class="card-title l_mint m-2"># 그대들은 어떻게 살 것인가</p>
+                        <div class="p card-title l_green m-2"># 그대들은 어떻게 살 것인가</div>
                         <img src="https://dummyimage.com/160x230/000/fff.jpg" alt="채팅방 이미지" class="img-fluid m-2" style="max-width: 250px;">
-                        <p class="card-text mb-2" style="font-size: small;">감독 : 미야자키 하야오<br/>
+                        <div class="p card-text mb-2" style="font-size: small;">감독 : 미야자키 하야오<br/>
                             장르 : 미야자키 하야오<br/>
-                            등급 : 미야자키 하야오</p>
+                            등급 : 미야자키 하야오</div>
                     </div>
                 </div>
             </div>
@@ -66,7 +68,7 @@
                     정체를 알 수 없는 왜가리 한 마리가 나타나고, 저택에서 일하는 일곱 할멈으로부터 왜가리가 살고 있는 탑에 대한 신비로운 이야기를 듣게 된다.
                     그러던 어느 날, ‘마히토’는 사라져버린 새엄마 ‘나츠코’를 찾기 위해 탑으로 들어가고,
                     왜가리가 안내하는 대로 이세계(異世界)의 문을 통과하는데…!</div>
-                <div class="h5 l_mint">그대들은 어떻게 살 것인가에 대한 <a class="">9,734</a>개의 이야기가 있어요!</div>    
+                <div class="h5 l_green">그대들은 어떻게 살 것인가에 대한 <a class="">9,734</a>개의 이야기가 있어요!</div>    
             </div>
             
             <div class="l_participant d-flex align-items-center">
@@ -75,7 +77,7 @@
                 <span>인디픽커</span>
                 </div>
                 <div class="l_chat_message col-md-10">
-                    <div style="font-size: small;"><a class="l_mint">그대들은 어떻게 살 것인가</a> 재미있게 보셨나요? 영화의 어떤 점이 좋았는지 이야기해주세요.</div>
+                    <div style="font-size: small;"><a class="l_green">그대들은 어떻게 살 것인가</a> 재미있게 보셨나요? 영화의 어떤 점이 좋았는지 이야기해주세요.</div>
                 </div>
             </div>
             <div class="container text-center">
@@ -86,7 +88,7 @@
         <!-- 영화 평론 -->
         <div class="content" num="2" style="display:none;">
             <div class="l_information my-5">
-                <div class="h5"><a class="l_mint">그대들은 어떻게 살 것인가</a>에 대한 다양한 평론을 느껴보세요</div>    
+                <div class="h5"><a class="l_green">그대들은 어떻게 살 것인가</a>에 대한 다양한 평론을 느껴보세요</div>    
             </div>
         
             <!-- 내 평론 -->
@@ -134,7 +136,7 @@
                                 <div class="p">asdf</div>
                             </div>
                             <div class="col text-center">
-                                <div class="p l_mint">평점</div>
+                                <div class="p l_green">평점</div>
                                 <div class="p">5</div>
                             </div>
                             <div class="l_chat_message text-break col col-8">
@@ -151,12 +153,10 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
-
-                    
+                    </div>  
                 </div>
+                
             </div>
-
         </div>
 
         <!-- 영화 예고편 (예고편 말고 사진을 넣어야 할 것 같다..! 렌더링 오류) -->
@@ -180,7 +180,8 @@
             <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next" style="background-color: transparent;border: none;">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
             </button>
-        </div>
+        	</div>
+    	</div>
     </div>
    
     <!-- footer -->

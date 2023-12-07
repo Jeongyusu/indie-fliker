@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -7,12 +9,12 @@
     <title>오프라인 상영 내역</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link href="../../../../resources/static/css/lsr_style.css" rel="stylesheet">
+    <link href="../../../../css/lsr_style.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="h1 m-5">펀딩한 내역</div>
-    <div class="text-center">                 <!-- 아래에 줄 긋기 스타일 -->
+    <div class="text-center">                 
         <a href="#" class="l_effect_underline" style="border-bottom: 2px solid; padding-bottom: 11px;">오프라인 상영 내역</a>
         <a href="#" class="l_effect_underline">온라인 펀딩 내역</a>
     </div>
@@ -25,16 +27,16 @@
                         style="width: 12rem; height: 18rem;">
                 </div>
                 <div class="col-md-5 d-flex align-items-center">
-                    <div class="card-body">
-                        <h5 class="card-title">투팅카멘의 진실</h5>
-                        <p class="card-text l_mint">70% 달성</p>
-                        <p class="card-text">A blade runner must pursue and try to terminate four replicants...
-                          A blade runner must pursue and try to terminate four replicants...
-                        </p>
-                        <p class="card-text">결제 일시</p>
-                        <p class="card-text">결제 정보</p>
+                     <div class="card-body">
+                      <div class="h5 card-title">투팅카멘의 진실</div>
+                      <div class="p card-text l_mint mb-3">70% 달성</div>
+                      <div class="p card-text mb-3">A blade runner must pursue and try to terminate four replicants...
+                        A blade runner must pursue and try to terminate four replicants...
                       </div>
+                      <div class="p card-text mb-2">결제 일시</div>
+                      <div class="p card-text">결제 정보</div>
                     </div>
+                  </div>
                 <div class="col-md-3 d-flex flex-column align-items-end justify-content-end mb-4">
                   <button class="btn btn-outline-dark mt-2" type="button" style="margin-right: 2.5rem; width: 8rem;">티켓 확인</button>
                   <button class="btn l_mint_button text-white mt-2" type="button" style="margin-right: 2.5rem; width: 8rem;">환불하기</button>
@@ -49,13 +51,13 @@
               </div>
               <div class="col-md-5 d-flex align-items-center">
                   <div class="card-body">
-                      <h5 class="card-title">투팅카멘의 진실</h5>
-                      <p class="card-text l_mint">70% 달성</p>
-                      <p class="card-text">A blade runner must pursue and try to terminate four replicants...
+                      <div class="h5 card-title">투팅카멘의 진실</div>
+                      <div class="p card-text l_mint mb-3">70% 달성</div>
+                      <div class="p card-text mb-3">A blade runner must pursue and try to terminate four replicants...
                         A blade runner must pursue and try to terminate four replicants...
-                      </p>
-                      <p class="card-text">결제 일시</p>
-                      <p class="card-text">결제 정보</p>
+                      </div>
+                      <div class="p card-text mb-2">결제 일시</div>
+                      <div class="p card-text">결제 정보</div>
                     </div>
                   </div>
               <div class="col-md-3 d-flex flex-column align-items-end justify-content-end mb-4">
