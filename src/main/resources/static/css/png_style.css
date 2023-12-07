@@ -1,6 +1,6 @@
 @import url(common.css);
 
-/* 오전 커밋 */
+/* 수정 완 2 */
 *{
     margin: 0; padding: 0;
 }
@@ -10,6 +10,7 @@
 /* 탑 시작 */
 .p_top{
     /* background-color: beige; */
+    position: relative;
     width: 100%;
     height: 100px;
 }
@@ -75,8 +76,15 @@
     outline: none;
 }
 
-.p_top .p_inform a{
+.p_main .p_top .p_inform{
     position: absolute;
+    top: 30px;
+    right: 150px;
+    width: 50px;
+    height: 50px;
+}
+
+.p_top .p_inform a{
     top: 50px;
     right: 120px;
     content: "\f0f3";
@@ -90,6 +98,7 @@
 .p_top .p_inform a:hover{
     color: #01DFD7;
 }
+
 /*--------------------------------------*/
 /* 탑 끝 */
 
@@ -1099,7 +1108,7 @@
 
 
 
-/* 관리자 페이지 펀딩 등록 삭제 */
+/* 관리자 페이지 펀딩 등록 삭제 ( update_delete ) */
 /*---------------------------------------------------------------------*/
 .p_update_delete_container2{
     /* background-color: antiquewhite; */
@@ -1219,11 +1228,11 @@
     left: 820px;
 }
 /*---------------------------------------------------------------------*/
-/* 관리자 페이지 펀딩 등록 삭제 */
+/* 관리자 페이지 펀딩 등록 삭제 ( update_delete ) */
 
 
 
-/* 관리자 페이지 오프라인 기간 설정 */
+/* 관리자 페이지 오프라인 기간 설정 ( playday ) */
 /*---------------------------------------------------------------------*/
 .p_playday_container2{
     /* background-color: antiquewhite; */
@@ -1316,11 +1325,11 @@
     left: 840px;
 }
 /*---------------------------------------------------------------------*/
-/* 관리자 페이지 오프라인 기간 설정 */
+/* 관리자 페이지 오프라인 기간 설정 ( playday ) */
 
 
 
-/* 관리자 페이지 채팅방 */
+/* 관리자 페이지 채팅방 ( chatting ) */
 /*---------------------------------------------------------------------*/
 .p_chatting_container2{
     /* background-color: antiquewhite; */
@@ -1419,7 +1428,7 @@
     width: 150px;
     height: 30px;
     text-decoration: none;
-    transition-duration: 0.5s;
+    transition-duration: 0.2s;
 }
 
 .p_chatting_container2 button:hover{
@@ -1433,4 +1442,178 @@
     left: 835px;
 }
 /*---------------------------------------------------------------------*/
-/* 관리자 페이지 채팅방 */
+/* 관리자 페이지 채팅방 ( chatting ) */
+
+
+
+/* 관리자 페이지 회원 관리 ( usermanagerment ) */
+/*---------------------------------------------------------------------*/
+.p_usermanagement_container2{
+    /* background-color: antiquewhite; */
+    position: relative;
+    width: 1300px;
+    height: 550px;
+    top: 120px;
+    left: 380px;
+}
+
+.p_usermanagement_container2 .p_filter{
+    position: absolute;
+    right: 20px;
+    top: 0px;
+    width: 100px;
+    height: 40px;
+}
+
+.p_usermanagement_container2 .p_filter button{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    background-color: transparent;
+}
+
+.p_usermanagement_container2 .p_filter button:hover{
+    color: #01DFD7;
+}
+
+.p_usermanagement_container2 .p_filter span{
+    position: relative;
+    right: 15px;
+}
+
+.p_usermanagement_container2 .p_filter i{
+    position: absolute;
+    content: "\f0b0";
+    font-family: "Font Awesome 5 Free";
+    font-size: 20px;
+    color: #424242;
+    top: 10px;
+    right: 15px;
+}
+
+.p_usermanagement_container2 .p_section1{
+    position: relative;
+    top: 20px;
+}
+
+.p_usermanagement_container2 .p_section1 .table img{
+    background-color: #01DFD7;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+.p_usermanagement_container2 .p_section1 .table .p_name{
+    position: relative;
+    bottom: 27px;
+    left: 40px;
+}
+
+.p_usermanagement_container2 .p_section1 .table button{
+    background-color: #01DFD7;
+    width: 90px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    border-color: white;
+    transition-duration: 0.2s;
+}
+
+.p_usermanagement_container2 .p_section1 .table button:hover{
+    color:white;
+}
+
+.p_usermanagement_bottom{
+    position: relative;
+    top: 20px;
+    left: 420px;
+}
+/*---------------------------------------------------------------------*/
+/* 관리자 페이지 회원 관리 ( usermanagerment ) */
+
+
+
+/* 관리자 페이지 VIP 관리 ( vipmanagerment ) */
+/*---------------------------------------------------------------------*/
+.p_vipmanagement_container2{
+    /* background-color: antiquewhite; */
+    position: relative;
+    width: 1300px;
+    height: 550px;
+    top: 120px;
+    left: 380px;
+}
+
+.p_vipmanagement_container2 .p_filter{
+    position: absolute;
+    right: 20px;
+    top: 0px;
+    width: 100px;
+    height: 40px;
+}
+   
+.p_vipmanagement_container2 .p_filter button{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    background-color: transparent;
+}
+
+.p_vipmanagement_container2 .p_filter button:hover{
+    color: #01DFD7;
+}
+
+.p_vipmanagement_container2 .p_filter span{
+    position: relative;
+    right: 15px;
+}
+
+.p_vipmanagement_container2 .p_filter i{
+    position: absolute;
+    content: "\f0b0";
+    font-family: "Font Awesome 5 Free";
+    font-size: 20px;
+    color: #424242;
+    top: 10px;
+    right: 15px;
+}
+
+.p_vipmanagement_container2 .p_section1{
+    position: relative;
+    top: 20px;
+}
+
+.p_vipmanagement_container2 .p_section1 .table img{
+    background-color: #01DFD7;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+.p_vipmanagement_container2 .p_section1 .table .p_name{
+    position: relative;
+    bottom: 27px;
+    left: 40px;
+}
+
+.p_vipmanagement_container2 .p_section1 .table button{
+    background-color: #01DFD7;
+    width: 90px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    border-color: white;
+    transition-duration: 0.2s;
+}
+
+.p_vipmanagement_container2 .p_section1 .table button:hover{
+    color:white;
+}
+
+.p_vipmanagement_bottom{
+    position: relative;
+    top: 20px;
+    left: 420px;
+}
+/*---------------------------------------------------------------------*/
+/* 관리자 페이지 VIP 관리 ( vipmanagerment ) 2023 12 07 작업중 ~ */
