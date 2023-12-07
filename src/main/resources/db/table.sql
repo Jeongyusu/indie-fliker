@@ -3,10 +3,10 @@ create table user_tb(
                         user_email varchar(20) not null unique,
                         password varchar(300) not null,
                         username varchar(10) not null,
-                        pic varchar(300) not null,
-                        grade enum('NORMAL', 'VIP') not null,
+                        pic varchar(300),
+                        grade enum('NORMAL', 'VIP'),
                         tel varchar(30) not null,
-                        gubun enum('NORMAL', 'DIRECTOR', 'ADMIN') not null,
+                        gubun enum('NORMAL', 'DIRECTOR', 'ADMIN'),
                         created_at timestamp not null default now()
 );
 
