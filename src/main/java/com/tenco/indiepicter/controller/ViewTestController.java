@@ -31,4 +31,9 @@ public class ViewTestController {
     public String onPayment(){
         return "reservation/on_payment";
     }
+
+    @GetMapping("/reservation-ticket")
+    public String reservationTicket(){
+        return "reservation/reservation_ticket";
+    }
 }
