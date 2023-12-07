@@ -47,18 +47,49 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div id="n_seat_and_attention">
                     <div id="n_seat_wrapper">
                         <div class="n_seat_wrapper"></div>
                     </div>
                     <div id="n_attention_seat">
-                        <button id="n_choice"></button>
-                        <button id="n_exist"></button>
-                        <button id="n_possible"></button>
+                        <span>
+                            <input type="button" id="n_choice">
+                            <p>선택</p>
+                        </span>
+                        <span>
+                            <div>
+                                <input type="button" id="n_exist" value="X">
+                            </div>
+                            <p>예매 완료</p>
+                        </span>
+                        <span>
+                            <input type="button" id="n_possible">
+                            <p>일반</p>
+                        </span>
                     </div>
                 </div>
             </div>
-            <div id="n_select_movie_seat"></div>
+            <div id="n_select_movie_seat">
+                <div id="n_img">
+                    <img src="images/moviePhoto/the_boy1.jpg">
+                </div>
+                <div id="n_movie_title">
+                    <img src="images/icons/movie_level_all.png">
+                    <p>그대들은 어떻게 살 것인가?</p>
+                </div>
+                <div id="n_movie_day_and_time">
+                    <div class="n_select_count">
+                        <span id="n_day"><p>2023.01.02</p></span>
+                        <span id="n_time"><p>15:05 ~ 17:03</p></span>
+                    </div>
+                    <div class="n_select_count" >
+                        <p id="n_select_count">3인</p>
+                    </div>
+                    <div>
+                        <div class="n_select_seat_wrapper"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -88,17 +119,16 @@
         console.log("number : " + number);
     }
 
-
-
     const seatWrapper = document.querySelector(".n_seat_wrapper"); // 극장 자리들
     let existSeats = new Array(); // 이미 선택된 자리(비활성화)
     let clickedSeats = new Array(); // 선택한 모든 자리
-    let exist = ""; // 이미 선택된 자리에 넣을 class명
-    let clicked = ""; // 선택한 자리에 넣을 class 명
+    let exist = ""; // 이미 선택된 자리가 있는 div를 담는 함수
+    let clicked = ""; // 선택한 자리가 있는 div를 담는 함수
     let div = ""; // 추가할 tag
 
-    let selectedSeatsData = ['A1', 'A2', 'A3'];
+    let selectedSeatsData = ['A1', 'A2', 'A3', 'C5'];
 
+    // 페이지 로딩 시 아래의 함수 실행
     window.onload = function (){
         selectedSeat();
     };
@@ -111,7 +141,6 @@
         // 1줄에 div가 생성되면 (예. A줄) A1, A2, A3과 같은 input 태그를 추가
         for(let j = 0; j < 14; j++) {
             let input = document.createElement("input"); // input 태그 생성
-            div.append(input); // 해당 input 태그를 div에 추가
             input.type = "button";
             input.name = "seats";
             input.classList = "n_seat";
@@ -123,7 +152,6 @@
             div.append(input);
 
             function selectedSeat(){
-
                 //for문 돌면서 찾기
                 selectedSeatsData.forEach(existSeat => {
                     exist = document.querySelector("input[value='"+ existSeat +"']");
@@ -138,7 +166,6 @@
                     })
                 }
                 console.log("선택 불가능한 자리 : " + existSeats.values());
-
             }
 
             input.addEventListener("click", function (e) {
@@ -163,8 +190,46 @@
                     })
                     console.log("선택한 자리 : " + clickedSeats);
                 }
+                lastSelectedSeat();
             })
         }
+    }
+
+    const selectSeatWrapper = document.querySelector(".n_select_seat_wrapper"); // 선택한 자리들
+    let lastClickedSeats = new Array();
+    let lastClicked = ""; // 최종 선택한 자리가 있는 div를 담는 함수
+    let lastDiv = "";
+
+    // 선택한 자리 나오게 하기
+    // 먼저 6자리 만들기
+    for(let l = 0; l < 2; l++){
+        lastDiv = document.createElement("div"); // div 생성
+        selectSeatWrapper.append(lastDiv);
+
+        for(let d = 0; d < 3; d++ ){
+            let lastInput = document.createElement("input");
+            lastInput.type = "button";
+            lastInput.name = "lastSeats";
+            lastInput.classList = "n_lastSeat";
+            lastInput.disabled = true;
+            lastDiv.append(lastInput);
+        }
+    }
+
+    function lastSelectedSeat(){
+        //for문 돌면서 찾기
+        clickedSeats.forEach(lastSeat => {
+            lastClicked = document.querySelector("input[value='"+ lastSeat +"']");
+            lastClickedSeats.push(lastClicked);
+        })
+
+        if(lastClickedSeats != null){
+            lastClickedSeats.forEach(lastClicked => {
+                lastInput.classList.add("n_last_select");
+                lastInput.value = lastClicked.values();
+            })
+        }
+        console.log("선택 불가능한 자리 : " + lastClickedSeats.values());
     }
 
     function mapping(input, i, j) {
@@ -203,7 +268,7 @@
             input.value = "J" + j;
         }
         if (j == 3 || j == 9) {
-            input.style = 'margin-right:10px;';
+            input.style = 'margin-right:20px;';
         }
     }
 </script>
