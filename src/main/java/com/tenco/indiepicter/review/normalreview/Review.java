@@ -11,15 +11,15 @@ import java.sql.Timestamp;
 public class Review {
     private Integer id;
     private String content;
-    private Timestamp created_at;
+    private Timestamp createdAt;
     private Integer userId;
     private Integer fundingId;
 
     @Builder
-    public Review(Integer id, String content, Timestamp created_at, Integer userId, Integer fundingId) {
+    public Review(Integer id, String content, Timestamp createdAt, Integer userId, Integer fundingId) {
         this.id = id;
         this.content = content;
-        this.created_at = created_at;
+        this.createdAt = createdAt;
         this.userId = userId;
         this.fundingId = fundingId;
     }

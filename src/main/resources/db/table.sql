@@ -4,7 +4,7 @@ create table user_tb(
                         password varchar(300) not null,
                         username varchar(10) not null,
                         pic varchar(300),
-                        grade enum('NORMAL', 'VIP'),
+                        grade enum('NORMAL', 'VIP') not null,
                         tel varchar(30) not null,
                         gubun enum('NORMAL', 'DIRECTOR', 'ADMIN'),
                         created_at timestamp not null default now()
@@ -29,12 +29,12 @@ create table movie_tb(
                          running_grade enum('전체 관람가', '12세 이상 관람가', '15세 이상 관람가','청소년 관람 불가', '제한상영가') not null,
                          director varchar(20) not null,
                          actor varchar(200) not null,
-                         direct_careers varchar(500) not null,
-                         direct_awards_film varchar(500) not null,
-                         online_release_date Date not null,
-                         online_end_date Date not null,
-                         offline_release_date Date not null,
-                         offline_end_date Date not null
+                         direct_careers varchar(500),
+                         direct_awards_film varchar(500),
+                         online_release_date Date,
+                         online_end_date Date,
+                         offline_release_date Date,
+                         offline_end_date Date
 );
 
 create table movie_staff_tb(
@@ -48,7 +48,7 @@ create table movie_staff_tb(
                                lighting varchar(30) not null,
                                editing varchar(30) not null,
                                music varchar(30) not null,
-                               movie_id int,
+                               movie_id int not null,
                                foreign KEY(movie_id) references movie_tb(id)
 );
 
@@ -68,7 +68,7 @@ create table movie_file_tb(
                               has_subtitles boolean not null,
                               file_type varchar(300) not null,
                               file_size varchar(20) not null,
-                              movie_id int,
+                              movie_id int not null,
                               foreign KEY(movie_id) references movie_tb(id)
 );
 
@@ -79,7 +79,7 @@ create table funding_tb(
                            people_count int not null,
                            release_date date not null,
                            end_date date not null,
-                           movie_id int,
+                           movie_id int not null,
                            foreign KEY(movie_id) references movie_tb(id)
 );
 
@@ -90,16 +90,16 @@ create table funding_ready_tb(
                                  people_count int not null,
                                  release_date date not null,
                                  end_date date not null,
-                                 movie_id int,
+                                 movie_id int not null,
                                  foreign KEY(movie_id) references movie_tb(id)
 );
 
 create table review_tb(
                           id int auto_increment primary key,
                           content varchar(100) not null,
-                          created_at datetime not null,
-                          user_id int,
-                          movie_id int,
+                          created_at datetime not null default now(),
+                          user_id int not null,
+                          movie_id int not null,
                           foreign KEY(user_id) references user_tb(id),
                           foreign KEY(movie_id) references movie_tb(id)
 );
@@ -107,10 +107,10 @@ create table review_tb(
 create table vip_review_tb(
                               id int auto_increment primary key,
                               content varchar(100) not null,
-                              created_at datetime not null,
+                              created_at datetime not null default now(),
                               point int not null,
-                              user_id int,
-                              movie_id int,
+                              user_id int not null,
+                              movie_id int not null,
                               foreign KEY(user_id) references user_tb(id),
                               foreign KEY(movie_id) references movie_tb(id)
 );
@@ -121,8 +121,8 @@ create table running_schedule_tb(
                                     running_date datetime not null,
                                     start_time time not null,
                                     end_time time not null,
-                                    movie_id int,
-                                    theater_id int,
+                                    movie_id int not null,
+                                    theater_id int not null,
                                     foreign KEY(movie_id) references movie_tb(id),
                                     foreign KEY(theater_id) references theater_tb(id)
 );
@@ -138,7 +138,7 @@ create table seat_tb(
 create table reservation_tb(
                                id int auto_increment primary key,
                                reservation_code varchar(50) not null,
-                               reservated_at datetime not null,
+                               reservated_at datetime not null default now(),
                                user_id int not null,
                                seat_id int not null,
                                foreign KEY(user_id) references user_tb(id),
@@ -161,7 +161,7 @@ create table payment_tb(
                            total_price int not null,
                            discount_price int not null,
                            final_price int not null,
-                           paymented_at datetime not null,
+                           paymented_at datetime not null default now(),
                            payment_type_id int not null,
                            order_id int not null,
                            foreign KEY(payment_type_id) references payment_tb(id),
@@ -171,7 +171,7 @@ create table payment_tb(
 create table refund_tb(
                           id int auto_increment primary key,
                           refund_payment int not null,
-                          refunded_at date not null,
+                          refunded_at date not null default now(),
                           payment_id int not null,
                           foreign KEY(payment_id) references payment_tb(id)
 );
@@ -195,5 +195,6 @@ create table notice_tb(
                           notice_title varchar(20) not null,
                           content varchar(200) not null,
                           category varchar(20) not null,
-                          created_at date not null
+                          created_at date not null default now()
 );
+

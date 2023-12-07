@@ -16,10 +16,10 @@ public class User {
     private String grade;
     private String tel;
     private String gubun;
-    private Timestamp created_at;
+    private Timestamp createdAt;
 
     @Builder
-    public User(Integer id, String userEmail, String password, String username, String pic, String grade, String tel, String gubun, Timestamp created_at) {
+    public User(Integer id, String userEmail, String password, String username, String pic, String grade, String tel, String gubun, Timestamp createdAt) {
         this.id = id;
         this.userEmail = userEmail;
         this.password = password;
@@ -28,11 +28,7 @@ public class User {
         this.grade = grade;
         this.tel = tel;
         this.gubun = gubun;
-        this.created_at = created_at;
+        this.createdAt = createdAt;
     }
-    
-
-    
-    
 }
 
