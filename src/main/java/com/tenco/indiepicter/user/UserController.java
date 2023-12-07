@@ -5,21 +5,24 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.tenco.indiepicter.user.UserRequest.JoinDTO;
+import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @RequestMapping("/user")
 public class UserController {
 	
 	@Autowired
 	private UserService userService;
-	
 	
 	
 	
@@ -32,14 +35,21 @@ public class UserController {
 	
 	// 회원 가입 페이지 요청(POST)
 	@PostMapping("/joinUp")
-	public String joinUpProc(@Valid UserRequest.JoinDTO requestDto, Error error) {
+	public String joinUpProc(@Valid UserRequest.JoinDTO requestDto, Error errors) {
 		
-		if(requestDto.getPassword1() == requestDto.getPassword2()) {
+		log.debug("________________________________________________________");
+		log.debug(requestDto.getPassword1() +" 비교1 " + requestDto.getPassword2());
+		
+		// .equals 는 객체를 비교할때 사용한다.
+		if(!requestDto.getPassword1().equals(requestDto.getPassword2())) {
 			
-			this.userService.join(requestDto);
+			throw new MyDynamicException("비밀번호가 일치하지 않습니다.", HttpStatus.BAD_REQUEST);
+			
 		}
 		
-		return "redirect:/user/list";
+		this.userService.join(requestDto);
+		
+		return "redirect:/user/joinIn";
 	}
 	
 	// 로그인 페이지 요청(GET)

@@ -14,19 +14,19 @@ public class UserRequest {
 	@Data
 	public static class JoinDTO{
 		
-		@NotBlank @Email //@Size(min=10, max=20)
+//		@NotBlank @Email //@Size(min=10, max=20)
 		private String userEmail;
 		
-		@NotBlank //@Size(min=10, max=20)
+//		@NotBlank //@Size(min=10, max=20)
 		private String password1;
 		
-		@NotBlank //@Size(min=10, max=20)
+//		@NotBlank //@Size(min=10, max=20)
 		private String password2;
 		
-		@NotBlank //@Size(min=10, max=20)
+//		@NotBlank //@Size(min=10, max=20)
 		private String username;
 		
-		@NotBlank //@Size(min = 11, max = 11)
+//		@NotBlank //@Size(min = 11, max = 11)
 		private String tel;
 		
 	}

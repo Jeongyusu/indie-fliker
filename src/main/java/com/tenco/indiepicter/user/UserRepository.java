@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserRepository {
 	
 	// 회원 가입
-	public User insert(User user);
+	public void insert(User user);
 	
 	// 회원 전체 조회
 	public List<User> findAll();

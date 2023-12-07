@@ -6,8 +6,8 @@
 	
 	<!-- 회원 가입 -->
 	<insert id="insert">
-		insert into user(userEmail, password, username, tel, created_at)
-		values(#{userEmail}, #{password}, #{username}, #{tel}, now())
+		insert into user_tb(user_email, password, username, tel, grade, gubun, created_at)
+		values(#{userEmail}, #{password}, #{username}, #{tel}, #{grade}, #{gubun}, now())
 	</insert>
 	
 	<!-- 회원 전체 조회 -->

@@ -1,22 +1,38 @@
 package com.tenco.indiepicter.user;
 
 import java.sql.Timestamp;
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
 @NoArgsConstructor
-@AllArgsConstructor
+@Getter
 public class User {
-    Integer id;
-    String userEmail;
-    String password;
-    String username;
-    String pic;
-    int grade;
-    String tel;
-    String role;
-    Timestamp created_at;
+    private Integer id;
+    private String userEmail;
+    private String password;
+    private String username;
+    private String pic;
+    private String grade;
+    private String tel;
+    private String gubun;
+    private Timestamp created_at;
+
+    @Builder
+    public User(Integer id, String userEmail, String password, String username, String pic, String grade, String tel, String gubun, Timestamp created_at) {
+        this.id = id;
+        this.userEmail = userEmail;
+        this.password = password;
+        this.username = username;
+        this.pic = pic;
+        this.grade = grade;
+        this.tel = tel;
+        this.gubun = gubun;
+        this.created_at = created_at;
+    }
+    
+
+    
+    
 }
+
