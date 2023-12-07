@@ -36,4 +36,46 @@ public class ViewTestController {
     public String reservationTicket(){
         return "reservation/reservation_ticket";
     }
+
+    @GetMapping("/select-seat")
+    public String selectSeat(){
+        return "reservation/select_seat";
+    }
+
+    
+    @GetMapping("/main")
+    public String main(){
+        return "main/main";
+    }
+    
+    @GetMapping("/movielist")
+    public String movielist(){
+        return "main/movielist";
+    }
+    
+    @GetMapping("/online-watch")
+    public String onlineWatch(){
+        return "main/on_watch";
+    }
+    
+    @GetMapping("/chatroom")
+    public String chatroom(){
+        return "main/chatroom";
+    }
+    
+    @GetMapping("/my-likelist")
+    public String likelist(){
+        return "mypage/likelist";
+    }
+    
+    @GetMapping("/my-funding-offline")
+    public String offlineFunding(){
+        return "mypage/offline_funding";
+    }
+    
+    @GetMapping("/my-funding-online")
+    public String onlineFunding(){
+        return "mypage/online_funding";
+    }
+    
 }

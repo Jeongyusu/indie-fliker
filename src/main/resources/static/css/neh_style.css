@@ -440,7 +440,7 @@ body, html {
 /*/////////////////////////////////////////////////////*/
 /*select_day*/
 .n_custom_fluid {
-    width: 900px;
+    width: 1000px;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -945,4 +945,211 @@ body, html {
 #n_attention_comment .n_comment {
     font-size: 14px;
     padding-left: 10px;
+}
+
+/* select_seat */
+#n_select_seat {
+    display: flex;
+    margin-top: 40px;
+}
+
+#n_movie_seat {
+    width: 60%;
+    height: 427px;
+    border: 0.5px solid var(--line_01);
+    border-radius: 10px;
+}
+
+#n_select_movie_seat {
+    margin-left: auto;
+    width: 36%;
+    height: 427px;
+    border: 0.5px solid var(--line_01);
+    border-radius: 10px;
+    border-color: var(--primary_01);
+}
+
+#n_movie_seat .n_last_count {
+    display: flex;
+    align-items: center;
+    padding: 20px 30px;
+    border-radius: 10px 10px 0 0;
+    background: var(--back_02);
+}
+
+.n_last_count .n_count_person {
+    display: flex;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 0 11px 2px 0;
+}
+
+.n_last_count_button {
+    display: flex;
+    align-items: center;
+    border: solid;
+    border-width: thin;
+    border-radius: 4px;
+    border-color: var(--line_01);
+    width: 88px;
+    height: 25px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.n_last_count_button #n_minus_button {
+    border: none;
+    width: 33%;
+    background: none;
+    border-right: solid;
+    border-color: var(--line_01);
+    border-width: thin;
+    height: 25px;
+}
+
+.n_last_count_button .n_count {
+    width: 33%;
+}
+
+.n_last_count_button #n_plus_button {
+    border: none;
+    width: 33%;
+    background: none;
+    border-left: solid;
+    border-color: var(--line_01);
+    border-width: thin;
+    height: 25px;
+}
+.n_seat {
+    width: 26px;
+    height: 26px;
+    background-color: var(--back_02);
+    border: 0.5px solid var(--line_01);
+    border-radius: 4px;
+    font-size: 9px;
+    text-align: center;
+}
+
+.n_clicked {
+    width: 26px;
+    height: 26px;
+    background-color: var(--primary_01);
+    border: 0.5px solid var(--line_01);
+    border-radius: 4px;
+}
+
+.n_exist {
+    background-color: var(--font_03);
+    color: var(--def_wh);
+    border: 0.5px solid var(--line_01);
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: bold;
+    width: 26px;
+    height: 26px;
+}
+
+.n_hidden {
+    border: none;
+    background-color: transparent;
+    width: 26px;
+    height: 26px;
+    color: var(--def_wh);
+}
+
+#n_seat_and_attention {
+    display: flex;
+    width: auto;
+}
+
+#n_seat_and_attention span {
+    display: flex;
+    font-size: 14px;
+}
+
+#n_attention_seat{
+    margin: 40px auto 0 0;
+}
+
+#n_attention_seat #n_choice {
+    height: 22px;
+    width: 22px;
+    background-color: var(--primary_01);
+    border: 0.5px solid var(--line_01);
+    border-radius: 4px;
+    margin: 0px 10px 10px 0px;
+}
+
+#n_attention_seat #n_exist {
+    height: 22px;
+    width: 22px;
+    background-color: var(--font_03);
+    color: var(--def_wh);
+    border: 0.5px solid var(--line_01);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0px 10px 10px 0px;
+}
+
+#n_attention_seat #n_possible {
+    height: 22px;
+    width: 22px;
+    background-color: var(--back_02);
+    border: 0.5px solid var(--line_01);
+    border-radius: 4px;
+    margin: 0px 10px 10px 0px;
+}
+
+#n_seat_wrapper {
+    margin: 40px 28px;
+}
+
+#n_select_movie_seat {
+    padding: 26px;
+}
+
+#n_select_movie_seat #n_img img {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-radius: 10px;
+}
+
+#n_select_movie_seat #n_movie_title {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+#n_movie_day_and_time {
+    margin-top: 10px;
+}
+
+#n_movie_day_and_time #n_day {
+    font-size: 15px;
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+#n_movie_day_and_time #n_time {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#n_movie_day_and_time {
+    display: flex;
+    justify-content: space-between;
+}
+
+.n_select_count {
+    display: flex;
+}
+
+#n_select_count {
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--point_02);
 }
