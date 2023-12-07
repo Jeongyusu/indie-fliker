@@ -15,7 +15,7 @@
         .container-fluid {
             display: flex;
             align-items: center;
-            max-width: 1280px;
+            max-width: 1200px;
         }
     </style>
 <body>

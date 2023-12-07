@@ -440,7 +440,7 @@ body, html {
 /*/////////////////////////////////////////////////////*/
 /*select_day*/
 .n_custom_fluid {
-    width: 900px;
+    width: 1000px;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -945,4 +945,101 @@ body, html {
 #n_attention_comment .n_comment {
     font-size: 14px;
     padding-left: 10px;
+}
+
+/* select_seat */
+#n_select_seat {
+    display: flex;
+    margin-top: 40px;
+}
+
+#n_movie_seat {
+    width: 60%;
+    height: 500px;
+    border: 0.5px solid var(--line_01);
+    border-radius: 10px;
+}
+
+#n_select_movie_seat {
+    margin-left: auto;
+    width: 36%;
+    height: 500px;
+    border: 0.5px solid var(--line_01);
+    border-radius: 10px;
+}
+
+#n_movie_seat .n_last_count {
+    display: flex;
+    align-items: center;
+    padding: 20px 30px;
+    border-radius: 10px 10px 0 0;
+    background: var(--back_02);
+}
+
+.n_last_count .n_count_person {
+    display: flex;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 0 11px 2px 0;
+}
+
+.n_last_count_button {
+    display: flex;
+    align-items: center;
+    border: solid;
+    border-width: thin;
+    border-radius: 4px;
+    border-color: var(--line_01);
+    width: 88px;
+    height: 25px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.n_last_count_button #n_minus_button {
+    border: none;
+    width: 33%;
+    background: none;
+    border-right: solid;
+    border-color: var(--line_01);
+    border-width: thin;
+    height: 25px;
+}
+
+.n_last_count_button .n_count {
+    width: 33%;
+}
+
+.n_last_count_button #n_plus_button {
+    border: none;
+    width: 33%;
+    background: none;
+    border-left: solid;
+    border-color: var(--line_01);
+    border-width: thin;
+    height: 25px;
+}
+.n_seat {
+    width: 30px;
+    height: 30px;
+    font-size: 10px;
+    text-align: center;
+}
+
+.n_clicked {
+    background-color: red;
+    color: white;
+}
+
+.n_exist {
+    background: black;
+    color: white;
+}
+
+.n_hidden {
+    border: none;
+    background-color: transparent;
+    height: 30px;
+    width: 30px;
+    color: white;
 }
