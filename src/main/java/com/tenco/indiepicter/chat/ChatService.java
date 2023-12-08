@@ -10,37 +10,39 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class ChatService {
-	
-	@Autowired
+
+    @Autowired
     private RestTemplate restTemplate;
 	
 	public void startChat(String movieTitle) {
-		// movietitle을 api로 보내야함. (일반에서 열기 때문)
-		
-		// firestore에 저장해야함 { 영화제목, 오픈시간 }
+		// firestore에 저장해야함 (chat_records) { 영화제목, 오픈시간 }
 		
 		
-		// 끝내기
+		// 2시간 뒤 끝내기 (진짜 할때는 HOURS로 바꿔주세요!)
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         scheduler.schedule(() -> endChat(movieTitle), 2, TimeUnit.SECONDS); //HOURS
 	}
 	
+	// POST 로 api/chat/close에 종료된 채팅 영화 보내줌
 	public void endChat(String movieTitle) {
-        System.out.println("-------------채팅끝-------------");
-        
-        // controller 대신 여기서 post로 보내줄거임
-        String apiUrl = "https://localhost:80/api/chat/close";
+		log.debug("-----------채팅 종료------------");
+		
+        String apiUrl = "http://localhost:80/api/chat/close";
+
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         String jsonBody = "{\"movieTitle\": \"" + movieTitle + "\"}";
-
         HttpEntity<String> requestEntity = new HttpEntity<>(jsonBody, headers);
-        
-        // POST 요청
+
         restTemplate.postForObject(apiUrl, requestEntity, String.class);
+
     }
 	
 }

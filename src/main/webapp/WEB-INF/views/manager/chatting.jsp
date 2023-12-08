@@ -202,7 +202,7 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-				<button type="button" class="btn btn-primary" data-dismiss="modal">오픈 시작 하기</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" id="startChatBtn">오픈 시작 하기</button>
 		      </div>
 		    </div>
 		  </div>
@@ -221,18 +221,22 @@
 	            $('.modal-body .movie-title').text("영화 제목: " + movieTitle);
 	            $('.modal-body .achievement-rate').text("달성률: " + achievementRate);
 	            
-	            // 비동기로 api 서버에 오픈정보 보내기
-	            $.ajax({
-	                type: "POST", 
-	                url: "/api/chat/open",  
-	                data: { movieTitle: movieTitle }, 
-	                success: function(response) {
+	            $('#startChatBtn').on('click', function() {
+	                $.ajax({
+	                  type: "POST",
+	                  url: "/api/chat/open",
+	                  data: { movieTitle: movieTitle },
+	                  success: function(response) {
 	                    console.log(response);
-	                },
-	                error: function(error) {
+	                  },
+	                  error: function(error) {
 	                    console.error(error);
-	                }
-	            });
+	                  }
+	                });
+	                
+	                // 모달 닫기
+	                $('#staticBackdrop').modal('hide');
+	             });
 	        });
 	    });
 	</script>

@@ -1,5 +1,8 @@
 package com.tenco.indiepicter.chat;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,20 +18,15 @@ public class ChatController {
 	
     @PostMapping("/open")
     public String openChatRoom(@RequestParam String movieTitle) {
-    	
-    	System.out.println("Movie Title: " + movieTitle);    	
+    	// 영화채팅방 오픈시키기
     	chatService.startChat(movieTitle);
     	
-        return "{\"movieTitle\": \"" + movieTitle + "\"}";
-    }
-    
-    @PostMapping("/close")
-    public String closeChatRoom(@RequestParam String movieTitle) {
+    	// 오픈된 영화정보 { movieTitle, startTime }
+    	Date currentDate = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("a hh:mm:ss");
+	    String startTime = sdf.format(currentDate);
     	
-    	System.out.println("Movie Title: " + movieTitle);    	
-    	chatService.startChat(movieTitle);
-    	
-        return "{\"movieTitle\": \"" + movieTitle + "\"}";
+        return "{\"movieTitle\": \"" + movieTitle + "\", \"startTime\": \"" + startTime + "\"}";
     }
-	
+
 }
