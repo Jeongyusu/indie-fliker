@@ -6,8 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>영화 시청</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="../../../../css/lsr_style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+	<link href="../../../../css/lsr_style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 
@@ -22,21 +24,22 @@
                 <div class="l_chat_section l_hide_on_small border-0"  style="max-width: 250px;">
                     <div class="card bg-light border-0">
                         <div class="p card-title l_green m-2"># 그대들은 어떻게 살 것인가</div>
-                        <img src="https://dummyimage.com/160x230/000/fff.jpg" alt="채팅방 이미지" class="img-fluid m-2" style="max-width: 250px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/ko/8/87/%EA%B7%B8%EB%8C%80%EB%93%A4%EC%9D%80_%EC%96%B4%EB%96%BB%EA%B2%8C_%EC%82%B4_%EA%B2%83%EC%9D%B8%EA%B0%80_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg" alt="채팅방 이미지" class="img-fluid m-2" style="max-width: 250px;">
                         <div class="p card-text mb-2" style="font-size: small;">감독 : 미야자키 하야오<br/>
-                            장르 : 미야자키 하야오<br/>
-                            등급 : 미야자키 하야오</div>
+                            장르 : 애니메이션<br/>
+                            등급 : 전체관람가</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- 채팅방 오픈 알림창 -->
     <div class="col-md-4 position-fixed" style="top: 10px; right: 10px;">
         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-body">
                 <div class="h6">
-                    '그대들은 어떻게 살 것인가'<br/>
+                    <a class="l_green">'그대들은 어떻게 살 것인가'</a><br/>
                     감독님과 만나는 즐거운 시간
                 </div>
                 <div class="p">
@@ -49,6 +52,7 @@
             </div>
         </div>
     </div>
+    <!-- 여기까지 -->
 
     <nav id="l_online_navbar">
         <ul>
@@ -57,10 +61,9 @@
             <li onClick="handleClickTab(3)">포토</li>
         </ul>
     </nav>
-
-    <!-- 오프캔버스로 영화 설명 넣을 예정 -->
     
     <div class="container">
+
         <div class="content" num="1">
             <div class="l_information mt-4">
                 <div class="h4 mb-4">화재로 어머니를 잃은 11살 소년 ‘마히토’는 아버지와 함께 어머니의 고향으로 간다.</div>
@@ -80,9 +83,7 @@
                     <div style="font-size: small;"><a class="l_green">그대들은 어떻게 살 것인가</a> 재미있게 보셨나요? 영화의 어떤 점이 좋았는지 이야기해주세요.</div>
                 </div>
             </div>
-            <div class="container text-center">
-                <button class="btn btn-light" onclick="handleClickTab(2)">댓글 달러 가기</button>
-            </div>
+            <div id="l_comment_container" class="l_chat_container"></div>
         </div>
 
         <!-- 영화 평론 -->
@@ -90,13 +91,11 @@
             <div class="l_information my-5">
                 <div class="h5"><a class="l_green">그대들은 어떻게 살 것인가</a>에 대한 다양한 평론을 느껴보세요</div>    
             </div>
-        
-            <!-- 내 평론 -->
             <div class="row align-items-center">
-                <div class="p ml-5 mr-3">
+                <div class="p" style="max-width: 4rem;">
                     평점
                 </div>
-                <select class="form-select form-select-sm" style="border:0px;">
+                <select class="form-select form-select-sm" style="border:0px; max-width: 80px;">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -109,69 +108,34 @@
                     <img src="https://dummyimage.com/100/000/fff.jpg" alt="me">
                     <span>me</span>
                 </div>
-                <div class="l_chat_message input-group col-md-11 align-items-center">
+                <div class="l_chat_message input-group align-items-center">
                     <div class="col-md-10" style="font-size: small;">
-                        <input type="text" class="l_message_input" style="border: none; background: transparent; width: 100%;"
-                        placeholder="영화의 다양한 생각과 느낌을 전달해주세요.">
+                        <textarea class="l_message_input" placeholder="영화의 다양한 생각과 느낌을 전달해주세요."
+                        style="border: none; background: transparent; width: 100%; resize: none;"
+                        onkeydown="resize(this)" onkeyup="resize(this)"></textarea>
                     </div>
-                    <button class="btn btn-light l_hide_on_small" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                        style="font-size: small;">
+                    <button class="btn btn-light" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: small;">
                         평론 쓰기
                     </button>
                 </div>
             </div>
-
             <hr>
-
-            <!-- 평론 댓글창 -->
-            <div class="l_chat_message_box">
-                <div class="l_chat_messages" id="chatMessages">
-                    <!-- 채팅 메시지 박스 (5개씩 불러올 예정) -->
-
-                    <!-- 채팅 메세지 하나 -->
-                    <div class="container">
-                        <div class="l_participant row align-items-start">
-                            <div class="col col-1">
-                                <img src="https://dummyimage.com/100/000/fff.jpg" alt="aaa">
-                                <div class="p">asdf</div>
-                            </div>
-                            <div class="col text-center">
-                                <div class="p l_green">평점</div>
-                                <div class="p">5</div>
-                            </div>
-                            <div class="l_chat_message text-break col col-8">
-                                aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            </div>
-                            <div class="dropup l_hide_on_small">
-                                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 30px;">
-                                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="20" viewBox="0 0 20 20">
-                                        <path d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
-                                    </svg>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">신고하기</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>  
-                </div>
-                
-            </div>
+            <div id="l_review_container" class="l_chat_container" style="margin-left: 5%;"></div>
         </div>
 
-        <!-- 영화 예고편 (예고편 말고 사진을 넣어야 할 것 같다..! 렌더링 오류) -->
-        <div class="content" num="3" style="display:none;">
-        <div class="h5 m-4"></div>
+        <!-- 영화 예고편 -->
+        <div class="content" num="3" style="display: none;">
+        <div class="h5 m-4">영화 하이라이트</div>
         <div id="carousel" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://dummyimage.com/160x100/000/fff.jpg" class="d-block w-100" alt="...">
+                    <img src="https://img.freepik.com/free-photo/cheesy-tokbokki-korean-traditional-food-on-black-board-background-lunch-dish_1150-42992.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://dummyimage.com/160x100/000/fff.jpg" class="d-block w-100" alt="...">
+                    <img src="https://cdn.mindgil.com/news/photo/202004/69068_2873_1455.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://dummyimage.com/160x100/000/fff.jpg" class="d-block w-100" alt="...">
+                    <img src="https://img.daily.co.kr/@files/www.daily.co.kr/content/food/2020/20200730/40d0fb3794229958bdd1e36520a4440f.jpg" class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev" style="background-color: transparent;border: none;">
@@ -183,23 +147,12 @@
         	</div>
     	</div>
     </div>
+
+    <a id="l_back_to_top">
+        <icon><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M11 8.414V18h2V8.414l4.293 4.293 1.414-1.414L12 4.586l-6.707 6.707 1.414 1.414z"></path></svg></icon>
+    </a>
    
-    <!-- footer -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <!-- 스크립트 위로 올리면 에러나요! -->
+    <script src="../../../../js/lsr/on_watch.js"></script>
 </body>
-
-<script>
-    var myToast = new bootstrap.Toast(document.querySelector('.toast'));
-    myToast.show();
-
-    function handleClickTab(number) {
-        $('#l_online_navbar ul li').removeClass('l_active');
-        $('#l_online_navbar ul li:nth-child(' + number + ')').addClass('l_active');
-
-        $('.content').hide();
-        $('.content[num=' + number + ']').show();
-    }
-</script>
-
 </html>
