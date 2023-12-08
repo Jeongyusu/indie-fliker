@@ -75,3 +75,11 @@ function addMessage(name, message, time) {
     
     chatMessagesContainer.appendChild(messageContainer);
 }
+
+// Enter 키를 누를 때 메시지 전송
+function handleKeyPress(event) {
+    console.log('');
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+}

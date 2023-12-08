@@ -6,12 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>영화 시청</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="styles/chatroom.css" rel="stylesheet">
-    <link href="styles/online.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+	<link href="../../../../css/lsr_style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <script src="../../../../src/js/lsr/on_watch.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 
@@ -36,6 +34,7 @@
         </div>
     </div>
 
+    <!-- 채팅방 오픈 알림창 -->
     <div class="col-md-4 position-fixed" style="top: 10px; right: 10px;">
         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-body">
@@ -53,6 +52,7 @@
             </div>
         </div>
     </div>
+    <!-- 여기까지 -->
 
     <nav id="l_online_navbar">
         <ul>
@@ -92,10 +92,10 @@
                 <div class="h5"><a class="l_green">그대들은 어떻게 살 것인가</a>에 대한 다양한 평론을 느껴보세요</div>    
             </div>
             <div class="row align-items-center">
-                <div class="p ml-5 mr-3">
+                <div class="p" style="max-width: 4rem;">
                     평점
                 </div>
-                <select class="form-select form-select-sm" style="border:0px;">
+                <select class="form-select form-select-sm" style="border:0px; max-width: 80px;">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -108,15 +108,13 @@
                     <img src="https://dummyimage.com/100/000/fff.jpg" alt="me">
                     <span>me</span>
                 </div>
-                <div class="l_chat_message input-group col-md-11 align-items-center">
+                <div class="l_chat_message input-group align-items-center">
                     <div class="col-md-10" style="font-size: small;">
                         <textarea class="l_message_input" placeholder="영화의 다양한 생각과 느낌을 전달해주세요."
                         style="border: none; background: transparent; width: 100%; resize: none;"
                         onkeydown="resize(this)" onkeyup="resize(this)"></textarea>
                     </div>
-                
-                    <button class="btn btn-light l_hide_on_small" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                        style="font-size: small;">
+                    <button class="btn btn-light" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: small;">
                         평론 쓰기
                     </button>
                 </div>
@@ -154,23 +152,7 @@
         <icon><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M11 8.414V18h2V8.414l4.293 4.293 1.414-1.414L12 4.586l-6.707 6.707 1.414 1.414z"></path></svg></icon>
     </a>
    
-    <!-- footer -->
-    <script>
-        var myToast = new bootstrap.Toast(document.querySelector('.toast'));
-        myToast.show();
-    
-        function handleClickTab(number) {
-            $('#l_online_navbar ul li').removeClass('l_active');
-            $('#l_online_navbar ul li:nth-child(' + number + ')').addClass('l_active');
-    
-            $('.content').hide();
-            $('.content[num=' + number + ']').show();
-        }
-    
-        function resize(obj) {
-            obj.style.height = '1px';
-            obj.style.height = (12 + obj.scrollHeight) + 'px';
-        } 
-    </script>
+    <!-- 스크립트 위로 올리면 에러나요! -->
+    <script src="../../../../js/lsr/on_watch.js"></script>
 </body>
 </html>

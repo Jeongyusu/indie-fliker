@@ -80,3 +80,16 @@ document.addEventListener('DOMContentLoaded', function () {
         window.addEventListener('scroll', handleScroll);
     }
 });
+
+function handleClickTab(number) {
+    $('#l_online_navbar ul li').removeClass('l_active');
+    $('#l_online_navbar ul li:nth-child(' + number + ')').addClass('l_active');
+
+    $('.content').hide();
+    $('.content[num=' + number + ']').show();
+}
+
+function resize(obj) {
+    obj.style.height = '1px';
+    obj.style.height = (12 + obj.scrollHeight) + 'px';
+} 
