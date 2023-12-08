@@ -105,7 +105,7 @@
 		// 비동기 통신으로 이메일 중복 체크
 		$(document).ready(function() {
 
-	    	$("#userEmailCkeck").on("focusout", function() {
+	    	$("#userEmailCkeck").onclick("focusout", function() {
 	    		
 	    		var userEmail = $("#userEmail").val();
 	    		
