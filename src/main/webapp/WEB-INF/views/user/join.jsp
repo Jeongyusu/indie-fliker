@@ -76,7 +76,7 @@
 		</form>
 	</div>
 	
-<!-- 
+
 	<script>
 		// 이메일 유효성 검사
 		$('#userEmail').focusout(function() {
@@ -236,7 +236,7 @@
 	        $("#telCkeck").html('')
 		})
 	</script>
- -->
+
 
 		
 	

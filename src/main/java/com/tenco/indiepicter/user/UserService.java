@@ -42,9 +42,8 @@ public class UserService {
 		this.userRepository.insert(user);
 	}
 	
-	
 	// 로그인
-	public User login(UserRequest.JoinDTO requestDto) {
+	public User login(UserRequest.loginDTO requestDto) {
 		
 		// 유저 이메일 조회
 		User user = this.userRepository.findByUserEmail(requestDto.getUserEmail());
@@ -55,8 +54,11 @@ public class UserService {
 		}
 		
 		// 유저 비밀번호가 db에 저장된 값과 비교
-		boolean passwordCheck = passwordEncoder.matches(requestDto.getPassword1(), user.getPassword());
+		boolean passwordCheck = passwordEncoder.matches(requestDto.getPassword(), user.getPassword());
 		
+		log.debug("-----------------------------------------");
+		log.debug(requestDto.getPassword());
+		log.debug("-----------------------------------------");
 		
 		// 비밀번호 유효성 검사
 		if(passwordCheck == false) {
@@ -65,8 +67,6 @@ public class UserService {
 		
 		return user;
 	}
-	
-	
 	
 	// 회원 전체 조회
 	public List<User> userLists(){

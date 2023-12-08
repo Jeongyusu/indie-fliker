@@ -39,7 +39,13 @@ public class UserRequest {
 		
 	}
 	
-	
+	@Data
+	public static class loginDTO{
+		private String userEmail;
+		
+		private String password;
+		
+	}
 
 
 }

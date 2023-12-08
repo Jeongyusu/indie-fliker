@@ -75,7 +75,6 @@ public class UserController {
 	}
 	
 //--------------------------------------------------------------------------------------------------------------
-	
 	// 로그인 페이지 요청(GET)
 	@GetMapping("/login")
 	public String joinIn() {
@@ -85,17 +84,24 @@ public class UserController {
 	
 	// 로그인 페이지 요청(POST)
 	@PostMapping("/login")
-	public String joinInProc(@Valid UserRequest.JoinDTO requestDto, Errors errors) {
+	public String joinInProc(@Valid UserRequest.loginDTO requestDto, Errors errors) {
 		
+		log.debug("-----------------------------------------");
+		log.debug(requestDto.getUserEmail());
+		log.debug("-----------------------------------------");
 
 		// 이메일 유효성 검사
 		if(requestDto.getUserEmail() == null || requestDto.getUserEmail().isEmpty()) {
 			throw new MyDynamicException("이메일을 입력하세요.", HttpStatus.BAD_REQUEST);
 		}
+		
+		log.debug("-----------------------------------------");
+		log.debug(requestDto.getPassword());
+		log.debug("-----------------------------------------");
 
 		// 비밀번호 유효성 검사
-		if(requestDto.getPassword1() == null || requestDto.getPassword1().isEmpty()) {
-			throw new MyDynamicException("비밀번호를 입력하세요.", HttpStatus.BAD_REQUEST);
+		if(requestDto.getPassword() == null || requestDto.getPassword().isEmpty()) {
+			throw new MyDynamicException("비밀번호를 입력.", HttpStatus.BAD_REQUEST);
 		}
 		
 		// 서비스 호출
@@ -121,6 +127,8 @@ public class UserController {
 	}
 	
 //----------------------------------------------------------------------------------------------------------------
+	
+	
 //	// 이메일 중복 검사
 //	@PostMapping("/userEmailCheck")
 //	@ResponseBody

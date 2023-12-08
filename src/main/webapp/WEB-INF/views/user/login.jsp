@@ -35,7 +35,7 @@
 		</form>
 		<div class="k_no_id_aligin">
 			<div class="k_no_id">아직 인디픽터 계정이 없나요?</div>
-			<a href="" class="k_join">회원가입</a>
+			<a href="/user/join" class="k_join">회원가입</a>
 		</div>
 	</div>
 
