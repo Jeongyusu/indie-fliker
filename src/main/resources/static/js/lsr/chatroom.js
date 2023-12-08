@@ -1,5 +1,5 @@
 /**
- * 사용하시게 될때는 주석 풀어주세요!
+ * 사용하시게 될때는 apikey 주석 풀어주세요!
  */
 
 const userId = document.getElementById('userId').value;
@@ -74,4 +74,12 @@ function addMessage(name, message, time) {
     messageContainer.appendChild(timeElement);
     
     chatMessagesContainer.appendChild(messageContainer);
+}
+
+// Enter 키를 누를 때 메시지 전송
+function handleKeyPress(event) {
+    console.log('');
+    if (event.key === "Enter") {
+        sendMessage();
+    }
 }
