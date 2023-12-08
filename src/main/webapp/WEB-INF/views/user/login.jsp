@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<link href="../../../../../resources/static/css/khy_style.css" rel="stylesheet">
+	<link href="/css/khy_style.css" rel="stylesheet">
 	<title>Login Page</title>
 </head>
 
@@ -14,13 +14,14 @@
 
 	<div class="container k_login-container">
 		<h2 class="text-left k_login">로그인</h2>
-		<form>
+		
+		<form action="/user/login" method="post" enctype="multipart/form-data">
 			<div class="k_form-group">
-				<input type="text" class="form-control" id="username" placeholder="이메일 입력"
+				<input type="text" class="form-control" id="userEmail" name="userEmail" placeholder="이메일을 입력하세요."
 					onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일 입력'">
 			</div>
 			<div class="k_form-group">
-				<input type="password" class="form-control" id="password" placeholder="비밀번호 입력"
+				<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력입력하세요."
 					onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 입력'">
 			</div>
 			<a href="" class="k_forget">로그인

@@ -8,6 +8,11 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/css/khy_style.css">
+	<!-- 제이쿼리 -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
 	<title></title>
 </head>
 
@@ -16,7 +21,7 @@
 	<div class="container k_login-container">
 		<h2 class="text-left k_easyjoin">이메일 간편가입</h2>
 		
-		<form action="/user/joinUp" method="post" enctype="multipart/form-data">
+		<form action="/user/join" method="post" enctype="multipart/form-data">
 			<div class="k_form-group ">
 				<div class="k_join_bottom">이메일</div>
 				<div class="k_input-group input">
@@ -51,7 +56,7 @@
 			
 			<div class="k_form-group">
 				<div class="k_join_bottom">이름</div>
-				<input type="text" class="form-control input" id="username" name="username" value="park"
+				<input type="text" class="form-control input" id="username" name="username" value="123"
 					placeholder="이름을 입력하세요."
 					onfocus="this.placeholder = ''" onblur="this.placeholder = '이름 입력을 입력하세요.'">
 				<p id="usernameCkeck"></p>
@@ -59,7 +64,7 @@
 			
 			<div class="k_form-group">
 				<div class="k_join_bottom">전화번호</div>
-				<input type="text" class="form-control input" id="tel" name="tel" value="01020312"
+				<input type="text" class="form-control input" id="tel" name="tel" value="123"
 					placeholder="전화번호 입력를 입력하세요."
 					onfocus="this.placeholder = ''" onblur="this.placeholder = '전화번호를 입력하세요.'">
 				<p id="telCkeck"></p>
@@ -71,7 +76,7 @@
 		</form>
 	</div>
 	
-
+<!-- 
 	<script>
 		// 이메일 유효성 검사
 		$('#userEmail').focusout(function() {
@@ -231,10 +236,8 @@
 	        $("#telCkeck").html('')
 		})
 	</script>
-		
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ -->
+
 		
 	
 	
