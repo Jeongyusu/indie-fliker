@@ -1,5 +1,5 @@
 /**
- * 사용하시게 될때는 주석 풀어주세요!
+ * 사용하시게 될때는 apikey 주석 풀어주세요!
  */
 
 const userId = document.getElementById('userId').value;
