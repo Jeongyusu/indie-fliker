@@ -8,7 +8,7 @@
     <title>관리자 페이지 - 채팅방 ( chatting ) 완료!</title>
     
     <!-- style.css와 연결 -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/png_style.css">
     
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
