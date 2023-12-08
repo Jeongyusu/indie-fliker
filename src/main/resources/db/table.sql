@@ -23,10 +23,10 @@ create table movie_tb(
                          id int auto_increment primary key,
                          movie_name varchar(20) not null,
                          synopsis varchar(500) not null,
-                         thumbnail varchar(50) not null,
+                         thumbnail varchar(500) not null,
                          directing_intension varchar(500) not null,
                          genre varchar(20) not null,
-                         running_grade enum('전체 관람가', '12세 이상 관람가', '15세 이상 관람가','청소년 관람 불가', '제한상영가') not null,
+                         running_grade varchar(20) not null,
                          director varchar(20) not null,
                          actor varchar(200) not null,
                          director_careers varchar(500),
@@ -197,4 +197,3 @@ create table notice_tb(
                           category varchar(20) not null,
                           created_at datetime not null default now()
 );
-
