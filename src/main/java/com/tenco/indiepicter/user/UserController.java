@@ -6,11 +6,13 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
 
@@ -37,10 +39,6 @@ public class UserController {
 	@PostMapping("/joinUp")
 	public String joinUpProc(@Valid UserRequest.JoinDTO requestDto, Error errors) {
 		
-		log.debug("________________________________________________________");
-		log.debug(requestDto.getPassword1() +" 비교1 " + requestDto.getPassword2());
-		
-		// .equals 는 객체를 비교할때 사용한다.
 		if(!requestDto.getPassword1().equals(requestDto.getPassword2())) {
 			
 			throw new MyDynamicException("비밀번호가 일치하지 않습니다.", HttpStatus.BAD_REQUEST);
@@ -51,6 +49,27 @@ public class UserController {
 		
 		return "redirect:/user/joinIn";
 	}
+	
+	// 이메일 중복 검사
+		@PostMapping("/userEmailCheck")
+		@ResponseBody
+		public ResponseEntity<Boolean> userEmailCheck(String userEmail) {
+			
+			boolean result = true;
+			
+			if(userEmail.trim().isEmpty()) {
+
+				result = false;
+			} else {
+				if (this.userService.selectId(userEmail)) {
+					result = false;
+				} else {
+					result = true;
+				}
+			}
+			
+			return new ResponseEntity<>(result, HttpStatus.OK);
+		}
 	
 	// 로그인 페이지 요청(GET)
 	@GetMapping("/joinIn")
