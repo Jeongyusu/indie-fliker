@@ -100,8 +100,7 @@ public class UserController {
 	
 	
 	
-	
-	
+
 	
 //	@GetMapping("/join")
 //	public String join1(@Valid UserRequest.JoinDTO requestdto, Error errors) {

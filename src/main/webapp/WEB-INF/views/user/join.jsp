@@ -136,7 +136,6 @@
 		$('#password1').focusout(function() {
 	    	let password1 = $('#password1').val()
 	        let password1Ckeck =  /^[a-zA-Z0-9~!@#$%^&*()`_+?:;'"{}]{1,16}$/
-	        console.log(password1)
 	        if (!password1Ckeck.test(password1) || password1.length<10){
 				$('#password1Ckeck').html('비밀번호는 영대소문자,숫자로 구성된 10글자 이상으로 조합하세요.')
 	        	return false
