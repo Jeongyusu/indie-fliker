@@ -16,7 +16,7 @@
                            crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -100,15 +100,15 @@
             <div class="p_section1">
                 <div class="p_menu1">
                     <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
-                    <p class="p_p1">영화 제목222222222222222222222222222222222222222222222222</p>
-                    <p class="p_p2">달성률22222222222222222222222222222222222222222222222222</p>
-                    <a href=""><button>채팅방 오픈</button></a>
+                    <p class="p_p1">그대들은 어떻게 살 것인가?</p>
+                    <p class="p_p2">200% 달성</p>
+                    <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop">채팅방 오픈</button>
                 </div>
                 <div class="p_menu1">
                     <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
                     <p class="p_p1">영화 제목</p>
                     <p class="p_p2">달성률</p>
-                    <a href=""><button>채팅방 오픈</button></a>
+                    <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop">채팅방 오픈</button>
                 </div>
                 <div class="p_menu1">
                     <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
@@ -181,7 +181,64 @@
                 </ul>
             </nav>  
         </div>
-        
+		
+		<!-- 채팅방 오픈 모달창 -->
+		<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="staticBackdropLabel">채팅방 오픈</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <div class="p">
+		          <p class="movie-title"></p>
+		          <p class="achievement-rate"></p>
+		          정말 오픈하시겠습니까?
+		        </div>
+		        <figcaption class="figure-caption">선택하시면 2시간동안 오픈됩니다.</figcaption>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" id="startChatBtn">오픈 시작 하기</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+     
 	</div>
+	<script>
+		$(document).ready(function() {
+	        // 채팅방 오픈 버튼이 클릭
+	        $('.btn[data-toggle="modal"]').on('click', function() {
+	        	 // 선택한 버튼의 영화 제목과 달성률 찾아 모달의 제목과 내용으로
+	        	var movieTitle = $(this).closest('.p_menu1').find('.p_p1').text();
+	            var achievementRate = $(this).closest('.p_menu1').find('.p_p2').text();
+
+	            // 모달의 제목과 내용 설정
+	            $('.modal-body .movie-title').text("영화 제목: " + movieTitle);
+	            $('.modal-body .achievement-rate').text("달성률: " + achievementRate);
+	            
+	            $('#startChatBtn').on('click', function() {
+	                $.ajax({
+	                  type: "POST",
+	                  url: "/api/chat/open",
+	                  data: { movieTitle: movieTitle },
+	                  success: function(response) {
+	                    console.log(response);
+	                  },
+	                  error: function(error) {
+	                    console.error(error);
+	                  }
+	                });
+	                
+	                // 모달 닫기
+	                $('#staticBackdrop').modal('hide');
+	             });
+	        });
+	    });
+	</script>
 </body>
 </html>
