@@ -1,5 +1,6 @@
 package com.tenco.indiepicter.funding;
 
+import com.tenco.indiepicter.banner.Banner;
 import com.tenco.indiepicter.movie.Movie;
 import lombok.Data;
 
@@ -10,7 +11,12 @@ public class FundingResponse {
     @Data
     public static class fundingPlusDTO{
         List<MoviesByGenreDTO> moviesByGenreDTOS;
-        List<Banner> banners;
+        List<BannerDTO> banners;
+
+        public fundingPlusDTO(List<MoviesByGenreDTO> moviesByGenreDTOS, List<BannerDTO> banners) {
+            this.moviesByGenreDTOS = moviesByGenreDTOS;
+            this.banners = banners;
+        }
 
         @Data
         public class MoviesByGenreDTO {
@@ -31,13 +37,13 @@ public class FundingResponse {
             }
         }
 
-        public static class Banner {
+        public static class BannerDTO {
             String bannerPic;
             Integer movieId;
 
-            public Banner(String bannerPic, Integer movieId) {
-                this.bannerPic = bannerPic;
-                this.movieId = movieId;
+            public BannerDTO(Banner banner) {
+                this.bannerPic = banner.getBannerPic();
+                this.movieId = banner.getMovieId();
             }
         }
     }

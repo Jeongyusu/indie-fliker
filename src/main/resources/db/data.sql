@@ -190,3 +190,12 @@ insert into funding_tb(target_price, present_price, price_per_onetime, people_co
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('2000000', '400000', '8000', '40', '2023-11-01', '2023-12-31', 27);
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('5000000', '4000000', '8000', '40', '2023-11-01', '2023-12-31', 28);
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('4000000', '3000000', '8000', '40', '2023-11-01', '2023-12-31', 29);
+
+insert into banner_tb(banner_pic, genre, movie_id) values ('/src/main/resources/static/images/banner/3day.png', '극영화', 1);
+insert into banner_tb(banner_pic, genre, movie_id) values ('/src/main/resources/static/images/banner/naengjung.png', '극영화', 2);
+insert into banner_tb(banner_pic, genre, movie_id) values ('/src/main/resources/static/images/banner/szme.png', '애니메이션', 3);
+insert into banner_tb(banner_pic, genre, movie_id) values ('/src/main/resources/static/images/banner/trol.png', '애니메이션', 4);
+insert into banner_tb(banner_pic, genre, movie_id) values ('/src/main/resources/static/images/banner/noryang.png', '다큐멘터리', 5);
+insert into banner_tb(banner_pic, genre, movie_id) values ('/src/main/resources/static/images/banner/operation.png', '다큐멘터리', 6);
+insert into banner_tb(banner_pic, genre, movie_id) values ('/src/main/resources/static/images/banner/saw.png', '실험영화', 7);
+insert into banner_tb(banner_pic, genre, movie_id) values ('/src/main/resources/static/images/banner/yurang.png', '실험영화', 8);
