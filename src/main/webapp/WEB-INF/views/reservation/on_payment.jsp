@@ -34,7 +34,7 @@
                     <p id="n_movie_title">그대들은 어떻게 살 것인가?</p>
                     <p id="n_movie_content">어머니를 그리워하며 새로운 보금자리에 적응하던 주인공 "마히토"가 정체불명의 왜가리와 함께 저택의 신비로운 탑에 대한 이야기를 듣게 되는 작품을 기대해 주세요</p>
                     <div class="n_show_period">
-                        <img src="images/icons/movie.png" width="20" height="20">
+                        <img src="images/icons/movieCrawl.png" width="20" height="20">
                         <p>23.10.15 온라인 상영 예정</p>
                         <!--23.10.15 ~ 23.10.30 오프라인 상영 기간 추가-->
                     </div>

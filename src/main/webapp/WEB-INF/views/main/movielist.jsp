@@ -28,7 +28,7 @@
       </div>
       <div class="l_banner_item carousel-item">
         <div class="d-block">
-            <img src="https://webneel.net/file/images/11-16/8-xmen-movie-poster-design.preview.jpg" class="card-img" alt="..." style="object-fit: cover;height: 400px;">
+            <img src="https://webneel.net/file/images/11-16/8-xmen-movieCrawl-poster-design.preview.jpg" class="card-img" alt="..." style="object-fit: cover;height: 400px;">
         </div>
       </div>
     </div>

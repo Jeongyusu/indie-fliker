@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class Movie {
+public class MovieCrawl {
     private String title;
     private String productionYear;
     private String genre;
@@ -15,8 +15,8 @@ public class Movie {
    
     
     @Builder
-    public Movie(String title, String productionYear, String genre, String director,
-            String cast, String productionCompany, String distributionCompany) {
+    public MovieCrawl(String title, String productionYear, String genre, String director,
+                      String cast, String productionCompany, String distributionCompany) {
    this.title = title;
    this.productionYear = productionYear;
    this.genre = genre;
