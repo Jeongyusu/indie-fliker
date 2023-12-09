@@ -5,7 +5,6 @@
  import { db } from './firebase-config.js';
  
  const liveContainer = document.getElementById('l_live_chat_container');
- console.log(liveContainer);
  
  db.collection('openChats')
  	.get()
@@ -22,9 +21,6 @@
 
                 const chatRoomCard = createChatRoomCard(movieTitle, openTime, true);
                 liveContainer.appendChild(chatRoomCard);
-		
-		        // 디버깅을 위한 추가 로그
-		        console.log('Chat room added:', movieTitle, openTime);
             }
 		});
 	})
@@ -34,12 +30,11 @@
 	
 function compareTimes(startTime, endTime) {
     const currentTimestamp = new Date().getTime();
-     console.log(currentTimestamp >= startTime);
-     console.log(currentTimestamp <= endTime)
-     console.log("currentTimestamp"+currentTimestamp);
-     console.log("startTime"+startTime);
-     console.log("endTime"+endTime);
     return currentTimestamp >= startTime && currentTimestamp <= endTime;
+}
+
+function enterChatroom(movieTitle) {
+    window.location.href = `/chatroom?movieTitle=${movieTitle}`;
 }
 
 function createChatRoomCard(movieTitle, openTime, enterChatBtn) {
@@ -64,8 +59,10 @@ function createChatRoomCard(movieTitle, openTime, enterChatBtn) {
                 </div>
             </div>
             <div class="col-md-3 d-flex flex-column align-items-end justify-content-end mb-4">
-                ${enterChatBtn ? '<button class="btn l_mint_button mt-2" type="button" style="margin-right: 2.5rem; width: 10rem;">채팅방 입장</button>' : ''}
-            </div>
+			    ${enterChatBtn ? 
+			        `<button class="btn l_mint_button mt-2" type="button" onclick="window.open('http://localhost/chatroom?movieTitle=${movieTitle}')" style="margin-right: 2.5rem; width: 10rem;">채팅방 입장</button>` 
+			        : ''}
+			</div>
         </div>
     `;
 
