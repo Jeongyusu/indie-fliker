@@ -13,6 +13,7 @@
 					<thead>
 						<tr>
 							<th>이메일</th>
+							<th>비밀번호</th>
 							<th>이름</th>
 							<th>전화번호</th>
 						</tr>
@@ -22,6 +23,7 @@
 					<c:forEach var="user" items="${userLists}">
 						<tr>
 							<td>${user.userEmail}</td>
+							<td>${user.password}</td>
 							<td>${user.username}</td>
 							<td>${user.tel}</td>
 						</tr>
