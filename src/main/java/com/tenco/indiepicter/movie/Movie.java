@@ -10,6 +10,8 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class Movie {
     private Integer id;
+    private Integer makeYear;
+    private String production;
     private String movieName;
     private String synopsis;
     private String thumbnail;
@@ -26,8 +28,10 @@ public class Movie {
     private Timestamp offlineEndDate;
 
     @Builder
-    public Movie(Integer id, String movieName, String synopsis, String thumbnail, String directingIntension, String genre, String runningGrade, String director, String actor, String directorCareers, String directorAwardsFilm, Timestamp onlineReleaseDate, Timestamp onlineEndDate, Timestamp offlineReleaseDate, Timestamp offlineEndDate) {
+    public Movie(Integer id, Integer makeYear, String production, String movieName, String synopsis, String thumbnail, String directingIntension, String genre, String runningGrade, String director, String actor, String directorCareers, String directorAwardsFilm, Timestamp onlineReleaseDate, Timestamp onlineEndDate, Timestamp offlineReleaseDate, Timestamp offlineEndDate) {
         this.id = id;
+        this.makeYear = makeYear;
+        this.production = production;
         this.movieName = movieName;
         this.synopsis = synopsis;
         this.thumbnail = thumbnail;

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tenco.indiepicter.funding.FundingRepository">
+
+    <!-- 펀딩 등록 -->
+<!--    <insert id="insert">-->
+<!--        insert into user_tb(user_email, password, username, tel, grade, gubun, created_at)-->
+<!--        values(#{userEmail}, #{password}, #{username}, #{tel}, #{grade}, #{gubun}, now())-->
+<!--    </insert>-->
+
+    <!-- 펀딩 검색 -->
+<!--    <select id="selectId" resultType="boolean">-->
+<!--        select count(*)-->
+<!--        from user_tb-->
+<!--        where = #{id}-->
+<!--    </select>-->
+
+    <!-- 펀딩 장르별 조회 -->
+    <select id="findAllByGenre" resultType="com.tenco.indiepicter.funding.Funding">
+            select * from funding_tb ft left join movie_tb mt on ft.movie_id = mt.id where genre = #{genre};
+    </select>
+
+
+</mapper>
