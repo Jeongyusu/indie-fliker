@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class ChatController {
-
+	
     @PostMapping("/chatroom")
     public String enterChatroom(@RequestBody String movieTitle) {
     	
@@ -16,4 +16,5 @@ public class ChatController {
 
         return "main/chatroom";
     }
+    
 }

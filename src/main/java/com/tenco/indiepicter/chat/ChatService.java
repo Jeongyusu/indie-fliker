@@ -20,7 +20,7 @@ public class ChatService {
 	
 	public void endChat(String movieTitle) {
 		log.debug("-----------채팅 종료------------");
-		// 채팅 종료를 해줘야함..
+		// 채팅 종료를 해줘야함
     }
 	
 }

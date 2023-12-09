@@ -1,6 +1,6 @@
 /**
  * [관리자 페이지] 영화 채팅방 오픈
- * 채팅방 오픈된 영화 없애기 (리스트 중에 해당영화를) 제거 해줘야해요!
+ * 채팅방 오픈된 영화 없애기 해줘야 해요! or 버튼 비활성화
  */
 
 import { db } from './firebase-config.js';
@@ -14,12 +14,23 @@ import { db } from './firebase-config.js';
         $('.modal-body .movie-title').text("영화 제목: " + movieTitle);
         $('.modal-body .achievement-rate').text("달성률: " + achievementRate);
         
-        // 버튼 누르면 영화제목 firestore에 저장
         $('#startChatBtn').on('click', function() {
+			 $.ajax({
+			  url: '/api/chat/open',
+			  type: 'POST',
+			  data: { movieTitle: movieTitle },
+			  success: function(response) {
+			    console.log('채팅방이 성공적으로 열렸습니다.');
+			  },
+			  error: function(error) {
+			    console.error('채팅방 열기에 실패했습니다:', error.statusText);
+			  }
+			});
+            
+			
 			insertOpenChatMovie(movieTitle);
-            // 모달 닫기
             $('#staticBackdrop').modal('hide');
-            // (리스트로 받았던 영화 중에) 채팅방 오픈된 영화 없애기 
+            // ----- 채팅방 오픈된 영화 없애기 ----- //
             
         });
     });
