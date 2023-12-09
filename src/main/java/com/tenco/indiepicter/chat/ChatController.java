@@ -1,19 +1,18 @@
 package com.tenco.indiepicter.chat;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class ChatController {
 
-    @GetMapping("/chatroom/{movieTitle}")
-    public String enterChatroom(@PathVariable String movieTitle, Model model) {
+    @PostMapping("/chatroom")
+    public String enterChatroom(@RequestBody String movieTitle) {
     	
-    	// 인증검사 필요합니다!!! (로그인 인증 & vip인증?)
+    	// 인증검사 필요!!! (로그인 인증 & vip인증?)
     	
-    	// 영화정보 필요합니다! (chatroom도 바꿔줘야합니다.)
+    	// 영화정보 필요합니다! (model로 던져서 chatroom.jsp도 바꿔줘야함)
 
         return "main/chatroom";
     }

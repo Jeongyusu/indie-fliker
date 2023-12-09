@@ -1,5 +1,6 @@
 /**
- * [실시간 채팅방]
+ * [실시간 채팅방] POST /chatroom 으로
+ * { movieTitle } 보냄 (ChatController 확인)
  */
 
  import { db } from './firebase-config.js';
@@ -33,10 +34,6 @@ function compareTimes(startTime, endTime) {
     return currentTimestamp >= startTime && currentTimestamp <= endTime;
 }
 
-function enterChatroom(movieTitle) {
-    window.location.href = `/chatroom?movieTitle=${movieTitle}`;
-}
-
 function createChatRoomCard(movieTitle, openTime, enterChatBtn) {
     const cardContainer = document.createElement('div');
     cardContainer.classList.add('l_movie_card', 'card', 'text-bg-light');
@@ -60,8 +57,11 @@ function createChatRoomCard(movieTitle, openTime, enterChatBtn) {
             </div>
             <div class="col-md-3 d-flex flex-column align-items-end justify-content-end mb-4">
 			    ${enterChatBtn ? 
-			        `<button class="btn l_mint_button mt-2" type="button" onclick="window.open('http://localhost/chatroom?movieTitle=${movieTitle}')" style="margin-right: 2.5rem; width: 10rem;">채팅방 입장</button>` 
-			        : ''}
+                    `<form action="http://localhost/chatroom" method="post" target="_blank">
+                        <input type="hidden" name="movieTitle" value="${movieTitle}">
+                        <button class="btn l_mint_button mt-2" type="submit" style="margin-right: 2.5rem; width: 10rem;">채팅방 입장</button>
+                    </form>` 
+                    : ''}
 			</div>
         </div>
     `;
