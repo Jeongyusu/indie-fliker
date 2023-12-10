@@ -1,7 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+
 <footer class="j_footer">
     <div class="j_footer_background">
         <div class="j_footer_img">
-            <img src="../../../../resources/static/images/logo/IndieFliker.png" width="70px" height="70px">
+            <img src="/images/logo/IndieFliker.png" width="70px" height="70px">
             <div class="j_footer_logo_text">
                 IndieFliker
             </div>
