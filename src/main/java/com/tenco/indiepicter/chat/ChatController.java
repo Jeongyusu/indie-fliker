@@ -1,32 +1,20 @@
 package com.tenco.indiepicter.chat;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestBody;
 
-@RestController
-@RequestMapping("/api/chat")
+@Controller
 public class ChatController {
 	
-	@Autowired
-	private ChatService chatService;
-	
-    @PostMapping("/open")
-    public String openChatRoom(@RequestParam String movieTitle) {
-    	// 영화채팅방 오픈시키기
-    	chatService.startChat(movieTitle);
+    @PostMapping("/chatroom")
+    public String enterChatroom(@RequestBody String movieTitle) {
     	
-    	// 오픈된 영화정보 { movieTitle, startTime }
-    	Date currentDate = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("a hh:mm:ss");
-	    String startTime = sdf.format(currentDate);
+    	// 인증검사 필요!!! (로그인 인증 & vip인증?)
     	
-        return "{\"movieTitle\": \"" + movieTitle + "\", \"startTime\": \"" + startTime + "\"}";
-    }
+    	// 영화정보 필요합니다! (model로 던져서 chatroom.jsp도 바꿔줘야함)
 
+        return "main/chatroom";
+    }
+    
 }
