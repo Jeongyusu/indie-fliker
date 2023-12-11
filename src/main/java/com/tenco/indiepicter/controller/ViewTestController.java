@@ -10,7 +10,7 @@ public class ViewTestController {
     @GetMapping("/login")
     public String onlineDetail(){return "user/login";}
     @GetMapping("/online-detail")
-    public String onlineDetail(){
+    public String onlineDetail1(){
         return "fund/on_detail";
     }
 

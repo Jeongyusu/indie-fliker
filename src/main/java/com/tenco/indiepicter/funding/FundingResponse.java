@@ -19,8 +19,9 @@ public class FundingResponse {
             this.moviesByGenreDTOS = moviesByGenreDTOs;
             this.banners = banners;
         }
+
         @Data
-        public static class MoviesByGenreDTO {
+        public class MoviesByGenreDTO {
             Integer movieId;
             String movieThumbnail;
             Integer fundingRate;
@@ -28,8 +29,10 @@ public class FundingResponse {
             String synopsis;
             String  production;
         }
+
+
         @Data
-        public static class BannerDTO {
+        public class BannerDTO {
             String bannerPic;
             Integer movieId;
 
@@ -40,5 +43,6 @@ public class FundingResponse {
         }
 
     }
+
 
 }
