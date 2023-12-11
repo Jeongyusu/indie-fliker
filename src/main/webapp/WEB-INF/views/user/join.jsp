@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="/css/khy_style.css">
 	<!-- 제이쿼리 -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	
@@ -29,8 +30,9 @@
 						placeholder="이메일 형식에 맞게 입력하세요."
 						onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일을 입력하세요.'">
 					<p id="userEmailCkeck"></p>
-					<button class="k_validation">인증하기</button>
+					<input class="k_validation" type="button" id="emailCheck" value="이메일 중복 확인">
 				</div>
+				
 			</div>
 			
 			<div class="k_form-group">
@@ -71,191 +73,36 @@
 			</div>
 			
 			<div class="k_complete text-center">
-				<button type="submit" class="btn btn-primary btn-block">약관 동의 후 가입 완료하기</button>
+				<button type="submit" class="btn btn-primary btn-block" id="p_join">약관 동의 후 가입 완료하기</button>
 			</div>	
 		</form>
 	</div>
 	
-
 	<script>
-		// 이메일 유효성 검사
-		$('#userEmail').focusout(function() {
-	    	let userEmail = $('#userEmail').val()
-	        let userEmailCheck =  /^[a-zA-Z0-9]+$/
-		
-	        if (!userEmailCheck.test(userEmail)){
-				$('#userEmailCkeck').html('이메일을 정확하게 입력하세요.')
-	        	return false
-	        }
-	        $("#userEmailCkeck").html('')
-		});
-		
-		$('#form').on('submit', function() {
-			let userEmail = $('#userEmail').val()
-	        let userEmailCheck =  /^[a-zA-Z0-9]+$/
-		
-	        if (!userEmailCheck.test(userEmail)){
-				$('#userEmailCkeck').html('이메일을 정확하게 입력하세요.')
-				$('#userEmail').focus()
-	        	return false
-	        }
-	        $("#userEmailCkeck").html('')
-		})
-		
-		// 비동기 통신으로 이메일 중복 체크
-		$(document).ready(function() {
-
-	    	$("#userEmailCkeck").onclick("focusout", function() {
-	    		
-	    		var userEmail = $("#userEmail").val();
-	    		
-	    		if(id == '' || userEmail.length == 0) {
-	    			$("#userEmailCkeck").css("color", "red").text("이메일을 입력해주세요.");
-	    			return false;
-	    		}
-	    		
-	        	//Ajax로 전송
-	        	$.ajax({
-	        		url : './user/userEmailCheck',
-	        		data : {
-	        			id : userEmail
-	        		},
-	        		type : 'POST',
-	        		dataType : 'json',
-	        		success : function(result) {
-	        			if (result == true) {
-	        				$("#userEmailCkeck").css("color", "black").text("사용 가능한 이메일 입니다.");
-	        			} else{
-	        				$("#userEmailCkeck").css("color", "red").text("사용 불가능한 이메일 입니다.");
-	        				$("userEmail").val('');
-	        			}
-	        		}
-	        	}); //End Ajax
-	    	});
-	    })
-		
-	</script>
-		
-	<script>
-		// 비밀번호1 유효성 검사
-		$('#password1').focusout(function() {
-	    	let password1 = $('#password1').val()
-	        let password1Ckeck =  /^[a-zA-Z0-9~!@#$%^&*()`_+?:;'"{}]{1,16}$/
-	        if (!password1Ckeck.test(password1) || password1.length<10){
-				$('#password1Ckeck').html('비밀번호는 영대소문자,숫자로 구성된 10글자 이상으로 조합하세요.')
-	        	return false
-	        }
-	        $("#password1Ckeck").html('')
-		});
-		
-		$('#form').on('submit', function() {
-			let password1 = $('#password1').val()
-	        let password1Ckeck =  /^[a-zA-Z0-9~!@#$%^&*()`_+?:;'"{}]{1,16}$/
-		
-	        if (!password1Ckeck.test(password1) || password1.length<10){
-				$('#password1Ckeck').html('비밀번호는 영대소문자,숫자로 구성된 10글자 이상으로 조합하세요.')
-				$('#password1').focus()
-	        	return false
-	        }
-	        $("#password1Ckeck").html('')
-		})
-		
-		// 비밀번호2 유효성 검사
-		$('#password2').focusout(function() {
-	    	let password2 = $('#password2').val()
-	        let password2Ckeck =  /^[a-zA-Z0-9~!@#$%^&*()`_+?:;'"{}]{1,16}$/
-		
-	        if (!password2Ckeck.test(password2) || password2.length<10){
-				$('#password2Ckeck').html('비밀번호는 영대소문자,숫자로 구성된 10글자 이상으로 조합하세요.')
-	        	return false
-	        }
-	        $("#password2Ckeck").html('')
-		});
-		
-		$('#form').on('submit', function() {
-			let password2 = $('#password2').val()
-	        let password2Ckeck =  /^[a-zA-Z0-9~!@#$%^&*()`_+?:;'"{}]{1,16}$/
-		
-	        if (!password2Ckeck.test(password2) || password2.length<10){
-				$('#password2Ckeck').html('비밀번호는 영대소문자,숫자로 구성된 10글자 이상으로 조합하세요.')
-				$('#password2').focus()
-	        	return false
-	        }
-	        $("#password2Ckeck").html('')
-		})
-	</script>
-		
-	<script>
-		// 이름 유효성 검사
-		$('#username').focusout(function() {
-	    	let username = $('#username').val()
-	        let usernameCkeck =  /^[가-힣a-zA-Z]{2,15}$/
-		
-	        if (!usernameCkeck.test(username) || username.length<10){
-				$('#usernameCkeck').html('한글, 영문으로 이름 2~15자 이내로 입력하세요.')
-	        	return false
-	        }
-	        $("#usernameCkeck").html('')
-		});
-		
-		$('#form').on('submit', function() {
-			let username = $('#username').val()
-	        let usernameCkeck =  /^[가-힣a-zA-Z]{2,15}$/
-		
-	        if (!usernameCkeck.test(username) || username.length<10){
-				$('#usernameCkeck').html('한글, 영문으로 이름 2~15자 이내로 입력하세요.')
-				$('#username').focus()
-	        	return false
-	        }
-	        $("#usernameCkeck").html('')
-		})
-	</script>
-		
-	<script>
-		// 전화번호 유효성 검사
-		$('#tel').focusout(function() {
-	    	let tel = $('#tel').val()
-	        let telCkeck =  /^\d{8}$/
-		
-	        if (!telCkeck.test(tel) || tel.length<10){
-				$('#telCkeck').html('전화번호 8자리를 올바르게 입력하세요.')
-	        	return false
-	        }
-	        $("#telCkeck").html('')
-		});
-		
-		$('#form').on('submit', function() {
-			let tel = $('#tel').val()
-	        let telCkeck =  /^\d{8}$/
-		
-	        if (!telCkeck.test(tel) || tel.length<10){
-				$('#telCkeck').html('전화번호 8자리를 올바르게 입력하세요.')
-				$('#tel').focus()
-	        	return false
-	        }
-	        $("#telCkeck").html('')
-		})
-	</script>
-
-
-		
-	
-	
-<!--
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script>
-		$(document).ready(function () {
-			// 버튼을 클릭하면 비밀번호를 보이게 하거나 가립니다.
-			$("#togglePassword1, #togglePassword2").click(function () {
-				var $passwordInput = $(this).prev('input');
-				var type = $passwordInput.attr('type') === 'password' ? 'text' : 'password';
-				$passwordInput.attr('type', type);
+		// 이메일 중복 검사
+		$("#emailCheck").click(function(){
+		 
+	//	var query = {userEmail : $("#userEmail").val()};
+		 
+			$.ajax({
+				url : "/emailCkeck",
+				type : "post",
+				dataType : "jSON",
+				data : {"userEmail" : $("#userEmail").val()},
+				success : function(data) {
+		  
+					if(data == 1) {
+						alert("이미 존재하는 이메일입니다.");
+					} else {
+						alert("사용 가능한 이메일입니다.");
+					}
+					
+					$('#submitBtn').attr( 'onclick','alert("이메일 인증은 필수입니다.")');
+					$('#username').attr('readonly','');
+				}		
 			});
 		});
-
 	</script>
--->
+	
 </body>
 </html>

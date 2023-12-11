@@ -200,3 +200,11 @@ insert into running_schedule_tb (running_time, running_date, start_time, end_tim
 insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-28', '15:27', '16:56', 1, 1);
 insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-29', '09:19', '10:48', 1, 1);
 insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-30', '13:14', '14:43', 1, 1);
+insert into banner_tb(banner_pic, genre, movie_id) values ('/src/main/resources/static/images/banner/3day.png', '극영화', 1);
+insert into banner_tb(banner_pic, genre, movie_id) values ('/src/main/resources/static/images/banner/naengjung.png', '극영화', 2);
+insert into banner_tb(banner_pic, genre, movie_id) values ('/src/main/resources/static/images/banner/szme.png', '애니메이션', 3);
+insert into banner_tb(banner_pic, genre, movie_id) values ('/src/main/resources/static/images/banner/trol.png', '애니메이션', 4);
+insert into banner_tb(banner_pic, genre, movie_id) values ('/src/main/resources/static/images/banner/noryang.png', '다큐멘터리', 5);
+insert into banner_tb(banner_pic, genre, movie_id) values ('/src/main/resources/static/images/banner/operation.png', '다큐멘터리', 6);
+insert into banner_tb(banner_pic, genre, movie_id) values ('/src/main/resources/static/images/banner/saw.png', '실험영화', 7);
+insert into banner_tb(banner_pic, genre, movie_id) values ('/src/main/resources/static/images/banner/yurang.png', '실험영화', 8);
