@@ -23,7 +23,7 @@
     </delete>
 
     <!-- 특정 영화와 특정 날짜의 오프라인 상영 일정 조회 -->
-    <select id="findByMovieIdAndRunningDate" resultType="com.tenco.indiepicter.runningschedule.RunningSchedule">
+    <select id="findByMovieIdAndRunningDate" resultType="com.tenco.indiepicter.runningschedule.RunningScheduleResponse.selectDayDTO" resultMap="selectDayDTO">
         SELECT
             r.id as running_schedule_id,
             m.movie_name,
@@ -48,6 +48,21 @@
         ORDER BY
             r.running_date ASC;
     </select>
+
+    <resultMap type="com.tenco.indiepicter.runningschedule.RunningScheduleResponse.selectDayDTO" id="selectDayDTO">
+        <id column="running_schedule_id" property="runningDateId" />
+        <result column="movie_name" property="movieName" />
+        <result column="running_grade" property="runningGrade" />
+        <result column="running_date" property="runningDate" />
+        <collection property="movieTimeDTO" resultMap="movieTimeDTO" />
+    </resultMap>
+
+    <resultMap type="com.tenco.indiepicter.runningschedule.RunningScheduleResponse.selectDayDTO.movieTimeDTO" id="movieTimeDTO">
+        <result column="start_time" property="startTime" />
+        <result column="end_time" property="endTime" />
+        <result column="exist_seats" property="existSeatCount" />
+        <result column="total_seat" property="theaterSeatCount" />
+    </resultMap>
 
     <!-- 특정 영화의 오프라인 상영 일정 기간 조회 -->
     <select id="findByMovieId" resultType="com.tenco.indiepicter.runningschedule.RunningSchedule">

@@ -23,7 +23,7 @@ public class RunningScheduleRestController {
     // 오프라인 영화 상영 일정(달력) 선택 API 요청
     @GetMapping("/api/{movieId}/total-day/select-day")
     public ResponseEntity<?> selectDay(@PathVariable Integer movieId, @RequestParam(value = "selectDay") String selectDay) {
-        List<RunningSchedule> selectDayDTO = runningScheduleService.findByMovieIdAndRunningDate(movieId,selectDay);
+        RunningScheduleResponse.selectDayDTO selectDayDTO = runningScheduleService.findByMovieIdAndRunningDate(movieId,selectDay);
         return ResponseEntity.ok().body(ApiUtils.success(selectDayDTO));
     }
 

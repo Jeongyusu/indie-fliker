@@ -16,14 +16,14 @@ public class RunningScheduleService {
     @Autowired
     private RunningScheduleRepository runningScheduleRepository;
 
-    public RunningScheduleResponse.totalDayDTO totalDay(Integer movieId) {
+    public RunningScheduleResponse.TotalDayDTO totalDay(Integer movieId) {
         List<RunningSchedule> runningSchedules = runningScheduleRepository.findByMovieId(movieId);
-        RunningScheduleResponse.totalDayDTO responseDto = new RunningScheduleResponse.totalDayDTO(runningSchedules);
+        RunningScheduleResponse.TotalDayDTO responseDto = new RunningScheduleResponse.TotalDayDTO(runningSchedules);
         return responseDto;
     }
 
-    public List<RunningSchedule> findByMovieIdAndRunningDate(Integer movieId, String selectDay) {
-       List<RunningSchedule> responseDto = runningScheduleRepository.findByMovieIdAndRunningDate(
+    public RunningScheduleResponse.SelectDayDTO findByMovieIdAndRunningDate(Integer movieId, String selectDay) {
+        RunningScheduleResponse.SelectDayDTO responseDto = runningScheduleRepository.findByMovieIdAndRunningDate(
                 movieId,selectDay);
         return responseDto;
     }
