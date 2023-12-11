@@ -44,7 +44,7 @@
 		<div class="k_my_active">
 			나의 활동
 		</div>
-		<button class="k_like_list">♡ 찜한 목록〉</button>
+		<button class="k_like_list">찜한 목록〉</button>
 		<hr class="k_m_hr">
 		<div class="k_c_center">고객센터</div>
 		<div>

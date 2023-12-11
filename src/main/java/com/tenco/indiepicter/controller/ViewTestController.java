@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ViewTestController {
+
+    @GetMapping("/login")
+    public String onlineDetail(){return "user/login";}
     @GetMapping("/online-detail")
     public String onlineDetail(){
         return "fund/on_detail";
@@ -42,45 +45,45 @@ public class ViewTestController {
         return "reservation/select_seat";
     }
 
-    
+
     @GetMapping("/main")
     public String main(){
         return "main/main";
     }
-    
+
     @GetMapping("/movielist")
     public String movielist(){
         return "main/movielist";
     }
-    
+
     @GetMapping("/online-watch")
     public String onlineWatch(){
         return "main/on_watch";
     }
-    
+
     @GetMapping("/chatroom")
     public String chatroom(){
         return "main/chatroom";
     }
-    
+
     @GetMapping("/live-chatrooms")
     public String liveChatrooms(){
         return "main/live_chatrooms";
     }
-    
+
     @GetMapping("/my-likelist")
     public String likelist(){
         return "mypage/likelist";
     }
-    
+
     @GetMapping("/offline-funding")
     public String offlineFunding(){
         return "mypage/off_funding";
     }
-    
+
     @GetMapping("/online-funding")
     public String onlineFunding(){
         return "mypage/on_funding";
     }
-    
+
 }
