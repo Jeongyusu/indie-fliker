@@ -28,7 +28,7 @@ public class ReservationController {
 	@Autowired
 	private HttpSession session;
 	
-	@GetMapping("/reservation-ticket")
+	@GetMapping("/invitation")
 	public String reservationTicket(Model model) {
 		
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
@@ -37,9 +37,11 @@ public class ReservationController {
 		
 		model.addAttribute("VipReservationDTOLists", VipReservationDTOLists);
 		
-		return "reservation/my_reservation_ticket";
+		return "mypage/invitation";
 		
 	}
 	
     
+	
+	
 }
