@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Getter
@@ -29,15 +30,6 @@ public class RunningSchedule {
         this.theaterId = theaterId;
     }
 
-    public String formatToRunningDate(){
-        return TimeStampUtil.timeStampToDate(runningDate);
-    }
-
-    public String formatToStartTime(){
-        return TimeStampUtil.timeStampToDate(startTime);
-    }
-
-    public String formatToEndTime(){
-        return TimeStampUtil.timeStampToDate(endTime);
-    }
+    // yyyy-MM-dd
+    public String formatToRunningDate(){ return TimeStampUtil.timeStampToDate(runningDate);}
 }

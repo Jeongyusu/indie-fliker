@@ -1,5 +1,7 @@
 package com.tenco.indiepicter.runningschedule;
 
+import com.tenco.indiepicter.runningschedule.response.SelectDayDTO;
+import com.tenco.indiepicter.runningschedule.response.TotalDayDTO;
 import com.tenco.indiepicter.seat.Seat;
 import com.tenco.indiepicter.seat.SeatRepository;
 import com.tenco.indiepicter.theater.Theater;
@@ -26,16 +28,18 @@ public class RunningScheduleService {
     @Autowired
     private SeatRepository seatRepository;
 
-    public RunningScheduleResponse.TotalDayDTO totalDay(Integer movieId) {
+    // 특정 영화 총 오프라인 상영 기간
+    public TotalDayDTO totalDay(Integer movieId) {
         List<RunningSchedule> runningSchedules = runningScheduleRepository.findByMovieId(movieId);
-        RunningScheduleResponse.TotalDayDTO responseDto = new RunningScheduleResponse.TotalDayDTO(runningSchedules);
-        return responseDto;
+        TotalDayDTO responseDTO = new TotalDayDTO(runningSchedules);
+        System.out.println("날짜 : " + responseDTO.toString());
+        return responseDTO;
     }
 
-    public RunningScheduleResponse.SelectDayDTO selectDay(Integer movieId, String selectDay){
-        List<RunningSchedule> runningSchedules = runningScheduleRepository.findByMovieIdAndRunningDate(movieId, selectDay);
-        Theater theater = theaterRepository.findById(runningSchedules.get(0).getTheaterId());
-
+    // 특정 날짜 중 상영 일정
+    public List<SelectDayDTO> selectDay(Integer movieId, String selectDay){
+        List<SelectDayDTO> selectDayDTOs = runningScheduleRepository.findByMovieIdAndRunningDate(movieId, selectDay);
+        return selectDayDTOs;
     }
 
 }

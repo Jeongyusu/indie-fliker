@@ -3,6 +3,7 @@ let otherInput = document.querySelector("#n_otherInput");
 let firstDay = document.querySelector("#n_firstDay").value;
 let lastDay = document.querySelector("#n_lastDay").value;
 
+// 달력
 flatpickr(activeCal, {
     minDate: firstDay,  // 지정 가능한 최소 날짜
     maxDate: lastDay,  // 지정 가능한 최대 날짜
@@ -10,5 +11,104 @@ flatpickr(activeCal, {
     inline: true,           // 항상 달력 활성화
     onChange: function(selectedDates, dateStr, instance) {
         otherInput.value = dateStr;
+        loadSelectOptions(dateStr);
     },
 });
+
+// 상영 일정 부분 리로딩 - ajax
+async function loadSelectOptions(dateStr) {
+    let movieId = document.querySelector("#n_movieId").value;
+    try {
+        let response = await fetch(`/runningschedule/api/total-day/select-day?movieId=${movieId}&selectDay=${dateStr}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (response.ok) {
+            let responseData = await response.json();
+
+            let selectDayDTOs = responseData.response; // body
+
+            let container = document.getElementById("n_container");
+            container.innerHTML = '';
+
+            // 각 영화 정보에 대해 HTML 생성 및 추가
+            selectDayDTOs.forEach(selectDayDTO => {
+                let form = document.createElement("form");
+                form.action = "/runningschedule/" + `${selectDayDTO.movieId}` + "/select-seat";
+                form.id = "n_day_movies_form";
+                form.method = "get"
+
+                let nHiddenRunningDateId = document.createElement("input");
+                nHiddenRunningDateId.name = "runningDateId";
+                nHiddenRunningDateId.value = `${selectDayDTO.runningDateId}`;
+
+                let nHiddenTheaterId = document.createElement("input");
+                nHiddenTheaterId.name = "runningDateId";
+                nHiddenTheaterId.value = `${selectDayDTO.theaterId}`;
+
+                let button = document.createElement("button");
+                button.type = "submit";
+                button.id = "select_movie_button";
+
+                let nDayMovies = document.createElement("div");
+                nDayMovies.id = "n_day_movies";
+
+                let nMovieTime = document.createElement("span");
+                nMovieTime.id = "n_movie_time";
+                nMovieTime.innerHTML = `
+                <p class="n_start_time">${selectDayDTO.startTime.substring(0, selectDayDTO.startTime.length -3)}</p>
+                <p class="n_end_time">~${selectDayDTO.endTime.substring(0, selectDayDTO.endTime.length -3)}</p>
+                `;
+
+                let nMovieLevel = document.createElement("span");
+                nMovieLevel.id = "n_movie_level";
+                let level = selectDayDTO.runningGrade;
+                let src = "";
+                if(level == "전체 관람가"){
+                    src = "movie_level_all.png";
+                }else if(level == "12세 이상 관람가"){
+                    src = "movie_level_12.png";
+                }else if(level == "15세 이상 관람가"){
+                    src = "movie_level_15.png";
+                }else {
+                    src = "movie_level_19.png";
+                }
+                nMovieLevel.innerHTML = `<img src="/images/icons/${src}">`;
+
+                let nMovieTitle = document.createElement("span");
+                nMovieTitle.id = "n_movie_title";
+                nMovieTitle.innerHTML = `<p>${selectDayDTO.movieName}</p>`;
+
+                let nSeat = document.createElement("div");
+                nSeat.id = "n_seat";
+
+                let nSeatCount = document.createElement("div");
+                nSeatCount.id = "n_seat_count";
+                nSeatCount.innerHTML = `
+                <p class="n_possible_seat">${selectDayDTO.existSeatCount}</p>
+                <p class="n_all_seat">/${selectDayDTO.theaterSeatCount}</p>
+                `;
+
+// HTML 요소들을 조립
+                nDayMovies.appendChild(nMovieTime);
+                nDayMovies.appendChild(nMovieLevel);
+                nDayMovies.appendChild(nMovieTitle);
+                nSeat.appendChild(nSeatCount);
+                button.appendChild(nDayMovies);
+                button.appendChild(nSeat);
+                form.appendChild(button);
+
+// 폼을 container에 추가
+                container.appendChild(form);
+            });
+
+        } else {
+            console.error("서버 응답이 실패했습니다.");
+        }
+    } catch (error) {
+        console.error("에러 발생:", error);
+    }
+}
