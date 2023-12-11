@@ -21,7 +21,7 @@ public class FundingResponse {
         }
 
         @Data
-        public class MoviesByGenreDTO {
+        public static class MoviesByGenreDTO {
             Integer movieId;
             String movieThumbnail;
             Integer fundingRate;
@@ -32,7 +32,7 @@ public class FundingResponse {
 
 
         @Data
-        public class BannerDTO {
+        public static class BannerDTO {
             String bannerPic;
             Integer movieId;
 
