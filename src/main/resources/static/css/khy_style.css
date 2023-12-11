@@ -1,175 +1,179 @@
 @import url(common.css);
 /*자주쓰는 css*/
-.k_font_weight_bold{
-	font-weight: bold;
+.k_font_weight_bold {
+    font-weight: bold;
 }
+
 /*로그인 페이지*/
 .k_body {
-	background-color: #ffffff;
+    background-color: #ffffff;
 }
 
 .k_login {
-	font-weight: bold;
-	margin-top: 250px;
-	font-size: 30px;
+    font-weight: bold;
+    margin-top: 250px;
+    font-size: 30px;
 }
 
 .k_login-container {
-	max-width: 400px;
-	margin: auto;
-	margin-top: 100px;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 100px;
 }
 
 .k_forget {
-	margin-top: 15px;
-	display: block;
-	font-size: small;
-	opacity: 0.7;
-	text-align: right;
+    margin-top: 15px;
+    display: block;
+    font-size: small;
+    opacity: 0.7;
+    text-align: right;
 }
 
 
 .k_no_id_aligin {
-	text-align: center;
-	margin-top: 50px;
+    text-align: center;
+    margin-top: 50px;
 }
 
 .k_no_id {
-	display: inline-block;
-	font-weight: bold;
+    display: inline-block;
+    font-weight: bold;
 }
 
 .k_join {
-	display: inline-block;
-	margin-left: 10px;
-	color: #00c4c4;
-	text-decoration-line: underline;
+    display: inline-block;
+    margin-left: 10px;
+    color: #00c4c4;
+    text-decoration-line: underline;
 }
 
 .k_email {
-	margin-top: 30px;
-	background-color: #e7f9f9;
-	color: #00c4c4;
-	border: none;
+    margin-top: 30px;
+    background-color: #e7f9f9;
+    color: #00c4c4;
+    border: none;
 }
 
 .k_email button {
-	margin-top: 30px;
-	background-color: #e7f9f9;
-	color: #00c4c4;
-	border: none;
-	height: 50px;
+    margin-top: 30px;
+    background-color: #e7f9f9;
+    color: #00c4c4;
+    border: none;
+    height: 50px;
 }
 
 .k_email button:hover,
 .k_email button:active,
 .k_email button:focus {
-	background-color: #e7f9f9;
-	color: #00c4c4;
-	border: none;
-	box-shadow: none;
-	outline: none;
+    background-color: #e7f9f9;
+    color: #00c4c4;
+    border: none;
+    box-shadow: none;
+    outline: none;
 }
 
 .k_kakao {
-	margin-top: 10px;
+    margin-top: 10px;
 }
 
 .k_kakao-btn {
-	background-image: url('../../../resources/static/images/icons/kakao_login_medium_wide.png');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	height: 50px;
-	border: none;
-	padding: 0;
+    background-image: url('../../../resources/static/images/icons/kakao_login_medium_wide.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 50px;
+    border: none;
+    padding: 0;
 }
 
 .k_easyjoin {
-	font-weight: bold;
-	font-size: 25px;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 .k_kakao-btn:hover {
-	background-color: #ffd200;
+    background-color: #ffd200;
 }
 
 /*회원가입 페이지*/
 
 
 .k_login-container {
-	max-width: 400px;
-	margin: auto;
-	margin-top: 150px;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 150px;
 }
-.k_join_bottom{
-	margin-bottom: 15px;
+
+.k_join_bottom {
+    margin-bottom: 15px;
 }
+
 .k_join_radius {
-	border-radius: 5px;
+    border-radius: 5px;
 }
 
 .k_form-group {
-	margin-top: 20px;
+    margin-top: 20px;
 }
 
 .k_form-group .k_input-group {
-	display: flex;
+    display: flex;
 }
 
 .k_form-group .k_input-group input {
-	flex: 1;
-	margin-right: 5px;
+    flex: 1;
+    margin-right: 5px;
 }
 
 .k_pwd_backcolor {
-	background-color: #f6f6f6;
-	;
+    background-color: #f6f6f6;;
 }
-.k_pwd_input_margin{
-	margin-top: 10px;
+
+.k_pwd_input_margin {
+    margin-top: 10px;
 }
+
 .k_validation {
-	background-color: #99e7e7;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	height: 38px;
-	font-size: 12px;
-	width: 70px;
+    background-color: #99e7e7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 38px;
+    font-size: 12px;
+    width: 70px;
 }
 
 .k_complete {
-	margin-top: 30px;
-	background-color: #99e7e7;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	height: 50px;
-	text-align: center;
-	line-height: 50px;
+    margin-top: 30px;
+    background-color: #99e7e7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
 }
 
 .k_complete button {
-	background-color: #99e7e7;
-	color: white;
-	border: none;
-	height: 50px;
+    background-color: #99e7e7;
+    color: white;
+    border: none;
+    height: 50px;
 }
 
 .k_complete button:hover,
 .k_complete button:active,
 .k_complete button:focus {
-	background-color: #99e7e7;
-	color: white;
-	border: none;
-	box-shadow: none;
-	outline: none;
+    background-color: #99e7e7;
+    color: white;
+    border: none;
+    box-shadow: none;
+    outline: none;
 }
 
 .k_input {
-	margin-top: 10px;
-	border-radius: 5px;
+    margin-top: 10px;
+    border-radius: 5px;
 }
 
 .eyes {
@@ -182,8 +186,9 @@
     font-size: 14px;
     cursor: pointer;
 }
-.eyes2{
-	position: absolute;
+
+.eyes2 {
+    position: absolute;
     top: 35px;
     bottom: 0;
     right: 780px; /* 위치 조정 */
@@ -194,580 +199,903 @@
 }
 
 div.main {
-	position: relative;
-	padding: 20px;
+    position: relative;
+    padding: 20px;
 }
 
 div.main input {
-	width: 300px;
-	height: 30px;
-	background-color: black;
-	border: 0;
-	color: white;
-	text-indent: 10px;
+    width: 300px;
+    height: 30px;
+    background-color: black;
+    border: 0;
+    color: white;
+    text-indent: 10px;
 }
 
 div.main i {
-	position: absolute;
-	left: 75%;
-	top: 27px;
-	color: orange;
+    position: absolute;
+    left: 75%;
+    top: 27px;
+    color: orange;
 }
 
 /* 간편 회원가입 페이지 */
 .k_easyjoin_main {
-	margin-top: 250px;
-	
+    margin-top: 250px;
+
 }
-.k_s_info{
-	font-weight: bold;
-	
+
+.k_s_info {
+    font-weight: bold;
+
 }
+
 .k_easyjoin_font {
-	font-weight: bold;
-	font-size: 30px;
-	margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 15px;
 }
 
 .k_easy_validation {
-	background-color: #00c4c4;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	height: 38px;
-	font-size: 12px;
-	width: 70px;
-	margin-left: 5px;
+    background-color: #00c4c4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 38px;
+    font-size: 12px;
+    width: 70px;
+    margin-left: 5px;
 }
 
 .k_complete {
-	margin-top: 30px;
-	background-color: #99e7e7;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	height: 50px;
-	text-align: center;
-	line-height: 50px;
+    margin-top: 30px;
+    background-color: #99e7e7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
 }
 
 .complete button {
-	background-color: #00c4c4;
-	color: white;
-	border: none;
-	height: 50px;
+    background-color: #00c4c4;
+    color: white;
+    border: none;
+    height: 50px;
 }
 
 .complete button:hover,
 .complete button:active,
 .complete button:focus {
-	background-color: #00c4c4;
-	color: white;
-	border: none;
-	box-shadow: none;
-	outline: none;
+    background-color: #00c4c4;
+    color: white;
+    border: none;
+    box-shadow: none;
+    outline: none;
 }
 
 .k_change {
-	border-radius: 5px;
-	background-color: #f6f6f6;
+    border-radius: 5px;
+    background-color: #f6f6f6;
 }
 
 .k_input {
-	margin-top: 10px;
-	border-radius: 5px;
+    margin-top: 10px;
+    border-radius: 5px;
 }
 
 .sub-text {
-	opacity: 0.7;
+    opacity: 0.7;
 
 }
 
 .k_tel {
-	font-weight: bold;
+    font-weight: bold;
 
 }
 
 .k_input_name {
-	margin-top: 10px;
+    margin-top: 10px;
 }
+
 /* 프로필 수정 페이지 */
-		.k_update_login-container {
-			max-width: 400px;
-			margin: auto;
-			margin-top: 100px;
-		}
-        .k_profile_set{
-			font-weight: bold;
-			 margin-bottom: 20px;
-			 font-size: 25px;
-		}
-		.k_p_validation {
-			background-color: #00c4c4;
-			color: white;
-			border: none;
-			border-radius: 5px;
-			height: 38px;
-			font-size: 12px;
-			width: 70px;
-			margin-left: 5px;
-		}
-        .k_change_delete{
-			text-decoration-line: underline;
-		}
-		.complete {
-			margin-top: 30px;
-			text-align: center;
-			display: flex;
-			justify-content: space-between;
-		}
+.k_update_login-container {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 100px;
+}
 
-		.complete button {
-			background-color: #00c4c4;
-			color: white;
-			border: none;
-			height: 50px;
-			width: calc(50% - 5px);
-		}
+.k_profile_set {
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
 
-		.complete button:hover,
-		.complete button:active,
-		.complete button:focus {
-			background-color: #00c4c4;
-			color: white;
-			border: none;
-			box-shadow: none;
-			outline: none;
-		}
-        .k_p_margin{
-			margin-top: 15px;
-		}
-		.k_input {
-			margin-top: 10px;
-			border-radius: 5px;
-		}
+.k_p_validation {
+    background-color: #00c4c4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 38px;
+    font-size: 12px;
+    width: 70px;
+    margin-left: 5px;
+}
 
-		.sub-text {
-			opacity: 0.7;
-		}
+.k_change_delete {
+    text-decoration-line: underline;
+}
 
-		.k_profile {
-			border-radius: 50%;
-			width: 100px;
-			height: 100px;
-			object-fit: cover;
-		}
-		.k_profile-container {
-			text-align: center;
-		}
-		.k_button-container {
-			text-align: center;
-			margin-top: 10px;
-			background: none;
-			display: flex;
-			justify-content: center;
-		}
+.complete {
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
 
-		.k_button-container button {
-			border: none;
-			padding: 0;
-			font-size: inherit;
-			background: none;
-			color: black;
-			transition: color 0.3s ease;
-			margin-right: 10px;
-		}
+.complete button {
+    background-color: #00c4c4;
+    color: white;
+    border: none;
+    height: 50px;
+    width: calc(50% - 5px);
+}
 
-		.k_button-container button.btn-primary,
-		.k_button-container button.btn-danger {
-			border: none;
-			padding: 0;
-			font-size: inherit;
-			background: none;
-			color: black;
-			transition: color 0.3s ease, border-bottom 0.3s ease;
-			margin-right: 10px;
-			outline: none;
-		}
+.complete button:hover,
+.complete button:active,
+.complete button:focus {
+    background-color: #00c4c4;
+    color: white;
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
 
-		.k_button-container button.btn-primary:hover,
-		.k_button-container button.btn-primary:active,
-		.k_button-container button.btn-primary:focus,
-		.k_button-container button.btn-danger:hover,
-		.k_button-container button.btn-danger:active,
-		.k_button-container button.btn-danger:focus {
-			color: inherit;
-			background: none;
-			box-shadow: none;
-			outline: none;
-			text-decoration-line: underline;
-		}
-		/*마이페이지*/
-			.k_left_my {
-		margin-left: 50px;
-		top: 200px;
-		position: relative;
-		text-align: center;
-		margin-right: 1500px;
-	}
+.k_p_margin {
+    margin-top: 15px;
+}
 
-	.k_left_my_hr {
-		opacity: 0.3;
-		margin-top: 20px;
-		width: 50%;
-	}
+.k_input {
+    margin-top: 10px;
+    border-radius: 5px;
+}
 
-	.k_update_login-container {
-		max-width: 1000px;
-		margin: auto;
-		margin-left: 500px;
-		margin-top: -120px;
-		height: 1000px;
-	}
+.sub-text {
+    opacity: 0.7;
+}
 
-	.k_m_name {
-		margin-top: 15px;
-		font-weight: bold;
-	}
+.k_profile {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
 
-	.k_m_button {
-		background: none;
-		border: none;
-		outline: none;
-		cursor: pointer;
-	}
+.k_profile-container {
+    text-align: center;
+}
 
-	.k_m_vip {
-		margin-top: 15px;
-		background-color: rgb(236, 236, 236);
-		border-radius: 10px;
-		width: 80px;
-		height: 30px;
-		border: none;
-	}
+.k_button-container {
+    text-align: center;
+    margin-top: 10px;
+    background: none;
+    display: flex;
+    justify-content: center;
+}
 
-	.k_m_kakao {
-		margin-top: 10px;
-		background: none;
-		border: none;
-		outline: none;
-		cursor: pointer;
-	}
+.k_button-container button {
+    border: none;
+    padding: 0;
+    font-size: inherit;
+    background: none;
+    color: black;
+    transition: color 0.3s ease;
+    margin-right: 10px;
+}
 
-	.k_m_logout {
-		display: block;
-		margin-top: 15px;
-		height: 40px;
-		background-color: white;
-		border-radius: 10px;
-		cursor: pointer;
-		width: 200px;
-		border: 1px solid rgb(192, 192, 192);
-		margin-left: 180px;
-	}
+.k_button-container button.btn-primary,
+.k_button-container button.btn-danger {
+    border: none;
+    padding: 0;
+    font-size: inherit;
+    background: none;
+    color: black;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    margin-right: 10px;
+    outline: none;
+}
 
-	.k_couponpack,
-	.k_invite,
-	.k_invite-text {
-		width: 100%;
-		text-align: left;
-	}
+.k_button-container button.btn-primary:hover,
+.k_button-container button.btn-primary:active,
+.k_button-container button.btn-primary:focus,
+.k_button-container button.btn-danger:hover,
+.k_button-container button.btn-danger:active,
+.k_button-container button.btn-danger:focus {
+    color: inherit;
+    background: none;
+    box-shadow: none;
+    outline: none;
+    text-decoration-line: underline;
+}
 
-	.k_m_couponpack {
-		background-color: white;
-		height: 40px;
-		border-radius: 10px;
-		border: 1px solid rgb(192, 192, 192);
-		cursor: pointer;
-	}
+/*마이페이지*/
+.k_left_my {
+    margin-left: 50px;
+    top: 200px;
+    position: relative;
+    text-align: center;
+    margin-right: 1500px;
+}
 
-	.k_invite-container {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-	}
+.k_left_my_hr {
+    opacity: 0.3;
+    margin-top: 20px;
+    width: 50%;
+}
 
-	.k_invite {
-		margin-top: 15px;
-		height: 80px;
-		border-radius: 5px;
-		background-color: #f9fafb;
-		border: 1px solid rgb(192, 192, 192);
-		width: 30%;
-	}
+.k_update_login-container {
+    max-width: 1000px;
+    margin: auto;
+    margin-left: 500px;
+    margin-top: -120px;
+    height: 1000px;
+}
 
-	.k_invite-text {
-		margin-top: 15px;
-		height: 80px;
-		border-radius: 5px;
-		background-color: rgb(255, 255, 255);
-		border: 1px solid rgb(192, 192, 192);
-		margin-left: 20px;
-	}
+.k_m_name {
+    margin-top: 15px;
+    font-weight: bold;
+}
 
-	.k_m_hr {
-		opacity: 0.3;
-	}
+.k_m_button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
 
-	   .k_i_group {
-        margin-top: 15px;
-        height: 80px;
-        border-radius: 5px;
-        background-color: rgb(255, 255, 255);
-        border: 1px solid rgb(192, 192, 192);
-        width: 70%;
-        margin-left: 20px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
+.k_m_vip {
+    margin-top: 15px;
+    background-color: rgb(236, 236, 236);
+    border-radius: 10px;
+    width: 80px;
+    height: 30px;
+    border: none;
+}
 
-    .k_invite-group {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-left: 10px;
-        position: relative; /* 상대 위치 지정 */
-    }
+.k_m_kakao {
+    margin-top: 10px;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
 
-    .k_invite-group:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        height: 60px; /* 수직선의 높이 조절 */
-        width: 1px; /* 수직선의 너비 조절 */
-        background-color: rgb(204, 204, 204); /* 수직선 색상 지정 */
-        right: -60px; /* 수직선 우측으로 이동하여 간격 조절 */
-        top: -35%; /* 수직선의 상단 위치 조절 */
-        
-    }
+.k_m_logout {
+    display: block;
+    margin-top: 15px;
+    height: 40px;
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 200px;
+    border: 1px solid rgb(192, 192, 192);
+    margin-left: 180px;
+}
 
-	.k_see_movie {
-		margin-top: 30px;
-		border-radius: 10px;
-		border: none;
-		background-color: #a5e5e6;
-		width: 100%;
-		height: 60px;
-		cursor: pointer;
-	}
+.k_couponpack,
+.k_invite,
+.k_invite-text {
+    width: 100%;
+    text-align: left;
+}
 
-	.k_my_active,
-	.k_c_center {
-		margin-top: 30px;
-		font-weight: bold;
-	}
+.k_m_couponpack {
+    background-color: white;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid rgb(192, 192, 192);
+    cursor: pointer;
+}
 
-	.k_like_list {
-		margin-top: 20px;
-		height: 35px;
-		border: none;
-		background-color: white;
-		cursor: pointer;
-	}
+.k_invite-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
-	.k_c_center_list {
-		margin-top: 20px;
-		height: 35px;
-		border: none;
-		background-color: white;
-		cursor: pointer;
-	}
+.k_invite {
+    margin-top: 15px;
+    height: 80px;
+    border-radius: 5px;
+    background-color: #f9fafb;
+    border: 1px solid rgb(192, 192, 192);
+    width: 30%;
+}
 
-	.k_c_center_list_set {
-		height: 35px;
-		border: none;
-		background-color: white;
-		cursor: pointer;
-	}
+.k_invite-text {
+    margin-top: 15px;
+    height: 80px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(192, 192, 192);
+    margin-left: 20px;
+}
 
-	.k_c_center_second_list {
-		margin-top: 20px;
-		height: 35px;
-		border: none;
-		background-color: white;
-		cursor: pointer;
-		margin-left: 400px;
-	}
+.k_m_hr {
+    opacity: 0.3;
+}
 
-		/*자주 묻는 질문 페이지*/
- .k_ask_container {
-	 max-width: 400px;
-	 margin: auto;
-	 margin-top: 150px;
- }
+.k_i_group {
+    margin-top: 15px;
+    height: 80px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(192, 192, 192);
+    width: 70%;
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.k_invite-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px;
+    position: relative; /* 상대 위치 지정 */
+}
+
+.k_invite-group:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    height: 60px; /* 수직선의 높이 조절 */
+    width: 1px; /* 수직선의 너비 조절 */
+    background-color: rgb(204, 204, 204); /* 수직선 색상 지정 */
+    right: -60px; /* 수직선 우측으로 이동하여 간격 조절 */
+    top: -35%; /* 수직선의 상단 위치 조절 */
+
+}
+
+.k_see_movie {
+    margin-top: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: #a5e5e6;
+    width: 100%;
+    height: 60px;
+    cursor: pointer;
+}
+
+.k_my_active,
+.k_c_center {
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.k_like_list {
+    margin-top: 20px;
+    height: 35px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.k_c_center_list {
+    margin-top: 20px;
+    height: 35px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.k_c_center_list_set {
+    height: 35px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.k_c_center_second_list {
+    margin-top: 20px;
+    height: 35px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    margin-left: 400px;
+}
+
+/*자주 묻는 질문 페이지*/
+.k_ask_container {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 150px;
+}
 
 .k_ask_main {
-	text-align: center;
-	font-weight: bold;
-	margin-bottom: 40px;
-	font-size: 35px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 40px;
+    font-size: 35px;
 }
 
 .k_search-container {
-	display: flex;
-	max-width: 400px;
-	width: 100%;
-	border: 2px solid #000;
-	border-radius: 4px;
-	overflow: hidden;
+    display: flex;
+    max-width: 400px;
+    width: 100%;
+    border: 2px solid #000;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 .k_search-input {
-	flex: 1;
-	padding: 10px;
-	border: none;
-	font-size: 16px;
+    flex: 1;
+    padding: 10px;
+    border: none;
+    font-size: 16px;
 }
 
 .k_search-button {
-	padding: 10px;
-	color: white;
-	border: none;
-	border-radius: 0 4px 4px 0;
-	cursor: pointer;
-	font-size: 16px;
-	width: 10%;
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-size: 16px;
+    width: 10%;
 }
 
 .k_ask_hr {
-	margin-top: 30px;
-	opacity: 0.7;
+    margin-top: 30px;
+    opacity: 0.7;
 }
 
 .k_ask_s_container {
-	max-width: 750px;
-	margin: auto;
-	margin-top: 30px;
+    max-width: 750px;
+    margin: auto;
+    margin-top: 30px;
 }
 
 .k_btn_group {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .k_btn {
-	height: 35px;
-	width: 70%;
-	background-color: white;
-	border: 2px solid #01DFD7;
-	box-shadow: none;
-	cursor: pointer;
-	font-size: 16px;
+    height: 35px;
+    width: 70%;
+    background-color: white;
+    border: 2px solid #01DFD7;
+    box-shadow: none;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 .k_btn:not(:last-child) {
-	border-right: none;
+    border-right: none;
 }
 
 .k_btn:hover,
 .k_btn:active {
-	background-color: #01DFD7;
-	color: white;
+    background-color: #01DFD7;
+    color: white;
 }
 
 .k_a_btn-primary {
-	height: 35px;
-	width: 70%;
-	background-color: white;
-	border-color: #01DFD7;
-	box-shadow: none;
+    height: 35px;
+    width: 70%;
+    background-color: white;
+    border-color: #01DFD7;
+    box-shadow: none;
 }
 
 .k_a_btn_mem_button {
-	border-radius: 4px;
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
-	border-right: none;
+    border-radius: 4px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
 }
 
 .k_a_btn_mem_vip {
-	border-radius: 4px;
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
+    border-radius: 4px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .k_b_b_none {
-	border-right: none;
+    border-right: none;
 }
 
 .k_member_info {
-	margin-top: 30px;
-	color: #01DFD7;
-	font-weight: bold;
+    margin-top: 30px;
+    color: #01DFD7;
+    font-weight: bold;
 }
 
 .k_member_how_info {
-	margin-top: 7px;
-	font-weight: bold;
-	display: flex;
-	align-items: center;
+    margin-top: 7px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
 }
 
 .k_clickMe {
-	cursor: pointer;
-	padding: 10px;
-	background-color: white;
-	color: rgb(128, 128, 128);
-	display: inline-block;
-	margin: 10px;
+    cursor: pointer;
+    padding: 10px;
+    background-color: white;
+    color: rgb(128, 128, 128);
+    display: inline-block;
+    margin: 10px;
 }
 
 .k_clickMeSymbol {
-	margin-left: 450px;
-	border: none;
-	background-color: white;
+    margin-left: 450px;
+    border: none;
+    background-color: white;
     cursor: pointer;
 
 }
 
 .k_hiddenDiv {
-	display: none;
-	padding: 20px;
-	background-color: rgb(128, 128, 128);
-	color: #fff;
-	margin: 10px;
+    display: none;
+    padding: 20px;
+    background-color: rgb(128, 128, 128);
+    color: #fff;
+    margin: 10px;
 }
-.k_a_l{
-	margin-top: 15px;
+
+.k_a_l {
+    margin-top: 15px;
 }
+
 .k_ask_ul {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	display: flex;
-	justify-content: center;
-	align-items: flex-end;
-	margin-top: 50px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 50px;
 }
+
 .k_ask_li {
-	margin-right: 40px;
-	opacity: 0.7;
+    margin-right: 40px;
+    opacity: 0.7;
 }
-.k_ask_a{
+
+.k_ask_a {
 
 }
 
-  /*공지 사항*/
-.k_notice_hr{
-	margin-top: 100px;
+/*공지 사항*/
+.k_notice_hr {
+    margin-top: 100px;
 }
-.k_notice_import{
-	margin-top: 30px;
-	color: #01DFD7;
-	font-weight: bold;
-	margin-bottom: 10px;
-}
-.k_notice_service{
 
-	font-weight: bold;
+.k_notice_import {
+    margin-top: 30px;
+    color: #01DFD7;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
-.k_notice_time{
-	margin-top: 15px;
-	opacity: 0.7;
-	font-size: 12px;
+
+.k_notice_service {
+
+    font-weight: bold;
 }
-.k_notice_s_hr{
-	margin-top: 15px;
-	opacity: 0.7;
+
+.k_notice_time {
+    margin-top: 15px;
+    opacity: 0.7;
+    font-size: 12px;
 }
+
+.k_notice_s_hr {
+    margin-top: 15px;
+    opacity: 0.7;
+}
+
 /*공지 상세 보기*/
+
+.k_notice_detail_container {
+    max-width: 50%;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.k_notice_second_detail_container {
+    display: flex;
+}
+
+.k_notice_detail_main {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.k_notice_profile {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-top: 30px;
+}
+
+.k_notice_profile_text {
+    margin-top: 35px;
+    margin-left: 5px;
+    opacity: 0.7;
+}
+
+.k_notice_profile_second_text {
+    margin-top: 10px;
+    font-size: 12px;
+    margin-left: 2px;
+
+}
+
+.k_notice_deatail_first_comment {
+    margin-top: 50px;
+    opacity: 0.8;
+}
+
+.k_notice_deatail_second_comment {
+    margin-top: 70px;
+}
+
+.k_notice_detail_one {
+    font-weight: bold;
+    font-size: 25px;
+
+}
+
+.k_notice_detail_one_one {
+    margin-top: 20px;
+}
+
+.k_notice_detail_import {
+    margin-top: 20px;
+    font-weight: bold;
+    opacity: 0.7;
+}
+
+.k_notice_detail_import_two {
+    margin-top: 40px;
+    font-weight: bold;
+    opacity: 0.7;
+}
+
+.k_notice_deatail_li_one {
+    font-size: 17px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    line-height: 1.6; /* 줄 간격 조정 */
+
+    text-align: justify; /* 텍스트를 양쪽 맞춤으로 정렬 */
+}
+
+.k_notice_deatail_li_one p {
+    line-height: 1.6; /* 줄 간격 조정 */
+    margin-bottom: 20px; /* 아래 여백 추가 */
+    text-align: justify; /* 텍스트를 양쪽 맞춤으로 정렬 */
+}
+
+.k_margin_left {
+    margin-left: 14px;
+}
+
+.k_nd_margin_left {
+    margin-left: 20px;
+}
+
+.k_nd_sub {
+    text-align: center;
+    margin-top: 10px;
+    opacity: 0.7;
+    font-size: 13px;
+}
+
+.k_nt_margin_top {
+    margin-top: 100px;
+}
+
+.k_nd_global {
+    margin-top: 100px;
+}
+
+.k_nd_thanks {
+    margin-top: 40px;
+}
+
+.K_font_weight_bold {
+    font-weight: bold;
+}
+
+.k_notice_detail_container {
+    max-width: 50%;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.k_notice_detail_container .K_font_weight_bold {
+    font-weight: bold;
+}
+
+.k_a_nt {
+    color: blue;
+}
+
+/*펀딩 업로드*/
+.k_funding_upload_container {
+    max-width: 55%;
+    margin: auto;
+    margin-top: 100px;
+    display: flex;
+}
+
+.k_funding_upload_titles {
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+.k_star_class {
+    color: red;
+}
+
+.k_funding_upload_picture {
+    margin-left: 50px;
+
+}
+
+.k_funding_upload_picture input[type="file"] {
+    display: none;
+}
+
+.k_funding_upload_select_pic {
+    background-color: #a8a7a7;
+    height: 100px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 10%;
+}
+
+.k_funding_upload_movie_level {
+    margin-left: 26%;
+}
+
+.k_funding_upload_select_option {
+    height: 30px;
+    margin-left: 5%;
+    margin-bottom: 10%;
+    width: 30%;
+}
+
+.k_funding_upload_container_two {
+    max-width: 55%;
+    margin: auto;
+    display: flex;
+}
+
+.k_funding_upload_movie_name {
+    margin-left: 9.5%;
+    width: 81.5%;
+    height: 40px;
+}
+
+.k_funding_upload_container_third {
+    max-width: 55%;
+    margin: auto;
+    display: flex;
+    margin-top: 2%;
+}
+
+.k_funding_upload_funding_date {
+    margin-top: 15px;
+    opacity: 0.9;
+    font-size: 13px;
+    flex-direction: column;
+
+}
+
+.k_funding_upload_first_date {
+    margin-left: 8.5%;
+    height: 40px;
+}
+
+.k_funding_upload_last_date {
+    margin-left: 2%;
+    height: 40px;
+}
+
+.k_funding_upload_movie_schedule {
+    margin-left: 30px;
+}
+
+.k_funding_upload_schedule_date {
+    margin-left: 11.5%;
+}
+
+.k_funding_upload_container_three {
+    max-width: 55%;
+    margin: auto;
+    display: flex;
+    margin-top: 2%;
+}
+
+.k_funding_upload_middle_title {
+    margin-top: 3%;
+    margin-bottom: 1%;
+}
+
+.k_funding_upload_sibnob {
+    width: 100%;
+    height: 100px;
+}
+
+.k_funding_upload_select_photo_pic {
+    background-color: #a8a7a7;
+    height: 100px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.k_funding_upload_container_four {
+    max-width: 55%;
+    margin: auto;
+    display: flex;
+    margin-top: 0.5%;
+    margin-right: 25%;
+}
+
+.k_funding_upload_select_photo_pic_receive {
+    background-color: white;
+    border: 2px solid rgb(128, 128, 128);
+    height: 100px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.k_funding_upload_head_Career {
+    margin-left: 9%;
+}
+
+.k_funding_upload_career_input {
+    margin-left: 4.7%;
+    width: 55%;
+    height: 40px;
+
+}
+
+.k_funding_upload_movie_year {
+    margin-left: 6.5%;
+    height: 40px;
+}
+
+.k_funding_upload_head_limit {
+    opacity: 0.8;
+    line-height: 1.4; /* 줄 간격 조정 */
+
+    text-align: justify;
+}
+
+.k_funding_upload_pride {
+    margin-bottom: 10px;
+}
+
+.k_funding_upload_career_input_two {
+    width: 71.5%;
+    height: 40px;
+    margin-bottom: 2%;
+}
