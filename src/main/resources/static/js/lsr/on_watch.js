@@ -1,5 +1,5 @@
 /**
- * 온라인 영화 시청에 들어가는 댓글기능 + 맨 위로가기 버튼기능
+ * [온라인 영화 시청] 에 들어가는 댓글 + 맨 위로가기 버튼
  */
 
 const commentContainer = document.getElementById('l_comment_container');
@@ -52,7 +52,7 @@ addMessage("", "sksk", "hihihihihi", reviewContainer);
 addMessage("", "sksk", "hihihihihi", reviewContainer);
 
 
-// 맨 위로 가기 버튼입니다.
+// 맨 위로 가기 버튼
 document.addEventListener('DOMContentLoaded', function () {
     var backToTopButton = document.getElementById('l_back_to_top');
 
