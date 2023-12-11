@@ -14,7 +14,8 @@ public class FundingService {
     @Autowired
     private FundingRepository fundingRepository;
 
-    public List<FundingResponse.FundingPlusDTO.MoviesByGenreDTO> MoviesByGenre (String genre){
-        return fundingRepository.findAllByGenre(genre);
+    public List<FundingResponse.FundingPlusDTO.MoviesByGenreDTO> MoviesByGenre (String genre, Integer page, Integer pageSize){
+        Integer offset = page * pageSize - pageSize;
+        return fundingRepository.findAllByGenre(genre, pageSize, offset);
     }
 }
