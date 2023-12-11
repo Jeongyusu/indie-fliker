@@ -1,8 +1,6 @@
 package com.tenco.indiepicter.banner;
 
-import com.tenco.indiepicter.funding.FundingResponse;
 import com.tenco.indiepicter.funding.response.BannerDTO;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
