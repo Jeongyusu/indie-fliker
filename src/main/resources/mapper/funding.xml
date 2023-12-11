@@ -4,18 +4,7 @@
 
 <mapper namespace="com.tenco.indiepicter.funding.FundingRepository">
 
-    <select id="findAllByGenre" resultMap="moviesByGenreDTOResultMap">
-            select ft.movie_id, mt.thumbnail, round((ft.present_price / ft.target_price * 100), 1) as funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id where genre = #{genre};
-    </select>
 
-    <resultMap id="moviesByGenreDTOResultMap" type="com.tenco.indiepicter.funding.FundingResponse$FundingPlusDTO$MoviesByGenreDTO">
-        <result property="movieId" column="ft.movie_id"/>
-        <result property="movieThumbnail" column="mt.thumbnail"/>
-        <result property="fundingRate" column="funding_rate"/>
-        <result property="movieName" column="mt.movie_name"/>
-        <result property="synopsis" column="mt.synopsis"/>
-        <result property="production" column="mt.production"/>
-    </resultMap>
 
 
 

@@ -1,7 +1,11 @@
 package com.tenco.indiepicter.reservation;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.tenco.indiepicter.reservation.response.VipReservationDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -12,20 +16,11 @@ public class ReservationService {
 	@Autowired
 	private ReservationRepository reservationRepository;
 	
-	// 초청권 현황 확인
-	public int findById() {
+	public List<VipReservationDTO> invitation(Integer id){
 		
-		int reservationTicket = this.reservationRepository.findById();
+		return this.reservationRepository.findByUserId(id);
 		
-		reservationTicket = 1;
-		
-		log.debug("------------------------------------------------------");
-		log.debug("---------------" + reservationTicket + "------------------------");
-		log.debug("------------------------------------------------------");
-			
-		return reservationTicket;
 	}
 	
-
-
+	
 }

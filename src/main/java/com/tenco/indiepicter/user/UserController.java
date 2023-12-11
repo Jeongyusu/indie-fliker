@@ -35,6 +35,7 @@ public class UserController {
 	private HttpSession session;
 	
 	private ReservationService reservationService;
+	
 
 
 //------------------------------------------------------------------------------------------------------------------
@@ -139,9 +140,9 @@ public class UserController {
 			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
 		}
 		
-		int reservationTicket = this.reservationService.findById();
-		
-		model.addAttribute("reservationTicket", reservationTicket);
+//		int reservationTicket = this.reservationService.findById();
+//		
+//		model.addAttribute("reservationTicket", reservationTicket);
 		
 		return "mypage/mypage";
 	}
