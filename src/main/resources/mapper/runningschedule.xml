@@ -23,51 +23,17 @@
     </delete>
 
     <!-- 특정 영화와 특정 날짜의 오프라인 상영 일정 조회 -->
-    <select id="findByMovieIdAndRunningDate" resultType="com.tenco.indiepicter.runningschedule.RunningScheduleResponse.selectDayDTO" resultMap="selectDayDTO">
-        SELECT
-            r.id as running_schedule_id,
-            m.movie_name,
-            m.running_grade,
-            r.running_date,
-            r.start_time,
-            r.end_time,
-            COUNT(s.seat_name) AS exist_seats,
-            t.total_seat
-        FROM
-            running_schedule_tb AS r
-                INNER JOIN
-            movie_tb AS m ON r.movie_id = m.id
-                INNER JOIN
-            theater_tb AS t ON r.theater_id = t.id
-                LEFT JOIN
-            seat_tb AS s ON r.id = s.running_schedule_id
-        WHERE
-            r.movie_id = 1 AND r.running_date LIKE '2023-12-24%'
-        GROUP BY
-            r.id, m.movie_name, r.running_date, r.movie_id, r.theater_id, t.total_seat
-        ORDER BY
-            r.running_date ASC;
+    <select id="findByMovieIdAndRunningDate" resultType="com.tenco.indiepicter.runningschedule.RunningSchedule">
+        SELECT id, running_date, movie_id, theater_id
+        FROM  running_schedule_tb
+        WHERE movie_id = #{movieId} AND running_date LIKE #{selectDay}'%'
+        ORDER BY running_date ASC;
     </select>
-
-    <resultMap type="com.tenco.indiepicter.runningschedule.RunningScheduleResponse.selectDayDTO" id="selectDayDTO">
-        <id column="running_schedule_id" property="runningDateId" />
-        <result column="movie_name" property="movieName" />
-        <result column="running_grade" property="runningGrade" />
-        <result column="running_date" property="runningDate" />
-        <collection property="movieTimeDTO" resultMap="movieTimeDTO" />
-    </resultMap>
-
-    <resultMap type="com.tenco.indiepicter.runningschedule.RunningScheduleResponse.selectDayDTO.movieTimeDTO" id="movieTimeDTO">
-        <result column="start_time" property="startTime" />
-        <result column="end_time" property="endTime" />
-        <result column="exist_seats" property="existSeatCount" />
-        <result column="total_seat" property="theaterSeatCount" />
-    </resultMap>
 
     <!-- 특정 영화의 오프라인 상영 일정 기간 조회 -->
     <select id="findByMovieId" resultType="com.tenco.indiepicter.runningschedule.RunningSchedule">
         select running_date, movie_id, theater_id from running_schedule_tb
-        where movie_id = 1
+        where movie_id = #{movieId}
         order by running_date asc ;
     </select>
 

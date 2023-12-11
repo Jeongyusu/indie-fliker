@@ -9,14 +9,13 @@ import java.util.List;
 public interface TheaterRepository {
 
     // 영화관 등록
-    public void insert(Theater theater);
+    public int insert(Theater theater);
 
     // 영화관 수정
     public int updateById(Theater theater);
 
     // 영화관 삭제
     public int deleteById(Integer id);
-
 
     // 영화관 1개 조회
     public Theater findById(Integer id);

@@ -5,7 +5,7 @@ import lombok.Data;
 public class TheaterRequest {
 
     @Data
-    public static class FindByTheaterDTO{
+    public static class FindByTheaterIdDTO{
         private Integer theaterId;
     }
 }

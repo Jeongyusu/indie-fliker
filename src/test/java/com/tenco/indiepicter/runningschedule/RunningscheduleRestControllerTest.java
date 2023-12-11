@@ -45,9 +45,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
             String selectDay = "2023-12-24";
 
             // when (실행)
-            RunningScheduleResponse.SelectDayDTO selectDayDTO
-                    = runningScheduleRepository.findByMovieIdAndRunningDate(movieId, selectDay);
-            System.out.println("결과 : " + selectDayDTO);
 
             // then (상태 검증)
 //            actions.andExpect(jsonPath("$.success").value(true));

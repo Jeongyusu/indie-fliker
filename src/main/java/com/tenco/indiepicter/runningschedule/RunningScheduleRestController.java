@@ -21,10 +21,10 @@ public class RunningScheduleRestController {
     private RunningScheduleService runningScheduleService;
 
     // 오프라인 영화 상영 일정(달력) 선택 API 요청
-    @GetMapping("/api/{movieId}/total-day/select-day")
-    public ResponseEntity<?> selectDay(@PathVariable Integer movieId, @RequestParam(value = "selectDay") String selectDay) {
-        RunningScheduleResponse.selectDayDTO selectDayDTO = runningScheduleService.findByMovieIdAndRunningDate(movieId,selectDay);
-        return ResponseEntity.ok().body(ApiUtils.success(selectDayDTO));
-    }
+//    @GetMapping("/api/{movieId}/total-day/select-day")
+//    public ResponseEntity<?> selectDay(@PathVariable Integer movieId, @RequestParam(value = "selectDay") String selectDay) {
+//        RunningScheduleResponse.selectDayDTO selectDayDTO = runningScheduleService.findByMovieIdAndRunningDate(movieId,selectDay);
+//        return ResponseEntity.ok().body(ApiUtils.success(selectDayDTO));
+//    }
 
 }
