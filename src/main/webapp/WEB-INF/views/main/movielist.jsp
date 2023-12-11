@@ -12,12 +12,12 @@
             <img src="https://img.freepik.com/premium-photo/background-that-emulates-ghibli-studio-style_931878-132658.jpg?w=2000" class="card-img" alt="..." style="object-fit: cover;height: 400px;">
         </div>
       </div>
-      <div class="l_banner_item carousel-item">
+      <div class="l_banner_item carousel-item active">
         <div class="d-block">
             <img src="https://pbs.twimg.com/media/D2jSGe2WwAAymAW.jpg" class="card-img" alt="..." style="object-fit: cover;height: 400px;">
         </div>
       </div>
-      <div class="l_banner_item carousel-item">
+      <div class="l_banner_item carousel-item active">
         <div class="d-block">
             <img src="https://webneel.net/file/images/11-16/8-xmen-movieCrawl-poster-design.preview.jpg" class="card-img" alt="..." style="object-fit: cover;height: 400px;">
         </div>
@@ -35,7 +35,7 @@
         <div class="card">
           <img src="${funding.movieThumbnail}" class="card-img" alt="...">
         </div>
-        <div class="h4 card-title l_mint mt-3">${funding.fundingRate}</div>
+        <div class="h4 card-title l_mint mt-3">펀딩 달성률 ${funding.fundingRate}%</div>
         <div class="h5 card-text mt-2">[${funding.movieName}]</div>
         <div class="card-text mt-2">${funding.synopsis}</div>
         <figcaption class="figure-caption">${funding.production}</figcaption>
