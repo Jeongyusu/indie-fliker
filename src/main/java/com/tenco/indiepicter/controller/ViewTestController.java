@@ -63,19 +63,24 @@ public class ViewTestController {
         return "main/chatroom";
     }
     
+    @GetMapping("/live-chatrooms")
+    public String liveChatrooms(){
+        return "main/live_chatrooms";
+    }
+    
     @GetMapping("/my-likelist")
     public String likelist(){
         return "mypage/likelist";
     }
     
-    @GetMapping("/my-funding-offline")
+    @GetMapping("/offline-funding")
     public String offlineFunding(){
-        return "mypage/offline_funding";
+        return "mypage/off_funding";
     }
     
-    @GetMapping("/my-funding-online")
+    @GetMapping("/online-funding")
     public String onlineFunding(){
-        return "mypage/online_funding";
+        return "mypage/on_funding";
     }
     
 }

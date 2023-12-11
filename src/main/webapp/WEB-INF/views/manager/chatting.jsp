@@ -114,13 +114,13 @@
                     <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
                     <p class="p_p1">영화 제목</p>
                     <p class="p_p2">달성률</p>
-                    <a href=""><button>채팅방 오픈</button></a>
+                    <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop">채팅방 오픈</button>
                 </div>
                 <div class="p_menu1">
                     <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
                     <p class="p_p1">영화 제목</p>
                     <p class="p_p2">달성률</p>
-                    <a href=""><button>채팅방 오픈</button></a>
+                    <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop">채팅방 오픈</button>
                 </div>
             </div>
 
@@ -129,7 +129,7 @@
                     <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
                     <p class="p_p1">영화 제목</p>
                     <p class="p_p2">달성률</p>
-                    <a href=""><button>채팅방 오픈</button></a>
+                    <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop">채팅방 오픈</button>
                 </div>
                 <div class="p_menu2">
                     <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
@@ -141,13 +141,13 @@
                     <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
                     <p class="p_p1">영화 제목</p>
                     <p class="p_p2">달성률</p>
-                    <a href=""><button>채팅방 오픈</button></a>
+                    <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop">채팅방 오픈</button>
                 </div>
                 <div class="p_menu2">
                     <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
                     <p class="p_p1">영화 제목</p>
                     <p class="p_p2">달성률</p>
-                    <a href=""><button>채팅방 오픈</button></a>
+                    <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop">채팅방 오픈</button>
                 </div>
             </div>
             
@@ -209,36 +209,6 @@
 		</div>
      
 	</div>
-	<script>
-		$(document).ready(function() {
-	        // 채팅방 오픈 버튼이 클릭
-	        $('.btn[data-toggle="modal"]').on('click', function() {
-	        	 // 선택한 버튼의 영화 제목과 달성률 찾아 모달의 제목과 내용으로
-	        	var movieTitle = $(this).closest('.p_menu1').find('.p_p1').text();
-	            var achievementRate = $(this).closest('.p_menu1').find('.p_p2').text();
-
-	            // 모달의 제목과 내용 설정
-	            $('.modal-body .movie-title').text("영화 제목: " + movieTitle);
-	            $('.modal-body .achievement-rate').text("달성률: " + achievementRate);
-	            
-	            $('#startChatBtn').on('click', function() {
-	                $.ajax({
-	                  type: "POST",
-	                  url: "/api/chat/open",
-	                  data: { movieTitle: movieTitle },
-	                  success: function(response) {
-	                    console.log(response);
-	                  },
-	                  error: function(error) {
-	                    console.error(error);
-	                  }
-	                });
-	                
-	                // 모달 닫기
-	                $('#staticBackdrop').modal('hide');
-	             });
-	        });
-	    });
-	</script>
+	<script type="module" src="/js/lsr/chatting.js"></script>
 </body>
 </html>

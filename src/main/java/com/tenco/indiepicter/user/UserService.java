@@ -21,10 +21,12 @@ public class UserService {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+
+//--------------------------------------------------------------------------------
 	
 	// 회원 가입
 	@Transactional
-	public void join(UserRequest.JoinDTO requestDto){
+	public int join(UserRequest.JoinDTO requestDto){
 		
 		String password = requestDto.getPassword1();
 		// 비밀번호 인코딩
@@ -39,10 +41,19 @@ public class UserService {
 					.grade("NORMAL")
 					.build();
 					
-		this.userRepository.insert(user);
+		int resultUserCount = this.userRepository.insert(user);
+		
+		if(resultUserCount != 1) {
+			throw new MyDynamicException("회원가입에 실패했습니다.", HttpStatus.BAD_REQUEST);
+		}
+		
+		return resultUserCount;
 	}
+
+//--------------------------------------------------------------------------------
 	
 	// 로그인
+	@Transactional
 	public User login(UserRequest.loginDTO requestDto) {
 		
 		// 유저 이메일 조회
@@ -56,10 +67,6 @@ public class UserService {
 		// 유저 비밀번호가 db에 저장된 값과 비교
 		boolean passwordCheck = passwordEncoder.matches(requestDto.getPassword(), user.getPassword());
 		
-		log.debug("-----------------------------------------");
-		log.debug(requestDto.getPassword());
-		log.debug("-----------------------------------------");
-		
 		// 비밀번호 유효성 검사
 		if(passwordCheck == false) {
 			throw new MyDynamicException("비밀번호가 잘못되었습니다.", HttpStatus.BAD_REQUEST);
@@ -67,6 +74,23 @@ public class UserService {
 		
 		return user;
 	}
+	
+//--------------------------------------------------------------------------------
+	
+	// 이메일 중복 검사
+	public int findByEmailCheck(String userEmail) {
+		
+		int result = this.userRepository.findByEmailCheck(userEmail);
+		
+//		// 이메일 중복 유효성 검사
+//		if(result != 1) {
+//			throw new MyDynamicException("이미 존재하는 이메일입니당.", HttpStatus.BAD_REQUEST);
+//		}
+		
+		return result;
+	}
+	
+//--------------------------------------------------------------------------------
 	
 	// 회원 전체 조회
 	public List<User> userLists(){
