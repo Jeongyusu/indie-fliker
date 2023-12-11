@@ -12,7 +12,9 @@
     <h1 class="k_ask_main">자주 묻는 질문</h1>
     <div class="k_search-container">
         <input type="text" class="k_search-input" placeholder="검색어를 입력하세요">
-        <button class="k_search-button"><i class="fa-light fa-magnifying-glass"></i></button>
+        <a href="#" class="custom-button">
+        <img class="k_search-icon" src="../../../../resources/static/images/icons/icons8-search-50.png" alt="My Image">
+        </a>
     </div>
 </div>
 <hr class="k_ask_hr">
