@@ -1,6 +1,7 @@
 package com.tenco.indiepicter.funding;
 
 import com.tenco.indiepicter.banner.BannerRepository;
+import com.tenco.indiepicter.funding.response.MoviesByGenreDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,8 @@ public class FundingService {
     @Autowired
     private FundingRepository fundingRepository;
 
-    public List<FundingResponse.FundingPlusDTO.MoviesByGenreDTO> MoviesByGenre (String genre){
-        return fundingRepository.findAllByGenre(genre);
+    public List<MoviesByGenreDTO> MoviesByGenre (String genre, Integer page, Integer pageSize){
+        Integer offset = page * pageSize - pageSize;
+        return fundingRepository.findAllByGenre(genre, pageSize, offset);
     }
 }

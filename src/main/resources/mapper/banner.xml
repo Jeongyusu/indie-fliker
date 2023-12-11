@@ -6,7 +6,7 @@
 
     <!-- 배너 장르별 조회 -->
     <select id="findByGenre" resultType="com.tenco.indiepicter.banner.Banner">
-            select * from banner_tb where genre = ${genre}
+            select * from banner_tb where genre = #{genre}
     </select>
 
 
