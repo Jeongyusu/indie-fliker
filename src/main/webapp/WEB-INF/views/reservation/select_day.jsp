@@ -21,8 +21,11 @@
             <div id="n_select_day">
                 <div class="n_movie_calendar">
                     <input type="hidden" id="n_activeCal" disabled>
-                    <input type="hidden" id="n_firstDay">
-                    <input type="hidden" id="n_lastDay">
+                    <input type="hidden" id="n_firstDay" value=${totalDayDto.startRunningDate}>
+                    <input type="hidden" id="n_lastDay" value=${totalDayDto.endRunningDate}>
+                    <input type="hidden" id="n_movieId" value=${totalDayDto.movieId}>
+                    <input type="hidden" id="n_theaterId" value=${totalDayDto.theaterId}>
+
                 </div>
                 <div class="n_select_day_movies">
                     <input type="text" id="n_otherInput" placeholder="날짜를 선택해주세요" disabled="">

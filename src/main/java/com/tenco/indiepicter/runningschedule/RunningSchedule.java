@@ -1,5 +1,6 @@
 package com.tenco.indiepicter.runningschedule;
 
+import com.tenco.indiepicter._core.utils.TimeStampUtil;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,5 +27,17 @@ public class RunningSchedule {
         this.endTime = endTime;
         this.movieId = movieId;
         this.theaterId = theaterId;
+    }
+
+    public String formatToRunningDate(){
+        return TimeStampUtil.timeStampToDate(runningDate);
+    }
+
+    public String formatToStartTime(){
+        return TimeStampUtil.timeStampToDate(startTime);
+    }
+
+    public String formatToEndTime(){
+        return TimeStampUtil.timeStampToDate(endTime);
     }
 }

@@ -9,4 +9,13 @@ public class TimeStampUtil {
         return simpleDateFormat.format(time);
     }
 
+    public static String timeStampToDate(Timestamp time) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        return simpleDateFormat.format(time);
+    }
+
+    public static String timeStampToTime(Timestamp time) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:MM");
+        return simpleDateFormat.format(time);
+    }
 }
