@@ -4,25 +4,11 @@
 
 <mapper namespace="com.tenco.indiepicter.funding.FundingRepository">
 
-    <!-- 펀딩 등록 -->
-<!--    <insert id="insert">-->
-<!--        insert into user_tb(user_email, password, username, tel, grade, gubun, created_at)-->
-<!--        values(#{userEmail}, #{password}, #{username}, #{tel}, #{grade}, #{gubun}, now())-->
-<!--    </insert>-->
-
-    <!-- 펀딩 검색 -->
-<!--    <select id="selectId" resultType="boolean">-->
-<!--        select count(*)-->
-<!--        from user_tb-->
-<!--        where = #{id}-->
-<!--    </select>-->
-
-    <!-- 펀딩 장르별 조회 -->
     <select id="findAllByGenre" resultMap="moviesByGenreDTOResultMap">
             select ft.movie_id, mt.thumbnail, round((ft.present_price / ft.target_price * 100), 1) as funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id where genre = #{genre};
     </select>
 
-    <resultMap id="moviesByGenreDTOResultMap" type="com.tenco.indiepicter.funding.FundingResponse$fundingPlusDTO$MoviesByGenreDTO">
+    <resultMap id="moviesByGenreDTOResultMap" type="com.tenco.indiepicter.funding.FundingResponse.FundingPlusDTO.MoviesByGenreDTO">
         <result property="movieId" column="ft.movie_id"/>
         <result property="movieThumbnail" column="mt.thumbnail"/>
         <result property="fundingRate" column="funding_rate"/>
@@ -30,8 +16,6 @@
         <result property="synopsis" column="mt.synopsis"/>
         <result property="production" column="mt.production"/>
     </resultMap>
-
-
 
 
 
