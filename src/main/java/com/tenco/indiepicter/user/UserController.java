@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
 import com.tenco.indiepicter._core.utils.Define;
+import com.tenco.indiepicter.reservation.ReservationService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,6 +31,9 @@ public class UserController {
 	
 	@Autowired
 	private HttpSession session;
+	
+	@Autowired
+	private ReservationService reservationService;
 	
 	
 //------------------------------------------------------------------------------------------------------------------
@@ -126,7 +130,17 @@ public class UserController {
 	
 	// 마이페이지 접근
 	@GetMapping("/mypage")
-	public String myPage() {
+	public String myPage(Model model) {
+		
+		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+		
+		if(principal == null) {
+			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
+		}
+		
+		int reservationTicket = this.reservationService.findById();
+		
+		model.addAttribute("reservationTicket", reservationTicket);
 		
 		return "mypage/mypage";
 	}
@@ -134,7 +148,5 @@ public class UserController {
 //----------------------------------------------------------------------------------------------------------------
 	
 	
-	
-// 이메일 중복 체크 작업
 	
 }
