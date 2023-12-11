@@ -1,6 +1,8 @@
 /**
- * 사용하시게 될때는 주석 풀어주세요!
+ * 채팅 메세지 add, snapshot으로 확인
  */
+
+import { db } from './firebase-config.js';
 
 const userId = document.getElementById('userId').value;
 const movieTitle = document.getElementById('movieTitle').value;
@@ -8,15 +10,6 @@ const movieTitle = document.getElementById('movieTitle').value;
 const chatMessagesContainer = document.getElementById('chatMessages');
 const messageInput = document.getElementById('l_message_input');
 const sendMessageButton = document.getElementById('l_send_message_button');
-
-var firebaseConfig = {
-//    apiKey: "AIzaSyBizQ8BXMTz4wRDIXsMiCfvOK-90kq6n1k",
-    authDomain: "indiflinker-chat.firebaseapp.com",
-    projectId: "indiflinker-chat",
-};
-
-firebase.initializeApp(firebaseConfig);
-var db = firebase.firestore();
 
 sendMessageButton.addEventListener('click', () => {
     const messageText = messageInput.value;
@@ -74,4 +67,12 @@ function addMessage(name, message, time) {
     messageContainer.appendChild(timeElement);
     
     chatMessagesContainer.appendChild(messageContainer);
+}
+
+// Enter 키를 누를 때 메시지 전송
+function handleKeyPress(event) {
+    console.log('');
+    if (event.key === "Enter") {
+        sendMessage();
+    }
 }

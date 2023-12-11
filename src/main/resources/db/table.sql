@@ -21,6 +21,8 @@ create table theater_tb(
 
 create table movie_tb(
                          id int auto_increment primary key,
+                         make_year int not null,
+                         production varchar(20) not null,
                          movie_name varchar(20) not null,
                          synopsis varchar(500) not null,
                          thumbnail varchar(500) not null,
@@ -75,6 +77,7 @@ create table movie_file_tb(
 create table funding_tb(
                            id int auto_increment primary key,
                            target_price int not null,
+                           present_price int not null,
                            price_per_onetime int not null,
                            people_count int not null,
                            release_date date not null,

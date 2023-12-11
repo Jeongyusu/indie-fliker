@@ -2,12 +2,12 @@
 @import url(common.css);
 
 /* on-detail */
-body, html {
-    height: 100%;
-    margin: 0;
-    font-size: 100%;
-    font: inherit;
-}
+/*body, html {*/
+/*    height: 100%;*/
+/*    margin: 0;*/
+/*    font-size: 100%;*/
+/*    font: inherit;*/
+/*}*/
 
 .n_body {
     width: 100%;
@@ -15,6 +15,12 @@ body, html {
 
 .n_row {
     margin: 40px auto;
+}
+
+.n_custom_container_fluid {
+    width: 1200px;
+    display: flex;
+    justify-content: center;
 }
 
 .n_first_movie_img #n_movie_img{
@@ -1087,7 +1093,7 @@ body, html {
     color: var(--def_wh);
     border: 0.5px solid var(--line_01);
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 9px;
     font-weight: bold;
     margin: 0px 10px 10px 0px;
 }
@@ -1105,18 +1111,18 @@ body, html {
     margin: 40px 28px;
 }
 
-#n_select_movie_seat {
-    padding: 26px;
+#n_select_info {
+    padding: 26px 26px 0;
 }
 
-#n_select_movie_seat #n_img img {
+#n_select_info #n_img img {
     display: flex;
     justify-content: center;
     width: 100%;
     border-radius: 10px;
 }
 
-#n_select_movie_seat #n_movie_title {
+#n_select_info #n_movie_title {
     margin-top: 10px;
     font-size: 14px;
     font-weight: bold;
@@ -1131,7 +1137,7 @@ body, html {
 #n_movie_day_and_time #n_day {
     font-size: 15px;
     font-weight: bold;
-    padding-right: 5px;
+    padding-right: 10px;
 }
 
 #n_movie_day_and_time #n_time {
@@ -1139,17 +1145,58 @@ body, html {
     font-weight: bold;
 }
 
-#n_movie_day_and_time {
+.n_select_count {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.n_select_seat_wrapper {
+    border: 0.5px solid var(--line_01);
+    margin: 20px 0;
+    padding: 15px;
+}
+.n_last_seat {
+    width: 13%;
+    height: 36px;
+}
+
+.n_select_list {
     display: flex;
     justify-content: space-between;
 }
 
-.n_select_count {
-    display: flex;
+.n_select_list .n_last {
+    font-size: 12px;
+    font-weight: bold;
+    width: 13%;
+    height: 36px;
+    background-color: var(--point_02);
+    border: none;
+    border-radius: 2px;
+    color: var(--def_wh);
 }
 
-#n_select_count {
+.n_last_price {
+    display: flex;
+    justify-content: space-between;
     font-size: 15px;
     font-weight: bold;
-    color: var(--point_02);
+    color: var(--def_bl);
+}
+
+#n_payment_button {
+    width: 100%;
+    border: none;
+    background-color: var(--primary_01);
+    padding: 23px;
+    border-radius: 0 0 10px 10px;
+}
+
+.n_last_price #n_price {
+    padding-left: 5px;
+}
+
+.n_last_price #n_person_count {
+    padding-right: 5px;
 }

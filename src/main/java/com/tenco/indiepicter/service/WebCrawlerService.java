@@ -1,6 +1,7 @@
 package com.tenco.indiepicter.service;
 
 
+import com.tenco.indiepicter.entity.MovieCrawl;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -8,8 +9,6 @@ import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import com.tenco.indiepicter.entity.Movie;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,7 @@ public class WebCrawlerService {
         this.restTemplate = restTemplate;
     }
 
-    public List<Movie> crawlPage(String url) {
+    public List<MovieCrawl> crawlPage(String url) {
         String htmlContent = restTemplate.getForObject(url, String.class);
 
         // Jsoup을 사용하여 HTML 파싱
@@ -37,7 +36,7 @@ public class WebCrawlerService {
 //        System.out.println("Selected elements: " + elements);
 
         // 결과를 담을 리스트
-        List<Movie> movieList = new ArrayList<>();
+        List<MovieCrawl> movieCrawlList = new ArrayList<>();
 
         // 영화 정보를 추출하는 부분
         for (Element element : elements) {
@@ -64,10 +63,10 @@ public class WebCrawlerService {
 
             // 추출한 정보를 이용하여 Movie 객체를 생성하고 리스트에 추가
             
-            Movie movie = new Movie(title, productionYear, genre, director, cast, productionCompany, distributionCompany);
-            movieList.add(movie);
+            MovieCrawl movieCrawl = new MovieCrawl(title, productionYear, genre, director, cast, productionCompany, distributionCompany);
+            movieCrawlList.add(movieCrawl);
         }
 
-        return movieList;
+        return movieCrawlList;
     }
 }

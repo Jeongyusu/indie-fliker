@@ -8,6 +8,7 @@
   <title>영화목록</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   <link href="../../../../css/lsr_style.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
 
 <body class="l_body">
@@ -27,7 +28,7 @@
       </div>
       <div class="l_banner_item carousel-item">
         <div class="d-block">
-            <img src="https://webneel.net/file/images/11-16/8-xmen-movie-poster-design.preview.jpg" class="card-img" alt="..." style="object-fit: cover;height: 400px;">
+            <img src="https://webneel.net/file/images/11-16/8-xmen-movieCrawl-poster-design.preview.jpg" class="card-img" alt="..." style="object-fit: cover;height: 400px;">
         </div>
       </div>
     </div>
@@ -86,6 +87,5 @@
     </div>
 
   <!-- footer -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
