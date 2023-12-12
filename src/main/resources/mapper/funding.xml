@@ -4,6 +4,7 @@
 
 <mapper namespace="com.tenco.indiepicter.funding.FundingRepository">
 
+
     <select id="findAllByGenre" resultMap="moviesByGenreDTOResultMap">
             select ft.movie_id, mt.thumbnail, ft.present_price * 100 / ft.target_price funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id where genre = #{genre}
                 limit #{pageSize} offset #{offset}
@@ -18,11 +19,13 @@
         <result property="production" column="production"/>
     </resultMap>
 
+
     <select id="findByMovieId" resultMap="findByFundingIdDTOResultMap">
         select id from funding_tb where movie_id = #{movieId};
     </select>
     <resultMap id="findByFundingIdDTOResultMap" type="com.tenco.indiepicter.funding.response.FindByFundingIdDTO">
         <result property="fundingId" column="id"/>
     </resultMap>
+
 
 </mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tenco.indiepicter.payment.PaymentRepository">
+
+	<!-- 나의 온라인 펀딩 내역 -->
+	<select id="findByOnFundingId" resultMap="MyPaymentOnlineDTOResultMap">
+		select 	thumbnail, movie_name, present_price, synopsis, final_price, paymented_at
+		from 	payment_tb as pt
+		join 	order_tb as ot
+		on 		pt.order_id = ot.id
+		join	user_tb as ut
+		on		ot.user_id = ut.id
+		join 	funding_tb as ft
+		on 		ot.funding_id = ot.id
+		join 	movie_tb as mt
+		on 		ft.movie_id = mt.id
+		where	ut.id = #{id}
+	</select>
+	
+	<resultMap id="MyPaymentOnlineDTOResultMap" type="com.tenco.indiepicter.payment.response.MyPaymentDTO">
+		<result property="thumbnail" column="thumbnail"/>
+		<result property="movieName" column="movie_name"/>
+		<result property="presentPrice" column="present_price"/>
+		<result property="synopsis" column="synopsis"/>
+		<result property="finalPrice" column="final_price"/>
+		<result property="paymentedAt" column="paymented_at"/>
+	</resultMap> 
+	
+	<!-- 나의 오프라인 펀딩 내역 -->
+	<select id="findByOffFundingId" resultMap="MyPaymentOfflineDTOResultMap">
+		select 	thumbnail, movie_name, present_price, synopsis, final_price, paymented_at
+		from 	payment_tb as pt
+		join 	order_tb as ot
+		on 		pt.order_id = ot.id
+		join	user_tb as ut
+		on		ot.user_id = ut.id
+		join 	funding_tb as ft
+		on 		ot.funding_id = ot.id
+		join 	movie_tb as mt
+		on 		ft.movie_id = mt.id
+		where	ut.id = #{id}
+	</select>
+	
+	<resultMap id="MyPaymentOfflineDTOResultMap" type="com.tenco.indiepicter.payment.response.MyPaymentDTO" >
+		<result property="thumbnail" column="thumbnail"/>
+		<result property="movieName" column="movie_name"/>
+		<result property="presentPrice" column="present_price"/>
+		<result property="synopsis" column="synopsis"/>
+		<result property="finalPrice" column="final_price"/>
+		<result property="paymentedAt" column="paymented_at"/>
+	</resultMap>
+
+</mapper>
