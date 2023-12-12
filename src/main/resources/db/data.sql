@@ -211,3 +211,6 @@ insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/opera
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/saw.png', '실험영화', 7);
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/yurang.png', '실험영화', 8);
 
+
+
+
