@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tenco.indiepicter.runningschedule.RunningScheduleRepository">
+
+    <!-- 오프라인 상영 일정 등록 -->
+    <insert id="insert">
+        insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id)
+        values (#{runningTime}, #{runningDate}, #{startTime}, #{endTime}, #{movieId}, #{theaterId})
+    </insert>
+
+    <!-- 오프라인 상영 일정 수정 -->
+    <update id="updateById">
+        update running_schedule_tb set
+        running_time = #{runningTime}, running_date = #{runningDate}, start_time = #{startTime}, end_time = #{endTime}, movie_id = #{movieId}, theater_id = #{theaterId},
+        where id = #{id}
+    </update>
+
+    <!-- 오프라인 상영 일정 삭제 -->
+    <delete id="deleteById">
+        delete from running_schedule_tb where id = #{id}
+    </delete>
+
+    <!-- 특정 영화와 특정 날짜의 오프라인 상영 일정 조회 -->
+    <select id="findByMovieIdAndRunningDate" resultMap="selectDayDTOResultMap">
+        SELECT
+            r.id as running_schedule_id,
+            m.movie_name,
+            m.running_grade,
+            r.running_date,
+            r.movie_id,
+            r.theater_id,
+            r.start_time,
+            r.end_time,
+            COUNT(s.seat_name) AS booked_seats,
+            t.total_seat
+        FROM
+            running_schedule_tb AS r
+                LEFT JOIN
+            seat_tb AS s ON r.id = s.running_schedule_id
+                INNER JOIN
+            movie_tb AS m ON r.movie_id = m.id
+                INNER JOIN
+            theater_tb AS t ON r.theater_id = t.id
+        WHERE
+            r.movie_id = #{movieId} AND r.running_date LIKE CONCAT(#{runningDate}, '%')
+        GROUP BY
+            r.id, m.movie_name, r.running_date, r.movie_id, r.theater_id, t.total_seat
+        ORDER BY
+            r.start_time ASC;
+    </select>
+    <resultMap id="selectDayDTOResultMap" type="com.tenco.indiepicter.runningschedule.response.SelectDayDTO">
+        <result property="runningDateId" column="running_schedule_id"/>
+        <result property="movieName" column="movie_name"/>
+        <result property="runningGrade" column="running_grade"/>
+        <result property="runningDate" column="running_date"/>
+        <result property="movieId" column="movie_id"/>
+        <result property="theaterId" column="theater_id"/>
+        <result property="startTime" column="start_time"/>
+        <result property="endTime" column="end_time"/>
+        <result property="existSeatCount" column="booked_seats"/>
+        <result property="theaterSeatCount" column="total_seat"/>
+    </resultMap>
+
+    <!-- 특정 영화의 오프라인 상영 일정 기간 조회 -->
+    <select id="findByMovieId" resultType="com.tenco.indiepicter.runningschedule.RunningSchedule">
+        select running_date, movie_id, theater_id from running_schedule_tb
+        where movie_id = #{movieId}
+        order by running_date asc ;
+    </select>
+
+    <!-- 오프라인 상영 일정 전체 조회 -->
+    <select id="findAll" resultType="com.tenco.indiepicter.runningschedule.RunningSchedule">
+        select * from running_schedule_tb;
+    </select>
+
+
+</mapper>

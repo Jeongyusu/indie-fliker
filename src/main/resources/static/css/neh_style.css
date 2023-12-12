@@ -574,6 +574,7 @@
     font-weight: bold;
     color: var(--def_bl);
     font-size: 14px;
+    margin-bottom: 5px;
 }
 
 #n_movie_time .n_end_time {
@@ -581,7 +582,12 @@
     font-size: 12px;
 }
 
-#n_day_movies_form #n_movie_title {
+#n_movie_level img {
+    width: 20px;
+}
+
+#n_day_movies_form #n_movie_title p{
+    padding-left: 6px;
     font-size: 16px;
     color: var(--def_bl);
 }
@@ -593,6 +599,7 @@
 
 #n_seat_count {
     display: flex;
+    justify-content: center;
     padding: 2px 4px;
     border: solid;
     border-width: thin;

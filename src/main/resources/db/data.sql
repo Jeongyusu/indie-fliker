@@ -191,6 +191,17 @@ insert into funding_tb(target_price, present_price, price_per_onetime, people_co
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('5000000', '4000000', '8000', '40', '2023-11-01', '2023-12-31', 28);
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('4000000', '3000000', '8000', '40', '2023-11-01', '2023-12-31', 29);
 
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-24', '13:22', '14:51', 1, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-24', '17:30', '18:59', 1, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-25', '19:56', '21:25', 1, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-25', '18:07', '19:36', 1, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-26', '09:02', '10:31', 1, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-26', '13:38', '15:07', 1, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-27', '20:33', '22:02', 1, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-28', '15:27', '16:56', 1, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-29', '09:19', '10:48', 1, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-30', '13:14', '14:43', 1, 1);
+
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/sen.png', '극영화', 1);
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/naengjung.png', '극영화', 2);
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/szme.png', '애니메이션', 3);
