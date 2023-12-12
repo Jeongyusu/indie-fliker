@@ -24,7 +24,7 @@ public class RunningScheduleController {
     public String selectDay(@PathVariable Integer movieId, Model model) {
         TotalDayDTO totalDayDTO = runningScheduleService.totalDay(1);
         model.addAttribute("totalDayDTO", totalDayDTO);
-        return "reservation/select_day";
+        return "runningschedule/select_day";
     }
 
     // 오프라인 영화관 좌석 페이지 요청(GET)
@@ -32,7 +32,7 @@ public class RunningScheduleController {
     public String selectSeat(@PathVariable Integer movieId, @RequestParam(value = "runningDateId", required = true) Integer runningDateId, Model model) {
         ChoiceDayDTO choiceDayDTO = runningScheduleService.selectSeat(runningDateId);
         model.addAttribute("choiceDayDTO", choiceDayDTO);
-        return "reservation/select_seat";
+        return "runningschedule/select_seat";
     }
 
 }

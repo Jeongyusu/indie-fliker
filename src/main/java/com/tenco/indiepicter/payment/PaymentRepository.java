@@ -8,18 +8,15 @@ import java.util.List;
 @Mapper
 public interface PaymentRepository {
 
-    // 영화관 등록
-    public int insert(Theater theater);
+    // 주문 완료 (등록)
+    public int insert(Payment Payment);
 
-    // 영화관 수정
-    public int updateById(Theater theater);
-
-    // 영화관 삭제
+    // 주문 정보 삭제
     public int deleteById(Integer id);
 
-    // 영화관 1개 조회
-    public Theater findById(Integer id);
+    // 주문 정보 조회
+    public Payment findById(Integer id);
 
-    // 영화관 전체 조회
-    public List<Theater> findAll();
+    // 전체 주문 정보 조회
+    public List<Payment> findAll();
 }

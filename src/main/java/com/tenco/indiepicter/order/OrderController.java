@@ -8,9 +8,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
@@ -25,13 +27,14 @@ public class OrderController {
     @Autowired
     private HttpSession session;
 
-    @PostMapping("/plus")
-    public String orderProc (OrderDTO orderDTO){
-        // 유저 확인
-        // User principal = (User)session.getAttribute(Define.PRINCIPAL);
-
-        // 핵심기능 - order
-        orderService.order(orderDTO, 1);
-        return "redirect:/funding-plus";
+    // 선택한 좌석 및 인원 수 세션에 저장
+    @PostMapping("/{movieId}/plus")
+    public String orderSessionProc (@PathVariable Integer movieId, OrderDTO orderDTO){
+        session.setAttribute("orderDTO", orderDTO);
+        return "redirect:/payment/" + orderDTO.getMovieId() +"/off";
     }
+
+
+
+
 }

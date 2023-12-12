@@ -20,24 +20,4 @@ public class OrderService {
     @Autowired
     private FundingRepository fundingRepository;
 
-    public int order(OrderDTO orderDTO, Integer principalId) {
-
-        // funding_id 찾기
-        FindByFundingIdDTO responseDTO = fundingRepository.findByMovieId(orderDTO.getMovieId());
-
-        Order order = Order.builder()
-                .selectedSeats(orderDTO.getLastSelectSeatList())
-                .productPrice(orderDTO.getPrice())
-                .quantity(orderDTO.getCount())
-                .fundingId(responseDTO.getFundingId())
-                .userId(principalId)
-                .build();
-
-        int resultRowCount = orderRepository.insert(order);
-        if(resultRowCount != 1) {
-            throw new MyDynamicException("좌석 선택 실패", HttpStatus.BAD_REQUEST);
-        }
-
-        return resultRowCount;
-    }
 }

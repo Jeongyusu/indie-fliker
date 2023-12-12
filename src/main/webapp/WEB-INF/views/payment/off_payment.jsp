@@ -21,25 +21,26 @@
             <div id="n_select_movie_pay">
                 <form class="n_pay">
                     <div id="n_movie_title">
-                        <img src="images/icons/movie_level_all.png">
-                        <p>그대들은 어떻게 살 것인가?</p>
+                        <input type="hidden" id="n_runningGrade", value="${selectDTO.runningGrade}">
+                        <img src="/images/icons/movie_level_all.png" id="n_grade_img">
+                        <p>${selectDTO.movieName}</p>
                     </div>
                     <div class="n_movie_day">
-                        <p id="n_day">2023.01.02</p>
-                        <p id="n_time">15:05 ~ 17:03</p>
+                        <p id="n_day">${selectDTO.formatToDate()}</p>
+                        <p id="n_time">${selectDTO.formatToStartTime()} ~ ${selectDTO.formatToEndTime()}</p>
                     </div>
                     <div class="n_movie_place">
-                        <p id="n_place">그린 아트 시네마</p>
-                        <p id="n_address">부산광역시 부산진구 부전제2동 521-10</p>
-                        <p id="n_number">051.000.0000</p>
+                        <p id="n_place">${selectDTO.theaterName}</p>
+                        <p id="n_address">${selectDTO.theaterAddress}</p>
+                        <p id="n_number">${selectDTO.theaterTel}</p>
                     </div>
                     <div class="n_people_and_pay">
                         <div class="n_people">
-                            <p>인원 : 3인</p>
+                            <p>인원 : ${selectDTO.totalCount}인</p>
                         </div>
                         <div class="n_total_pay">
                             <p>최종 결제 금액</p>
-                            <p id="n_price">21,000원</p>
+                            <p id="n_price">${selectDTO.formatToBalance()}원</p>
                         </div>
                     </div>
                     <div id="n_payment">
@@ -51,4 +52,5 @@
         </div>
     </div>
 </main>
+<script src="../../../../js/neh/off_payment.js"></script>
 <%@ include file="/WEB-INF/views/layout/footer.jsp"%>

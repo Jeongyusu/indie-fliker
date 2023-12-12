@@ -15,8 +15,8 @@
     </delete>
 
     <!-- 상영시간에 따른 좌석 조회 -->
-    <select id="findByRunningscheduleId" resultMap="existSeatDTOResultMap">
-        select seat_name from seat_tb where running_schedule_id = #{runningscheduleId}
+    <select id="findByRunningDateId" resultMap="existSeatDTOResultMap">
+        select seat_name from seat_tb where running_schedule_id = #{runningDateId}
     </select>
     <resultMap id="existSeatDTOResultMap" type="com.tenco.indiepicter.seat.response.ExistSeatDTO">
         <result property="seatName" column="seat_name"/>
