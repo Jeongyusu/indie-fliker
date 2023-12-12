@@ -210,3 +210,15 @@ insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/norya
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/operation.png', '다큐멘터리', 6);
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/saw.png', '실험영화', 7);
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/yurang.png', '실험영화', 8);
+insert into seat_tb(seat_name, running_schedule_id) values ('A3', 1);
+insert into seat_tb(seat_name, running_schedule_id) values ('A5', 1);
+insert into seat_tb(seat_name, running_schedule_id) values ('C9', 1);
+insert into seat_tb(seat_name, running_schedule_id) values ('A10', 3);
+insert into seat_tb(seat_name, running_schedule_id) values ('F1', 3);
+insert into seat_tb(seat_name, running_schedule_id) values ('J5', 3);
+insert into seat_tb(seat_name, running_schedule_id) values ('C1', 4);
+insert into seat_tb(seat_name, running_schedule_id) values ('H13', 4);
+insert into seat_tb(seat_name, running_schedule_id) values ('I1', 4);
+insert into seat_tb(seat_name, running_schedule_id) values ('I2', 5);
+insert into seat_tb(seat_name, running_schedule_id) values ('I10', 5);
+insert into seat_tb(seat_name, running_schedule_id) values ('I11', 5);

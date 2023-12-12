@@ -1,6 +1,6 @@
 package com.tenco.indiepicter.seat;
 
-import com.tenco.indiepicter.theater.Theater;
+import com.tenco.indiepicter.seat.response.ExistSeatDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public interface SeatRepository {
     public int deleteById(Integer id);
 
     // 상영시간에 따른 좌석 조회
-    public List<Seat> findByRunningscheduleId(Integer runningscheduleId);
+    public List<ExistSeatDTO> findByRunningscheduleId(Integer runningscheduleId);
 
     // 좌석 전체 조회
     public List<Seat> findAll();

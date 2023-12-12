@@ -1127,6 +1127,8 @@
     justify-content: center;
     width: 100%;
     border-radius: 10px;
+    object-fit: cover;
+    height: 167px;
 }
 
 #n_select_info #n_movie_title {

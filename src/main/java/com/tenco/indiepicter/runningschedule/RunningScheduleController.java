@@ -1,5 +1,6 @@
 package com.tenco.indiepicter.runningschedule;
 
+import com.tenco.indiepicter.runningschedule.response.ChoiceDayDTO;
 import com.tenco.indiepicter.runningschedule.response.TotalDayDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,16 +22,16 @@ public class RunningScheduleController {
     // 오프라인 영화 상영 일정(달력) 페이지 요청(GET)
     @GetMapping("/{movieId}/select-day")
     public String selectDay(@PathVariable Integer movieId, Model model) {
-        TotalDayDTO totalDayDto = runningScheduleService.totalDay(1);
-        model.addAttribute("totalDayDto", totalDayDto);
+        TotalDayDTO totalDayDTO = runningScheduleService.totalDay(1);
+        model.addAttribute("totalDayDTO", totalDayDTO);
         return "reservation/select_day";
     }
 
     // 오프라인 영화관 좌석 페이지 요청(GET)
     @GetMapping("/{movieId}/select-seat")
-    public String totalDay(@PathVariable Integer movieId, @RequestParam("runningId") Integer runningId, Model model) {
-//        TotalDayDTO totalDayDto = runningScheduleService.totalDay(1);
-//        model.addAttribute("totalDayDto", totalDayDto);
+    public String selectSeat(@PathVariable Integer movieId, @RequestParam(value = "runningDateId", required = true) Integer runningDateId, Model model) {
+        ChoiceDayDTO choiceDayDTO = runningScheduleService.selectSeat(runningDateId);
+        model.addAttribute("choiceDayDTO", choiceDayDTO);
         return "reservation/select_seat";
     }
 
