@@ -1127,6 +1127,8 @@
     justify-content: center;
     width: 100%;
     border-radius: 10px;
+    object-fit: cover;
+    height: 167px;
 }
 
 #n_select_info #n_movie_title {
@@ -1200,10 +1202,10 @@
     border-radius: 0 0 10px 10px;
 }
 
-.n_last_price #n_price {
+.n_last_price .n_price {
     padding-left: 5px;
 }
 
-.n_last_price #n_person_count {
+.n_last_price .n_person_count {
     padding-right: 5px;
 }

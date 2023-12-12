@@ -22,10 +22,10 @@
             <div id="n_select_day">
                 <div class="n_movie_calendar">
                     <input type="hidden" id="n_activeCal" disabled>
-                    <input type="hidden" id="n_firstDay" value=${totalDayDto.startRunningDate}>
-                    <input type="hidden" id="n_lastDay" value=${totalDayDto.endRunningDate}>
-                    <input type="hidden" id="n_movieId" value=${totalDayDto.movieId}>
-                    <input type="hidden" id="n_theaterId" value=${totalDayDto.theaterId}>
+                    <input type="hidden" id="n_firstDay" value=${totalDayDTO.startRunningDate}>
+                    <input type="hidden" id="n_lastDay" value=${totalDayDTO.endRunningDate}>
+                    <input type="hidden" id="n_movieId" value=${totalDayDTO.movieId}>
+                    <input type="hidden" id="n_theaterId" value=${totalDayDTO.theaterId}>
 
                 </div>
                 <div class="n_select_day_movies">

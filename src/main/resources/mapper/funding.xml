@@ -18,4 +18,11 @@
         <result property="production" column="production"/>
     </resultMap>
 
+    <select id="findByMovieId" resultMap="findByFundingIdDTOResultMap">
+        select id from funding_tb where movie_id = #{movieId};
+    </select>
+    <resultMap id="findByFundingIdDTOResultMap" type="com.tenco.indiepicter.funding.response.FindByFundingIdDTO">
+        <result property="fundingId" column="id"/>
+    </resultMap>
+
 </mapper>
