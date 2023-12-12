@@ -1,9 +1,11 @@
 package com.tenco.indiepicter.runningschedule;
 
+import com.tenco.indiepicter._core.utils.TimeStampUtil;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Getter
@@ -27,4 +29,7 @@ public class RunningSchedule {
         this.movieId = movieId;
         this.theaterId = theaterId;
     }
+
+    // yyyy-MM-dd
+    public String formatToRunningDate(){ return TimeStampUtil.timeStampToDate(runningDate);}
 }

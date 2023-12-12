@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tenco.indiepicter.seat.SeatRepository">
+
+    <!-- 좌석 예매 등록 -->
+    <insert id="insert">
+
+    </insert>
+
+    <!-- 좌석 예매 삭제 -->
+    <delete id="deleteById">
+        delete from seat_tb where id = #{id}
+    </delete>
+
+    <!-- 상영시간에 따른 좌석 조회 -->
+    <select id="findByRunningscheduleId" resultType="com.tenco.indiepicter.seat.Seat">
+        select * from seat_tb where running_schedule_id = #{runningscheduleId};
+    </select>
+
+    <!-- 좌석 전체 조회 -->
+    <select id="findAll" resultType="com.tenco.indiepicter.seat.Seat">
+        select * from Seat_tb;
+    </select>
+
+
+</mapper>

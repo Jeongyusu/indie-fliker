@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../layout/header.jsp" %>
 
 <main>
@@ -21,29 +22,16 @@
             <div id="n_select_day">
                 <div class="n_movie_calendar">
                     <input type="hidden" id="n_activeCal" disabled>
-                    <input type="hidden" id="n_firstDay">
-                    <input type="hidden" id="n_lastDay">
+                    <input type="hidden" id="n_firstDay" value=${totalDayDto.startRunningDate}>
+                    <input type="hidden" id="n_lastDay" value=${totalDayDto.endRunningDate}>
+                    <input type="hidden" id="n_movieId" value=${totalDayDto.movieId}>
+                    <input type="hidden" id="n_theaterId" value=${totalDayDto.theaterId}>
+
                 </div>
                 <div class="n_select_day_movies">
                     <input type="text" id="n_otherInput" placeholder="날짜를 선택해주세요" disabled="">
-                    <form id="n_day_movies_form">
-                        <button type="submit" id="select_movie_button">
-                            <div id="n_day_movies">
-                <span id="n_movie_time">
-                  <p class="n_start_time">14:05</p>
-                  <p class="n_end_time">~15:57</p>
-                </span>
-                                <span id="n_movie_title">
-                  <p>그대들은 어떻게 살 것인가?</p>
-                </span>
-                            </div>
-                            <div id="n_seat">
-                                <div id="n_seat_count">
-                                    <p class="n_possible_seat">119</p><p class="n_all_seat">/168</p>
-                                </div>
-                            </div>
-                        </button>
-                    </form>
+                    <div id="n_container">
+                    </div>
                 </div>
             </div>
         </div>
