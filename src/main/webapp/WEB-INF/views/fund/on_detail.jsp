@@ -263,6 +263,7 @@
                         </div>
                     </div>
                     <div id="n_sell_button">
+
                         <button type="button" class="bookmark_button"><img src="images/icons/heart.png"></button>
                         <button type="button" class="buy_button" >펀딩하기</button>
                     </div>
