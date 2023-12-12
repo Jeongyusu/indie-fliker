@@ -7,21 +7,13 @@
   <div class="banner-container" style="background: linear-gradient(to bottom, #201111, #2b2626);">
   <div class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-      <div class="l_banner_item carousel-item active">
-        <div class="d-block">
-            <img src="https://img.freepik.com/premium-photo/background-that-emulates-ghibli-studio-style_931878-132658.jpg?w=2000" class="card-img" alt="..." style="object-fit: cover;height: 400px;">
+      <c:forEach var="banner" items="${fundingPlusDTO.banners}" varStatus="status">
+        <div class="l_banner_item carousel-item${status.first ? ' active' : ''}">
+          <div class="d-block">
+            <img src="${banner.bannerPic}" class="card-img" alt="..." style="object-fit: cover;height: 400px;">
+          </div>
         </div>
-      </div>
-      <div class="l_banner_item carousel-item active">
-        <div class="d-block">
-            <img src="https://pbs.twimg.com/media/D2jSGe2WwAAymAW.jpg" class="card-img" alt="..." style="object-fit: cover;height: 400px;">
-        </div>
-      </div>
-      <div class="l_banner_item carousel-item active">
-        <div class="d-block">
-            <img src="https://webneel.net/file/images/11-16/8-xmen-movieCrawl-poster-design.preview.jpg" class="card-img" alt="..." style="object-fit: cover;height: 400px;">
-        </div>
-      </div>
+      </c:forEach>
     </div>
   </div>
 </div>
