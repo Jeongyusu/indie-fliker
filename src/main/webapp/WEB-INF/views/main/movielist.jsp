@@ -20,7 +20,7 @@
 
 <!-- 영화 목록 (20개씩 비동기로 받아올 예정) -->
 <div class="container">
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+  <div id="data-container" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
 
     <c:forEach var="funding" items="${fundingPlusDTO.moviesByGenreDTOs}" >
       <div class="col my-4">
@@ -37,4 +37,6 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+      <script type="module" src="/js/jys/pagination.js"></script>
+
     <%@ include file="../layout/footer.jsp" %>
