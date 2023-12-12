@@ -5,7 +5,7 @@
 <mapper namespace="com.tenco.indiepicter.payment.PaymentRepository">
 
 	<!-- 나의 온라인 펀딩 내역 -->
-	<select id="findByOnFundingId" resultMap="MyPaymentOnlineDTOResultMap">
+	<select id="findByOnlinePaymentId" resultMap="MyPaymentOnlineDTOResultMap">
 		select 	thumbnail, movie_name, present_price, synopsis, final_price, paymented_at
 		from 	payment_tb as pt
 		join 	order_tb as ot
@@ -29,7 +29,7 @@
 	</resultMap> 
 	
 	<!-- 나의 오프라인 펀딩 내역 -->
-	<select id="findByOffFundingId" resultMap="MyPaymentOfflineDTOResultMap">
+	<select id="findByOfflinePaymentId" resultMap="MyPaymentOfflineDTOResultMap">
 		select 	thumbnail, movie_name, present_price, synopsis, final_price, paymented_at
 		from 	payment_tb as pt
 		join 	order_tb as ot

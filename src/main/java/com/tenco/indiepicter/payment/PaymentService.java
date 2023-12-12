@@ -11,10 +11,16 @@ public class PaymentService {
 
 	private PaymentRepository paymentRepository;
 	
-	public List<MyPaymentDTO> findByOnFundingId(Integer id){
+	// 온라인 결제 내역
+	public List<MyPaymentDTO> findByOnlinePaymentId(Integer id){
 		
-		return this.paymentRepository.findByOnFundingId(id);
+		return this.paymentRepository.findByOnlinePaymentId(id);
 	}
 	
+	// 오프라인 결제 내역
+	public List<MyPaymentDTO> findByOfflinePaymentId(Integer id){
+		
+		return this.paymentRepository.findByOfflinePaymentId(id);
+	}
 	
 }

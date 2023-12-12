@@ -8,9 +8,11 @@ import com.tenco.indiepicter.payment.response.MyPaymentDTO;
 
 @Mapper
 public interface PaymentRepository {
-
-	public List<MyPaymentDTO> findByOnFundingId(Integer id); 
 	
-	public List<MyPaymentDTO> findByOffFundingId();
+	// 온라인 결제 내역
+	public List<MyPaymentDTO> findByOnlinePaymentId(Integer id); 
+	
+	// 오프라인 결제 내역
+	public List<MyPaymentDTO> findByOfflinePaymentId(Integer id);
 	
 }
