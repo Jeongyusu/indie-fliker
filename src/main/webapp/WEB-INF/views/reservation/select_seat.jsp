@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div id="n_select_movie_seat">
-                    <form action="">
+                    <form action="/order/plus" method="post">
                         <div id="n_select_info">
                             <div id="n_img">
                                 <img src='${choiceDayDTO.thumbnail}'>
@@ -77,15 +77,17 @@
                                     <input type="hidden" id="n_clicked_seat_count" name="clickSeatCount" value="">
                                     <input type="hidden" id="n_running_date_id" name="runningDateId" value="${choiceDayDTO.runningDateId}">
                                     <input type="hidden" id="n_last_select_seat_list" name="lastSelectSeatList" value="">
+                                    <input type="hidden" id="n_movie_id" name="movieId" value="${choiceDayDTO.movieId}">
                                 </div>
                             </div>
                         </div>
                         <button type="submit" id="n_payment_button">
                             <div class="n_last_price">
-                                <span class="n_last_price" id="n_last_count"><p class="n_person_count">0</p><p>인</p></span>
-                                <span class="n_last_price" id="last_price"><p>총</p><p class="n_price">0</p><p>원</p></span>
+                                <span class="n_last_price" id="n_last_count"><p id="n_person_count">0</p><p>인</p></span>
+                                <span class="n_last_price" id="last_price"><p>총</p><p id="n_price">0</p><p>원</p></span>
                                 <input type="hidden" class="n_price" name="price" value="">
-                                <input type="hidden" class="n_person_count" name="count" value="${choiceDayDTO.runningDateId}">                            </div>
+                                <input type="hidden" class="n_person_count" name="count" value="">
+                            </div>
                         </button>
                     </form>
                 </div>

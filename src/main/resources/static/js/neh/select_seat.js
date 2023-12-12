@@ -233,16 +233,16 @@ function selectedSeat(existSeatList) {
 
 // 좌석 총 인원 수와 결제 금액
 ///////////////////////////////////////////////////////////////
-let ticketCount = document.querySelector(".n_person_count");
-let totalTicketPrice = document.querySelector(".n_price");
+let ticketCount = document.querySelector("#n_person_count");
+let totalTicketPrice = document.querySelector("#n_price");
+let ticketCountValue = document.querySelector(".n_person_count");
+let totalTicketPriceValue = document.querySelector(".n_price");
 let ticketPrice = 8000;
 
 function sumPrice(){
     // 티켓 값과 선택한 좌석 갯수
     let sumTicketprice = clickedSeats.length * ticketPrice;
-
-    console.log("티켓 수 : " + clickedSeats.length);
-
+    totalTicketPriceValue.value = sumTicketprice;
 
     // 총 금액, int -> String
     let totalStringTicketPrice = sumTicketprice.toLocaleString(); // 숫자 -> 1,000
@@ -264,6 +264,7 @@ function lastSelectedSeat(){
         // 선택한 좌석 인원 등록
         let clickedCount = clickedSeats.length.toString();
         ticketCount.innerHTML = clickedCount;
+        ticketCountValue.value = clickedCount;
 
         // 선택한 좌석 목록 만들기
         lastClicked = document.querySelectorAll(".n_last_seat");
