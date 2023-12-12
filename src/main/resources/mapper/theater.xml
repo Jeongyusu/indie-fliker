@@ -24,7 +24,7 @@
 
     <!-- 영화관 전체 조회 -->
     <select id="findAll" resultType="com.tenco.indiepicter.theater.Theater">
-        select * from theater_tb;
+        select * from theater_tb
     </select>
 
 

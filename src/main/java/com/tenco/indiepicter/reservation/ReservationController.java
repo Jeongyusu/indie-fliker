@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tenco.indiepicter._core.utils.Define;
-import com.tenco.indiepicter.reservation.response.VipReservationDTO;
 import com.tenco.indiepicter.user.User;
 
-// 작업중 12 - 11 08:00
 
 @Controller
 @RequestMapping("/reservation")

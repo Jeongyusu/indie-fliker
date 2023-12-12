@@ -19,4 +19,6 @@ public class FundingService {
         Integer offset = page * pageSize - pageSize;
         return fundingRepository.findAllByGenre(genre, pageSize, offset);
     }
+
+
 }

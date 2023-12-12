@@ -2,19 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.tenco.indiepicter.seat.SeatRepository">
+<mapper namespace="com.tenco.indiepicter.order.OrderRepository">
 
-    <!-- 좌석 예매 등록 -->
+    <!-- 주문 등록 -->
     <insert id="insert">
-        insert into seat_tb(seat_name, running_schedule_id) values (#{seatName}, #{runningScheduleId})
+        insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
+        values (#{selectedSeats}, #{productPrice}, #{quantity}, #{fundingId}, #{userId})
     </insert>
 
-    <!-- 좌석 예매 삭제 -->
+    <!-- 주문 삭제 -->
     <delete id="deleteById">
         delete from seat_tb where id = #{id}
     </delete>
 
-    <!-- 상영시간에 따른 좌석 조회 -->
+    <!-- 선택한 주문 내역 조회 -->
     <select id="findByRunningscheduleId" resultMap="existSeatDTOResultMap">
         select seat_name from seat_tb where running_schedule_id = #{runningscheduleId}
     </select>
@@ -22,7 +23,7 @@
         <result property="seatName" column="seat_name"/>
     </resultMap>
 
-    <!-- 좌석 전체 조회 -->
+    <!-- 주문 전체 조회 -->
     <select id="findAll" resultType="com.tenco.indiepicter.seat.Seat">
         select * from Seat_tb
     </select>

@@ -55,33 +55,38 @@
                     </div>
                 </div>
                 <div id="n_select_movie_seat">
-                    <div id="n_select_info">
-                        <div id="n_img">
-                            <img src="images/moviePhoto/the_boy1.jpg">
-                        </div>
-                        <div id="n_movie_title">
-                            <img src="images/icons/movie_level_all.png">
-                            <p>그대들은 어떻게 살 것인가?</p>
-                        </div>
-                        <div id="n_movie_day_and_time">
-                            <div class="n_select_count">
-                                <span id="n_day"><p>2023.01.02</p></span>
-                                <span id="n_time"><p>15:05 ~ 17:03</p></span>
+                    <form action="/order/plus" method="post">
+                        <div id="n_select_info">
+                            <div id="n_img">
+                                <img src='${choiceDayDTO.thumbnail}'>
+                            </div>
+                            <div id="n_movie_title">
+                                <img src="/images/icons/movie_level_all.png" id="n_grade_img">
+                                <input type="hidden" id="n_runningGrade" value="${choiceDayDTO.runningGrade}">
+                                <p>${choiceDayDTO.movieName}</p>
+                            </div>
+                            <div id="n_movie_day_and_time">
+                                <div class="n_select_count">
+                                    <span id="n_day"><p>${choiceDayDTO.formatToDate()}</p></span>
+                                    <span id="n_time"><p>${choiceDayDTO.formatToStartTime()}
+                                        ~ ${choiceDayDTO.formatToEndTime()}</p></span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="n_select_seat_wrapper">
+                                    <input type="hidden" id="n_clicked_seat_count" name="clickSeatCount" value="">
+                                    <input type="hidden" id="n_running_date_id" name="runningDateId" value="${choiceDayDTO.runningDateId}">
+                                    <input type="hidden" id="n_last_select_seat_list" name="lastSelectSeatList" value="">
+                                    <input type="hidden" id="n_movie_id" name="movieId" value="${choiceDayDTO.movieId}">
+                                </div>
                             </div>
                         </div>
-                        <div>
-                            <div class="n_select_seat_wrapper">
-                                <input type="hidden" id="n_clicked_seat_list" name="" value="">
-                                <input type="hidden" id="n_exist_seat_list" name="" value="">
-                                <input type="hidden" id="n_selected_seat_data" name="" value="">
-                            </div>
-                        </div>
-                    </div>
-                    <form>
                         <button type="submit" id="n_payment_button">
                             <div class="n_last_price">
                                 <span class="n_last_price" id="n_last_count"><p id="n_person_count">0</p><p>인</p></span>
                                 <span class="n_last_price" id="last_price"><p>총</p><p id="n_price">0</p><p>원</p></span>
+                                <input type="hidden" class="n_price" name="price" value="">
+                                <input type="hidden" class="n_person_count" name="count" value="">
                             </div>
                         </button>
                     </form>
