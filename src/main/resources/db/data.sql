@@ -132,6 +132,8 @@ insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, dir
 values ('2023', '(주)시네마프로덕션', '소진된 인간','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
 ', '/images/moviethumbnail/experiment/sojin.jpeg', '부산형제복지원 사건 모티브', '실험영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02');
 
+
+
 insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이영호', '김상수', '남은혜', '김하율', '이사라', '박남규', '박세환', '김언약', '정유수', 1);
 insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('김사라', '김수호', '김하얀', '김철수', '이사라', '김남규', '김라희', '김민아', '박정환', 2);
 insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이사라', '김호수', '남은혜', '김하율', '이사라', '민선규', '이미소', '이만수', '김남수', 3);
