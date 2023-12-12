@@ -62,7 +62,7 @@ values ('2024', '(주)시네마프로덕션', '쿠키 커피 도시락','한 BJ�
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date)
 values ('2023', '(주)시네마프로덕션', '저주소년','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/src/main/resources/static/images/moviethumbnail/animation/jeoju.jpeg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02');
+', '/images/moviethumbnail/animation/jeoju.jpeg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date)
 values ('2024', '(주)시네마프로덕션', '인형 이야기','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
@@ -191,7 +191,7 @@ insert into funding_tb(target_price, present_price, price_per_onetime, people_co
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('5000000', '4000000', '8000', '40', '2023-11-01', '2023-12-31', 28);
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('4000000', '3000000', '8000', '40', '2023-11-01', '2023-12-31', 29);
 
-insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/3day.png', '극영화', 1);
+insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/sen.png', '극영화', 1);
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/naengjung.png', '극영화', 2);
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/szme.png', '애니메이션', 3);
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/trol.png', '애니메이션', 4);
