@@ -19,6 +19,7 @@ public class ReservationService {
 	public List<VipReservationDTO> invitation(Integer id){
 		
 		return this.reservationRepository.findByUserId(id);
+		
 	}
 	
 	
