@@ -33,4 +33,6 @@ public class RunningSchedule {
 
     // yyyy-MM-dd
     public String formatToRunningDate(){ return TimeStampUtil.timeStampToDate(runningDate);}
+
+
 }

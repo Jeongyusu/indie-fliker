@@ -22,7 +22,7 @@
         delete from running_schedule_tb where id = #{id}
     </delete>
 
-    <!-- 특정 영화와 특정 날짜의 오프라인 상영 일정 조회 -->
+    <!-- 선택한 영화와 선택한 날짜의 오프라인 상영 일정 조회 -->
     <select id="findByMovieIdAndRunningDate" resultMap="selectDayDTOResultMap">
         SELECT
             r.id as running_schedule_id,
@@ -48,7 +48,7 @@
         GROUP BY
             r.id, m.movie_name, r.running_date, r.movie_id, r.theater_id, t.total_seat
         ORDER BY
-            r.start_time ASC;
+            r.start_time ASC
     </select>
     <resultMap id="selectDayDTOResultMap" type="com.tenco.indiepicter.runningschedule.response.SelectDayDTO">
         <result property="runningDateId" column="running_schedule_id"/>
@@ -63,16 +63,48 @@
         <result property="theaterSeatCount" column="total_seat"/>
     </resultMap>
 
-    <!-- 특정 영화의 오프라인 상영 일정 기간 조회 -->
+    <!-- 선택한 영화의 오프라인 상영 일정 기간 조회 -->
     <select id="findByMovieId" resultType="com.tenco.indiepicter.runningschedule.RunningSchedule">
-        select running_date, movie_id, theater_id from running_schedule_tb
+        select running_date, movie_id, theater_id
+        from running_schedule_tb
         where movie_id = #{movieId}
-        order by running_date asc ;
+        order by running_date asc
     </select>
+
+    <!-- 선택한 오프라인 상영 일정 상세 조회 -->
+    <select id="findByRunningScheduleId" resultMap="choiceDayDTOResult">
+        SELECT
+            r.id as running_schedule_id,
+            m.movie_name,
+            m.thumbnail,
+            m.running_grade,
+            r.running_date,
+            r.start_time,
+            r.end_time,
+            r.movie_id,
+            r.theater_id
+        FROM
+            running_schedule_tb AS r
+                INNER JOIN
+            movie_tb AS m ON r.movie_id = m.id
+        WHERE
+            r.id = #{runningScheduleid}
+    </select>
+    <resultMap id="choiceDayDTOResult" type="com.tenco.indiepicter.runningschedule.response.ChoiceDayDTO">
+        <result property="runningDateId" column="running_schedule_id"/>
+        <result property="movieName" column="movie_name"/>
+        <result property="thumbnail" column="thumbnail"/>
+        <result property="runningGrade" column="running_grade"/>
+        <result property="runningDate" column="running_date"/>
+        <result property="movieId" column="movie_id"/>
+        <result property="theaterId" column="theater_id"/>
+        <result property="startTime" column="start_time"/>
+        <result property="endTime" column="end_time"/>
+    </resultMap>
 
     <!-- 오프라인 상영 일정 전체 조회 -->
     <select id="findAll" resultType="com.tenco.indiepicter.runningschedule.RunningSchedule">
-        select * from running_schedule_tb;
+        select * from running_schedule_tb
     </select>
 
 

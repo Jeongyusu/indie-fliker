@@ -1,3 +1,22 @@
+
+
+// 영화 상영 등급
+function onLoadImg(){
+    let gradeImg = document.querySelector("#n_grade_img");
+    let runningGrade = document.querySelector("#n_runningGrade").value;
+    let src = "";
+    if(runningGrade == "전체 관람가"){
+        src = "/images/icons/movie_level_all.png";
+    }else if(runningGrade == "12세 이상 관람가"){
+        src = "/images/icons/movie_level_12.png";
+    }else if(runningGrade == "15세 이상 관람가"){
+        src = "/images/icons/movie_level_15.png";
+    }else {
+        src = "/images/icons/movie_level_19.png";
+    }
+    gradeImg.src = src;
+}
+
 // 티켓 수량 버튼
 ///////////////////////////////////////////////////////////////
 function count(type){
@@ -5,9 +24,7 @@ function count(type){
     let plusButton = document.querySelector("#n_plus_button");
     let count = document.querySelector(".n_count");
     let number = count.innerHTML; // 0
-    let clickedList = document.querySelector("#n_clicked_seat_list");
-
-
+    let clickedCount = document.querySelector("#n_clicked_seat_count");
 
     // 총 관람 좌석 수
     let allSeatCount = 124;
@@ -42,7 +59,7 @@ function count(type){
         plusButton.disabled = false;
     }
 
-    if(number < clickedList.value){
+    if(number < clickedCount.value){
         alert("선택한 좌석 먼저 해제해주세요.");
         return;
     }
@@ -55,20 +72,49 @@ function count(type){
 // 좌석 선택하기
 ///////////////////////////////////////////////////////////////
 const seatWrapper = document.querySelector(".n_seat_wrapper"); // 극장 자리들
+let existSeatJsonBody = new Array(); // 이미 선택된 자리(비활성화) - JSON
+let existSeatNumbers = new Array(); // 이미 선택된 좌석 이름(JSON 파싱)
 let existSeats = new Array(); // 이미 선택된 자리(비활성화)
 let clickedSeats = new Array(); // 선택한 모든 자리
 let exist = ""; // 이미 선택된 자리가 있는 div를 담는 함수
 let clicked = ""; // 선택한 자리가 있는 div를 담는 함수
 let div = ""; // 추가할 tag
-let Data = document.querySelector("#n_selected_seat_data"); // 이미 예약이 완료된 좌석
-let selectedSeatsData = [];
-//TODO 은혜: 나중에 Data는 배열이므로, selectedSeatsData로 바꾸기
+
+async function loadExistSeatList(){
+    let runningDateId = document.querySelector("#n_running_date_id").value;
+    try {
+        let response = await fetch(`/seat/api/exist-seat?runningscheduleId=${runningDateId}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if(response.ok){
+            let responseData = await response.json();
+            let existSeatData = responseData.response; // body
+            existSeatJsonBody = existSeatData;
+            if(existSeatJsonBody != null){
+                existSeatJsonBody.forEach(existSeat => {
+                    existSeatNumbers.push(existSeat.seatName); // [A3, A6, D3]
+                    console.log("existSeat.seatName : " + existSeat.seatName);
+                });
+
+                console.log("existSeatNumbers" + existSeatNumbers);
+                selectedSeat(existSeatNumbers);
+            }
+        } else {
+            console.error("서버 응답이 실패했습니다.");
+        }
+    } catch (error) {
+        console.error("에러 발생:", error);
+    }
+}
+
 
 // 페이지 로딩 시 아래의 함수 실행
 window.onload = function (){
-    if(selectedSeatsData != null){
-        selectedSeat();
-    }
+    onLoadImg();
+    loadExistSeatList();
 };
 
 for(let i = 0; i < 10; i++) {
@@ -87,7 +133,8 @@ for(let i = 0; i < 10; i++) {
 
         input.addEventListener("click", function (e) {
             let wantCount = parseInt(document.querySelector(".n_count").innerHTML);
-            let clickedList = document.querySelector("#n_clicked_seat_list");
+            let clickedCount = document.querySelector("#n_clicked_seat_count");
+            let lastSelectSeatList = document.querySelector("#n_last_select_seat_list");
 
             // 관람인원에 따른 코드 실행
             if(wantCount == 0) {
@@ -104,8 +151,10 @@ for(let i = 0; i < 10; i++) {
                     clicked.forEach(select => {
                         clickedSeats.push(select.value);
                     });
-                    console.log("선택한 자리: " + clickedSeats);
-                    clickedList.value = clickedSeats.length;
+                    clickedCount.value = clickedSeats.length;
+                    console.log("선택된 자리들 : " + clickedSeats);
+                    lastSelectSeatList.value = clickedSeats;
+                    console.log("input에 들어간 값 : " + lastSelectSeatList.value);
                     lastSelectedSeat();
                     sumPrice();
                 }
@@ -113,10 +162,10 @@ for(let i = 0; i < 10; i++) {
                 else {
                     let seatNumber;
 
-                    if (isNaN(parseInt(clickedList.value))) {
+                    if (isNaN(parseInt(clickedCount.value))) {
                         seatNumber = 1;
                     } else {
-                        seatNumber = parseInt(clickedList.value) + 1;
+                        seatNumber = parseInt(clickedCount.value) + 1;
                     }
 
                     if (seatNumber > wantCount) {
@@ -129,7 +178,10 @@ for(let i = 0; i < 10; i++) {
                         clicked.forEach(select => {
                             clickedSeats.push(select.value);
                         });
-                        clickedList.value = clickedSeats.length;
+                        clickedCount.value = clickedSeats.length;
+                        console.log("선택된 자리들 : " + clickedSeats);
+                        lastSelectSeatList.value = clickedSeats;
+                        console.log("input에 들어간 값 : " + lastSelectSeatList.value);
                         lastSelectedSeat();
                         sumPrice();
                     }
@@ -140,7 +192,7 @@ for(let i = 0; i < 10; i++) {
 }
 
 
-// 선택한 좌석 목록보기
+// 선택한 좌석 목록 만들기
 ///////////////////////////////////////////////////////////////
 const selectSeatWrapper = document.querySelector(".n_select_seat_wrapper"); // 선택한 자리들
 let lastClickedSeats = new Array();
@@ -163,8 +215,8 @@ for(let l = 0; l < 1; l++){
 }
 
 // 선택이 불가능한 좌석
-function selectedSeat() {
-    selectedSeatsData.forEach(existSeat => {
+function selectedSeat(existSeatList) {
+    existSeatList.forEach(existSeat => {
         exist = document.querySelector("input[value='" + existSeat + "']");
         existSeats.push(exist);
     })
@@ -175,7 +227,7 @@ function selectedSeat() {
             input.value = "X";
         })
     }
-    console.log("선택 불가능한 자리 : " + selectedSeatsData);
+    console.log("선택 불가능한 자리 : " + existSeatList);
 }
 
 
@@ -183,11 +235,14 @@ function selectedSeat() {
 ///////////////////////////////////////////////////////////////
 let ticketCount = document.querySelector("#n_person_count");
 let totalTicketPrice = document.querySelector("#n_price");
+let ticketCountValue = document.querySelector(".n_person_count");
+let totalTicketPriceValue = document.querySelector(".n_price");
 let ticketPrice = 8000;
 
 function sumPrice(){
     // 티켓 값과 선택한 좌석 갯수
     let sumTicketprice = clickedSeats.length * ticketPrice;
+    totalTicketPriceValue.value = sumTicketprice;
 
     // 총 금액, int -> String
     let totalStringTicketPrice = sumTicketprice.toLocaleString(); // 숫자 -> 1,000
@@ -198,6 +253,7 @@ function sumPrice(){
     }else{
         totalTicketPrice.innerHTML = totalStringTicketPrice;
     }
+    console.log("가격 : " + totalStringTicketPrice);
 }
 
 
@@ -208,6 +264,7 @@ function lastSelectedSeat(){
         // 선택한 좌석 인원 등록
         let clickedCount = clickedSeats.length.toString();
         ticketCount.innerHTML = clickedCount;
+        ticketCountValue.value = clickedCount;
 
         // 선택한 좌석 목록 만들기
         lastClicked = document.querySelectorAll(".n_last_seat");

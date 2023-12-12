@@ -29,25 +29,27 @@ async function loadSelectOptions(dateStr) {
         if (response.ok) {
             let responseData = await response.json();
 
-            let selectDayDTOs = responseData.response; // body
+            let totalDayDTOs = responseData.response; // body
 
             let container = document.getElementById("n_container");
             container.innerHTML = '';
 
             // 각 영화 정보에 대해 HTML 생성 및 추가
-            selectDayDTOs.forEach(selectDayDTO => {
+            totalDayDTOs.forEach(totalDayDTO => {
                 let form = document.createElement("form");
-                form.action = "/runningschedule/" + `${selectDayDTO.movieId}` + "/select-seat";
+                form.action = "/runningschedule/" + `${totalDayDTO.movieId}` + "/select-seat";
                 form.id = "n_day_movies_form";
                 form.method = "get"
 
                 let nHiddenRunningDateId = document.createElement("input");
+                nHiddenRunningDateId.type = "hidden";
                 nHiddenRunningDateId.name = "runningDateId";
-                nHiddenRunningDateId.value = `${selectDayDTO.runningDateId}`;
+                nHiddenRunningDateId.value = `${totalDayDTO.runningDateId}`;
 
                 let nHiddenTheaterId = document.createElement("input");
-                nHiddenTheaterId.name = "runningDateId";
-                nHiddenTheaterId.value = `${selectDayDTO.theaterId}`;
+                nHiddenTheaterId.type = "hidden";
+                nHiddenTheaterId.name = "theaterId";
+                nHiddenTheaterId.value = `${totalDayDTO.theaterId}`;
 
                 let button = document.createElement("button");
                 button.type = "submit";
@@ -59,13 +61,13 @@ async function loadSelectOptions(dateStr) {
                 let nMovieTime = document.createElement("span");
                 nMovieTime.id = "n_movie_time";
                 nMovieTime.innerHTML = `
-                <p class="n_start_time">${selectDayDTO.startTime.substring(0, selectDayDTO.startTime.length -3)}</p>
-                <p class="n_end_time">~${selectDayDTO.endTime.substring(0, selectDayDTO.endTime.length -3)}</p>
+                <p class="n_start_time">${totalDayDTO.startTime.substring(0, totalDayDTO.startTime.length -3)}</p>
+                <p class="n_end_time">~${totalDayDTO.endTime.substring(0, totalDayDTO.endTime.length -3)}</p>
                 `;
 
                 let nMovieLevel = document.createElement("span");
                 nMovieLevel.id = "n_movie_level";
-                let level = selectDayDTO.runningGrade;
+                let level = totalDayDTO.runningGrade;
                 let src = "";
                 if(level == "전체 관람가"){
                     src = "movie_level_all.png";
@@ -80,7 +82,7 @@ async function loadSelectOptions(dateStr) {
 
                 let nMovieTitle = document.createElement("span");
                 nMovieTitle.id = "n_movie_title";
-                nMovieTitle.innerHTML = `<p>${selectDayDTO.movieName}</p>`;
+                nMovieTitle.innerHTML = `<p>${totalDayDTO.movieName}</p>`;
 
                 let nSeat = document.createElement("div");
                 nSeat.id = "n_seat";
@@ -88,8 +90,8 @@ async function loadSelectOptions(dateStr) {
                 let nSeatCount = document.createElement("div");
                 nSeatCount.id = "n_seat_count";
                 nSeatCount.innerHTML = `
-                <p class="n_possible_seat">${selectDayDTO.existSeatCount}</p>
-                <p class="n_all_seat">/${selectDayDTO.theaterSeatCount}</p>
+                <p class="n_possible_seat">${totalDayDTO.existSeatCount}</p>
+                <p class="n_all_seat">/${totalDayDTO.theaterSeatCount}</p>
                 `;
 
 // HTML 요소들을 조립
@@ -99,6 +101,8 @@ async function loadSelectOptions(dateStr) {
                 nSeat.appendChild(nSeatCount);
                 button.appendChild(nDayMovies);
                 button.appendChild(nSeat);
+                form.appendChild(nHiddenTheaterId);
+                form.appendChild(nHiddenRunningDateId);
                 form.appendChild(button);
 
 // 폼을 container에 추가
