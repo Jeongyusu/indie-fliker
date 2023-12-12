@@ -43,7 +43,10 @@
                 </div>
             </div>
             <div id="n_reservation_list_button">
-
+            	<form action="" method="get">
+                    <input type="hidden" name="" value="" >
+                    <button type="submit" id="n_button">예매 내역</button>
+                </form>
             </div>
             <div id="n_attention_comment">
                 <p>· 상영안내</p>
