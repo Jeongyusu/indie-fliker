@@ -132,6 +132,8 @@ insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, dir
 values ('2023', '(주)시네마프로덕션', '소진된 인간','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
 ', '/images/moviethumbnail/experiment/sojin.jpeg', '부산형제복지원 사건 모티브', '실험영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02');
 
+
+
 insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이영호', '김상수', '남은혜', '김하율', '이사라', '박남규', '박세환', '김언약', '정유수', 1);
 insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('김사라', '김수호', '김하얀', '김철수', '이사라', '김남규', '김라희', '김민아', '박정환', 2);
 insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이사라', '김호수', '남은혜', '김하율', '이사라', '민선규', '이미소', '이만수', '김남수', 3);
@@ -211,7 +213,6 @@ insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/opera
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/saw.png', '실험영화', 7);
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/yurang.png', '실험영화', 8);
 
-
 insert into running_schedule_tb(running_time, running_date, start_time, end_time, movie_id, theater_id)
     values (240, '2023-11-11 11:11:11', '11:11:11', '11:11:11', 1, 1);
 insert into running_schedule_tb(running_time, running_date, start_time, end_time, movie_id, theater_id)
@@ -240,12 +241,36 @@ insert into seat_tb(seat_name, running_schedule_id) values ('I2', 5);
 insert into seat_tb(seat_name, running_schedule_id) values ('I10', 5);
 insert into seat_tb(seat_name, running_schedule_id) values ('I11', 5);
 
-
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('11111', 1, 1);
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('22222', 2, 2);
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('33334', 3, 3);
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('44444', 4, 4);
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('55555', 3, 5);
 
+select * from payment_type_tb;
+insert into payment_type_tb(type)
+values ('11111');
+insert into payment_type_tb(type)
+values ('2222');
+insert into payment_type_tb(type)
+values ('3333');
+insert into payment_type_tb(type)
+values ('4444');
+insert into payment_type_tb(type)
+values ('5555');
 
+select * from order_tb;
+insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
+values ('1111', 1111, 1111, 1, 1);
+insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
+values ('2222', 2222, 2222, 2, 2);
+insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
+values ('3333', 3333, 3333, 3, 3);
+insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
+values ('4444', 4444, 4444, 4, 4);
 
+select * from payment_tb;
+insert into payment_tb(total_price, discount_price, final_price, paymented_at, payment_type_id, order_id)
+values (1000, 1000, 1000, '2024-11-11 11:11:11', 1, 1);
+insert into payment_tb(total_price, discount_price, final_price, paymented_at, payment_type_id, order_id)
+values (2000, 2000, 2000, '2023-02-22 22:22:22', 2, 2);

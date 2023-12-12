@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.tenco.indiepicter.reservation.Repository">
+<mapper namespace="com.tenco.indiepicter.reservation.ReservationRepository">
 
 	<!-- 회원 전체 조회 -->
 	<select id="findByAllId" resultType="com.tenco.indiepicter.reservation.Reservation">
 		select count(*) from reservation_tb
 	</select>
 	
-	<!-- 전체 조회 -->
+	<!-- 나의 VIP 초청권 전체 조회 -->
 	<select id="findByUserId" resultMap="VipReservationDTOResultMap">
 		select  movie_name,
 			    running_date,
