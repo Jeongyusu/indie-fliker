@@ -200,25 +200,3 @@ insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/opera
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/saw.png', '실험영화', 7);
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/yurang.png', '실험영화', 8);
 
-insert into reservation_tb(reservation_code, reservated_at, user_id, seat_id) value ('11111', '1111-11-11 11:11:11', 1, 2);
-insert into reservation_tb(reservation_code, reservated_at, user_id, seat_id) value ('22222', '2222-02-02 02:02:02', 2, 2);
-insert into reservation_tb(reservation_code, reservated_at, user_id, seat_id) value ('33334', '3333-03-03 03:03:03', 3, 3);
-insert into reservation_tb(reservation_code, reservated_at, user_id, seat_id) value ('44444', '4444-04-04 04:04:04', 4, 4);
-insert into reservation_tb(reservation_code, reservated_at, user_id, seat_id) value ('55555', '5555-05-05 05:05:05', 3, 5);
-
-insert into seat_tb(seat_name, running_schedule_id) value ('1', 1);
-insert into seat_tb(seat_name, running_schedule_id) value ('2', 2);
-insert into seat_tb(seat_name, running_schedule_id) value ('3', 3);
-insert into seat_tb(seat_name, running_schedule_id) value ('4', 4);
-insert into seat_tb(seat_name, running_schedule_id) value ('5', 5);
-
-insert into running_schedule_tb(running_time, running_date, start_time, end_time, movie_id, theater_id)
-value (1111, '1111-11-11 11:11:11', '11:11:11', '11:11:11', 1, 1);
-insert into running_schedule_tb(running_time, running_date, start_time, end_time, movie_id, theater_id)
-value (2222, '2222-02-22 22:22:22', '22:22:22', '22:22:22', 2, 2);
-insert into running_schedule_tb(running_time, running_date, start_time, end_time, movie_id, theater_id)
-value (3333, '3333-03-03 03:03:03', '03:03:03', '03:03:03', 3, 3);
-insert into running_schedule_tb(running_time, running_date, start_time, end_time, movie_id, theater_id)
-value (4444, '4444-04-04 04:04:04', '04:04:04', '04:04:04', 4, 4);
-insert into running_schedule_tb(running_time, running_date, start_time, end_time, movie_id, theater_id)
-value (5555, '5555-05-05 05:05:05', '05:05:05', '05:05:05', 5, 5);
