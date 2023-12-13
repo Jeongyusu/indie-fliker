@@ -17,34 +17,35 @@
 	<div class="container k_update_login-container">
 		<h2 class="text-left k_profile_set" >프로필 정보 설정</h2>
 		<div class="k_font_weight_bold">프로필 사진</div>
+		<form action="/user/profile" method="post" enctype="multipart/form-data">
 		<div class="k_profile-container">
-			<img class="k_profile" src="../../../../../resources/static/images/icons/gamst.jpg" alt="My Image">
+			<img id="preview" class="k_profile" alt="" src="${user.pic}" onclick="return false;">
 		</div>
 		<div class="k_button-container">
-			<button type="button" class="k_change_delete">바꾸기</button>
-			<button type="button" class="k_change_delete">삭제</button>
+			<input type="file" id="file" name="file" onchange="changeUserPic(event)">
+			<input type="hidden" name="id" value ="${user.id}">
 		</div>
-		<form>
 			<div class="k_form-group">
 			</div>
-			<div class="k_form-group k_font_weight_bold">이메일
-				<input type="text" class="form-control k_input" id="username" placeholder=""
-					onfocus="this.placeholder = ''" onblur="this.placeholder = ''">
+			<div class="k_form-group k_font_weight_bold">닉네임
+				<input type="text" class="form-control k_input" id="username" placeholder="" name="username"
+					onfocus="this.placeholder = ''" onblur="this.placeholder = ''" value="${user.username}">
 			</div>
 			<div class="k_font_weight_bold k_p_margin">비밀번호</div>
 			<div class="input-group k_input">
-				<input type="text" class="form-control" id="tel" placeholder="010-0000-0000"
+				<input type="text" class="form-control" id="password1" placeholder="" name="password1"
 					onfocus="this.placeholder = ''" onblur="this.placeholder =''"
 					style="border-radius: 5px; background-color: #f6f6f6">
-				<button class="k_p_validation">변경하기</button>
 			</div>
-			<div class="form-group  k_font_weight_bold k_p_margin">간단한 한마디로 나를 소개해주세요.
-				<textarea class="form-control k_input" id="intro" placeholder="" onfocus="this.placeholder = ''"
-					onblur="this.placeholder = ''" style="height: 150px"></textarea>
+			<div class="k_font_weight_bold k_p_margin">비밀번호 확인</div>
+			<div class="input-group k_input">
+				<input type="text" class="form-control" id="password2" placeholder="" name="password2"
+					onfocus="this.placeholder = ''" onblur="this.placeholder =''"
+					style="border-radius: 5px; background-color: #f6f6f6">
 			</div>
+	
 			<div class="complete text-center">
-				<button type="submit" class="btn btn-primary" style="background-color: gray">확인</button>
-				<button type="submit" class="btn btn-primary">취소</button>
+				<button type="submit" class="btn btn-primary" style="background-color: gray">수정하기</button>
 			</div>
 
 		</form>
@@ -54,6 +55,25 @@
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+	<script>
+		function changeUserPic(e1) {
+		    let f = e1.srcElement.files[0];
+		    console.log(f.type);
+		    if (!f.type.match("image.*")) {
+		      alert("이미지를 등록해주세요");
+		      return;
+		    }
+		    let reader = new FileReader();
+		    reader.onload = function (e2) { // 파일이 다 읽어지면 콜백됨
+		      let previewEl = document.querySelector("#preview");
+		      previewEl.setAttribute("src", e2.target.result);
+		    }
+		    reader.readAsDataURL(f); // 파일 읽기 onload()
+		  	}
+	</script>
+
 </body>
 
 </html>
+
+

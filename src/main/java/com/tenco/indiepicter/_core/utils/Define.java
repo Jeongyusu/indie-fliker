@@ -28,5 +28,10 @@ public class Define {
         }
     }
 
-    public static final String UPLOAD_DIRECTORY = uploadPath;
+//    public static final String UPLOAD_DIRECTORY = uploadPath;
+    
+    // 파일 저장 로컬 주소
+ 	public static final String UPLOAD_DIRECTORY="C:\\spring_upload\\indiepicter\\upload";
+ 	public static final String userbasicpic = "/images/userbasicpic/userimg.jpg";
+ 															
 }

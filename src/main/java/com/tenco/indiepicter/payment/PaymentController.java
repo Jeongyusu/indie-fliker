@@ -32,12 +32,12 @@ public class PaymentController {
 	@GetMapping("/on-funding")
 	public String onFunding(Model model) {
 			
-//		// 세션에 로그인 정보 저장
-//		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-//		
-//		List<MyOnlinePaymentDTO> MyOnlinePaymentDTOLists =  this.paymentService.findByOnlinePaymentId(1);
-//		
-//		model.addAttribute("MyOnlinePaymentDTOLists", MyOnlinePaymentDTOLists);
+		// 세션에 로그인 정보 저장
+		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+		
+		List<MyOnlinePaymentDTO> MyOnlinePaymentDTOLists =  this.paymentService.findByOnlinePaymentId(1);
+		
+		model.addAttribute("MyOnlinePaymentDTOLists", MyOnlinePaymentDTOLists);
 		
 		return "mypage/on_payment";
 	}
@@ -47,12 +47,12 @@ public class PaymentController {
 	@GetMapping("/off-funding")
 	public String offFunding(Model model) {
 		
-//		// 세션에 로그인 정보 저장
-//		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-//		
-//		List<MyOfflinePaymentDTO> MyOfflinePaymentDTOLists =  this.paymentService.findByOfflinePaymentId(1);
-//		
-//		model.addAttribute("MyOfflinePaymentDTOLists", MyOfflinePaymentDTOLists);
+		// 세션에 로그인 정보 저장
+		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+		
+		List<MyOfflinePaymentDTO> MyOfflinePaymentDTOLists =  this.paymentService.findByOfflinePaymentId(1);
+		
+		model.addAttribute("MyOfflinePaymentDTOLists", MyOfflinePaymentDTOLists);
 		
 		return "mypage/off_payment";
 	}

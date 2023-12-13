@@ -1,14 +1,14 @@
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('ssar@nate.com', '1234', '쌀', '/images/ssar.jpg', 'NORMAL', '010-1122-3344', 'NORMAL', now());
+values('ssar@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '쌀', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1122-3344', 'NORMAL', now());
 
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('cos@nate.com', '1234', '코스', '/images/cos.jpg', 'VIP', '010-4455-6677', 'NORMAL', now());
+values('cos@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '코스', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4455-6677', 'NORMAL', now());
 
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('love@nate.com', '1234', '러브', '/images/love.jpg', 'NORMAL', '010-4455-6677', 'DIRECTOR', now());
+values('love@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '러브', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-4455-6677', 'DIRECTOR', now());
 
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('happy@nate.com', '1234', '해피', '/images/happy.jpg', 'VIP', '010-4455-6677', 'DIRECTOR', now());
+values('happy@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '해피', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4455-6677', 'DIRECTOR', now());
 
 insert into theater_tb(theater_pic, theater_name, theater_description, tel, address, park, total_seat) values ('/images/theater1.png', '그린시네마 부산 부전동 지점', '그린시네마 부전동 지점은 편안하고 넓은 좌석과 첨단 음향 시스템으로 최신 영화를 즐기기에 이상적인 장소입니다. 다양한 푸드 옵션과 아늑한 분위기가 영화관람을 더욱 특별하게 만듭니다. 특히, 최신 4D 기술을 도입하여 관객들에게 몰입감 넘치는 경험을 제공하고 있습니다. 영화를 넘어 다양한 이벤트와 혜택으로 관객들에게 특별한 추억을 선사합니다.', '051-494-1004', '부산시 부산진구 부전동 1004-1', '주차장 협소', 150);
 insert into theater_tb(theater_pic, theater_name, theater_description, tel, address, park, total_seat) values ('/images/theater2.png', '그린시네마 대구 만촌동 지점', '그린시네마 만촌동 지점은 독특한 디자인과 현대적인 시설로 꾸며져 있어, 영화를 감상하는 동안 고급스러운 분위기를 제공합니다. 특히, 최신 영화뿐만 아니라 독립 영화와 예술 영화의 상영에도 힘쓰고 있습니다. 각 프리미엄 상영관마다 다양한 주제의 특별한 이벤트를 개최하여 관객들에게 다채로운 즐거움을 선사하고 있습니다.', '054-422-2005', '대구시 수성구 만촌동 1004-1', '주차장 넓음', 150);
