@@ -31,5 +31,9 @@ public class User {
         this.gubun = gubun;
         this.createdAt = createdAt;
     }
+    
+    public void setUserPassword(String password) {
+    	this.password = password;
+    }
 }
 

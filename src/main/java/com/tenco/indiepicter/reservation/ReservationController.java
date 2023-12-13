@@ -1,7 +1,5 @@
 package com.tenco.indiepicter.reservation;
 
-
-
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -31,15 +29,14 @@ public class ReservationController {
 	@GetMapping("/invitation")
 	public String reservationTicket(Model model) {
 		
-//		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-//		
-//		List<VipReservationDTO> VipReservationDTOLists = this.reservationService.invitation(1);
-//		
-//		model.addAttribute("VipReservationDTOLists", VipReservationDTOLists);
+		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+		
+		List<VipReservationDTO> VipReservationDTOLists = this.reservationService.invitation(1);
+		
+		model.addAttribute("VipReservationDTOLists", VipReservationDTOLists);
 		
 		return "mypage/myinvitation";
 		
 	}
 	
-   
 }

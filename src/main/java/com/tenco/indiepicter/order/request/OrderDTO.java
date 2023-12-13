@@ -5,7 +5,8 @@ import lombok.Data;
 @Data
 public class OrderDTO {
     private Integer movieId;
-    private String lastSelectSeatList;
+    private Integer runningDateId;
+    private String SelectSeatList;
     private Integer price;
     private Integer count;
 }

@@ -2,7 +2,8 @@ package com.tenco.indiepicter.runningschedule;
 
 import com.tenco.indiepicter.movie.Movie;
 import com.tenco.indiepicter.runningschedule.response.ChoiceDayDTO;
-import com.tenco.indiepicter.runningschedule.response.SelectDayDTO;
+import com.tenco.indiepicter.runningschedule.response.SelectRunningScheduleAndPlaceDTO;
+import com.tenco.indiepicter.runningschedule.response.SelectRunningScheduleDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -21,10 +22,13 @@ public interface RunningScheduleRepository {
     public int deleteById(Integer id);
 
     // 선택한 영화와 선택한 날짜의 오프라인 상영 일정 조회
-    public List<SelectDayDTO> findByMovieIdAndRunningDate(@Param("movieId") Integer movieId, @Param("runningDate") String runningDate);
+    public List<SelectRunningScheduleDTO> findByMovieIdAndRunningDate(@Param("movieId") Integer movieId, @Param("runningDate") String runningDate);
 
     // 선택한 오프라인 상영 일정 상세 조회
     public ChoiceDayDTO findByRunningScheduleId(Integer runningScheduleid);
+
+    // 선택한 오프라인 상영 일정 상세 조회 + 영화관 정보
+    public SelectRunningScheduleAndPlaceDTO findByRunningScheduleIdAndPlace(Integer runningDateId);
 
     // 선택한 영화의 오프라인 상영 일정 기간 조회
     public List<RunningSchedule> findByMovieId(Integer movieId);

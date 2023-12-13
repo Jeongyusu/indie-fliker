@@ -15,7 +15,7 @@ public interface SeatRepository {
     public int deleteById(Integer id);
 
     // 상영시간에 따른 좌석 조회
-    public List<ExistSeatDTO> findByRunningscheduleId(Integer runningscheduleId);
+    public List<ExistSeatDTO> findByRunningDateId(Integer runningDateId);
 
     // 좌석 전체 조회
     public List<Seat> findAll();
