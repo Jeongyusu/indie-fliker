@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 
-<%@ include file="/WEB-INF/views/layout/header.jsp"%>
+<%@ include file="../layout/header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <main>
     <div class="n_custom_container_fluid">
@@ -273,4 +274,4 @@
     </div>
 </main>
 <script src="../../../../js/neh/off_detail.js"></script>
-<%@ include file="/WEB-INF/views/layout/footer.jsp"%>
+<%@ include file="../layout/footer.jsp" %>
