@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
 import com.tenco.indiepicter._core.utils.Define;
 import com.tenco.indiepicter.reservation.ReservationService;
+import com.tenco.indiepicter.user.request.UserProfileRequestDTO;
+import com.tenco.indiepicter.user.request.UserRequestDTO;
+import com.tenco.indiepicter.user.response.UserProfileResponseDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -49,7 +52,7 @@ public class UserController {
 	
 	// 회원 가입 페이지 요청(POST)
 	@PostMapping("/join")
-	public String joinUpProc(@Valid UserRequest.JoinDTO requestDto, Errors errors) {
+	public String joinUpProc(@Valid UserRequestDTO.JoinDTO requestDto, Errors errors) {
 		
 		// 이메일 유효성 검사
 		if(requestDto.getUserEmail() == null || requestDto.getUserEmail().isEmpty()) {
@@ -94,7 +97,7 @@ public class UserController {
 	
 	// 로그인 페이지 요청(POST)
 	@PostMapping("/login")
-	public String joinInProc(@Valid UserRequest.loginDTO requestDto, Errors errors) {
+	public String joinInProc(@Valid UserRequestDTO.loginDTO requestDto, Errors errors) {
 
 		// 이메일 유효성 검사
 		if(requestDto.getUserEmail() == null || requestDto.getUserEmail().isEmpty()) {
@@ -113,7 +116,19 @@ public class UserController {
 		session.setAttribute(Define.PRINCIPAL, principal);
 		
 		return "redirect:/main";
-	}	
+	}
+	
+//---------------------------------------------------------------------------------------------------------------		
+	
+	// 로그아웃
+	@GetMapping("/logout")
+	public String logout() {
+		
+		session.invalidate();
+		
+		return "redirect:/user/login";
+	}
+	
 	
 //---------------------------------------------------------------------------------------------------------------	
 	
@@ -149,6 +164,39 @@ public class UserController {
 	
 //----------------------------------------------------------------------------------------------------------------
 	
+	// 회원 프로필 수정(GET)
+	@GetMapping("/profile")
+	public String profile(Model model) {
+		
+		User user = this.userService.findById();
+		
+		model.addAttribute("user", user);
+		
+		return "user/profile";
+	}
 	
+	// 회원 프로필 수정(POST)
+	@PostMapping("profile")
+	public String profileUpdate(UserProfileRequestDTO dto) {
+		
+		
+		
+		
+		
+		return "user/profile";
+	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
