@@ -216,18 +216,6 @@ insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/opera
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/saw.png', '실험영화', 7);
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/yurang.png', '실험영화', 8);
 
-insert into running_schedule_tb(running_time, running_date, start_time, end_time, movie_id, theater_id)
-    values (240, '2023-11-11 11:11:11', '11:11:11', '11:11:11', 1, 1);
-insert into running_schedule_tb(running_time, running_date, start_time, end_time, movie_id, theater_id)
-    values (120, '2023-02-22 22:22:22', '22:22:22', '22:22:22', 2, 2);
-insert into running_schedule_tb(running_time, running_date, start_time, end_time, movie_id, theater_id)
-    values (360, '2023-03-03 03:03:03', '03:03:03', '03:03:03', 3, 3);
-insert into running_schedule_tb(running_time, running_date, start_time, end_time, movie_id, theater_id)
-    values (150, '2023-04-04 04:04:04', '04:04:04', '04:04:04', 4, 4);
-insert into running_schedule_tb(running_time, running_date, start_time, end_time, movie_id, theater_id)
-    values (200, '2023-05-05 05:05:05', '05:05:05', '05:05:05', 5, 5);
-
-
 insert into seat_tb(seat_name, running_schedule_id) values ('A3', 1);
 insert into seat_tb(seat_name, running_schedule_id) values ('A5', 1);
 insert into seat_tb(seat_name, running_schedule_id) values ('C9', 1);

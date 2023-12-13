@@ -1,8 +1,8 @@
 package com.tenco.indiepicter.runningschedule;
 
 import com.tenco.indiepicter.runningschedule.response.ChoiceDayDTO;
+import com.tenco.indiepicter.runningschedule.response.SelectRunningScheduleDTO;
 import com.tenco.indiepicter.seat.response.ExistSeatDTO;
-import com.tenco.indiepicter.runningschedule.response.SelectDayDTO;
 import com.tenco.indiepicter.runningschedule.response.TotalDayDTO;
 import com.tenco.indiepicter.seat.SeatRepository;
 import com.tenco.indiepicter.theater.TheaterRepository;
@@ -33,9 +33,8 @@ public class RunningScheduleService {
     }
 
     // 선택한 날짜 중 상영 일정
-    public List<SelectDayDTO> selectDay(Integer movieId, String selectDay){
-        List<SelectDayDTO> responseDTOs = runningScheduleRepository.findByMovieIdAndRunningDate(movieId, selectDay);
-
+    public List<SelectRunningScheduleDTO> selectDay(Integer movieId, String selectDay){
+        List<SelectRunningScheduleDTO> responseDTOs = runningScheduleRepository.findByMovieIdAndRunningDate(movieId, selectDay);
         return responseDTOs;
     }
 

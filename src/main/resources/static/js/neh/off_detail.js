@@ -1,3 +1,4 @@
+
 // 펀딩 & 환불 버튼 클릭 시 해당 안내문 출력
 let selectInfo = document.querySelector("#n_info");
 let fundIcon = document.querySelector("#n_fund");

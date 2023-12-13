@@ -1,7 +1,5 @@
 package com.tenco.indiepicter.reservation;
 
-
-
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -41,5 +39,4 @@ public class ReservationController {
 		
 	}
 	
-   
 }

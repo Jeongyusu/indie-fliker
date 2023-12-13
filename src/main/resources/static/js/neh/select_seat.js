@@ -83,7 +83,7 @@ let div = ""; // 추가할 tag
 async function loadExistSeatList(){
     let runningDateId = document.querySelector("#n_running_date_id").value;
     try {
-        let response = await fetch(`/seat/api/exist-seat?runningscheduleId=${runningDateId}`, {
+        let response = await fetch(`/seat/api/exist-seat?runningDateId=${runningDateId}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"

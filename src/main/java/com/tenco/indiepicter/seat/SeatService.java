@@ -15,8 +15,8 @@ public class SeatService {
     @Autowired
     private SeatRepository seatRepository;
 
-    public List<ExistSeatDTO> existSeat(Integer runningscheduleId) {
-        List<ExistSeatDTO> existSeatDTOs = seatRepository.findByRunningscheduleId(runningscheduleId);
+    public List<ExistSeatDTO> existSeat(Integer runnindDateId) {
+        List<ExistSeatDTO> existSeatDTOs = seatRepository.findByRunningDateId(runnindDateId);
         return existSeatDTOs;
     }
 }
