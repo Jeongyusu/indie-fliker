@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-
-<%@ include file="/WEB-INF/views/layout/header.jsp" %>
+         pageEncoding="UTF-8"%>
+<%@ include file="../layout/header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <main>
     <div class="n_custom_container_fluid">
         <div class="body n_body">
@@ -283,6 +283,9 @@
     </div>
 </main>
 <script src="../../../../js/neh/on_detail.js"></script>
+<<<<<<< HEAD
+<%@ include file="../layout/footer.jsp" %>
+=======
 <script>
     let scrapState;
     let booleanScrapState = document.querySelector("#isScrabExists").value;
@@ -362,3 +365,4 @@
 </script>
 
 <%@ include file="/WEB-INF/views/layout/footer.jsp" %>
+>>>>>>> dev
