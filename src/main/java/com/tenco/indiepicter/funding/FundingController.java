@@ -33,4 +33,9 @@ public class FundingController {
         log.debug("펀딩플러스 테스트 중" + moviesByGenreDTOs.toString());
         return "main/movielist";
     }
+
+    @GetMapping("/on-air")
+    public String onAirMoives(){
+        return "main/main";
+    }
 }
