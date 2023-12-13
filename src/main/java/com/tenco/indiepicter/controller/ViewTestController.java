@@ -32,8 +32,9 @@ public class ViewTestController {
     }
 
     @GetMapping("/online-detail")
-
     public String onlineDetail() {
+        return "fund/on_detail";
+    }
 
     @GetMapping("/offline-detail")
     public String offlineDetail() {

@@ -1,4 +1,4 @@
-package com.tenco.indiepicter.scrab;
+package com.tenco.indiepicter.scrab.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
