@@ -1,12 +1,12 @@
-package com.tenco.indiepicter.order.request;
+package com.tenco.indiepicter.seat.request;
 
 import lombok.Data;
 
 @Data
-public class OrderDTO {
+public class SelectSeatDTO {
     private Integer movieId;
     private Integer runningDateId;
-    private String SelectSeatList;
+    private String selectSeats;
     private Integer price;
     private Integer count;
 }
