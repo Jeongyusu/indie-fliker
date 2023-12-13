@@ -1,11 +1,28 @@
-window.onload = loadMoreData();
+let genre = '극영화';
+let currentPage = 2;
+let isLoading = false;
 
-document.getElementById('data-container').addEventListener('scroll', loadMoreData);
+window.onload = function () {
+    console.log("온로드 실행");
+    loadMoreData(genre);
+    //genre를 현재URL의 쿼리스트링 키 값을 검색해서 가져오기
+    genre = getQueryStringValue('genre');
+    console.log("genre : " + genre);
 
-// ...
+    // 스크롤 이벤트에 이벤트 리스너를 추가
+    document.getElementById('data-container').addEventListener('scroll', function () {
+        loadMoreData(genre);
+    })};
 
+// 현재 URL에서 쿼리스트링을 가져오기
+function getQueryStringValue(key) {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    return urlParams.get(key);
+}
+
+// fetch로 새로운 데이터 받아오기
 async function fetchFundingList(genre, page) {
-    genre = '극영화';
     let response = await fetch(`/api/fundings?genre=${genre}&page=${page}`);
     let responseBody = await response.json();
     console.log("fetch펀딩 내부 제이슨 변환완료");
@@ -18,10 +35,9 @@ async function fetchFundingList(genre, page) {
 }
 
 
-function loadMoreData() {
-    let currentPage = 2;
-    let isLoading = false;
-    let genre = '극영화';
+// 마우스 스크롤 감지 후 새로운 데이터를 받아온 후 새로운 요소 생성하기
+function loadMoreData(genre) {
+    console.log("loadMoreData 진입");
 
     if (isLoading) {
         return;
@@ -85,6 +101,8 @@ function loadMoreData() {
                 isLoading = false;
             } catch (error) {
                 console.error('Error fetching data:');
+            }  finally {
+            isLoading = false;
             }
         }, 1000);
     }
