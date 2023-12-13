@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.tenco.indiepicter.user.request.UserRequestDTO;
 
@@ -31,6 +32,8 @@ public interface UserRepository {
 	
 	// 회원 프로필 수정
 	public User update(UserRequestDTO.JoinDTO requestDto);
+	
+//	MultipartFile file;
 	
 	
 }
