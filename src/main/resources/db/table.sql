@@ -203,6 +203,8 @@ create table notice_tb(
                           created_at datetime not null default now()
 );
 
+
+
 create table banner_tb(
                           id int auto_increment primary key,
                           banner_pic varchar(200) not null,
@@ -212,3 +214,4 @@ create table banner_tb(
                           foreign KEY(movie_id) references movie_tb(id)
 
 );
+

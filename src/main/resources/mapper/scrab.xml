@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenco.indiepicter.scrab.ScrabRepository">
+
+    <!-- MyBatis SQL statements for Scrab -->
+    <select id="isScrabExists" resultType="Integer">
+        SELECT id FROM scrab_tb WHERE user_id = #{userId} AND funding_id = #{fundingId}
+    </select>
+
+    <insert id="insertScrab">
+        INSERT INTO scrab_tb (user_id, funding_id) VALUES (#{userId}, #{fundingId})
+    </insert>
+
+    <delete id="deleteScrab">
+        DELETE FROM scrab_tb WHERE user_id = #{userId} AND funding_id = #{fundingId}
+    </delete>
+
+</mapper>

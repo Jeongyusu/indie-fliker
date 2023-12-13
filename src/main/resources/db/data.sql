@@ -193,6 +193,9 @@ insert into funding_tb(target_price, present_price, price_per_onetime, people_co
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('5000000', '4000000', '8000', '40', '2023-11-01', '2023-12-31', 28);
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('4000000', '3000000', '8000', '40', '2023-11-01', '2023-12-31', 29);
 
+
+insert  into scrab_tb(user_id, funding_id) values ('1','1' );
+
 insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-24', '13:22', '14:51', 1, 1);
 insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-24', '17:30', '18:59', 1, 1);
 insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-25', '19:56', '21:25', 1, 1);
@@ -247,5 +250,30 @@ insert into reservation_tb(reservation_code, user_id, seat_id) values ('33334', 
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('44444', 4, 4);
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('55555', 3, 5);
 
+select * from payment_type_tb;
+insert into payment_type_tb(type)
+values ('11111');
+insert into payment_type_tb(type)
+values ('2222');
+insert into payment_type_tb(type)
+values ('3333');
+insert into payment_type_tb(type)
+values ('4444');
+insert into payment_type_tb(type)
+values ('5555');
 
+select * from order_tb;
+insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
+values ('1111', 1111, 1111, 1, 1);
+insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
+values ('2222', 2222, 2222, 2, 2);
+insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
+values ('3333', 3333, 3333, 3, 3);
+insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
+values ('4444', 4444, 4444, 4, 4);
 
+select * from payment_tb;
+insert into payment_tb(total_price, discount_price, final_price, paymented_at, payment_type_id, order_id)
+values (1000, 1000, 1000, '2024-11-11 11:11:11', 1, 1);
+insert into payment_tb(total_price, discount_price, final_price, paymented_at, payment_type_id, order_id)
+values (2000, 2000, 2000, '2023-02-22 22:22:22', 2, 2);

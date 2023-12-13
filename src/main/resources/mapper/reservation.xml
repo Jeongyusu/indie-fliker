@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tenco.indiepicter.reservation.ReservationRepository">
+
+	<!-- 회원 전체 조회 -->
+	<select id="findByAllId" resultType="com.tenco.indiepicter.reservation.Reservation">
+		select count(*) from reservation_tb
+	</select>
+	
+	<!-- 나의 VIP 초청권 전체 조회 -->
+	<select id="findByUserId" resultMap="VipReservationDTOResultMap">
+		select  movie_name,
+			    running_date,
+			    start_time,
+			    address,
+			    seat_name,
+			    theater_name,
+			    reservation_code	
+		from 	reservation_tb rt
+        join 	seat_tb st
+        on 		rt.seat_id = st.id
+		join 	running_schedule_tb rst
+		on 		st.running_schedule_id = rst.id
+        join    theater_tb tt
+        on 		rst.id = tt.id
+        join	movie_tb mt
+        on		rst.id = mt.id
+        where   tb.id = #{id}
+	</select>
+	
+	<resultMap id="VipReservationDTOResultMap" type="com.tenco.indiepicter.reservation.response.VipReservationDTO">
+        <result property="movieName" column="movie_name"/>
+        <result property="runningDate" column="running_date"/>
+        <result property="startTime" column="start_time"/>
+        <result property="address" column="address"/>
+        <result property="seatName" column="seat_name"/>
+        <result property="theaterName" column="theater_name"/>
+        <result property="reservationCode" column="reservation_code"/>
+    </resultMap>
+	
+	
+	
+</mapper>

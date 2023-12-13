@@ -18,6 +18,7 @@ public class User {
     private String gubun;
     private Timestamp createdAt;
 
+
     @Builder
     public User(Integer id, String userEmail, String password, String username, String pic, String grade, String tel, String gubun, Timestamp createdAt) {
         this.id = id;
