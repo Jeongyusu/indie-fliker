@@ -35,16 +35,15 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @RequestMapping("/user")
 public class UserController {
+	
+	@Autowired
+	private HttpSession session;
 
 	@Autowired
 	private UserService userService;
-
+	
 	@Autowired
-	private HttpSession session;
-	
 	private ReservationService reservationService;
-	
-
 
 //------------------------------------------------------------------------------------------------------------------
 	
@@ -85,8 +84,6 @@ public class UserController {
 		}
 		
 		this.userService.join(requestDto);
-		
-		
 		
 		return "redirect:/user/login";
 	}
@@ -134,7 +131,6 @@ public class UserController {
 		return "redirect:/user/login";
 	}
 	
-	
 //---------------------------------------------------------------------------------------------------------------	
 	
 	// 회원 전체 조회
@@ -159,11 +155,7 @@ public class UserController {
 		if(principal == null) {
 			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
 		}
-		
-//		int reservationTicket = this.reservationService.findById();
-//		
-//		model.addAttribute("reservationTicket", reservationTicket);
-		
+			
 		return "mypage/mypage";
 	}
 	
@@ -173,9 +165,13 @@ public class UserController {
 	@GetMapping("/profile")
 	public String profile(Model model) {
 		
-		User user = (User)session.getAttribute(Define.PRINCIPAL);
-		
-		model.addAttribute("user", user);
+//		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+//		
+//		if(principal == null) {
+//			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
+//		}
+//		
+//		model.addAttribute("principal", principal);
 		
 		return "user/profile";
 	}
@@ -242,17 +238,11 @@ public class UserController {
 		return "redirect:/user/mypage";
 	}
 	
+//----------------------------------------------------------------------------------------------------------------	
+	
+	// 12 - 13 학원 작업 끝
+	
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

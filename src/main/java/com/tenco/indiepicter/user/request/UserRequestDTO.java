@@ -42,7 +42,6 @@ public class UserRequestDTO {
 	@Data
 	public static class loginDTO{
 		private String userEmail;
-		
 		private String password;
 		
 	}

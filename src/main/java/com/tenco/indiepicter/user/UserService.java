@@ -70,7 +70,7 @@ public class UserService {
 		
 		// 이메일 유효성 검사 
 		if(user == null) {
-			throw new MyDynamicException("아이디가 잘못되었습니다.", HttpStatus.BAD_REQUEST);
+			throw new MyDynamicException("이메일이 잘못되었습니다.", HttpStatus.BAD_REQUEST);
 		}
 		
 		// 유저 비밀번호가 db에 저장된 값과 비교
@@ -91,10 +91,10 @@ public class UserService {
 		
 		int result = this.userRepository.findByEmailCheck(userEmail);
 		
-//		// 이메일 중복 유효성 검사
-//		if(result != 1) {
-//			throw new MyDynamicException("이미 존재하는 이메일입니당.", HttpStatus.BAD_REQUEST);
-//		}
+		// 이메일 중복 유효성 검사
+		if(result != 1) {
+			throw new MyDynamicException("이미 존재하는 이메일입니당.", HttpStatus.BAD_REQUEST);
+		}
 		
 		return result;
 	}
@@ -124,10 +124,6 @@ public class UserService {
 		
 		User sessionUser = (User)session.getAttribute(Define.PRINCIPAL);
 		
-		log.debug("-----------------------------");
-		log.debug(dto.getPassword1() + " 비교" +  dto.getPassword2());
-		log.debug("-----------------------------");
-		
 		if(!dto.getPassword1().equals(dto.getPassword2())) {
 			throw new MyDynamicException("비밀번호를 다시 확인해주세요.", HttpStatus.BAD_REQUEST);
 		}
@@ -136,25 +132,18 @@ public class UserService {
 		
 		String encodingPassword = passwordEncoder.encode(password);
 		dto.setPassword1(encodingPassword);
-		
 	
-		log.debug("-----------------------------");
-		log.debug(sessionUser.toString());
-		log.debug("-----------------------------");
 		
 		int resultRowCount = userRepository.update(dto);
 		
 		if(resultRowCount != 1) {	
-			throw new MyDynamicException("수정 실패", 
-					HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new MyDynamicException("수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		sessionUser = userRepository.findById(principalId);
 		session.setAttribute("sessionUser", sessionUser);
 		
-		
 		return resultRowCount;
-		
 	}
 	
 	

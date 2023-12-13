@@ -93,13 +93,13 @@
 		  
 					if(data == 1) {
 						alert("이미 존재하는 이메일입니다.");
-					} else {
+					} else{ 
 						alert("사용 가능한 이메일입니다.");
 					}
 					
 					$('#submitBtn').attr( 'onclick','alert("이메일 인증은 필수입니다.")');
 					$('#username').attr('readonly','');
-				}		
+				}
 			});
 		});
 	</script>
