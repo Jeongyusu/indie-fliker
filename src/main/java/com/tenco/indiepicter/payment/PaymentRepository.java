@@ -4,15 +4,16 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.tenco.indiepicter.payment.response.MyPaymentDTO;
+import com.tenco.indiepicter.payment.response.MyOfflinePaymentDTO;
+import com.tenco.indiepicter.payment.response.MyOnlinePaymentDTO;
 
 @Mapper
 public interface PaymentRepository {
 	
 	// 온라인 결제 내역
-	public List<MyPaymentDTO> findByOnlinePaymentId(Integer id); 
+	public List<MyOnlinePaymentDTO> findByOnlinePaymentId(Integer id); 
 	
 	// 오프라인 결제 내역
-	public List<MyPaymentDTO> findByOfflinePaymentId(Integer id);
+	public List<MyOfflinePaymentDTO> findByOfflinePaymentId(Integer id);
 	
 }

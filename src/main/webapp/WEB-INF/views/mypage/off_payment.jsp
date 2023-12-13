@@ -25,21 +25,21 @@
     <div class="container">
         <div class="l_movie_card card text-bg-light">
         
-        	<c:forEach var="MyPaymentDTO" items="${MyPaymentDTOLists}">
+        	<c:forEach var="MyOfflinePaymentDTO" items="${MyOfflinePaymentDTOLists}">
             <div class="row g-0">
                 <div class="col-md-4 d-flex align-items-center justify-content-center my-4">
-                    <img src="https://dummyimage.com/600x300/000/fff.jpg" ${MyPaymentDTO.thumbnail} class="card-img" alt=""
+                    <img src="https://dummyimage.com/600x300/000/fff.jpg" ${MyOfflinePaymentDTO.thumbnail} class="card-img" alt=""
                         style="width: 12rem; height: 18rem;">
                 </div>
                 <div class="col-md-5 d-flex align-items-center">
                     <div class="card-body">
-                      	<div class="h5 card-title">투팅카멘의 진실 ${MyPaymentDTO.movieName}</div>
-                      	<div class="p card-text l_mint mb-3">70% 달성 ${MyPaymentDTO.presentPrice}</div>
+                      	<div class="h5 card-title">투팅카멘의 진실 ${MyOfflinePaymentDTO.movieName}</div>
+                      	<div class="p card-text l_mint mb-3">70% 달성 ${MyOfflinePaymentDTO.presentPrice}</div>
                       	<div class="p card-text mb-3">A blade runner must pursue and try to terminate four replicants...
-                        	A blade runner must pursue and try to terminate four replicants... ${MyPaymentDTO.synopsis}
+                        	A blade runner must pursue and try to terminate four replicants... ${MyOfflinePaymentDTO.synopsis}
                       	</div>
-                      	<div class="p card-text mb-2">결제 일시 ${MyPaymentDTO.paymentedAt}</div>
-                     	<div class="p card-text">결제 정보 ${MyPaymentDTO.finalPrice}</div>
+                      	<div class="p card-text mb-2">결제 일시 ${MyOfflinePaymentDTO.paymentedAt}</div>
+                     	<div class="p card-text">결제 정보 ${MyOfflinePaymentDTO.finalPrice}</div>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex flex-column align-items-end justify-content-end mb-4">

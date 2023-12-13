@@ -6,7 +6,7 @@
 
 	<!-- 나의 온라인 펀딩 내역 -->
 	<select id="findByOnlinePaymentId" resultMap="MyPaymentOnlineDTOResultMap">
-		select 	thumbnail, movie_name, present_price, synopsis, final_price, paymented_at
+		select 	thumbnail, movie_name, present_price, synopsis, final_price, taget_price, paymented_at
 		from 	payment_tb as pt
 		join 	order_tb as ot
 		on 		pt.order_id = ot.id
@@ -19,7 +19,7 @@
 		where	ut.id = #{id}
 	</select>
 	
-	<resultMap id="MyPaymentOnlineDTOResultMap" type="com.tenco.indiepicter.payment.response.MyPaymentDTO">
+	<resultMap id="MyPaymentOnlineDTOResultMap" type="com.tenco.indiepicter.payment.response.MyOnlinePaymentDTO">
 		<result property="thumbnail" column="thumbnail"/>
 		<result property="movieName" column="movie_name"/>
 		<result property="presentPrice" column="present_price"/>
@@ -30,7 +30,7 @@
 	
 	<!-- 나의 오프라인 펀딩 내역 -->
 	<select id="findByOfflinePaymentId" resultMap="MyPaymentOfflineDTOResultMap">
-		select 	thumbnail, movie_name, present_price, synopsis, final_price, paymented_at
+		select 	thumbnail, movie_name, present_price, synopsis, final_price, taget_price, paymented_at
 		from 	payment_tb as pt
 		join 	order_tb as ot
 		on 		pt.order_id = ot.id
@@ -43,7 +43,7 @@
 		where	ut.id = #{id}
 	</select>
 	
-	<resultMap id="MyPaymentOfflineDTOResultMap" type="com.tenco.indiepicter.payment.response.MyPaymentDTO" >
+	<resultMap id="MyPaymentOfflineDTOResultMap" type="com.tenco.indiepicter.payment.response.MyOfflinePaymentDTO" >
 		<result property="thumbnail" column="thumbnail"/>
 		<result property="movieName" column="movie_name"/>
 		<result property="presentPrice" column="present_price"/>
