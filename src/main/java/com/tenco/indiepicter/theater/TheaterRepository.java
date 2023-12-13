@@ -1,5 +1,6 @@
 package com.tenco.indiepicter.theater;
 
+import com.tenco.indiepicter.theater.response.TheaterListDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -20,6 +21,6 @@ public interface TheaterRepository {
     // 영화관 1개 조회
     public Theater findById(Integer id);
 
-    // 영화관 전체 조회
-    public List<Theater> findAll();
+    // 메인페이지(영화예매) 극장 정보 조회
+    public List<TheaterListDTO> findAllByCustom();
 }
