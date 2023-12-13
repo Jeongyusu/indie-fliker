@@ -6,83 +6,104 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ViewTestController {
-
-    @GetMapping("/login")
-    public String onlineDetail(){return "user/login";}
-    @GetMapping("/online-detail")
-    public String onlineDetail1(){
+    @GetMapping("/on-detail")
+    public String ondetail() {
         return "fund/on_detail";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "user/login";
+    }
+
+    @GetMapping("/ask")
+    public String ask() {
+        return "manager/ask";
+    }
+
+    @GetMapping("/join")
+    public String join() {
+        return "user/join";
+    }
+
+    @GetMapping("/fund-upload")
+    public String fundUpload() {
+        return "fund/fund_upload";
+    }
+
+    @GetMapping("/online-detail")
+    public String onlineDetail() {
+        return "fund/on_detail";
+    }
 
     @GetMapping("/offline-detail")
-    public String offlineDetail(){
+    public String offlineDetail() {
         return "fund/off_detail";
     }
 
     @GetMapping("/off-payment")
-    public String offPayment(){
+    public String offPayment() {
         return "reservation/off_payment";
     }
 
     @GetMapping("/select-day")
-    public String selectDay(){
+    public String selectDay() {
         return "reservation/select_day";
     }
 
     @GetMapping("/on-payment")
-    public String onPayment(){
+    public String onPayment() {
         return "reservation/on_payment";
     }
 
     @GetMapping("/reservation-ticket")
-    public String reservationTicket(){
+    public String reservationTicket() {
         return "reservation/reservation_ticket";
     }
 
     @GetMapping("/select-seat")
-    public String selectSeat(){
+    public String selectSeat() {
         return "reservation/select_seat";
     }
 
 
     @GetMapping("/main")
-    public String main(){
+    public String main() {
         return "main/main";
     }
 
     @GetMapping("/movielist")
-    public String movielist(){
+    public String movielist() {
         return "main/movielist";
     }
 
     @GetMapping("/online-watch")
-    public String onlineWatch(){
+    public String onlineWatch() {
         return "main/on_watch";
     }
 
     @GetMapping("/chatroom")
-    public String chatroom(){
+    public String chatroom() {
         return "main/chatroom";
     }
 
     @GetMapping("/live-chatrooms")
-    public String liveChatrooms(){
+    public String liveChatrooms() {
         return "main/live_chatrooms";
     }
 
     @GetMapping("/my-likelist")
-    public String likelist(){
+    public String likelist() {
         return "mypage/likelist";
     }
 
     @GetMapping("/offline-funding")
-    public String offlineFunding(){
+    public String offlineFunding() {
         return "mypage/off_funding";
     }
 
     @GetMapping("/online-funding")
-    public String onlineFunding(){
+    public String onlineFunding() {
         return "mypage/on_funding";
     }
 

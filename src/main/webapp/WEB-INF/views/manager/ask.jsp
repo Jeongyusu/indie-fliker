@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자주 묻는 질문</title>
     <script src="https://kit.fontawesome.com/0f9e652ce1.js" crossorigin="anonymous"></script>
-    <link href="../../../../resources/static/css/khy_style.css" rel="stylesheet">
+    <link href="/css/khy_style.css" rel="stylesheet">
 </head>
 <body>
 <div class="k_ask_container">
@@ -13,7 +13,14 @@
     <div class="k_search-container">
         <input type="text" class="k_search-input" placeholder="검색어를 입력하세요">
         <a href="#" class="custom-button">
-        <img class="k_search-icon" src="../../../../resources/static/images/icons/icons8-search-50.png" alt="My Image">
+        <img class="k_search-icon" src="
+
+
+
+
+
+
+        /images/icons/icons8-search-50.png" alt="My Image">
         </a>
     </div>
 </div>
