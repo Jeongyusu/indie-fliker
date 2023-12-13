@@ -21,20 +21,22 @@
 
     <div class="container">
         <div class="l_movie_card card text-bg-light">
+        	
+        	<c:forEach var="MyPaymentDTO" items="${MyPaymentDTOLists}">
             <div class="row g-0">
                 <div class="col-md-4 d-flex align-items-center justify-content-center my-4">
-                    <img src="https://dummyimage.com/600x300/000/fff.jpg" class="card-img" alt=""
+                    <img src="https://dummyimage.com/600x300/000/fff.jpg" class="card-img" ${MyPaymentDTO.thumbnail} alt=""
                         style="width: 12rem; height: 18rem;">
                 </div>
                 <div class="col-md-5 d-flex align-items-center">
                      <div class="card-body">
-                      <div class="h5 card-title">투팅카멘의 진실</div>
-                      <div class="p card-text l_mint mb-3">70% 달성</div>
+                      <div class="h5 card-title">투팅카멘의 진실 ${MyPaymentDTO.movieName}</div>
+                      <div class="p card-text l_mint mb-3">70% 달성 ${presentPrice}</div>
                       <div class="p card-text mb-3">A blade runner must pursue and try to terminate four replicants...
-                        A blade runner must pursue and try to terminate four replicants...
+                        A blade runner must pursue and try to terminate four replicants... ${MyPaymentDTO.synopsis}
                       </div>
-                      <div class="p card-text mb-2">결제 일시</div>
-                      <div class="p card-text">결제 정보</div>
+                      <div class="p card-text mb-2">결제 일시 ${MyPaymentDTO.paymentedAt}</div>
+                      <div class="p card-text">결제 정보 ${MyPaymentDTO.finalPrice}</div>
                     </div>
                   </div>
                 <div class="col-md-3 d-flex flex-column align-items-end justify-content-end mb-4">
@@ -42,7 +44,10 @@
                   <button class="btn l_mint_button text-white mt-2" type="button" style="margin-right: 2.5rem; width: 8rem;">환불하기</button>
                 </div>
             </div>
+            </c:forEach>
+            
         </div>
+        
         <div class="l_movie_card card text-bg-light">
           <div class="row g-0">
               <div class="col-md-4 d-flex align-items-center justify-content-center my-4">
@@ -72,7 +77,7 @@
         </ul>
       </nav>
 
-    </div>
+	</div>
     <!-- footer -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"

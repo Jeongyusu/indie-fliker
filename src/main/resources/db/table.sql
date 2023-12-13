@@ -200,3 +200,16 @@ create table notice_tb(
                           category varchar(20) not null,
                           created_at datetime not null default now()
 );
+
+
+
+create table banner_tb(
+                          id int auto_increment primary key,
+                          banner_pic varchar(200) not null,
+                          genre varchar(20) not null,
+                          created_at datetime not null default now(),
+                          movie_id int not null,
+                          foreign KEY(movie_id) references movie_tb(id)
+
+);
+

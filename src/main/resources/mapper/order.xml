@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tenco.indiepicter.order.OrderRepository">
+
+    <!-- 주문 등록 -->
+    <insert id="insert">
+        insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
+        values (#{selectedSeats}, #{productPrice}, #{quantity}, #{fundingId}, #{userId})
+    </insert>
+
+    <!-- 주문 삭제 -->
+    <delete id="deleteById">
+        delete from seat_tb where id = #{id}
+    </delete>
+
+    <!-- 선택한 주문 내역 조회 -->
+    <select id="findByRunningscheduleId" resultMap="existSeatDTOResultMap">
+        select seat_name from seat_tb where running_schedule_id = #{runningscheduleId}
+    </select>
+    <resultMap id="existSeatDTOResultMap" type="com.tenco.indiepicter.seat.response.ExistSeatDTO">
+        <result property="seatName" column="seat_name"/>
+    </resultMap>
+
+    <!-- 주문 전체 조회 -->
+    <select id="findAll" resultType="com.tenco.indiepicter.seat.Seat">
+        select * from Seat_tb
+    </select>
+
+
+</mapper>
