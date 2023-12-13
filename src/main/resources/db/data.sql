@@ -1,20 +1,20 @@
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('ssar@nate.com', '1234', '쌀', '/images/ssar.jpg', 'NORMAL', '010-1122-3344', 'NORMAL', now());
+values('ssar@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '쌀', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1122-3344', 'NORMAL', now());
 
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('cos@nate.com', '1234', '코스', '/images/cos.jpg', 'VIP', '010-4455-6677', 'NORMAL', now());
+values('cos@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '코스', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4455-6677', 'NORMAL', now());
 
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('love@nate.com', '1234', '러브', '/images/love.jpg', 'NORMAL', '010-4455-6677', 'DIRECTOR', now());
+values('love@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '러브', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-4455-6677', 'DIRECTOR', now());
 
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('happy@nate.com', '1234', '해피', '/images/happy.jpg', 'VIP', '010-4455-6677', 'DIRECTOR', now());
+values('happy@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '해피', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4455-6677', 'DIRECTOR', now());
 
-insert into theater_tb(theater_name, tel, address, park, total_seat) values ('메가박스 부산 부전동 지점', '051-494-1004', '부산시 부산진구 부전동 1004-1', '주차장 협소', 150);
-insert into theater_tb(theater_name, tel, address, park, total_seat) values ('메가박스 대구 만촌동 지점', '054-422-2005', '대구시 수성구 만촌동 1004-1', '주차장 넓음', 150);
-insert into theater_tb(theater_name, tel, address, park, total_seat) values ('메가박스 서울 서초동 지점', '02-422-2005', '서울시 수성구 만촌동 1006-1', '주차장 넓음', 160);
-insert into theater_tb(theater_name, tel, address, park, total_seat) values ('메가박스 전라 수유동 지점', '02-562-1935', '전라북도 전북구 선유동 1007-1', '주차장 넓음', 180);
-insert into theater_tb(theater_name, tel, address, park, total_seat) values ('메가박스 인천 그린동 지점', '033-662-2005', '인천 북구 국제동 1008-1', '주차장 넓음', 130);
+insert into theater_tb(theater_pic, theater_name, theater_description, tel, address, park, total_seat) values ('/images/theater1.png', '그린시네마 부산 부전동 지점', '그린시네마 부전동 지점은 편안하고 넓은 좌석과 첨단 음향 시스템으로 최신 영화를 즐기기에 이상적인 장소입니다. 다양한 푸드 옵션과 아늑한 분위기가 영화관람을 더욱 특별하게 만듭니다. 특히, 최신 4D 기술을 도입하여 관객들에게 몰입감 넘치는 경험을 제공하고 있습니다. 영화를 넘어 다양한 이벤트와 혜택으로 관객들에게 특별한 추억을 선사합니다.', '051-494-1004', '부산시 부산진구 부전동 1004-1', '주차장 협소', 150);
+insert into theater_tb(theater_pic, theater_name, theater_description, tel, address, park, total_seat) values ('/images/theater2.png', '그린시네마 대구 만촌동 지점', '그린시네마 만촌동 지점은 독특한 디자인과 현대적인 시설로 꾸며져 있어, 영화를 감상하는 동안 고급스러운 분위기를 제공합니다. 특히, 최신 영화뿐만 아니라 독립 영화와 예술 영화의 상영에도 힘쓰고 있습니다. 각 프리미엄 상영관마다 다양한 주제의 특별한 이벤트를 개최하여 관객들에게 다채로운 즐거움을 선사하고 있습니다.', '054-422-2005', '대구시 수성구 만촌동 1004-1', '주차장 넓음', 150);
+insert into theater_tb(theater_pic, theater_name, theater_description, tel, address, park, total_seat) values ('/images/theater3.png', '그린시네마 서울 서초동 지점', '그린시네마 서초동 지점은 독특한 분위기와 함께 현대적인 인테리어로 영화를 감상하는 동안 편안한 공간을 제공합니다. 최신 영화뿐만 아니라 다양한 장르의 영화를 상영하여 다양한 취향의 관객들에게 다채로운 선택지를 제공하고 있습니다. 주기적으로 다양한 감상 행사를 개최하여 관객들에게 특별한 경험을 선사하고 있습니다.','02-422-2005', '서울시 수성구 만촌동 1006-1', '주차장 넓음', 160);
+insert into theater_tb(theater_pic, theater_name, theater_description, tel, address, park, total_seat) values ('/images/theater4.png', '그린시네마 전라 수유동 지점', '그린시네마 수유동 지점은 세련된 분위기로 꾸며져 있어, 관람하는 동안 특별한 경험을 선사합니다. 현대적이고 트렌디한 인테리어는 관객들에게 편안하고 고급스러운 분위기를 제공합니다. 다양한 테마의 상영관을 운영하여 관객들에게 색다른 즐거움을 제공하고 있습니다.','02-562-1935', '전라북도 전북구 선유동 1007-1', '주차장 넓음', 180);
+insert into theater_tb(theater_pic, theater_name, theater_description, tel, address, park, total_seat) values ('/images/theater5.png', '그린시네마 인천 그린동 지점', '그린시네마 그린동 지점은 넓은 스크린과 강력한 사운드 시스템으로 영화의 몰입감을 높입니다. 쇼핑이나 식사 후에 영화를 즐길 수 있는 편리한 위치로 많은 이들에게 사랑받고 있습니다. 주기적으로 영화제와 특별 상영회를 개최하여 관객들에게 예술적인 경험을 선사하고 있습니다.','033-662-2005', '인천 북구 국제동 1008-1', '주차장 넓음', 130);
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date)
 values ('2023', '(주)시네마프로덕션', '스트리머','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
@@ -132,6 +132,8 @@ insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, dir
 values ('2023', '(주)시네마프로덕션', '소진된 인간','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
 ', '/images/moviethumbnail/experiment/sojin.jpeg', '부산형제복지원 사건 모티브', '실험영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02');
 
+
+
 insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이영호', '김상수', '남은혜', '김하율', '이사라', '박남규', '박세환', '김언약', '정유수', 1);
 insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('김사라', '김수호', '김하얀', '김철수', '이사라', '김남규', '김라희', '김민아', '박정환', 2);
 insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이사라', '김호수', '남은혜', '김하율', '이사라', '민선규', '이미소', '이만수', '김남수', 3);
@@ -191,6 +193,9 @@ insert into funding_tb(target_price, present_price, price_per_onetime, people_co
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('5000000', '4000000', '8000', '40', '2023-11-01', '2023-12-31', 28);
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('4000000', '3000000', '8000', '40', '2023-11-01', '2023-12-31', 29);
 
+
+insert  into scrab_tb(user_id, funding_id) values ('1','1' );
+
 insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-24', '13:22', '14:51', 1, 1);
 insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-24', '17:30', '18:59', 1, 1);
 insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-25', '19:56', '21:25', 1, 1);
@@ -233,5 +238,30 @@ insert into reservation_tb(reservation_code, user_id, seat_id) values ('33334', 
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('44444', 4, 4);
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('55555', 3, 5);
 
+select * from payment_type_tb;
+insert into payment_type_tb(type)
+values ('11111');
+insert into payment_type_tb(type)
+values ('2222');
+insert into payment_type_tb(type)
+values ('3333');
+insert into payment_type_tb(type)
+values ('4444');
+insert into payment_type_tb(type)
+values ('5555');
 
+select * from order_tb;
+insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
+values ('1111', 1111, 1111, 1, 1);
+insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
+values ('2222', 2222, 2222, 2, 2);
+insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
+values ('3333', 3333, 3333, 3, 3);
+insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
+values ('4444', 4444, 4444, 4, 4);
 
+select * from payment_tb;
+insert into payment_tb(total_price, discount_price, final_price, paymented_at, payment_type_id, order_id)
+values (1000, 1000, 1000, '2024-11-11 11:11:11', 1, 1);
+insert into payment_tb(total_price, discount_price, final_price, paymented_at, payment_type_id, order_id)
+values (2000, 2000, 2000, '2023-02-22 22:22:22', 2, 2);

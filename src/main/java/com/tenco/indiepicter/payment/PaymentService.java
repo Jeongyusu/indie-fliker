@@ -7,6 +7,10 @@ import com.tenco.indiepicter.runningschedule.response.SelectRunningScheduleAndPl
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.tenco.indiepicter.payment.response.MyOfflinePaymentDTO;
+import com.tenco.indiepicter.payment.response.MyOnlinePaymentDTO;
+import java.util.List;
+
 
 @Service
 @Slf4j
@@ -28,4 +32,17 @@ public class PaymentService {
 
         return responseDTO;
     }
+	
+	// 온라인 결제 내역
+	public List<MyOnlinePaymentDTO> findByOnlinePaymentId(Integer id){
+		
+		return this.paymentRepository.findByOnlinePaymentId(id);
+	}
+	
+	// 오프라인 결제 내역
+	public List<MyOfflinePaymentDTO> findByOfflinePaymentId(Integer id){
+		
+		return this.paymentRepository.findByOfflinePaymentId(id);
+	}
+	
 }

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 
-<%@ include file="/WEB-INF/views/layout/header.jsp"%>
+<%@ include file="/WEB-INF/views/layout/header.jsp" %>
 <main>
     <div class="n_custom_container_fluid">
         <div class="body n_body">
@@ -18,20 +18,23 @@
                             <ul>
                                 <li onclick="selectFund()">
                                     <span class="n_fund" aria-hidden="true">
-                                        <img id="n_fund" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuMDMxMjUgMjguODI0SDI1Ljk1OTJDMjcuMDU1MyAyOC44MjQgMjcuOTU5MiAyNy45MiAyNy45NTEyIDI2LjgyNFYxMy41SDI5VjlDMjkgNy44OTU0MyAyOC4xMDQ2IDcgMjcgN0g1QzMuODk1NDMgNyAzIDcuODk1NDMgMyA5VjEzLjUwMDFINC4wMzEyNVYyNi44MjRDNC4wMzEyNSAyNy45MjggNC45MjcyNSAyOC44MjQgNi4wMzEyNSAyOC44MjRaIiBmaWxsPSIjQjlFRUVFIi8+CjxwYXRoIGQ9Ik0xNiA2LjVDMTguMDMzIDQuMDE4NDkgMjAuMTIxMyAyLjcxMTEzIDIxLjExMTcgMi40NjM1M0MyMi42NDc3IDIuMDcxNTMgMjMuNzE5NyAzLjc0MzUzIDIyLjY1NTcgNC45MTE1M0MyMS45MjYxIDUuNzExNzYgMjAuODc5IDYuNDI0MDQgMTkuNSA2Ljg2NSIgc3Ryb2tlPSIjMjEyNTI5IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiLz4KPHBhdGggZD0iTTE2IDYuNUMxMy45MzY5IDMuOTcyMTcgMTEuODc3NiAyLjcxMzA5IDEwLjg4NjEgMi40NjM1M0M5LjM1MDE0IDIuMDcxNTMgOC4yNzgxNCAzLjc0MzUzIDkuMzQyMTQgNC45MTE1M0M5LjkwNzcyIDUuNTMxODUgMTEuMzMyNiA2LjMzMTg3IDEyLjUgNi44MDk4MiIgc3Ryb2tlPSIjMjEyNTI5IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiLz4KPHBhdGggZD0iTTQuMDMxMjUgMTMuNVYyNi44MjRDNC4wMzEyNSAyNy45MjggNC45MjcyNSAyOC44MjQgNi4wMzEyNSAyOC44MjRIMjUuOTU5MkMyNy4wNTUyIDI4LjgyNCAyNy45NTkyIDI3LjkyIDI3Ljk1MTIgMjYuODI0VjEzLjQ5OTkiIHN0cm9rZT0iIzIxMjUyOSIvPgo8cGF0aCBkPSJNMjguNzgzIDEzLjU2NzhWOC44Mzk4NEMyOC43ODMgNy43MzU4NCAyNy44ODcgNi44Mzk4NCAyNi43ODMgNi44Mzk4NEg1LjIwNzAzQzQuMTAzMDMgNi44Mzk4NCAzLjIwNzAzIDcuNzM1ODQgMy4yMDcwMyA4LjgzOTg0VjEzLjU2NzhIMjguNzgzWiIgc3Ryb2tlPSIjMjEyNTI5Ii8+CjxwYXRoIGQ9Ik0xNS45NzQ2IDYuNzUxOTVWMjguODI0IiBzdHJva2U9IiMyMTI1MjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8L3N2Zz4K">
+                                        <img id="n_fund"
+                                             src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuMDMxMjUgMjguODI0SDI1Ljk1OTJDMjcuMDU1MyAyOC44MjQgMjcuOTU5MiAyNy45MiAyNy45NTEyIDI2LjgyNFYxMy41SDI5VjlDMjkgNy44OTU0MyAyOC4xMDQ2IDcgMjcgN0g1QzMuODk1NDMgNyAzIDcuODk1NDMgMyA5VjEzLjUwMDFINC4wMzEyNVYyNi44MjRDNC4wMzEyNSAyNy45MjggNC45MjcyNSAyOC44MjQgNi4wMzEyNSAyOC44MjRaIiBmaWxsPSIjQjlFRUVFIi8+CjxwYXRoIGQ9Ik0xNiA2LjVDMTguMDMzIDQuMDE4NDkgMjAuMTIxMyAyLjcxMTEzIDIxLjExMTcgMi40NjM1M0MyMi42NDc3IDIuMDcxNTMgMjMuNzE5NyAzLjc0MzUzIDIyLjY1NTcgNC45MTE1M0MyMS45MjYxIDUuNzExNzYgMjAuODc5IDYuNDI0MDQgMTkuNSA2Ljg2NSIgc3Ryb2tlPSIjMjEyNTI5IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiLz4KPHBhdGggZD0iTTE2IDYuNUMxMy45MzY5IDMuOTcyMTcgMTEuODc3NiAyLjcxMzA5IDEwLjg4NjEgMi40NjM1M0M5LjM1MDE0IDIuMDcxNTMgOC4yNzgxNCAzLjc0MzUzIDkuMzQyMTQgNC45MTE1M0M5LjkwNzcyIDUuNTMxODUgMTEuMzMyNiA2LjMzMTg3IDEyLjUgNi44MDk4MiIgc3Ryb2tlPSIjMjEyNTI5IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiLz4KPHBhdGggZD0iTTQuMDMxMjUgMTMuNVYyNi44MjRDNC4wMzEyNSAyNy45MjggNC45MjcyNSAyOC44MjQgNi4wMzEyNSAyOC44MjRIMjUuOTU5MkMyNy4wNTUyIDI4LjgyNCAyNy45NTkyIDI3LjkyIDI3Ljk1MTIgMjYuODI0VjEzLjQ5OTkiIHN0cm9rZT0iIzIxMjUyOSIvPgo8cGF0aCBkPSJNMjguNzgzIDEzLjU2NzhWOC44Mzk4NEMyOC43ODMgNy43MzU4NCAyNy44ODcgNi44Mzk4NCAyNi43ODMgNi44Mzk4NEg1LjIwNzAzQzQuMTAzMDMgNi44Mzk4NCAzLjIwNzAzIDcuNzM1ODQgMy4yMDcwMyA4LjgzOTg0VjEzLjU2NzhIMjguNzgzWiIgc3Ryb2tlPSIjMjEyNTI5Ii8+CjxwYXRoIGQ9Ik0xNS45NzQ2IDYuNzUxOTVWMjguODI0IiBzdHJva2U9IiMyMTI1MjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8L3N2Zz4K">
                                     </span>
                                     <span>펀딩</span>
                                 </li>
                                 <li onclick="selectRefund()">
                                     <span class="n_refund" aria-hidden="true">
-                                    <img id="n_refund" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iNy41IiB5PSI3LjUiIHdpZHRoPSIxNyIgaGVpZ2h0PSIxNyIgcng9IjEiIHN0cm9rZT0iIzIxMjUyOSIvPgo8cGF0aCBkPSJNMjIuMjc2NSA1LjMzNzIzTDIxLjUgMi40Mzk0NUwyNC4zOTc4IDEuNjYzIiBzdHJva2U9IiMyMTI1MjkiLz4KPHBhdGggZD0iTTE2IDEuNUM3Ljk5MTg3IDEuNSAxLjUgNy45OTE4NyAxLjUgMTZDMS41IDI0LjAwODEgNy45OTE4NyAzMC41IDE2IDMwLjVDMjQuMDA4MSAzMC41IDMwLjUgMjQuMDA4MSAzMC41IDE2QzMwLjUgMTAuNzM2OCAyNy42OTU4IDYuMTI4NTcgMjMuNSAzLjU4NzgyQzIzLjAxNzcgMy4yOTU3NSAyMi41MTcgMy4wMzEwMSAyMiAyLjc5NTczIiBzdHJva2U9IiMyMTI1MjkiLz4KPHBhdGggZD0iTTE0LjUgOFYxMUgxNy41VjgiIHN0cm9rZT0iIzIxMjUyOSIvPgo8L3N2Zz4K">
+                                    <img id="n_refund"
+                                         src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iNy41IiB5PSI3LjUiIHdpZHRoPSIxNyIgaGVpZ2h0PSIxNyIgcng9IjEiIHN0cm9rZT0iIzIxMjUyOSIvPgo8cGF0aCBkPSJNMjIuMjc2NSA1LjMzNzIzTDIxLjUgMi40Mzk0NUwyNC4zOTc4IDEuNjYzIiBzdHJva2U9IiMyMTI1MjkiLz4KPHBhdGggZD0iTTE2IDEuNUM3Ljk5MTg3IDEuNSAxLjUgNy45OTE4NyAxLjUgMTZDMS41IDI0LjAwODEgNy45OTE4NyAzMC41IDE2IDMwLjVDMjQuMDA4MSAzMC41IDMwLjUgMjQuMDA4MSAzMC41IDE2QzMwLjUgMTAuNzM2OCAyNy42OTU4IDYuMTI4NTcgMjMuNSAzLjU4NzgyQzIzLjAxNzcgMy4yOTU3NSAyMi41MTcgMy4wMzEwMSAyMiAyLjc5NTczIiBzdHJva2U9IiMyMTI1MjkiLz4KPHBhdGggZD0iTTE0LjUgOFYxMUgxNy41VjgiIHN0cm9rZT0iIzIxMjUyOSIvPgo8L3N2Zz4K">
                                     </span>
                                     <span>환불</span>
                                 </li>
                             </ul>
                         </div>
                         <div class="n_attention">
-                            <p id="n_info">인디픽터 펀딩은 영화를 단순히 관람하는 것이 아닌 <strong>독립영화의 새로운 작품 제작 과정 지원·상영·사회적 가치</strong>를 확산해요.</p>
+                            <p id="n_info">인디픽터 펀딩은 영화를 단순히 관람하는 것이 아닌 <strong>독립영화의 새로운 작품 제작 과정 지원·상영·사회적 가치</strong>를
+                                확산해요.</p>
                         </div>
                     </div>
                     <!-- 펀딩 영화 정보 -->
@@ -42,13 +45,17 @@
                         <div class="n_movie_text">
                             <h3>시놉시스</h3>
                             <p>
-                                소년은 아버지의 사랑을 갈망하지만 아버지는 낚시에만 관심이 있다. 어느 날 아버지가 병으로 세상을 떠나자, 소년의 상실감은 아버지의 소유물에 대한 집착으로 변한다. 상상 속 동굴에서 소년은 아버지의 자전거와 낚싯대를 가져간 친척들을 저주하고 복수에 성공한다. 하지만 저주가 소년의 영혼을 집어삼키기 시작하는데… 감독의 어린 시절에서 영감을 받아 만든 이야기다.
+                                소년은 아버지의 사랑을 갈망하지만 아버지는 낚시에만 관심이 있다. 어느 날 아버지가 병으로 세상을 떠나자, 소년의 상실감은 아버지의 소유물에 대한 집착으로
+                                변한다. 상상 속 동굴에서 소년은 아버지의 자전거와 낚싯대를 가져간 친척들을 저주하고 복수에 성공한다. 하지만 저주가 소년의 영혼을 집어삼키기 시작하는데…
+                                감독의 어린 시절에서 영감을 받아 만든 이야기다.
                             </p>
                         </div>
                         <div class="n_movie_text">
                             <h3>연출의도</h3>
                             <p>
-                                소년은 아버지의 사랑을 갈망하지만 아버지는 낚시에만 관심이 있다. 어느 날 아버지가 병으로 세상을 떠나자, 소년의 상실감은 아버지의 소유물에 대한 집착으로 변한다. 상상 속 동굴에서 소년은 아버지의 자전거와 낚싯대를 가져간 친척들을 저주하고 복수에 성공한다. 하지만 저주가 소년의 영혼을 집어삼키기 시작하는데… 감독의 어린 시절에서 영감을 받아 만든 이야기다.
+                                소년은 아버지의 사랑을 갈망하지만 아버지는 낚시에만 관심이 있다. 어느 날 아버지가 병으로 세상을 떠나자, 소년의 상실감은 아버지의 소유물에 대한 집착으로
+                                변한다. 상상 속 동굴에서 소년은 아버지의 자전거와 낚싯대를 가져간 친척들을 저주하고 복수에 성공한다. 하지만 저주가 소년의 영혼을 집어삼키기 시작하는데…
+                                감독의 어린 시절에서 영감을 받아 만든 이야기다.
                             </p>
                         </div>
                         <div class="n_movie_img">
@@ -210,7 +217,8 @@
                             <p id="n_title">그대들은 어떻게 살 것인가?</p>
                         </div>
                         <div class="n_movie_content">
-                            <p>어머니를 그리워하며 새로운 보금자리에 적응하던 주인공 "마히토"가 정체불명의 왜가리와 함께 저택의 신비로운 탑에 대한 이야기를 듣게 되는 작품을 기대해 주세요</p>
+                            <p>어머니를 그리워하며 새로운 보금자리에 적응하던 주인공 "마히토"가 정체불명의 왜가리와 함께 저택의 신비로운 탑에 대한 이야기를 듣게 되는 작품을 기대해
+                                주세요</p>
                         </div>
                         <div class="n_sell_archive">
                             <span>
@@ -263,13 +271,94 @@
                         </div>
                     </div>
                     <div id="n_sell_button">
-                        <button type="button" class="bookmark_button"><img src="images/icons/heart.png"></button>
-                        <button type="button" class="buy_button" >펀딩하기</button>
+                        <button type="button" class="bookmark_button" onclick="toggleScrap()">
+                            <img id="scrap_icon" src="images/icons/heart.png">
+                        </button>
+                        <button type="button" class="buy_button">펀딩하기</button>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 </main>
 <script src="../../../../js/neh/on_detail.js"></script>
-<%@ include file="/WEB-INF/views/layout/footer.jsp"%>
+<script>
+    let scrapState;
+    let booleanScrapState = document.querySelector("#isScrabExists").value;
+    let scrapIcon = document.querySelector("#scrap_icon");
+    console.log("boolean : " + booleanScrapState);
+
+    if (booleanScrapState === "true") {
+        console.log("들어옴?")
+        scrapIcon.src = "images/icons/heart.png";
+        scrapState = 1;
+    } else {
+        scrapIcon.src = "images/icons/heart.png";
+        scrapState = 0;
+    }
+
+    console.log("scrapState : " + scrapState);
+
+    async function toggleScrap() {
+        let insertScrab = document.querySelector("#insertScrab").value;
+
+        // 스크랩 상태에 따라 메소드 호출
+        if (scrapState === 0) {
+            await saveScrap(insertScrab);
+            scrapState = 1;
+        } else {
+            await deleteScrap(insertScrab);
+            scrapState = 0;
+        }
+
+        // 아이콘 업데이트
+        updateScrapIcon();
+    }
+
+    async function saveScrap(insertScrab) {
+        // 저장 메소드 호출
+        let response = await fetch("/api/scrabs/toggle", {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({insertScrab}),
+        });
+
+        let responseBody = await response.json();
+        console.log(responseBody);
+
+        if (!responseBody.success) {
+            alert(responseBody.data);
+        }
+    }
+
+    async function deleteScrap(deleteScrab) {
+        // 삭제 메소드 호출
+        let response = await fetch("/api/scrabs/toggle", {
+            method: "delete",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({insertScrab}),
+        });
+
+        let responseBody = await response.json();
+        console.log(responseBody);
+
+        if (!responseBody.success) {
+            alert(responseBody.data);
+        }
+    }
+
+    function updateScrapIcon() {
+        if (scrapState === 1) {
+            scrapIcon.src = "images/icons/heart.png";
+        } else {
+            scrapIcon.src = "images/icons/heart.png";
+        }
+    }
+</script>
+
+<%@ include file="/WEB-INF/views/layout/footer.jsp" %>

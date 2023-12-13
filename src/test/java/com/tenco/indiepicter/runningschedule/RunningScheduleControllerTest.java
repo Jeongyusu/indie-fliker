@@ -2,9 +2,10 @@ package com.tenco.indiepicter.runningschedule;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tenco.indiepicter._core.advice.ValidAdvice;
-import com.tenco.indiepicter.user.UserRequest;
 import com.tenco.indiepicter.user.UserRestController;
 import com.tenco.indiepicter.user.UserService;
+import com.tenco.indiepicter.user.request.UserRequestDTO;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

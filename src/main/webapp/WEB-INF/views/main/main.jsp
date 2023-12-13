@@ -39,7 +39,7 @@
 			</div>
 		</div>
 	</div>
-
+	<a href="/user/mypage">마이페이지</a>
 	<div class="container">
 		<div class="row mt-5 justify-content-center text-center">
 			<u><div class="h4 mb-5">

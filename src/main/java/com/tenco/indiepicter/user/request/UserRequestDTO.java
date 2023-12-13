@@ -1,4 +1,4 @@
-package com.tenco.indiepicter.user;
+package com.tenco.indiepicter.user.request;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.Length;
 import lombok.Data;
 
 
-public class UserRequest {
+public class UserRequestDTO {
 	
 	@Data
 	public static class JoinDTO{
