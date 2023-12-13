@@ -40,4 +40,8 @@ public class PaymentController {
 
         return "payment/off_payment";
     }
+
+
+	// 아임포트 토큰 발행
+	
 }
