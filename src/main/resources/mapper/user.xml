@@ -36,10 +36,10 @@
 	</select>
 	
 	<!-- 회원 프로필 수정 -->
-	<select id="update" resultType="com.tenco.indiepicter.user.User">
-		update set user_tb pic=#{pic}, password=#{password}, username=#{username}
-		where id=${id}
-	</select>
+	<update id="update">
+		update user_tb set pic=#{uploadFileName}, username=#{username}, password=#{password1}
+		where id=#{id}
+	</update>
 	
 
 </mapper>
