@@ -135,7 +135,7 @@
 
 .k_validation {
     background-color: #99e7e7;
-    color: white;
+    color: var(--def_wh);
     border: none;
     border-radius: 5px;
     height: 38px;
@@ -146,7 +146,7 @@
 .k_complete {
     margin-top: 30px;
     background-color: #99e7e7;
-    color: white;
+    color: var(--def_wh);
     border: none;
     border-radius: 5px;
     height: 50px;
@@ -156,7 +156,7 @@
 
 .k_complete button {
     background-color: #99e7e7;
-    color: white;
+    color: var(--def_wh);
     border: none;
     height: 50px;
 }
@@ -165,7 +165,7 @@
 .k_complete button:active,
 .k_complete button:focus {
     background-color: #99e7e7;
-    color: white;
+    color: var(--def_wh);
     border: none;
     box-shadow: none;
     outline: none;
@@ -208,7 +208,7 @@ div.main input {
     height: 30px;
     background-color: black;
     border: 0;
-    color: white;
+    color: var(--def_wh);
     text-indent: 10px;
 }
 
@@ -238,7 +238,7 @@ div.main i {
 
 .k_easy_validation {
     background-color: #00c4c4;
-    color: white;
+    color: var(--def_wh);
     border: none;
     border-radius: 5px;
     height: 38px;
@@ -250,7 +250,7 @@ div.main i {
 .k_complete {
     margin-top: 30px;
     background-color: #99e7e7;
-    color: white;
+    color: var(--def_wh);
     border: none;
     border-radius: 5px;
     height: 50px;
@@ -260,7 +260,7 @@ div.main i {
 
 .complete button {
     background-color: #00c4c4;
-    color: white;
+    color: var(--def_wh);
     border: none;
     height: 50px;
 }
@@ -269,7 +269,7 @@ div.main i {
 .complete button:active,
 .complete button:focus {
     background-color: #00c4c4;
-    color: white;
+    color: var(--def_wh);
     border: none;
     box-shadow: none;
     outline: none;
@@ -314,7 +314,7 @@ div.main i {
 
 .k_p_validation {
     background-color: #00c4c4;
-    color: white;
+    color: var(--def_wh);
     border: none;
     border-radius: 5px;
     height: 38px;
@@ -336,7 +336,7 @@ div.main i {
 
 .complete button {
     background-color: #00c4c4;
-    color: white;
+    color: var(--def_wh);
     border: none;
     height: 50px;
     width: calc(50% - 5px);
@@ -346,7 +346,7 @@ div.main i {
 .complete button:active,
 .complete button:focus {
     background-color: #00c4c4;
-    color: white;
+    color: var(--def_wh);
     border: none;
     box-shadow: none;
     outline: none;
@@ -484,7 +484,7 @@ div.main i {
     display: block;
     margin-top: 15px;
     height: 40px;
-    background-color: white;
+    background-color: var(--def_wh);
     border-radius: 10px;
     cursor: pointer;
     width: 200px;
@@ -500,7 +500,7 @@ div.main i {
 }
 
 .k_m_couponpack {
-    background-color: white;
+    background-color: var(--def_wh);
     height: 40px;
     border-radius: 10px;
     border: 1px solid rgb(192, 192, 192);
@@ -587,7 +587,7 @@ div.main i {
     margin-top: 20px;
     height: 35px;
     border: none;
-    background-color: white;
+    background-color: var(--def_wh);
     cursor: pointer;
 }
 
@@ -595,14 +595,14 @@ div.main i {
     margin-top: 20px;
     height: 35px;
     border: none;
-    background-color: white;
+    background-color: var(--def_wh);
     cursor: pointer;
 }
 
 .k_c_center_list_set {
     height: 35px;
     border: none;
-    background-color: white;
+    background-color: var(--def_wh);
     cursor: pointer;
 }
 
@@ -610,7 +610,7 @@ div.main i {
     margin-top: 20px;
     height: 35px;
     border: none;
-    background-color: white;
+    background-color: var(--def_wh);
     cursor: pointer;
     margin-left: 400px;
 }
@@ -633,7 +633,7 @@ div.main i {
     display: flex;
     max-width: 400px;
     width: 100%;
-    border: 2px solid #000;
+    border: 2px solid var(--def_bl);
     border-radius: 4px;
     overflow: hidden;
 }
@@ -651,7 +651,7 @@ div.main i {
 
 .k_search-button {
     padding: 10px;
-    color: white;
+    color: var(--def_wh);
     border: none;
     border-radius: 0 4px 4px 0;
     cursor: pointer;
@@ -678,8 +678,8 @@ div.main i {
 .k_btn {
     height: 35px;
     width: 70%;
-    background-color: white;
-    border: 2px solid #01DFD7;
+    background-color: var(--def_wh);
+    border: 2px solid var(--primary_01);
     box-shadow: none;
     cursor: pointer;
     font-size: 16px;
@@ -691,15 +691,15 @@ div.main i {
 
 .k_btn:hover,
 .k_btn:active {
-    background-color: #01DFD7;
-    color: white;
+    background-color: var(--primary_01);
+    color: var(--def_wh);
 }
 
 .k_a_btn-primary {
     height: 35px;
     width: 70%;
-    background-color: white;
-    border-color: #01DFD7;
+    background-color: var(--def_wh);
+    border-color: var(--primary_01);
     box-shadow: none;
 }
 
@@ -722,7 +722,7 @@ div.main i {
 
 .k_member_info {
     margin-top: 30px;
-    color: #01DFD7;
+    color: var(--primary_01);
     font-weight: bold;
 }
 
@@ -736,8 +736,8 @@ div.main i {
 .k_clickMe {
     cursor: pointer;
     padding: 10px;
-    background-color: white;
-    color: rgb(128, 128, 128);
+    background-color: var(--def_wh);
+    color: var(--back_02);
     display: inline-block;
     margin: 10px;
 }
@@ -745,7 +745,7 @@ div.main i {
 .k_clickMeSymbol {
     margin-left: 450px;
     border: none;
-    background-color: white;
+    background-color: var(--def_wh);
     cursor: pointer;
 
 }
@@ -753,8 +753,8 @@ div.main i {
 .k_hiddenDiv {
     display: none;
     padding: 20px;
-    background-color: rgb(128, 128, 128);
-    color: #fff;
+    background-color: var(--back_02);
+    color: var(--def_wh);
     margin: 10px;
 }
 
@@ -788,7 +788,7 @@ div.main i {
 
 .k_notice_import {
     margin-top: 30px;
-    color: #01DFD7;
+    color: var(--primary_01);
     font-weight: bold;
     margin-bottom: 10px;
 }
@@ -943,6 +943,7 @@ div.main i {
 .k_funding_main{
     display: grid;
     place-items: center;
+    margin-top: 30px;
 }
 
 .k_funding_upload {
@@ -954,18 +955,36 @@ div.main i {
 .k_funding_upload_titles {
     font-size: 16px;
     font-weight: 600;
+    width: 100%;
+}
+
+.k_funding_upload_first_title{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.k_funding_upload_pic_title {
+    font-size: 16px;
+    font-weight: 600;
+    width: 34%;
+}
+
+.k_funding_upload_grade_title {
+    font-size: 16px;
+    font-weight: 600;
+    width: 30%;
+    margin-left: 35px;
 }
 
 .k_funding_upload_container {
     max-width: 100%;
-    margin-top: 100px;
     display: flex;
     justify-content: space-between;
     margin-top: 3%;
 }
 
 .k_funding_upload_fund_titles {
-    width: 152px;
+    width: 162px;
     font-size: 16px;
     font-weight: 600;
 }
@@ -983,7 +1002,7 @@ div.main i {
 
 .k_funding_upload_select_option {
     height: 40px;
-    width: 40%;
+    width: 70%;
     font-size: 14px;
     padding: 0 10px;
     border-color: var(--line_01);
@@ -1000,8 +1019,12 @@ div.main i {
     margin-top: 10px;
 }
 
+.k_funding_upload_container_two textarea {
+    padding: 20px;
+}
+
 .k_funding_upload_movie_name {
-    width: 82%;
+    width: 81%;
     height: 40px;
     border-radius: 5px;
     border: 0.5px solid var(--line_01);
@@ -1024,6 +1047,8 @@ div.main i {
     opacity: 0.9;
     font-size: 12px;
     flex-direction: column;
+    margin-top: 5px;
+    color: var(--point_04);
 }
 
 .k_funding_upload_last_date , .k_funding_upload_first_date{
@@ -1055,6 +1080,12 @@ div.main i {
     margin: auto;
     display: flex;
     margin-top: 4%;
+    justify-content: space-between;
+}
+
+.k_funding_upload_direct_title{
+    display: flex;
+    width: 39%;
 }
 
 .k_margin_top {
@@ -1073,7 +1104,7 @@ div.main i {
 }
 
 .k_funding_upload_select_photo_pic {
-    background-color: var(--line_01);
+    background-color: var(--back_02);
     height: 100px;
     width: 130px;
     display: flex;
@@ -1103,6 +1134,7 @@ div.main i {
 
 .k_funding_upload_head_Career {
     margin-left: 12%;
+    width: 100%;
 
 }
 
@@ -1154,4 +1186,62 @@ div.main i {
 .k_funding_directer_career {
     display: flex;
     width: 100%;
+    justify-content: space-between;
 }
+
+#k_table_staff {
+    display: flex;
+    padding: 0;
+}
+
+#k_table_staff p {
+    font-size: 16px;
+    font-weight: 600;
+    width: 8%;
+}
+
+#k_table {
+    border: 0.3px solid black;
+    border-color: var(--line_01);
+    width: 100%;
+}
+
+#k_table_body th {
+    text-align: center;
+    width: 20%;
+    background-color: var(--back_02);
+    font-size: 14px;
+    border: 0.3px solid var(--line_01);
+    height: 40px;
+}
+
+#k_table_body td {
+    text-align: center;
+    width: 30%;
+    font-weight: normal;
+    color: var(--font_03);
+    font-size: 14px;
+    border: 0.3px solid var(--line_01);
+    height: 40px;
+
+}
+
+#k_table_body input {
+    border: none;
+    background-color: transparent;
+    height: 20px;
+}
+
+.k_funding_save {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--def_wh);
+    height: 60px;
+    background-color: var(--font_01);
+}
+
+.k_plus_button {
+    border: none;
+    background-color: transparent;
+ }
