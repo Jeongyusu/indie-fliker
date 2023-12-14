@@ -1,6 +1,5 @@
 package com.tenco.indiepicter.runningschedule;
 
-import com.tenco.indiepicter.movie.Movie;
 import com.tenco.indiepicter.runningschedule.response.ChoiceDayDTO;
 import com.tenco.indiepicter.runningschedule.response.SelectRunningScheduleAndPlaceDTO;
 import com.tenco.indiepicter.runningschedule.response.SelectRunningScheduleDTO;

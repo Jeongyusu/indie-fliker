@@ -528,7 +528,7 @@
 }
 
 .n_select_day_movies {
-    width: 50%;
+    width: 55%;
     flex-direction: column;
     text-align: center;
     padding: 34px;
@@ -618,6 +618,39 @@
     font-size: 11px;
     font-weight: bold;
 }
+
+.box-radio-input input[type="radio"]{
+    display:none;
+}
+
+.box-radio-input input[type="radio"] + span{
+    display:flex;
+    align-items: center;
+    background:none;
+    text-align:center;
+    height:42px;
+    line-height:33px;
+    font-weight:500;
+    cursor:pointer;
+    width: 132px;
+    justify-content: center;
+}
+
+.box-radio-input input[type="radio"] + span img{
+    width: 25px;
+}
+
+.box-radio-input input[type="radio"] + span p{
+    margin-top: 7px;
+    padding-left: 8px;
+}
+
+.box-radio-input input[type="radio"]:checked + span{
+    background:#efefef;
+    color:black;
+    border-radius: 10px;
+}
+
 /*/////////////////////////////////////////////////////*/
 /* off_payment */
 #n_select_movie_pay {
@@ -631,7 +664,7 @@
 }
 
 .n_pay {
-    width: 45%;
+    width: 50%;
 }
 
 #n_last_payment{
@@ -712,8 +745,10 @@
     font-weight: bold;
 }
 
-.n_total_pay #n_price {
+.n_total_pay #n_price_span {
     color: var(--point_05);
+    display: flex;
+    font-weight: bold;
 }
 
 #n_payment_choice{
