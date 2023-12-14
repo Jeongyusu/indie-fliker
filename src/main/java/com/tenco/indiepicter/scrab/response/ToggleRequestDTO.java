@@ -13,6 +13,4 @@ import org.yaml.snakeyaml.introspector.Property;
 public class ToggleRequestDTO {
         private Integer userId;
         private Integer fundingId;
-
-
 }

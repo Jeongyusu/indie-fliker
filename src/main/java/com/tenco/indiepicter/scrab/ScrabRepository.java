@@ -1,5 +1,6 @@
 package com.tenco.indiepicter.scrab;
 
+import com.tenco.indiepicter.scrab.response.ScrabResponseDTO;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -16,6 +17,8 @@ public interface ScrabRepository {
 //  좋아요 삭제
     void deleteScrab(@Param("userId") Integer userId, @Param("fundingId") Integer fundingId);
 
-// 좋아요 목록보기
-    List<Scrab> selectScrab(@Param("userId") Integer userId, @Param("fundingId") Integer fundingId);
+
+    // 좋아요 목록 보기
+    List<ScrabResponseDTO> viewScrabList(@Param("fundingId") Integer fundingId);
+
 }
