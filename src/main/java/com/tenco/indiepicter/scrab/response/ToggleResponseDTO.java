@@ -8,5 +8,4 @@ import lombok.*;
 public class ToggleResponseDTO {
     private boolean scrabbed;
 
-
 }
