@@ -4,15 +4,33 @@
 
     <!-- MyBatis SQL statements for Scrab -->
     <select id="isScrabExists" resultType="Integer">
-        SELECT id FROM scrab_tb WHERE user_id = #{userId} AND funding_id = #{fundingId}
+        SELECT id
+        FROM scrab_tb
+        WHERE user_id = #{userId}
+          AND funding_id = #{fundingId}
     </select>
 
     <insert id="insertScrab">
-        INSERT INTO scrab_tb (user_id, funding_id) VALUES (#{userId}, #{fundingId})
+        INSERT INTO scrab_tb (user_id, funding_id)
+        VALUES (#{userId}, #{fundingId})
     </insert>
 
     <delete id="deleteScrab">
-        DELETE FROM scrab_tb WHERE user_id = #{userId} AND funding_id = #{fundingId}
+        DELETE
+        FROM scrab_tb
+        WHERE user_id = #{userId}
+          AND funding_id = #{fundingId}
     </delete>
-
+    <select id="selectScrab" resultType="Integer">
+        SELECT * FROM scrab_tb WHERE user_id = #{userId}
+        <if test="fundingId != null">
+            AND funding_id = #{fundingId}
+        </if>
+    </select>
+    <select id="selectScrabByFundingIds" resultType="Integer">
+        SELECT * FROM scrab_tb WHERE user_id = #{userId} AND funding_id IN
+        <foreach collection="fundingIds" item="fundingId" open="(" separator="," close=")">
+            #{fundingId}
+        </foreach>
+    </select>
 </mapper>
