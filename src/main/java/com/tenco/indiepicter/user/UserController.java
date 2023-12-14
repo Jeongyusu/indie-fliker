@@ -165,13 +165,13 @@ public class UserController {
 	@GetMapping("/profile")
 	public String profile(Model model) {
 		
-//		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-//		
-//		if(principal == null) {
-//			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
-//		}
-//		
-//		model.addAttribute("principal", principal);
+		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+		
+		if(principal == null) {
+			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
+		}
+		
+		model.addAttribute("principal", principal);
 		
 		return "user/profile";
 	}
@@ -240,7 +240,7 @@ public class UserController {
 	
 //----------------------------------------------------------------------------------------------------------------	
 	
-	// 12 - 13 학원 작업 끝
+	// 12 - 14 11:00 시작
 	
 }
 

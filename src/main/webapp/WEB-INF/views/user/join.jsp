@@ -26,7 +26,7 @@
 			<div class="k_form-group ">
 				<div class="k_join_bottom">이메일</div>
 				<div class="k_input-group input">
-					<input type="email" class="form-control k_join_radius" id="userEmail" name="userEmail" value="123@123"
+					<input type="email" class="form-control k_join_radius" id="userEmail" name="userEmail" value="ssar@nate.com"
 						placeholder="이메일 형식에 맞게 입력하세요."
 						onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일을 입력하세요.'">
 					<p id="userEmailCkeck"></p>

@@ -434,8 +434,7 @@ div.main i {
     width: 50%;
 }
 
-<<<<<<< HEAD
-	.k_invite {
+.k_invite {
 		margin-top: 15px;
 		height: 80px;
 		border-radius: 5px;
@@ -443,16 +442,14 @@ div.main i {
 		border: 1px solid rgb(192, 192, 192);
 		width: 30%;
 		width:300px;
-	}
-=======
+
 .k_update_login-container {
     max-width: 1000px;
     margin: auto;
     margin-left: 500px;
     margin-top: -120px;
     height: 1000px;
-}
->>>>>>> dev
+
 
 .k_m_name {
     margin-top: 15px;
@@ -1115,3 +1112,7 @@ div.main i {
     height: 40px;
     margin-bottom: 2%;
 }
+
+
+
+
