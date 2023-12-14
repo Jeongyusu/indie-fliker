@@ -1,8 +1,10 @@
 package com.tenco.indiepicter.scrab;
 
-import com.tenco.indiepicter.scrab.response.ToggleRequestDTO;
+import com.tenco.indiepicter.scrab.response.ScrabResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 
@@ -12,7 +14,7 @@ public class ScrabService {
     @Autowired
     private ScrabRepository scrabRepository;
 
-
+@Transactional
     public boolean toggleScrab(Integer userId, Integer fundingId) {
         Integer scrabExists = scrabRepository.isScrabExists(userId, fundingId);
         if (scrabExists != null) {
@@ -25,11 +27,8 @@ public class ScrabService {
             return true;
         }
     }
-
-    public List<Scrab> scrabview(ToggleRequestDTO toggleRequestDTO) {
-        Integer userId = toggleRequestDTO.getUserId();
-        Integer fundingId = toggleRequestDTO.getFundingId();
-
-        return scrabRepository.selectScrab(userId, fundingId);
+@Transactional
+    public List<ScrabResponseDTO> scrabview(Integer fundingId) {
+        return scrabRepository.viewScrabList(fundingId);
     }
 }
