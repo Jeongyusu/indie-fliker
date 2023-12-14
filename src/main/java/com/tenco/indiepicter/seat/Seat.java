@@ -11,13 +11,16 @@ public class Seat {
 	private Integer id;
 	private String seatName;
 	private Integer runningScheduleId;
-	
+	private Integer userId;
+
 	@Builder
-	public Seat(Integer id, String seatName, Integer runningScheduleId) {
-		
+	public Seat(Integer id, String seatName, Integer runningScheduleId, Integer userId) {
+
 		this.id = id;
 		this.seatName = seatName;
 		this.runningScheduleId = runningScheduleId;
+		this.userId = userId;
+
 	}
 	
 
