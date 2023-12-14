@@ -136,7 +136,9 @@ create table seat_tb(
                         id int auto_increment primary key,
                         seat_name varchar(5) not null,
                         running_schedule_id int not null,
-                        foreign KEY(running_schedule_id) references running_schedule_tb(id)
+                        user_id int not null,
+                        foreign KEY(running_schedule_id) references running_schedule_tb(id),
+                        foreign KEY(user_id) references user_tb(id)
 );
 
 

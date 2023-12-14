@@ -4,6 +4,13 @@
 
 <mapper namespace="com.tenco.indiepicter.reservation.ReservationRepository">
 
+	<!-- 예매 등록 -->
+	<insert id="insert">
+		insert into reservation_tb(reservation_code, user_id, seat_id, reservated_at)
+		values (#{reservationCode}, #{userId}, #{seatId}, now())
+	</insert>
+
+
 	<!-- 회원 전체 조회 -->
 	<select id="findByAllId" resultType="com.tenco.indiepicter.reservation.Reservation">
 		select count(*) from reservation_tb

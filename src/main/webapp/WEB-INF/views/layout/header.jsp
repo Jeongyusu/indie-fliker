@@ -11,9 +11,15 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
     <!-- 달력 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+    <script src="/js/jys/dropdown.js"></script>
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+    <!-- 포트원 결제하기  -->
+    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+    <!-- uuid 사용하기 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
     <link href="../../../../css/style.css" rel="stylesheet">
 
     <title>IndieFliker</title>
@@ -30,13 +36,58 @@
                     <span class="j_logo_text">IndieFliker</span>
                     </a>
                 </div>
-                <div id="j_nav_menu">
+                <div id="j_nav_menu" class="j_navi">
                     <ul class="j_nav_menu_ul">
-                        <li><a href="#">영화목록</a></li>
-                        <li><a href="#">펀딩+</a></li>
-                        <li><a href="#">영화예매</a></li>
-                        <li><a href="#">채팅방</a></li>
-                        <li><a href="#">더보기</a></li>
+                        <li>
+                            <a href="/on-air">영화목록</a>
+                            <ul class="j_submenu">
+                                <li>메뉴를 선택하세요></li>
+                                <li><a href="/on-air">전체</a></li>
+                                <li><a href="/on-air">상영중인 영화보기</a></li>
+                                <li><a href="/on-air">온라인 개봉 예정 영화보기</a></li>
+                                <li><a href="/on-air">오프라인 개봉 예정 영화보기</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/funding-plus">펀딩+</a>
+                            <ul class="j_submenu">
+                                <li>영화 장르를 선택하세요></li>
+                                <li><a href="/funding-plus">전체</a></li>
+                                <li><a href="/funding-plus?genre=극영화">극영화</a></li>
+                                <li><a href="/funding-plus?genre=애니메이션">애니메이션</a></li>
+                                <li><a href="/funding-plus?genre=다큐멘터리">다큐멘터리</a></li>
+                                <li><a href="/funding-plus?genre=실험영화">실험영화</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">영화예매</a>
+                            <ul class="j_submenu">
+                                <li><a href="#">예매 추가메뉴1</a></li>
+                                <li><a href="#">예매 추가메뉴2</a></li>
+                                <li><a href="#">예매 추가메뉴3</a></li>
+                                <li><a href="#">예매 추가메뉴4</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">채팅방</a>
+                            <ul class="j_submenu">
+                                <li><a href="#">채팅 추가메뉴1</a></li>
+                                <li><a href="#">채팅 추가메뉴2</a></li>
+                                <li><a href="#">채팅 추가메뉴3</a></li>
+                                <li><a href="#">채팅 추가메뉴4</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">더보기</a>
+                            <ul class="j_submenu">
+                                <li><a href="#">추가메뉴1</a></li>
+                                <li><a href="#">추가메뉴2</a></li>
+                                <li><a href="#">추가메뉴3</a></li>
+                                <li><a href="#">추가메뉴4</a></li>
+                            </ul>
+
+
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -60,3 +111,4 @@
             </div>
         </nav>
     </header>
+

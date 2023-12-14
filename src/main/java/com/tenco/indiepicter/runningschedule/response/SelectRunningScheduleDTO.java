@@ -1,6 +1,5 @@
 package com.tenco.indiepicter.runningschedule.response;
 
-import com.tenco.indiepicter._core.utils.TimeStampUtil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SelectDayDTO{
+public class SelectRunningScheduleDTO {
     private Integer runningDateId;
     private String movieName;
     private String runningGrade;

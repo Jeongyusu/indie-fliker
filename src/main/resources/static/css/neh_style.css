@@ -528,7 +528,7 @@
 }
 
 .n_select_day_movies {
-    width: 50%;
+    width: 55%;
     flex-direction: column;
     text-align: center;
     padding: 34px;
@@ -618,6 +618,39 @@
     font-size: 11px;
     font-weight: bold;
 }
+
+.box-radio-input input[type="radio"]{
+    display:none;
+}
+
+.box-radio-input input[type="radio"] + span{
+    display:flex;
+    align-items: center;
+    background:none;
+    text-align:center;
+    height:42px;
+    line-height:33px;
+    font-weight:500;
+    cursor:pointer;
+    width: 132px;
+    justify-content: center;
+}
+
+.box-radio-input input[type="radio"] + span img{
+    width: 25px;
+}
+
+.box-radio-input input[type="radio"] + span p{
+    margin-top: 7px;
+    padding-left: 8px;
+}
+
+.box-radio-input input[type="radio"]:checked + span{
+    background:#efefef;
+    color:black;
+    border-radius: 10px;
+}
+
 /*/////////////////////////////////////////////////////*/
 /* off_payment */
 #n_select_movie_pay {
@@ -632,13 +665,19 @@
 
 .n_pay {
     width: 50%;
+}
+
+#n_last_payment{
     border: 0.5px solid var(--line_01);
-    border-radius: 20px;
+    border-radius: 20px 20px 0 0;
     padding: 35px;
+    border-bottom: none;
 }
 
 .n_pay #n_movie_title, .n_movie_day{
     display: flex;
+    align-items: center;
+    margin-bottom: 22px;
 }
 
 #n_movie_title img {
@@ -648,8 +687,9 @@
 }
 
 #n_movie_title p {
-    font-size: 14px;
+    font-size: 22px;
     font-weight: bold;
+    margin: 0;
 }
 
 .n_movie_day #n_day {
@@ -667,7 +707,7 @@
 }
 
 .n_movie_place {
-    margin: 14px 0;
+    margin: 14px 0 30px;
 }
 
 .n_movie_place #n_place {
@@ -693,6 +733,7 @@
 }
 .n_people p{
     font-weight: bold;
+    padding-right: 9px;
 }
 
 .n_total_pay {
@@ -705,16 +746,71 @@
     font-weight: bold;
 }
 
-.n_total_pay #n_price {
-    color: var(--primary_01);
+.n_total_pay #n_price_span {
+    color: var(--point_05);
+    display: flex;
+    font-weight: bold;
 }
+
+#n_payment_choice{
+    margin-top: 40px;
+    font-weight: bold;
+}
+
 
 #n_payment{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin: 60px 0 0;
+    margin-top: 15px;
+    padding: 40px 0;
+    border: 0.1px solid lightgray;
 }
+
+#n_payment{
+    accent-color: var(--point_02);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.n_payment_button {
+    display: flex;
+    justify-content: space-around;
+    height: 60px;
+}
+
+.n_payment_button #n_prev{
+    width: 50%;
+    height: 60px;
+    border-radius: 0 0 0 20px;
+    border: none;
+    font-size: 18px;
+}
+
+.n_payment_button #n_pay {
+    width: 50%;
+    height: 60px;
+    border-radius: 0 0 20px 0;
+    border: none;
+    background-color: var(--primary_01);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#n_vip, #n_vip_span{
+    display: flex;
+    padding-left: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--point_04);
+}
+
+#n_vip_div {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 7px;
+}
+
 /*/////////////////////////////////////////////////////*/
 /* on_payment */
 

@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div id="n_select_movie_seat">
-                    <form action="/order/plus" method="post">
+                    <form action="/order/${choiceDayDTO.movieId}/session" method="post">
                         <div id="n_select_info">
                             <div id="n_img">
                                 <img src='${choiceDayDTO.thumbnail}'>
@@ -76,7 +76,7 @@
                                 <div class="n_select_seat_wrapper">
                                     <input type="hidden" id="n_clicked_seat_count" name="clickSeatCount" value="">
                                     <input type="hidden" id="n_running_date_id" name="runningDateId" value="${choiceDayDTO.runningDateId}">
-                                    <input type="hidden" id="n_last_select_seat_list" name="lastSelectSeatList" value="">
+                                    <input type="hidden" id="n_last_select_seat_list" name="selectSeats" value="">
                                     <input type="hidden" id="n_movie_id" name="movieId" value="${choiceDayDTO.movieId}">
                                 </div>
                             </div>
