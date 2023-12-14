@@ -104,11 +104,18 @@ public class PaymentController {
 		return "payment/on_payment";
 	}
 
-	// 오프라인 결제 내역 저장(POST)
-	@PostMapping("/{movieId}/off-info")
-	public String offPaymentInfo(@RequestBody LastOrderDTO lastOrderDTO){
 
+	// 오프라인 결제 정보 저장(POST)
+	// seat, order, reservation, payment => post
+	@PostMapping("/{movieId}/save")
+	public String offPaymentProc(@RequestBody LastOrderDTO lastOrderDTO){
+		// 유저정보 확인
+		User principal = (User) session.getAttribute(Define.PRINCIPAL);
+
+
+
+
+//		int rowResultCount = paymentService.savePayment(lastOrderDTO, 1);
 		return "redirect:/reservation/"+ lastOrderDTO.getMovieId() +"/off-ticket";
 	}
-	
 }

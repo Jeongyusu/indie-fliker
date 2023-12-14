@@ -24,8 +24,8 @@ public class PaymentService {
     @Autowired
     private RunningScheduleRepository runningScheduleRepository;
 
+    // 상영 정보 가져오기
     public SelectRunningScheduleAndPlaceDTO offPayment(SelectSeatDTO selectSeatDTO) {
-        // 상영 정보 가져오기
         SelectRunningScheduleAndPlaceDTO responseDTO = runningScheduleRepository.findByRunningScheduleIdAndPlace(selectSeatDTO.getRunningDateId());
         responseDTO.setMovieId(selectSeatDTO.getMovieId());
         responseDTO.setRunningDateId(selectSeatDTO.getRunningDateId());
@@ -51,4 +51,5 @@ public class PaymentService {
     public int savePayment(LastOrderDTO lastOrderDTO){
         return 1;
     }
+
 }

@@ -1,9 +1,7 @@
 package com.tenco.indiepicter.seat;
 
-import com.tenco.indiepicter.order.Order;
-import com.tenco.indiepicter.order.request.SaveOrderDTO;
+
 import com.tenco.indiepicter.order.response.LastOrderDTO;
-import com.tenco.indiepicter.seat.request.SaveSeatDTO;
 import com.tenco.indiepicter.seat.response.ExistSeatDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

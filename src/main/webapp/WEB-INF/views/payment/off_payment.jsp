@@ -89,7 +89,7 @@
                     <input type="hidden" id="fundingId" value="${selectDTO.fundingId}">
                     <input type="hidden" id="userGrade" value="${principal.grade}">
                     <div class="n_payment_button">
-                        <button type="button" id="n_prev">이전</button>
+                        <button type="button" id="n_back" onclick="back()">이전</button>
                         <button type="button" id="n_pay" onclick="pay()">결제</button>
                     </div>
                 </form>
