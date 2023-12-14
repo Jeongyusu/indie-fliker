@@ -15,7 +15,7 @@ public class LastOrderDTO {
     private String totalPrice;
     private Integer totalCount;
     private Integer fundingId;
-    private Integer discountPrice; // 할인 가격, 디폴트 = 0
+    private Integer discountPrice; // 아니면 0
     private Integer paymentTypeId;
 
 }

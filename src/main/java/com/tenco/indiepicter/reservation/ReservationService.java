@@ -3,6 +3,7 @@ package com.tenco.indiepicter.reservation;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tenco.indiepicter.order.response.LastOrderDTO;
 import com.tenco.indiepicter.reservation.request.SaveReservationDTO;
 import com.tenco.indiepicter.seat.Seat;
 import com.tenco.indiepicter.seat.SeatRepository;
@@ -31,13 +32,13 @@ public class ReservationService {
 
 	// 영화 예매 티켓 등록
 	@Transactional
-	public int saveReservationTicket(SaveReservationDTO saveReservationDTO, Integer principalId) {
+	public int saveReservationTicket(LastOrderDTO lastOrderDTO, Integer principalId) {
 
-		List<Seat> seats = seatRepository.findByRunningDateIdAndUserId(saveReservationDTO.getRunningDateId(), 1);
+		List<Seat> seats = seatRepository.findByRunningDateIdAndUserId(lastOrderDTO.getRunningDateId(), 1);
 		List<Reservation> reservations = new ArrayList<>();
 		for (Seat seat : seats) {
 			Reservation reservation = Reservation.builder()
-					.reservationCode(saveReservationDTO.getReservationCode())
+					.reservationCode(lastOrderDTO.getReservationCode())
 					.seatId(seat.getId())
 					.userId(1) // TODO : principalId 넣어야함
 					.build();

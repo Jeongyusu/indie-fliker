@@ -1,5 +1,6 @@
 package com.tenco.indiepicter.payment;
 
+import com.tenco.indiepicter.order.response.LastOrderDTO;
 import com.tenco.indiepicter.seat.request.SelectSeatDTO;
 import com.tenco.indiepicter.runningschedule.RunningScheduleRepository;
 import com.tenco.indiepicter.runningschedule.response.SelectRunningScheduleAndPlaceDTO;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tenco.indiepicter.payment.response.MyOfflinePaymentDTO;
 import com.tenco.indiepicter.payment.response.MyOnlinePaymentDTO;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 
@@ -43,5 +46,9 @@ public class PaymentService {
 		
 		return this.paymentRepository.findByOfflinePaymentId(id);
 	}
-	
+
+    @Transactional
+    public int savePayment(LastOrderDTO lastOrderDTO){
+        return 1;
+    }
 }
