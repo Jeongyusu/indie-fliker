@@ -26,7 +26,6 @@ public class ScrabRestController {
     @PostMapping("/api/scrabs/toggle")
     public ResponseEntity<?> toggleScrab(@RequestBody Scrab scrab) {
         boolean scrabs = scrabService.toggleScrab(scrab.getUserId(), scrab.getFundingId());
-        ToggleResponseDTO toggleResponseDTO = new ToggleResponseDTO(true);
         return ResponseEntity.ok().body(ApiUtils.success(new ToggleResponseDTO(scrabs)));
 
     }
