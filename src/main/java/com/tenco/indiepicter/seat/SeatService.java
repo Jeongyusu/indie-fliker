@@ -24,8 +24,8 @@ public class SeatService {
         return responseDTOs;
     }
 
-    @Transactional
     // 예약 완료된 좌석 등록(좌석 갯수만큼 insert 진행)
+    @Transactional
     public int saveSeat(LastOrderDTO lastOrderDTO, Integer principalId) {
         String saveSeats = lastOrderDTO.getSeatNames();
         List<String> splitSaveSeats = List.of(saveSeats.split(","));

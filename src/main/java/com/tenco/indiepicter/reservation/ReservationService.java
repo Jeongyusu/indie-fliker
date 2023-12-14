@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.tenco.indiepicter.order.response.LastOrderDTO;
 import com.tenco.indiepicter.reservation.request.SaveReservationDTO;
+import com.tenco.indiepicter.reservation.response.ReservationTicketDTO;
 import com.tenco.indiepicter.seat.Seat;
 import com.tenco.indiepicter.seat.SeatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class ReservationService {
 		return this.reservationRepository.findByUserId(id);
 	}
 
-	// 영화 예매 티켓 등록
+	// 오프라인 영화 예매 티켓 등록
 	@Transactional
 	public int saveReservationTicket(LastOrderDTO lastOrderDTO, Integer principalId) {
 
@@ -40,7 +41,7 @@ public class ReservationService {
 			Reservation reservation = Reservation.builder()
 					.reservationCode(lastOrderDTO.getReservationCode())
 					.seatId(seat.getId())
-					.userId(1) // TODO : principalId 넣어야함
+					.userId(principalId)
 					.build();
 			reservations.add(reservation);
 		}
@@ -53,4 +54,6 @@ public class ReservationService {
 
 		return rowResultCount;
 	}
+
+//
 }

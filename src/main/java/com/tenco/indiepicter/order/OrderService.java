@@ -2,6 +2,7 @@ package com.tenco.indiepicter.order;
 
 import com.tenco.indiepicter.funding.FundingRepository;
 import com.tenco.indiepicter.order.request.SaveOrderDTO;
+import com.tenco.indiepicter.order.response.LastOrderDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,21 +15,19 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    @Autowired
-    private FundingRepository fundingRepository;
-
-    // order 저장
+    // 오프라인 주문 정보 등록
     @Transactional
-
-    public int saveOrder(SaveOrderDTO saveOrderDTO, Integer principalId) {
+    public int saveOrder(LastOrderDTO lastOrderDTO, Integer principalId) {
         Order order = Order.builder()
-                .selectedSeats(saveOrderDTO.getSeatNames())
-                .productPrice(saveOrderDTO.getUnitPrice())
-                .quantity(saveOrderDTO.getTotalCount())
-                .fundingId(saveOrderDTO.getFundingId())
-                .userId(1) // TODO : principalId 넣어야함
+                .selectedSeats(lastOrderDTO.getSeatNames())
+                .productPrice(lastOrderDTO.getUnitPrice())
+                .quantity(lastOrderDTO.getTotalCount())
+                .fundingId(lastOrderDTO.getFundingId())
+                .userId(principalId)
                 .build();
+
         int rowResultCount = orderRepository.insert(order);
+
         return rowResultCount;
     }
 }

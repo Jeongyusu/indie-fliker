@@ -110,12 +110,21 @@ public class PaymentController {
 	@PostMapping("/{movieId}/save")
 	public String offPaymentProc(@RequestBody LastOrderDTO lastOrderDTO){
 		// 유저정보 확인
-		User principal = (User) session.getAttribute(Define.PRINCIPAL);
+		// User principal = (User) session.getAttribute(Define.PRINCIPAL);
 
+		System.out.println("===============================");
+		System.out.println("lastOrderDTO : " + lastOrderDTO.toString());
+		System.out.println("===============================");
 
+		int orderResult = orderService.saveOrder(lastOrderDTO, 1);
+		int seatResult = seatService.saveSeat(lastOrderDTO, 1);
+		int reservationResult = reservationService.saveReservationTicket(lastOrderDTO, 1);
+		int paymentResult = paymentService.savePayment(lastOrderDTO, 1);
 
-
-//		int rowResultCount = paymentService.savePayment(lastOrderDTO, 1);
+		System.out.println("seatResult : " + seatResult );
+		System.out.println("orderResult : " + orderResult );
+		System.out.println("reservationResult : " + reservationResult );
+		System.out.println("paymentResult : " + paymentResult );
 		return "redirect:/reservation/"+ lastOrderDTO.getMovieId() +"/off-ticket";
 	}
 }

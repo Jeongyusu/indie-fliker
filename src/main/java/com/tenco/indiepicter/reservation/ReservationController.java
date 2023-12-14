@@ -48,7 +48,12 @@ public class ReservationController {
 	
 	// 영화 예매 완료 후 티켓 페이지 요청(GET)
 	@GetMapping("/{movieId}/off-ticket")
-	public String offReservationTicket(){
+	public String offReservationTicket(@RequestParam Integer runningDateId, Model model){
+		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+
+		reservationService.wantTicket(runningDateId);
+
+
 		return "reservation/reservation_ticket";
 	}
 
