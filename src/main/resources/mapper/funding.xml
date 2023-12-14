@@ -41,6 +41,46 @@
         <result property="production" column="production"/>
     </resultMap>
 
+    <select id="findByDetailfunding" resultMap="FundingDetailDTResultOMap">
+        select ft.id, mt.thumbnail, mt.genre, (ft.present_price * 100 / ft.target_price) funding_rate, (ft.end_date - ft.release_date) rest_period,
+               ft.present_price, ft.people_count, mt.movie_name, mt.synopsis, ft.price_per_onetime, concat(ft.release_date, ' ~ ', ft.end_date) funding_period, mt.d_day, mt.directing_intension,
+               mt.director_careers, mt.director_awards_film, movie_pic, mst.director as mdirector, mst.filming, mst.art, mst.sound, mst.clothes, mst.script, mst.lighting, mst.editing, mst.music, mst.sound, CASE
+                                                                                                                                                                                                     WHEN curdate() >= mt.online_release_date THEN 'true'
+                                                                                                                                                                                                     ELSE 'false' END open
+        from funding_tb ft join movie_tb mt on ft.movie_id = mt.id join movie_photo_tb mpt on mt.id = mpt.movie_id join movie_staff_tb mst on mt.id = mst.movie_id
+        where curdate() BETWEEN mt.online_release_date AND mt.online_end_date AND ft.id = #{fundingId};
+    </select>
+
+    <resultMap id="FundingDetailDTResultOMap" type="com.tenco.indiepicter.funding.response.FundingDetailDTO">
+        <result property="fundingId" column="id"/>
+        <result property="movieThumbnail" column="thumbnail"/>
+        <result property="isOpen" column="open"/>
+        <result property="genre" column="genre"/>
+        <result property="fundingRate" column="funding_rate"/>
+        <result property="restPeriod" column="rest_period"/>
+        <result property="fundingPresentPrice" column="present_price"/>
+        <result property="peopleCount" column="people_count"/>
+        <result property="movieName" column="movie_name"/>
+        <result property="synopsis" column="synopsis"/>
+        <result property="fundingProductPrice" column="price_per_onetime"/>
+        <result property="fundingPeriod" column="funding_period"/>
+        <result property="dDay" column="d_day"/>
+        <result property="directingIntension" column="directing_intension"/>
+        <result property="directorCareers" column="director_careers"/>
+        <result property="directorAwardsFilm" column="director_awards_film"/>
+        <result property="director" column="mdirector"/>
+        <result property="filming" column="filming"/>
+        <result property="art" column="art"/>
+        <result property="sound" column="sound"/>
+        <result property="clothes" column="clothes"/>
+        <result property="script" column="script"/>
+        <result property="lighting" column="lighting"/>
+        <result property="editing" column="editing"/>
+        <result property="music" column="music"/>
+        <collection property="moviePhotos" ofType="java.lang.String" javaType="java.util.List">
+            <result property="element" column="movie_pic"/>
+        </collection>
+    </resultMap>
 
     <select id="findByMovieId" resultMap="findByFundingIdDTOResultMap">
         select id from funding_tb where movie_id = #{movieId};

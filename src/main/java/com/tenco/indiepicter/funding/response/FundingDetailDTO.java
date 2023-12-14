@@ -1,6 +1,7 @@
 package com.tenco.indiepicter.funding.response;
 
 
+import com.tenco.indiepicter.movie.moviestaff.MovieStaff;
 import lombok.Data;
 
 import java.sql.Timestamp;
@@ -21,11 +22,11 @@ public class FundingDetailDTO {
     // 펀딩 남은 기간
     private int restPeriod;
     // 펀딩 달성액
-    private int fundingTotalPrice;
+    private int fundingPresentPrice;
     // 펀딩 참여 인원
     private int peopleCount;
-    // 펀딩 제목
-    private String fundingTitle;
+    // 펀딩 제목(영화 제목)
+    private String movieName;
     // 펀딩 구매 가격
     private int fundingProductPrice;
     // 진행 기간
@@ -38,12 +39,19 @@ public class FundingDetailDTO {
     private String synopsis;
     // 연출 의도
     private String directingIntension;
-    // 스태프
-    private String staff;
     // 포토 목록
     private List<String> moviePhotos;
     // 감독 작품 경력
     private String directorCareers;
     // 영화제 상영 및 수상작
-    private String directorAwards;
+    private String directorAwardsFilm;
+    private String director;
+    private String filming;
+    private String art;
+    private String sound;
+    private String clothes;
+    private String script;
+    private String lighting;
+    private String editing;
+    private String music;
 }

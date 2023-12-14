@@ -1,10 +1,7 @@
 package com.tenco.indiepicter.funding;
 
 import com.tenco.indiepicter.banner.BannerService;
-import com.tenco.indiepicter.funding.response.BannerDTO;
-import com.tenco.indiepicter.funding.response.FundingPlusDTO;
-import com.tenco.indiepicter.funding.response.MoviesByGenreDTO;
-import com.tenco.indiepicter.funding.response.OnAirTotalDTO;
+import com.tenco.indiepicter.funding.response.*;
 import com.tenco.indiepicter.theater.TheaterService;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -50,6 +47,8 @@ public class FundingController {
 
     @GetMapping("/fundings/{id}")
     public String detailFunding(@PathVariable Integer id){
+        FundingDetailDTO fundingDetailDTO = fundingService.detailFunding(id);
+        log.debug("출력확인" + fundingDetailDTO.toString());
         return "fund/on_detail";
     }
 }
