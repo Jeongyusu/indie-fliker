@@ -271,8 +271,8 @@
                         </div>
                     </div>
                     <div id="n_sell_button">
-                        <button type="button" class="bookmark_button" onclick="toggleScrap()">
-                            <img id="scrap_icon" src="images/icons/heart.png">
+                        <button type="button" class="bookmark_button" >
+                            <img id="scrap_icon" src="images/icons/icons8-heart-24-black.png">
                         </button>
                         <button type="button" class="buy_button">펀딩하기</button>
                     </div>
@@ -284,81 +284,38 @@
 </main>
 <script src="../../../../js/neh/on_detail.js"></script>
 <script>
-    let scrapState;
-    let booleanScrapState = document.querySelector("#isScrabExists").value;
-    let scrapIcon = document.querySelector("#scrap_icon");
-    console.log("boolean : " + booleanScrapState);
+    // jQuery를 사용한 비동기 통신 코드
+    $(document).ready(function () {
+        $("#scrap_icon").on('click', function () {
+            // AJAX POST 요청
+            let sendData = {
+                userId: 2,
+                fundingId: 2
+            }
+            $.ajax({
+                type: "POST",
+                url: "/api/scrabs/toggle",
+                data: JSON.stringify(sendData),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            }).done(function (data, textStatus, xhr) {
+                console.log(typeof data); // 만약 문자열 -> 파싱
+                console.log(data);
 
-    if (booleanScrapState === "true") {
-        console.log("들어옴?")
-        scrapIcon.src = "images/icons/heart.png";
-        scrapState = 1;
-    } else {
-        scrapIcon.src = "images/icons/heart.png";
-        scrapState = 0;
-    }
+                // 좋아요가 추가된 경우
+                if (data.response.scrabbed) {
+                    $("#scrap_icon").attr("src", "images/icons/icons8-heart-24-red.png");
+                } else {
+                    // 좋아요가 제거된 경우
+                    $("#scrap_icon").attr("src", "images/icons/icons8-heart-24-black.png");
+                }
 
-    console.log("scrapState : " + scrapState);
+            }).fail(function (error) {
+                alert(error.responseText);
+            });
 
-    async function toggleScrap() {
-        let insertScrab = document.querySelector("#insertScrab").value;
-
-        // 스크랩 상태에 따라 메소드 호출
-        if (scrapState === 0) {
-            await saveScrap(insertScrab);
-            scrapState = 1;
-        } else {
-            await deleteScrap(insertScrab);
-            scrapState = 0;
-        }
-
-        // 아이콘 업데이트
-        updateScrapIcon();
-    }
-
-    async function saveScrap(insertScrab) {
-        // 저장 메소드 호출
-        let response = await fetch("/api/scrabs/toggle", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({insertScrab}),
         });
-
-        let responseBody = await response.json();
-        console.log(responseBody);
-
-        if (!responseBody.success) {
-            alert(responseBody.data);
-        }
-    }
-
-    async function deleteScrap(deleteScrab) {
-        // 삭제 메소드 호출
-        let response = await fetch("/api/scrabs/toggle", {
-            method: "delete",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({insertScrab}),
-        });
-
-        let responseBody = await response.json();
-        console.log(responseBody);
-
-        if (!responseBody.success) {
-            alert(responseBody.data);
-        }
-    }
-
-    function updateScrapIcon() {
-        if (scrapState === 1) {
-            scrapIcon.src = "images/icons/heart.png";
-        } else {
-            scrapIcon.src = "images/icons/heart.png";
-        }
-    }
+    });
 </script>
 
 <%@ include file="/WEB-INF/views/layout/footer.jsp" %>
