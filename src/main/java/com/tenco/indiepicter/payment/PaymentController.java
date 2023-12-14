@@ -1,5 +1,10 @@
 package com.tenco.indiepicter.payment;
 
+import com.tenco.indiepicter.order.OrderService;
+import com.tenco.indiepicter.order.response.LastOrderDTO;
+import com.tenco.indiepicter.payment.request.SavePaymentDTO;
+import com.tenco.indiepicter.reservation.ReservationService;
+import com.tenco.indiepicter.seat.SeatService;
 import com.tenco.indiepicter.seat.request.SelectSeatDTO;
 import com.tenco.indiepicter.runningschedule.response.SelectRunningScheduleAndPlaceDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +29,15 @@ public class PaymentController {
 
     @Autowired
     private PaymentService paymentService;
+
+	@Autowired
+	private ReservationService reservationService;
+
+	@Autowired
+	private SeatService seatService;
+
+	@Autowired
+	private OrderService orderService;
 
     @Autowired
     private HttpSession session;
@@ -77,5 +91,17 @@ public class PaymentController {
 		return "payment/off_payment";
     }
 
-	
+	// 결제 정보 저장(POST)
+	// seat, order, reservation, payment => post
+	@PostMapping("/{movieId}/save")
+	public String saveSeatProc(@RequestBody LastOrderDTO lastOrderDTO){
+		// 유저정보 확인
+		User principal = (User) session.getAttribute(Define.PRINCIPAL);
+
+
+
+
+//		int rowResultCount = paymentService.savePayment(lastOrderDTO, 1);
+		return "redirect:/reservation/"+ lastOrderDTO.getMovieId() +"/off-ticket";
+	}
 }

@@ -1,5 +1,6 @@
 package com.tenco.indiepicter.payment;
 
+import com.tenco.indiepicter.order.response.LastOrderDTO;
 import com.tenco.indiepicter.seat.request.SelectSeatDTO;
 import com.tenco.indiepicter.runningschedule.RunningScheduleRepository;
 import com.tenco.indiepicter.runningschedule.response.SelectRunningScheduleAndPlaceDTO;
@@ -21,8 +22,8 @@ public class PaymentService {
     @Autowired
     private RunningScheduleRepository runningScheduleRepository;
 
+    // 상영 정보 가져오기
     public SelectRunningScheduleAndPlaceDTO offPayment(SelectSeatDTO selectSeatDTO) {
-        // 상영 정보 가져오기
         SelectRunningScheduleAndPlaceDTO responseDTO = runningScheduleRepository.findByRunningScheduleIdAndPlace(selectSeatDTO.getRunningDateId());
         responseDTO.setMovieId(selectSeatDTO.getMovieId());
         responseDTO.setRunningDateId(selectSeatDTO.getRunningDateId());
@@ -43,5 +44,7 @@ public class PaymentService {
 		
 		return this.paymentRepository.findByOfflinePaymentId(id);
 	}
-	
+
+//    public int savePayment(LastOrderDTO lastOrderDTO, int i) {
+//    }
 }
