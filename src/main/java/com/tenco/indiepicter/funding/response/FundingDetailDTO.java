@@ -36,8 +36,6 @@ public class FundingDetailDTO {
     private Timestamp dDay;
     // 시놉시스
     private String synopsis;
-    // 리뷰
-    private String review;
     // 연출 의도
     private String directingIntension;
     // 스태프
