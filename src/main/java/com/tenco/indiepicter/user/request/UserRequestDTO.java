@@ -8,12 +8,14 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 
+import lombok.Builder;
 import lombok.Data;
 
 
 public class UserRequestDTO {
 	
 	@Data
+	@Builder
 	public static class JoinDTO{
 		
 //		@NotBlank @Email //@Size(min=10, max=20)
@@ -42,7 +44,6 @@ public class UserRequestDTO {
 	@Data
 	public static class loginDTO{
 		private String userEmail;
-		
 		private String password;
 		
 	}

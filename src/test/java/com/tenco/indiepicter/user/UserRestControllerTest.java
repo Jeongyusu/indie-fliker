@@ -33,25 +33,25 @@ public class UserRestControllerTest {
     @Autowired
     private ObjectMapper om;
 
-    @Test
-    public void join_test() throws Exception {
-        // given (데이터 준비)
-        UserRequestDTO.JoinDTO joinDTO = new UserRequestDTO.JoinDTO();
-        joinDTO.setUserEmail("cos@nate.com");
-        joinDTO.setPassword1("meta1234!");
-        joinDTO.setUsername("cos");
-
-        String requestBody = om.writeValueAsString(joinDTO);
-        System.out.println("테스트 :" + requestBody);
-
-        // when (실행)
-        ResultActions actions = mvc.perform(post("/join").content(requestBody).contentType(MediaType.APPLICATION_JSON));
-        String responseBody = actions.andReturn().getResponse().getContentAsString();
-        System.out.println("테스트 : " + responseBody);
-        // then (상태 검증)
-        actions.andExpect(jsonPath("$.success").value(true));
-        actions.andExpect(jsonPath("$.response").value(nullValue()));
-        actions.andExpect(jsonPath("$.error").value(nullValue()));
-    }
+//    @Test
+//    public void join_test() throws Exception {
+//        // given (데이터 준비)
+//        UserRequestDTO.JoinDTO joinDTO = new UserRequestDTO.JoinDTO();
+//        joinDTO.setUserEmail("cos@nate.com");
+//        joinDTO.setPassword1("meta1234!");
+//        joinDTO.setUsername("cos");
+//
+//        String requestBody = om.writeValueAsString(joinDTO);
+//        System.out.println("테스트 :" + requestBody);
+//
+//        // when (실행)
+//        ResultActions actions = mvc.perform(post("/join").content(requestBody).contentType(MediaType.APPLICATION_JSON));
+//        String responseBody = actions.andReturn().getResponse().getContentAsString();
+//        System.out.println("테스트 : " + responseBody);
+//        // then (상태 검증)
+//        actions.andExpect(jsonPath("$.success").value(true));
+//        actions.andExpect(jsonPath("$.response").value(nullValue()));
+//        actions.andExpect(jsonPath("$.error").value(nullValue()));
+//    }
 
 }

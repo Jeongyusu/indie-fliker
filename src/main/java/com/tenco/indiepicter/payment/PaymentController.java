@@ -36,8 +36,12 @@ public class PaymentController {
 		// 세션에 로그인 정보 저장
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
 		
-		List<MyOnlinePaymentDTO> MyOnlinePaymentDTOLists =  this.paymentService.findByOnlinePaymentId(1);
-
+		if(principal == null) {
+			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
+		}
+		
+		List<MyOnlinePaymentDTO> MyOnlinePaymentDTOLists =  this.paymentService.findByOnlinePaymentId(principal.getId());
+		
 		model.addAttribute("MyOnlinePaymentDTOLists", MyOnlinePaymentDTOLists);
 		
 		return "mypage/on_payment";
@@ -51,7 +55,11 @@ public class PaymentController {
 		// 세션에 로그인 정보 저장
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
 		
-		List<MyOfflinePaymentDTO> MyOfflinePaymentDTOLists =  this.paymentService.findByOfflinePaymentId(1);
+		if(principal == null) {
+			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
+		}
+		
+		List<MyOfflinePaymentDTO> MyOfflinePaymentDTOLists =  this.paymentService.findByOfflinePaymentId(principal.getId());
 		
 		model.addAttribute("MyOfflinePaymentDTOLists", MyOfflinePaymentDTOLists);
 		
