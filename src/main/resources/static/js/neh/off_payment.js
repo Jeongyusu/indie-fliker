@@ -61,6 +61,11 @@ function discount() {
     }
 }
 
+// "이전" 클릭 시
+function back(){
+    history.back();
+}
+
 // 선택한 결제 방법
 let selectedPay = document.querySelector("#n_select_pay");
 let movieId = document.querySelector("#n_movie_id").value;
@@ -72,6 +77,15 @@ function selectPay(radio){
 
 // 선택한 결제 실행 버튼
 function pay(){
+
+    console.log("결제수단 : " + selectedPay.innerHTML);
+
+    // 결제 수단 미 선택 시
+    if(selectedPay.innerHTML == ""){
+        alert("결제 수단을 선택해 주세요.");
+        return;
+    }
+
     let totalPay = document.querySelector("#n_price").innerHTML;
     let totalPayInt = parseFloat(totalPay.replace(/,/g, ''));
 
@@ -87,6 +101,7 @@ function pay(){
     reservationCode = merchantUid;
     console.log("예매번호 : " + reservationCode);
 
+    // 결제 수단 선택
     if(selectedPay == "1"){
         kakaoPay(merchantUid, totalPayInt);
     }else if(selectedPay == "2"){
@@ -198,29 +213,44 @@ function postRequest(){
     let saveSeatDate = {
         movieId: movieId,
         seatNames: SeatNames,
+        runningDateId: runningDateId,
+    };
+
+    let dto = {
+        reservationCode: reservationCode,
+        discountPrice: discountPrice,
+        paymentTypeId: paymentTypeId,
+        SeatNames: SeatNames,
+        runningDateId: runningDateId,
         unitPrice: unitPrice,
+        totalPrice: totalPrice,
         totalCount: totalCount,
         fundingId: fundingId,
+        movieId: movieId
     };
 
     // saveOrder
-    saveOrder(movieId, saveOrderDate);
+    savePayment(movieId, dto);
+
     // saveSeatName
-    saveSeatName(movieId, saveSeatDate);
+    // saveSeatName(movieId, saveSeatDate);
+
+    // dto 넘기기
+    // moveDTO(dto);
 }
 
-async function saveOrder(movieId, saveOrderDate) {
+async function savePayment(movieId, dto) {
     try {
-        let response = await fetch(`/order/${movieId}/Save`, {
+        let response = await fetch(`/payment/${movieId}/save`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(saveOrderDate)
+            body: JSON.stringify(dto)
         });
 
         if (response.ok) {
-            console.log("saveOrder save");
+            console.log("결제 정보 저장 완료");
         } else {
             console.error("실패", response.statusText);
         }
@@ -229,22 +259,31 @@ async function saveOrder(movieId, saveOrderDate) {
     }
 }
 
-async function saveSeatName(movieId, saveOrderDate) {
-    try {
-        let response = await fetch(`/seat/${movieId}/Save`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(saveSeatDate)
-        });
 
-        if (response.ok) {
-            console.log("seatName save");
-        } else {
-            console.error("실패", response.statusText);
-        }
-    } catch (e) {
-        console.error("실패", e.message);
-    }
-}
+// async function saveSeatName(movieId, saveSeatDate) {
+//     try {
+//         let response = await fetch(`/seat/${movieId}/save`, {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json"
+//             },
+//             body: JSON.stringify(saveSeatDate)
+//         });
+//
+//         if (response.ok) {
+//             console.log("seatName save");
+//         } else {
+//             console.error("실패", response.statusText);
+//         }
+//     } catch (e) {
+//         console.error("실패", e.message);
+//     }
+// }
+
+// async function moveDTO(dto) {
+//     try {
+//         let response = await  fetch(,)
+//     }catch (e) {
+//
+//     }
+// }
