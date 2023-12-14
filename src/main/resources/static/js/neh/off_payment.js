@@ -220,7 +220,7 @@ async function saveOrder(movieId, saveOrderDate) {
         });
 
         if (response.ok) {
-            console.log("seatName save");
+            console.log("saveOrder save");
         } else {
             console.error("실패", response.statusText);
         }
@@ -231,12 +231,12 @@ async function saveOrder(movieId, saveOrderDate) {
 
 async function saveSeatName(movieId, saveOrderDate) {
     try {
-        let response = await fetch(`/order/${movieId}/Save`, {
+        let response = await fetch(`/seat/${movieId}/Save`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(saveOrderDate)
+            body: JSON.stringify(saveSeatDate)
         });
 
         if (response.ok) {

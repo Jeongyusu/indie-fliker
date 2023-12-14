@@ -6,7 +6,7 @@
 
     <!-- 좌석 예매 등록 -->
     <insert id="insert">
-        insert into seat_tb(seat_name, running_schedule_id) values (#{seatName}, #{runningScheduleId})
+        insert into seat_tb(seat_name, running_schedule_id, user_id) values (#{seatName}, #{runningScheduleId}, #{userId})
     </insert>
 
     <!-- 좌석 예매 삭제 -->

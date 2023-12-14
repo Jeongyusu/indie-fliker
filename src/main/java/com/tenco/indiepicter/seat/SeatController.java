@@ -29,8 +29,10 @@ public class SeatController {
     //order 정보 저장
     @PostMapping("/{movieId}/Save")
     public String saveSeatProc(@RequestBody SaveSeatDTO saveSeatDTO){
+        // 유저정보 확인
+        User principal = (User) session.getAttribute(Define.PRINCIPAL);
 
-        int rowResultCount = seatService.saveSeat(saveSeatDTO);
+        int rowResultCount = seatService.saveSeat(saveSeatDTO, 1);
         return "redirect:/reservation/"+ saveSeatDTO.getMovieId() +"/off-ticket";
     }
 

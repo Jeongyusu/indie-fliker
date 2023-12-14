@@ -433,8 +433,6 @@ div.main i {
     margin-top: 20px;
     width: 50%;
 }
-
-<<<<<<< HEAD
 	.k_invite {
 		margin-top: 15px;
 		height: 80px;
@@ -444,7 +442,7 @@ div.main i {
 		width: 30%;
 		width:300px;
 	}
-=======
+
 .k_update_login-container {
     max-width: 1000px;
     margin: auto;
@@ -452,7 +450,6 @@ div.main i {
     margin-top: -120px;
     height: 1000px;
 }
->>>>>>> dev
 
 .k_m_name {
     margin-top: 15px;
@@ -942,167 +939,196 @@ div.main i {
 }
 
 /*펀딩 업로드*/
-.k_funding_upload_container {
-    max-width: 55%;
-    margin: auto;
-    margin-top: 100px;
-    display: flex;
+
+.k_funding_main{
+    display: grid;
+    place-items: center;
+}
+
+.k_funding_upload {
+    width: 800px;
+    height: 100%;
+    margin: 30px 0;
 }
 
 .k_funding_upload_titles {
-    font-weight: bolder;
-    font-size: 15px;
+    font-size: 16px;
+    font-weight: 600;
 }
 
-.k_star_class {
-    color: red;
+.k_funding_upload_container {
+    max-width: 100%;
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+}
+
+.k_funding_upload_fund_titles {
+    width: 152px;
+    font-size: 16px;
+    font-weight: 600;
+}
+    .k_star_class {
+    color: var(--point_04);
 }
 
 .k_funding_upload_picture {
-    margin-left: 50px;
-
+    padding-right: 14px;
 }
 
 .k_funding_upload_picture input[type="file"] {
     display: none;
 }
 
-.k_funding_upload_select_pic {
-    background-color: #a8a7a7;
-    height: 100px;
-    width: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-left: 10%;
-}
-
-.k_funding_upload_movie_level {
-    margin-left: 26%;
-}
-
 .k_funding_upload_select_option {
-    height: 30px;
-    margin-left: 5%;
-    margin-bottom: 10%;
-    width: 30%;
+    height: 40px;
+    width: 40%;
+    font-size: 14px;
+    padding: 0 10px;
+    border-color: var(--line_01);
+    border-radius: 5px;
 }
 
 .k_funding_upload_container_two {
-    max-width: 55%;
+    font-size: 14px;
+    color: var(--font_01);
+    max-width: 100%;
     margin: auto;
     display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
 }
 
 .k_funding_upload_movie_name {
-    margin-left: 9.5%;
-    width: 81.5%;
+    width: 82%;
     height: 40px;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
 }
 
 .k_funding_upload_container_third {
-    max-width: 55%;
+    max-width: 100%;
     margin: auto;
     display: flex;
     margin-top: 2%;
+    justify-content: space-between;
+    margin-top: 3%;
+}
+
+.k_funding_upload_container_third #k_fund{
+    display: flex;
 }
 
 .k_funding_upload_funding_date {
-    margin-top: 15px;
     opacity: 0.9;
-    font-size: 13px;
+    font-size: 12px;
     flex-direction: column;
-
 }
 
-.k_funding_upload_first_date {
-    margin-left: 8.5%;
-    height: 40px;
-}
-
-.k_funding_upload_last_date {
+.k_funding_upload_last_date , .k_funding_upload_first_date{
     margin-left: 2%;
+    width: 130px;
     height: 40px;
+    padding-left: 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
+}
+
+.k_funding_upload_schedule_date{
+    margin-left: 2%;
+    width: 130px;
+    height: 40px;
+    padding-left: 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
 }
 
 .k_funding_upload_movie_schedule {
     margin-left: 30px;
 }
 
-.k_funding_upload_schedule_date {
-    margin-left: 11.5%;
-}
-
 .k_funding_upload_container_three {
-    max-width: 55%;
+    max-width: 100%;
     margin: auto;
     display: flex;
-    margin-top: 2%;
+    margin-top: 4%;
+}
+
+.k_margin_top {
+    margin-top: 3%;
 }
 
 .k_funding_upload_middle_title {
-    margin-top: 3%;
     margin-bottom: 1%;
 }
 
 .k_funding_upload_sibnob {
     width: 100%;
     height: 100px;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
 }
 
 .k_funding_upload_select_photo_pic {
-    background-color: #a8a7a7;
+    background-color: var(--line_01);
     height: 100px;
-    width: 120px;
+    width: 130px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 .k_funding_upload_container_four {
-    max-width: 55%;
-    margin: auto;
+    max-width: 100%;
     display: flex;
-    margin-top: 0.5%;
-    margin-right: 25%;
+    margin: 10px 0;
+    height: 98px;
 }
 
 .k_funding_upload_select_photo_pic_receive {
-    background-color: white;
-    border: 2px solid rgb(128, 128, 128);
-    height: 100px;
-    width: 120px;
+    background-color: var(--def_wh);
+    border: 0.5px solid var(--line_01);    height: 100px;
+    width: 130px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 .k_funding_upload_head_Career {
-    margin-left: 9%;
+    margin-left: 12%;
+
 }
 
 .k_funding_upload_career_input {
     margin-left: 4.7%;
-    width: 55%;
+    width: 61%;
     height: 40px;
-
+    font-size: 14px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
 }
 
 .k_funding_upload_movie_year {
-    margin-left: 6.5%;
+    margin-left: 40px;
     height: 40px;
+    font-size: 14px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
+
 }
 
 .k_funding_upload_head_limit {
     opacity: 0.8;
     line-height: 1.4; /* 줄 간격 조정 */
-
     text-align: justify;
 }
 
@@ -1111,7 +1137,21 @@ div.main i {
 }
 
 .k_funding_upload_career_input_two {
-    width: 71.5%;
+    width: 72.5%;
     height: 40px;
     margin-bottom: 2%;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
+}
+
+.k_funding_upload_career {
+    margin-bottom: 2px;
+    font-size: 14px;
+    color: var(--font_02);
+}
+
+.k_funding_directer_career {
+    display: flex;
+    width: 100%;
 }
