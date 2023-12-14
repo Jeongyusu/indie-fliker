@@ -12,6 +12,10 @@ public class ViewTestController {
     public String login() {
         return "user/login";
     }
+    @GetMapping("/user-profile")
+    public String profile() {
+        return "user/profile";
+    }
 
     @GetMapping("/ask")
     public String ask() {

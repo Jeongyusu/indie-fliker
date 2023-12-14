@@ -83,7 +83,7 @@ let div = ""; // 추가할 tag
 async function loadExistSeatList(){
     let runningDateId = document.querySelector("#n_running_date_id").value;
     try {
-        let response = await fetch(`/seat/api/exist-seat?runningscheduleId=${runningDateId}`, {
+        let response = await fetch(`/seat/api/exist-seat?runningDateId=${runningDateId}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -269,6 +269,7 @@ function lastSelectedSeat(){
         // 선택한 좌석 목록 만들기
         lastClicked = document.querySelectorAll(".n_last_seat");
 
+
         lastClicked.forEach(clickedSeat => {
             lastClickedSeats.push(clickedSeat);
         })
@@ -287,13 +288,24 @@ function lastSelectedSeat(){
     }
 }
 
-// 결제금액이 0일 때 결제 막기
+// 결제금액이 0일 때 결제 막기 + 관람인원보다 좌석선택 작을 때 막기
 let paymentButton = document.querySelector("#n_payment_button");
 let totalPrice = document.querySelector("#n_price");
-paymentButton.addEventListener("click", function (){
-    console.log("total + " + totalTicketPrice);
+paymentButton.addEventListener("click", function (event){
+    let wantCount = document.querySelector(".n_count").innerHTML;
+    let clickedCount = document.querySelector("#n_clicked_seat_count");
+
+    if(wantCount > clickedCount.value){
+        alert("관람인원만큼 좌석을 선택해주세요.");
+        event.preventDefault(); // 이벤트의 기본 동작(여기서는 form submit)을 막음
+    }
+
+    console.log("관람인원 : " + wantCount);
+    console.log("선택한 좌석 수 : " + clickedCount.value);
+
     if(parseInt(totalPrice.innerHTML) == 0){
         alert("결제할 금액이 없습니다.");
+        event.preventDefault(); // 이벤트의 기본 동작(여기서는 form submit)을 막음
     }
 });
 

@@ -26,7 +26,7 @@ public class FundingRestController {
 
     @GetMapping ("/api/fundings")
     public ResponseEntity<?> fundingPlus(@RequestParam(name="genre", defaultValue = "극영화") String genre, @RequestParam(name="page", defaultValue = "1") Integer page) {
-        List<MoviesByGenreDTO> moviesByGenreDTOs = fundingService.MoviesByGenre(genre, page, 5);
+        List<MoviesByGenreDTO> moviesByGenreDTOs = fundingService.moviesByGenre(genre, page, 5);
         log.debug("무비장르DTO 테스트 중" + moviesByGenreDTOs.toString());
         List<BannerDTO> bannerDTOs = bannerService.DisplayBanner(genre);
         FundingPlusDTO fundingPlusDTO = new FundingPlusDTO(moviesByGenreDTOs, bannerDTOs);

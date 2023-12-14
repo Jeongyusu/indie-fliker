@@ -4,6 +4,7 @@ package com.tenco.indiepicter.funding;
 import com.tenco.indiepicter.funding.response.FindByFundingIdDTO;
 import com.tenco.indiepicter.funding.response.MoviesByGenreDTO;
 import com.tenco.indiepicter.funding.response.OnAirMovieDTO;
+import com.tenco.indiepicter.funding.response.OnAirMovieRankingDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -22,5 +23,5 @@ public interface FundingRepository {
     public List<OnAirMovieDTO> findAllByOnAir();
 
     //상영중 영화 장르별 조회
-    public List<OnAirMovieDTO> findAllByOnAirAndGenre();
+    public List<OnAirMovieRankingDTO> findAllByOnAirAndRanking();
 }

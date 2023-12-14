@@ -30,9 +30,9 @@
 }
 
 .j_logo_text {
-    padding-right: 30px;
+    padding-right: 50px;
     font-size: xx-large;
-    color: #4BE2A7;
+    color: var(--primary_01);
 }
 
 .j_logo_text_padding {
@@ -144,3 +144,26 @@
     bottom: 0;
     width: 100%;
 }
+
+/* 헤더 드랍 다운 메뉴 CSS */
+
+.j_navi > ul > li > ul {
+    position: absolute;
+    left: 0;
+    top: 60px;
+    z-index: 1000;
+    background-color: var(--primary_01);
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+
+.j_submenu > li {
+    display: inline-block;
+    margin-right: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+

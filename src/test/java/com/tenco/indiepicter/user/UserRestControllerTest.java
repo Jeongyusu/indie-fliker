@@ -5,6 +5,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.hamcrest.Matchers.nullValue;
 
 import com.tenco.indiepicter._core.advice.ValidAdvice;
+import com.tenco.indiepicter.user.request.UserRequestDTO;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -34,7 +36,7 @@ public class UserRestControllerTest {
     @Test
     public void join_test() throws Exception {
         // given (데이터 준비)
-        UserRequest.JoinDTO joinDTO = new UserRequest.JoinDTO();
+        UserRequestDTO.JoinDTO joinDTO = new UserRequestDTO.JoinDTO();
         joinDTO.setUserEmail("cos@nate.com");
         joinDTO.setPassword1("meta1234!");
         joinDTO.setUsername("cos");

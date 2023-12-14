@@ -5,6 +5,11 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.tenco.indiepicter.user.request.UserProfileRequestDTO;
+import com.tenco.indiepicter.user.request.UserRequestDTO;
 
 @Mapper
 public interface UserRepository {
@@ -13,9 +18,9 @@ public interface UserRepository {
 	public int insert(User user);
 	
 	// 사용자 이름과 비밀번호로 조회(로그인)
-	public User findByUseruserEmailAndPassword(UserRequest.JoinDTO requestDto);
+	public User findByUseruserEmailAndPassword(UserRequestDTO.JoinDTO requestDto);
 	
-	// 이메일 단일 조회
+	// 회원 이메일로 단일 조회
 	public User findByUserEmail(String userEmail);
 	
 	// 이메일 중복 체크
@@ -24,8 +29,10 @@ public interface UserRepository {
 	// 회원 전체 조회
 	public List<User> findAll();
 	
-	// 이메일 중복 검사
-	public boolean selectId(String userEmail);
+	// 회원 아이디로 단일 조회
+	public User findById(Integer id);
 	
+	// 회원 프로필 수정
+	public int update(UserProfileRequestDTO dto);
 	
 }
