@@ -15,6 +15,10 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
     <script src="/js/jys/dropdown.js"></script>
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+    <!-- 포트원 결제하기  -->
+    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+    <!-- uuid 사용하기 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
     <link href="../../../../css/style.css" rel="stylesheet">
 
     <title>IndieFliker</title>

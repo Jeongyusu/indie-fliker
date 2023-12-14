@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.tenco.indiepicter.reservation.request.SaveReservationDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.tenco.indiepicter._core.utils.Define;
 import com.tenco.indiepicter.reservation.response.VipReservationDTO;
@@ -38,5 +38,19 @@ public class ReservationController {
 		return "mypage/myinvitation";
 		
 	}
-	
+
+	// 영화 예매 완료 후 티켓 페이지 요청(GET)
+	@GetMapping("/{movieId}/off-ticket")
+	public String offReservationTicket(){
+		return "reservation/reservation_ticket";
+	}
+
+
+	// 영화 예매 티켓 등록(POST)
+	@PostMapping("/{movieId}/Save")
+	public String saveReservationTicketProc(@RequestBody SaveReservationDTO saveReservationDTO){
+		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+		int rowResultCount = reservationService.saveReservationTicket(saveReservationDTO, principal.getId());
+		return "redirect:/reservation/"+ saveReservationDTO.getMovieId() +"/off-ticket";
+	}
 }

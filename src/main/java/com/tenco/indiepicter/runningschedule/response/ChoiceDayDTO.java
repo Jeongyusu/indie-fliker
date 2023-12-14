@@ -24,7 +24,7 @@ public class ChoiceDayDTO {
     private Integer theaterId;
     private String startTime;
     private String endTime;
-    private List<ExistSeatDTO> existSeatDTOs;
+    private List<ExistSeatDTO> existSeatDTOS;
 
     // yyyy-MM-dd
     public String formatToDate (){

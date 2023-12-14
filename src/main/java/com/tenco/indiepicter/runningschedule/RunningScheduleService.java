@@ -2,7 +2,6 @@ package com.tenco.indiepicter.runningschedule;
 
 import com.tenco.indiepicter.runningschedule.response.ChoiceDayDTO;
 import com.tenco.indiepicter.runningschedule.response.SelectRunningScheduleDTO;
-import com.tenco.indiepicter.seat.response.ExistSeatDTO;
 import com.tenco.indiepicter.runningschedule.response.TotalDayDTO;
 import com.tenco.indiepicter.seat.SeatRepository;
 import com.tenco.indiepicter.theater.TheaterRepository;

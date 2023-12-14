@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SelectRunningScheduleDTO{
+public class SelectRunningScheduleDTO {
     private Integer runningDateId;
     private String movieName;
     private String runningGrade;
