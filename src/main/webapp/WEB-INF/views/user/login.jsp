@@ -30,7 +30,9 @@
 				<button type="submit" class="btn btn-primary btn-block">이메일로 로그인</button>
 			</div>
 			<div class="k_kakao">
-				<button type="submit" class="k_kakao-btn btn btn-block"></button>
+				<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=eaa873dc471f9ad17affff6005825aef&redirect_uri=http://localhost:80/user/kakao-callback">
+					<img alt="" src="/images/kakao/kakao_login_medium_narrow.png" width="370" height="50">
+				</a>
 			</div>
 		</form>
 		<div class="k_no_id_aligin">

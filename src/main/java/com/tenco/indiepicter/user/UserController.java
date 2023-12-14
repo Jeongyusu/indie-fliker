@@ -10,14 +10,24 @@ import java.util.UUID;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.http.client.methods.HttpHead;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
@@ -26,6 +36,8 @@ import com.tenco.indiepicter._core.vo.MyPath;
 import com.tenco.indiepicter.reservation.ReservationService;
 import com.tenco.indiepicter.user.request.UserProfileRequestDTO;
 import com.tenco.indiepicter.user.request.UserRequestDTO;
+import com.tenco.indiepicter.user.response.KakaoProfile;
+import com.tenco.indiepicter.user.response.OAuthToken;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +50,10 @@ public class UserController {
 	
 	@Autowired
 	private HttpSession session;
+	
+	// yml 파일에 있는 초기 파라미터 설정한 변수를 자기고 옴
+	@Value("${tenco.key}")
+	private String tencokey;
 
 	@Autowired
 	private UserService userService;
@@ -120,8 +136,105 @@ public class UserController {
 		return "redirect:/main";
 	}
 	
-//---------------------------------------------------------------------------------------------------------------		
+//---------------------------------------------------------------------------------------------------------------
 	
+	// 카카오 로그인
+	@GetMapping("/kakao-callback")
+	public String kakaoCallBack(@RequestParam String code) {
+		
+		// RestTemplate - 스프링에서 지원하는 restapi 호출할 수 있는 내장 클래스
+		RestTemplate rt1 = new RestTemplate();
+		
+		// 헤더 구성
+		HttpHeaders headers1 = new HttpHeaders();
+		headers1.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+		
+		// 바디 구성 - MultivalueMap 은 일반 Map과 다르게 키의 중복이 가능하다.
+		MultiValueMap<String, String> params1 = new LinkedMultiValueMap<>();
+		params1.add("grant_type", "authorization_code"); // 고정값임
+		params1.add("client_id", "eaa873dc471f9ad17affff6005825aef"); // rest api 키 값
+		params1.add("redirect_uri", "http://localhost:80/user/kakao-callback"); // redirect 주소를 설정했을 때 값
+		params1.add("code", code); // 컨트롤러 요청에서 매개변수
+		
+		// 헤더와 바디 결합
+		HttpEntity<MultiValueMap<String, String>> requestMsg1 = new HttpEntity<>(params1, headers1);
+		
+		// 요청 처리
+		// 카카오에서 토큰을 받기 위해서 POST로 요청을 한다( https://kauth.kakao.com/oauth/token )
+		ResponseEntity<OAuthToken> response1 = rt1.exchange("https://kauth.kakao.com/oauth/token", HttpMethod.POST, requestMsg1, OAuthToken.class);
+		
+//		// 결과 확인
+//		log.debug("--------------------");
+//		log.debug(response1.getHeaders());
+//		log.debug(response1.getBody());
+//		log.debug(response1.getBody().getAccessToken());
+//		log.debug(response1.getBody().getRefreshToken());
+//		log.debug("--------------------");
+//		// 여기까지 토큰 받기 위함
+		
+		// restapi 호출
+		RestTemplate rt2 = new RestTemplate();
+		
+		// 헤더 구성
+		HttpHeaders headers2 = new HttpHeaders();
+		headers2.add("Authorization", "Bearer " + response1.getBody().getAccessToken());
+		headers2.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+		
+		// 바디 구성 생략(필수 아님)
+		
+		// 헤더와 바디 결합
+		HttpEntity<MultiValueMap<String, String>> requestMsg2 = new HttpEntity<>(headers2);
+		
+		// 요청
+		ResponseEntity<KakaoProfile> response2 = rt2.exchange("https://kapi.kakao.com/v2/user/me", HttpMethod.POST, requestMsg2, KakaoProfile.class);
+		
+		log.debug("__________ 카카오 서버 정보 받기 완료 ______________");
+		log.debug("_______________________________________________");
+		log.debug(response2.getBody().getProperties().getNickname());
+		log.debug(response2.getBody().getProperties().getProfileImage());
+		log.debug(response2.getBody().getProperties().getThumbnailImage());
+		log.debug("_______________________________________________");
+		log.debug("__________ 카카오 서버 정보 받기 완료 ______________");
+		// 여기 까지 카카오 서버에 존재하는 정보를 요청 처리 과정
+		
+		// 1. 회원 가입 여부 확인
+		// 최초 사용자라면 우리 사이트에 회원 가입을 자동 완료
+		// 추가 정보 입력 화면 (추가 정보가 있다면 기능을 만들기) -> DB 저장 처리
+		KakaoProfile kakaoProfile = response2.getBody();
+		
+		// 소셜 회원 가입자는 전부 비밀번호가 동일하게 된다. (tencokey)
+		UserRequestDTO.JoinDTO dto = UserRequestDTO.JoinDTO.builder()
+							 .userEmail("OAuth_" + kakaoProfile.getId() + "님")
+							 .password1(tencokey)
+							 .username("카카오")
+							 .tel("카카오")
+							 .build();
+		
+		// 콘솔창에서 tencokey 확인 해보기
+		log.debug("------------------------------");
+		log.debug("tencokey = " + tencokey);
+		log.debug("------------------------------");
+		
+		User oldUser = this.userService.findByUserEmail(dto.getUserEmail());
+		
+		if(oldUser == null) {
+			this.userService.join(dto); // 회원가입 자동 처리
+			oldUser = this.userService.findByUserEmail(dto.getUserEmail()); // olduser의 email정보 유지
+		}
+		
+		// 로그인 처리
+		// 만약 소셜 로그인 사용자가 회원가입 처리 완료된 사용자라면
+		// 바로 세션 처리 및 로그인 처리
+		// oldUser의 비밀번호는 tencokey로 처리해서 모두 똑같기 때문에
+		// 비밀번호가 누출되었을때를 방지하기 위해서 null로 처리해버린다.
+		oldUser.setUserPassword(null);
+		session.setAttribute(Define.PRINCIPAL, oldUser);
+		
+		return "redirect:/main";
+		
+	}
+	
+//---------------------------------------------------------------------------------------------------------------
 	// 로그아웃
 	@GetMapping("/logout")
 	public String logout() {
@@ -240,7 +353,7 @@ public class UserController {
 	
 //----------------------------------------------------------------------------------------------------------------	
 	
-	// 12 - 14 11:00 시작
+	// 12 - 14 6:00 학원 작업 끝
 	
 }
 

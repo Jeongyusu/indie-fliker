@@ -42,14 +42,16 @@ public class UserService {
 		
 		User user = User.builder()
 					.userEmail(requestDto.getUserEmail())
-					.password(encodingPassword)
+					.password(requestDto.getPassword1())
 					.username(requestDto.getUsername())
+					.pic(Define.userbasicpic)
+					.grade("NORMAL")
 					.tel(requestDto.getTel())
 					.gubun("NORMAL")
-					.grade("NORMAL")
-					.pic(Define.userbasicpic)
 					.build();
-					
+		
+		System.out.println(user.toString());
+								
 		int resultUserCount = this.userRepository.insert(user);
 		
 		if(resultUserCount != 1) {
@@ -133,7 +135,6 @@ public class UserService {
 		String encodingPassword = passwordEncoder.encode(password);
 		dto.setPassword1(encodingPassword);
 	
-		
 		int resultRowCount = userRepository.update(dto);
 		
 		if(resultRowCount != 1) {	
@@ -146,6 +147,10 @@ public class UserService {
 		return resultRowCount;
 	}
 	
+	// 카카오 로그인 (유저이름 찾기)
+	public User findByUserEmail(String userEmail) {
+		return this.userRepository.findByUserEmail(userEmail);
+	}
 	
 	
 }
