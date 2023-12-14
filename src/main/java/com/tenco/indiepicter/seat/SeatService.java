@@ -20,14 +20,14 @@ public class SeatService {
     private SeatRepository seatRepository;
 
     // 이미 예약이 완료된 좌석 리스트
-    public List<ExistSeatDTO> existSeat(Integer runnindDateId) {
-        List<ExistSeatDTO> responseDTOs = seatRepository.findByRunningDateId(runnindDateId);
+    public List<ExistSeatDTO> existSeat(Integer runningDateId) {
+        List<ExistSeatDTO> responseDTOs = seatRepository.findByRunningDateId(runningDateId);
         return responseDTOs;
     }
 
     @Transactional
     // 예약 완료된 좌석 등록(좌석 갯수만큼 insert 진행)
-    public int saveSeat(SaveSeatDTO saveSeatDTO) {
+    public int saveSeat(SaveSeatDTO saveSeatDTO, Integer principalId) {
         String saveSeats = saveSeatDTO.getSeatNames();
         List<String> splitSaveSeats = List.of(saveSeats.split(","));
         List<Seat> seats = new ArrayList<>();
@@ -35,6 +35,7 @@ public class SeatService {
             Seat seat = Seat.builder()
                     .seatName(splitSaveSeats.get(i))
                     .runningScheduleId(saveSeatDTO.getRunningDateId())
+                    .userId(principalId)
                     .build();
             seats.add(seat);
         }

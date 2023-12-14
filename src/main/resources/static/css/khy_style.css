@@ -333,7 +333,7 @@ div.main i {
     border: none;
     background-color: white;
     outline: none;
-   margin-top: 20px;
+    margin-top: 20px;
     text-decoration: underline;
 }
 .k_profile_bttn_margin{
@@ -400,15 +400,15 @@ div.main i {
 }
 
 
-	.k_invite {
-		margin-top: 15px;
-		height: 80px;
-		border-radius: 5px;
-		background-color: #f9fafb;
-		border: 1px solid rgb(192, 192, 192);
-		width: 30%;
-		width:300px;
-	}
+.k_invite {
+    margin-top: 15px;
+    height: 80px;
+    border-radius: 5px;
+    background-color: #f9fafb;
+    border: 1px solid rgb(192, 192, 192);
+    width: 30%;
+    width:300px;
+}
 
 .k_update_login-container {
     max-width: 1000px;
@@ -452,7 +452,7 @@ div.main i {
     display: block;
     margin-top: 15px;
     height: 40px;
-    background-color: white;
+    background-color: var(--def_wh);
     border-radius: 10px;
     cursor: pointer;
     width: 200px;
@@ -468,7 +468,7 @@ div.main i {
 }
 
 .k_m_couponpack {
-    background-color: white;
+    background-color: var(--def_wh);
     height: 40px;
     border-radius: 10px;
     border: 1px solid rgb(192, 192, 192);
@@ -555,7 +555,7 @@ div.main i {
     margin-top: 20px;
     height: 35px;
     border: none;
-    background-color: white;
+    background-color: var(--def_wh);
     cursor: pointer;
 }
 
@@ -563,14 +563,14 @@ div.main i {
     margin-top: 20px;
     height: 35px;
     border: none;
-    background-color: white;
+    background-color: var(--def_wh);
     cursor: pointer;
 }
 
 .k_c_center_list_set {
     height: 35px;
     border: none;
-    background-color: white;
+    background-color: var(--def_wh);
     cursor: pointer;
 }
 
@@ -578,12 +578,13 @@ div.main i {
     margin-top: 20px;
     height: 35px;
     border: none;
-    background-color: white;
+    background-color: var(--def_wh);
     cursor: pointer;
     margin-left: 400px;
 }
 
 /*자주 묻는 질문 페이지*/
+
 .k_ask_container {
     max-width: 400px;
     margin: auto;
@@ -601,7 +602,7 @@ div.main i {
     display: flex;
     max-width: 400px;
     width: 100%;
-    border: 2px solid #000;
+    border: 2px solid var(--def_bl);
     border-radius: 4px;
     overflow: hidden;
 }
@@ -612,14 +613,15 @@ div.main i {
     border: none;
     font-size: 16px;
 }
-.k_search-icon{
+
+.k_search-icon {
     height: 90%;
     width: 85%;
 }
 
 .k_search-button {
     padding: 10px;
-    color: white;
+    color: var(--def_wh);
     border: none;
     border-radius: 0 4px 4px 0;
     cursor: pointer;
@@ -646,8 +648,8 @@ div.main i {
 .k_btn {
     height: 35px;
     width: 70%;
-    background-color: white;
-    border: 2px solid #01DFD7;
+    background-color: var(--def_wh);
+    border: 2px solid var(--primary_01);
     box-shadow: none;
     cursor: pointer;
     font-size: 16px;
@@ -659,15 +661,15 @@ div.main i {
 
 .k_btn:hover,
 .k_btn:active {
-    background-color: #01DFD7;
-    color: white;
+    background-color: var(--primary_01);
+    color: var(--def_wh);
 }
 
 .k_a_btn-primary {
     height: 35px;
     width: 70%;
-    background-color: white;
-    border-color: #01DFD7;
+    background-color: var(--def_wh);
+    border-color: var(--primary_01);
     box-shadow: none;
 }
 
@@ -690,7 +692,7 @@ div.main i {
 
 .k_member_info {
     margin-top: 30px;
-    color: #01DFD7;
+    color: var(--primary_01);
     font-weight: bold;
 }
 
@@ -704,8 +706,8 @@ div.main i {
 .k_clickMe {
     cursor: pointer;
     padding: 10px;
-    background-color: white;
-    color: rgb(128, 128, 128);
+    background-color: var(--def_wh);
+    color: var(--back_02);
     display: inline-block;
     margin: 10px;
 }
@@ -713,7 +715,7 @@ div.main i {
 .k_clickMeSymbol {
     margin-left: 450px;
     border: none;
-    background-color: white;
+    background-color: var(--def_wh);
     cursor: pointer;
 
 }
@@ -721,8 +723,8 @@ div.main i {
 .k_hiddenDiv {
     display: none;
     padding: 20px;
-    background-color: rgb(128, 128, 128);
-    color: #fff;
+    background-color: var(--back_02);
+    color: var(--def_wh);
     margin: 10px;
 }
 
@@ -750,13 +752,14 @@ div.main i {
 }
 
 /*공지 사항*/
+
 .k_notice_hr {
     margin-top: 100px;
 }
 
 .k_notice_import {
     margin-top: 30px;
-    color: #01DFD7;
+    color: var(--primary_01);
     font-weight: bold;
     margin-bottom: 10px;
 }
@@ -907,167 +910,230 @@ div.main i {
 }
 
 /*펀딩 업로드*/
-.k_funding_upload_container {
-    max-width: 55%;
-    margin: auto;
-    margin-top: 100px;
-    display: flex;
+
+.k_funding_main {
+    display: grid;
+    place-items: center;
+    margin-top: 30px;
+}
+
+.k_funding_upload {
+    width: 800px;
+    height: 100%;
+    margin: 30px 0;
 }
 
 .k_funding_upload_titles {
-    font-weight: bolder;
-    font-size: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+}
+
+.k_funding_upload_first_title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.k_funding_upload_pic_title {
+    font-size: 16px;
+    font-weight: 600;
+    width: 34%;
+}
+
+.k_funding_upload_grade_title {
+    font-size: 16px;
+    font-weight: 600;
+    width: 30%;
+    margin-left: 35px;
+}
+
+.k_funding_upload_container {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+}
+
+.k_funding_upload_fund_titles {
+    width: 162px;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .k_star_class {
-    color: red;
+    color: var(--point_04);
 }
 
 .k_funding_upload_picture {
-    margin-left: 50px;
-
+    padding-right: 14px;
 }
 
 .k_funding_upload_picture input[type="file"] {
     display: none;
 }
 
-.k_funding_upload_select_pic {
-    background-color: #a8a7a7;
-    height: 100px;
-    width: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-left: 10%;
-}
-
-.k_funding_upload_movie_level {
-    margin-left: 26%;
-}
-
 .k_funding_upload_select_option {
-    height: 30px;
-    margin-left: 5%;
-    margin-bottom: 10%;
-    width: 30%;
+    height: 40px;
+    width: 70%;
+    font-size: 14px;
+    padding: 0 10px;
+    border-color: var(--line_01);
+    border-radius: 5px;
 }
 
 .k_funding_upload_container_two {
-    max-width: 55%;
+    font-size: 14px;
+    color: var(--font_01);
+    max-width: 100%;
     margin: auto;
     display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.k_funding_upload_container_two textarea {
+    padding: 20px;
 }
 
 .k_funding_upload_movie_name {
-    margin-left: 9.5%;
-    width: 81.5%;
+    width: 81%;
     height: 40px;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
 }
 
 .k_funding_upload_container_third {
-    max-width: 55%;
+    max-width: 100%;
     margin: auto;
     display: flex;
     margin-top: 2%;
+    justify-content: space-between;
+    margin-top: 3%;
+}
+
+.k_funding_upload_container_third #k_fund {
+    display: flex;
 }
 
 .k_funding_upload_funding_date {
-    margin-top: 15px;
     opacity: 0.9;
-    font-size: 13px;
+    font-size: 12px;
     flex-direction: column;
-
+    margin-top: 5px;
+    color: var(--point_04);
 }
 
-.k_funding_upload_first_date {
-    margin-left: 8.5%;
-    height: 40px;
-}
-
-.k_funding_upload_last_date {
+.k_funding_upload_last_date, .k_funding_upload_first_date {
     margin-left: 2%;
+    width: 130px;
     height: 40px;
+    padding-left: 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
+}
+
+.k_funding_upload_schedule_date {
+    margin-left: 2%;
+    width: 130px;
+    height: 40px;
+    padding-left: 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
 }
 
 .k_funding_upload_movie_schedule {
     margin-left: 30px;
 }
 
-.k_funding_upload_schedule_date {
-    margin-left: 11.5%;
-}
-
 .k_funding_upload_container_three {
-    max-width: 55%;
+    max-width: 100%;
     margin: auto;
     display: flex;
-    margin-top: 2%;
+    margin-top: 4%;
+    justify-content: space-between;
+}
+
+.k_funding_upload_direct_title {
+    display: flex;
+    width: 39%;
+}
+
+.k_margin_top {
+    margin-top: 3%;
 }
 
 .k_funding_upload_middle_title {
-    margin-top: 3%;
     margin-bottom: 1%;
 }
 
 .k_funding_upload_sibnob {
     width: 100%;
     height: 100px;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
 }
 
 .k_funding_upload_select_photo_pic {
-    background-color: #a8a7a7;
+    background-color: var(--back_02);
     height: 100px;
-    width: 120px;
+    width: 130px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 .k_funding_upload_container_four {
-    max-width: 55%;
-    margin: auto;
+    max-width: 100%;
     display: flex;
-    margin-top: 0.5%;
-    margin-right: 25%;
+    margin: 10px 0;
+    height: 98px;
 }
 
 .k_funding_upload_select_photo_pic_receive {
-    background-color: white;
-    border: 2px solid rgb(128, 128, 128);
+    background-color: var(--def_wh);
+    border: 0.5px solid var(--line_01);
     height: 100px;
-    width: 120px;
+    width: 130px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 .k_funding_upload_head_Career {
-    margin-left: 9%;
+    margin-left: 12%;
+    width: 100%;
+
 }
 
 .k_funding_upload_career_input {
     margin-left: 4.7%;
-    width: 55%;
+    width: 61%;
     height: 40px;
-
+    font-size: 14px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
 }
 
 .k_funding_upload_movie_year {
-    margin-left: 6.5%;
+    margin-left: 40px;
     height: 40px;
+    font-size: 14px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
+
 }
 
 .k_funding_upload_head_limit {
     opacity: 0.8;
     line-height: 1.4; /* 줄 간격 조정 */
-
     text-align: justify;
 }
 
@@ -1076,7 +1142,79 @@ div.main i {
 }
 
 .k_funding_upload_career_input_two {
-    width: 71.5%;
+    width: 72.5%;
     height: 40px;
     margin-bottom: 2%;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
+}
+
+.k_funding_upload_career {
+    margin-bottom: 2px;
+    font-size: 14px;
+    color: var(--font_02);
+}
+
+.k_funding_directer_career {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#k_table_staff {
+    display: flex;
+    padding: 0;
+}
+
+#k_table_staff p {
+    font-size: 16px;
+    font-weight: 600;
+    width: 8%;
+}
+
+#k_table {
+    border: 0.3px solid black;
+    border-color: var(--line_01);
+    width: 100%;
+}
+
+#k_table_body th {
+    text-align: center;
+    width: 20%;
+    background-color: var(--back_02);
+    font-size: 14px;
+    border: 0.3px solid var(--line_01);
+    height: 40px;
+}
+
+#k_table_body td {
+    text-align: center;
+    width: 30%;
+    font-weight: normal;
+    color: var(--font_03);
+    font-size: 14px;
+    border: 0.3px solid var(--line_01);
+    height: 40px;
+
+}
+
+#k_table_body input {
+    border: none;
+    background-color: transparent;
+    height: 20px;
+}
+
+.k_funding_save {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--def_wh);
+    height: 60px;
+    background-color: var(--font_01);
+}
+
+.k_plus_button {
+    border: none;
+    background-color: transparent;
 }

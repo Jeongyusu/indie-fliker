@@ -1,13 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@ include file="../layout/header.jsp" %>
-<div class="k_funding_save">
-    <p>펀딩 등록하기</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>펀딩 업로드</title>
+    <link href="../../../../resources/static/css/khy_style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
 <div class="k_funding_main">
     <div class="k_funding_upload">
         <div class="k_funding_upload_container">
-            <div class="k_funding_upload_pic_title">영화 대표 사진 <span class="k_star_class">*</span></div>
+            <div class="k_funding_upload_titles">영화 대표 사진 <span class="k_star_class">*</span></div>
             <form action="/upload" method="post" enctype="multipart/form-data" class="k_funding_upload_picture">
                 <label for="photo" class="k_funding_upload_select_photo_pic">
                     <i class="fas fa-camera"></i>
@@ -15,7 +22,7 @@
                 <input type="file" id="moviemain" name="photo" accept="image/*">
                 <br>
             </form>
-            <div class="k_funding_upload_movie_level k_funding_upload_grade_title">영화 상영 등급 <span class="k_star_class">*</span></div>
+            <div class="k_funding_upload_movie_level k_funding_upload_titles">영화 상영 등급 <span class="k_star_class">*</span></div>
             <select class="k_funding_upload_select_option">
                 <option value="option1">전체 관람가</option>
                 <option value="option1">12세 이상 관람가</option>
@@ -24,7 +31,7 @@
             </select>
         </div>
         <div class="k_funding_upload_container_two">
-            <div class="k_funding_upload_first_title">영화 제목
+            <div class="k_funding_upload_titles">영화 제목
                 <span class="k_star_class">*</span>
             </div>
             <input class="k_funding_upload_movie_name">
@@ -49,8 +56,7 @@
                 </div>
             </div>
             <div class="k_funding_upload_container_two">
-                <textarea class="k_funding_upload_sibnob">
-                </textarea>
+                <input class="k_funding_upload_sibnob">
             </div>
         </div>
         <div class="k_margin_top">
@@ -60,8 +66,7 @@
                 </div>
             </div>
             <div class="k_funding_upload_container_two">
-                <textarea class="k_funding_upload_sibnob">
-                </textarea>
+                <input class="k_funding_upload_sibnob">
             </div>
         </div>
         <div class="k_margin_top">
@@ -104,19 +109,10 @@
         </div>
         <div class="k_margin_top">
             <div class="k_funding_upload_container_three">
-                <div class="k_funding_upload_direct_title">
-                    <div class="k_funding_upload_titles">감독사진
-                        <span class="k_star_class">*</span>
-                    </div>
-                    <div class="k_funding_upload_head_Career k_funding_upload_titles">감독 작품 경력</div>
+                <div class="k_funding_upload_titles">감독사진
+                    <span class="k_star_class">*</span>
                 </div>
-                <div class="k_plus_content">
-                    <div>
-                        <button type="button" class="k_plus_button">
-                            <img src="/images/icons/plus.png">
-                        </button>
-                    </div>
-                </div>
+                <div class="k_funding_upload_head_Career k_funding_upload_titles">감독 작품 경력</div>
             </div>
             <div class="k_funding_upload_container_four">
                 <form action="/upload" method="post" enctype="multipart/form-data" class="k_funding_upload_picture">
@@ -134,13 +130,11 @@
                 </div>
             </div>
         </div>
+
+
         <div class="k_funding_upload_container_three">
             <div class="k_funding_upload_titles k_funding_upload_pride">영화제 상영 및 수상작 <span class="k_star_class">*</span></div>
-            <div>
-                <button type="button" class="k_plus_button">
-                    <img src="/images/icons/plus.png">
-                </button>
-            </div>
+
         </div>
         <div class="k_funding_upload_container_two">
             <input class="k_funding_upload_career_input_two" placeholder="작품 이름">
@@ -148,7 +142,7 @@
             <input type="text" class="k_funding_upload_movie_year" placeholder="작품 년도">
         </div>
         <div class="k_funding_upload_career">
-            영화제 상영 및 수상작과 수상 년도를 작성해주세요.예) 2022 Nshville Film Festival / 예) 2022
+            영화제 상영 및 수상작과 수상 년도를 작성해주세요.예) 2022 Nshville Film Festival,2022
         </div>
         <div class="k_funding_upload_career">
             영화제 상영 및 수상작은 최대 10까지 등록 가능합니다.
@@ -160,49 +154,31 @@
                     <tbody id="k_table_body">
                     <tr>
                         <th>감독</th>
-                        <td>
-                            <input type="text">
-                        </td>
+                        <td>Doe</td>
                         <th>각본</th>
-                        <td>
-                            <input type="text">
-                        </td>
+                        <td>Doe</td>
                     </tr>
                     <tr>
                         <th>촬영</th>
-                        <td>
-                            <input type="text">
-                        </td>
+                        <td>Doe</td>
                         <th>조명</th>
-                        <td>
-                            <input type="text">
-                        </td>
+                        <td>Doe</td>
                     </tr>
                     <tr>
                         <th>미술</th>
-                        <td>
-                            <input type="text">
-                        </td>
+                        <td>Doe</td>
                         <th>편집</th>
-                        <td>
-                            <input type="text">
-                        </td>
+                        <td>Doe</td>
                     </tr>
                     <tr>
                         <th>사운드</th>
-                        <td>
-                            <input type="text">
-                        </td>
+                        <td>Doe</td>
                         <th>음악</th>
-                        <td>
-                            <input type="text">
-                        </td>
+                        <td>Doe</td>
                     </tr>
                     <tr>
                         <th>의상</th>
-                        <td>
-                            <input type="text">
-                        </td>
+                        <td>Doe</td>
                         <th></th>
                         <td></td>
                     </tr>
@@ -256,4 +232,5 @@
     }
 
 </script>
-<%@ include file="../layout/footer.jsp" %>
+</body>
+</html>
