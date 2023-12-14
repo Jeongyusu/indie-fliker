@@ -19,6 +19,7 @@ configurations {
 
 repositories {
 	mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -39,6 +40,9 @@ dependencies {
     implementation 'org.apache.httpcomponents:httpclient:4.5.13'
     implementation 'org.jsoup:jsoup:1.14.3'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // 포트원결제
+    implementation 'com.github.iamport:iamport-rest-client-java:0.1.6'
 }
 
 tasks.named('bootBuildImage') {

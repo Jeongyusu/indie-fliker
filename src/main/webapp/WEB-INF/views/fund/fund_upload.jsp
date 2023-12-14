@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>펀딩 업로드</title>
-    <link href="../../../../resources/static/css/khy_style.css" rel="stylesheet">
+    <link href="/css/khy_style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
@@ -112,7 +112,7 @@
     </form>
 
     <input class="k_funding_upload_career_input" placeholder="작품 이름">
-    <div class="k_funding_upload_head_limit" style="">dd</div>
+    <div class="k_funding_upload_head_limit" style=""></div>
     <input type="text" class="k_funding_upload_movie_year" placeholder="작품 년도">
 
 </div>

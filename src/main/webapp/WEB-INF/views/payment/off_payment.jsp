@@ -25,6 +25,7 @@
                             <input type="hidden" id="n_runningGrade", value="${selectDTO.runningGrade}">
                             <img src="/images/icons/movie_level_all.png" id="n_grade_img">
                             <p>${selectDTO.movieName}</p>
+                            <input type="hidden" id="n_movie_id" value="${selectDTO.movieId}">
                         </div>
                         <div class="n_movie_day">
                             <p id="n_day">${selectDTO.formatToDate()}</p>
@@ -41,21 +42,54 @@
                             </div>
                             <div class="n_total_pay">
                                 <p>최종 결제 금액</p>
-                                <p id="n_price">${selectDTO.formatToBalance()}원</p>
+                                <span id="n_price_span">
+                                    <p id="n_price">${selectDTO.formatToBalance()}<p></p>원</p>
+                                </span>
                             </div>
+                        </div>
+                        <div>
+                            티켓>????????? 2000원???????????////////???????
+                            <input type="text" value="2000"  id="discountPrice" onclick="discount(this.value)">
                         </div>
                         <div id="n_payment_choice">
                             <p>결제 수단 선택</p>
                         </div>
                         <div id="n_payment">
-                            <label><input type="radio" name="payment" value="kakao"> 카카오 페이</label>
-                            <label><input type="radio" name="payment" value="payco"> 페이코</label>
-                            <label><input type="radio" name="payment" value="card"> 신용/체크카드</label>
+                            <label class="box-radio-input">
+                                <input type="radio" id="radio-1" name="payment" value="1" onclick="selectPay(this)">
+                                <span>
+                                    <img src="/images/logo/kakao.png">
+                                    <p>카카오 페이</p>
+                                </span>
+                            </label>
+                            <label class="box-radio-input">
+                                <input type="radio" id="radio-2" name="payment" value="2" onclick="selectPay(this)">
+                                <span>
+                                    <img src="/images/logo/payco.png">
+                                    <p>페이코</p>
+                                </span>
+                            </label>
+                            <label class="box-radio-input">
+                                <input type="radio" id="radio-3" name="payment" value="3" onclick="selectPay(this)">
+                                <span>
+                                    <img src="/images/logo/inicis.png">
+                                    <p>KG 이니시스</p>
+                                </span>
+                            </label>
                         </div>
                     </div>
+                    <input type="hidden" id="n_select_pay" value="">
+                    <input type="hidden" id="n_reservation_code" value="">
+                    <input type="hidden" id="paymentTypeId" value="">
+                    <input type="hidden" id="SeatNames" value="${selectDTO.seatNames}">
+                    <input type="hidden" id="runningDateId" value="${selectDTO.runningDateId}">
+                    <input type="hidden" id="unitPrice" value="${selectDTO.unitPrice}">
+                    <input type="hidden" id="totalPrice" value="${selectDTO.totalPrice}">
+                    <input type="hidden" id="totalCount" value="${selectDTO.totalCount}">
+                    <input type="hidden" id="fundingId" value="${selectDTO.fundingId}">
                     <div class="n_payment_button">
-                        <button id="n_prev">이전</button>
-                        <button id="n_pay">결제</button>
+                        <button type="button" id="n_prev">이전</button>
+                        <button type="button" id="n_pay" onclick="pay()">결제</button>
                     </div>
                 </form>
             </div>

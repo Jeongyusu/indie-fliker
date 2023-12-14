@@ -22,11 +22,13 @@ public class SelectRunningScheduleAndPlaceDTO {
     private String endTime;
     private Integer movieId;
     private String movieName;
+    private String seatNames;
     private Integer theaterId;
     private String theaterName;
     private String theaterTel;
     private String theaterAddress;
     private Integer fundingId;
+    private Integer unitPrice;
     private Integer totalCount;
     private Integer totalPrice;
 

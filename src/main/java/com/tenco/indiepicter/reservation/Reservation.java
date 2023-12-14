@@ -22,5 +22,7 @@ public class Reservation {
         this.reservatedAt = reservatedAt;
         this.userId = userId;
         this.seatId = seatId;
+        
     }
+    
 }

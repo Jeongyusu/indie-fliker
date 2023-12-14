@@ -2,6 +2,8 @@ package com.tenco.indiepicter.user;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -9,12 +11,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
+import com.tenco.indiepicter._core.utils.Define;
+import com.tenco.indiepicter.user.request.UserProfileRequestDTO;
+import com.tenco.indiepicter.user.request.UserRequestDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
 public class UserService {
+	
+	@Autowired
+	private HttpSession session;
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -26,7 +34,7 @@ public class UserService {
 	
 	// 회원 가입
 	@Transactional
-	public int join(UserRequest.JoinDTO requestDto){
+	public int join(UserRequestDTO.JoinDTO requestDto){
 		
 		String password = requestDto.getPassword1();
 		// 비밀번호 인코딩
@@ -39,6 +47,7 @@ public class UserService {
 					.tel(requestDto.getTel())
 					.gubun("NORMAL")
 					.grade("NORMAL")
+					.pic(Define.userbasicpic)
 					.build();
 					
 		int resultUserCount = this.userRepository.insert(user);
@@ -54,7 +63,7 @@ public class UserService {
 	
 	// 로그인
 	@Transactional
-	public User login(UserRequest.loginDTO requestDto) {
+	public User login(UserRequestDTO.loginDTO requestDto) {
 		
 		// 유저 이메일 조회
 		User user = this.userRepository.findByUserEmail(requestDto.getUserEmail());
@@ -98,13 +107,56 @@ public class UserService {
 		List<User> userLists = this.userRepository.findAll();
 		return userLists;
 	}
-	
-	// 이메일 중복 검사
-	public boolean selectId(String userEmail) {
-		return this.userRepository.selectId(userEmail);
+
+//--------------------------------------------------------------------------------	
+
+	// 회원 프로필 조회
+	public User findById(Integer id) {
+		
+		User user = this.userRepository.findById(id);
+		
+		return user;
 	}
 	
-//	log.debug("________________________________________________________");
-//	log.debug(requestDto.getPassword1() + " == " + user.getPassword());
-//	log.debug("________________________________________________________");
+	// 회원 프로필 수정
+	@Transactional
+	public int update(UserProfileRequestDTO dto, Integer principalId) {
+		
+		User sessionUser = (User)session.getAttribute(Define.PRINCIPAL);
+		
+		log.debug("-----------------------------");
+		log.debug(dto.getPassword1() + " 비교" +  dto.getPassword2());
+		log.debug("-----------------------------");
+		
+		if(!dto.getPassword1().equals(dto.getPassword2())) {
+			throw new MyDynamicException("비밀번호를 다시 확인해주세요.", HttpStatus.BAD_REQUEST);
+		}
+		
+		String password = dto.getPassword1();
+		
+		String encodingPassword = passwordEncoder.encode(password);
+		dto.setPassword1(encodingPassword);
+		
+	
+		log.debug("-----------------------------");
+		log.debug(sessionUser.toString());
+		log.debug("-----------------------------");
+		
+		int resultRowCount = userRepository.update(dto);
+		
+		if(resultRowCount != 1) {	
+			throw new MyDynamicException("수정 실패", 
+					HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		sessionUser = userRepository.findById(principalId);
+		session.setAttribute("sessionUser", sessionUser);
+		
+		
+		return resultRowCount;
+		
+	}
+	
+	
+	
 }

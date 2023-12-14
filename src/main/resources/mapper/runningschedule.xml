@@ -67,6 +67,7 @@
     <select id="findByRunningScheduleIdAndPlace" resultMap="selectRunningScheduleAndPlaceDTOResultMap">
         SELECT
             f.id as funding_id,
+            f.price_per_onetime,
             m.movie_name,
             m.running_grade,
             r.running_date,
@@ -90,6 +91,7 @@
     </select>
     <resultMap id="selectRunningScheduleAndPlaceDTOResultMap" type="com.tenco.indiepicter.runningschedule.response.SelectRunningScheduleAndPlaceDTO">
         <result property="fundingId" column="funding_id"/>
+        <result property="unitPrice" column="price_per_onetime"/>
         <result property="movieName" column="movie_name"/>
         <result property="runningGrade" column="running_grade"/>
         <result property="runningDate" column="running_date"/>

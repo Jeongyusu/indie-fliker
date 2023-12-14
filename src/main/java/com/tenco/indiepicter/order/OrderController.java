@@ -1,18 +1,13 @@
 package com.tenco.indiepicter.order;
 
-import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
 import com.tenco.indiepicter._core.utils.Define;
-import com.tenco.indiepicter.order.request.OrderDTO;
+import com.tenco.indiepicter.order.request.SaveOrderDTO;
+import com.tenco.indiepicter.seat.request.SelectSeatDTO;
 import com.tenco.indiepicter.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -27,14 +22,22 @@ public class OrderController {
     @Autowired
     private HttpSession session;
 
-    // 선택한 좌석 및 인원 수 세션에 저장
-    @PostMapping("/{movieId}/plus")
-    public String orderSessionProc (@PathVariable Integer movieId, OrderDTO orderDTO){
-        session.setAttribute("orderDTO", orderDTO);
-        return "redirect:/payment/" + orderDTO.getMovieId() +"/off";
+    // 선택한 좌석 및 인원 수 session에 임시저장
+    @PostMapping("/{movieId}/session")
+    public String orderSessionProc (@PathVariable Integer movieId, SelectSeatDTO selectSeatDTO){
+        session.setAttribute("selectSeatDTO", selectSeatDTO);
+        return "redirect:/payment/" + selectSeatDTO.getMovieId() +"/off";
     }
 
-
+    // order 정보 저장
+    @PostMapping("/{movieId}/Save")
+    public String saveOrderProc(@RequestBody SaveOrderDTO saveOrderDTO){
+        // 유저 확인
+//        User principal = (User) session.getAttribute(Define.PRINCIPAL);
+        System.out.println("디티옹!!!!!!" + saveOrderDTO);
+        int rowResultCount = orderService.saveOrder(saveOrderDTO, 1);
+        return "redirect:/reservation/"+ saveOrderDTO.getMovieId() +"/off-ticket";
+    }
 
 
 }

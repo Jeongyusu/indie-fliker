@@ -27,5 +27,18 @@
         select * from theater_tb
     </select>
 
+    <!-- 메인페이지(영화예매) 극장 정보 조회 -->
+    <select id="findAllByCustom" resultMap="findAllByCustomResultMap">
+        select theater_pic, theater_name, theater_description, address from theater_tb
+    </select>
+
+    <resultMap id="findAllByCustomResultMap" type="com.tenco.indiepicter.theater.response.TheaterListDTO">
+        <result property="theaterPic" column="theater_pic"/>
+        <result property="theaterName" column="theater_name"/>
+        <result property="theaterAddress" column="address"/>
+        <result property="theaterDescription" column="theater_description"/>
+    </resultMap>
+
+
 
 </mapper>

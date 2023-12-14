@@ -19,4 +19,7 @@ public interface SeatRepository {
 
     // 좌석 전체 조회
     public List<Seat> findAll();
+
+    // 상영시간과 유저에 따른 좌석 목록 조회
+    List<Seat> findByRunningDateIdAndUserId(Integer runningDateId, Integer userId);
 }

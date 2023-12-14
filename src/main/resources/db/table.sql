@@ -12,7 +12,9 @@ create table user_tb(
 
 create table theater_tb(
                            id int auto_increment primary key,
+                           theater_pic varchar(300) not null,
                            theater_name varchar(30) not null unique,
+                           theater_description varchar(500) not null,
                            tel varchar(20) not null,
                            address varchar(100) not null,
                            park varchar(30) not null,
@@ -201,6 +203,8 @@ create table notice_tb(
                           created_at datetime not null default now()
 );
 
+
+
 create table banner_tb(
                           id int auto_increment primary key,
                           banner_pic varchar(200) not null,
@@ -210,3 +214,4 @@ create table banner_tb(
                           foreign KEY(movie_id) references movie_tb(id)
 
 );
+
