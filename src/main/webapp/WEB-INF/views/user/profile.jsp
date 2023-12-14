@@ -20,8 +20,9 @@
 <div class="k_profile_main">
     <h1 class="k_profile_info_set">프로필 정보 설정</h1>
     <h2 class="k_profile_pic">프로필 사진</h2>
-    <img class="k_profile_pic_set" src="/images/icons/gamst.jpg" alt="프로필 사진">
-    <button class="k_profile_bttn k_profile_bttn_margin">바꾸기</button>
+    <img id="preview" class="k_profile" alt="" src="${user.pic}" onclick="return false;">
+    <input type="file" id="file" name="file" onchange="changeUserPic(event)">
+    <input type="hidden" name="id" value ="${user.id}">
     <button class="k_profile_bttn">삭제</button>
     <div class="k_profile_first_container">
         <div>닉네임</div>
@@ -43,24 +44,26 @@
 
 </div>
 
+	<script>
+		function changeUserPic(e1) {
+		    let f = e1.srcElement.files[0];
+		    console.log(f.type);
+		    if (!f.type.match("image.*")) {
+		      alert("이미지를 등록해주세요");
+		      return;
+		    }
+		    let reader = new FileReader();
+		    reader.onload = function (e2) { // 파일이 다 읽어지면 콜백됨
+		      let previewEl = document.querySelector("#preview");
+		      previewEl.setAttribute("src", e2.target.result);
+		    }
+		    reader.readAsDataURL(f); // 파일 읽기 onload()
+		  	}
+	</script>
+
 
 </body>
-<script>
-    function changeUserPic(e1) {
-        let f = e1.srcElement.files[0];
-        console.log(f.type);
-        if (!f.type.match("image.*")) {
-            alert("이미지를 등록해주세요");
-            return;
-        }
-        let reader = new FileReader();
-        reader.onload = function (e2) { // 파일이 다 읽어지면 콜백됨
-            let previewEl = document.querySelector("#preview");
-            previewEl.setAttribute("src", e2.target.result);
-        }
-        reader.readAsDataURL(f); // 파일 읽기 onload()
-    }
-</script>
+
 
 </html>
 
