@@ -733,6 +733,7 @@
 }
 .n_people p{
     font-weight: bold;
+    padding-right: 9px;
 }
 
 .n_total_pay {
@@ -794,9 +795,21 @@
     background-color: var(--primary_01);
     font-weight: bold;
     font-size: 18px;
-
 }
 
+#n_vip, #n_vip_span{
+    display: flex;
+    padding-left: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--point_04);
+}
+
+#n_vip_div {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 7px;
+}
 
 /*/////////////////////////////////////////////////////*/
 /* on_payment */

@@ -1,6 +1,7 @@
 // 페이지 로딩 시 아래의 함수 실행
 window.onload = function (){
     onLoadImg();
+    discount();
 };
 
 // 영화 상영 등급
@@ -21,16 +22,43 @@ function onLoadImg(){
     console.log("src : " + gradeImg.src);
 }
 
-// 가격 할인(VIP 티켓 선택 시)
-function discount(discountPrice) {
+// VIP일 경우,
+function discount() {
+    const createdDiv = document.querySelector(".n_people_and_pay");
+    let discountPay = document.querySelector("#discountPrice").value;
     let totalPayElement = document.querySelector("#n_price");
     let totalPay = totalPayElement.innerHTML;
     let totalPayInt = parseFloat(totalPay.replace(/,/g, ''));
+    let totalCountElement = document.querySelector("#n_people_count");
+    let totalCount = totalCountElement.innerHTML;
+    // let userGrade = document.querySelector("#userGrade").value;
+    // TODO : 로그인 시 위의 주석 풀고, 아래의 String userGrade 지우기
 
-    let changePrice = totalPayInt - discountPrice;
-    totalPayElement.innerHTML = changePrice.toLocaleString(); // 변경된 가격을 다시 화면에 반영
-    console.log("할인 : " + changePrice);
-    postRequest();
+    let userGrade = "VIP";
+
+    if(userGrade == "VIP"){
+        let changePrice = totalPayInt - (discountPay * totalCount);
+        totalPayElement.innerHTML = changePrice.toLocaleString(); // 1,000
+
+        let div = document.createElement("div");
+        div.id = "n_vip_div";
+        let p = document.createElement("p");
+        p.innerHTML = "VIP 할인 적용";
+        p.id = "n_vip";
+        let span = document.createElement("span");
+        span.id = "n_vip_span";
+        let priceP = document.createElement("p");
+        priceP.id = "n_vip_discount_price"
+        priceP.innerHTML = "- " + (discountPay * totalCount).toLocaleString();
+        let wonP = document.createElement("p");
+        wonP.innerHTML = "원";
+
+        span.appendChild(priceP);
+        span.appendChild(wonP);
+        div.appendChild(p);
+        div.appendChild(span);
+        createdDiv.appendChild(div);
+    }
 }
 
 // 선택한 결제 방법
@@ -89,6 +117,7 @@ function kakaoPay(merchantUid, totalPayInt) {
     }, async function (rsp) {
         if (rsp.success) {
             console.log("결제 성공");
+            postRequest();
             window.location.href = `/reservation/${movieId}/off-ticket`; // 예시: 성공 페이지 URL
         } else {
             alert(`결제에 실패하였습니다. ${rsp.error_msg}`);
@@ -111,6 +140,8 @@ function payco(merchantUid, totalPayInt) {
     }, function (rsp) { // callback
         if (rsp.success) {
             console.log("결제 성공");
+            postRequest();
+            window.location.href = `/reservation/${movieId}/off-ticket`; // 예시: 성공 페이지 URL
         } else {
             alert(`결제에 실패하였습니다. ${rsp.error_msg}`);
         }
@@ -133,6 +164,8 @@ function kgPay(merchantUid, totalPayInt) {
     }, function (rsp) {
         if (rsp.success) {
             console.log("결제 성공");
+            postRequest();
+            window.location.href = `/reservation/${movieId}/off-ticket`; // 예시: 성공 페이지 URL
         } else {
             alert(`결제에 실패하였습니다. ${rsp.error_msg}`);
         }
@@ -170,16 +203,33 @@ function postRequest(){
         fundingId: fundingId,
     };
 
-    saveSeatName(movieId, saveOrderDate);
+    // saveOrder
+    saveOrder(movieId, saveOrderDate);
+    // saveSeatName
+    saveSeatName(movieId, saveSeatDate);
+}
+
+async function saveOrder(movieId, saveOrderDate) {
+    try {
+        let response = await fetch(`/order/${movieId}/Save`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(saveOrderDate)
+        });
+
+        if (response.ok) {
+            console.log("seatName save");
+        } else {
+            console.error("실패", response.statusText);
+        }
+    } catch (e) {
+        console.error("실패", e.message);
+    }
 }
 
 async function saveSeatName(movieId, saveOrderDate) {
-
-
-    console.log("movieID : " + movieId);
-    console.log("saveOrderDate : " + saveOrderDate);
-
-
     try {
         let response = await fetch(`/order/${movieId}/Save`, {
             method: "POST",

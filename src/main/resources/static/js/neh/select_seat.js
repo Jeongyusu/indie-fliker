@@ -300,9 +300,6 @@ paymentButton.addEventListener("click", function (event){
         event.preventDefault(); // 이벤트의 기본 동작(여기서는 form submit)을 막음
     }
 
-    console.log("관람인원 : " + wantCount);
-    console.log("선택한 좌석 수 : " + clickedCount.value);
-
     if(parseInt(totalPrice.innerHTML) == 0){
         alert("결제할 금액이 없습니다.");
         event.preventDefault(); // 이벤트의 기본 동작(여기서는 form submit)을 막음

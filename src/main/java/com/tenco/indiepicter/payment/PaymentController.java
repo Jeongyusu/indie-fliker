@@ -73,15 +73,9 @@ public class PaymentController {
 		SelectRunningScheduleAndPlaceDTO selectDTO = paymentService.offPayment(selectSeatDTO);
 
         model.addAttribute("selectDTO", selectDTO);
-		model.addAttribute("user", principal);
+		model.addAttribute("principal", principal); // TODO : 유저 정보 중에 VIP를 체크해서 티켓 당 2000원 할인 제공
 		return "payment/off_payment";
     }
 
-
-	// 오프라인 결제 기능(POST)
-//	@PostMapping("/{movieId}/off")
-//	public String offPaymentProc(){
-//
-//	}
 	
 }
