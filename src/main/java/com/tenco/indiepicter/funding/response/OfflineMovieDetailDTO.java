@@ -57,6 +57,11 @@ public class OfflineMovieDetailDTO {
     private String lighting;
     private String editing;
     private String music;
+    //극장 정보
+    private String theaterName;
+    private String theaterAddress;
+    private String theaterTel;
+    private String theaterPark;
 
     public String formatPresentPrice(){
         return BalanceUtil.formatBalance(fundingPresentPrice);

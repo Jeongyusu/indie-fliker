@@ -58,13 +58,14 @@ public class FundingController {
         FundingDetailDTO fundingDetailDTO = fundingService.detailFunding(id);
         boolean isLiked = scrabService.checkIsLiked(1, id); // 추후 1을 sessionUser.getId()로 변경
         fundingDetailDTO.setLiked(isLiked);
-         model.addAttribute("fundingDetailDTO", fundingDetailDTO);
+        model.addAttribute("fundingDetailDTO", fundingDetailDTO);
         return "fund/on_detail";
     }
 
     @GetMapping("/offline-movies/{id}")
     public String detailofflineMovie(@PathVariable Integer id, Model model){
-
+        OfflineMovieDetailDTO offlineMovieDetailDTO = fundingService.detailOfflineMovie(id);
+        model.addAttribute("offlineMovieDetailDTO", offlineMovieDetailDTO);
         return "fund/off_detail";
     }
 }
