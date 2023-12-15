@@ -12,7 +12,7 @@ public class LastOrderDTO {
     private Integer runningDateId;
     private String reservationCode;
     private Integer unitPrice; // 단일 가격
-    private String totalPrice;
+    private Integer finalPrice;
     private Integer totalCount;
     private Integer fundingId;
     private Integer discountPrice;

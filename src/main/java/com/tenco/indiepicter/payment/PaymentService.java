@@ -1,14 +1,20 @@
 package com.tenco.indiepicter.payment;
 
+import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
+import com.tenco.indiepicter.order.Order;
+import com.tenco.indiepicter.order.OrderRepository;
 import com.tenco.indiepicter.order.response.LastOrderDTO;
 import com.tenco.indiepicter.seat.request.SelectSeatDTO;
 import com.tenco.indiepicter.runningschedule.RunningScheduleRepository;
 import com.tenco.indiepicter.runningschedule.response.SelectRunningScheduleAndPlaceDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import com.tenco.indiepicter.payment.response.MyOfflinePaymentDTO;
 import com.tenco.indiepicter.payment.response.MyOnlinePaymentDTO;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 
@@ -21,6 +27,9 @@ public class PaymentService {
 
     @Autowired
     private RunningScheduleRepository runningScheduleRepository;
+
+    @Autowired
+    private OrderRepository orderRepository;
 
     // 상영 정보 가져오기
     public SelectRunningScheduleAndPlaceDTO offPayment(SelectSeatDTO selectSeatDTO) {
@@ -45,6 +54,26 @@ public class PaymentService {
 		return this.paymentRepository.findByOfflinePaymentId(id);
 	}
 
-//    public int savePayment(LastOrderDTO lastOrderDTO, int i) {
-//    }
+    // 오프라인 결제 정보 등록
+    @Transactional
+    public int savePayment(LastOrderDTO lastOrderDTO, Integer principalId){
+        // order_id 찾아오기
+        Order order = orderRepository.findByFundingIdAndUserId(lastOrderDTO.getFundingId(), principalId);
+        if(order == null){
+            throw new MyDynamicException("아직 주문이 진행되지 않았습니다. 주문 먼저 진행해주세요.", HttpStatus.BAD_REQUEST);
+        }
+
+        Payment payment = Payment.builder()
+                .totalPrice(lastOrderDTO.getFinalPrice() + lastOrderDTO.getDiscountPrice())
+                .discountPrice(lastOrderDTO.getDiscountPrice())
+                .finalPrice(lastOrderDTO.getFinalPrice())
+                .paymentTypeId(lastOrderDTO.getPaymentTypeId())
+                .orderId(order.getId())
+                .build();
+
+        int rowResultCount = paymentRepository.insert(payment);
+
+        return rowResultCount;
+    }
+
 }
