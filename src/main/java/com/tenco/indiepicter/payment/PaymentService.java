@@ -4,6 +4,7 @@ import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
 import com.tenco.indiepicter.order.Order;
 import com.tenco.indiepicter.order.OrderRepository;
 import com.tenco.indiepicter.order.response.LastOrderDTO;
+import com.tenco.indiepicter.order.response.OrderAndReservationInfoDTO;
 import com.tenco.indiepicter.seat.request.SelectSeatDTO;
 import com.tenco.indiepicter.runningschedule.RunningScheduleRepository;
 import com.tenco.indiepicter.runningschedule.response.SelectRunningScheduleAndPlaceDTO;
@@ -56,11 +57,11 @@ public class PaymentService {
 
     // 오프라인 결제 정보 등록
     @Transactional
-    public int savePayment(LastOrderDTO lastOrderDTO, Integer principalId){
-        // order_id 찾아오기
-        Order order = orderRepository.findByFundingIdAndUserId(lastOrderDTO.getFundingId(), principalId);
-        if(order == null){
-            throw new MyDynamicException("아직 주문이 진행되지 않았습니다. 주문 먼저 진행해주세요.", HttpStatus.BAD_REQUEST);
+    public int savePayment(LastOrderDTO lastOrderDTO){
+         // reservationCode로 orderId 찾아오기
+        OrderAndReservationInfoDTO responseDTO = orderRepository.findByReservationCode(lastOrderDTO.getReservationCode());
+        if(responseDTO == null){
+            throw new MyDynamicException("주문 내역을 찾을 수 없습니다.", HttpStatus.BAD_REQUEST);
         }
 
         Payment payment = Payment.builder()
@@ -68,7 +69,7 @@ public class PaymentService {
                 .discountPrice(lastOrderDTO.getDiscountPrice())
                 .finalPrice(lastOrderDTO.getFinalPrice())
                 .paymentTypeId(lastOrderDTO.getPaymentTypeId())
-                .orderId(order.getId())
+                .orderId(responseDTO.getOrderId())
                 .build();
 
         int rowResultCount = paymentRepository.insert(payment);
