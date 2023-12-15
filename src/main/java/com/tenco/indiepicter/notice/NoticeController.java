@@ -47,4 +47,4 @@ public class NoticeController {
 	
 }
 
-// 12-15 5:50 학원 작업~
+// 12-15 5:52 학원 작업~
