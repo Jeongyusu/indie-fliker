@@ -32,6 +32,7 @@ create table movie_tb(
                          genre varchar(20) not null,
                          running_grade varchar(20) not null,
                          director varchar(20) not null,
+                         director_pic varchar(300) not null,
                          actor varchar(200) not null,
                          director_careers varchar(500),
                          director_awards_film varchar(500),

@@ -39,6 +39,8 @@ public class OfflineMovieDetailDTO {
     private Timestamp dDay;
     // 시놉시스
     private String synopsis;
+    // 영화 감독 이미지
+    private String directorPic;
     // 연출 의도
     private String directingIntension;
     // 포토 목록
@@ -57,6 +59,11 @@ public class OfflineMovieDetailDTO {
     private String lighting;
     private String editing;
     private String music;
+    //극장 정보
+    private String theaterName;
+    private String theaterAddress;
+    private String theaterTel;
+    private String theaterPark;
 
     public String formatPresentPrice(){
         return BalanceUtil.formatBalance(fundingPresentPrice);

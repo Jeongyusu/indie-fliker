@@ -1,6 +1,7 @@
 package com.tenco.indiepicter.funding;
 
 
+import com.tenco.indiepicter.funding.request.FundingSaveDTO;
 import com.tenco.indiepicter.funding.response.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -26,4 +27,7 @@ public interface FundingRepository {
 
     //오프라인 펀딩 상세보기(영화예매)
     public OfflineMovieDetailDTO findByFundingIdAboutOfflineMovie(Integer fundingId);
+
+    //펀딩 등록하기
+    public int saveFunding(FundingSaveDTO fundingSaveDTO);
 }
