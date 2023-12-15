@@ -19,6 +19,7 @@ public class Movie {
     private String genre;
     private String runningGrade;
     private String director;
+    private String directorPic;
     private String actor;
     private String directorCareers;
     private String directorAwardsFilm;
@@ -29,7 +30,7 @@ public class Movie {
     private Timestamp dDay;
 
     @Builder
-    public Movie(Integer id, Integer makeYear, String production, String movieName, String synopsis, String thumbnail, String directingIntension, String genre, String runningGrade, String director, String actor, String directorCareers, String directorAwardsFilm, Timestamp onlineReleaseDate, Timestamp onlineEndDate, Timestamp offlineReleaseDate, Timestamp offlineEndDate, Timestamp dDay) {
+    public Movie(Integer id, Integer makeYear, String production, String movieName, String synopsis, String thumbnail, String directingIntension, String genre, String runningGrade, String director, String directorPic, String actor, String directorCareers, String directorAwardsFilm, Timestamp onlineReleaseDate, Timestamp onlineEndDate, Timestamp offlineReleaseDate, Timestamp offlineEndDate, Timestamp dDay) {
         this.id = id;
         this.makeYear = makeYear;
         this.production = production;
@@ -40,6 +41,7 @@ public class Movie {
         this.genre = genre;
         this.runningGrade = runningGrade;
         this.director = director;
+        this.directorPic = directorPic;
         this.actor = actor;
         this.directorCareers = directorCareers;
         this.directorAwardsFilm = directorAwardsFilm;
