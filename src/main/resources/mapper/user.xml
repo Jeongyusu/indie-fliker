@@ -37,7 +37,7 @@
 	
 	<!-- 회원 프로필 수정 -->
 	<update id="update">
-		update user_tb set pic=#{uploadFileName}, username=#{username}, password=#{password1}
+		update user_tb set pic=#{uploadFileName}, username=#{username}, password=#{password1}, tel=#{tel}
 		where id=#{id}
 	</update>
 	

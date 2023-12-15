@@ -278,13 +278,13 @@ public class UserController {
 	@GetMapping("/profile")
 	public String profile(Model model) {
 		
-		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+		User user = (User)session.getAttribute(Define.PRINCIPAL);
 		
-		if(principal == null) {
+		if(user == null) {
 			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
 		}
 		
-		model.addAttribute("principal", principal);
+		model.addAttribute("user", user);
 		
 		return "user/profile";
 	}
@@ -345,15 +345,18 @@ public class UserController {
 		}
 		
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-		
 		this.userService.update(dto, principal.getId());
+		
+		// 업데이트 완료한 회원의 정보를 다시 가지고 와야하는데 왜 안됨??
+		User principalId = (User)session.getAttribute(Define.PRINCIPAL);
+		this.userService.findById(principalId.getId());
 		
 		return "redirect:/user/mypage";
 	}
 	
 //----------------------------------------------------------------------------------------------------------------	
+
 	
-	// 12 - 14 6:00 학원 작업 끝
 	
 }
 
