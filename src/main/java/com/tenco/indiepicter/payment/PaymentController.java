@@ -119,7 +119,7 @@ public class PaymentController {
 		int seatResult = seatService.saveSeat(lastOrderDTO, 1);
 		int reservationResult = reservationService.saveReservationTicket(lastOrderDTO, 1);
 		int orderResult = orderService.saveOrder(lastOrderDTO, 1);
-		int paymentResult = paymentService.savePayment(lastOrderDTO, 1);
+		int paymentResult = paymentService.savePayment(lastOrderDTO);
 
 		System.out.println("seatResult : " + seatResult );
 		System.out.println("orderResult : " + orderResult );

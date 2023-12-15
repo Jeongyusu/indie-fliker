@@ -1,5 +1,6 @@
 package com.tenco.indiepicter.order;
 
+import com.tenco.indiepicter.order.response.OrderAndReservationInfoDTO;
 import com.tenco.indiepicter.order.response.TotalCountAndPaymentDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -23,6 +24,6 @@ public interface OrderRepository {
     // 주문 전체 조회
     public List<Order> findAll();
 
-    // 펀딩 Id와 userId로 주문 정보 조회
-    public Order findByFundingIdAndUserId(@Param("fundingId") Integer fundingId, @Param("principalId")Integer principalId);
+    // 예매 번호로 order와 reservation 조회
+    public OrderAndReservationInfoDTO findByReservationCode(String reservationCode);
 }
