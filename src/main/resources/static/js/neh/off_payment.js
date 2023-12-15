@@ -67,7 +67,7 @@ function back(){
 }
 
 // 선택한 결제 방법
-let selectedPay = document.querySelector("#n_select_pay");
+let selectedPay = document.querySelector("#selectPayment");
 let movieId = document.querySelector("#n_movie_id").value;
 
 function selectPay(radio){
@@ -87,10 +87,13 @@ function pay(){
     let totalPay = document.querySelector("#n_price").innerHTML;
     let totalPayInt = parseFloat(totalPay.replace(/,/g, ''));
 
-    let reservationCode = document.querySelector("#n_reservation_code").value;
+    let reservationCode = document.querySelector("#reservationCode").value;
     let paymentType = document.querySelector("#paymentTypeId").value;
 
-    let runningDateId = document.querySelector("#runningDateId").value;
+    let userEmail = document.querySelector("#userEmail").value;
+    let username = document.querySelector("#username").value;
+    let userTel = document.querySelector("#userTel").value;
+
 
 
     // 예매번호(reservationNumber) 및 주문번호(merchant_uid) - 고유번호
@@ -103,11 +106,11 @@ function pay(){
 
     // 결제 수단 선택
     if(selectedPay == "1"){
-        kakaoPay(merchantUid, totalPayInt, selectedPay, runningDateId);
+        kakaoPay(merchantUid, totalPayInt, selectedPay, userEmail, username, userTel);
     }else if(selectedPay == "2"){
-        payco(merchantUid, totalPayInt, selectedPay, runningDateId);
+        payco(merchantUid, totalPayInt, selectedPay, userEmail, username, userTel);
     }else if(selectedPay == "3"){
-        kgPay(merchantUid, totalPayInt, selectedPay, runningDateId);
+        kgPay(merchantUid, totalPayInt, selectedPay, userEmail, username, userTel);
     }
 
     paymentType = selectedPay;
@@ -116,7 +119,7 @@ function pay(){
 }
 
 // 카카오 페이 결제 요청
-function kakaoPay(merchantUid, totalPayInt, selectedPay, runningDateId) {
+function kakaoPay(merchantUid, totalPayInt, selectedPay, userEmail, username, userTel) {
     console.log("실행됨");
     // 결제 초기화
     IMP.init('imp81816223') // 예: 'imp00000000a'
@@ -126,14 +129,13 @@ function kakaoPay(merchantUid, totalPayInt, selectedPay, runningDateId) {
         merchant_uid: merchantUid, // 상점에서 생성한 고유 주문번호
         name: "오프라인 영화 티켓",
         amount: totalPayInt,
-        buyer_email: "test@portone.io",
-        buyer_name: "남은혜",
-        buyer_tel: "010-1234-5678",
+        buyer_email: userEmail,
+        buyer_name: username,
+        buyer_tel: userTel,
     }, async function (rsp) {
         if (rsp.success) {
             console.log("결제 성공");
             postRequest(merchantUid, selectedPay);
-            window.location.href = `/reservation/${movieId}/off-ticket?runningDateId=${runningDateId}`; // 예시: 성공 페이지 URL
         } else {
             alert(`결제에 실패하였습니다. ${rsp.error_msg}`);
         }
@@ -141,7 +143,7 @@ function kakaoPay(merchantUid, totalPayInt, selectedPay, runningDateId) {
 }
 
 // 페이코 결제 요청
-function payco(merchantUid, totalPayInt, selectedPay, runningDateId) {
+function payco(merchantUid, totalPayInt, selectedPay, userEmail, username, userTel) {
     // 결제 초기화
     IMP.init('imp81816223') // 예: 'imp00000000a'
     IMP.request_pay({
@@ -149,14 +151,13 @@ function payco(merchantUid, totalPayInt, selectedPay, runningDateId) {
         merchant_uid: merchantUid,
         name : '오프라인 영화 티켓',
         amount : totalPayInt,
-        buyer_email : 'Iamport@chai.finance',
-        buyer_name : '아임포트 기술지원팀',
-        buyer_tel : '010-1234-5678',
+        buyer_email : userEmail,
+        buyer_name : username,
+        buyer_tel : userTel,
     }, function (rsp) { // callback
         if (rsp.success) {
             console.log("결제 성공");
             postRequest(merchantUid, selectedPay);
-            window.location.href = `/reservation/${movieId}/off-ticket?runningDateId=${runningDateId}`; // 예시: 성공 페이지 URL
         } else {
             alert(`결제에 실패하였습니다. ${rsp.error_msg}`);
         }
@@ -164,7 +165,7 @@ function payco(merchantUid, totalPayInt, selectedPay, runningDateId) {
 }
 
 // kg 이니시스 결제 요청
-function kgPay(merchantUid, totalPayInt, selectedPay, runningDateId) {
+function kgPay(merchantUid, totalPayInt, selectedPay, userEmail, username, userTel) {
     // 결제 초기화
     IMP.init('imp81816223') // 예: 'imp00000000a'
     IMP.request_pay({
@@ -173,14 +174,13 @@ function kgPay(merchantUid, totalPayInt, selectedPay, runningDateId) {
         merchant_uid: merchantUid,
         name : '오프라인 영화 티켓',
         amount : totalPayInt,
-        buyer_email : 'Iamport@chai.finance',
-        buyer_name : '아임포트 기술지원팀',
-        buyer_tel : '010-1234-5678',
+        buyer_email : userEmail,
+        buyer_name : username,
+        buyer_tel : userTel,
     }, function (rsp) {
         if (rsp.success) {
             console.log("결제 성공");
             postRequest(merchantUid, selectedPay);
-            window.location.href = `/reservation/${movieId}/off-ticket?runningDateId=${runningDateId}`; // 예시: 성공 페이지 URL
         } else {
             alert(`결제에 실패하였습니다. ${rsp.error_msg}`);
         }
@@ -225,11 +225,8 @@ function postRequest(merchantUid, selectedPay){
         movieId: movieId
     };
 
-    // saveOrder
+    // 예매 정보 POST 요청
     savePayment(movieId, dto);
-
-    // 티켓 화면 GET 요청
-    offReservationTicket(movieId);
 }
 
 async function savePayment(movieId, dto) {
@@ -244,6 +241,35 @@ async function savePayment(movieId, dto) {
 
         if (response.ok) {
             console.log("결제 정보 저장 완료");
+            // 방금 예매한 예매 번호 GET 요청
+            selectReservationId(movieId);
+        } else {
+            console.error("실패", response.statusText);
+        }
+    } catch (e) {
+        console.error("실패", e.message);
+    }
+}
+
+async function selectReservationId(movieId) {
+    try {
+        let response = await fetch(`/api/reservation`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        });
+
+        if (response.ok) {
+            console.log("reservationId 조회 성공");
+            let responseData = await response.json();
+
+            let reservationIdDTO = responseData.response; // body
+            reservationId = reservationIdDTO.reservationId;
+
+            // 티켓 화면 GET 요청
+            offReservationTicket(movieId, reservationId);
+
         } else {
             console.error("실패", response.statusText);
         }
@@ -253,11 +279,11 @@ async function savePayment(movieId, dto) {
 }
 
 
-async function offReservationTicket(movieId) {
-    let runningDateId = document.querySelector("#runningDateId").value;
+async function offReservationTicket(movieId, reservationId) {
+    console.log("reservationId" + reservationId);
 
     try {
-        let response = await fetch(`/reservation/${movieId}/off-ticket?runningDateId=${runningDateId}`, {
+        let response = await fetch(`/reservation/${movieId}/off-ticket?reservationId=${reservationId}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -265,7 +291,10 @@ async function offReservationTicket(movieId) {
         });
 
         if (response.ok) {
-            console.log("seatName save");
+            console.log("이동");
+            console.log("movieId" + movieId);
+            console.log("reservationId" + reservationId);
+            window.location.href = `/reservation/${movieId}/off-ticket?reservationId=${reservationId}`; // 예시: 성공 페이지 URL
         } else {
             console.error("실패", response.statusText);
         }

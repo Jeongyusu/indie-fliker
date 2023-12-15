@@ -39,8 +39,6 @@ public class OrderService {
                 .reservationId(reservation.getId())
                 .build();
 
-        int rowResultCount = orderRepository.insert(order);
-
-        return rowResultCount;
+        return orderRepository.insert(order);
     }
 }

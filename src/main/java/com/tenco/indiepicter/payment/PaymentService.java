@@ -72,9 +72,7 @@ public class PaymentService {
                 .orderId(responseDTO.getOrderId())
                 .build();
 
-        int rowResultCount = paymentRepository.insert(payment);
-
-        return rowResultCount;
+        return paymentRepository.insert(payment);
     }
 
 }

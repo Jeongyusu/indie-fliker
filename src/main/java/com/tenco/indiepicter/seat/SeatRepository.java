@@ -22,6 +22,6 @@ public interface SeatRepository {
     public List<Seat> findAll();
 
     // 상영시간과 유저에 따른 좌석 목록 조회
-    List<Seat> findByRunningDateIdAndUserId(@Param("runningDateId") Integer runningDateId, @Param("principalId") Integer principalId);
+    public Seat findByRunningDateIdAndUserId(@Param("runningDateId") Integer runningDateId, @Param("principalId") Integer principalId);
 
 }

@@ -79,7 +79,7 @@ public class PaymentController {
 		return "mypage/off_payment";
 	}
 	
-	// 오프라인 결제 화면 요청(GET)
+	// 오프라인 결제 페이지 요청(GET)
     @GetMapping("/{movieId}/off")
     public String offPayment(@PathVariable Integer movieId, Model model){
         // 유저 확인
@@ -98,7 +98,7 @@ public class PaymentController {
 		return "payment/off_payment";
     }
 
-	// 온라인 결제 화면 요청(GET)
+	// 온라인 결제 페이지 요청(GET)
 	@GetMapping("/{movieId}/on")
 	public String onPayment(@PathVariable Integer movieId, Model model){
 		return "payment/on_payment";
@@ -112,19 +112,11 @@ public class PaymentController {
 		// 유저정보 확인
 		// User principal = (User) session.getAttribute(Define.PRINCIPAL);
 
-		System.out.println("===============================");
-		System.out.println("lastOrderDTO : " + lastOrderDTO.toString());
-		System.out.println("===============================");
-
 		int seatResult = seatService.saveSeat(lastOrderDTO, 1);
 		int reservationResult = reservationService.saveReservationTicket(lastOrderDTO, 1);
 		int orderResult = orderService.saveOrder(lastOrderDTO, 1);
 		int paymentResult = paymentService.savePayment(lastOrderDTO);
 
-		System.out.println("seatResult : " + seatResult );
-		System.out.println("orderResult : " + orderResult );
-		System.out.println("reservationResult : " + reservationResult );
-		System.out.println("paymentResult : " + paymentResult );
 		return "redirect:/reservation/"+ lastOrderDTO.getMovieId() +"/off-ticket";
 	}
 }
