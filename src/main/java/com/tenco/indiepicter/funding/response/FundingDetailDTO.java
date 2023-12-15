@@ -37,6 +37,8 @@ public class FundingDetailDTO {
     private boolean isLiked;
     // 상영 예정일
     private Timestamp dDay;
+    // 영화 감독 이미지
+    private String directorPic;
     // 시놉시스
     private String synopsis;
     // 연출 의도

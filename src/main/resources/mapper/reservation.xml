@@ -46,7 +46,56 @@
         <result property="theaterName" column="theater_name"/>
         <result property="reservationCode" column="reservation_code"/>
     </resultMap>
-	
-	
-	
+
+	<!-- 예매 번호로 조회 -->
+	<select id="findByReservationCode" resultType="com.tenco.indiepicter.reservation.Reservation">
+		select * from reservation_tb where reservation_code = #{reservationCode}
+	</select>
+
+	<!--  가장 최근 예매한 예매 번호 조회 -->
+	<select id="findByUserIdToReservationId" resultMap="ReservationIdDTOResultMap">
+		select id as last_id from reservation_tb where user_id = #{pricipalId} order by id desc limit 1
+	</select>
+	<resultMap id="ReservationIdDTOResultMap" type="com.tenco.indiepicter.reservation.response.ReservationIdDTO">
+		<result property="reservationId" column="last_id"/>
+	</resultMap>
+
+	<select id="findByReservation" resultMap="ReservationTicketDTOResultMap">
+		select
+			m.thumbnail,
+			m.movie_name,
+			rs.running_date,
+			rs.start_time,
+			rs.end_time,
+			s.seats,
+			t.theater_name,
+			p.final_price,
+			r.reservation_code
+		from reservation_tb as r
+				 inner join order_tb as o
+							on r.id = o.reservation_id
+				 inner join payment_tb as p
+							on o.id = p.order_id
+				 inner join seat_tb as s
+							on s.id = r.seat_id
+				 inner join running_schedule_tb as rs
+							on s.running_schedule_id = rs.id
+				 inner join theater_tb as t
+							on t.id = rs.theater_id
+				 inner join movie_tb as m
+							on m.id = rs.movie_id
+		where r.user_id = #{principalId} and r.id = #{reservationId}
+	</select>
+	<resultMap id="ReservationTicketDTOResultMap" type="com.tenco.indiepicter.reservation.response.ReservationTicketDTO">
+		<result property="thumbnail" column="thumbnail"/>
+		<result property="movieName" column="movie_name"/>
+		<result property="runningDate" column="running_date"/>
+		<result property="startTime" column="start_time"/>
+		<result property="endTime" column="end_time"/>
+		<result property="seats" column="seats"/>
+		<result property="theaterName" column="theater_name"/>
+		<result property="finalPrice" column="final_price"/>
+		<result property="reservationCode" column="reservation_code"/>
+	</resultMap>
+
 </mapper>

@@ -19,6 +19,6 @@ public interface ScrabRepository {
 
 
     // 좋아요 목록 보기
-    List<ScrabResponseDTO> viewScrabList(@Param("fundingId") Integer fundingId);
+    List<ScrabResponseDTO> viewScrabList(@Param("userId") Integer userId);
 
 }

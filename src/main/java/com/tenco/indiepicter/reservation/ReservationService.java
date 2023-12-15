@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tenco.indiepicter.order.response.LastOrderDTO;
+import com.tenco.indiepicter.reservation.response.ReservationIdDTO;
+import com.tenco.indiepicter.reservation.response.ReservationTicketDTO;
 import com.tenco.indiepicter.seat.Seat;
 import com.tenco.indiepicter.seat.SeatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,29 +35,32 @@ public class ReservationService {
 	@Transactional
 	public int saveReservationTicket(LastOrderDTO lastOrderDTO, Integer principalId) {
 
-		List<Seat> seats = seatRepository.findByRunningDateIdAndUserId(lastOrderDTO.getRunningDateId(), 1);
-		List<Reservation> reservations = new ArrayList<>();
-		for (Seat seat : seats) {
-			Reservation reservation = Reservation.builder()
+		Seat seats = seatRepository.findByRunningDateIdAndUserId(lastOrderDTO.getRunningDateId(), 1);
+		Reservation reservation = Reservation.builder()
 					.reservationCode(lastOrderDTO.getReservationCode())
-					.seatId(seat.getId())
+					.seatId(seats.getId())
 					.userId(principalId)
 					.build();
-			reservations.add(reservation);
-		}
 
-		int rowResultCount = 0;
-		for (Reservation reservation : reservations) {
-			int result = reservationRepository.insert(reservation);
-			rowResultCount += result;
-		}
-
-		return rowResultCount;
+		return reservationRepository.insert(reservation);
 	}
 
-	public void wantTicket(Integer runningDateId) {
+	// 오프라인 예매 티켓 조회
+	public ReservationTicketDTO offReservationTicket(Integer reservationId, Integer principalId) {
+		ReservationTicketDTO responseDTO = reservationRepository.findByReservation(reservationId, principalId);
 
+		String[] seats = responseDTO.getSeats().split(",");
+		int seatCount = seats.length;
+		responseDTO.setAudience(seatCount);
+
+		return responseDTO;
 	}
 
-//
+	// 가장 최근에 예매한 예매 번호 조회
+	public ReservationIdDTO selectReservationId(Integer principalId) {
+		ReservationIdDTO responseDTO = reservationRepository.findByUserIdToReservationId(principalId);
+		return responseDTO;
+	}
+
+
 }

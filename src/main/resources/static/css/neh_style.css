@@ -446,7 +446,7 @@
 /*/////////////////////////////////////////////////////*/
 /*select_day*/
 .n_custom_fluid {
-    width: 1000px;
+    width: 1001px;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -935,7 +935,7 @@
     color: var(--font_01);
 }
 #n_next_button {
-    background-color: green;
+    background-color: var(--primary_01);
     width: 17%;
     border: none;
     padding: 13px 0;
@@ -955,8 +955,9 @@
 /* reservation_ticket */
 #n_reservation_ticket {
     background-image: url("../images/icons/ticket_image.svg");
-    background-size: cover;
-    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 90%;
     height: 257px;
     display: flex;
     justify-content: flex-start;
@@ -979,16 +980,16 @@
 
 .n_reservation_detail {
     width: 34%;
-    margin-right: 94px;
+    margin-right: 40px;
 }
 
 .n_reservation_detail p {
-    margin-bottom: 10px;
+    margin-bottom: 17px;
     font-size: 14px;
 }
 
 .n_reservation_detail #n_comment p {
-    color: green;
+    color: var(--primary_01);
     font-size: 20px;
     font-weight: bold;
 }
@@ -1017,13 +1018,14 @@
 .n_reservation_number #n_title {
     font-size: 20px;
     font-weight: bold;
-    color: dimgray;
+    color: var(--font_03);
+    padding-bottom: 10px;
 }
 
 .n_reservation_number #n_number {
     font-size: 20px;
     font-weight: bold;
-    color: green;
+    color: var(--primary_01);
 }
 
 #n_reservation_list_button {
@@ -1038,7 +1040,7 @@
     font-size: 20px;
     font-weight: bold;
     color: white;
-    background-color: green;
+    background-color: var(--primary_01);
     border-radius: 10px;
 }
 
