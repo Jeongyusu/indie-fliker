@@ -271,3 +271,14 @@ insert into payment_type_tb(type) values ('카카오페이');
 insert into payment_type_tb(type) values ('페이코');
 insert into payment_type_tb(type) values ('KG 이니시스');
 
+insert into notice_tb(notice_title, content, category, created_at)
+values('결제일 및 환불 정책 개편 안내', '결제일 및 환불 정책 개편 안내 내용~~~', '결제', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('온라인 펀딩 정책 개편 안내', '온라인 펀딩 정책 개편 안내 내용~~~', '펀딩', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('오프라인 펀딩 정책 개편 안내', '오프라인 펀딩 정책 개편 안내 내용~~~', '펀딩', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('프로필 수정 정책 안내', '프로필 수정 정책 안내 내용~~~', '수정', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('회원가입 정책 안내', '회원가입 정책 안내 내용~~~', '회원가입', now());
+
