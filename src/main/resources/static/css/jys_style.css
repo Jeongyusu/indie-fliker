@@ -152,14 +152,16 @@
     left: 0;
     top: 60px;
     z-index: 1000;
-    background-color: var(--primary_01);
+    background-color: var(--point_01);
     width: 100%;
     text-align: center;
     display: none;
+
 }
 
 .j_submenu > li {
     display: inline-block;
+    font-size: smaller;
     margin-right: 40px;
     margin-top: 20px;
     margin-bottom: 20px;
