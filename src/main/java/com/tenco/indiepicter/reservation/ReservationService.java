@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tenco.indiepicter.order.response.LastOrderDTO;
-import com.tenco.indiepicter.reservation.request.SaveReservationDTO;
 import com.tenco.indiepicter.reservation.response.ReservationTicketDTO;
 import com.tenco.indiepicter.seat.Seat;
 import com.tenco.indiepicter.seat.SeatRepository;
@@ -53,6 +52,10 @@ public class ReservationService {
 		}
 
 		return rowResultCount;
+	}
+
+	public void wantTicket(Integer runningDateId) {
+
 	}
 
 //

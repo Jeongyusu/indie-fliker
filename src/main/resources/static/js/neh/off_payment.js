@@ -90,6 +90,9 @@ function pay(){
     let reservationCode = document.querySelector("#n_reservation_code").value;
     let paymentType = document.querySelector("#paymentTypeId").value;
 
+    let runningDateId = document.querySelector("#runningDateId").value;
+
+
     // 예매번호(reservationNumber) 및 주문번호(merchant_uid) - 고유번호
     let uuid4 = uuid.v4().replace(/-/g, '');
     let merchantUid = uuid4.substring(0, 14); // merchant_uid
@@ -100,11 +103,11 @@ function pay(){
 
     // 결제 수단 선택
     if(selectedPay == "1"){
-        kakaoPay(merchantUid, totalPayInt, selectedPay);
+        kakaoPay(merchantUid, totalPayInt, selectedPay, runningDateId);
     }else if(selectedPay == "2"){
-        payco(merchantUid, totalPayInt, selectedPay);
+        payco(merchantUid, totalPayInt, selectedPay, runningDateId);
     }else if(selectedPay == "3"){
-        kgPay(merchantUid, totalPayInt, selectedPay);
+        kgPay(merchantUid, totalPayInt, selectedPay, runningDateId);
     }
 
     paymentType = selectedPay;
@@ -113,7 +116,7 @@ function pay(){
 }
 
 // 카카오 페이 결제 요청
-function kakaoPay(merchantUid, totalPayInt, selectedPay) {
+function kakaoPay(merchantUid, totalPayInt, selectedPay, runningDateId) {
     console.log("실행됨");
     // 결제 초기화
     IMP.init('imp81816223') // 예: 'imp00000000a'
@@ -130,7 +133,7 @@ function kakaoPay(merchantUid, totalPayInt, selectedPay) {
         if (rsp.success) {
             console.log("결제 성공");
             postRequest(merchantUid, selectedPay);
-            window.location.href = `/reservation/${movieId}/off-ticket`; // 예시: 성공 페이지 URL
+            window.location.href = `/reservation/${movieId}/off-ticket?runningDateId=${runningDateId}`; // 예시: 성공 페이지 URL
         } else {
             alert(`결제에 실패하였습니다. ${rsp.error_msg}`);
         }
@@ -138,7 +141,7 @@ function kakaoPay(merchantUid, totalPayInt, selectedPay) {
 }
 
 // 페이코 결제 요청
-function payco(merchantUid, totalPayInt, selectedPay) {
+function payco(merchantUid, totalPayInt, selectedPay, runningDateId) {
     // 결제 초기화
     IMP.init('imp81816223') // 예: 'imp00000000a'
     IMP.request_pay({
@@ -153,7 +156,7 @@ function payco(merchantUid, totalPayInt, selectedPay) {
         if (rsp.success) {
             console.log("결제 성공");
             postRequest(merchantUid, selectedPay);
-            window.location.href = `/reservation/${movieId}/off-ticket`; // 예시: 성공 페이지 URL
+            window.location.href = `/reservation/${movieId}/off-ticket?runningDateId=${runningDateId}`; // 예시: 성공 페이지 URL
         } else {
             alert(`결제에 실패하였습니다. ${rsp.error_msg}`);
         }
@@ -161,7 +164,7 @@ function payco(merchantUid, totalPayInt, selectedPay) {
 }
 
 // kg 이니시스 결제 요청
-function kgPay(merchantUid, totalPayInt, selectedPay) {
+function kgPay(merchantUid, totalPayInt, selectedPay, runningDateId) {
     // 결제 초기화
     IMP.init('imp81816223') // 예: 'imp00000000a'
     IMP.request_pay({
@@ -177,7 +180,7 @@ function kgPay(merchantUid, totalPayInt, selectedPay) {
         if (rsp.success) {
             console.log("결제 성공");
             postRequest(merchantUid, selectedPay);
-            window.location.href = `/reservation/${movieId}/off-ticket`; // 예시: 성공 페이지 URL
+            window.location.href = `/reservation/${movieId}/off-ticket?runningDateId=${runningDateId}`; // 예시: 성공 페이지 URL
         } else {
             alert(`결제에 실패하였습니다. ${rsp.error_msg}`);
         }
@@ -209,20 +212,6 @@ function postRequest(merchantUid, selectedPay){
     console.log("fundingId : " + fundingId);
     console.log("movieId : " + movieId);
 
-    let saveOrderDate = {
-        movieId: movieId,
-        seatNames: seatNames,
-        unitPrice: unitPrice,
-        totalCount: totalCount,
-        fundingId: fundingId,
-    };
-
-    let saveSeatDate = {
-        movieId: movieId,
-        seatNames: seatNames,
-        runningDateId: runningDateId,
-    };
-
     let dto = {
         reservationCode: reservationCode,
         discountPrice: discountPrice,
@@ -239,11 +228,8 @@ function postRequest(merchantUid, selectedPay){
     // saveOrder
     savePayment(movieId, dto);
 
-    // saveSeatName
-    // saveSeatName(movieId, saveSeatDate);
-
-    // dto 넘기기
-    // moveDTO(dto);
+    // 티켓 화면 GET 요청
+    offReservationTicket(movieId);
 }
 
 async function savePayment(movieId, dto) {

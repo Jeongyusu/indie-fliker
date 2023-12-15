@@ -1,7 +1,5 @@
 package com.tenco.indiepicter.order;
 
-import com.tenco.indiepicter.funding.FundingRepository;
-import com.tenco.indiepicter.order.request.SaveOrderDTO;
 import com.tenco.indiepicter.order.response.LastOrderDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

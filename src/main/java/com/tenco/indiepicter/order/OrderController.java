@@ -1,9 +1,6 @@
 package com.tenco.indiepicter.order;
 
-import com.tenco.indiepicter._core.utils.Define;
-import com.tenco.indiepicter.order.request.SaveOrderDTO;
 import com.tenco.indiepicter.seat.request.SelectSeatDTO;
-import com.tenco.indiepicter.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

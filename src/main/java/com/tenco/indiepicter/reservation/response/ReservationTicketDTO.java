@@ -9,6 +9,7 @@ public class ReservationTicketDTO {
 
     private String thumbnail;
     private String movieName;
+    private String runningDate;
     private String startTime;
     private String endTime;
     private String Audience;
