@@ -15,6 +15,8 @@
                         <span id="n_ticket_type">
                         <p>[온라인 티켓]</p>
                         </span>
+                        <input type="hidden" id="n_runningGrade", value="${selectDTO.runningGrade}">
+                        <img src="/images/icons/movie_level_all.png" id="n_grade_img">
                         <p id="n_movie_title">그대들은 어떻게 살 것인가?</p>
                         <p id="n_movie_content">어머니를 그리워하며 새로운 보금자리에 적응하던 주인공 "마히토"가 정체불명의 왜가리와 함께 저택의 신비로운 탑에 대한 이야기를 듣게 되는 작품을 기대해 주세요</p>
                         <div class="n_show_period">
@@ -47,7 +49,29 @@
                         <p class="n_total_comment">원을 참여합니다.</p>
                     </div>
                     <div id="n_on_pay_button">
-                        <button type="submit" id="n_next_button">카카오페이로 결제</button>
+                        <div id="n_payment">
+                            <label class="box-radio-input">
+                                <input type="radio" id="radio-1" name="payment" value="1" onclick="selectPay(this)">
+                                <span>
+                                    <img src="/images/logo/kakao.png">
+                                    <p>카카오 페이</p>
+                                </span>
+                            </label>
+                            <label class="box-radio-input">
+                                <input type="radio" id="radio-2" name="payment" value="2" onclick="selectPay(this)">
+                                <span>
+                                    <img src="/images/logo/payco.png">
+                                    <p>페이코</p>
+                                </span>
+                            </label>
+                            <label class="box-radio-input">
+                                <input type="radio" id="radio-3" name="payment" value="3" onclick="selectPay(this)">
+                                <span>
+                                    <img src="/images/logo/inicis.png">
+                                    <p>KG 이니시스</p>
+                                </span>
+                            </label>
+                        </div>
                     </div>
                 </form>
             </div>
