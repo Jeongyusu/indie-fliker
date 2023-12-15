@@ -8,43 +8,41 @@
         <div class="row justify-content-center">
             <div id="n_reservation_ticket">
                 <div class="n_movie_img">
-                    <img src="/images/moviePoster/the_boy_poster1.jpg">
+                    <img src=${reservationTicketDTO.thumbnail}>
                 </div>
                 <div class="n_reservation_detail">
                     <span id="n_comment"><p>영화 예매가 완료되었습니다!</p></span>
                     <div class="n_detail">
               <span>
                 <p class="n_title">· 예매 영화</p>
-                <p>그대들은 어떻게 살 것인가?</p>
+                <p>${reservationTicketDTO.movieName}</p>
               </span>
                         <span>
                 <p class="n_title">· 관람 시간</p>
-                <p id="n_day">2024.10.02</p>
-                <p id="n_time">15:05 ~ 16:20</p>
+                <p id="n_day">${reservationTicketDTO.formatToDate()}</p>
+                <p id="n_time">${reservationTicketDTO.formatToStartTime()} ~ ${reservationTicketDTO.formatToEndTime()}</p>
               </span>
                         <span>
                 <p class="n_title">· 관람 인원</p>
-                <p>3명</p>
+                <p>${reservationTicketDTO.audience}명</p>
               </span>
                         <span>
                 <p class="n_title">· 좌석 번호</p>
-                <p class="n_seat_number">G15</p>
-                <p class="n_seat_number">G16</p>
-                <p class="n_seat_number">G17</p>
+                <p class="n_seat_number">${reservationTicketDTO.seats}</p>
               </span>
                         <span>
                 <p class="n_title">· 관람 극장</p>
-                <p id="n_place">그린 시네마</p>
+                <p id="n_place">${reservationTicketDTO.theaterName}</p>
               </span>
                         <span>
                 <p class="n_title">· 결제 정보</p>
-                <p>16,000원</p>
+                <p>${reservationTicketDTO.formatToBalance()}원</p>
               </span>
                     </div>
                 </div>
                 <div class="n_reservation_number">
                     <span><p id="n_title">예매 번호</p></span>
-                    <span><p id="n_number">9931-650-40013</p></span>
+                    <span><p id="n_number">${reservationTicketDTO.reservationCode}</p></span>
                 </div>
             </div>
             <div id="n_reservation_list_button">

@@ -33,7 +33,7 @@
             r.theater_id,
             r.start_time,
             r.end_time,
-            COUNT(s.seat_name) AS booked_seats,
+            COUNT(s.seats) AS booked_seats,
             t.total_seat
         FROM
             running_schedule_tb AS r

@@ -27,19 +27,16 @@ public class RunningScheduleService {
     // 선택한 영화의 총 오프라인 상영 기간
     public TotalDayDTO totalDay(Integer movieId) {
         List<RunningSchedule> responseDTOs = runningScheduleRepository.findByMovieId(movieId);
-        TotalDayDTO responseDTO = new TotalDayDTO(responseDTOs);
-        return responseDTO;
+        return new TotalDayDTO(responseDTOs);
     }
 
     // 선택한 날짜 중 상영 일정
     public List<SelectRunningScheduleDTO> selectDay(Integer movieId, String selectDay){
-        List<SelectRunningScheduleDTO> responseDTOs = runningScheduleRepository.findByMovieIdAndRunningDate(movieId, selectDay);
-        return responseDTOs;
+        return runningScheduleRepository.findByMovieIdAndRunningDate(movieId, selectDay);
     }
 
     // 선택한 상영 일정 상세 정보
     public ChoiceDayDTO selectSeat(Integer runningId) {
-        ChoiceDayDTO responseDTO = runningScheduleRepository.findByRunningScheduleId(runningId);
-        return responseDTO;
+        return runningScheduleRepository.findByRunningScheduleId(runningId);
     }
 }
