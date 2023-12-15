@@ -18,8 +18,11 @@ public interface OrderRepository {
     // 선택한 주문 상세 조회
 
     // 선택한 주문 티켓 수량 및 총 금액 조회
-    public TotalCountAndPaymentDTO fineByRunningDateAndUserId(@Param("runningDateId") Integer runningDateId, @Param("userId") Integer userId);
+    public TotalCountAndPaymentDTO fineByFundingIdAndUserId(@Param("fundingId") Integer fundingId, @Param("principalId") Integer principalId);
 
     // 주문 전체 조회
     public List<Order> findAll();
+
+    // 펀딩 Id와 userId로 주문 정보 조회
+    public Order findByFundingIdAndUserId(@Param("fundingId") Integer fundingId, @Param("principalId")Integer principalId);
 }

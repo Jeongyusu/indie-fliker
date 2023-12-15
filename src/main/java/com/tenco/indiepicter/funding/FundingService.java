@@ -1,6 +1,7 @@
 package com.tenco.indiepicter.funding;
 
 import com.tenco.indiepicter.banner.BannerRepository;
+import com.tenco.indiepicter.funding.response.FundingDetailDTO;
 import com.tenco.indiepicter.funding.response.MoviesByGenreDTO;
 import com.tenco.indiepicter.funding.response.OnAirMovieDTO;
 import com.tenco.indiepicter.funding.response.OnAirMovieRankingDTO;
@@ -30,6 +31,9 @@ public class FundingService {
         return fundingRepository.findAllByOnAirAndRanking();
     }
 
+    public FundingDetailDTO detailFunding (Integer fundingId){
+        return fundingRepository.findByFundingIdAboutDetailfunding(1);
+    }
 
 
 }

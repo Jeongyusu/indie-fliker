@@ -10,7 +10,7 @@
                 <div class="col-sm-7">
                     <!-- 펀딩 영화 대표 이미지 -->
                     <div class="n_first_movie_img">
-                        <img id="n_movie_img" src="/images/moviePhoto/the_boy1.jpg">
+                        <img id="n_movie_img" src="${fundingDetailDTO.movieThumbnail}">
                     </div>
                     <!-- 펀드/환불 설명 -->
                     <div id="n_fund_attention">
@@ -45,59 +45,35 @@
                         <div class="n_movie_text">
                             <h3>시놉시스</h3>
                             <p>
-                                소년은 아버지의 사랑을 갈망하지만 아버지는 낚시에만 관심이 있다. 어느 날 아버지가 병으로 세상을 떠나자, 소년의 상실감은 아버지의 소유물에 대한 집착으로
-                                변한다. 상상 속 동굴에서 소년은 아버지의 자전거와 낚싯대를 가져간 친척들을 저주하고 복수에 성공한다. 하지만 저주가 소년의 영혼을 집어삼키기 시작하는데…
-                                감독의 어린 시절에서 영감을 받아 만든 이야기다.
+                                ${fundingDetailDTO.synopsis}
                             </p>
                         </div>
                         <div class="n_movie_text">
                             <h3>연출의도</h3>
                             <p>
-                                소년은 아버지의 사랑을 갈망하지만 아버지는 낚시에만 관심이 있다. 어느 날 아버지가 병으로 세상을 떠나자, 소년의 상실감은 아버지의 소유물에 대한 집착으로
-                                변한다. 상상 속 동굴에서 소년은 아버지의 자전거와 낚싯대를 가져간 친척들을 저주하고 복수에 성공한다. 하지만 저주가 소년의 영혼을 집어삼키기 시작하는데…
-                                감독의 어린 시절에서 영감을 받아 만든 이야기다.
+                                ${fundingDetailDTO.directingIntension}
+
                             </p>
                         </div>
                         <div class="n_movie_img">
                             <h3>포토</h3>
-                            <img src="/images/moviePhoto/the_boy1.jpg">
-                            <img src="/images/moviePhoto/the_boy2.jpg">
-                            <img src="/images/moviePhoto/the_boy3.jpg">
+                            <c:forEach var="photo" items="${fundingDetailDTO.moviePhotos}" >
+                                <img src="${photo}">
+                            </c:forEach>
                         </div>
                         <span id="n_toggleMore" style="display: none">
                         <div class="n_movie_text">
                             <h3>감독 작품 경력</h3>
                             <img id="n_director_img" src="/images/movieDirector/the_boy_miyazaki.jpg">
-                            <h5>미야자키 하야오</h5>
+                            <h5>${fundingDetailDTO.director}</h5>
                             <p>
-                                [저주소년](2022)</br>
-                                [먼지요정 후와 무](2022)</br>
-                                [춤추는 개구리](2018)</br>
-                                [구어 구워](2013)</br>
-                                [오목어](2012)</br>
-                                [그믈](2009)[소이연](2007)</br>
-                                [볼록이 이야기](2003)</br>
-                                천지영[저주소년](2022)</br>
-                                [먼지요정 후와 무](2022)</br>
+                                ${fundingDetailDTO.directorCareers}
                             </p>
                         </div>
                         <div class="n_movie_text">
                             <h3>영화제 상영 및 수상작</h3>
                             <p>
-                                Palm Springs International ShortFest - Best Animated Short(2022)</br>
-                                Bengaluru International Short Film Festival - Second runner up Prize(2022)</br>
-                                제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>
-                                제24회 정동진독립영화제(2022)</br>
-                                제12회 서울배리어프리영화제(2022)</br>
-                                2022 Nshville Film Festival(2022)</br>
-                                2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)</br>
-                                2022 Animage International Animation Festival(2022)</br>
-                                2022 Foyle Film Festival(2022)</br>
-                                2022 Lanterna Mágica International Animation Festival(2022)</br>
-                                2023 Tashkent International AnimationForum - Best Family Short Animation Film(2023)</br>
-                                2023 Flickerfest International Short Film Festival(2023)</br>
-                                2023 Winter Cicle Film Festival(2023)</br>
-                                2023 New York International Children's Film Festival(2023)</br>
+                                ${fundingDetailDTO.directorAwardsFilm}
                             </p>
                         </div>
                         <div class="n_movie_text">
@@ -106,31 +82,31 @@
                                 <tbody>
                                 <tr>
                                     <th>감독</th>
-                                    <td>Doe</td>
+                                    <td>${fundingDetailDTO.director}</td>
                                     <th>각본</th>
-                                    <td>Doe</td>
+                                    <td>${fundingDetailDTO.script}</td>
                                 </tr>
                                 <tr>
                                     <th>촬영</th>
-                                    <td>Moe</td>
+                                    <td>${fundingDetailDTO.filming}</td>
                                     <th>조명</th>
-                                    <td>Doe</td>
+                                    <td>${fundingDetailDTO.lighting}</td>
                                 </tr>
                                 <tr>
                                     <th>미술</th>
-                                    <td>Dooley</td>
+                                    <td>${fundingDetailDTO.art}</td>
                                     <th>편집</th>
-                                    <td>Doe</td>
+                                    <td>${fundingDetailDTO.editing}</td>
                                 </tr>
                                 <tr>
                                     <th>사운드</th>
-                                    <td>Dooley</td>
+                                    <td>${fundingDetailDTO.sound}</td>
                                     <th>음악</th>
-                                    <td>Doe</td>
+                                    <td>${fundingDetailDTO.music}</td>
                                 </tr>
                                 <tr>
                                     <th>의상</th>
-                                    <td colspan="3">Dooley</td>
+                                    <td colspan="3">${fundingDetailDTO.clothes}</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -213,26 +189,29 @@
                             <p>펀딩</p>
                         </div>
                         <div class="n_movie_title">
-                            <p id="n_state">[상영중]</p>
-                            <p id="n_title">그대들은 어떻게 살 것인가?</p>
+                            <p id="n_state">
+                                <c:if test="${fundingDetailDTO.isOpen == 'true'}">
+                                        [상영중]
+                                </c:if>
+                            </p>
+                            <p id="n_title">${fundingDetailDTO.movieName}</p>
                         </div>
                         <div class="n_movie_content">
-                            <p>어머니를 그리워하며 새로운 보금자리에 적응하던 주인공 "마히토"가 정체불명의 왜가리와 함께 저택의 신비로운 탑에 대한 이야기를 듣게 되는 작품을 기대해
-                                주세요</p>
+                            <p>${fundingDetailDTO.synopsis}</p>
                         </div>
                         <div class="n_sell_archive">
                             <span>
-                            <p id="n_percent">50</p>
+                            <p id="n_percent">${fundingDetailDTO.fundingRate}</p>
                             <p id="n_per_comment">% 달성</p>
                             </span>
-                            <span id="n_dday"><p>70일 남음</p></span>
+                            <span id="n_dday"><p>${fundingDetailDTO.restPeriod}일 남음</p></span>
                         </div>
                         <div class="n_sell_fund_state">
                             <span>
-                            <p id="n_price">1,430,000</p>
+                            <p id="n_price">${fundingDetailDTO.formatPresentPrice()}</p>
                             <p id="n_pri_comment">원 달성</p>
                             </span>
-                            <span id="n_play"><p>28일 참여</p></span>
+                            <span id="n_play"><p>${fundingDetailDTO.peopleCount}명 참여</p></span>
                         </div>
                         <div class="n_sell_period">
                             <span id="n_fund_type">
@@ -240,8 +219,8 @@
                                 <p>온라인 상영 예정일</p>
                             </span>
                             <span id="n_period">
-                                <p>23.08.30 ~ 23.12.13</p>
-                                <p>23.10.15</p>
+                                <p>${fundingDetailDTO.fundingPeriod}</p>
+                                <p>${fundingDetailDTO.formatTimeStamp()}</p>
                             </span>
                         </div>
                     </div>
@@ -249,7 +228,7 @@
                         <div>
                             <h5>온라인 티켓 구매</h5>
                             <div class="n_ticket_type">
-                                <p id="price">8000원</p>
+                                <p id="price">${fundingDetailDTO.formatFundingProductPrice()}원</p>
                                 <p>[온라인 티켓]</p>
                                 <p>독립·예술영화를 아끼고 사랑하는 관객들을 위한 온라인 상영 관람 티켓</p>
                                 </br>
@@ -272,7 +251,14 @@
                     </div>
                     <div id="n_sell_button">
                         <button type="button" class="bookmark_button" >
-                            <img id="scrap_icon" src="images/icons/icons8-heart-24-black.png">
+                            <c:choose>
+                                <c:when test="${isLiked}">
+                                    <img id="scrap_icon" src="/images/icons/icons8-heart-24-black.png">
+                                </c:when>
+                                <c:otherwise>
+                                    <img id="scrap_icon" src="/images/icons/icons8-heart-24-red.png">
+                                </c:otherwise>
+                            </c:choose>
                         </button>
                         <button type="button" class="buy_button">펀딩하기</button>
                     </div>
@@ -283,9 +269,6 @@
     </div>
 </main>
 <script src="../../../../js/neh/on_detail.js"></script>
-<<<<<<< HEAD
-<%@ include file="../layout/footer.jsp" %>
-=======
 <script>
     // jQuery를 사용한 비동기 통신 코드
     $(document).ready(function () {
@@ -320,6 +303,4 @@
         });
     });
 </script>
-
-<%@ include file="/WEB-INF/views/layout/footer.jsp" %>
->>>>>>> dev
+<%@ include file="../layout/footer.jsp" %>

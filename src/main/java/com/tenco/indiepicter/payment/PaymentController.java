@@ -1,5 +1,9 @@
 package com.tenco.indiepicter.payment;
 
+import com.tenco.indiepicter.order.OrderService;
+import com.tenco.indiepicter.order.response.LastOrderDTO;
+import com.tenco.indiepicter.reservation.ReservationService;
+import com.tenco.indiepicter.seat.SeatService;
 import com.tenco.indiepicter.seat.request.SelectSeatDTO;
 import com.tenco.indiepicter.runningschedule.response.SelectRunningScheduleAndPlaceDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +28,15 @@ public class PaymentController {
 
     @Autowired
     private PaymentService paymentService;
+
+	@Autowired
+	private OrderService orderService;
+
+	@Autowired
+	private ReservationService reservationService;
+
+	@Autowired
+	private SeatService seatService;
 
     @Autowired
     private HttpSession session;
@@ -81,9 +94,37 @@ public class PaymentController {
 		SelectRunningScheduleAndPlaceDTO selectDTO = paymentService.offPayment(selectSeatDTO);
 
         model.addAttribute("selectDTO", selectDTO);
-		model.addAttribute("principal", principal); // TODO : 유저 정보 중에 VIP를 체크해서 티켓 당 2000원 할인 제공
+		model.addAttribute("principal", principal);
 		return "payment/off_payment";
     }
 
-	
+	// 온라인 결제 화면 요청(GET)
+	@GetMapping("/{movieId}/on")
+	public String onPayment(@PathVariable Integer movieId, Model model){
+		return "payment/on_payment";
+	}
+
+
+	// 오프라인 결제 정보 저장(POST)
+	// seat, order, reservation, payment => post
+	@PostMapping("/{movieId}/save")
+	public String offPaymentProc(@RequestBody LastOrderDTO lastOrderDTO){
+		// 유저정보 확인
+		// User principal = (User) session.getAttribute(Define.PRINCIPAL);
+
+		System.out.println("===============================");
+		System.out.println("lastOrderDTO : " + lastOrderDTO.toString());
+		System.out.println("===============================");
+
+		int orderResult = orderService.saveOrder(lastOrderDTO, 1);
+		int seatResult = seatService.saveSeat(lastOrderDTO, 1);
+		int reservationResult = reservationService.saveReservationTicket(lastOrderDTO, 1);
+		int paymentResult = paymentService.savePayment(lastOrderDTO, 1);
+
+		System.out.println("seatResult : " + seatResult );
+		System.out.println("orderResult : " + orderResult );
+		System.out.println("reservationResult : " + reservationResult );
+		System.out.println("paymentResult : " + paymentResult );
+		return "redirect:/reservation/"+ lastOrderDTO.getMovieId() +"/off-ticket";
+	}
 }

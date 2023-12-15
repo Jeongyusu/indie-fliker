@@ -21,16 +21,29 @@
         WHERE user_id = #{userId}
           AND funding_id = #{fundingId}
     </delete>
-    <select id="selectScrab" resultType="Integer">
-        SELECT * FROM scrab_tb WHERE user_id = #{userId}
-        <if test="fundingId != null">
-            AND funding_id = #{fundingId}
-        </if>
+    <select id="viewScrabList" resultMap="movieFundingResultMap">
+        SELECT
+            f.id as funding_id,
+            m.thumbnail,
+            f.target_price,
+            f.present_price,
+            m.movie_name,
+            m.synopsis,
+            m.production
+        FROM
+            movie_tb as m
+                INNER JOIN funding_tb as f ON m.id = f.movie_id
+        WHERE
+            f.id = #{fundingId}
     </select>
-    <select id="selectScrabByFundingIds" resultType="Integer">
-        SELECT * FROM scrab_tb WHERE user_id = #{userId} AND funding_id IN
-        <foreach collection="fundingIds" item="fundingId" open="(" separator="," close=")">
-            #{fundingId}
-        </foreach>
-    </select>
+    <resultMap id="movieFundingResultMap" type="com.tenco.indiepicter.scrab.response.ScrabResponseDTO">
+        <id property="fundingId" column="funding_id"/>
+        <result property="thumbnail" column="thumbnail"/>
+        <result property="targetPrice" column="target_price"/>
+        <result property="presentPrice" column="present_price"/>
+        <result property="movieName" column="movie_name"/>
+        <result property="synopsis" column="synopsis"/>
+        <result property="production" column="production"/>
+    </resultMap>
+
 </mapper>
