@@ -9,6 +9,16 @@
     caret-color: transparent;
 }
 
+.l_main_body{}
+
+.l_avi_main {
+    width: 90%;
+}
+
+.l_chat_review_main{
+    width: 65%;
+}
+
 .l_mint {
     color: var(--primary_01);
 }
