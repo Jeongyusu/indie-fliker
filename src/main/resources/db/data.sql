@@ -296,6 +296,22 @@ values (1000, 1000, 1000, '2024-11-11 11:11:11', 1, 1);
 insert into payment_tb(total_price, discount_price, final_price, paymented_at, payment_type_id, order_id)
 values (2000, 2000, 2000, '2023-02-22 22:22:22', 2, 2);
 
+-- select * from order_tb;
+-- insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
+-- values ('1111', 1111, 1111, 1, 1);
+-- insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
+-- values ('2222', 2222, 2222, 2, 2);
+-- insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
+-- values ('3333', 3333, 3333, 3, 3);
+-- insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
+-- values ('4444', 4444, 4444, 4, 4);
+
+-- select * from payment_tb;
+-- insert into payment_tb(total_price, discount_price, final_price, paymented_at, payment_type_id, order_id)
+-- values (1000, 1000, 1000, '2024-11-11 11:11:11', 1, 1);
+-- insert into payment_tb(total_price, discount_price, final_price, paymented_at, payment_type_id, order_id)
+-- values (2000, 2000, 2000, '2023-02-22 22:22:22', 2, 2);
+
 insert into payment_type_tb(type) values ('카카오페이');
 insert into payment_type_tb(type) values ('페이코');
 insert into payment_type_tb(type) values ('KG 이니시스');

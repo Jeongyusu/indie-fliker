@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import com.tenco.indiepicter.reservation.request.SaveReservationDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -47,17 +46,13 @@ public class ReservationController {
 	
 	// 영화 예매 완료 후 티켓 페이지 요청(GET)
 	@GetMapping("/{movieId}/off-ticket")
-	public String offReservationTicket(){
-		return "reservation/reservation_ticket";
-	}
-
-
-	// 영화 예매 티켓 등록(POST)
-	@PostMapping("/{movieId}/Save")
-	public String saveReservationTicketProc(@RequestBody SaveReservationDTO saveReservationDTO){
+	public String offReservationTicket(@RequestParam Integer runningDateId, Model model){
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-		int rowResultCount = reservationService.saveReservationTicket(saveReservationDTO, principal.getId());
-		return "redirect:/reservation/"+ saveReservationDTO.getMovieId() +"/off-ticket";
+
+		reservationService.wantTicket(runningDateId);
+
+
+		return "reservation/reservation_ticket";
 	}
 
 }

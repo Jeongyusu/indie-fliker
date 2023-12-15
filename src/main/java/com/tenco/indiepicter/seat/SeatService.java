@@ -1,6 +1,7 @@
 package com.tenco.indiepicter.seat;
 
-import com.tenco.indiepicter.seat.request.SaveSeatDTO;
+
+import com.tenco.indiepicter.order.response.LastOrderDTO;
 import com.tenco.indiepicter.seat.response.ExistSeatDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,16 +24,16 @@ public class SeatService {
         return responseDTOs;
     }
 
-    @Transactional
     // 예약 완료된 좌석 등록(좌석 갯수만큼 insert 진행)
-    public int saveSeat(SaveSeatDTO saveSeatDTO, Integer principalId) {
-        String saveSeats = saveSeatDTO.getSeatNames();
+    @Transactional
+    public int saveSeat(LastOrderDTO lastOrderDTO, Integer principalId) {
+        String saveSeats = lastOrderDTO.getSeatNames();
         List<String> splitSaveSeats = List.of(saveSeats.split(","));
         List<Seat> seats = new ArrayList<>();
         for (int i = 0; i < splitSaveSeats.size(); i++){
             Seat seat = Seat.builder()
                     .seatName(splitSaveSeats.get(i))
-                    .runningScheduleId(saveSeatDTO.getRunningDateId())
+                    .runningScheduleId(lastOrderDTO.getRunningDateId())
                     .userId(principalId)
                     .build();
             seats.add(seat);
