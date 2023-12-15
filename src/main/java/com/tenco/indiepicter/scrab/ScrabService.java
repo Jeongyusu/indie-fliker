@@ -14,7 +14,7 @@ public class ScrabService {
     @Autowired
     private ScrabRepository scrabRepository;
 
-@Transactional
+    @Transactional
     public boolean toggleScrab(Integer userId, Integer fundingId) {
         Integer scrabExists = scrabRepository.isScrabExists(userId, fundingId);
         if (scrabExists != null) {
@@ -27,8 +27,15 @@ public class ScrabService {
             return true;
         }
     }
-@Transactional
+
+    @Transactional
     public List<ScrabResponseDTO> scrabview(Integer fundingId) {
-        return scrabRepository.viewScrabList(fundingId);
+        List<ScrabResponseDTO> scrabs = scrabRepository.viewScrabList(fundingId);
+
+        for (ScrabResponseDTO scrab : scrabs) {
+            scrab.calculateAndSetAchievementRate();
+        }
+
+        return scrabs;
     }
 }
