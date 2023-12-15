@@ -17,7 +17,7 @@
 	
 	<!-- 회원 이메일과 비밀번호 죄회(로그인) -->
 	<select id="findByUserEmailAndPassword" resultType="com.tenco.indiepicter.user.User">
-		select * from user_tb where user_email = ${userEmail} and password = #{password}
+		select * from user_tb where user_email = #{userEmail} and password = #{password}
 	</select>
 	
 	<!-- 회원 이메일로 단일 조회 -->

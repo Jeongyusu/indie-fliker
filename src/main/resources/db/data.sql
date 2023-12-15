@@ -326,6 +326,76 @@ insert into notice_tb(notice_title, content, category, created_at)
 values('프로필 수정 정책 안내', '프로필 수정 정책 안내 내용~~~', '수정', now());
 insert into notice_tb(notice_title, content, category, created_at)
 values('회원가입 정책 안내', '회원가입 정책 안내 내용~~~', '회원가입', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('채팅방 정책 안내', '채팅방 정책 안내 내용~~~', '수정', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('인디영화 등록 안내', '인디영화 등록 안내 내용~~~', '회원가입', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('결제일 및 환불 정책 개편 안내', '결제일 및 환불 정책 개편 안내 내용~~~', '결제', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('온라인 펀딩 정책 개편 안내', '온라인 펀딩 정책 개편 안내 내용~~~', '펀딩', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('오프라인 펀딩 정책 개편 안내', '오프라인 펀딩 정책 개편 안내 내용~~~', '펀딩', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('프로필 수정 정책 안내', '프로필 수정 정책 안내 내용~~~', '수정', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('회원가입 정책 안내', '회원가입 정책 안내 내용~~~', '회원가입', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('채팅방 정책 안내', '채팅방 정책 안내 내용~~~', '수정', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('인디영화 등록 안내', '인디영화 등록 안내 내용~~~', '회원가입', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('온라인 펀딩 정책 개편 안내', '온라인 펀딩 정책 개편 안내 내용~~~', '펀딩', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('오프라인 펀딩 정책 개편 안내', '오프라인 펀딩 정책 개편 안내 내용~~~', '펀딩', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('프로필 수정 정책 안내', '프로필 수정 정책 안내 내용~~~', '수정', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('회원가입 정책 안내', '회원가입 정책 안내 내용~~~', '회원가입', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('채팅방 정책 안내', '채팅방 정책 안내 내용~~~', '수정', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('인디영화 등록 안내', '인디영화 등록 안내 내용~~~', '회원가입', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('11111', '11111 내용~~~', '펀딩', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('22222', '22222 내용~~~', '수정', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('33333', '33333 내용~~~', '회원가입', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('44444', '44444 내용~~~', '수정', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('55555', '55555 내용~~~', '회원가입', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('사과', '사과 내용~~~', '펀딩', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('딸기', '딸기 내용~~~', '수정', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('배추', '배추 내용~~~', '회원가입', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('양파', '양파 내용~~~', '수정', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('오이', '오이 내용~~~', '회원가입', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('호랑이', '호랑이 내용~~~', '펀딩', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('기린', '기린 내용~~~', '수정', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('하마', '하마 내용~~~', '회원가입', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('사자', '사자 내용~~~', '수정', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('코끼리', '코끼리 내용~~~', '회원가입', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('빨강', '빨강 내용~~~', '펀딩', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('노랑', '노랑 내용~~~', '수정', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('초록', '초록 내용~~~', '회원가입', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('파랑', '파랑 내용~~~', '수정', now());
+insert into notice_tb(notice_title, content, category, created_at)
+values('주황', '주황 내용~~~', '회원가입', now());
 
 insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy1.jpg', 1);
 insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy2.jpg', 1);

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tenco.indiepicter.order.response.LastOrderDTO;
-import com.tenco.indiepicter.reservation.response.ReservationTicketDTO;
 import com.tenco.indiepicter.seat.Seat;
 import com.tenco.indiepicter.seat.SeatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
