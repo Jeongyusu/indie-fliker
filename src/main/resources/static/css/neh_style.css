@@ -11,6 +11,7 @@
 
 .n_body {
     width: 100%;
+    line-height: 20px;
 }
 
 .n_row {
@@ -834,14 +835,21 @@
 .n_select_form {
     display: flex;
     padding: 0;
-    height: 190px;
+    height: 235px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .n_select_form #n_movie_img {
     border-radius: 10px;
     margin-right: 24px;
-    width: 43%;
+    width: 20%;
 }
+
+.n_form_check_detail {
+    width: 75%;
+}
+
 .n_form_check_detail #n_ticket_type {
     display: flex;
     font-size: 20px;
@@ -849,6 +857,7 @@
     color: var(--primary_01);
     margin-bottom: 15px;
 }
+
 .n_form_check_detail p{
     overflow: hidden;
     text-overflow: ellipsis;
@@ -866,13 +875,31 @@
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+    height: 60px;
 }
 
 .n_form_check_detail .n_show_period {
     display: flex;
     color: var(--font_02);
     font-weight: bold;
+    height: 10%;
 }
+
+#n_movie_title_grade_form {
+    display: flex;
+    height: 18%;
+}
+
+#n_grade_img_on {
+    width: 23px;
+    margin-right: 5px;
+}
+
+#n_director_staff {
+    font-size: 14px;
+    height: 26%;
+}
+
 .n_show_period img {
     margin: 0 6px 0 0;
 }
@@ -888,12 +915,20 @@
 .n_select_price #n_ticket_title {
     font-size: 16px;
     font-weight: bold;
+    line-height: 1.8;
 }
+
+#n_ticket_title_info {
+    font-size: 11px;
+    font-weight: 100;
+}
+
 .n_select_price #n_select_price {
     display: flex;
     align-content: normal;
     justify-content: flex-end;
     font-weight: bold;
+    font-size: 20px;
 }
 .n_donation {
     padding: 0;
@@ -903,10 +938,12 @@
 .n_donation .n_info {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 15px;
 }
 
 .n_info #n_donation_title{
     font-weight: bold;
+
 }
 .n_info .n_donation_comment {
     font-size: 14px;
@@ -949,8 +986,78 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 50px;
 }
+
+.n_payment_button_modal{
+    border: none;
+    border-radius: 10px;
+    background-color: var(--primary_01);
+    font-weight: bolder;
+    color: var(--def_wh);
+    padding: 12px;
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+}
+
+.n_box_radio_button {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 14px;
+}
+
+.n_box_radio_button input[type="radio"]{
+    display:none;
+}
+
+.n_box_radio_button input[type="radio"] + span{
+    display: flex;
+    align-items: center;
+    background: none;
+    text-align: center;
+    height: 100%;
+    line-height: 3px;
+    cursor: pointer;
+    padding: 0px;
+    border: 0.3px solid var(--line_01);
+    border-radius: 5px;
+}
+
+.n_box_radio_button input[type="radio"] + span img{
+    width: 30px;
+    margin-left: 10px;
+}
+
+.n_box_radio_button input[type="radio"] + span p{
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.n_box_radio_button input[type="radio"]:checked + span{
+    background: var(--point_01);
+    color: var(--def_bl);
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    border: none;
+}
+
+.n_modal_header {
+    font-size: 18px;
+    background-color: var(--def_bl);
+    color: var(--def_wh);
+    font-weight: bold;
+}
+
+.n_modal_header button {
+    background-color: var(--def_wh);
+}
+
+
 
 /* reservation_ticket */
 #n_reservation_ticket {

@@ -5,7 +5,7 @@ window.onload = function (){
 
 // 영화 상영 등급
 function onLoadImg(){
-    let gradeImg = document.querySelector("#n_grade_img");
+    let gradeImg = document.querySelector("#n_grade_img_on");
     let runningGrade = document.querySelector("#n_runningGrade").value;
     let src = "";
     if(runningGrade == "전체 관람가"){
