@@ -18,11 +18,11 @@
 		<form action="/user/login" method="post" enctype="multipart/form-data">
 			<div class="k_form-group">
 				<input type="text" class="form-control" id="userEmail" name="userEmail" placeholder="이메일을 입력하세요."
-					onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일 입력'">
+					onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일 입력'" value="ssar@nate.com">
 			</div>
 			<div class="k_form-group">
 				<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력입력하세요."
-					onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 입력'">
+					onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 입력'" value="1234">
 			</div>
 			<a href="" class="k_forget">로그인
 				정보를 잊으셨나요?</a>
@@ -30,7 +30,9 @@
 				<button type="submit" class="btn btn-primary btn-block">이메일로 로그인</button>
 			</div>
 			<div class="k_kakao">
-				<button type="submit" class="k_kakao-btn btn btn-block"></button>
+				<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=eaa873dc471f9ad17affff6005825aef&redirect_uri=http://localhost:80/user/kakao-callback">
+					<img alt="" src="/images/kakao/kakao_login_medium_narrow.png" width="370" height="50">
+				</a>
 			</div>
 		</form>
 		<div class="k_no_id_aligin">

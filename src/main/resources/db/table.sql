@@ -38,7 +38,8 @@ create table movie_tb(
                          online_release_date Date,
                          online_end_date Date,
                          offline_release_date Date,
-                         offline_end_date Date
+                         offline_end_date Date,
+                         d_day Date
 );
 
 create table movie_staff_tb(
@@ -134,9 +135,11 @@ create table running_schedule_tb(
 
 create table seat_tb(
                         id int auto_increment primary key,
-                        seat_name varchar(5) not null,
+                        seats varchar(100) not null,
                         running_schedule_id int not null,
-                        foreign KEY(running_schedule_id) references running_schedule_tb(id)
+                        user_id int not null,
+                        foreign KEY(running_schedule_id) references running_schedule_tb(id),
+                        foreign KEY(user_id) references user_tb(id)
 );
 
 
@@ -157,8 +160,10 @@ create table order_tb(
                          quantity int not null,
                          funding_id int not null,
                          user_id int not null,
+                         reservation_id int not null,
                          foreign KEY(funding_id) references funding_tb(id),
-                         foreign KEY(user_id) references user_tb(id)
+                         foreign KEY(user_id) references user_tb(id),
+                         foreign KEY(reservation_id) references reservation_tb(id)
 );
 
 create table payment_tb(

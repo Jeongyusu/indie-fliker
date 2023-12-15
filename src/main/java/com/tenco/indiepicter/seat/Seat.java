@@ -9,16 +9,15 @@ import lombok.NoArgsConstructor;
 public class Seat {
 
 	private Integer id;
-	private String seatName;
+	private String seats;
 	private Integer runningScheduleId;
-	
-	@Builder
-	public Seat(Integer id, String seatName, Integer runningScheduleId) {
-		
-		this.id = id;
-		this.seatName = seatName;
-		this.runningScheduleId = runningScheduleId;
-	}
-	
+	private Integer userId;
 
+	@Builder
+	public Seat(Integer id, String seats, Integer runningScheduleId, Integer userId) {
+		this.id = id;
+		this.seats = seats;
+		this.runningScheduleId = runningScheduleId;
+		this.userId = userId;
+	}
 }

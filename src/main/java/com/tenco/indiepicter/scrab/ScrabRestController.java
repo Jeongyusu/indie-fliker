@@ -18,8 +18,8 @@ public class ScrabRestController {
     private ScrabService scrabService;
 
     @GetMapping("/api/scrabs/view")
-    public ResponseEntity<?> scrabview(@RequestParam Integer fundingId) {
-        List<ScrabResponseDTO> scrabs = scrabService.scrabview(fundingId);
+    public ResponseEntity<?> scrabview(@RequestParam Integer userId) {
+        List<ScrabResponseDTO> scrabs = scrabService.scrabview(userId);
         return ResponseEntity.ok().body(ApiUtils.success(scrabs));
     }
 

@@ -1,6 +1,7 @@
 // 페이지 로딩 시 아래의 함수 실행
 window.onload = function (){
     onLoadImg();
+    discount();
 };
 
 // 영화 상영 등급
@@ -21,16 +22,48 @@ function onLoadImg(){
     console.log("src : " + gradeImg.src);
 }
 
-// 가격 할인(VIP 티켓 선택 시)
-function discount(discountPrice) {
+// VIP일 경우,
+function discount() {
+    const createdDiv = document.querySelector(".n_people_and_pay");
+    let discountPay = document.querySelector("#discountPrice").value;
     let totalPayElement = document.querySelector("#n_price");
     let totalPay = totalPayElement.innerHTML;
     let totalPayInt = parseFloat(totalPay.replace(/,/g, ''));
+    let totalCountElement = document.querySelector("#n_people_count");
+    let totalCount = totalCountElement.innerHTML;
+    // let userGrade = document.querySelector("#userGrade").value;
+    // TODO : 로그인 시 위의 주석 풀고, 아래의 String userGrade 지우기
 
-    let changePrice = totalPayInt - discountPrice;
-    totalPayElement.innerHTML = changePrice.toLocaleString(); // 변경된 가격을 다시 화면에 반영
-    console.log("할인 : " + changePrice);
-    postRequest();
+    let userGrade = "VIP";
+
+    if(userGrade == "VIP"){
+        let changePrice = totalPayInt - (discountPay * totalCount);
+        totalPayElement.innerHTML = changePrice.toLocaleString(); // 1,000
+
+        let div = document.createElement("div");
+        div.id = "n_vip_div";
+        let p = document.createElement("p");
+        p.innerHTML = "VIP 할인 적용";
+        p.id = "n_vip";
+        let span = document.createElement("span");
+        span.id = "n_vip_span";
+        let priceP = document.createElement("p");
+        priceP.id = "n_vip_discount_price"
+        priceP.innerHTML = "- " + (discountPay * totalCount).toLocaleString();
+        let wonP = document.createElement("p");
+        wonP.innerHTML = "원";
+
+        span.appendChild(priceP);
+        span.appendChild(wonP);
+        div.appendChild(p);
+        div.appendChild(span);
+        createdDiv.appendChild(div);
+    }
+}
+
+// "이전" 클릭 시
+function back(){
+    history.back();
 }
 
 // 선택한 결제 방법
@@ -44,36 +77,46 @@ function selectPay(radio){
 
 // 선택한 결제 실행 버튼
 function pay(){
+
+    // 결제 수단 미 선택 시
+    if(selectedPay.innerHTML == ""){
+        alert("결제 수단을 선택해 주세요.");
+        return;
+    }
+
     let totalPay = document.querySelector("#n_price").innerHTML;
     let totalPayInt = parseFloat(totalPay.replace(/,/g, ''));
 
     let reservationCode = document.querySelector("#n_reservation_code").value;
-    let paymentTypeId = document.querySelector("#paymentTypeId").value;
+    let paymentType = document.querySelector("#paymentTypeId").value;
+
+    let runningDateId = document.querySelector("#runningDateId").value;
+
 
     // 예매번호(reservationNumber) 및 주문번호(merchant_uid) - 고유번호
     let uuid4 = uuid.v4().replace(/-/g, '');
     let merchantUid = uuid4.substring(0, 14); // merchant_uid
-    console.log("예매번호 : " + merchantUid);
     console.log("결제가격 : " + totalPayInt);
 
     reservationCode = merchantUid;
     console.log("예매번호 : " + reservationCode);
 
+    // 결제 수단 선택
     if(selectedPay == "1"){
-        kakaoPay(merchantUid, totalPayInt);
+        kakaoPay(merchantUid, totalPayInt, selectedPay, runningDateId);
     }else if(selectedPay == "2"){
-        payco(merchantUid, totalPayInt);
+        payco(merchantUid, totalPayInt, selectedPay, runningDateId);
     }else if(selectedPay == "3"){
-        kgPay(merchantUid, totalPayInt);
+        kgPay(merchantUid, totalPayInt, selectedPay, runningDateId);
     }
 
-    paymentTypeId = selectedPay;
-    console.log("결제요청 : " + paymentTypeId);
+    paymentType = selectedPay;
+    console.log("결제요청 : " + paymentType);
 
 }
 
 // 카카오 페이 결제 요청
-function kakaoPay(merchantUid, totalPayInt) {
+function kakaoPay(merchantUid, totalPayInt, selectedPay, runningDateId) {
     console.log("실행됨");
     // 결제 초기화
     IMP.init('imp81816223') // 예: 'imp00000000a'
@@ -89,7 +132,8 @@ function kakaoPay(merchantUid, totalPayInt) {
     }, async function (rsp) {
         if (rsp.success) {
             console.log("결제 성공");
-            window.location.href = `/reservation/${movieId}/off-ticket`; // 예시: 성공 페이지 URL
+            postRequest(merchantUid, selectedPay);
+            window.location.href = `/reservation/${movieId}/off-ticket?runningDateId=${runningDateId}`; // 예시: 성공 페이지 URL
         } else {
             alert(`결제에 실패하였습니다. ${rsp.error_msg}`);
         }
@@ -97,7 +141,7 @@ function kakaoPay(merchantUid, totalPayInt) {
 }
 
 // 페이코 결제 요청
-function payco(merchantUid, totalPayInt) {
+function payco(merchantUid, totalPayInt, selectedPay, runningDateId) {
     // 결제 초기화
     IMP.init('imp81816223') // 예: 'imp00000000a'
     IMP.request_pay({
@@ -111,6 +155,8 @@ function payco(merchantUid, totalPayInt) {
     }, function (rsp) { // callback
         if (rsp.success) {
             console.log("결제 성공");
+            postRequest(merchantUid, selectedPay);
+            window.location.href = `/reservation/${movieId}/off-ticket?runningDateId=${runningDateId}`; // 예시: 성공 페이지 URL
         } else {
             alert(`결제에 실패하였습니다. ${rsp.error_msg}`);
         }
@@ -118,7 +164,7 @@ function payco(merchantUid, totalPayInt) {
 }
 
 // kg 이니시스 결제 요청
-function kgPay(merchantUid, totalPayInt) {
+function kgPay(merchantUid, totalPayInt, selectedPay, runningDateId) {
     // 결제 초기화
     IMP.init('imp81816223') // 예: 'imp00000000a'
     IMP.request_pay({
@@ -133,60 +179,89 @@ function kgPay(merchantUid, totalPayInt) {
     }, function (rsp) {
         if (rsp.success) {
             console.log("결제 성공");
+            postRequest(merchantUid, selectedPay);
+            window.location.href = `/reservation/${movieId}/off-ticket?runningDateId=${runningDateId}`; // 예시: 성공 페이지 URL
         } else {
             alert(`결제에 실패하였습니다. ${rsp.error_msg}`);
         }
     });
 }
 
-function postRequest(){
-    let reservationCode = document.querySelector("#n_reservation_code").value;
+function postRequest(merchantUid, selectedPay){
     let discountPrice = document.querySelector("#discountPrice").value;
-    let paymentTypeId = document.querySelector("#paymentTypeId").value;
-    let SeatNames = document.querySelector("#SeatNames").value;
+    let seatNames = document.querySelector("#SeatNames").value;
     let runningDateId = document.querySelector("#runningDateId").value;
     let unitPrice = document.querySelector("#unitPrice").value;
-    let totalPrice = document.querySelector("#totalPrice").value;
+    let totalPay = document.querySelector("#n_price").innerHTML;
+    let finalPayInt = parseFloat(totalPay.replace(/,/g, ''));
     let totalCount = document.querySelector("#totalCount").value;
     let fundingId = document.querySelector("#fundingId").value;
     let movieId = document.querySelector("#n_movie_id").value;
+    let reservationCode = merchantUid;
+    let paymentTypeId = selectedPay;
+    let finalPrice = finalPayInt;
 
-    console.log("SeatNames : " + SeatNames);
+    console.log("merchantUid : " + merchantUid);
+    console.log("discountPrice : " + discountPrice);
+    console.log("paymentTypeId : " + paymentTypeId);
+    console.log("seatNames : " + seatNames);
+    console.log("runningDateId : " + runningDateId);
+    console.log("unitPrice : " + unitPrice);
+    console.log("finalPrice : " + finalPrice);
+    console.log("totalCount : " + totalCount);
     console.log("fundingId : " + fundingId);
+    console.log("movieId : " + movieId);
 
-    let saveOrderDate = {
-        movieId: movieId,
-        seatNames: SeatNames,
+    let dto = {
+        reservationCode: reservationCode,
+        discountPrice: discountPrice,
+        paymentTypeId: paymentTypeId,
+        seatNames: seatNames,
+        runningDateId: runningDateId,
         unitPrice: unitPrice,
+        finalPrice: finalPrice,
         totalCount: totalCount,
         fundingId: fundingId,
+        movieId: movieId
     };
 
-    let saveSeatDate = {
-        movieId: movieId,
-        seatNames: SeatNames,
-        unitPrice: unitPrice,
-        totalCount: totalCount,
-        fundingId: fundingId,
-    };
+    // saveOrder
+    savePayment(movieId, dto);
 
-    saveSeatName(movieId, saveOrderDate);
+    // 티켓 화면 GET 요청
+    offReservationTicket(movieId);
 }
 
-async function saveSeatName(movieId, saveOrderDate) {
-
-
-    console.log("movieID : " + movieId);
-    console.log("saveOrderDate : " + saveOrderDate);
-
-
+async function savePayment(movieId, dto) {
     try {
-        let response = await fetch(`/order/${movieId}/Save`, {
+        let response = await fetch(`/payment/${movieId}/save`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(saveOrderDate)
+            body: JSON.stringify(dto)
+        });
+
+        if (response.ok) {
+            console.log("결제 정보 저장 완료");
+        } else {
+            console.error("실패", response.statusText);
+        }
+    } catch (e) {
+        console.error("실패", e.message);
+    }
+}
+
+
+async function offReservationTicket(movieId) {
+    let runningDateId = document.querySelector("#runningDateId").value;
+
+    try {
+        let response = await fetch(`/reservation/${movieId}/off-ticket?runningDateId=${runningDateId}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
         });
 
         if (response.ok) {

@@ -2,6 +2,7 @@ package com.tenco.indiepicter.seat;
 
 import com.tenco.indiepicter.seat.response.ExistSeatDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,5 +22,6 @@ public interface SeatRepository {
     public List<Seat> findAll();
 
     // 상영시간과 유저에 따른 좌석 목록 조회
-    List<Seat> findByRunningDateIdAndUserId(Integer runningDateId, Integer userId);
+    List<Seat> findByRunningDateIdAndUserId(@Param("runningDateId") Integer runningDateId, @Param("principalId") Integer principalId);
+
 }

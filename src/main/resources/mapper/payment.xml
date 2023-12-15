@@ -5,6 +5,12 @@
 
 <mapper namespace="com.tenco.indiepicter.payment.PaymentRepository">
 
+	<!-- 결제 정보 등록 -->
+	<insert id="insert">
+		insert into payment_tb(total_price, discount_price, final_price, paymented_at, payment_type_id, order_id)
+		values (#{totalPrice}, #{discountPrice}, #{finalPrice}, now(), #{paymentTypeId}, #{orderId})
+	</insert>
+
 	<!-- 나의 온라인 펀딩 내역 -->
 	<select id="findByOnlinePaymentId" resultMap="MyPaymentOnlineDTOResultMap">
 		select 	thumbnail, movie_name, present_price, synopsis, final_price, taget_price, paymented_at
@@ -19,7 +25,6 @@
 		on 		ft.movie_id = mt.id
 		where	ut.id = #{id}
 	</select>
-	
 	<resultMap id="MyPaymentOnlineDTOResultMap" type="com.tenco.indiepicter.payment.response.MyOnlinePaymentDTO">
 		<result property="thumbnail" column="thumbnail"/>
 		<result property="movieName" column="movie_name"/>
@@ -43,7 +48,6 @@
 		on 		ft.movie_id = mt.id
 		where	ut.id = #{id}
 	</select>
-	
 	<resultMap id="MyPaymentOfflineDTOResultMap" type="com.tenco.indiepicter.payment.response.MyOfflinePaymentDTO" >
 		<result property="thumbnail" column="thumbnail"/>
 		<result property="movieName" column="movie_name"/>
