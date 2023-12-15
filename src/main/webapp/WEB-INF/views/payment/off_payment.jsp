@@ -78,8 +78,8 @@
                             </label>
                         </div>
                     </div>
-                    <input type="hidden" id="n_select_pay" value="">
-                    <input type="hidden" id="n_reservation_code" value="">
+                    <input type="hidden" id="selectPayment" value="">
+                    <input type="hidden" id="reservationCode" value="">
                     <input type="hidden" id="paymentTypeId" value="">
                     <input type="hidden" id="SeatNames" value="${selectDTO.seatNames}">
                     <input type="hidden" id="runningDateId" value="${selectDTO.runningDateId}">
@@ -88,6 +88,9 @@
                     <input type="hidden" id="totalCount" value="${selectDTO.totalCount}">
                     <input type="hidden" id="fundingId" value="${selectDTO.fundingId}">
                     <input type="hidden" id="userGrade" value="${principal.grade}">
+                    <input type="hidden" id="userEmail" value="${principal.userEmail}">
+                    <input type="hidden" id="username" value="${principal.username}">
+                    <input type="hidden" id="userTel" value="${principal.tel}">
                     <div class="n_payment_button">
                         <button type="button" id="n_back" onclick="back()">이전</button>
                         <button type="button" id="n_pay" onclick="pay()">결제</button>

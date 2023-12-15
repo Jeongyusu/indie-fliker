@@ -14,6 +14,7 @@
 <body class="l_body">
 <div class="h1" style="margin: 5rem;">찜한 목록</div>
 <!-- 영화 목록 (많지 않을 것으로 예상 -> 다 받아올 예정) -->
+<c:forEach var="scrab" items="${scrabDTO}">
 <div class="container">
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
     
@@ -73,6 +74,7 @@
       <div class="p card-text mt-2">Quos, magni minus. Consectetur error sed quae magnam ut id mollitia ullam.</div>
     </div>
   </div>
+  </c:forEach>
   <!-- 만약 10개씩만 불러오고 페이지로 처리한다면, page navigation 사용 (funding.jsp 확인) -->
 </div>
   <!-- footer --> 

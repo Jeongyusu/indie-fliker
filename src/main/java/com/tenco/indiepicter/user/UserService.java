@@ -93,10 +93,11 @@ public class UserService {
 		
 		int result = this.userRepository.findByEmailCheck(userEmail);
 		
-		// 이메일 중복 유효성 검사
-		if(result != 1) {
-			throw new MyDynamicException("이미 존재하는 이메일입니당.", HttpStatus.BAD_REQUEST);
-		}
+		// 이 코드를 사용하니깐 ajax가 작동이 안됨... 일단 주석!!
+//		// 이메일 중복 유효성 검사
+//		if(result != 1) {
+//			throw new MyDynamicException("이미 존재하는 이메일입니당.", HttpStatus.BAD_REQUEST);
+//		}
 		
 		return result;
 	}
@@ -134,7 +135,7 @@ public class UserService {
 		
 		String encodingPassword = passwordEncoder.encode(password);
 		dto.setPassword1(encodingPassword);
-	
+		
 		int resultRowCount = userRepository.update(dto);
 		
 		if(resultRowCount != 1) {	
@@ -146,11 +147,16 @@ public class UserService {
 		
 		return resultRowCount;
 	}
+
+	
+//--------------------------------------------------------------------------------	
 	
 	// 카카오 로그인 (유저이름 찾기)
 	public User findByUserEmail(String userEmail) {
-		return this.userRepository.findByUserEmail(userEmail);
+		return null;
 	}
+
+//--------------------------------------------------------------------------------
 	
-	
+
 }

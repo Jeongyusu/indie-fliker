@@ -32,7 +32,6 @@ public class SeatService {
                 responseDTOs.add(existSeatDTO);
             }
         }
-
         return responseDTOs;
     }
 
@@ -45,8 +44,6 @@ public class SeatService {
                 .userId(principalId)
                 .build();
 
-        int result = seatRepository.insert(seat);
-
-        return result;
+        return seatRepository.insert(seat);
     }
 }

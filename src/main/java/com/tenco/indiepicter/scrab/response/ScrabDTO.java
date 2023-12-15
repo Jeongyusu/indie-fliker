@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ScrabResponseDTO {
+public class ScrabDTO {
     private Integer fundingId; // 펀딩아이디
     private String thumbnail;  // 썸네일
 
@@ -26,7 +26,7 @@ public class ScrabResponseDTO {
     private String synopsis; // 시놉시스
     private String production; // 배급사
 
-    public ScrabResponseDTO(Integer fundingId, String thumbnail, Integer targetPrice, Integer presentPrice, String movieName, String synopsis, String production) {
+    public ScrabDTO(Integer fundingId, String thumbnail, Integer targetPrice, Integer presentPrice, String movieName, String synopsis, String production) {
         this.fundingId = fundingId;
         this.thumbnail = thumbnail;
         this.targetPrice = targetPrice;

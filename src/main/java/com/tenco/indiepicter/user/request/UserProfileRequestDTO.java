@@ -9,6 +9,7 @@ public class UserProfileRequestDTO {
 	
 	private Integer id;
 	private String username;
+	private String tel;
 	private String password1;
 	private String password2;
 	private MultipartFile file;
