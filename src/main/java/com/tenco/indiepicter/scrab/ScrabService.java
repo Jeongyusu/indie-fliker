@@ -21,4 +21,10 @@ public class ScrabService {
             return true;
         }
     }
+
+    public boolean checkIsLiked(Integer userId, Integer fundingId) {
+        Integer scrabExists = scrabRepository.isScrabExists(userId, fundingId);
+        return scrabExists != null;
+
+    }
 }

@@ -32,7 +32,7 @@ public class FundingService {
     }
 
     public FundingDetailDTO detailFunding (Integer fundingId){
-        return fundingRepository.findByDetailfunding(1);
+        return fundingRepository.findByFundingIdAboutDetailfunding(1);
     }
 
 

@@ -24,119 +24,147 @@ insert into theater_tb(theater_pic, theater_name, theater_description, tel, addr
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '스트리머','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/gk/streamer.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
+', '/images/moviethumbnail/gk/streamer.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '만해한용운','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/gk/manhae.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2023-12-30');
+', '/images/moviethumbnail/gk/manhae.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2023-12-30');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '홈리스권제니','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/gk/homeless.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-02-01');
+', '/images/moviethumbnail/gk/homeless.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-02-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '불멸의여신','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/gk/bulmyeol.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-03-01');
+', '/images/moviethumbnail/gk/bulmyeol.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-03-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '내가누워있을때','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/gk/naega.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-02-01');
+', '/images/moviethumbnail/gk/naega.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-02-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '애도되지못한슬픔','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/gk/ado.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2023-12-10');
+', '/images/moviethumbnail/gk/ado.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2023-12-10');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '불청객들','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/gk/bulchung.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-30');
+', '/images/moviethumbnail/gk/bulchung.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-30');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2024', '(주)시네마프로덕션', '엑스','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/gk/streamer.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2023-01-10');
+', '/images/moviethumbnail/gk/streamer.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2023-01-10');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '안 할 이유 없는 임신','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/animation/anhal.jpeg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-04-01');
+', '/images/moviethumbnail/animation/anhal.jpeg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-04-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2024', '(주)시네마프로덕션', '건전지 엄마','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/animation/gunjeonji.jpeg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-05-01');
+', '/images/moviethumbnail/animation/gunjeonji.jpeg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-05-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2024', '(주)시네마프로덕션', '쿠키 커피 도시락','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/animation/cookie.jpeg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2023-12-20');
+', '/images/moviethumbnail/animation/cookie.jpeg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2023-12-20');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '저주소년','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/animation/jeoju.jpeg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2023-12-24');
+', '/images/moviethumbnail/animation/jeoju.jpeg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2023-12-24');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2024', '(주)시네마프로덕션', '인형 이야기','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/animation/inhyung.jpeg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
+', '/images/moviethumbnail/animation/inhyung.jpeg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '사라지는 것들','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/animation/sara.jpeg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2023-12-05');
+', '/images/moviethumbnail/animation/sara.jpeg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2023-12-05');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2024', '(주)시네마프로덕션', '도그피쉬','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/animation/dog.jpeg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
+', '/images/moviethumbnail/animation/dog.jpeg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '마법이 돌아오는 날의 바다','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/animation/mabup.jepg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
+', '/images/moviethumbnail/animation/mabup.jepg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2024', '(주)시네마프로덕션', '크로노스','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/animation/cro.jpeg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
+', '/images/moviethumbnail/animation/cro.jpeg', '부산형제복지원 사건 모티브', '애니메이션', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '마녀들의 카니발','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/documentary/manyeo.jpeg', '부산형제복지원 사건 모티브', '다큐멘터리', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
+', '/images/moviethumbnail/documentary/manyeo.jpeg', '부산형제복지원 사건 모티브', '다큐멘터리', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '1975','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/documentary/1975.jpeg', '부산형제복지원 사건 모티브', '다큐멘터리', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
+', '/images/moviethumbnail/documentary/1975.jpeg', '부산형제복지원 사건 모티브', '다큐멘터리', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '비상구 없는 집','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/documentary/bisang.jpeg', '부산형제복지원 사건 모티브', '다큐멘터리', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
+', '/images/moviethumbnail/documentary/bisang.jpeg', '부산형제복지원 사건 모티브', '다큐멘터리', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '곰마워','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/documentary/gomma.jpeg', '부산형제복지원 사건 모티브', '다큐멘터리', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
+', '/images/moviethumbnail/documentary/gomma.jpeg', '부산형제복지원 사건 모티브', '다큐멘터리', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '홈그라운드','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/documentary/homeground.jpeg', '부산형제복지원 사건 모티브', '다큐멘터리', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
+', '/images/moviethumbnail/documentary/homeground.jpeg', '부산형제복지원 사건 모티브', '다큐멘터리', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '인간의 마음','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/documentary/ingan.jpeg', '부산형제복지원 사건 모티브', '다큐멘터리', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
+', '/images/moviethumbnail/documentary/ingan.jpeg', '부산형제복지원 사건 모티브', '다큐멘터리', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '천변의 악사들','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/documentary/chunbyun.jpeg', '부산형제복지원 사건 모티브', '다큐멘터리', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
+', '/images/moviethumbnail/documentary/chunbyun.jpeg', '부산형제복지원 사건 모티브', '다큐멘터리', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '분첩','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/experiment/bunchup.jpeg', '부산형제복지원 사건 모티브', '실험영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
+', '/images/moviethumbnail/experiment/bunchup.jpeg', '부산형제복지원 사건 모티브', '실험영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2024', '(주)시네마프로덕션', '차가운 새들의 세계','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/experiment/chaga.jpeg', '부산형제복지원 사건 모티브', '실험영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
+', '/images/moviethumbnail/experiment/chaga.jpeg', '부산형제복지원 사건 모티브', '실험영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '우리의 시간','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/experiment/uri.jpeg', '부산형제복지원 사건 모티브', '실험영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
+', '/images/moviethumbnail/experiment/uri.jpeg', '부산형제복지원 사건 모티브', '실험영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '이것은 보이는 것과 다르다','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/experiment/egut.jpeg', '부산형제복지원 사건 모티브', '실험영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
+', '/images/moviethumbnail/experiment/egut.jpeg', '부산형제복지원 사건 모티브', '실험영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day)
 values ('2023', '(주)시네마프로덕션', '소진된 인간','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/experiment/sojin.jpeg', '부산형제복지원 사건 모티브', '실험영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머', '2023 청룡영화제 우수작','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
+', '/images/moviethumbnail/experiment/sojin.jpeg', '부산형제복지원 사건 모티브', '실험영화', '12세 이상 관람가','장형모', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-01', '2024-12-15', '2024-02-01', '2024-03-02', '2024-01-01');
 
 
 
@@ -244,14 +272,14 @@ insert into reservation_tb(reservation_code, user_id, seat_id) values ('33334', 
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('44444', 4, 4);
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('55555', 3, 5);
 
-insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
-values ('1111', 1111, 1111, 1, 1);
-insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
-values ('2222', 2222, 2222, 2, 2);
-insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
-values ('3333', 3333, 3333, 3, 3);
-insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
-values ('4444', 4444, 4444, 4, 4);
+insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id, reservation_id)
+values ('1111', 1111, 1111, 1, 1, 1);
+insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id, reservation_id)
+values ('2222', 2222, 2222, 2, 2, 2);
+insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id, reservation_id)
+values ('3333', 3333, 3333, 3, 3, 3);
+insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id, reservation_id)
+values ('4444', 4444, 4444, 4, 4, 4);
 
 insert into payment_tb(total_price, discount_price, final_price, paymented_at, payment_type_id, order_id)
 values (1000, 1000, 1000, '2024-11-11 11:11:11', 1, 1);

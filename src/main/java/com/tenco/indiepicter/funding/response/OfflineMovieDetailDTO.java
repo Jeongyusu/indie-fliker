@@ -1,16 +1,14 @@
 package com.tenco.indiepicter.funding.response;
 
-
 import com.tenco.indiepicter._core.utils.BalanceUtil;
 import com.tenco.indiepicter._core.utils.TimeStampUtil;
-import com.tenco.indiepicter.movie.moviestaff.MovieStaff;
 import lombok.Data;
 
 import java.sql.Timestamp;
 import java.util.List;
 
 @Data
-public class FundingDetailDTO {
+public class OfflineMovieDetailDTO {
     // 펀딩 ID(PK)
     private int fundingId;
     // 펀딩 대표 사진
@@ -35,6 +33,8 @@ public class FundingDetailDTO {
     private String fundingPeriod;
     // 좋아요 여부
     private boolean isLiked;
+    // 오프라인 진행기간
+    private String offlineRunningPeriod;
     // 상영 예정일
     private Timestamp dDay;
     // 시놉시스
@@ -61,11 +61,9 @@ public class FundingDetailDTO {
     public String formatPresentPrice(){
         return BalanceUtil.formatBalance(fundingPresentPrice);
     }
-
     public String formatFundingProductPrice(){
         return BalanceUtil.formatBalance(fundingProductPrice);
     }
-
     public String formatTimeStamp(){
         return TimeStampUtil.timeStampToDate(dDay);
     }

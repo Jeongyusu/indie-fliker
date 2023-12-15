@@ -160,8 +160,10 @@ create table order_tb(
                          quantity int not null,
                          funding_id int not null,
                          user_id int not null,
+                         reservation_id int not null,
                          foreign KEY(funding_id) references funding_tb(id),
-                         foreign KEY(user_id) references user_tb(id)
+                         foreign KEY(user_id) references user_tb(id),
+                         foreign KEY(reservation_id) references reservation_tb(id)
 );
 
 create table payment_tb(
