@@ -48,6 +48,8 @@
     </resultMap>
 
 	<!-- 예매 번호로 조회 -->
-	
+	<select id="findByReservationCode" resultType="com.tenco.indiepicter.reservation.Reservation">
+		select * from reservation_tb where reservation_code = #{reservationCode};
+	</select>
 	
 </mapper>

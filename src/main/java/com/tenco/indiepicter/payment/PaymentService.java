@@ -60,7 +60,7 @@ public class PaymentService {
         // order_id 찾아오기
         Order order = orderRepository.findByFundingIdAndUserId(lastOrderDTO.getFundingId(), principalId);
         if(order == null){
-            throw new MyDynamicException("아직 주문이 진행되지 않았습니다. 주문 먼저 진행해주세요.", HttpStatus.BAD_REQUEST);
+            throw new MyDynamicException("주문 내역을 찾을 수 없습니다.", HttpStatus.BAD_REQUEST);
         }
 
         Payment payment = Payment.builder()
