@@ -19,7 +19,7 @@ flatpickr(activeCal, {
 async function loadSelectOptions(dateStr) {
     let movieId = document.querySelector("#n_movieId").value;
     try {
-        let response = await fetch(`/runningschedule/api/total-day/select-day?movieId=${movieId}&selectDay=${dateStr}`,
+        let response = await fetch(`/api/runningschedule/total-day/select-day?movieId=${movieId}&selectDay=${dateStr}`,
             {
             method: "GET",
             headers: {

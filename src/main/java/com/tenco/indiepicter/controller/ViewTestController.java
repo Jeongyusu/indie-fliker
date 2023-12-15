@@ -6,14 +6,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ViewTestController {
-    @GetMapping("/on-detail")
-    public String ondetail() {
-        return "fund/on_detail";
-    }
+
 
     @GetMapping("/login")
     public String login() {
         return "user/login";
+    }
+    @GetMapping("/user-profile")
+    public String profile() {
+        return "user/profile";
     }
 
     @GetMapping("/ask")

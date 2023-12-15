@@ -1,5 +1,10 @@
 package com.tenco.indiepicter.payment;
 
+import com.tenco.indiepicter.order.OrderService;
+import com.tenco.indiepicter.order.response.LastOrderDTO;
+import com.tenco.indiepicter.payment.request.SavePaymentDTO;
+import com.tenco.indiepicter.reservation.ReservationService;
+import com.tenco.indiepicter.seat.SeatService;
 import com.tenco.indiepicter.seat.request.SelectSeatDTO;
 import com.tenco.indiepicter.runningschedule.response.SelectRunningScheduleAndPlaceDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +30,15 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
+	@Autowired
+	private ReservationService reservationService;
+
+	@Autowired
+	private SeatService seatService;
+
+	@Autowired
+	private OrderService orderService;
+
     @Autowired
     private HttpSession session;
 
@@ -36,8 +50,12 @@ public class PaymentController {
 		// 세션에 로그인 정보 저장
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
 		
-		List<MyOnlinePaymentDTO> MyOnlinePaymentDTOLists =  this.paymentService.findByOnlinePaymentId(1);
-
+		if(principal == null) {
+			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
+		}
+		
+		List<MyOnlinePaymentDTO> MyOnlinePaymentDTOLists =  this.paymentService.findByOnlinePaymentId(principal.getId());
+		
 		model.addAttribute("MyOnlinePaymentDTOLists", MyOnlinePaymentDTOLists);
 		
 		return "mypage/on_payment";
@@ -51,7 +69,11 @@ public class PaymentController {
 		// 세션에 로그인 정보 저장
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
 		
-		List<MyOfflinePaymentDTO> MyOfflinePaymentDTOLists =  this.paymentService.findByOfflinePaymentId(1);
+		if(principal == null) {
+			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
+		}
+		
+		List<MyOfflinePaymentDTO> MyOfflinePaymentDTOLists =  this.paymentService.findByOfflinePaymentId(principal.getId());
 		
 		model.addAttribute("MyOfflinePaymentDTOLists", MyOfflinePaymentDTOLists);
 		
@@ -73,15 +95,21 @@ public class PaymentController {
 		SelectRunningScheduleAndPlaceDTO selectDTO = paymentService.offPayment(selectSeatDTO);
 
         model.addAttribute("selectDTO", selectDTO);
-		model.addAttribute("user", principal);
+		model.addAttribute("principal", principal); // TODO : 유저 정보 중에 VIP를 체크해서 티켓 당 2000원 할인 제공
 		return "payment/off_payment";
     }
 
+	// 결제 정보 저장(POST)
+	// seat, order, reservation, payment => post
+	@PostMapping("/{movieId}/save")
+	public String saveSeatProc(@RequestBody LastOrderDTO lastOrderDTO){
+		// 유저정보 확인
+		User principal = (User) session.getAttribute(Define.PRINCIPAL);
 
-	// 오프라인 결제 기능(POST)
-//	@PostMapping("/{movieId}/off")
-//	public String offPaymentProc(){
-//
-//	}
-	
+
+
+
+//		int rowResultCount = paymentService.savePayment(lastOrderDTO, 1);
+		return "redirect:/reservation/"+ lastOrderDTO.getMovieId() +"/off-ticket";
+	}
 }

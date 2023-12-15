@@ -30,14 +30,11 @@ public class OrderController {
     }
 
     // order 정보 저장
-    @PostMapping("/{movieId}/Save")
+    @PostMapping("/{movieId}/save")
     public String saveOrderProc(@RequestBody SaveOrderDTO saveOrderDTO){
         // 유저 확인
 //        User principal = (User) session.getAttribute(Define.PRINCIPAL);
-        System.out.println("디티옹!!!!!!" + saveOrderDTO);
         int rowResultCount = orderService.saveOrder(saveOrderDTO, 1);
         return "redirect:/reservation/"+ saveOrderDTO.getMovieId() +"/off-ticket";
     }
-
-
 }

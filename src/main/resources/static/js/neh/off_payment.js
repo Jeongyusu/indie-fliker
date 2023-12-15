@@ -1,6 +1,7 @@
 // 페이지 로딩 시 아래의 함수 실행
 window.onload = function (){
     onLoadImg();
+    discount();
 };
 
 // 영화 상영 등급
@@ -21,16 +22,48 @@ function onLoadImg(){
     console.log("src : " + gradeImg.src);
 }
 
-// 가격 할인(VIP 티켓 선택 시)
-function discount(discountPrice) {
+// VIP일 경우,
+function discount() {
+    const createdDiv = document.querySelector(".n_people_and_pay");
+    let discountPay = document.querySelector("#discountPrice").value;
     let totalPayElement = document.querySelector("#n_price");
     let totalPay = totalPayElement.innerHTML;
     let totalPayInt = parseFloat(totalPay.replace(/,/g, ''));
+    let totalCountElement = document.querySelector("#n_people_count");
+    let totalCount = totalCountElement.innerHTML;
+    // let userGrade = document.querySelector("#userGrade").value;
+    // TODO : 로그인 시 위의 주석 풀고, 아래의 String userGrade 지우기
 
-    let changePrice = totalPayInt - discountPrice;
-    totalPayElement.innerHTML = changePrice.toLocaleString(); // 변경된 가격을 다시 화면에 반영
-    console.log("할인 : " + changePrice);
-    postRequest();
+    let userGrade = "VIP";
+
+    if(userGrade == "VIP"){
+        let changePrice = totalPayInt - (discountPay * totalCount);
+        totalPayElement.innerHTML = changePrice.toLocaleString(); // 1,000
+
+        let div = document.createElement("div");
+        div.id = "n_vip_div";
+        let p = document.createElement("p");
+        p.innerHTML = "VIP 할인 적용";
+        p.id = "n_vip";
+        let span = document.createElement("span");
+        span.id = "n_vip_span";
+        let priceP = document.createElement("p");
+        priceP.id = "n_vip_discount_price"
+        priceP.innerHTML = "- " + (discountPay * totalCount).toLocaleString();
+        let wonP = document.createElement("p");
+        wonP.innerHTML = "원";
+
+        span.appendChild(priceP);
+        span.appendChild(wonP);
+        div.appendChild(p);
+        div.appendChild(span);
+        createdDiv.appendChild(div);
+    }
+}
+
+// "이전" 클릭 시
+function back(){
+    history.back();
 }
 
 // 선택한 결제 방법
@@ -44,6 +77,15 @@ function selectPay(radio){
 
 // 선택한 결제 실행 버튼
 function pay(){
+
+    console.log("결제수단 : " + selectedPay.innerHTML);
+
+    // 결제 수단 미 선택 시
+    if(selectedPay.innerHTML == ""){
+        alert("결제 수단을 선택해 주세요.");
+        return;
+    }
+
     let totalPay = document.querySelector("#n_price").innerHTML;
     let totalPayInt = parseFloat(totalPay.replace(/,/g, ''));
 
@@ -59,6 +101,7 @@ function pay(){
     reservationCode = merchantUid;
     console.log("예매번호 : " + reservationCode);
 
+    // 결제 수단 선택
     if(selectedPay == "1"){
         kakaoPay(merchantUid, totalPayInt);
     }else if(selectedPay == "2"){
@@ -89,6 +132,7 @@ function kakaoPay(merchantUid, totalPayInt) {
     }, async function (rsp) {
         if (rsp.success) {
             console.log("결제 성공");
+            postRequest();
             window.location.href = `/reservation/${movieId}/off-ticket`; // 예시: 성공 페이지 URL
         } else {
             alert(`결제에 실패하였습니다. ${rsp.error_msg}`);
@@ -111,6 +155,8 @@ function payco(merchantUid, totalPayInt) {
     }, function (rsp) { // callback
         if (rsp.success) {
             console.log("결제 성공");
+            postRequest();
+            window.location.href = `/reservation/${movieId}/off-ticket`; // 예시: 성공 페이지 URL
         } else {
             alert(`결제에 실패하였습니다. ${rsp.error_msg}`);
         }
@@ -133,6 +179,8 @@ function kgPay(merchantUid, totalPayInt) {
     }, function (rsp) {
         if (rsp.success) {
             console.log("결제 성공");
+            postRequest();
+            window.location.href = `/reservation/${movieId}/off-ticket`; // 예시: 성공 페이지 URL
         } else {
             alert(`결제에 실패하였습니다. ${rsp.error_msg}`);
         }
@@ -165,32 +213,44 @@ function postRequest(){
     let saveSeatDate = {
         movieId: movieId,
         seatNames: SeatNames,
-        unitPrice: unitPrice,
-        totalCount: totalCount,
-        fundingId: fundingId,
+        runningDateId: runningDateId,
     };
 
-    saveSeatName(movieId, saveOrderDate);
+    let dto = {
+        reservationCode: reservationCode,
+        discountPrice: discountPrice,
+        paymentTypeId: paymentTypeId,
+        SeatNames: SeatNames,
+        runningDateId: runningDateId,
+        unitPrice: unitPrice,
+        totalPrice: totalPrice,
+        totalCount: totalCount,
+        fundingId: fundingId,
+        movieId: movieId
+    };
+
+    // saveOrder
+    savePayment(movieId, dto);
+
+    // saveSeatName
+    // saveSeatName(movieId, saveSeatDate);
+
+    // dto 넘기기
+    // moveDTO(dto);
 }
 
-async function saveSeatName(movieId, saveOrderDate) {
-
-
-    console.log("movieID : " + movieId);
-    console.log("saveOrderDate : " + saveOrderDate);
-
-
+async function savePayment(movieId, dto) {
     try {
-        let response = await fetch(`/order/${movieId}/Save`, {
+        let response = await fetch(`/payment/${movieId}/save`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(saveOrderDate)
+            body: JSON.stringify(dto)
         });
 
         if (response.ok) {
-            console.log("seatName save");
+            console.log("결제 정보 저장 완료");
         } else {
             console.error("실패", response.statusText);
         }
@@ -198,3 +258,32 @@ async function saveSeatName(movieId, saveOrderDate) {
         console.error("실패", e.message);
     }
 }
+
+
+// async function saveSeatName(movieId, saveSeatDate) {
+//     try {
+//         let response = await fetch(`/seat/${movieId}/save`, {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json"
+//             },
+//             body: JSON.stringify(saveSeatDate)
+//         });
+//
+//         if (response.ok) {
+//             console.log("seatName save");
+//         } else {
+//             console.error("실패", response.statusText);
+//         }
+//     } catch (e) {
+//         console.error("실패", e.message);
+//     }
+// }
+
+// async function moveDTO(dto) {
+//     try {
+//         let response = await  fetch(,)
+//     }catch (e) {
+//
+//     }
+// }

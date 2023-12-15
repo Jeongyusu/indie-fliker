@@ -38,7 +38,8 @@
                         </div>
                         <div class="n_people_and_pay">
                             <div class="n_people">
-                                <p>인원 : ${selectDTO.totalCount}인</p>
+                                <p>인원 : </p>
+                                <p id="n_people_count">${selectDTO.totalCount}</p>
                             </div>
                             <div class="n_total_pay">
                                 <p>최종 결제 금액</p>
@@ -48,8 +49,7 @@
                             </div>
                         </div>
                         <div>
-                            티켓>????????? 2000원???????????////////???????
-                            <input type="text" value="2000"  id="discountPrice" onclick="discount(this.value)">
+                            <input type="hidden" id="discountPrice" name="discountPrice" value="2000">
                         </div>
                         <div id="n_payment_choice">
                             <p>결제 수단 선택</p>
@@ -87,8 +87,9 @@
                     <input type="hidden" id="totalPrice" value="${selectDTO.totalPrice}">
                     <input type="hidden" id="totalCount" value="${selectDTO.totalCount}">
                     <input type="hidden" id="fundingId" value="${selectDTO.fundingId}">
+                    <input type="hidden" id="userGrade" value="${principal.grade}">
                     <div class="n_payment_button">
-                        <button type="button" id="n_prev">이전</button>
+                        <button type="button" id="n_back" onclick="back()">이전</button>
                         <button type="button" id="n_pay" onclick="pay()">결제</button>
                     </div>
                 </form>
