@@ -46,7 +46,8 @@
         <result property="theaterName" column="theater_name"/>
         <result property="reservationCode" column="reservation_code"/>
     </resultMap>
-	
+
+	<!-- 예매 번호로 조회 -->
 	
 	
 </mapper>
