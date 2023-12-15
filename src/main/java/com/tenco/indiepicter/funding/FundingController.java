@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
@@ -52,7 +53,7 @@ public class FundingController {
         return "main/main";
     }
 
-    @GetMapping("/fundings/{id}")
+    @GetMapping("/funding/{id}")
     public String detailFunding(@PathVariable Integer id, Model model){
         User sessionUser = (User) session.getAttribute(Define.PRINCIPAL);
         FundingDetailDTO fundingDetailDTO = fundingService.detailFunding(id);
@@ -62,10 +63,15 @@ public class FundingController {
         return "fund/on_detail";
     }
 
-    @GetMapping("/offline-movies/{id}")
-    public String detailofflineMovie(@PathVariable Integer id, Model model){
+    @GetMapping("/offline-movie/{id}")
+    public String detailOfflineMovie(@PathVariable Integer id, Model model){
         OfflineMovieDetailDTO offlineMovieDetailDTO = fundingService.detailOfflineMovie(id);
         model.addAttribute("offlineMovieDetailDTO", offlineMovieDetailDTO);
         return "fund/off_detail";
+    }
+
+    @PostMapping ("/funding/save")
+    public String saveFunding(){
+        return null;
     }
 }

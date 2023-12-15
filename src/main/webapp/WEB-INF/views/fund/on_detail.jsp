@@ -64,7 +64,7 @@
                         <span id="n_toggleMore" style="display: none">
                         <div class="n_movie_text">
                             <h3>감독 작품 경력</h3>
-                            <img id="n_director_img" src="/images/movieDirector/the_boy_miyazaki.jpg">
+                            <img id="n_director_img" src="${fundingDetailDTO.directorPic}">
                             <h5>${fundingDetailDTO.director}</h5>
                             <p>
                                 ${fundingDetailDTO.directorCareers}

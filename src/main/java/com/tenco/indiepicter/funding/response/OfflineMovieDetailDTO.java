@@ -39,6 +39,8 @@ public class OfflineMovieDetailDTO {
     private Timestamp dDay;
     // 시놉시스
     private String synopsis;
+    // 영화 감독 이미지
+    private String directorPic;
     // 연출 의도
     private String directingIntension;
     // 포토 목록
