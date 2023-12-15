@@ -32,7 +32,7 @@ public class SeatService {
         List<Seat> seats = new ArrayList<>();
         for (int i = 0; i < splitSaveSeats.size(); i++){
             Seat seat = Seat.builder()
-                    .seatName(splitSaveSeats.get(i))
+                    .seats(splitSaveSeats.get(i))
                     .runningScheduleId(lastOrderDTO.getRunningDateId())
                     .userId(principalId)
                     .build();

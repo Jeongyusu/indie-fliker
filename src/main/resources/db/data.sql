@@ -260,21 +260,21 @@ insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/opera
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/saw.png', '실험영화', 7);
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/yurang.png', '실험영화', 8);
 
-insert into seat_tb(seat_name, running_schedule_id, user_id) values ('A3', 1, 1);
-insert into seat_tb(seat_name, running_schedule_id, user_id) values ('A5', 1, 1);
-insert into seat_tb(seat_name, running_schedule_id, user_id) values ('C9', 1, 2);
-insert into seat_tb(seat_name, running_schedule_id, user_id) values ('D9', 2, 2);
-insert into seat_tb(seat_name, running_schedule_id, user_id) values ('D10', 2, 3);
-insert into seat_tb(seat_name, running_schedule_id, user_id) values ('G5', 2, 4);
-insert into seat_tb(seat_name, running_schedule_id, user_id) values ('A10', 3, 4);
-insert into seat_tb(seat_name, running_schedule_id, user_id) values ('F1', 3, 4);
-insert into seat_tb(seat_name, running_schedule_id, user_id) values ('J5', 3, 4);
-insert into seat_tb(seat_name, running_schedule_id, user_id) values ('C1', 4, 4);
-insert into seat_tb(seat_name, running_schedule_id, user_id) values ('H13', 4, 5);
-insert into seat_tb(seat_name, running_schedule_id, user_id) values ('I1', 4, 5);
-insert into seat_tb(seat_name, running_schedule_id, user_id) values ('I2', 5, 6);
-insert into seat_tb(seat_name, running_schedule_id, user_id) values ('I10', 5, 6);
-insert into seat_tb(seat_name, running_schedule_id, user_id) values ('I11', 5, 6);
+insert into seat_tb(seats, running_schedule_id, user_id) values ('A3', 1, 1);
+insert into seat_tb(seats, running_schedule_id, user_id) values ('A5', 1, 1);
+insert into seat_tb(seats, running_schedule_id, user_id) values ('C9', 1, 2);
+insert into seat_tb(seats, running_schedule_id, user_id) values ('D9', 2, 2);
+insert into seat_tb(seats, running_schedule_id, user_id) values ('D10', 2, 3);
+insert into seat_tb(seats, running_schedule_id, user_id) values ('G5', 2, 4);
+insert into seat_tb(seats, running_schedule_id, user_id) values ('A10', 3, 4);
+insert into seat_tb(seats, running_schedule_id, user_id) values ('F1', 3, 4);
+insert into seat_tb(seats, running_schedule_id, user_id) values ('J5', 3, 4);
+insert into seat_tb(seats, running_schedule_id, user_id) values ('C1', 4, 4);
+insert into seat_tb(seats, running_schedule_id, user_id) values ('H13', 4, 5);
+insert into seat_tb(seats, running_schedule_id, user_id) values ('I1', 4, 5);
+insert into seat_tb(seats, running_schedule_id, user_id) values ('I2', 5, 6);
+insert into seat_tb(seats, running_schedule_id, user_id) values ('I10', 5, 6);
+insert into seat_tb(seats, running_schedule_id, user_id) values ('I11', 5, 6);
 
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('11111', 1, 1);
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('22222', 2, 2);
