@@ -146,11 +146,12 @@ public class UserService {
 		
 		return resultRowCount;
 	}
-	
+
 	// 카카오 로그인 (유저이름 찾기)
 	public User findByUserEmail(String userEmail) {
-		return this.userRepository.findByUserEmail(userEmail);
+		return null;
 	}
-	
-	
+
+
+
 }
