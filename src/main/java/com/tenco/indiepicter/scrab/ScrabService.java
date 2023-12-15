@@ -1,6 +1,7 @@
 package com.tenco.indiepicter.scrab;
 
 import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
+import com.tenco.indiepicter.scrab.response.ScrabDTO;
 import com.tenco.indiepicter.scrab.response.ScrabResponseDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -18,14 +20,16 @@ public class ScrabService {
     @Autowired
     private ScrabRepository scrabRepository;
 
-@Transactional
+
+
+    @Transactional
     public boolean toggleScrab(Integer userId, Integer fundingId) {
         Integer scrabExists = scrabRepository.isScrabExists(userId, fundingId);
         if (scrabExists != null) {
             try {
                 scrabRepository.deleteScrab(userId, fundingId);
                 log.info("좋아요를 취소했습니다.");
-            } catch(Exception e) {
+            } catch (Exception e) {
                 throw new MyDynamicException("좋아요 서비스 중 서버 에러 발생", HttpStatus.INTERNAL_SERVER_ERROR);
             }
             return false;
@@ -33,12 +37,14 @@ public class ScrabService {
             try {
                 scrabRepository.insertScrab(userId, fundingId);
                 log.info("좋아요를 추가했습니다.");
-            } catch(Exception e) {
+            } catch (Exception e) {
                 throw new MyDynamicException("좋아요 서비스 중 서버 에러 발생", HttpStatus.INTERNAL_SERVER_ERROR);
             }
             return true;
         }
     }
+
+
 
     public boolean checkIsLiked(Integer userId, Integer fundingId) {
         Integer scrabExists = scrabRepository.isScrabExists(userId, fundingId);
@@ -46,7 +52,38 @@ public class ScrabService {
 
     }
 
-    public List<ScrabResponseDTO> scrabview(Integer fundingId) {
-        return scrabRepository.viewScrabList(fundingId);
+    @Transactional
+    public List<ScrabResponseDTO> scrabview(Integer userId) {
+        List<ScrabResponseDTO> scrabs = scrabRepository.viewScrabList(userId);
+
+        for (ScrabResponseDTO scrab : scrabs) {
+            scrab.calculateAndSetAchievementRate();
+        }
+
+        return scrabs;
     }
+
+//    public List<ScrabDTO> LikeList(Integer userId) {
+//
+//        List<ScrabResponseDTO> scrabs = scrabRepository.viewScrabList(userId);
+//
+//
+//        List<ScrabDTO> scrabDTOList = new ArrayList<>();
+//        for (ScrabResponseDTO scrab : scrabs) {
+//            ScrabDTO scrabDTO = new ScrabDTO(
+//                    scrab.getFundingId(),
+//                    scrab.getThumbnail(),
+//                    scrab.getTargetPrice(),
+//                    scrab.getPresentPrice(),
+//                    scrab.getMovieName(),
+//                    scrab.getSynopsis(),
+//                    scrab.getProduction()
+//            );
+//            scrabDTO.calculateAndSetAchievementRate();
+//            scrabDTOList.add(scrabDTO);
+//        }
+//
+//        return scrabDTOList;
+//    }
+
 }

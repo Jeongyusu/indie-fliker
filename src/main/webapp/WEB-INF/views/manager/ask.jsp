@@ -14,12 +14,6 @@
         <input type="text" class="k_search-input" placeholder="검색어를 입력하세요">
         <a href="#" class="custom-button">
         <img class="k_search-icon" src="
-
-
-
-
-
-
         /images/icons/icons8-search-50.png" alt="My Image">
         </a>
     </div>
