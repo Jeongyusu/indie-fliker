@@ -9,10 +9,10 @@
         <div class="k_funding_upload_container">
             <div class="k_funding_upload_pic_title">영화 대표 사진 <span class="k_star_class">*</span></div>
             <form action="/upload" method="post" enctype="multipart/form-data" class="k_funding_upload_picture">
-                <label for="photo" class="k_funding_upload_select_photo_pic">
-                    <i class="fas fa-camera"></i>
-                    사진 선택 <span class="k_star_class">*</span></label>
-                <input type="file" id="moviemain" name="photo" accept="image/*">
+                <label id="basicPic" for="photo" class="k_funding_upload_select_photo_pic">
+                        <i class="fas fa-camera"></i>
+                        사진 선택 <span class="k_star_class">*</span></label>
+                <input type="file" id="thumbnail" name="directorPic" accept="image/*" onchange="changeUserPic(value)">
                 <br>
             </form>
             <div class="k_funding_upload_movie_level k_funding_upload_grade_title">영화 상영 등급 <span class="k_star_class">*</span></div>
@@ -253,6 +253,22 @@
         let currentDate = new Date(firstDay.value);
         currentDate.setFullYear(currentDate.getFullYear() + 1);
         return currentDate;
+    }
+
+    function changeUserPic(value) {
+        let file = value.target.files[0];
+        console.log(file.type);
+        if (!file.type.match("image.*")) {
+            alert("이미지를 등록해주세요");
+            return;
+        }
+        let reader = new FileReader();
+        reader.onload = function (value) { // 파일이 다 읽어지면 콜백됨
+            let previewEl = document.querySelector("#preview");
+            previewEl.setAttribute("src", value.target.result);
+
+        }
+        reader.readAsDataURL(file); // 파일 읽기 onload()
     }
 
 </script>

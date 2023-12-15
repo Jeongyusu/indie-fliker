@@ -70,7 +70,12 @@ public class FundingController {
         return "fund/off_detail";
     }
 
-    @PostMapping ("/funding/save")
+    @GetMapping("/saveForm")
+    public String fundingSaveForm(){
+        return "fund/fund_upload";
+    }
+
+    @PostMapping ("/save")
     public String saveFunding(){
         return null;
     }
