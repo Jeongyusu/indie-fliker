@@ -124,10 +124,10 @@
         </div>
         <div class="k_funding_upload_container_three">
             <div class="k_funding_upload_titles k_funding_upload_pride">영화제 상영 및 수상작 <span class="k_star_class">*</span></div>
-                <button type="button" class="k_plus_button" onclick="addPhotoField()">
+                <button type="button" class="k_plus_button" onclick="plusAwardsMovie()">
                     <img src="/images/icons/plus.png">
                 </button>
-                <button type="button" class="k_minus_button" onclick="deletePhotoField()">
+                <button type="button" class="k_minus_button" onclick="minusAwardsMovie()">
                     <img src="/images/icons/minus.png" class="k_minus_img">
                 </button>
         </div>
@@ -365,6 +365,54 @@
 
         // careerCount 감소
         careerCount--;
+    }
+
+    let awardsCount = 1;
+
+
+    function plusAwardsMovie(){
+        if(awardsCount > 9) {
+            alert("최대 10개까지 추가 가능합니다.");
+            return;
+        }
+        let marginTopPx = 47 * awardsCount;
+        let InputAm = document.createElement("input");
+        InputAm.setAttribute("type", "text");
+        InputAm.setAttribute("id", "awards_movie" + awardsCount);
+        InputAm.setAttribute("placeholder", "작품 이름");
+        InputAm.className = "k_funding_awards_movie_input";
+
+        let InputAmY = document.createElement("input");
+        InputAmY.setAttribute("type", "text");
+        InputAmY.setAttribute("id", "awards_movie_year" + awardsCount);
+        InputAmY.setAttribute("placeholder", "작품 년도");
+        InputAmY.className = "k_funding_upload_movie_year";
+
+        // let InputMarginTop = document.createElement("div");
+        // InputMarginTop.setAttribute("id","k_am_margin_top" + awardsCount);
+        // InputMarginTop.setAttribute("style","margin-top: "+ marginTopPx + "px;");
+
+
+        // 컨테이너에 새로운 레이블과 인풋 필드 추가
+        document.getElementById("awards_movie").appendChild(InputAm);
+        document.getElementById("awards_movie_year").appendChild(InputAmY);
+        // document.getElementById("k_am_margin_top").appendChild(InputMarginTop);
+        awardsCount++;
+    }
+
+    function minusAwardsMovie(){
+        if(awardsCount < 2) {
+            alert("더 이상 삭제할 수 없습니다.");
+            return;
+        }
+        // 삭제할 요소의 ID로 해당 요소를 찾아서 제거
+        document.getElementById("awards_movie" + (awardsCount- 1)).remove();
+        document.getElementById("awards_movie_year" + (awardsCount - 1)).remove();
+        // document.getElementById("k_cm_margin_top" + (awardsCount - 1)).remove();
+
+
+        // awardsCount 감소
+        awardsCount--;
     }
 
 
