@@ -1,20 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
+<form action="/upload" method="post" enctype="multipart/form-data">
 <div class="k_funding_save">
+    <button type="submit">
     <p>펀딩 등록하기</p>
+    </button>
 </div>
 <div class="k_funding_main">
     <div class="k_funding_upload">
         <div class="k_funding_upload_container">
-            <div class="k_funding_upload_pic_title">영화 대표 사진 <span class="k_star_class">*</span></div>
-            <form action="/upload" method="post" enctype="multipart/form-data" class="k_funding_upload_picture">
-                <label id="basicPic" for="photo" class="k_funding_upload_select_photo_pic">
-                        <i class="fas fa-camera"></i>
+            <div id="pic_container" class="k_funding_upload_pic_title">영화 대표 사진 <span class="k_star_class">*</span></div>
+                <label id="basicPic" for="thumbnail" class="k_funding_upload_select_photo_pic2">
+                        <i id="fa-camera" class="fas fa-camera"></i>
                         사진 선택 <span class="k_star_class">*</span></label>
-                <input type="file" id="thumbnail" name="directorPic" accept="image/*" onchange="changeUserPic(value)">
+                <input type="file" id="thumbnail" name="directorPic" accept="image/*" onchange="changeUserPic(this.id, 'basicPic', 'k_funding_thumbnail_style', event)" class="k_funding_upload_label">
                 <br>
-            </form>
             <div class="k_funding_upload_movie_level k_funding_upload_grade_title">영화 상영 등급 <span class="k_star_class">*</span></div>
             <select class="k_funding_upload_select_option">
                 <option value="option1">전체 관람가</option>
@@ -69,38 +70,22 @@
                 <div class="k_funding_upload_middle_title k_funding_upload_titles">포토
                     <span class="k_star_class">*</span>
                 </div>
+                <button type="button" class="k_plus_button" onclick="addPhotoField()">
+                    <img src="/images/icons/plus.png">
+                </button>
+                <button type="button" class="k_minus_button" onclick="addPhotoField()">
+                    <img src="/images/icons/minus.png" class="k_minus_img">
+                </button>
             </div>
         </div>
 
-        <div class="k_funding_upload_container_four">
-            <form action="/upload" method="post" enctype="multipart/form-data" class="k_funding_upload_picture">
-                <label for="photo" class="k_funding_upload_select_photo_pic">
+        <div id="pic_plus" class="k_funding_upload_container_four">
+                <label id="movie_pic" for="photo" class="k_funding_upload_select_photo_pic">
                     <i class="fas fa-camera"></i>
                     사진 선택 <span class="k_star_class">*</span></label>
-                <input type="file" id="photo" name="photo" accept="image/*">
+                <input type="file" id="photo" name="photo" accept="image/*" onchange="changeUserPic(this.id, 'movie_pic', 'k_funding_movie_pic_style', event)" class="k_funding_upload_label">
                 <br>
-            </form>
-            <form action="/upload" method="post" enctype="multipart/form-data" class="k_funding_upload_picture">
-                <label for="photo" class="k_funding_upload_select_photo_pic_receive">
-                    <i class="fas fa-camera"></i>
-                    <span class="k_star_class"></span></label>
-                <input type="file" id="photo1" name="photo" accept="image/*">
-                <br>
-            </form>
-            <form action="/upload" method="post" enctype="multipart/form-data" class="k_funding_upload_picture">
-                <label for="photo" class="k_funding_upload_select_photo_pic_receive">
-                    <i class="fas fa-camera"></i>
-                    <span class="k_star_class"></span></label>
-                <input type="file" id="photo2" name="photo" accept="image/*">
-                <br>
-            </form>
-            <form action="/upload" method="post" enctype="multipart/form-data" class="k_funding_upload_picture">
-                <label for="photo" class="k_funding_upload_select_photo_pic_receive">
-                    <i class="fas fa-camera"></i>
-                    <span class="k_star_class"></span></label>
-                <input type="file" id="photo3" name="photo" accept="image/*">
-                <br>
-            </form>
+
         </div>
         <div class="k_margin_top">
             <div class="k_funding_upload_container_three">
@@ -212,6 +197,7 @@
         </div>
     </div>
 </div>
+</form>
 <script>
     let firstDay = document.getElementById('firstDay');
     let lastDay = document.getElementById('lastDay');
@@ -255,21 +241,96 @@
         return currentDate;
     }
 
-    function changeUserPic(value) {
-        let file = value.target.files[0];
-        console.log(file.type);
-        if (!file.type.match("image.*")) {
+    function changeUserPic(inputId, containerId, styleClass, e1) {
+        let f = e1.srcElement.files[0];
+        console.log(f.type);
+        if (!f.type.match("image.*")) {
             alert("이미지를 등록해주세요");
             return;
         }
         let reader = new FileReader();
-        reader.onload = function (value) { // 파일이 다 읽어지면 콜백됨
-            let previewEl = document.querySelector("#preview");
-            previewEl.setAttribute("src", value.target.result);
+        reader.onload = function (e2) {
+            let previewEl = document.querySelector("#" + inputId);
+            let parentContainer = document.querySelector("#" + containerId);
+            parentContainer.innerHTML = '';
 
+            let newImg = document.createElement("img");
+            newImg.setAttribute("src", e2.target.result);
+
+            let parentElement = document.getElementById(containerId);
+            parentElement.appendChild(newImg);
+            newImg.classList.add(styleClass);
+            previewEl.setAttribute("src", e2.target.result);
         }
-        reader.readAsDataURL(file); // 파일 읽기 onload()
+        reader.readAsDataURL(f);
     }
+
+    // 사진 업로드시 사진 보이게 하기
+    // function changeUserPic(e1) {
+    //     let f = e1.srcElement.files[0];
+    //     console.log(f.type);
+    //     if (!f.type.match("image.*")) {
+    //         alert("이미지를 등록해주세요");
+    //         return;
+    //     }
+    //     let reader = new FileReader();
+    //     reader.onload = function (e2) { // 파일이 다 읽어지면 콜백됨
+    //         let previewEl = document.querySelector("#thumbnail");
+    //         let basicPic = document.querySelector("#basicPic");
+    //         basicPic.innerHTML = '';
+    //
+    //         // 새로운 img 요소 생성
+    //         let newImg = document.createElement("img");
+    //         newImg.setAttribute("src", e2.target.result);
+    //
+    //         // 특정 태그에 추가
+    //         let parentElement = document.getElementById("basicPic"); // 변경 필요
+    //         parentElement.appendChild(newImg);
+    //         newImg.classList.add("k_funding_imgStyle");
+    //         previewEl.setAttribute("src", e2.target.result);
+    //     }
+    //     reader.readAsDataURL(f); // 파일 읽기 onload()
+    // }
+
+    let photoCount = 1; // 초기 인풋 필드 개수
+    let containerNumber = 1;
+    function addPhotoField() {
+        if(photoCount > 4){
+            alert("최대 5장까지만 추가할 수 있습니다.")
+            return;
+        }
+        // 새로운 레이블 생성
+        let newLabel = document.createElement("label");
+        newLabel.setAttribute("id", "movie" + containerNumber);
+        newLabel.setAttribute("for", "photo" + photoCount);
+        newLabel.className = "k_funding_upload_select_photo_pic_receive";
+        newLabel.innerHTML = '<i class="fas fa-camera"></i><span class="k_star_class"></span>';
+
+        // 새로운 인풋 필드 생성
+        let newInput = document.createElement("input");
+        newInput.setAttribute("type", "file");
+        newInput.setAttribute("id", "photo" + photoCount);
+        newInput.setAttribute("name", "photo");
+        newInput.setAttribute("accept", "image/*");
+        newInput.setAttribute("onchange", "changeUserPic(this.id, 'movie" + containerNumber + "', 'k_funding_movie_pic_style', event)");
+        newInput.className = "k_funding_upload_label";
+
+        // 컨테이너에 새로운 레이블과 인풋 필드 추가
+        document.getElementById("pic_plus").appendChild(newLabel);
+        document.getElementById("pic_plus").appendChild(newInput);
+
+        // photoCount 증가
+        photoCount++;
+        containerNumber++;
+    }
+
+    function getPhotoCount(){
+        return photoCount;
+    }
+
+
+
+
 
 </script>
 <%@ include file="../layout/footer.jsp" %>

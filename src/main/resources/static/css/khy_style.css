@@ -933,6 +933,7 @@ div.main i {
 }
 
 .k_funding_upload_first_title {
+    padding-top: 10px;
     font-size: 16px;
     font-weight: 600;
 }
@@ -958,6 +959,7 @@ div.main i {
 }
 
 .k_funding_upload_fund_titles {
+    padding-top: 10px;
     width: 162px;
     font-size: 16px;
     font-weight: 600;
@@ -1087,6 +1089,42 @@ div.main i {
     justify-content: center;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
+}
+
+.k_funding_upload_select_photo_pic2 {
+    background-color: var(--back_02);
+    height: 100px;
+    width: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.k_funding_thumbnail_style {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.k_funding_movie_pic_style {
+    width: 130px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.k_funding_movie_director_style {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+
+
+.k_funding_upload_label {
+    display: none;
 }
 
 .k_funding_upload_container_four {
@@ -1094,16 +1132,15 @@ div.main i {
     display: flex;
     margin: 10px 0;
     height: 98px;
+
 }
 
 .k_funding_upload_select_photo_pic_receive {
+    margin-right: 10px;
     background-color: var(--def_wh);
     border: 0.5px solid var(--line_01);
     height: 100px;
     width: 130px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -1221,5 +1258,17 @@ div.main i {
 .k_plus_button {
     border: none;
     background-color: transparent;
+    padding-right: 10px;
 }
 
+.k_minus_button {
+    border: none;
+    background-color: transparent;
+}
+
+.k_minus_img {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+}
