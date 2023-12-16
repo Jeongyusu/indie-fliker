@@ -73,17 +73,17 @@
                 <button type="button" class="k_plus_button" onclick="addPhotoField()">
                     <img src="/images/icons/plus.png">
                 </button>
-                <button type="button" class="k_minus_button" onclick="addPhotoField()">
+                <button type="button" class="k_minus_button" onclick="deletePhotoField()">
                     <img src="/images/icons/minus.png" class="k_minus_img">
                 </button>
             </div>
         </div>
 
         <div id="pic_plus" class="k_funding_upload_container_four">
-                <label id="movie_pic" for="photo" class="k_funding_upload_select_photo_pic">
+                <label id="movie_pic" for="movie_photo" class="k_funding_upload_select_photo_pic">
                     <i class="fas fa-camera"></i>
                     사진 선택 <span class="k_star_class">*</span></label>
-                <input type="file" id="photo" name="photo" accept="image/*" onchange="changeUserPic(this.id, 'movie_pic', 'k_funding_movie_pic_style', event)" class="k_funding_upload_label">
+                <input type="file" id="movie_photo" name="photo" accept="image/*" onchange="changeUserPic(this.id, 'movie_pic', 'k_funding_movie_pic_style', event)" class="k_funding_upload_label">
                 <br>
 
         </div>
@@ -93,45 +93,52 @@
                     <div class="k_funding_upload_titles">감독사진
                         <span class="k_star_class">*</span>
                     </div>
-                    <div class="k_funding_upload_head_Career k_funding_upload_titles">감독 작품 경력</div>
+                    <div class="k_funding_upload_head_Career k_funding_upload_titles k_padding_right70">감독 작품 경력</div>
                 </div>
                 <div class="k_plus_content">
-                    <div>
-                        <button type="button" class="k_plus_button">
+                        <button type="button" class="k_plus_button" onclick="plusCareerMovie()">
                             <img src="/images/icons/plus.png">
                         </button>
-                    </div>
+                        <button type="button" class="k_minus_button" onclick="minusCareerMovie()">
+                            <img src="/images/icons/minus.png" class="k_minus_img k_padding_bottom5">
+                        </button>
                 </div>
             </div>
             <div class="k_funding_upload_container_four">
-                <form action="/upload" method="post" enctype="multipart/form-data" class="k_funding_upload_picture">
-                    <label for="photo" class="k_funding_upload_select_photo_pic">
+                    <label id="director_pic" for="director_photo" class="k_funding_upload_select_photo_pic">
                         <i class="fas fa-camera"></i>
                         사진 선택 <span class="k_star_class">*</span>
                     </label>
-                    <input type="file" id="head" name="photo" accept="image/*">
+                    <input type="file" id="director_photo" name="photo" accept="image/*" onchange="changeUserPic(this.id, 'director_pic', 'k_funding_movie_director_style', event)" class="k_funding_upload_label">
                     <br>
-                </form>
                 <div class="k_funding_directer_career">
-                    <input class="k_funding_upload_career_input" placeholder="작품 이름">
-                    <div class="k_funding_upload_head_limit" style=""></div>
+                    <div id="career_movie" class="k_career_movie_style">
+                        <input type=text class="k_funding_upload_career_input" placeholder="작품 이름">
+                    </div>
+                    <div id="career_movie_year" class="k_funding_upload_head_limit">
                     <input type="text" class="k_funding_upload_movie_year" placeholder="작품 년도">
+                    </div>
                 </div>
-            </div>
+        </div>
+        <div id="k_cm_margin_top">
         </div>
         <div class="k_funding_upload_container_three">
             <div class="k_funding_upload_titles k_funding_upload_pride">영화제 상영 및 수상작 <span class="k_star_class">*</span></div>
-            <div>
-                <button type="button" class="k_plus_button">
+                <button type="button" class="k_plus_button" onclick="addPhotoField()">
                     <img src="/images/icons/plus.png">
                 </button>
+                <button type="button" class="k_minus_button" onclick="deletePhotoField()">
+                    <img src="/images/icons/minus.png" class="k_minus_img">
+                </button>
+        </div>
+            <div class="k_funding_directer_career">
+                <div id="awards_movie" class="k_career_movie_style">
+                    <input type=text class="k_funding_awards_movie_input" placeholder="작품 이름">
+                </div>
+                <div id="awards_movie_year" class="k_funding_upload_head_limit">
+                    <input type="text" class="k_funding_upload_movie_year" placeholder="작품 년도">
+                </div>
             </div>
-        </div>
-        <div class="k_funding_upload_container_two">
-            <input class="k_funding_upload_career_input_two" placeholder="작품 이름">
-
-            <input type="text" class="k_funding_upload_movie_year" placeholder="작품 년도">
-        </div>
         <div class="k_funding_upload_career">
             영화제 상영 및 수상작과 수상 년도를 작성해주세요.예) 2022 Nshville Film Festival / 예) 2022
         </div>
@@ -265,34 +272,7 @@
         reader.readAsDataURL(f);
     }
 
-    // 사진 업로드시 사진 보이게 하기
-    // function changeUserPic(e1) {
-    //     let f = e1.srcElement.files[0];
-    //     console.log(f.type);
-    //     if (!f.type.match("image.*")) {
-    //         alert("이미지를 등록해주세요");
-    //         return;
-    //     }
-    //     let reader = new FileReader();
-    //     reader.onload = function (e2) { // 파일이 다 읽어지면 콜백됨
-    //         let previewEl = document.querySelector("#thumbnail");
-    //         let basicPic = document.querySelector("#basicPic");
-    //         basicPic.innerHTML = '';
-    //
-    //         // 새로운 img 요소 생성
-    //         let newImg = document.createElement("img");
-    //         newImg.setAttribute("src", e2.target.result);
-    //
-    //         // 특정 태그에 추가
-    //         let parentElement = document.getElementById("basicPic"); // 변경 필요
-    //         parentElement.appendChild(newImg);
-    //         newImg.classList.add("k_funding_imgStyle");
-    //         previewEl.setAttribute("src", e2.target.result);
-    //     }
-    //     reader.readAsDataURL(f); // 파일 읽기 onload()
-    // }
-
-    let photoCount = 1; // 초기 인풋 필드 개수
+    let photoCount = 1;
     let containerNumber = 1;
     function addPhotoField() {
         if(photoCount > 4){
@@ -324,12 +304,68 @@
         containerNumber++;
     }
 
-    function getPhotoCount(){
-        return photoCount;
+    function deletePhotoField() {
+        if(photoCount < 2) {
+            alert("더 이상 삭제할 수 없습니다.");
+            return;
+        }
+        // 삭제할 요소의 ID로 해당 요소를 찾아서 제거
+        document.getElementById('movie' + (containerNumber - 1)).remove();
+        document.getElementById("photo" + (photoCount - 1)).remove();
+
+        // photoCount 감소
+        photoCount--;
+        // 추가된 컨테이너 번호도 감소 (필요에 따라 로직 수정)
+        containerNumber--;
     }
 
+    let careerCount = 1;
+
+    //
+    function plusCareerMovie(){
+        if(careerCount > 9) {
+            alert("최대 10개까지 추가 가능합니다.");
+            return;
+        }
+        let marginTopPx = 47 * careerCount;
+        let InputCm = document.createElement("input");
+        InputCm.setAttribute("type", "text");
+        InputCm.setAttribute("id", "career_movie" + careerCount);
+        InputCm.setAttribute("placeholder", "작품 이름");
+        InputCm.className = "k_funding_upload_career_input";
+
+        let InputCmY = document.createElement("input");
+        InputCmY.setAttribute("type", "text");
+        InputCmY.setAttribute("id", "career_movie_year" + careerCount);
+        InputCmY.setAttribute("placeholder", "작품 년도");
+        InputCmY.className = "k_funding_upload_movie_year";
+
+        let InputMarginTop = document.createElement("div");
+        InputMarginTop.setAttribute("id","k_cm_margin_top" + careerCount);
+        InputMarginTop.setAttribute("style","margin-top: "+ marginTopPx + "px;");
 
 
+        // 컨테이너에 새로운 레이블과 인풋 필드 추가
+        document.getElementById("career_movie").appendChild(InputCm);
+        document.getElementById("career_movie_year").appendChild(InputCmY);
+        document.getElementById("k_cm_margin_top").appendChild(InputMarginTop);
+        careerCount++;
+    }
+
+    function minusCareerMovie(){
+        if(careerCount < 2) {
+            alert("더 이상 삭제할 수 없습니다.");
+            return;
+        }
+        // 삭제할 요소의 ID로 해당 요소를 찾아서 제거
+        document.getElementById('career_movie' + (careerCount- 1)).remove();
+        document.getElementById("career_movie_year" + (careerCount - 1)).remove();
+        document.getElementById("k_cm_margin_top" + (careerCount - 1)).remove();
+
+
+        // careerCount 감소
+        careerCount--;
+    }
 
 
 </script>
