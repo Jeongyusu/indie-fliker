@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
-@RequestMapping("/api")
+@RequestMapping("/reservation")
 public class ReservationRestController {
 
     @Autowired
@@ -28,7 +28,7 @@ public class ReservationRestController {
     private HttpSession session;
 
    // 가장 최근 예매한 예매 번호 조회
-    @GetMapping("/reservation")
+    @GetMapping("/api/reservation-id")
     public ResponseEntity<?> selectReservationId() {
 //        User principal = (User) session.getAttribute(Define.PRINCIPAL);
         ReservationIdDTO responseDTO = reservationService.selectReservationId(1);

@@ -7,7 +7,7 @@ import lombok.Data;
 import java.sql.Timestamp;
 
 @Data
-public class ReservationTicketDTO {
+public class OffReservationTicketDTO {
 
     private String thumbnail;
     private String movieName;
