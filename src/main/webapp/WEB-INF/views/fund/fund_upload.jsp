@@ -26,10 +26,10 @@
                 </div>
                 <div>
                     <select class="k_custom_select_option" name="runningGrade">
-                        <option value="option1">전체 관람가</option>
-                        <option value="option1">12세 이상 관람가</option>
-                        <option value="option2">15세 이상 관람가</option>
-                        <option value="option3">청소년 관람 불가</option>
+                        <option value="전체 관람가">전체 관람가</option>
+                        <option value="12세 이상 관람가">12세 이상 관람가</option>
+                        <option value="15세 이상 관람가">15세 이상 관람가</option>
+                        <option value="청소년 관람 불가">청소년 관람 불가</option>
                     </select>
                     <input type="text" class="k_funding_upload_schedule_date k_margin_production" placeholder="배급사" name="production">
                 </div>
@@ -58,10 +58,10 @@
         <div class="k_funding_genre_container">
             <div class="k_funding_genre_grade_title">영화 장르<span class="k_star_class">*</span></div>
             <select class="k_funding_genre_select_option" name="genre">
-            <option value="option1">극영화</option>
-            <option value="option1">애니메이션</option>
-            <option value="option2">다큐멘터리</option>
-            <option value="option3">실험영화</option>
+            <option value="극영화">극영화</option>
+            <option value="애니메이션">애니메이션</option>
+            <option value="다큐멘터리">다큐멘터리</option>
+            <option value="실험영화">실험영화</option>
             </select>
 
             <div class="k_funding_make_year k_funding_upload_movie_schedule">제작 년도
