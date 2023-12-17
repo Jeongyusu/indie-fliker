@@ -2,6 +2,7 @@ package com.tenco.indiepicter.funding;
 
 import com.tenco.indiepicter._core.utils.Define;
 import com.tenco.indiepicter.banner.BannerService;
+import com.tenco.indiepicter.funding.request.FundingSaveDTO;
 import com.tenco.indiepicter.funding.response.*;
 import com.tenco.indiepicter.scrab.ScrabService;
 import com.tenco.indiepicter.theater.TheaterService;
@@ -76,7 +77,9 @@ public class FundingController {
     }
 
     @PostMapping ("/save")
-    public String saveFunding(){
+    public String saveFunding(FundingSaveDTO requestDTO){
+        log.debug(requestDTO.toString());
+
         return null;
     }
 }

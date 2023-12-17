@@ -1049,6 +1049,7 @@ div.main i {
 
 .k_funding_upload_movie_schedule {
     margin-left: 30px;
+    padding-top: 3px;
 }
 
 .k_funding_upload_container_three {
@@ -1094,16 +1095,17 @@ div.main i {
 .k_funding_upload_select_photo_pic2 {
     background-color: var(--back_02);
     height: 100px;
-    width: 260px;
+    width: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
     cursor: pointer;
+
 }
 
 .k_funding_thumbnail_style {
-    width: 145px;
+    width: 105px;
     height: 100px;
     border-radius: 5px;
 }
@@ -1315,4 +1317,98 @@ div.main i {
     border-radius: 5px;
     border: 0.5px solid var(--line_01);
     margin-bottom: 10px;
+}
+
+.k_funding_genre_container {
+    max-width: 100%;
+    display: flex;
+    margin-top: 3%;
+}
+
+.k_funding_genre_select_option {
+    height: 40px;
+    width: 20%;
+    font-size: 14px;
+    padding: 0 10px;
+    border-color: var(--line_01);
+    border-radius: 5px;
+}
+
+.k_funding_genre_grade_title {
+    font-size: 16px;
+    font-weight: 600;
+    width: 19%;
+    margin-top: 5px;
+}
+
+.k_funding_make_year {
+    font-size: 16px;
+    font-weight: 600;
+    width: 14%;
+    margin-top: 5px;
+}
+
+.k_text_no_wrap {
+    white-space: nowrap; /* 글자가 넘칠 경우 줄바꿈 방지 */
+    padding-top: 3px;
+
+}
+
+.k_custom_select_option {
+    margin-left: 34px;
+    height: 40px;
+    width: 82%;
+    font-size: 14px;
+    padding: 0 10px;
+    border-color: var(--line_01);
+    border-radius: 5px;
+}
+
+.k_margin_top55{
+    margin-top: 55px;
+}
+
+.k_margin_production{
+    margin-left: 25%;
+    margin-top: 30px;
+}
+
+.k_funding_pic_title {
+    font-size: 16px;
+    font-weight: 600;
+    width: 50%;
+    margin-right: 37px;
+}
+
+.k_custom_margin {
+    margin-left: 30%;
+}
+.pic_wrap {
+    display: flex;
+}
+
+.grade_wrap {
+    display: flex;
+}
+
+.k_margin_production:focus::placeholder {
+    color: transparent;
+}
+
+.k_funding_make_year:focus::placeholder {
+    color: transparent;
+}
+
+#k_place_holder:focus::placeholder {
+    color: transparent;
+}
+
+.k_funding_awards_movie_input:focus::placeholder {
+    color: transparent;
+}
+
+.k_custom_flex {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
 }
