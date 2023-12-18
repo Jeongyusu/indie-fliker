@@ -954,7 +954,7 @@ k_ask_s_container a{
 .k_funding_upload {
     width: 800px;
     height: 100%;
-    margin: 30px 0;
+    margin: 0;
 }
 
 .k_funding_upload_titles {
@@ -1457,4 +1457,18 @@ k_ask_s_container a{
     border: none;
     background: transparent;
     color: var(--def_wh);
+}
+
+.k_custom_gif {
+    margin-top: 10px;
+    width: 50px;
+    height: 100px;
+    margin-bottom: 10px;
+    pointer-events: none;
+}
+
+.k_custom_gif_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

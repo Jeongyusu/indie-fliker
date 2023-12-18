@@ -4,27 +4,18 @@ import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
 import com.tenco.indiepicter._core.utils.DateUtil;
 import com.tenco.indiepicter._core.utils.PicToStringUtil;
 import com.tenco.indiepicter._core.utils.StringUtil;
-import com.tenco.indiepicter._core.utils.TimeStampUtil;
-import com.tenco.indiepicter._core.vo.MyPath;
 import com.tenco.indiepicter.funding.request.FundingSaveDTO;
+import lombok.extern.slf4j.Slf4j;
 import com.tenco.indiepicter.movie.moviephoto.MoviePhoto;
 import com.tenco.indiepicter.movie.moviephoto.MoviePhotoRepository;
-import com.tenco.indiepicter.movie.moviephoto.MoviePhotoService;
 import com.tenco.indiepicter.movie.response.OnMovieDetailDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.sql.Time;
-import java.time.Year;
 import java.util.List;
-import java.util.UUID;
 
+@Slf4j
 @Service
 public class MovieService {
 
@@ -54,12 +45,12 @@ public class MovieService {
                 .build();
 
         int resultRowCount = movieRepository.saveMovie(movie);
+        Integer movieKey = movie.getId();
         if(resultRowCount != 1) {
             throw new MyDynamicException("영화 등록 실패", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return resultRowCount;
+        return movieKey;
     }
-
 
     // 온라인 상영 영화 정보 및 무비 파일 조회
     public OnMovieDetailDTO onTheaterToMovie(Integer movieId) {
