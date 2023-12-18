@@ -351,7 +351,7 @@ public class UserController {
 		User principalId = (User)session.getAttribute(Define.PRINCIPAL);
 		this.userService.findById(principalId.getId());
 		
-		return "redirect:/user/mypage";
+		return "mypage/mypage";
 	}
 	
 //----------------------------------------------------------------------------------------------------------------	
