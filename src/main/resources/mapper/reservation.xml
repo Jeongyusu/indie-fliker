@@ -124,6 +124,7 @@
 	<resultMap id="OnReservationTicketDTOResultMap" type="com.tenco.indiepicter.reservation.response.OnReservationTicketDTO">
 		<result property="thumbnail" column="thumbnail"/>
 		<result property="movieName" column="movie_name"/>
+		<result property="movieGenre" column="genre"/>
 		<result property="finalPrice" column="final_price"/>
 		<result property="reservationCode" column="reservation_code"/>
 		<result property="onlineReleaseDate" column="online_release_date"/>

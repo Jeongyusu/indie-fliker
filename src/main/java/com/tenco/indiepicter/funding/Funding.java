@@ -1,12 +1,13 @@
 package com.tenco.indiepicter.funding;
 
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
-@Getter
+@Data
 @NoArgsConstructor
 public class Funding {
     private Integer id;

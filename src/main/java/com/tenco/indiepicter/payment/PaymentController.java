@@ -1,5 +1,6 @@
 package com.tenco.indiepicter.payment;
 
+import com.tenco.indiepicter.funding.FundingService;
 import com.tenco.indiepicter.funding.response.SelectFundingDTO;
 import com.tenco.indiepicter.order.OrderService;
 import com.tenco.indiepicter.order.response.LastOrderDTO;
@@ -38,6 +39,9 @@ public class PaymentController {
 
 	@Autowired
 	private SeatService seatService;
+
+	@Autowired
+	private FundingService fundingService;
 
     @Autowired
     private HttpSession session;
@@ -123,6 +127,8 @@ public class PaymentController {
 		int reservationResult = reservationService.saveReservationTicket(lastOrderDTO, 1);
 		int orderResult = orderService.saveOrder(lastOrderDTO, 1);
 		int paymentResult = paymentService.savePayment(lastOrderDTO);
+		int addFundingTarget = fundingService.addFundingTarget(lastOrderDTO);
+		System.out.println("저장됨!!!!!!!!!!!!" + addFundingTarget);
 
 		return "redirect:/reservation/"+ lastOrderDTO.getMovieId() +"/off-ticket";
 	}
@@ -137,6 +143,8 @@ public class PaymentController {
 		int reservationResult = reservationService.saveReservationTicket(lastOrderDTO, 1);
 		int orderResult = orderService.saveOrder(lastOrderDTO, 1);
 		int paymentResult = paymentService.savePayment(lastOrderDTO);
+		int addFundingTarget = fundingService.addFundingTarget(lastOrderDTO);
+		System.out.println("저장됨!!!!!!!!!!!!" + addFundingTarget);
 
 		return "redirect:/reservation/"+ lastOrderDTO.getMovieId() +"/on-ticket";
 	}
