@@ -384,6 +384,13 @@ div.main i {
     background-color: green;
     margin-left: 2%;
 }
+
+.k_profile_main img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
 /*마이페이지*/
 .k_left_my {
     margin-left: 10%;

@@ -59,12 +59,12 @@
 		<hr class="k_m_hr">
 		<div class="k_c_center">고객센터</div>
 		<div>
-			<button class="k_c_center_list">자주 묻는 질문〉</button>
-			<button class="k_c_center_second_list">공지사항〉</button>
+			<button class="k_c_center_list"><a href="/question">자주 묻는 질문〉</a></button>
+			<button class="k_c_center_second_list"><a href="/notice/paging">공지사항〉</a></button>
 		</div>
 		<hr class="k_m_hr">
 		<div>
-			<button class="k_c_center_list">회원 정보 수정〉</button>
+			<button class="k_c_center_list"><a href="/user/profile">회원 정보 수정〉</a></button>
 			<button class="k_c_center_second_list">회원 탈퇴〉</button>
 		</div>
 		<hr class="k_m_hr">
