@@ -33,7 +33,7 @@
         FROM
             movie_tb as m
                 INNER JOIN funding_tb as f ON m.id = f.movie_id
-                INNER JOIN scrab_tb as s ON f.id = s.user_id
+                INNER JOIN scrab_tb as s ON f.id = s.funding_id
         WHERE
             s.user_id = #{userId}
     </select>
@@ -46,6 +46,11 @@
         <result property="synopsis" column="synopsis"/>
         <result property="production" column="production"/>
     </resultMap>
-
+    <delete id="deleteListScrab">
+        DELETE
+        FROM scrab_tb
+        WHERE user_id = #{userId}
+          AND funding_id = #{fundingId}
+    </delete>
 
 </mapper>
