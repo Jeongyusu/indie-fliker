@@ -1,6 +1,7 @@
 package com.tenco.indiepicter.funding;
 
 import com.tenco.indiepicter._core.utils.Define;
+import com.tenco.indiepicter._core.utils.Script;
 import com.tenco.indiepicter.banner.BannerService;
 import com.tenco.indiepicter.funding.request.FundingSaveDTO;
 import com.tenco.indiepicter.funding.response.*;
@@ -81,13 +82,17 @@ public class FundingController {
         return "fund/fund_upload";
     }
 
-    @ResponseBody
+
     @PostMapping ("/save")
-    public String saveFunding(FundingSaveDTO requestDTO){
-        log.debug("=============================");
-        log.debug(requestDTO.toString());
+    public @ResponseBody String saveFunding(FundingSaveDTO requestDTO){
         fundingService.saveFunding(requestDTO);
-        return "성공";
+        return Script.href("/fund/funding-plus", "펀딩 등록 성공! 심사 후 승인됩니다.");
     }
 
+    @GetMapping("/search")
+    public String searchFunding(@RequestParam( name ="keyword") String keyword, Model model){
+        List<SearchResultDTO> searchResultDTOs = fundingService.searchKeyword(keyword);
+        model.addAttribute("searchResultDTOs", searchResultDTOs);
+        return "main/search_result";
+    }
 }

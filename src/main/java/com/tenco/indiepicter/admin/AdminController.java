@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/manager")
+@RequestMapping("/admin")
 public class AdminController {
 	
 	@Autowired
@@ -33,12 +33,7 @@ public class AdminController {
 			return "manager/check";
 		}
 		
-		// 펀딩 등록 / 삭제 페이지
-		@GetMapping("/update_delete")
-		public String updateDelete() {
-			
-			return "manager/update_delete";
-		}
+
 		
 		// VIP 초청권 페이지
 		@GetMapping("/invitation")

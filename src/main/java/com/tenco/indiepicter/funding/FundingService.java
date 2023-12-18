@@ -59,13 +59,9 @@ public class FundingService {
 
     @Transactional
     public int saveFunding(FundingSaveDTO requestDTO){
-        log.debug("==========여기까지실행1==========");
         Integer movieId = movieService.saveMovie(requestDTO);
-        log.debug("==========여기까지실행2==========");
         movieStaffService.saveMovieStaff(requestDTO, movieId);
-        log.debug("==========여기까지실행3==========");
         moviePhotoService.saveMoviePhotos(requestDTO, movieId);
-        log.debug("==========여기까지실행4==========");
 
         Funding funding = Funding.builder()
                         .targetPrice(requestDTO.getTargetPrice())
@@ -74,7 +70,6 @@ public class FundingService {
                         .endDate(DateUtil.stringToDate(requestDTO.getFundingPeriodEnd()))
                         .movieId(movieId)
                         .build();
-        log.debug("==========여기까지실행5==========");
         int resultRowCount =  fundingRepository.saveFunding(funding);
         if(resultRowCount != 1) {
             throw new MyDynamicException("펀딩 등록 실패", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -92,6 +87,10 @@ public class FundingService {
         int addPeopleCount = funding.getPeopleCount() + RequestDTO.getTotalCount();
 
         return fundingRepository.updateById(RequestDTO.getFundingId(),addPresentPrice, addPeopleCount);
+    }
+
+    public List<SearchResultDTO> searchKeyword(String keyword){
+        return fundingRepository.findByKeyword(keyword);
     }
 
 }

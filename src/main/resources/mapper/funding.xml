@@ -5,7 +5,7 @@
 <mapper namespace="com.tenco.indiepicter.funding.FundingRepository">
 
     <insert id="saveFunding">
-        insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id)
+        insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id)
         values (#{targetPrice}, #{presentPrice}, #{pricePerOnetime}, #{peopleCount}, #{releaseDate}, #{endDate}, #{movieId})
     </insert>
 
@@ -196,5 +196,22 @@
         WHERE
             id = #{fundingId}
     </update>
+
+    <!-- 키워드로 펀딩 검색 -->
+    <select id="findByKeyword" resultMap="searchResultDTOResultMap">
+        select ft.id, mt.thumbnail, (ft.present_price * 100 / ft.target_price) funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
+        WHERE mt.movie_name LIKE '%' || #{keyword} || '%'
+                  OR mt.actor LIKE '%' || #{keyword} || '%'
+                  OR mt.director LIKE '%' || #{keyword} || '%'
+    </select>
+
+    <resultMap id="searchResultDTOResultMap" type="com.tenco.indiepicter.funding.response.SearchResultDTO">
+        <result property="fundingId" column="id"/>
+        <result property="thumbnail" column="thumbnail"/>
+        <result property="fundingRate" column="funding_rate"/>
+        <result property="movieName" column="movie_name"/>
+        <result property="synopsis" column="synopsis"/>
+        <result property="production" column="production"/>
+    </resultMap>
 
 </mapper>
