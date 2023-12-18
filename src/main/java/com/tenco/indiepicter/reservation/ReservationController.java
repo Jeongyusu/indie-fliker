@@ -4,7 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import com.tenco.indiepicter.reservation.response.ReservationTicketDTO;
+import com.tenco.indiepicter.reservation.response.OffReservationTicketDTO;
+import com.tenco.indiepicter.reservation.response.OnReservationTicketDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -45,13 +46,22 @@ public class ReservationController {
 		
 	}
 	
-	// 영화 예매 완료 후 티켓 페이지 요청(GET)
+	// 오프라인 영화 예매 완료 후 티켓 페이지 요청(GET)
 	@GetMapping("/{movieId}/off-ticket")
 	public String offReservationTicket(@RequestParam Integer reservationId, Model model){
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-		ReservationTicketDTO reservationTicketDTO = reservationService.offReservationTicket(reservationId, 1);
-		model.addAttribute("reservationTicketDTO", reservationTicketDTO);
-		return "reservation/reservation_ticket";
+		OffReservationTicketDTO offReservationTicketDTO = reservationService.offReservationTicket(reservationId, 1);
+		model.addAttribute("offReservationTicketDTO", offReservationTicketDTO);
+		return "reservation/off_reservation_ticket";
+	}
+
+	// 온라인 영화 예매 완료 후 티켓 페이지 요청(GET)
+	@GetMapping("/{movieId}/on-ticket")
+	public String onReservationTicket(@RequestParam Integer reservationId, Model model){
+		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+		OnReservationTicketDTO onReservationTicketDTO = reservationService.onReservationTicket(reservationId, 1);
+		model.addAttribute("onReservationTicketDTO", onReservationTicketDTO);
+		return "reservation/on_reservation_ticket";
 	}
 
 }

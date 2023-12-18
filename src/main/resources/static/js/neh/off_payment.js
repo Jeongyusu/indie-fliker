@@ -9,11 +9,11 @@ function onLoadImg(){
     let gradeImg = document.querySelector("#n_grade_img");
     let runningGrade = document.querySelector("#n_runningGrade").value;
     let src = "";
-    if(runningGrade == "전체 관람가"){
+    if(runningGrade === "전체 관람가"){
         src = "/images/icons/movie_level_all.png";
-    }else if(runningGrade == "12세 이상 관람가"){
+    }else if(runningGrade === "12세 이상 관람가"){
         src = "/images/icons/movie_level_12.png";
-    }else if(runningGrade == "15세 이상 관람가"){
+    }else if(runningGrade === "15세 이상 관람가"){
         src = "/images/icons/movie_level_15.png";
     }else {
         src = "/images/icons/movie_level_19.png";
@@ -36,7 +36,7 @@ function discount() {
 
     let userGrade = "VIP";
 
-    if(userGrade == "VIP"){
+    if(userGrade === "VIP"){
         let changePrice = totalPayInt - (discountPay * totalCount);
         totalPayElement.innerHTML = changePrice.toLocaleString(); // 1,000
 
@@ -79,7 +79,7 @@ function selectPay(radio){
 function pay(){
 
     // 결제 수단 미 선택 시
-    if(selectedPay.innerHTML == ""){
+    if(selectedPay.value === ""){
         alert("결제 수단을 선택해 주세요.");
         return;
     }
@@ -105,11 +105,11 @@ function pay(){
     console.log("예매번호 : " + reservationCode);
 
     // 결제 수단 선택
-    if(selectedPay == "1"){
+    if(selectedPay === "1"){
         kakaoPay(merchantUid, totalPayInt, selectedPay, userEmail, username, userTel);
-    }else if(selectedPay == "2"){
+    }else if(selectedPay === "2"){
         payco(merchantUid, totalPayInt, selectedPay, userEmail, username, userTel);
-    }else if(selectedPay == "3"){
+    }else if(selectedPay === "3"){
         kgPay(merchantUid, totalPayInt, selectedPay, userEmail, username, userTel);
     }
 
@@ -231,7 +231,7 @@ function postRequest(merchantUid, selectedPay){
 
 async function savePayment(movieId, dto) {
     try {
-        let response = await fetch(`/payment/${movieId}/save`, {
+        let response = await fetch(`/payment/${movieId}/off-save`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -253,7 +253,7 @@ async function savePayment(movieId, dto) {
 
 async function selectReservationId(movieId) {
     try {
-        let response = await fetch(`/api/reservation`, {
+        let response = await fetch(`/reservation/api/reservation-id`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"

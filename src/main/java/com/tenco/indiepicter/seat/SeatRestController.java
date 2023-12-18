@@ -12,7 +12,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/seat")
 public class SeatRestController {
 
     @Autowired
@@ -22,7 +22,7 @@ public class SeatRestController {
     private HttpSession session;
 
     // 오프라인 영화 상영 일정(달력) 선택 API 요청
-    @GetMapping("/seat/exist-seat")
+    @GetMapping("/api/exist-seat")
     public ResponseEntity<?> existSeat(@RequestParam("runningDateId") Integer runningDateId) {
         List<ExistSeatDTO> existSeatDTOS = seatService.existSeat(runningDateId);
         return ResponseEntity.ok().body(ApiUtils.success(existSeatDTOS));

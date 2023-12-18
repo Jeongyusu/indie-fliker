@@ -1,11 +1,11 @@
 package com.tenco.indiepicter.reservation;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.tenco.indiepicter.order.response.LastOrderDTO;
+import com.tenco.indiepicter.reservation.response.OffReservationTicketDTO;
+import com.tenco.indiepicter.reservation.response.OnReservationTicketDTO;
 import com.tenco.indiepicter.reservation.response.ReservationIdDTO;
-import com.tenco.indiepicter.reservation.response.ReservationTicketDTO;
 import com.tenco.indiepicter.seat.Seat;
 import com.tenco.indiepicter.seat.SeatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,28 +31,41 @@ public class ReservationService {
 		return this.reservationRepository.findByUserId(id);
 	}
 
-	// 오프라인 영화 예매 티켓 등록
+	// 영화 예매 내역 등록
 	@Transactional
 	public int saveReservationTicket(LastOrderDTO lastOrderDTO, Integer principalId) {
+		// 온라인 영화 예매 시 seats id는 없으므로 디폴트 null 처리
+		Integer seatsNumber = null;
 
 		Seat seats = seatRepository.findByRunningDateIdAndUserId(lastOrderDTO.getRunningDateId(), 1);
+
+		if(seats != null){
+			seatsNumber = seats.getId();
+		}
+
 		Reservation reservation = Reservation.builder()
 					.reservationCode(lastOrderDTO.getReservationCode())
-					.seatId(seats.getId())
+					.seatId(seatsNumber)
 					.userId(principalId)
 					.build();
 
 		return reservationRepository.insert(reservation);
 	}
 
-	// 오프라인 예매 티켓 조회
-	public ReservationTicketDTO offReservationTicket(Integer reservationId, Integer principalId) {
-		ReservationTicketDTO responseDTO = reservationRepository.findByReservation(reservationId, principalId);
+	// 오프라인 예매 내역 조회
+	public OffReservationTicketDTO offReservationTicket(Integer reservationId, Integer principalId) {
+		OffReservationTicketDTO responseDTO = reservationRepository.findByOffReservation(reservationId, principalId);
 
 		String[] seats = responseDTO.getSeats().split(",");
 		int seatCount = seats.length;
 		responseDTO.setAudience(seatCount);
 
+		return responseDTO;
+	}
+
+	// 온라인 예매 내역 조회
+	public OnReservationTicketDTO onReservationTicket(Integer reservationId, Integer principalId) {
+		OnReservationTicketDTO responseDTO = reservationRepository.findByOnReservation(reservationId, principalId);
 		return responseDTO;
 	}
 

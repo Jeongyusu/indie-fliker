@@ -24,7 +24,6 @@
     <input type="hidden" name="id" id="id" value ="${user.id}">
     <img id="preview" class="k_profile" alt="" name="pic" id="pic" src="${user.pic}" onclick="return false;">
     <input type="file" id="file" name="file" onchange="changeUserPic(event)">
-    <button class="k_profile_bttn">삭제</button>
     <div class="k_profile_first_container">
         <div>닉네임</div>
         <input type="text" class="k_profile_nicknmae" id="username" name="username" placeholder="${user.username}">
@@ -39,7 +38,7 @@
         </div>
     </div>
     <div class="k_profile_bttns_margin">
-        <button class="k_profile_bttn_cancle">취소</button>
+        <button class="k_profile_bttn_cancle"><a href="/user/mypage">취소</a></a></button>
         <button type="submit" class="k_profile_bttn_ok">확인</button>
     </div>
     </form>

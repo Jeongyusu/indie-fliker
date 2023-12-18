@@ -77,6 +77,12 @@
     margin: 14px 0 0 0;
     font-size: 12px;
 }
+
+#n_attention_comment strong {
+    font-weight: bold;
+    color: var(--point_04);
+}
+
 #n_movie_info {
     margin: 40px 0 0
 }
@@ -456,7 +462,6 @@
 
 #n_pay_step {
     width: 33%;
-    margin-top: 40px;
     display: flex;
     justify-content: center;
 }

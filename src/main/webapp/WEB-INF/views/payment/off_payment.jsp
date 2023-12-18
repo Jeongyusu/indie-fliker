@@ -2,6 +2,9 @@
          pageEncoding="UTF-8"%><!doctype html>
 <%@ include file="/WEB-INF/views/layout/header.jsp"%>
 
+<div id="n_select_movie">
+    <h5>선택하신 영화와 상영시간을 확인해주세요!</h5>
+</div>
 <main>
     <div class="n_custom_fluid">
         <div class="row justify-content-center">
@@ -22,34 +25,30 @@
                 <form class="n_pay">
                     <div id="n_last_payment">
                         <div id="n_movie_title">
-                            <input type="hidden" id="n_runningGrade", value="${selectDTO.runningGrade}">
+                            <input type="hidden" id="n_runningGrade", value="${selectRunningScheduleAndPlaceDTO.runningGrade}">
                             <img src="/images/icons/movie_level_all.png" id="n_grade_img">
-                            <p>${selectDTO.movieName}</p>
-                            <input type="hidden" id="n_movie_id" value="${selectDTO.movieId}">
+                            <p>${selectRunningScheduleAndPlaceDTO.movieName}</p>
                         </div>
                         <div class="n_movie_day">
-                            <p id="n_day">${selectDTO.formatToDate()}</p>
-                            <p id="n_time">${selectDTO.formatToStartTime()} ~ ${selectDTO.formatToEndTime()}</p>
+                            <p id="n_day">${selectRunningScheduleAndPlaceDTO.formatToDate()}</p>
+                            <p id="n_time">${selectRunningScheduleAndPlaceDTO.formatToStartTime()} ~ ${selectRunningScheduleAndPlaceDTO.formatToEndTime()}</p>
                         </div>
                         <div class="n_movie_place">
-                            <p id="n_place">${selectDTO.theaterName}</p>
-                            <p id="n_address">${selectDTO.theaterAddress}</p>
-                            <p id="n_number">${selectDTO.theaterTel}</p>
+                            <p id="n_place">${selectRunningScheduleAndPlaceDTO.theaterName}</p>
+                            <p id="n_address">${selectRunningScheduleAndPlaceDTO.theaterAddress}</p>
+                            <p id="n_number">${selectRunningScheduleAndPlaceDTO.theaterTel}</p>
                         </div>
                         <div class="n_people_and_pay">
                             <div class="n_people">
                                 <p>인원 : </p>
-                                <p id="n_people_count">${selectDTO.totalCount}</p>
+                                <p id="n_people_count">${selectRunningScheduleAndPlaceDTO.totalCount}</p>
                             </div>
                             <div class="n_total_pay">
                                 <p>최종 결제 금액</p>
                                 <span id="n_price_span">
-                                    <p id="n_price">${selectDTO.formatToBalance()}<p></p>원</p>
+                                    <p id="n_price">${selectRunningScheduleAndPlaceDTO.formatToBalance()}<p></p>원</p>
                                 </span>
                             </div>
-                        </div>
-                        <div>
-                            <input type="hidden" id="discountPrice" name="discountPrice" value="2000">
                         </div>
                         <div id="n_payment_choice">
                             <p>결제 수단 선택</p>
@@ -78,24 +77,26 @@
                             </label>
                         </div>
                     </div>
-                    <input type="hidden" id="selectPayment" value="">
-                    <input type="hidden" id="reservationCode" value="">
-                    <input type="hidden" id="paymentTypeId" value="">
-                    <input type="hidden" id="SeatNames" value="${selectDTO.seatNames}">
-                    <input type="hidden" id="runningDateId" value="${selectDTO.runningDateId}">
-                    <input type="hidden" id="unitPrice" value="${selectDTO.unitPrice}">
-                    <input type="hidden" id="totalPrice" value="${selectDTO.totalPrice}">
-                    <input type="hidden" id="totalCount" value="${selectDTO.totalCount}">
-                    <input type="hidden" id="fundingId" value="${selectDTO.fundingId}">
-                    <input type="hidden" id="userGrade" value="${principal.grade}">
-                    <input type="hidden" id="userEmail" value="${principal.userEmail}">
-                    <input type="hidden" id="username" value="${principal.username}">
-                    <input type="hidden" id="userTel" value="${principal.tel}">
                     <div class="n_payment_button">
                         <button type="button" id="n_back" onclick="back()">이전</button>
                         <button type="button" id="n_pay" onclick="pay()">결제</button>
                     </div>
                 </form>
+                <input type="hidden" id="selectPayment" value="">
+                <input type="hidden" id="reservationCode" value="">
+                <input type="hidden" id="paymentTypeId" value="">
+                <input type="hidden" id="discountPrice" name="discountPrice" value="2000">
+                <input type="hidden" id="n_movie_id" value="${selectRunningScheduleAndPlaceDTO.movieId}">
+                <input type="hidden" id="SeatNames" value="${selectRunningScheduleAndPlaceDTO.seatNames}">
+                <input type="hidden" id="runningDateId" value="${selectRunningScheduleAndPlaceDTO.runningDateId}">
+                <input type="hidden" id="unitPrice" value="${selectRunningScheduleAndPlaceDTO.unitPrice}">
+                <input type="hidden" id="totalPrice" value="${selectRunningScheduleAndPlaceDTO.totalPrice}">
+                <input type="hidden" id="totalCount" value="${selectRunningScheduleAndPlaceDTO.totalCount}">
+                <input type="hidden" id="fundingId" value="${selectRunningScheduleAndPlaceDTO.fundingId}">
+                <input type="hidden" id="userGrade" value="${principal.grade}">
+                <input type="hidden" id="userEmail" value="${principal.userEmail}">
+                <input type="hidden" id="username" value="${principal.username}">
+                <input type="hidden" id="userTel" value="${principal.tel}">
             </div>
         </div>
     </div>

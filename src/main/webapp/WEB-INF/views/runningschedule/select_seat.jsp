@@ -2,6 +2,9 @@
          pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/layout/header.jsp"%>
 
+<div id="n_select_movie">
+    <h5>선택하신 영화는 "${choiceDayDTO.movieName}"입니다. 원하시는 좌석을 선택해주세요!</h5>
+</div>
 <main>
     <div class="n_custom_fluid">
         <div class="row justify-content-center">
@@ -62,7 +65,7 @@
                             </div>
                             <div id="n_movie_title">
                                 <img src="/images/icons/movie_level_all.png" id="n_grade_img">
-                                <input type="hidden" id="n_runningGrade" value="${choiceDayDTO.runningGrade}">
+                                <input type="hidden" id="runningGrade" value="${choiceDayDTO.runningGrade}">
                                 <p>${choiceDayDTO.movieName}</p>
                             </div>
                             <div id="n_movie_day_and_time">
@@ -74,10 +77,10 @@
                             </div>
                             <div>
                                 <div class="n_select_seat_wrapper">
-                                    <input type="hidden" id="n_clicked_seat_count" name="clickSeatCount" value="">
-                                    <input type="hidden" id="n_running_date_id" name="runningDateId" value="${choiceDayDTO.runningDateId}">
-                                    <input type="hidden" id="n_last_select_seat_list" name="selectSeats" value="">
-                                    <input type="hidden" id="n_movie_id" name="movieId" value="${choiceDayDTO.movieId}">
+                                    <input type="hidden" id="clickedSeatCount" name="clickSeatCount" value="">
+                                    <input type="hidden" id="runningDateId" name="runningDateId" value="${choiceDayDTO.runningDateId}">
+                                    <input type="hidden" id="lastSelectSeatList" name="selectSeats" value="">
+                                    <input type="hidden" id="movieId" name="movieId" value="${choiceDayDTO.movieId}">
                                 </div>
                             </div>
                         </div>
@@ -85,8 +88,9 @@
                             <div class="n_last_price">
                                 <span class="n_last_price" id="n_last_count"><p id="n_person_count">0</p><p>인</p></span>
                                 <span class="n_last_price" id="last_price"><p>총</p><p id="n_price">0</p><p>원</p></span>
-                                <input type="hidden" class="n_price" name="price" value="">
-                                <input type="hidden" class="n_person_count" name="count" value="">
+                                <input type="hidden" class="price" name="price" value="">
+                                <input type="hidden" class="personCount" name="count" value="">
+                                <input type="hidden" class="OnePrice" name="pricePerOnetime" value="${choiceDayDTO.pricePerOnetime}">
                             </div>
                         </button>
                     </form>

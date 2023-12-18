@@ -933,6 +933,7 @@ div.main i {
 }
 
 .k_funding_upload_first_title {
+    padding-top: 10px;
     font-size: 16px;
     font-weight: 600;
 }
@@ -958,6 +959,7 @@ div.main i {
 }
 
 .k_funding_upload_fund_titles {
+    padding-top: 10px;
     width: 162px;
     font-size: 16px;
     font-weight: 600;
@@ -988,17 +990,18 @@ div.main i {
     font-size: 14px;
     color: var(--font_01);
     max-width: 100%;
-    margin: auto;
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
 }
 
 .k_funding_upload_container_two textarea {
-    padding: 20px;
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
 .k_funding_upload_movie_name {
+    padding-left: 10px;
     width: 81%;
     height: 40px;
     border-radius: 5px;
@@ -1040,7 +1043,7 @@ div.main i {
     margin-left: 2%;
     width: 130px;
     height: 40px;
-    padding-left: 12px;
+    padding-left: 10px;
     font-size: 14px;
     border-radius: 5px;
     border: 0.5px solid var(--line_01);
@@ -1048,6 +1051,7 @@ div.main i {
 
 .k_funding_upload_movie_schedule {
     margin-left: 30px;
+    padding-top: 3px;
 }
 
 .k_funding_upload_container_three {
@@ -1072,6 +1076,7 @@ div.main i {
 }
 
 .k_funding_upload_sibnob {
+    cursor: inherit;
     width: 100%;
     height: 100px;
     border-radius: 5px;
@@ -1087,6 +1092,43 @@ div.main i {
     justify-content: center;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
+}
+
+.k_funding_upload_select_photo_pic2 {
+    background-color: var(--back_02);
+    height: 100px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.k_funding_thumbnail_style {
+    width: 105px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.k_funding_movie_pic_style {
+    width: 130px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.k_funding_movie_director_style {
+    width: 110px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+
+
+.k_funding_upload_label {
+    display: none;
 }
 
 .k_funding_upload_container_four {
@@ -1094,16 +1136,15 @@ div.main i {
     display: flex;
     margin: 10px 0;
     height: 98px;
+
 }
 
 .k_funding_upload_select_photo_pic_receive {
+    margin-right: 10px;
     background-color: var(--def_wh);
     border: 0.5px solid var(--line_01);
     height: 100px;
     width: 130px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -1115,26 +1156,30 @@ div.main i {
 }
 
 .k_funding_upload_career_input {
-    margin-left: 4.7%;
-    width: 61%;
+    margin-left: 5%;
+    margin-right: 100px;
+    width: 420px;
     height: 40px;
     font-size: 14px;
     padding-left: 10px;
     border-radius: 5px;
     border: 0.5px solid var(--line_01);
+    margin-bottom: 10px;
 }
 
 .k_funding_upload_movie_year {
-    margin-left: 40px;
+    width: 100%;
     height: 40px;
     font-size: 14px;
     padding-left: 10px;
     border-radius: 5px;
     border: 0.5px solid var(--line_01);
+    margin-bottom: 10px;
 
 }
 
 .k_funding_upload_head_limit {
+    width: 100%;
     opacity: 0.8;
     line-height: 1.4; /* 줄 간격 조정 */
     text-align: justify;
@@ -1145,7 +1190,7 @@ div.main i {
 }
 
 .k_funding_upload_career_input_two {
-    width: 72.5%;
+    width: 80%;
     height: 40px;
     margin-bottom: 2%;
     padding-left: 10px;
@@ -1221,5 +1266,163 @@ div.main i {
 .k_plus_button {
     border: none;
     background-color: transparent;
+    padding-right: 10px;
 }
 
+.k_minus_button {
+    border: none;
+    background-color: transparent;
+}
+
+.k_minus_img {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+}
+
+.k_padding_right70 {
+    padding-right: 70px;
+    white-space: nowrap; /* 글자가 넘칠 경우 줄바꿈 방지 */
+
+}
+
+.k_padding_bottom5{
+    padding-bottom: 5px;
+}
+
+.k_margin_bottom10{
+    padding-bottom: 10px;
+}
+
+.k_cm_margin_top43 {
+    margin-top: 43px;
+}
+
+.k_career_movie_style {
+    width: 100%;
+}
+
+.k_funding_upload_career_input:focus::placeholder {
+    color: transparent;
+}
+
+.k_funding_upload_movie_year:focus::placeholder {
+    color: transparent;
+}
+
+.k_funding_awards_movie_input {
+    padding-left: 10px;
+    margin-right: 70px;
+    width: 570px;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
+    margin-bottom: 10px;
+}
+
+.k_funding_genre_container {
+    max-width: 100%;
+    display: flex;
+    margin-top: 3%;
+}
+
+.k_funding_genre_select_option {
+    height: 40px;
+    width: 20%;
+    font-size: 14px;
+    padding: 0 10px;
+    border-color: var(--line_01);
+    border-radius: 5px;
+}
+
+.k_funding_genre_grade_title {
+    font-size: 16px;
+    font-weight: 600;
+    width: 19%;
+    margin-top: 5px;
+}
+
+.k_funding_make_year {
+    font-size: 16px;
+    font-weight: 600;
+    width: 14%;
+    margin-top: 5px;
+}
+
+.k_text_no_wrap {
+    white-space: nowrap; /* 글자가 넘칠 경우 줄바꿈 방지 */
+    padding-top: 3px;
+
+}
+
+.k_custom_select_option {
+    margin-left: 34px;
+    height: 40px;
+    width: 82%;
+    font-size: 14px;
+    padding: 0 10px;
+    border-color: var(--line_01);
+    border-radius: 5px;
+}
+
+.k_margin_top55{
+    margin-top: 55px;
+}
+
+.k_margin_production{
+    padding-left: 10px;
+    margin-left: 25%;
+    margin-top: 30px;
+}
+
+.k_funding_pic_title {
+    font-size: 16px;
+    font-weight: 600;
+    width: 50%;
+    margin-right: 37px;
+}
+
+.k_custom_margin {
+    margin-left: 30%;
+}
+.pic_wrap {
+    display: flex;
+}
+
+.grade_wrap {
+    display: flex;
+}
+
+.k_margin_production:focus::placeholder {
+    color: transparent;
+}
+
+.k_funding_make_year:focus::placeholder {
+    color: transparent;
+}
+
+#k_place_holder:focus::placeholder {
+    color: transparent;
+}
+
+.k_funding_awards_movie_input:focus::placeholder {
+    color: transparent;
+}
+
+.k_custom_flex {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.k_background_color {
+    background-color: var(--back_02);
+}
+
+.k_custom_button {
+    border: none;
+    background: transparent;
+    color: var(--def_wh);
+}
