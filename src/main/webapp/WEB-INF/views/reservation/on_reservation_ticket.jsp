@@ -60,7 +60,7 @@
                 <p>· 관람안내</p>
                 <p class="n_comment">- 구매하신 예매권은 온라인 상영관에서 언제든지 관람이 가능합니다.</p>
                 <p class="n_comment">- 관람 기간은 <strong>총 4일</strong>이며, <strong>온라인 상영 기간 내</strong>에 관람이 가능합니다.</p>
-                <p class="n_comment">- 관람 시작 기준은 처음 관람이 시작된 시간이며, 이후 4일이 지나면 자동으로 관람이 종료됩니다.</p>
+                <p class="n_comment">- 관람 시작 기준은 구매 시점이며, 이후 4일이 지나면 자동으로 관람이 종료됩니다.</p>
             </div>
         </div>
     </div>

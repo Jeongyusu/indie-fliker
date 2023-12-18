@@ -39,7 +39,7 @@
                                     <div class="l_chat_message col-md-10">
                                         <input type="text" class="l_chat_message_input" name="reply_comment" value=""
                                                placeholder="재미있게 보셨나요? 영화의 어떤 점이 좋았는지 이야기해주세요.">
-                                        <button type="submit" class="l_review_button">관람평쓰기</button>
+                                        <button type="button" class="l_review_button">관람평쓰기</button>
                                     </div>
                                 </div>
                                 <div id="l_review_container" class="l_chat_container">
@@ -50,6 +50,8 @@
                                                 <div class="l_text_container">
                                                     <div class="l_message_name">sksk</div>
                                                     <div class="l_message_text">hihihihihi</div>
+                                                    <input type="hidden" id="normalReviewId" value="">
+                                                    <input type="hidden" id="reviewUserId" value="">
                                                 </div>
                                             </div>
                                             <div class="dropdown l_dropdown_div">
@@ -57,8 +59,8 @@
                                                     <img src="/images/icons/menu.png">
                                                 </button>
                                                 <ul class="dropdown-menu">
-                                                    <li class="dropdown-item">Link 1</li>
-                                                    <li class="dropdown-item">Link 1</li>
+                                                    <li class="dropdown-item" id="reviewDelete">삭제하기</li>
+                                                    <li class="dropdown-item" id="reviewUpdate">수정하기</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -81,7 +83,7 @@
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                         <option value="4">4</option>
-                                        <option selected value="5">5</option>
+                                        <option value="5">5</option>
                                     </select>
                                 </div>
                                 <div class="l_participant d-flex align-items-center">
@@ -93,6 +95,8 @@
                                         <textarea class="l_commentary_input" placeholder="영화의 다양한 생각과 느낌을 전달해주세요."
                                         onkeydown="resize(this)" onkeyup="resize(this)"></textarea>
                                         <button type="submit" class="l_review_button">평론쓰기</button>
+                                        <input type="hidden" id="vipReviewId" value="">
+                                        <input type="hidden" id="vipReviewUserId" value="">
                                     </div>
                                 </div>
                                 <div id="l_commentary_container" class="l_chat_container">
@@ -181,7 +185,7 @@
                         </div>
                         <div class="toast-body">
                             <div class="h6 l_toast_h6">
-                                <a class="l_font_pupple">'그대들은 어떻게 살 것인가'</a><br/>
+                                <a class="l_font_pupple">'${onMovieDetailDTO.movieName}'</a><br/>
                                 감독님과 만나는 즐거운 시간
                             </div>
                             <div class="p l_toast_p">
@@ -192,7 +196,12 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" name="onlineEndDate" value="${onMovieDetailDTO.onlineEndDate}">
+            <input type="hidden" name="movieId" id="movieId" value="${onMovieDetailDTO.movieId}">
+            <input type="hidden" name="onlineEndDate" id="onlineEndDate" value="${onMovieDetailDTO.onlineEndDate}">
+            <input type="hidden" name="onlineEndDate" id="onlineReleaseDate" value="${onMovieDetailDTO.onlineReleaseDate}">
+            <input type="hidden" name="username" id="principalUsername" value="${principal.username}">
+            <input type="hidden" name="pic" id="principalPic" value="${principal.pic}">
+            <input type="hidden" name="username" id="principalId" value="${principal.id}">
             <a id="l_back_to_top">
                 <icon><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M11 8.414V18h2V8.414l4.293 4.293 1.414-1.414L12 4.586l-6.707 6.707 1.414 1.414z"></path></svg></icon>
             </a>

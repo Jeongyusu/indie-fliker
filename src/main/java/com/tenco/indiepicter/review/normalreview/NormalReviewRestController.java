@@ -27,15 +27,17 @@ public class NormalReviewRestController {
 
     // 댓글 등록(POST)
     @PostMapping("/api/save")
-    public ResponseEntity<?> saveToNormalReview(NormalReviewSaveDTO normalReviewSaveDTO) {
+    public ResponseEntity<?> saveToNormalReview(@RequestBody NormalReviewSaveDTO normalReviewSaveDTO) {
 //        User principal = (User) session.getAttribute(Define.PRINCIPAL);
+        System.out.println("여기아다다다!!!!!!!!!1" + normalReviewSaveDTO.getReviewContent());
+        System.out.println("여기아다다다!!!!!!!!!1" + normalReviewSaveDTO.getMovieId());
         int rowResultCount = normalReviewService.saveToNormalReview(normalReviewSaveDTO, 1);
         return ResponseEntity.ok().body(ApiUtils.success(rowResultCount));
     }
 
     // 댓글 삭제(POST)
     @PostMapping("/api/delete")
-    public ResponseEntity<?> deleteToNormalReview(NormalReviewDeleteDTO normalReviewDeleteDTO) {
+    public ResponseEntity<?> deleteToNormalReview(@RequestBody NormalReviewDeleteDTO normalReviewDeleteDTO) {
 //        User principal = (User) session.getAttribute(Define.PRINCIPAL);
         int rowResultCount = normalReviewService.deleteToNormalReview(normalReviewDeleteDTO, 1);
         return ResponseEntity.ok().body(ApiUtils.success(rowResultCount));
@@ -43,7 +45,7 @@ public class NormalReviewRestController {
 
     // 댓글 수정(POST)
     @PostMapping("/api/update")
-    public ResponseEntity<?> updateToNormalReview(NormalReviewUpdateDTO normalReviewUpdateDTO) {
+    public ResponseEntity<?> updateToNormalReview(@RequestBody NormalReviewUpdateDTO normalReviewUpdateDTO) {
 //        User principal = (User) session.getAttribute(Define.PRINCIPAL);
         int rowResultCount = normalReviewService.updateToNormalReview(normalReviewUpdateDTO, 1);
         return ResponseEntity.ok().body(ApiUtils.success(rowResultCount));

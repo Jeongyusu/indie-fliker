@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.tenco.indiepicter.review.vipreview.VipReview">
+<mapper namespace="com.tenco.indiepicter.review.vipreview.VipReviewRepository">
 
     <!-- vip 평론 등록 -->
     <insert id="insert">
@@ -27,7 +27,7 @@
     <!-- user_id, movie_id로 vip 평론 조회 -->
     <select id="findByUserIdAndMovieId" resultType="com.tenco.indiepicter.review.vipreview.VipReview">
         select * from vip_review_tb
-            where user_id = #{principalId} and movie_id = #{movieId} order by created_at desc
+            where user_id = #{principalId} and movie_id = #{movieId}
     </select>
 
     <!-- 좌석 전체 조회 -->
