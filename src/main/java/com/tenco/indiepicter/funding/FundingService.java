@@ -36,6 +36,4 @@ public class FundingService {
         return fundingRepository.findByFundingIdAboutOfflineMovie(fundingId);
     }
 
-
-
 }
