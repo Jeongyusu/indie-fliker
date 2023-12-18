@@ -149,6 +149,7 @@
     <select id="findBySelectFunding" resultMap="SelectFundingDTOResultMap">
         select
             ft.id as funding_id,
+            ft.price_per_onetime,
             mt.id as movie_id,
             mt.movie_name,
             mt.synopsis,
@@ -168,6 +169,7 @@
     </select>
     <resultMap id="SelectFundingDTOResultMap" type="com.tenco.indiepicter.funding.response.SelectFundingDTO">
         <result property="fundingId" column="funding_id"/>
+        <result property="pricePerOnetime" column="price_per_onetime"/>
         <result property="movieId" column="movie_id"/>
         <result property="movieName" column="movie_name"/>
         <result property="synopsis" column="synopsis"/>
@@ -179,5 +181,20 @@
         <result property="onlineReleaseDate" column="online_release_date"/>
         <result property="onlineEndDate" column="online_end_date"/>
     </resultMap>
+
+    <!-- 펀딩 조회하기 -->
+    <select id="findById" resultType="com.tenco.indiepicter.funding.Funding">
+        select * from funding_tb where id = #{fundingId}
+    </select>
+
+    <!-- 펀딩 누적 금액, 참여 인원 추가하기 -->
+    <update id="updateById">
+        UPDATE funding_tb
+        SET
+            present_price = #{addPresentPrice},
+            people_count = #{addPeopleCount}
+        WHERE
+            id = #{fundingId}
+    </update>
 
 </mapper>

@@ -87,7 +87,7 @@
                 INNER JOIN
             theater_tb AS t ON r.theater_id = t.id
         WHERE
-            r.id = 1;
+            r.id = #{runningDateId}
     </select>
     <resultMap id="selectRunningScheduleAndPlaceDTOResultMap" type="com.tenco.indiepicter.runningschedule.response.SelectRunningScheduleAndPlaceDTO">
         <result property="fundingId" column="funding_id"/>
@@ -123,13 +123,16 @@
             r.start_time,
             r.end_time,
             r.movie_id,
-            r.theater_id
+            r.theater_id,
+            f.price_per_onetime
         FROM
             running_schedule_tb AS r
-                INNER JOIN
-            movie_tb AS m ON r.movie_id = m.id
+                INNER JOIN movie_tb AS m
+                           ON r.movie_id = m.id
+                INNER JOIN funding_tb as f
+                           ON m.id = f.movie_id
         WHERE
-            r.id = #{runningScheduleid}
+            r.id = #{runningDateId}
     </select>
     <resultMap id="choiceDayDTOResult" type="com.tenco.indiepicter.runningschedule.response.ChoiceDayDTO">
         <result property="runningDateId" column="running_schedule_id"/>
@@ -141,6 +144,7 @@
         <result property="theaterId" column="theater_id"/>
         <result property="startTime" column="start_time"/>
         <result property="endTime" column="end_time"/>
+        <result property="pricePerOnetime" column="price_per_onetime"/>
     </resultMap>
 
     <!-- 오프라인 상영 일정 전체 조회 -->

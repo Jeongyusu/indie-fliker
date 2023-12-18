@@ -27,7 +27,7 @@
                                     <p class="n_title">· 온라인 상영 기간</p>
                                 </span>
                                 <span>
-                                    <p>${onReservationTicketDTO.formatToReleaseDate()} ~ ${selectFundingDTO.formatToEndDate()} </p>
+                                    <p>${onReservationTicketDTO.formatToReleaseDate()} ~ ${onReservationTicketDTO.formatToEndDate()} </p>
                                 </span>
                             </c:when>
                             <c:otherwise>

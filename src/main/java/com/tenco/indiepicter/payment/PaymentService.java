@@ -50,6 +50,7 @@ public class PaymentService {
     // 선택한 온라인 영화 상세 조회 = 온라인 펀딩 결제창
     public SelectFundingDTO onPayment(Integer movieId) {
         SelectFundingDTO responseDTO = fundingRepository.findBySelectFunding(movieId);
+
         return  responseDTO;
     }
 

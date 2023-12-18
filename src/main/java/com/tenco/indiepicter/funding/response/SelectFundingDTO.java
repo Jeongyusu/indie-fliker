@@ -1,5 +1,6 @@
 package com.tenco.indiepicter.funding.response;
 
+import com.tenco.indiepicter._core.utils.BalanceUtil;
 import com.tenco.indiepicter._core.utils.TimeStampUtil;
 import lombok.Data;
 
@@ -9,6 +10,7 @@ import java.sql.Timestamp;
 public class SelectFundingDTO {
 
     private Integer fundingId;
+    private Integer pricePerOnetime; // 펀딩 1개 또는 티켓 1개 금액
     private Integer movieId;
     private String movieName;
     private String synopsis;
@@ -29,6 +31,12 @@ public class SelectFundingDTO {
     }
     public String formatToEndDate () {
         return TimeStampUtil.timeStampToDate(onlineEndDate);
+    }
+
+
+    // 천 단위
+    public String formatToBalance (){
+        return BalanceUtil.formatBalance(pricePerOnetime);
     }
 
 }

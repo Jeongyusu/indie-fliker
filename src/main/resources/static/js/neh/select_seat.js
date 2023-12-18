@@ -3,7 +3,7 @@
 // 영화 상영 등급
 function onLoadImg(){
     let gradeImg = document.querySelector("#n_grade_img");
-    let runningGrade = document.querySelector("#n_runningGrade").value;
+    let runningGrade = document.querySelector("#runningGrade").value;
     let src = "";
     if(runningGrade === "전체 관람가"){
         src = "/images/icons/movie_level_all.png";
@@ -24,7 +24,7 @@ function count(type){
     let plusButton = document.querySelector("#n_plus_button");
     let count = document.querySelector(".n_count");
     let number = count.innerHTML; // 0
-    let clickedCount = document.querySelector("#n_clicked_seat_count");
+    let clickedCount = document.querySelector("#clickedSeatCount");
 
     // 총 관람 좌석 수
     let allSeatCount = 124;
@@ -81,7 +81,7 @@ let clicked = ""; // 선택한 자리가 있는 div를 담는 함수
 let div = ""; // 추가할 tag
 
 async function loadExistSeatList(){
-    let runningDateId = document.querySelector("#n_running_date_id").value;
+    let runningDateId = document.querySelector("#runningDateId").value;
     try {
         let response = await fetch(`/seat/api/exist-seat?runningDateId=${runningDateId}`, {
             method: "GET",
@@ -133,8 +133,8 @@ for(let i = 0; i < 10; i++) {
 
         input.addEventListener("click", function (e) {
             let wantCount = parseInt(document.querySelector(".n_count").innerHTML);
-            let clickedCount = document.querySelector("#n_clicked_seat_count");
-            let lastSelectSeatList = document.querySelector("#n_last_select_seat_list");
+            let clickedCount = document.querySelector("#clickedSeatCount");
+            let lastSelectSeatList = document.querySelector("#lastSelectSeatList");
 
             // 관람인원에 따른 코드 실행
             if(wantCount === 0) {
@@ -235,17 +235,17 @@ function selectedSeat(existSeatList) {
 ///////////////////////////////////////////////////////////////
 let ticketCount = document.querySelector("#n_person_count");
 let totalTicketPrice = document.querySelector("#n_price");
-let ticketCountValue = document.querySelector(".n_person_count");
-let totalTicketPriceValue = document.querySelector(".n_price");
-let ticketPrice = 8000;
+let ticketCountValue = document.querySelector(".personCount");
+let totalTicketPriceValue = document.querySelector(".price");
+let ticketPrice = document.querySelector(".OnePrice").value;
 
 function sumPrice(){
     // 티켓 값과 선택한 좌석 갯수
-    let sumTicketprice = clickedSeats.length * ticketPrice;
-    totalTicketPriceValue.value = sumTicketprice;
+    let sumTicketPrice = clickedSeats.length * ticketPrice;
+    totalTicketPriceValue.value = sumTicketPrice;
 
     // 총 금액, int -> String
-    let totalStringTicketPrice = sumTicketprice.toLocaleString(); // 숫자 -> 1,000
+    let totalStringTicketPrice = sumTicketPrice.toLocaleString(); // 숫자 -> 1,000
 
     // 최종 결제 금액
     if(clickedSeats.length <= 0){
@@ -293,7 +293,7 @@ let paymentButton = document.querySelector("#n_payment_button");
 let totalPrice = document.querySelector("#n_price");
 paymentButton.addEventListener("click", function (event){
     let wantCount = document.querySelector(".n_count").innerHTML;
-    let clickedCount = document.querySelector("#n_clicked_seat_count");
+    let clickedCount = document.querySelector("clickedSeatCount");
 
     if(wantCount > clickedCount.value){
         alert("관람인원만큼 좌석을 선택해주세요.");

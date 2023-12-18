@@ -79,7 +79,7 @@ function selectPay(radio){
 function pay(){
 
     // 결제 수단 미 선택 시
-    if(selectedPay === ""){
+    if(selectedPay.value === ""){
         alert("결제 수단을 선택해 주세요.");
         return;
     }
