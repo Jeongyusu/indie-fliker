@@ -13,13 +13,13 @@
 	
     <div class="p_noticedetail_main">
         <div class="p_noticedetail_title">
-            <h2>[서비스 안내] noticeTitle 안내</h2>
+            <h2>[서비스 안내] ${notice.noticeTitle} 안내</h2>
         </div>
     
         <div class="p_noticedetail_img">
-            <img src="" alt="">
+            <img src="/images/logo/IndieFliker.png" alt="">
             <p>Indiepicter</p>
-            <p>createdAt</p>
+            <p>${notice.createdAt}</p>
         </div>
         
         <div class="p_noticedetail_coment">
@@ -31,7 +31,7 @@
 
     <div class="p_noticedetail_contnet">
         <h3>공지 사항 내용</h3>
-        <p>content</p>
+        <p>${notice.content}</p>
     </div>
     
 </body>

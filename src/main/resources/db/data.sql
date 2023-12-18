@@ -401,3 +401,67 @@ insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_
 insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy2.jpg', 1);
 insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 1);
 
+insert into question_tb(question_title, content, category, created_at)
+values('회원 정보 변경은 어떻게 하나요?', '회원 정보 변경은 그냥 하면 됩니다.', '회원정보', now());
+insert into question_tb(question_title, content, category, created_at)
+values('회원 정보 변경은 어떻게 하나요?', '회원 정보 변경은 그냥 하면 됩니다.', '회원정보', now());
+insert into question_tb(question_title, content, category, created_at)
+values('회원 정보 변경은 어떻게 하나요?', '회원 정보 변경은 그냥 하면 됩니다.', '회원정보', now());
+insert into question_tb(question_title, content, category, created_at)
+values('회원 정보 변경은 어떻게 하나요?', '회원 정보 변경은 그냥 하면 됩니다.', '회원정보', now());
+insert into question_tb(question_title, content, category, created_at)
+values('회원 정보 변경은 어떻게 하나요?', '회원 정보 변경은 그냥 하면 됩니다.', '회원정보', now());
+insert into question_tb(question_title, content, category, created_at)
+values('회원 정보 변경은 어떻게 하나요?', '회원 정보 변경은 그냥 하면 됩니다.', '회원정보', now());
+
+insert into question_tb(question_title, content, category, created_at)
+values('결제는 어떻게 하나요?', '결제는 그냥 하면 됩니다.', '결제', now());
+insert into question_tb(question_title, content, category, created_at)
+values('결제는 어떻게 하나요?', '결제는 그냥 하면 됩니다.', '결제', now());
+insert into question_tb(question_title, content, category, created_at)
+values('결제는 어떻게 하나요?', '결제는 그냥 하면 됩니다.', '결제', now());
+insert into question_tb(question_title, content, category, created_at)
+values('결제는 어떻게 하나요?', '결제는 그냥 하면 됩니다.', '결제', now());
+insert into question_tb(question_title, content, category, created_at)
+values('결제는 어떻게 하나요?', '결제는 그냥 하면 됩니다.', '결제', now());
+insert into question_tb(question_title, content, category, created_at)
+values('결제는 어떻게 하나요?', '결제는 그냥 하면 됩니다.', '결제', now());
+
+insert into question_tb(question_title, content, category, created_at)
+values('취소/환불는 어떻게 하나요?', '취소/환불은 그냥 하면 됩니다.', '취소/환불', now());
+insert into question_tb(question_title, content, category, created_at)
+values('취소/환불는 어떻게 하나요?', '취소/환불은 그냥 하면 됩니다.', '취소/환불', now());
+insert into question_tb(question_title, content, category, created_at)
+values('취소/환불는 어떻게 하나요?', '취소/환불은 그냥 하면 됩니다.', '취소/환불', now());
+insert into question_tb(question_title, content, category, created_at)
+values('취소/환불는 어떻게 하나요?', '취소/환불은 그냥 하면 됩니다.', '취소/환불', now());
+insert into question_tb(question_title, content, category, created_at)
+values('취소/환불는 어떻게 하나요?', '취소/환불은 그냥 하면 됩니다.', '취소/환불', now());
+insert into question_tb(question_title, content, category, created_at)
+values('취소/환불는 어떻게 하나요?', '취소/환불은 그냥 하면 됩니다.', '취소/환불', now());
+
+insert into question_tb(question_title, content, category, created_at)
+values('영화예매는 어떻게 하나요?', '영화예매는 그냥 하면 됩니다.', '영화예매', now());
+insert into question_tb(question_title, content, category, created_at)
+values('영화예매는 어떻게 하나요?', '영화예매는 그냥 하면 됩니다.', '영화예매', now());
+insert into question_tb(question_title, content, category, created_at)
+values('영화예매는 어떻게 하나요?', '영화예매는 그냥 하면 됩니다.', '영화예매', now());
+insert into question_tb(question_title, content, category, created_at)
+values('영화예매는 어떻게 하나요?', '영화예매는 그냥 하면 됩니다.', '영화예매', now());
+insert into question_tb(question_title, content, category, created_at)
+values('영화예매는 어떻게 하나요?', '영화예매는 그냥 하면 됩니다.', '영화예매', now());
+insert into question_tb(question_title, content, category, created_at)
+values('영화예매는 어떻게 하나요?', '영화예매는 그냥 하면 됩니다.', '영화예매', now());
+
+insert into question_tb(question_title, content, category, created_at)
+values('VIP는 어떻게 하나요?', 'VIP는 그냥 하면 됩니다.', 'VIP', now());
+insert into question_tb(question_title, content, category, created_at)
+values('VIP는 어떻게 하나요?', 'VIP는 그냥 하면 됩니다.', 'VIP', now());
+insert into question_tb(question_title, content, category, created_at)
+values('VIP는 어떻게 하나요?', 'VIP는 그냥 하면 됩니다.', 'VIP', now());
+insert into question_tb(question_title, content, category, created_at)
+values('VIP는 어떻게 하나요?', 'VIP는 그냥 하면 됩니다.', 'VIP', now());
+insert into question_tb(question_title, content, category, created_at)
+values('VIP는 어떻게 하나요?', 'VIP는 그냥 하면 됩니다.', 'VIP', now());
+insert into question_tb(question_title, content, category, created_at)
+values('VIP는 어떻게 하나요?', 'VIP는 그냥 하면 됩니다.', 'VIP', now());
