@@ -15,14 +15,15 @@ import java.util.List;
 
 @Slf4j
 @Service
+@Transactional
 public class ScrabService {
 
     @Autowired
     private ScrabRepository scrabRepository;
 
 
+    // 좋아요
 
-    @Transactional
     public boolean toggleScrab(Integer userId, Integer fundingId) {
         Integer scrabExists = scrabRepository.isScrabExists(userId, fundingId);
         if (scrabExists != null) {
@@ -45,14 +46,15 @@ public class ScrabService {
     }
 
 
-
+    // 좋아요 유무
     public boolean checkIsLiked(Integer userId, Integer fundingId) {
         Integer scrabExists = scrabRepository.isScrabExists(userId, fundingId);
         return scrabExists != null;
 
     }
 
-    @Transactional
+    // 좋아요 list api
+
     public List<ScrabResponseDTO> scrabview(Integer userId) {
         List<ScrabResponseDTO> scrabs = scrabRepository.viewScrabList(userId);
 
@@ -63,27 +65,12 @@ public class ScrabService {
         return scrabs;
     }
 
-//    public List<ScrabDTO> LikeList(Integer userId) {
-//
-//        List<ScrabResponseDTO> scrabs = scrabRepository.viewScrabList(userId);
-//
-//
-//        List<ScrabDTO> scrabDTOList = new ArrayList<>();
-//        for (ScrabResponseDTO scrab : scrabs) {
-//            ScrabDTO scrabDTO = new ScrabDTO(
-//                    scrab.getFundingId(),
-//                    scrab.getThumbnail(),
-//                    scrab.getTargetPrice(),
-//                    scrab.getPresentPrice(),
-//                    scrab.getMovieName(),
-//                    scrab.getSynopsis(),
-//                    scrab.getProduction()
-//            );
-//            scrabDTO.calculateAndSetAchievementRate();
-//            scrabDTOList.add(scrabDTO);
-//        }
-//
-//        return scrabDTOList;
-//    }
+    // 좋아요 리스트 삭제용 api
+    public boolean deleteListScrab(Integer userId, Integer fundingId) {
+        boolean scrabExists = scrabRepository.deleteListScrab(userId, fundingId);
+        return scrabExists;
+    }
+
+
 
 }
