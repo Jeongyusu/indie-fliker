@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class NormalReviewUpdateDTO {
-    private String content;
+    private String reviewContent;
     private Integer normalReviewId;
     private Integer movieId;
 }

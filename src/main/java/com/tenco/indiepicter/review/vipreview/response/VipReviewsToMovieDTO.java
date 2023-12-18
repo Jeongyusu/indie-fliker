@@ -1,4 +1,4 @@
-package com.tenco.indiepicter.review.normalreview.response;
+package com.tenco.indiepicter.review.vipreview.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class NormalReviewsToMovieDTO {
+public class VipReviewsToMovieDTO {
     private Integer normalReviewId;
-    private String reviewContent;
+    private Integer vipReviewPoint;
+    private String vipReviewContent;
     private Integer userId;
     private String userPic;
     private String username;
