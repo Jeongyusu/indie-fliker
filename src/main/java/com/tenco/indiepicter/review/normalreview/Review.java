@@ -13,14 +13,14 @@ public class Review {
     private String content;
     private Timestamp createdAt;
     private Integer userId;
-    private Integer fundingId;
+    private Integer movieId;
 
     @Builder
-    public Review(Integer id, String content, Timestamp createdAt, Integer userId, Integer fundingId) {
+    public Review(Integer id, String content, Timestamp createdAt, Integer userId, Integer movieId) {
         this.id = id;
         this.content = content;
         this.createdAt = createdAt;
         this.userId = userId;
-        this.fundingId = fundingId;
+        this.movieId = movieId;
     }
 }

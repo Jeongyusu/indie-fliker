@@ -22,5 +22,41 @@
                                                                                     #{onlineEndDate}, #{offlineReleaseDate}, #{offlineEndDate}, #{dDay})
     </insert>
 
+    <!-- 온라인 상영 영화 정보 및 무비 파일 조회 -->
+    <select id="findByMovieIdToMovie" resultMap="OnMovieDetailDTOResultMap">
+        select
+            ft.id as funding_id,
+            mt.id as movie_id,
+            mt.movie_name,
+            mt.thumbnail,
+            mt.director,
+            mt.genre,
+            mt.running_grade,
+            mt.online_release_date,
+            mt.online_end_date,
+            mt.synopsis,
+            mft.path as movie_path
+        from movie_tb as mt
+                 inner join movie_file_tb as mft
+                            on mt.id = mft.movie_id
+                 inner join funding_tb as ft
+                            on mt.id = ft.movie_id
+        where
+            mt.id = #{movieId}
+    </select>
+    <resultMap id="OnMovieDetailDTOResultMap" type="com.tenco.indiepicter.movie.response.OnMovieDetailDTO">
+        <result property="fundingId" column="funding_id"/>
+        <result property="movieId" column="movie_id"/>
+        <result property="thumbnail" column="thumbnail"/>
+        <result property="director" column="director"/>
+        <result property="runningGrade" column="running_grade"/>
+        <result property="genre" column="genre"/>
+        <result property="onlineReleaseDate" column="online_release_date"/>
+        <result property="onlineEndDate" column="online_end_date"/>
+        <result property="moviePath" column="movie_path"/>
+        <result property="synopsis" column="synopsis"/>
+        <result property="moviePath" column="movie_path"/>
+    </resultMap>
+
 
 </mapper>

@@ -28,6 +28,7 @@
 
 #l_movie_on_watch video{
     width: 100%;
+    height: 573px;
 }
 
 #l_movie_mini_info{
@@ -364,6 +365,36 @@
     background-color: transparent;
 }
 
+.l_review_set_button  {
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0em;
+    vertical-align: 0em;
+    content: "";
+    border-top: 0em solid;
+    border-right: 0em solid transparent;
+    border-bottom: 0;
+    border-left: 0em solid transparent;
+}
+
+.l_dropdown_div {
+    display: flex;
+}
+
+.l_dropdown_ul {
+    text-align: center;
+    cursor: pointer;
+    --bs-dropdown-link-active-bg: var(--primary_01);
+    font-size: 15px;
+    display: none;
+}
+
+
 .l_chatbar {
     position: fixed; 
     bottom: 0; 
@@ -480,7 +511,10 @@
 
 #l_poster {
     max-width: 250px;
-    margin-bottom: 196px;
+    margin-bottom: 45px;
+    display: flex;
+    align-items: center;
+    padding: 14px 0;
 }
 
 .l_toast_show {

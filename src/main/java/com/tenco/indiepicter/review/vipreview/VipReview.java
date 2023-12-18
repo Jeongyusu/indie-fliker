@@ -14,15 +14,15 @@ public class VipReview {
     private Timestamp createdAt;
     private Integer point;
     private Integer userId;
-    private Integer fundingId;
+    private Integer movieId;
 
     @Builder
-    public VipReview(Integer id, String content, Timestamp createdAt, Integer point, Integer userId, Integer fundingId) {
+    public VipReview(Integer id, String content, Timestamp createdAt, Integer point, Integer userId, Integer movieId) {
         this.id = id;
         this.content = content;
         this.createdAt = createdAt;
         this.point = point;
         this.userId = userId;
-        this.fundingId = fundingId;
+        this.movieId = movieId;
     }
 }

@@ -22,19 +22,19 @@ public class OrderService {
 
     // 오프라인/온라인 예매 주문 정보 등록
     @Transactional
-    public int saveOrder(LastOrderDTO lastOrderDTO, Integer principalId) {
+    public int saveOrder(LastOrderDTO requestDTO, Integer principalId) {
 
-        Reservation reservation = reservationRepository.findByReservationCode(lastOrderDTO.getReservationCode());
+        Reservation reservation = reservationRepository.findByReservationCode(requestDTO.getReservationCode());
 
         if(reservation == null){
             throw new MyDynamicException("예매 내역을 찾을 수 없습니다.",HttpStatus.BAD_REQUEST);
         }
 
         Order order = Order.builder()
-                .selectedSeats(lastOrderDTO.getSeatNames())
-                .productPrice(lastOrderDTO.getUnitPrice())
-                .quantity(lastOrderDTO.getTotalCount())
-                .fundingId(lastOrderDTO.getFundingId())
+                .selectedSeats(requestDTO.getSeatNames())
+                .productPrice(requestDTO.getUnitPrice())
+                .quantity(requestDTO.getTotalCount())
+                .fundingId(requestDTO.getFundingId())
                 .userId(principalId)
                 .reservationId(reservation.getId())
                 .build();

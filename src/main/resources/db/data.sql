@@ -401,6 +401,10 @@ insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_
 insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy2.jpg', 1);
 insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 1);
 
+
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('스트리머', '/movies/streamer.mp4', 'streamer', '2D', false, 'mp4', '2.32MB', 1);
+
 insert into question_tb(question_title, content, category, created_at)
 values('회원 정보 변경은 어떻게 하나요?', '회원 정보 변경은 그냥 하면 됩니다.', '회원정보', now());
 insert into question_tb(question_title, content, category, created_at)
