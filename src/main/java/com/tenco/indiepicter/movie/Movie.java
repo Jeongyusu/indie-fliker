@@ -4,13 +4,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Getter
 @NoArgsConstructor
 public class Movie {
     private Integer id;
-    private Integer makeYear;
+    private String makeYear;
     private String production;
     private String movieName;
     private String synopsis;
@@ -23,14 +25,14 @@ public class Movie {
     private String actor;
     private String directorCareers;
     private String directorAwardsFilm;
-    private Timestamp onlineReleaseDate;
-    private Timestamp onlineEndDate;
-    private Timestamp offlineReleaseDate;
-    private Timestamp offlineEndDate;
-    private Timestamp dDay;
+    private LocalDate onlineReleaseDate;
+    private LocalDate onlineEndDate;
+    private LocalDate offlineReleaseDate;
+    private LocalDate offlineEndDate;
+    private LocalDate dDay;
 
     @Builder
-    public Movie(Integer id, Integer makeYear, String production, String movieName, String synopsis, String thumbnail, String directingIntension, String genre, String runningGrade, String director, String directorPic, String actor, String directorCareers, String directorAwardsFilm, Timestamp onlineReleaseDate, Timestamp onlineEndDate, Timestamp offlineReleaseDate, Timestamp offlineEndDate, Timestamp dDay) {
+    public Movie(Integer id, String makeYear, String production, String movieName, String synopsis, String thumbnail, String directingIntension, String genre, String runningGrade, String director, String directorPic, String actor, String directorCareers, String directorAwardsFilm, LocalDate onlineReleaseDate, LocalDate onlineEndDate, LocalDate offlineReleaseDate, LocalDate offlineEndDate, LocalDate dDay) {
         this.id = id;
         this.makeYear = makeYear;
         this.production = production;

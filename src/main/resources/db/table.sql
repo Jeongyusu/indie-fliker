@@ -209,6 +209,15 @@ create table notice_tb(
                           created_at datetime not null default now()
 );
 
+create table question_tb(
+                          id int auto_increment primary key,
+                          question_title varchar(20) not null,
+                          content varchar(200) not null,
+                          category varchar(20) not null,
+                          created_at datetime not null default now()
+);
+
+
 
 
 create table banner_tb(
