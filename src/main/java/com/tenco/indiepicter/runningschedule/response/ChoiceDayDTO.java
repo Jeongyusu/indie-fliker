@@ -33,11 +33,13 @@ public class ChoiceDayDTO {
 
     // HH:mm
     public String formatToStartTime (){
+
         return TimeStampUtil.timeToSubstring(startTime);
     }
 
     // HH:mm
     public String formatToEndTime (){
+
         return TimeStampUtil.timeToSubstring(endTime);
     }
 }
