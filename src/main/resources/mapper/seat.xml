@@ -21,7 +21,7 @@
 
     <!-- 상영시간과 유저에 따른 좌석 목록 조회 -->
     <select id="findByRunningDateIdAndUserId" resultType="com.tenco.indiepicter.seat.Seat">
-        select * from Seat_tb where running_schedule_id = #{runningDateId} and user_id = #{principalId}
+        select * from Seat_tb where running_schedule_id = #{runningDateId} and user_id = #{principalId} order by id desc limit 1
     </select>
 
     <!-- 좌석 전체 조회 -->
