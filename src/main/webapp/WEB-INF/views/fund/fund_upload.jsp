@@ -3,7 +3,7 @@
 <%@ include file="../layout/header.jsp" %>
 <form action="/save" method="post" enctype="multipart/form-data">
 <div class="k_funding_save">
-    <button type="submit">
+    <button type="submit" class="k_custom_button">
     <p>펀딩 등록하기</p>
     </button>
 </div>
@@ -70,6 +70,32 @@
             <input id="k_place_holder" type="text" class="k_funding_upload_schedule_date" placeholder="제작년도" name="makeYear">
         </div>
 
+        <div class="k_funding_genre_container">
+            <div class="k_funding_genre_grade_title">펀딩 목표금액<span class="k_star_class">*</span></div>
+            <select class="k_funding_genre_select_option" name="targetPrice">
+                <option value="50000000">5천만원</option>
+                <option value="100000000">1억원</option>
+                <option value="150000000">1억 5천만원</option>
+                <option value="200000000">2억원</option>
+                <option value="250000000">2억 5천만원</option>
+                <option value="300000000">3억원</option>
+                <option value="350000000">3억 5천만원</option>
+                <option value="400000000">4억원</option>
+                <option value="450000000">4억 5천만원</option>
+                <option value="500000000">5억원</option>
+
+
+
+            </select>
+
+            <div class="k_funding_make_year k_funding_upload_movie_schedule">1회 펀딩금액
+                <span class="k_star_class">*</span>
+            </div>
+            <input type="text" class="k_funding_upload_schedule_date k_background_color" name="pricePerOnetime" value="8000" onclick="handleClick(this);" readonly>
+
+        </div>
+
+
 
         <div class="k_margin_top">
             <div class="k_funding_upload_container_two">
@@ -78,8 +104,7 @@
                 </div>
             </div>
             <div class="k_funding_upload_container_two">
-                <textarea class="k_funding_upload_sibnob" name="synopsis">
-                </textarea>
+                <textarea class="k_funding_upload_sibnob" name="synopsis"></textarea>
             </div>
         </div>
         <div class="k_margin_top">
@@ -89,8 +114,7 @@
                 </div>
             </div>
             <div class="k_funding_upload_container_two">
-                <textarea class="k_funding_upload_sibnob" name="directingIntension">
-                </textarea>
+                <textarea class="k_funding_upload_sibnob" name="directingIntension"></textarea>
             </div>
         </div>
         <div class="k_margin_top">
@@ -253,6 +277,11 @@
     </div>
   </div>
 </div>
+    <div class="k_funding_save">
+        <button type="submit" class="k_custom_button">
+            <p>펀딩 등록하기</p>
+        </button>
+    </div>
 </form>
 
 <script>
@@ -513,6 +542,9 @@
         actorCount--;
     }
 
+    function handleClick(element) {
+        alert('변경 불가능한 값입니다.');
+    }
 
 
 </script>

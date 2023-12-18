@@ -9,6 +9,8 @@ import java.util.List;
 
 @Data
 public class FundingSaveDTO {
+    private Integer targetPrice;
+    private Integer pricePerOnetime;
     private MultipartFile movieThumbnail; //체크
     private String movieTitle; // 체크
     private String production; //
