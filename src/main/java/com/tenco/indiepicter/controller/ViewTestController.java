@@ -93,10 +93,6 @@ public class ViewTestController {
         return "main/live_chatrooms";
     }
 
-    @GetMapping("/my-likelist")
-    public String likelist() {
-        return "mypage/likelist";
-    }
 
     @GetMapping("/offline-funding")
     public String offlineFunding() {
