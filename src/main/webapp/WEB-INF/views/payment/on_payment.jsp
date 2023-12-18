@@ -55,7 +55,7 @@
                     </br>
                     </br>
                     <span id="n_select_price">
-                        <p id="n_ticket_price">8,000</p>
+                        <p id="n_ticket_price">${selectFundingDTO.formatToBalance()}</p>
                         <p>원</p></span>
                 </div>
                 <div class="n_donation">

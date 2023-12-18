@@ -5,6 +5,7 @@ import com.tenco.indiepicter.banner.BannerService;
 import com.tenco.indiepicter.funding.request.FundingSaveDTO;
 import com.tenco.indiepicter.funding.response.*;
 import com.tenco.indiepicter.movie.MovieService;
+import com.tenco.indiepicter.order.response.LastOrderDTO;
 import com.tenco.indiepicter.scrab.ScrabService;
 import com.tenco.indiepicter.theater.TheaterService;
 import com.tenco.indiepicter.user.User;
@@ -20,6 +21,7 @@ import java.util.List;
 
 @Slf4j
 @Controller
+@RequestMapping("/fund")
 public class FundingController {
     @Autowired
     private HttpSession session;
@@ -83,4 +85,5 @@ public class FundingController {
         movieService.saveMovie(requestDTO);
         return "성공";
     }
+
 }

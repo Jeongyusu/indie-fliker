@@ -33,4 +33,10 @@ public interface FundingRepository {
 
     // 선택한 온라인 영화 상세 조회 = 온라인 펀딩 결제창
     public SelectFundingDTO findBySelectFunding(Integer movieId);
+
+    // 펀딩 조회하기
+    public Funding findById(Integer fundingId);
+
+    // 펀딩 누적 금액, 참여 인원 추가하기
+    public int updateById(@Param("fundingId") Integer fundingId, @Param("addPresentPrice") Integer addPresentPrice, @Param("addPeopleCount") Integer addPeopleCount);
 }
