@@ -149,15 +149,15 @@ create table reservation_tb(
                                reservation_code varchar(50) not null,
                                reservated_at datetime not null default now(),
                                user_id int not null,
-                               seat_id int not null,
+                               seat_id int,
                                foreign KEY(user_id) references user_tb(id),
                                foreign KEY(seat_id) references seat_tb(id)
 );
 
 create table order_tb(
                          id int auto_increment primary key,
-                         selected_seats varchar(200) not null,
-                         product_price int not null,
+                         selected_seats varchar(200),
+                         product_price int,
                          quantity int not null,
                          funding_id int not null,
                          user_id int not null,
@@ -208,6 +208,15 @@ create table notice_tb(
                           category varchar(20) not null,
                           created_at datetime not null default now()
 );
+
+create table question_tb(
+                          id int auto_increment primary key,
+                          question_title varchar(20) not null,
+                          content varchar(200) not null,
+                          category varchar(20) not null,
+                          created_at datetime not null default now()
+);
+
 
 
 

@@ -8,11 +8,11 @@ function onLoadImg(){
     let gradeImg = document.querySelector("#n_grade_img_on");
     let runningGrade = document.querySelector("#n_runningGrade").value;
     let src = "";
-    if(runningGrade == "전체 관람가"){
+    if(runningGrade === "전체 관람가"){
         src = "/images/icons/movie_level_all.png";
-    }else if(runningGrade == "12세 이상 관람가"){
+    }else if(runningGrade === "12세 이상 관람가"){
         src = "/images/icons/movie_level_12.png";
-    }else if(runningGrade == "15세 이상 관람가"){
+    }else if(runningGrade === "15세 이상 관람가"){
         src = "/images/icons/movie_level_15.png";
     }else {
         src = "/images/icons/movie_level_19.png";
@@ -28,15 +28,15 @@ function inputDonation(){
 
     // String -> int
     let ticketIntPrice = parseInt(ticket_price.replace(/,/g, '')); // 8,000 -> 숫자
-    let inputIntprice = parseInt(inputDonationPrice);
+    let inputIntPrice = parseInt(inputDonationPrice);
 
     // 펀딩금 + 후원금, int -> String
-    let totalIntPrice = ticketIntPrice + inputIntprice; // 숫자
+    let totalIntPrice = ticketIntPrice + inputIntPrice; // 숫자
     let totalStringPrice = totalIntPrice.toLocaleString(); // 숫자 -> 1,000
 
     // 최종 결제 금액
     let totalPrice = document.querySelector("#n_total_price");
-    if(inputDonationPrice == 0){
+    if(inputDonationPrice === 0){
         totalPrice.innerHTML = ticket_price;
     }else{
         totalPrice.innerHTML = totalStringPrice;
@@ -50,20 +50,15 @@ let movieId = document.querySelector("#n_movie_id").value;
 function selectPay(radio){
     selectedPay = radio.value;
     console.log("선택됨");
+    pay(selectedPay);
 }
 
 // 선택한 결제 실행 버튼
-function pay(){
+function pay(selectedPay){
+    console.log("결제 시작!! " + selectedPay);
 
-    // 결제 수단 미 선택 시
-    if(selectedPay.innerHTML == ""){
-        alert("결제 수단을 선택해 주세요.");
-        return;
-    }
-
-    let totalPay = document.querySelector("#n_price").innerHTML;
-    let totalPayInt = parseFloat(totalPay.replace(/,/g, ''));
-
+    let totalPrice = document.querySelector("#n_total_price").innerHTML; // 8,000
+    let totalPayInt = parseFloat(totalPrice.replace(/,/g, ''));
     let reservationCode = document.querySelector("#reservationCode").value;
     let paymentType = document.querySelector("#paymentTypeId").value;
 
@@ -79,14 +74,14 @@ function pay(){
     console.log("결제가격 : " + totalPayInt);
 
     reservationCode = merchantUid;
-    console.log("예매번호 : " + reservationCode);
+    console.log("주문번호 : " + reservationCode);
 
     // 결제 수단 선택
-    if(selectedPay == "1"){
+    if(selectedPay === "1"){
         kakaoPay(merchantUid, totalPayInt, selectedPay, userEmail, username, userTel);
-    }else if(selectedPay == "2"){
+    }else if(selectedPay === "2"){
         payco(merchantUid, totalPayInt, selectedPay, userEmail, username, userTel);
-    }else if(selectedPay == "3"){
+    }else if(selectedPay === "3"){
         kgPay(merchantUid, totalPayInt, selectedPay, userEmail, username, userTel);
     }
 
@@ -104,7 +99,7 @@ function kakaoPay(merchantUid, totalPayInt, selectedPay, userEmail, username, us
         pg: "kakaopay.TC0ONETIME", // 상점CID
         pay_method: "card", // 생략가
         merchant_uid: merchantUid, // 상점에서 생성한 고유 주문번호
-        name: "오프라인 영화 티켓",
+        name: "온라인 영화 티켓",
         amount: totalPayInt,
         buyer_email: userEmail,
         buyer_name: username,
@@ -126,7 +121,7 @@ function payco(merchantUid, totalPayInt, selectedPay, userEmail, username, userT
     IMP.request_pay({
         pg : 'payco',
         merchant_uid: merchantUid,
-        name : '오프라인 영화 티켓',
+        name: "온라인 영화 티켓",
         amount : totalPayInt,
         buyer_email : userEmail,
         buyer_name : username,
@@ -149,7 +144,7 @@ function kgPay(merchantUid, totalPayInt, selectedPay, userEmail, username, userT
         pg : 'html5_inicis.INIBillTst',
         pay_method : 'card',
         merchant_uid: merchantUid,
-        name : '오프라인 영화 티켓',
+        name: "온라인 영화 티켓",
         amount : totalPayInt,
         buyer_email : userEmail,
         buyer_name : username,
@@ -166,10 +161,7 @@ function kgPay(merchantUid, totalPayInt, selectedPay, userEmail, username, userT
 
 function postRequest(merchantUid, selectedPay){
     let discountPrice = document.querySelector("#discountPrice").value;
-    let seatNames = document.querySelector("#SeatNames").value;
-    let runningDateId = document.querySelector("#runningDateId").value;
-    let unitPrice = document.querySelector("#unitPrice").value;
-    let totalPay = document.querySelector("#n_price").innerHTML;
+    let totalPay = document.querySelector("#n_total_price").innerHTML;
     let finalPayInt = parseFloat(totalPay.replace(/,/g, ''));
     let totalCount = document.querySelector("#totalCount").value;
     let fundingId = document.querySelector("#fundingId").value;
@@ -181,9 +173,6 @@ function postRequest(merchantUid, selectedPay){
     console.log("merchantUid : " + merchantUid);
     console.log("discountPrice : " + discountPrice);
     console.log("paymentTypeId : " + paymentTypeId);
-    console.log("seatNames : " + seatNames);
-    console.log("runningDateId : " + runningDateId);
-    console.log("unitPrice : " + unitPrice);
     console.log("finalPrice : " + finalPrice);
     console.log("totalCount : " + totalCount);
     console.log("fundingId : " + fundingId);
@@ -193,9 +182,6 @@ function postRequest(merchantUid, selectedPay){
         reservationCode: reservationCode,
         discountPrice: discountPrice,
         paymentTypeId: paymentTypeId,
-        seatNames: seatNames,
-        runningDateId: runningDateId,
-        unitPrice: unitPrice,
         finalPrice: finalPrice,
         totalCount: totalCount,
         fundingId: fundingId,
@@ -208,7 +194,7 @@ function postRequest(merchantUid, selectedPay){
 
 async function savePayment(movieId, dto) {
     try {
-        let response = await fetch(`/payment/${movieId}/save`, {
+        let response = await fetch(`/payment/${movieId}/on-save`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -230,7 +216,7 @@ async function savePayment(movieId, dto) {
 
 async function selectReservationId(movieId) {
     try {
-        let response = await fetch(`/api/reservation`, {
+        let response = await fetch(`/reservation/api/reservation-id`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -245,7 +231,7 @@ async function selectReservationId(movieId) {
             reservationId = reservationIdDTO.reservationId;
 
             // 티켓 화면 GET 요청
-            offReservationTicket(movieId, reservationId);
+            onReservationTicket(movieId, reservationId);
 
         } else {
             console.error("실패", response.statusText);
@@ -256,11 +242,11 @@ async function selectReservationId(movieId) {
 }
 
 
-async function offReservationTicket(movieId, reservationId) {
+async function onReservationTicket(movieId, reservationId) {
     console.log("reservationId" + reservationId);
 
     try {
-        let response = await fetch(`/reservation/${movieId}/off-ticket?reservationId=${reservationId}`, {
+        let response = await fetch(`/reservation/${movieId}/on-ticket?reservationId=${reservationId}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -271,7 +257,7 @@ async function offReservationTicket(movieId, reservationId) {
             console.log("이동");
             console.log("movieId" + movieId);
             console.log("reservationId" + reservationId);
-            window.location.href = `/reservation/${movieId}/off-ticket?reservationId=${reservationId}`; // 예시: 성공 페이지 URL
+            window.location.href = `/reservation/${movieId}/on-ticket?reservationId=${reservationId}`; // 예시: 성공 페이지 URL
         } else {
             console.error("실패", response.statusText);
         }

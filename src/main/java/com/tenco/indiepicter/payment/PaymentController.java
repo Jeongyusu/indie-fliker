@@ -1,5 +1,6 @@
 package com.tenco.indiepicter.payment;
 
+import com.tenco.indiepicter.funding.response.SelectFundingDTO;
 import com.tenco.indiepicter.order.OrderService;
 import com.tenco.indiepicter.order.response.LastOrderDTO;
 import com.tenco.indiepicter.reservation.ReservationService;
@@ -48,12 +49,12 @@ public class PaymentController {
 			
 		// 세션에 로그인 정보 저장
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-		
+
 		if(principal == null) {
 			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
 		}
 		
-		List<MyOnlinePaymentDTO> MyOnlinePaymentDTOLists =  this.paymentService.findByOnlinePaymentId(principal.getId());
+		List<MyOnlinePaymentDTO> MyOnlinePaymentDTOLists =  this.paymentService.findByOnlinePaymentId(1);
 		
 		model.addAttribute("MyOnlinePaymentDTOLists", MyOnlinePaymentDTOLists);
 		
@@ -91,9 +92,9 @@ public class PaymentController {
 			throw new MyDynamicException("결제할 금액이 없습니다. 좌석 먼저 선택해 주세요.", HttpStatus.BAD_REQUEST);
 		}
 
-		SelectRunningScheduleAndPlaceDTO selectDTO = paymentService.offPayment(selectSeatDTO);
+		SelectRunningScheduleAndPlaceDTO selectRunningScheduleAndPlaceDTO = paymentService.offPayment(selectSeatDTO);
 
-        model.addAttribute("selectDTO", selectDTO);
+        model.addAttribute("selectRunningScheduleAndPlaceDTO", selectRunningScheduleAndPlaceDTO);
 		model.addAttribute("principal", principal);
 		return "payment/off_payment";
     }
@@ -101,13 +102,19 @@ public class PaymentController {
 	// 온라인 결제 페이지 요청(GET)
 	@GetMapping("/{movieId}/on")
 	public String onPayment(@PathVariable Integer movieId, Model model){
+		// 유저 확인
+		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+
+		SelectFundingDTO selectFundingDTO = paymentService.onPayment(1);
+		model.addAttribute("selectFundingDTO", selectFundingDTO);
+		model.addAttribute("principal", principal);
 		return "payment/on_payment";
 	}
 
 
 	// 오프라인 결제 정보 저장(POST)
 	// seat, order, reservation, payment => post
-	@PostMapping("/{movieId}/save")
+	@PostMapping("/{movieId}/off-save")
 	public String offPaymentProc(@RequestBody LastOrderDTO lastOrderDTO){
 		// 유저정보 확인
 		// User principal = (User) session.getAttribute(Define.PRINCIPAL);
@@ -118,5 +125,19 @@ public class PaymentController {
 		int paymentResult = paymentService.savePayment(lastOrderDTO);
 
 		return "redirect:/reservation/"+ lastOrderDTO.getMovieId() +"/off-ticket";
+	}
+
+	// 온라인 결제 정보 저장(POST)
+	// order, reservation, payment => post
+	@PostMapping("/{movieId}/on-save")
+	public String onPaymentProc(@RequestBody LastOrderDTO lastOrderDTO){
+		// 유저정보 확인
+		// User principal = (User) session.getAttribute(Define.PRINCIPAL);
+
+		int reservationResult = reservationService.saveReservationTicket(lastOrderDTO, 1);
+		int orderResult = orderService.saveOrder(lastOrderDTO, 1);
+		int paymentResult = paymentService.savePayment(lastOrderDTO);
+
+		return "redirect:/reservation/"+ lastOrderDTO.getMovieId() +"/on-ticket";
 	}
 }

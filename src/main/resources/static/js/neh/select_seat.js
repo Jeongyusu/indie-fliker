@@ -5,11 +5,11 @@ function onLoadImg(){
     let gradeImg = document.querySelector("#n_grade_img");
     let runningGrade = document.querySelector("#n_runningGrade").value;
     let src = "";
-    if(runningGrade == "전체 관람가"){
+    if(runningGrade === "전체 관람가"){
         src = "/images/icons/movie_level_all.png";
-    }else if(runningGrade == "12세 이상 관람가"){
+    }else if(runningGrade === "12세 이상 관람가"){
         src = "/images/icons/movie_level_12.png";
-    }else if(runningGrade == "15세 이상 관람가"){
+    }else if(runningGrade === "15세 이상 관람가"){
         src = "/images/icons/movie_level_15.png";
     }else {
         src = "/images/icons/movie_level_19.png";
@@ -41,7 +41,7 @@ function count(type){
         limitNumber = 5;
     }
 
-    if(type == "plus"){
+    if(type === "plus"){
         number = parseInt(number) + 1;
     }else{
         number = parseInt(number) - 1;
@@ -72,10 +72,10 @@ function count(type){
 // 좌석 선택하기
 ///////////////////////////////////////////////////////////////
 const seatWrapper = document.querySelector(".n_seat_wrapper"); // 극장 자리들
-let existSeatJsonBody = new Array(); // 이미 선택된 자리(비활성화) - JSON
-let existSeatNumbers = new Array(); // 이미 선택된 좌석 이름(JSON 파싱)
-let existSeats = new Array(); // 이미 선택된 자리(비활성화)
-let clickedSeats = new Array(); // 선택한 모든 자리
+let existSeatJsonBody = []; // 이미 선택된 자리(비활성화) - JSON
+let existSeatNumbers = []; // 이미 선택된 좌석 이름(JSON 파싱)
+let existSeats = []; // 이미 선택된 자리(비활성화)
+let clickedSeats = []; // 선택한 모든 자리
 let exist = ""; // 이미 선택된 자리가 있는 div를 담는 함수
 let clicked = ""; // 선택한 자리가 있는 div를 담는 함수
 let div = ""; // 추가할 tag
@@ -83,7 +83,7 @@ let div = ""; // 추가할 tag
 async function loadExistSeatList(){
     let runningDateId = document.querySelector("#n_running_date_id").value;
     try {
-        let response = await fetch(`/api/seat/exist-seat?runningDateId=${runningDateId}`, {
+        let response = await fetch(`/seat/api/exist-seat?runningDateId=${runningDateId}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -137,9 +137,9 @@ for(let i = 0; i < 10; i++) {
             let lastSelectSeatList = document.querySelector("#n_last_select_seat_list");
 
             // 관람인원에 따른 코드 실행
-            if(wantCount == 0) {
+            if(wantCount === 0) {
                 alert("관람인원을 선택해주세요");
-                clickedSeats == [];
+                clickedSeats === [];
             }else{
                 // 중복으로 선택되는 것을 방지
                 clickedSeats = clickedSeats.filter((select, seats) => clickedSeats.indexOf(select) !== seats);
@@ -195,7 +195,7 @@ for(let i = 0; i < 10; i++) {
 // 선택한 좌석 목록 만들기
 ///////////////////////////////////////////////////////////////
 const selectSeatWrapper = document.querySelector(".n_select_seat_wrapper"); // 선택한 자리들
-let lastClickedSeats = new Array();
+let lastClickedSeats = [];
 let lastClicked = "";
 let lastDiv = "";
 
@@ -300,7 +300,7 @@ paymentButton.addEventListener("click", function (event){
         event.preventDefault(); // 이벤트의 기본 동작(여기서는 form submit)을 막음
     }
 
-    if(parseInt(totalPrice.innerHTML) == 0){
+    if(parseInt(totalPrice.innerHTML) === 0){
         alert("결제할 금액이 없습니다.");
         event.preventDefault(); // 이벤트의 기본 동작(여기서는 form submit)을 막음
     }
@@ -310,40 +310,40 @@ paymentButton.addEventListener("click", function (event){
 // 영화관 좌석 value 지정하기
 ////////////////////////////////////////////////////////////
 function mapping(input, i, j) {
-    if (i == 0) {
+    if (i === 0) {
         input.value = "A" + j;
-        if ((j == 0 || j == 1)) {
+        if ((j === 0 || j === 1)) {
             input.classList.add("n_hidden");
             input.disabled = true;
         }
-        if ((j == 12 || j == 13)) {
+        if ((j === 12 || j === 13)) {
             input.classList.add("n_hidden");
             input.disabled = true;
         }
-    } else if (i == 1) {
+    } else if (i === 1) {
         input.value = "B" + j;
-        if (j == 0 || j == 13) {
+        if (j === 0 || j ===13) {
             input.classList.add("n_hidden");
             input.disabled = true;
         }
-    } else if (i == 2) {
+    } else if (i === 2) {
         input.value = "C" + j;
-    } else if (i == 3) {
+    } else if (i === 3) {
         input.value = "D" + j;
-    } else if (i == 4) {
+    } else if (i === 4) {
         input.value = "E" + j;
-    } else if (i == 5) {
+    } else if (i === 5) {
         input.value = "F" + j;
-    } else if (i == 6) {
+    } else if (i === 6) {
         input.value = "G" + j;
-    } else if (i == 7) {
+    } else if (i === 7) {
         input.value = "H" + j;
-    } else if (i == 8) {
+    } else if (i === 8) {
         input.value = "I" + j;
-    } else if (i == 9) {
+    } else if (i === 9) {
         input.value = "J" + j;
     }
-    if (j == 3 || j == 9) {
+    if (j === 3 || j === 9) {
         input.style = 'margin-right:20px;';
     }
 }

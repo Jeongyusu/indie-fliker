@@ -20,7 +20,7 @@ public class OrderService {
     @Autowired
     private ReservationRepository reservationRepository;
 
-    // 오프라인 주문 정보 등록
+    // 오프라인/온라인 예매 주문 정보 등록
     @Transactional
     public int saveOrder(LastOrderDTO lastOrderDTO, Integer principalId) {
 

@@ -9,14 +9,55 @@
     caret-color: transparent;
 }
 
-.l_main_body{}
+.l_main_body{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    margin: 30px 0;
+}
 
 .l_avi_main {
-    width: 90%;
+    width: 1280px
+}
+.l_avi_container{}
+
+#l_movie_on_watch {
+    width: 80%;
+}
+
+#l_movie_on_watch video{
+    width: 100%;
+}
+
+#l_movie_mini_info{
+    text-align: start;
+    margin: 8px;
+}
+
+#l_movie_title {
+    font-size: 15px;
+    font-weight: bold;
+    padding-bottom: 15px;
+    white-space: nowrap; /* 텍스트가 한 줄로 표시되도록 설정 */
+    overflow: hidden; /* 넘치는 텍스트는 숨기기 */
+    text-overflow: ellipsis; /* 생략 부분은 ...으로 표시 */
+}
+
+#l_movie_info{
+    line-height: 16px;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#l_movie_on_poster {
+    width: 20%;
 }
 
 .l_chat_review_main{
-    width: 65%;
+    width: 100%;
 }
 
 .l_mint {
@@ -198,11 +239,129 @@
     overflow-y: auto; 
 }
 
-.l_chat_message {
-    background-color: #f4f4f8; 
-    border-radius: 15px; 
+.l_user_profile {
+    align-items: center;
+}
+
+.l_score_container {
+    margin: 10px;
+    text-align: center;
+}
+
+.l_score_title {
+    font-weight: bold;
+    font-size: 18px;
+    padding-bottom: 8px;
+    color: var(--primary_01);
+}
+
+.l_score {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.l_score_p {
+    color: var(--primary_01);
+    font-size: 20px;
+}
+
+#l_score_point {
+    border: 0.5px solid var(--primary_01);
+    max-width: 80px;
+    border-radius: 10px;
+    height: 40px;
+}
+
+.l_commentary {
+    width: 100%;
+    background-color: var(--def_wh);
+    border-radius: 8px;
+    border: 0.5px solid var(--primary_01);
     margin: 8px;
     padding: 15px 36px;
+    width: 91.5%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    outline: none;
+}
+
+.l_comment_container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px 0 0;
+    margin: 10px;
+}
+
+.l_profile_comment {
+    display: flex;
+}
+
+.l_chat_message {
+    background-color: #f4f4f8; 
+    border-radius: 8px;
+    margin: 8px;
+    padding: 15px 36px;
+    width: 91.5%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    outline: none;
+    border: none;
+}
+
+.l_chat_message_input {
+    height: 60px;
+    width: 88%;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    resize: none;
+}
+
+.l_info_title {
+    font-weight: bold;
+}
+
+.l_commentary_info .l_info_title {
+    margin: 30px 0 50px;
+}
+
+.content .l_info_title {
+    margin: 30px 0 50px;
+}
+
+.l_carousel_background {
+    display: flex;
+    justify-content: center;
+}
+
+.l_carousel {
+    width: 70%;
+}
+
+.l_commentary_input {
+    height: 38px;
+    padding-top: 10px;
+    width: 88%;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    resize: none;
+}
+
+.l_commentary_title {
+    margin: 30px 0 50px;
+}
+
+.l_chat_message_input:focus{
+    resize: none;
+}
+
+.l_review_button {
+    font-size: 13px;
+    border: none;
+    background-color: transparent;
 }
 
 .l_chatbar {
@@ -223,8 +382,17 @@
 .l_participant img {
     border-radius: 50%; 
     margin-right: 10px;
-    width: 30px; 
-    height: 30px;
+    width: 40px;
+    height: 40px;
+}
+
+.l_participant span {
+    font-weight: bolder;
+}
+
+.l_font_pupple {
+    color: var(--point_02);
+    font-weight: bold;
 }
 
 @media (max-width: 768px) {
@@ -255,15 +423,48 @@
     background-color: #fff;
     border-radius: 8px;
     margin-bottom: 10px;
-    width: 90%;
+    width: 97%;
     padding: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.l_commentary_container {
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    width: 97%;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.l_commentary_list_container {
+    background-color: var(--point_01);
+    border-radius: 8px;
+    width: 92.5%;
+    padding: 15px;
     display: flex;
     flex-direction: column;
 }
 
 .l_message_text {
     flex: 1;
+}
+
+
+.l_commentary_message_text, .l_review_message_text {
+    display: flex;
+    justify-content: space-between;
+}
+
+.l_commentary_setting_button, .l_review_setting_button{
+    border: none;
+    background-color: transparent;
 }
 
 .l_message_name {
@@ -277,9 +478,50 @@
     align-self: flex-end;
 }
 
+#l_poster {
+    max-width: 250px;
+    margin-bottom: 196px;
+}
+
+.l_toast_show {
+    text-align: center;
+    border: 0.5px solid var(--primary_01);
+    border-radius: 10px;
+    position: fixed;
+    width: 236px;
+}
+
+.l_toast_header {
+    background-color: var(--primary_01);
+}
+
+.l_toast_header form {
+    width: 100%;
+}
+
+.l_toast_header button {
+    border: none;
+    background-color: transparent;
+    height: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--def_wh);
+}
+
+.l_toast_h6 {
+    font-size: 1rem;
+    line-height: 25px;
+}
+
+.l_toast_p {
+    font-size: 11px;
+    line-height: 19px;
+}
+
 /* online */
 .l_green {
-	color: var(--point_05);	
+	color: var(--point_05);
+    font-weight: bold;
 }
 
  #l_online_navbar {
@@ -287,7 +529,8 @@
     color: var(--point_05);
     font-weight: bold;
     letter-spacing: 0.025em;
-    margin-top: 1rem;
+    margin-top: 30px;
+    font-size: 18px;
 }
 
 #l_online_navbar ul {
@@ -327,23 +570,20 @@
     background-color: #00C4C4;
 }
 
+.l_info_p {
+    margin: 30px 0 50px;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+
 .l_message_input:focus {
     outline:none;
+    resize: none;
 }
 
 #chatMessages .l_message_container {
     margin-left: 25px;
-}
-
-.l_message_container {
-    background-color: #fff;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    width: 90%;
-    padding: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
 }
 
 .l_profile_img {
@@ -374,7 +614,7 @@
 
 #l_back_to_top {
     display: inline-block;
-    background-color: #00C4C4;
+    background-color: var(--primary_01);
     width: 50px;
     height: 50px;
     text-align: center;
