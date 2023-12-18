@@ -38,4 +38,6 @@ public interface FundingRepository {
     // 펀딩 누적 금액, 참여 인원 추가하기
     public int updateById(@Param("fundingId") Integer fundingId, @Param("addPresentPrice") Integer addPresentPrice, @Param("addPeopleCount") Integer addPeopleCount);
 
+    // 펀딩 검색결과 조회
+    public List<SearchResultDTO> findByKeyword(String keyword);
 }

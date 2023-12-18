@@ -91,14 +91,15 @@ create table funding_tb(
 );
 
 create table funding_ready_tb(
-                                 id int auto_increment primary key,
-                                 target_price int not null,
-                                 price_per_onetime int not null,
-                                 people_count int not null,
-                                 release_date date not null,
-                                 end_date date not null,
-                                 movie_id int not null,
-                                 foreign KEY(movie_id) references movie_tb(id)
+                            id int auto_increment primary key,
+                            target_price int not null,
+                            present_price int,
+                            price_per_onetime int not null,
+                            people_count int,
+                            release_date date not null,
+                            end_date date not null,
+                            movie_id int not null,
+                            foreign KEY(movie_id) references movie_tb(id)
 );
 
 create table review_tb(
