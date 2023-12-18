@@ -22,11 +22,11 @@
 <hr class="k_ask_hr">
 <div class="k_ask_s_container">
     <div class="k_btn_group">
-        <button type="button" class="k_btn k_a_btn-primary k_a_btn_mem_button"><a href="/question/user">회원정보</a></button>
-        <button type="button" class="k_btn k_a_btn-primary k_b_b_none" ><a href="/question/pay">결제</a></button>
-        <button type="button" class="k_btn k_a_btn-primary k_b_b_none" ><a href="/question/cancel">취소/환불</a></button>
-        <button type="button" class="k_btn k_a_btn-primary k_b_b_none"><a href="/question/reservation">영화예매</a></button>
-        <button type="button" class="k_btn k_a_btn-primary k_a_btn_mem_vip"><a href="/question/VIP">VIP</a></button>
+        <a href="/question/user">회원정보</a>
+        <a href="/question/pay">결제</a>
+        <a href="/question/cancel">취소/환불</a>
+        <a href="/question/reservation">영화예매</a>
+        <a href="/question/VIP">VIP</a>
     </div>
 
     <c:forEach var="questionResponseDTO" items="${questionCancelPagingLists}">
