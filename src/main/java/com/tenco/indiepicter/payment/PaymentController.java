@@ -49,12 +49,12 @@ public class PaymentController {
 			
 		// 세션에 로그인 정보 저장
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-		
+
 		if(principal == null) {
 			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
 		}
 		
-		List<MyOnlinePaymentDTO> MyOnlinePaymentDTOLists =  this.paymentService.findByOnlinePaymentId(principal.getId());
+		List<MyOnlinePaymentDTO> MyOnlinePaymentDTOLists =  this.paymentService.findByOnlinePaymentId(1);
 		
 		model.addAttribute("MyOnlinePaymentDTOLists", MyOnlinePaymentDTOLists);
 		
