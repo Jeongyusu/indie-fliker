@@ -28,16 +28,17 @@
 
 #l_movie_on_watch video{
     width: 100%;
-    height: 573px;
+    height: 512px;
 }
 
 #l_movie_mini_info{
     text-align: start;
     margin: 8px;
+    width: 80%;
 }
 
 #l_movie_title {
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
     padding-bottom: 15px;
     white-space: nowrap; /* 텍스트가 한 줄로 표시되도록 설정 */
@@ -46,8 +47,8 @@
 }
 
 #l_movie_info{
-    line-height: 16px;
-    font-size: 12px;
+    line-height: 22px;
+    font-size: 14px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -329,7 +330,7 @@
 }
 
 .content .l_info_title {
-    margin: 30px 0 50px;
+    margin: 60px 0 30px;
 }
 
 .l_carousel_background {
@@ -338,7 +339,7 @@
 }
 
 .l_carousel {
-    width: 70%;
+    width: 85%;
 }
 
 .l_commentary_input {
@@ -514,7 +515,6 @@
     margin-bottom: 45px;
     display: flex;
     align-items: center;
-    padding: 14px 0;
 }
 
 .l_toast_show {
@@ -607,7 +607,7 @@
 .l_info_p {
     margin: 30px 0 50px;
     font-size: 18px;
-    line-height: 24px;
+    line-height: 26px;
 }
 
 

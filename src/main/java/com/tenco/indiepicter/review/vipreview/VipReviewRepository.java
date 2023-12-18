@@ -1,6 +1,8 @@
 package com.tenco.indiepicter.review.vipreview;
 
 import com.tenco.indiepicter.review.normalreview.Review;
+import com.tenco.indiepicter.review.normalreview.response.NormalReviewsToMovieDTO;
+import com.tenco.indiepicter.review.vipreview.response.VipReviewsToMovieDTO;
 import com.tenco.indiepicter.seat.Seat;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -23,7 +25,7 @@ public interface VipReviewRepository {
     public List<VipReview> findAll();
 
     // movie_id로 vip 평론 조회
-    public List<VipReview> findByMovieId(Integer movieId);
+    public List<VipReviewsToMovieDTO> findByMovieId(Integer movieId);
 
     // user_id, movie_id로 vip 평론 조회 - 1개 제한
     public VipReview findByUserIdAndMovieId(@Param("movieId") Integer movieId, @Param("principalId") Integer principalId);

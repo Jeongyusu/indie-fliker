@@ -24,7 +24,7 @@ public class NormalReviewService {
     @Transactional
     public int saveToNormalReview(NormalReviewSaveDTO requestDTO, Integer principalId) {
         Review review = Review.builder()
-                .content(requestDTO.getContent())
+                .content(requestDTO.getReviewContent())
                 .movieId(requestDTO.getMovieId())
                 .userId(principalId)
                 .build();
@@ -49,7 +49,7 @@ public class NormalReviewService {
         if (review == null) {
             throw new MyDynamicException("댓글이 존재하지 않습니다.", HttpStatus.BAD_REQUEST);
         }
-        return normalReviewRepository.updateById(requestDTO.getContent(), review.getId());
+        return normalReviewRepository.updateById(requestDTO.getReviewContent(), review.getId());
     }
 
     // movie_id에 따른 댓글 목록

@@ -31,7 +31,6 @@ public class MovieController {
         OnMovieDetailDTO onMovieDetailDTO = movieService.onTheaterToMovie(movieId);
         model.addAttribute("onMovieDetailDTO", onMovieDetailDTO);
         model.addAttribute("principal", principal);
-        System.out.println("조회!!!!! = " + onMovieDetailDTO.toString());
         return "main/on_watch";
     }
 }
