@@ -60,7 +60,8 @@
 		<result property="reservationId" column="last_id"/>
 	</resultMap>
 
-	<select id="findByReservation" resultMap="ReservationTicketDTOResultMap">
+	<!-- 오프라인 예매 정보 조회 -->
+	<select id="findByOffReservation" resultMap="OffReservationTicketDTOResultMap">
 		select
 			m.thumbnail,
 			m.movie_name,
@@ -86,7 +87,7 @@
 							on m.id = rs.movie_id
 		where r.user_id = #{principalId} and r.id = #{reservationId}
 	</select>
-	<resultMap id="ReservationTicketDTOResultMap" type="com.tenco.indiepicter.reservation.response.ReservationTicketDTO">
+	<resultMap id="OffReservationTicketDTOResultMap" type="com.tenco.indiepicter.reservation.response.OffReservationTicketDTO">
 		<result property="thumbnail" column="thumbnail"/>
 		<result property="movieName" column="movie_name"/>
 		<result property="runningDate" column="running_date"/>
@@ -96,6 +97,38 @@
 		<result property="theaterName" column="theater_name"/>
 		<result property="finalPrice" column="final_price"/>
 		<result property="reservationCode" column="reservation_code"/>
+	</resultMap>
+
+	<!-- 온라인 예매 정보 조회 -->
+	<select id="findByOnReservation" resultMap="OnReservationTicketDTOResultMap">
+		select
+			m.thumbnail,
+			m.movie_name,
+			m.genre,
+			p.final_price,
+			r.reservation_code,
+			m.online_release_date,
+			m.online_end_date,
+			m.d_day
+		from reservation_tb as r
+				 inner join order_tb as o
+							on r.id = o.reservation_id
+				 inner join payment_tb as p
+							on o.id = p.order_id
+				 inner join funding_tb as f
+							on f.id = o.funding_id
+				 inner join movie_tb as m
+							on m.id = f.movie_id
+		where r.user_id = #{principalId} and r.id = #{reservationId}
+	</select>
+	<resultMap id="OnReservationTicketDTOResultMap" type="com.tenco.indiepicter.reservation.response.OnReservationTicketDTO">
+		<result property="thumbnail" column="thumbnail"/>
+		<result property="movieName" column="movie_name"/>
+		<result property="finalPrice" column="final_price"/>
+		<result property="reservationCode" column="reservation_code"/>
+		<result property="onlineReleaseDate" column="online_release_date"/>
+		<result property="onlineEndDate" column="online_end_date"/>
+		<result property="dDay" column="d_day"/>
 	</resultMap>
 
 </mapper>

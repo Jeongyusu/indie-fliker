@@ -15,28 +15,25 @@ public class FundingService {
     @Autowired
     private FundingRepository fundingRepository;
 
-    public List<MoviesByGenreDTO> moviesByGenre(String genre, Integer page, Integer pageSize){
+    public List<MoviesByGenreDTO> moviesByGenre(String genre, Integer page, Integer pageSize) {
         Integer offset = page * pageSize - pageSize;
         return fundingRepository.findAllByGenre(genre, pageSize, offset);
     }
 
-    public List<OnAirMovieDTO> onAirMovies(){
+    public List<OnAirMovieDTO> onAirMovies() {
         return fundingRepository.findAllByOnAir();
     }
 
-    public List<OnAirMovieRankingDTO> onAirRankedMovies(){
+    public List<OnAirMovieRankingDTO> onAirRankedMovies() {
         return fundingRepository.findAllByOnAirAndRanking();
     }
 
-    public FundingDetailDTO detailFunding (Integer fundingId){
+    public FundingDetailDTO detailFunding(Integer fundingId) {
         return fundingRepository.findByFundingIdAboutDetailfunding(fundingId);
     }
 
-    public OfflineMovieDetailDTO detailOfflineMovie (Integer fundingId){
+    public OfflineMovieDetailDTO detailOfflineMovie(Integer fundingId) {
         return fundingRepository.findByFundingIdAboutOfflineMovie(fundingId);
     }
-
-
-
 
 }

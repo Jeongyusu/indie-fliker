@@ -145,7 +145,39 @@
         <result property="fundingId" column="id"/>
     </resultMap>
 
-
-
+    <!-- 선택한 온라인 영화 상세 조회 = 온라인 펀딩 결제창 -->
+    <select id="findBySelectFunding" resultMap="SelectFundingDTOResultMap">
+        select
+            ft.id as funding_id,
+            mt.id as movie_id,
+            mt.movie_name,
+            mt.synopsis,
+            mt.thumbnail,
+            mt.running_grade,
+            mst.director,
+            mst.script,
+            mt.d_day,
+            mt.online_release_date,
+            mt.online_end_date
+        from funding_tb as ft
+                 join movie_tb as mt
+                      on ft.movie_id = mt.id
+                 join movie_staff_tb as mst
+                      on mt.id = mst.movie_id
+        where ft.id = #{movieId}
+    </select>
+    <resultMap id="SelectFundingDTOResultMap" type="com.tenco.indiepicter.funding.response.SelectFundingDTO">
+        <result property="fundingId" column="funding_id"/>
+        <result property="movieId" column="movie_id"/>
+        <result property="movieName" column="movie_name"/>
+        <result property="synopsis" column="synopsis"/>
+        <result property="thumbnail" column="thumbnail"/>
+        <result property="runningGrade" column="running_grade"/>
+        <result property="director" column="director"/>
+        <result property="script" column="script"/>
+        <result property="dDay" column="d_day"/>
+        <result property="onlineReleaseDate" column="online_release_date"/>
+        <result property="onlineEndDate" column="online_end_date"/>
+    </resultMap>
 
 </mapper>

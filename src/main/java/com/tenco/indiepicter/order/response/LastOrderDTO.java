@@ -2,8 +2,6 @@ package com.tenco.indiepicter.order.response;
 
 import lombok.Data;
 
-import java.sql.Timestamp;
-
 @Data
 public class LastOrderDTO {
 

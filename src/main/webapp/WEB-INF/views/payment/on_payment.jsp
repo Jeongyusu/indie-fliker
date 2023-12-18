@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ include file="/WEB-INF/views/layout/header.jsp"%>
 
 <div id="n_select_movie">
@@ -10,29 +11,35 @@
         <div class="n_body">
             <div class="row justify-content-center n_select_row">
                 <div class="n_select_form">
-                    <img id="n_movie_img" src="/images/moviethumbnail/animation/mabup.jpeg">
+                    <img id="n_movie_img" src="${selectFundingDTO.thumbnail}">
                     <div class="n_form_check_detail">
                         <span id="n_ticket_type">
                         <p>[온라인 티켓]</p>
                         </span>
                         <div id="n_movie_title_grade_form">
                             <span>
-                                <input type="hidden" id="n_runningGrade" value="${selectDTO.runningGrade}">
+                                <input type="hidden" id="n_runningGrade" value="${selectFundingDTO.runningGrade}">
                                 <img src="/images/icons/movie_level_all.png" id="n_grade_img_on">
                             </span>
                                 <span>
-                                <p id="n_movie_title">그대들은 어떻게 살 것인가?</p>
+                                <p id="n_movie_title">${selectFundingDTO.movieName}</p>
                             </span>
                         </div>
                         <div id="n_director_staff">
-                            <p>감독 : 미야자키</p>
-                            <p>각본 : 김진만, 천지영</p>
+                            <p>감독 : ${selectFundingDTO.director}</p>
+                            <p>각본 : ${selectFundingDTO.script}</p>
                         </div>
-                        <p id="n_movie_content">어머니를 그리워하며 새로운 보금자리에 적응하던 주인공 "마히토"가 정체불명의 왜가리와 함께 저택의 신비로운 탑에 대한 이야기를 듣게 되는 작품을 기대해 주세요</p>
+                        <p id="n_movie_content">${selectFundingDTO.synopsis}</p>
                         <div class="n_show_period">
                             <img src="/images/icons/movie.png" width="20" height="20">
-                            <p>23.10.15 온라인 상영 예정</p>
-                            <!--23.10.15 ~ 23.10.30 오프라인 상영 기간 추가-->
+                            <c:choose>
+                                <c:when test="${selectFundingDTO.formatToReleaseDate() != null}">
+                                    <p>온라인 상영 기간 : ${selectFundingDTO.formatToReleaseDate()} ~ ${selectFundingDTO.formatToEndDate()} </p>
+                                </c:when>
+                                <c:otherwise>
+                                    <p>${selectFundingDTO.formatToDDay()} 온라인 상영 예정</p>
+                                </c:otherwise>
+                            </c:choose>
                         </div>
                     </div>
                 </div>
@@ -65,7 +72,7 @@
                     <input type="hidden" name="total_price" value="">
                     <input type="hidden" name="select_movie" value="">
                     <div class="n_total_price">
-                        <p class="n_total_comment">"그대들은 어떻게 살 것 인가?"에 </p>
+                        <p class="n_total_comment">"${selectFundingDTO.movieName}"에 </p>
                         <p id="n_total_price">8,000</p>
                         <p class="n_total_comment">원을 참여합니다.</p>
                     </div>
@@ -111,6 +118,16 @@
                                                 </label>
                                             </div>
                                         </div>
+                                        <input type="hidden" id="selectPayment" value="">
+                                        <input type="hidden" id="reservationCode" value="">
+                                        <input type="hidden" id="paymentTypeId" value="">
+                                        <input type="hidden" id="discountPrice" value="0">
+                                        <input type="hidden" id="n_movie_id" value="${selectFundingDTO.movieId}">
+                                        <input type="hidden" id="totalCount" value="1">
+                                        <input type="hidden" id="fundingId" value="${selectFundingDTO.fundingId}">
+                                        <input type="hidden" id="userEmail" value="${principal.userEmail}">
+                                        <input type="hidden" id="username" value="${principal.username}">
+                                        <input type="hidden" id="userTel" value="${principal.tel}">
                                     </div>
                                 </div>
                             </div>

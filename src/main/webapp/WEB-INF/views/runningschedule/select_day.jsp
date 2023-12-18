@@ -3,6 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../layout/header.jsp" %>
 
+<div id="n_select_movie">
+    <h5>독립 영화의 매력을 느끼러 가보세요! 독립 영화는 예측 불허의 감동과 특별한 이야기로 가득 차 있습니다.</h5>
+</div>
 <main>
     <div class="n_custom_fluid">
         <div class="row justify-content-center">

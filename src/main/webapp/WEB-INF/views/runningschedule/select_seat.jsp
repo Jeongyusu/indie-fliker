@@ -2,6 +2,9 @@
          pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/layout/header.jsp"%>
 
+<div id="n_select_movie">
+    <h5>선택하신 영화는 "${choiceDayDTO.movieName}"입니다. 원하시는 좌석을 선택해주세요!</h5>
+</div>
 <main>
     <div class="n_custom_fluid">
         <div class="row justify-content-center">

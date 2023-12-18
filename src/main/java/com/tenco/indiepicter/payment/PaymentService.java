@@ -1,7 +1,8 @@
 package com.tenco.indiepicter.payment;
 
 import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
-import com.tenco.indiepicter.order.Order;
+import com.tenco.indiepicter.funding.FundingRepository;
+import com.tenco.indiepicter.funding.response.SelectFundingDTO;
 import com.tenco.indiepicter.order.OrderRepository;
 import com.tenco.indiepicter.order.response.LastOrderDTO;
 import com.tenco.indiepicter.order.response.OrderAndReservationInfoDTO;
@@ -30,9 +31,12 @@ public class PaymentService {
     private RunningScheduleRepository runningScheduleRepository;
 
     @Autowired
+    private FundingRepository fundingRepository;
+
+    @Autowired
     private OrderRepository orderRepository;
 
-    // 상영 정보 가져오기
+    // 선택한 오프라인 상영 일정 상세 조회 + 영화관 정보
     public SelectRunningScheduleAndPlaceDTO offPayment(SelectSeatDTO selectSeatDTO) {
         SelectRunningScheduleAndPlaceDTO responseDTO = runningScheduleRepository.findByRunningScheduleIdAndPlace(selectSeatDTO.getRunningDateId());
         responseDTO.setMovieId(selectSeatDTO.getMovieId());
@@ -42,6 +46,13 @@ public class PaymentService {
         responseDTO.setSeatNames(selectSeatDTO.getSelectSeats());
         return responseDTO;
     }
+
+    // 선택한 온라인 영화 상세 조회 = 온라인 펀딩 결제창
+    public SelectFundingDTO onPayment(Integer movieId) {
+        SelectFundingDTO responseDTO = fundingRepository.findBySelectFunding(movieId);
+        return  responseDTO;
+    }
+
 	
 	// 온라인 결제 내역
 	public List<MyOnlinePaymentDTO> findByOnlinePaymentId(Integer id){
@@ -55,7 +66,7 @@ public class PaymentService {
 		return this.paymentRepository.findByOfflinePaymentId(id);
 	}
 
-    // 오프라인 결제 정보 등록
+    // 오프라인 / 온라인 결제 정보 등록
     @Transactional
     public int savePayment(LastOrderDTO lastOrderDTO){
          // reservationCode로 orderId 찾아오기
@@ -74,5 +85,6 @@ public class PaymentService {
 
         return paymentRepository.insert(payment);
     }
+
 
 }

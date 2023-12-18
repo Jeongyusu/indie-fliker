@@ -8,41 +8,41 @@
         <div class="row justify-content-center">
             <div id="n_reservation_ticket">
                 <div class="n_movie_img">
-                    <img src=${reservationTicketDTO.thumbnail}>
+                    <img src=${offReservationTicketDTO.thumbnail}>
                 </div>
                 <div class="n_reservation_detail">
                     <span id="n_comment"><p>영화 예매가 완료되었습니다!</p></span>
                     <div class="n_detail">
-              <span>
-                <p class="n_title">· 예매 영화</p>
-                <p>${reservationTicketDTO.movieName}</p>
-              </span>
                         <span>
-                <p class="n_title">· 관람 시간</p>
-                <p id="n_day">${reservationTicketDTO.formatToDate()}</p>
-                <p id="n_time">${reservationTicketDTO.formatToStartTime()} ~ ${reservationTicketDTO.formatToEndTime()}</p>
-              </span>
+                            <p class="n_title">· 예매 영화</p>
+                            <p>${offReservationTicketDTO.movieName}</p>
+                        </span>
                         <span>
-                <p class="n_title">· 관람 인원</p>
-                <p>${reservationTicketDTO.audience}명</p>
-              </span>
+                            <p class="n_title">· 관람 시간</p>
+                            <p id="n_day">${offReservationTicketDTO.formatToDate()}</p>
+                            <p id="n_time">${offReservationTicketDTO.formatToStartTime()} ~ ${offReservationTicketDTO.formatToEndTime()}</p>
+                        </span>
                         <span>
-                <p class="n_title">· 좌석 번호</p>
-                <p class="n_seat_number">${reservationTicketDTO.seats}</p>
-              </span>
+                            <p class="n_title">· 관람 인원</p>
+                            <p>${offReservationTicketDTO.audience}명</p>
+                        </span>
                         <span>
-                <p class="n_title">· 관람 극장</p>
-                <p id="n_place">${reservationTicketDTO.theaterName}</p>
-              </span>
+                            <p class="n_title">· 좌석 번호</p>
+                            <p class="n_seat_number">${offReservationTicketDTO.seats}</p>
+                        </span>
                         <span>
-                <p class="n_title">· 결제 정보</p>
-                <p>${reservationTicketDTO.formatToBalance()}원</p>
-              </span>
+                            <p class="n_title">· 관람 극장</p>
+                            <p id="n_place">${offReservationTicketDTO.theaterName}</p>
+                        </span>
+                        <span>
+                            <p class="n_title">· 결제 정보</p>
+                            <p>${offReservationTicketDTO.formatToBalance()}원</p>
+                        </span>
                     </div>
                 </div>
                 <div class="n_reservation_number">
                     <span><p id="n_title">예매 번호</p></span>
-                    <span><p id="n_number">${reservationTicketDTO.reservationCode}</p></span>
+                    <span><p id="n_number">${offReservationTicketDTO.reservationCode}</p></span>
                 </div>
             </div>
             <div id="n_reservation_list_button">
