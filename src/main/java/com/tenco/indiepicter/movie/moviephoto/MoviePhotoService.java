@@ -16,15 +16,15 @@ public class MoviePhotoService {
     private MoviePhotoRepository moviePhotoRepository;
 
     @Transactional
-    public void saveMoviePhotos(FundingSaveDTO fundingSaveDTO, Integer movieId){
-        for ( MultipartFile photos : fundingSaveDTO.getMoviePhotos()) {
+    public void saveMoviePhotos(FundingSaveDTO fundingSaveDTO, Integer movieId) {
+        for (MultipartFile photos : fundingSaveDTO.getMoviePhotos()) {
             MoviePhoto moviePhoto = MoviePhoto.builder()
                     .moviePic(PicToStringUtil.picToString(photos))
                     .movieId(movieId)
                     .build();
 
             int resultRowCount = moviePhotoRepository.saveMoviePhoto(moviePhoto);
-            if(resultRowCount != 1) {
+            if (resultRowCount != 1) {
                 throw new MyDynamicException("영화 포토 등록 실패", HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }

@@ -2,23 +2,18 @@ package com.tenco.indiepicter.funding;
 
 import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
 import com.tenco.indiepicter._core.utils.DateUtil;
-import com.tenco.indiepicter.banner.BannerRepository;
-import com.tenco.indiepicter.banner.BannerService;
 import com.tenco.indiepicter.funding.request.FundingSaveDTO;
 import com.tenco.indiepicter.funding.response.*;
 import com.tenco.indiepicter.movie.MovieService;
 import com.tenco.indiepicter.movie.moviephoto.MoviePhotoService;
 import com.tenco.indiepicter.movie.moviestaff.MovieStaffService;
-import com.tenco.indiepicter.scrab.ScrabService;
-import com.tenco.indiepicter.theater.TheaterService;
+import com.tenco.indiepicter.order.response.LastOrderDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Slf4j
@@ -46,19 +41,19 @@ public class FundingService {
         return fundingRepository.findAllByGenre(genre, pageSize, offset);
     }
 
-    public List<OnAirMovieDTO> onAirMovies(){
+    public List<OnAirMovieDTO> onAirMovies() {
         return fundingRepository.findAllByOnAir();
     }
 
-    public List<OnAirMovieRankingDTO> onAirRankedMovies(){
+    public List<OnAirMovieRankingDTO> onAirRankedMovies() {
         return fundingRepository.findAllByOnAirAndRanking();
     }
 
-    public FundingDetailDTO detailFunding (Integer fundingId){
+    public FundingDetailDTO detailFunding(Integer fundingId) {
         return fundingRepository.findByFundingIdAboutDetailfunding(fundingId);
     }
 
-    public OfflineMovieDetailDTO detailOfflineMovie (Integer fundingId){
+    public OfflineMovieDetailDTO detailOfflineMovie(Integer fundingId) {
         return fundingRepository.findByFundingIdAboutOfflineMovie(fundingId);
     }
 
@@ -88,6 +83,15 @@ public class FundingService {
     }
 
 
+    // 결제 후 펀딩 누적 금액 및 참여 인원 추가하기
+    @Transactional
+    public int addFundingTarget(LastOrderDTO RequestDTO) {
+        Funding funding = fundingRepository.findById(RequestDTO.getFundingId());
 
+        int addPresentPrice = funding.getPresentPrice() + RequestDTO.getFinalPrice();
+        int addPeopleCount = funding.getPeopleCount() + RequestDTO.getTotalCount();
+
+        return fundingRepository.updateById(RequestDTO.getFundingId(),addPresentPrice, addPeopleCount);
+    }
 
 }

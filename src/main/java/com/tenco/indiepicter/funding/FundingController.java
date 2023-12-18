@@ -9,7 +9,6 @@ import com.tenco.indiepicter.movie.moviestaff.MovieStaffService;
 import com.tenco.indiepicter.scrab.ScrabService;
 import com.tenco.indiepicter.theater.TheaterService;
 import com.tenco.indiepicter.user.User;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +20,7 @@ import java.util.List;
 
 @Slf4j
 @Controller
+@RequestMapping("/fund")
 public class FundingController {
     @Autowired
     private HttpSession session;
@@ -89,4 +89,5 @@ public class FundingController {
         fundingService.saveFunding(requestDTO);
         return "성공";
     }
+
 }

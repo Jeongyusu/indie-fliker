@@ -149,15 +149,15 @@ create table reservation_tb(
                                reservation_code varchar(50) not null,
                                reservated_at datetime not null default now(),
                                user_id int not null,
-                               seat_id int not null,
+                               seat_id int,
                                foreign KEY(user_id) references user_tb(id),
                                foreign KEY(seat_id) references seat_tb(id)
 );
 
 create table order_tb(
                          id int auto_increment primary key,
-                         selected_seats varchar(200) not null,
-                         product_price int not null,
+                         selected_seats varchar(200),
+                         product_price int,
                          quantity int not null,
                          funding_id int not null,
                          user_id int not null,
@@ -218,8 +218,6 @@ create table question_tb(
 );
 
 
-
-
 create table banner_tb(
                           id int auto_increment primary key,
                           banner_pic varchar(200) not null,
@@ -229,4 +227,5 @@ create table banner_tb(
                           foreign KEY(movie_id) references movie_tb(id)
 
 );
+
 

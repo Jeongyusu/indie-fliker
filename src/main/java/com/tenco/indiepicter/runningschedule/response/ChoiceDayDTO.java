@@ -1,5 +1,6 @@
 package com.tenco.indiepicter.runningschedule.response;
 
+import com.tenco.indiepicter._core.utils.BalanceUtil;
 import com.tenco.indiepicter._core.utils.TimeStampUtil;
 import com.tenco.indiepicter.seat.response.ExistSeatDTO;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,7 @@ import java.util.List;
 public class ChoiceDayDTO {
     private Integer runningDateId;
     private String movieName;
+    private Integer pricePerOnetime; // 펀딩 1개 또는 티켓 1개 금액
     private String thumbnail;
     private String runningGrade;
     private Timestamp runningDate;
@@ -33,11 +35,19 @@ public class ChoiceDayDTO {
 
     // HH:mm
     public String formatToStartTime (){
+
         return TimeStampUtil.timeToSubstring(startTime);
     }
 
     // HH:mm
     public String formatToEndTime (){
+
         return TimeStampUtil.timeToSubstring(endTime);
     }
+
+    // 천 단위
+    public String formatToBalance (){
+        return BalanceUtil.formatBalance(pricePerOnetime);
+    }
+
 }

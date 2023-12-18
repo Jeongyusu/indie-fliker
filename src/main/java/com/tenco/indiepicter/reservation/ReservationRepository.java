@@ -2,9 +2,9 @@ package com.tenco.indiepicter.reservation;
 
 import java.util.List;
 
+import com.tenco.indiepicter.reservation.response.OffReservationTicketDTO;
+import com.tenco.indiepicter.reservation.response.OnReservationTicketDTO;
 import com.tenco.indiepicter.reservation.response.ReservationIdDTO;
-import com.tenco.indiepicter.reservation.response.ReservationTicketDTO;
-import com.tenco.indiepicter.seat.Seat;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.tenco.indiepicter.reservation.response.VipReservationDTO;
@@ -29,7 +29,8 @@ public interface ReservationRepository {
 	public ReservationIdDTO findByUserIdToReservationId(Integer principalId);
 
 	// 오프라인 예매 티켓 정보 조회
-	public ReservationTicketDTO findByReservation(@Param("reservationId") Integer reservationId, @Param("principalId") Integer principalId);
+	public OffReservationTicketDTO findByOffReservation(@Param("reservationId") Integer reservationId, @Param("principalId") Integer principalId);
 
-	
+	// 온라인 예매 정보 조회
+	public OnReservationTicketDTO findByOnReservation(@Param("reservationId") Integer reservationId, @Param("principalId") Integer principalId);
 }

@@ -4,9 +4,12 @@
 
 <mapper namespace="com.tenco.indiepicter.movie.moviephoto.MoviePhotoRepository">
 
-    <insert id="saveMoviePhoto">
-        insert into movie_photo_tb(movie_pic, movie_id)
-        values (#{moviePic}, #{movieId})
-    </insert>
+
+
+
+     <!-- 영화 이미지 조회 -->
+    <select id="findByMovieId" resultType="com.tenco.indiepicter.movie.moviephoto.MoviePhoto">
+        select * from movie_photo_tb where movie_id = #{movieId}
+    </select>
 
 </mapper>
