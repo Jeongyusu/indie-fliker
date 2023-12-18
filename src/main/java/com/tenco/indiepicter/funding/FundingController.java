@@ -5,6 +5,7 @@ import com.tenco.indiepicter.banner.BannerService;
 import com.tenco.indiepicter.funding.request.FundingSaveDTO;
 import com.tenco.indiepicter.funding.response.*;
 import com.tenco.indiepicter.movie.MovieService;
+import com.tenco.indiepicter.movie.moviestaff.MovieStaffService;
 import com.tenco.indiepicter.scrab.ScrabService;
 import com.tenco.indiepicter.theater.TheaterService;
 import com.tenco.indiepicter.user.User;
@@ -38,6 +39,9 @@ public class FundingController {
 
     @Autowired
     private MovieService movieService;
+
+    @Autowired
+    private MovieStaffService movieStaffService;
 
     @GetMapping("/funding-plus")
     public String fundingPlus (@RequestParam(name = "genre", defaultValue = "극영화") String genre, @RequestParam(name = "page", defaultValue = "1") Integer page, Model model){
@@ -80,7 +84,9 @@ public class FundingController {
     @ResponseBody
     @PostMapping ("/save")
     public String saveFunding(FundingSaveDTO requestDTO){
-        movieService.saveMovie(requestDTO);
+        log.debug("=============================");
+        log.debug(requestDTO.toString());
+        fundingService.saveFunding(requestDTO);
         return "성공";
     }
 }

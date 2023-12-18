@@ -7,6 +7,7 @@ import com.tenco.indiepicter._core.utils.StringUtil;
 import com.tenco.indiepicter._core.utils.TimeStampUtil;
 import com.tenco.indiepicter._core.vo.MyPath;
 import com.tenco.indiepicter.funding.request.FundingSaveDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ import java.sql.Time;
 import java.time.Year;
 import java.util.UUID;
 
+@Slf4j
 @Service
 public class MovieService {
 
@@ -46,10 +48,11 @@ public class MovieService {
                 .build();
 
         int resultRowCount = movieRepository.saveMovie(movie);
+        Integer movieKey = movie.getId();
         if(resultRowCount != 1) {
             throw new MyDynamicException("영화 등록 실패", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return resultRowCount;
+        return movieKey;
     }
 
 }

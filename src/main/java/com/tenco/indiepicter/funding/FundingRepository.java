@@ -29,5 +29,5 @@ public interface FundingRepository {
     public OfflineMovieDetailDTO findByFundingIdAboutOfflineMovie(Integer fundingId);
 
     //펀딩 등록하기
-    public int saveFunding(FundingSaveDTO fundingSaveDTO);
+    public int saveFunding(Funding funding);
 }

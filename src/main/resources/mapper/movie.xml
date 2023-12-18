@@ -13,7 +13,8 @@
 <!--        select * from user_tb-->
 <!--    </select>-->
 
-    <insert id="saveMovie">
+<!--    useGeneratedKeys="true" keyProperty="id" parameterType="Integer"-->
+    <insert id="saveMovie" useGeneratedKeys="true" keyProperty="id">
         insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade,
                              director, director_pic, actor, director_careers, director_awards_film, online_release_date, online_end_date,
                              offline_release_date, offline_end_date, d_day) values (#{makeYear}, #{production}, #{movieName},#{synopsis}, #{thumbnail},
