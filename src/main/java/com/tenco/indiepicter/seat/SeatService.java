@@ -37,10 +37,10 @@ public class SeatService {
 
     // 예약 완료된 좌석 등록
     @Transactional
-    public int saveSeat(LastOrderDTO lastOrderDTO, Integer principalId) {
+    public int saveSeat(LastOrderDTO requestDTO, Integer principalId) {
         Seat seat = Seat.builder()
-                .seats(lastOrderDTO.getSeatNames())
-                .runningScheduleId(lastOrderDTO.getRunningDateId())
+                .seats(requestDTO.getSeatNames())
+                .runningScheduleId(requestDTO.getRunningDateId())
                 .userId(principalId)
                 .build();
 

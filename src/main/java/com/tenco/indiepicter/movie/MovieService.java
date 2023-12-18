@@ -7,6 +7,10 @@ import com.tenco.indiepicter._core.utils.StringUtil;
 import com.tenco.indiepicter._core.utils.TimeStampUtil;
 import com.tenco.indiepicter._core.vo.MyPath;
 import com.tenco.indiepicter.funding.request.FundingSaveDTO;
+import com.tenco.indiepicter.movie.moviephoto.MoviePhoto;
+import com.tenco.indiepicter.movie.moviephoto.MoviePhotoRepository;
+import com.tenco.indiepicter.movie.moviephoto.MoviePhotoService;
+import com.tenco.indiepicter.movie.response.OnMovieDetailDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -18,13 +22,17 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Time;
 import java.time.Year;
+import java.util.List;
 import java.util.UUID;
 
 @Service
 public class MovieService {
 
     @Autowired
-    MovieRepository movieRepository;
+    private MovieRepository movieRepository;
+
+    @Autowired
+    private MoviePhotoRepository moviePhotoRepository;
 
     @Transactional
     public int saveMovie(FundingSaveDTO fundingSaveDTO){
@@ -52,6 +60,16 @@ public class MovieService {
         return resultRowCount;
     }
 
+
+    // 온라인 상영 영화 정보 및 무비 파일 조회
+    public OnMovieDetailDTO onTheaterToMovie(Integer movieId) {
+        List<MoviePhoto> moviePhotos = moviePhotoRepository.findByMovieId(movieId);
+
+        OnMovieDetailDTO responseDTO = movieRepository.findByMovieIdToMovie(movieId);
+        responseDTO.setMoviePics(moviePhotos);
+
+        return responseDTO;
+    }
 }
 
 

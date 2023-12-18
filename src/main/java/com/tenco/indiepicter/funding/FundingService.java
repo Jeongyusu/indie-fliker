@@ -6,6 +6,7 @@ import com.tenco.indiepicter.order.response.LastOrderDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -37,14 +38,16 @@ public class FundingService {
         return fundingRepository.findByFundingIdAboutOfflineMovie(fundingId);
     }
 
+
     // 결제 후 펀딩 누적 금액 및 참여 인원 추가하기
-    public int addFundingTarget(LastOrderDTO lastOrderDTO) {
-        Funding funding = fundingRepository.findById(lastOrderDTO.getFundingId());
+    @Transactional
+    public int addFundingTarget(LastOrderDTO RequestDTO) {
+        Funding funding = fundingRepository.findById(RequestDTO.getFundingId());
 
-        int addPresentPrice = funding.getPresentPrice() + lastOrderDTO.getFinalPrice();
-        int addPeopleCount = funding.getPeopleCount() + lastOrderDTO.getTotalCount();
+        int addPresentPrice = funding.getPresentPrice() + RequestDTO.getFinalPrice();
+        int addPeopleCount = funding.getPeopleCount() + RequestDTO.getTotalCount();
 
-        return fundingRepository.updateById(lastOrderDTO.getFundingId(),addPresentPrice, addPeopleCount);
+        return fundingRepository.updateById(RequestDTO.getFundingId(),addPresentPrice, addPeopleCount);
     }
 
 }

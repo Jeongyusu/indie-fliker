@@ -4,136 +4,217 @@
 
 const reviewContainer = document.getElementById('l_review_container');
 const commentContainer = document.getElementById('l_commentary_container');
+// let lReviewSettingButton = document.getElementsByClassName("l_review_setting_button");
+// console.log(lReviewSettingButton + "zzz");
+// const lDropdownUl = document.getElementsByClassName("l_dropdown_ul");
+//
+// lReviewSettingButton.forEach(function(button) {
+//     button.addEventListener('click', function() {
+//         console.log(button[0] + "클릭");
+//     });
+// });
+// function addReviewMessage(profile, name, message) {
+//
+//     const messageContainer = document.createElement('div');
+//     messageContainer.classList.add('l_message_container');
+//
+//     const messageElement = document.createElement('div');
+//     messageElement.classList.add('l_review_message_text');
+//
+//     const profileAndCommentElement = document.createElement('div');
+//     profileAndCommentElement.classList.add('l_profile_comment');
+//
+//     const profileImg = document.createElement('div');
+//     profileImg.classList.add('l_profile_img');
+//     if (profile != null) {
+//         profileImg.style.backgroundImage = `url(${profile})`;
+//     }
+//
+//     const textContainer = document.createElement('div');
+//     textContainer.classList.add('l_text_container');
+//
+//     const nameElement = document.createElement('div');
+//     nameElement.classList.add('l_message_name');
+//     nameElement.textContent = name;
+//
+//     const textElement = document.createElement('div');
+//     textElement.classList.add('l_message_text');
+//     textElement.textContent = message;
+//
+//     const dropDownElement = document.createElement('div');
+//     dropDownElement.className = "dropdown";
+//
+//     const settingButton = document.createElement('button');
+//     settingButton.classList.add('l_review_setting_button');
+//     settingButton.type = "button";
+//
+//     const buttonImage = document.createElement('img');
+//     buttonImage.src = "/images/icons/menu.png";
+//
+//     const dropDownUl = document.createElement('ul');
+//     dropDownUl.className = "dropdown-menu";
+//     dropDownUl.classList.add("l_dropdown_ul");
+//
+//     const dropFirstForm = document.createElement('form');
+//     dropFirstForm.action = "";
+//
+//     const dropSecondForm = document.createElement('form');
+//     dropSecondForm.action = "";
+//
+//     const dropDownFirstLi = document.createElement('li');
+//     dropDownFirstLi.className = "dropdown-item";
+//     dropDownFirstLi.innerHTML = "삭제하기";
+//
+//     const dropDownSecondLi = document.createElement('li');
+//     dropDownSecondLi.className = "dropdown-item";
+//     dropDownSecondLi.innerHTML = "수정하기";
+//
+//
+//     messageContainer.appendChild(messageElement);
+//
+//     messageElement.appendChild(profileAndCommentElement);
+//     messageElement.appendChild(dropDownElement);
+//
+//     profileAndCommentElement.appendChild(profileImg);
+//     profileAndCommentElement.appendChild(textContainer);
+//
+//     textContainer.appendChild(nameElement);
+//     textContainer.appendChild(textElement);
+//
+//     dropDownElement.appendChild(settingButton);
+//     dropDownElement.appendChild(dropDownUl);
+//     settingButton.appendChild(buttonImage);
+//
+//     dropDownUl.appendChild(dropFirstForm);
+//     dropDownUl.appendChild(dropSecondForm);
+//
+//     dropFirstForm.appendChild(dropDownFirstLi);
+//     dropSecondForm.appendChild(dropDownSecondLi);
+//
+//     reviewContainer.appendChild(messageContainer);
+// }
+//
+// function addCommentaryMessage(score, profile, name, message) {
+//
+//     const commentaryContainer = document.createElement('div');
+//     commentaryContainer.classList.add('l_comment_container');
+//
+//     const scoreContainer = document.createElement('div');
+//     scoreContainer.classList.add('l_score_container');
+//
+//     const scoreTitle = document.createElement('div');
+//     scoreTitle.classList.add('l_score_title');
+//     scoreTitle.textContent = "평점";
+//
+//     const scoreNumber = document.createElement('div');
+//     scoreNumber.classList.add('l_score');
+//     scoreNumber.textContent = score;
+//
+//     const messageContainer = document.createElement('div');
+//     messageContainer.classList.add('l_commentary_list_container');
+//
+//     const messageElement = document.createElement('div');
+//     messageElement.classList.add('l_commentary_message_text');
+//
+//     const profileAndCommentElement = document.createElement('div');
+//     profileAndCommentElement.classList.add('l_profile_comment');
+//
+//     const profileImg = document.createElement('div');
+//     profileImg.classList.add('l_profile_img');
+//     if (profile != null) {
+//         profileImg.style.backgroundImage = `url(${profile})`;
+//     }
+//
+//     const textContainer = document.createElement('div');
+//     textContainer.classList.add('l_text_container');
+//
+//     const nameElement = document.createElement('div');
+//     nameElement.classList.add('l_message_name');
+//     nameElement.textContent = name;
+//
+//     const textElement = document.createElement('div');
+//     textElement.classList.add('l_message_text');
+//     textElement.textContent = message;
+//
+//     const dropDownElement = document.createElement('div');
+//     dropDownElement.classList.add('dropdown');
+//
+//     const settingButton = document.createElement('button');
+//     settingButton.classList.add('l_review_setting_button');
+//     settingButton.type = "submit";
+//     // 버튼에 data-bs-toggle 속성 추가
+//     settingButton.setAttribute('data-bs-toggle', 'dropdown');
+//
+//     const buttonImage = document.createElement('img');
+//     buttonImage.src = "/images/icons/menu.png";
+//
+//     const dropDownUl = document.createElement('ul');
+//     dropDownUl.className = "dropdown-menu";
+//     dropDownUl.classList.add("l_dropdown_ul");
+//
+//     const dropFirstForm = document.createElement('form');
+//     dropFirstForm.action = "";
+//
+//     const dropSecondForm = document.createElement('form');
+//     dropSecondForm.action = "";
+//
+//     const dropDownFirstLi = document.createElement('li');
+//     dropDownFirstLi.className = "dropdown-item";
+//     dropDownFirstLi.innerHTML = "삭제하기";
+//
+//     const dropDownSecondLi = document.createElement('li');
+//     dropDownSecondLi.className = "dropdown-item";
+//     dropDownSecondLi.innerHTML = "수정하기";
+//
+//
+//     messageContainer.appendChild(messageElement);
+//
+//     profileAndCommentElement.appendChild(profileImg);
+//     profileAndCommentElement.appendChild(textContainer);
+//
+//     messageElement.appendChild(profileAndCommentElement);
+//     messageElement.appendChild(dropDownElement);
+//
+//     dropDownElement.appendChild(settingButton);
+//     dropDownElement.appendChild(dropDownUl);
+//
+//     dropDownUl.appendChild(dropFirstForm);
+//     dropFirstForm.appendChild(dropDownFirstLi);
+//
+//     dropDownUl.appendChild(dropSecondForm);
+//     dropSecondForm.appendChild(dropDownSecondLi);
+//
+//     settingButton.appendChild(buttonImage);
+//
+//     textContainer.appendChild(nameElement);
+//     textContainer.appendChild(textElement);
+//
+//     scoreContainer.appendChild(scoreTitle);
+//     scoreContainer.appendChild(scoreNumber);
+//
+//     commentaryContainer.appendChild(scoreContainer);
+//     commentaryContainer.appendChild(messageContainer);
+//
+//     commentContainer.appendChild(commentaryContainer);
+// }
+//
+// //for문으로 addMessage하면 됩니다.
+//
+// addReviewMessage("", "sksk", "hihihihihi");
+// addReviewMessage("", "sksk", "hihihihihi");
+//
+//
+// addCommentaryMessage(5,"", "sksk", "hihihihihi");
+// addCommentaryMessage(1,"", "sksk", "hihihihihi");
 
 
-function addReviewMessage(profile, name, message) {
-
-    const messageContainer = document.createElement('div');
-    messageContainer.classList.add('l_message_container');
-
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('l_review_message_text');
-
-    const profileAndCommentElement = document.createElement('div');
-    profileAndCommentElement.classList.add('l_profile_comment');
-
-    const profileImg = document.createElement('div');
-    profileImg.classList.add('l_profile_img');
-    if (profile != null) {
-        profileImg.style.backgroundImage = `url(${profile})`;
-    }
-
-    const textContainer = document.createElement('div');
-    textContainer.classList.add('l_text_container');
-
-    const nameElement = document.createElement('div');
-    nameElement.classList.add('l_message_name');
-    nameElement.textContent = name;
-
-    const textElement = document.createElement('div');
-    textElement.classList.add('l_message_text');
-    textElement.textContent = message;
-
-    const settingButton = document.createElement('button');
-    settingButton.classList.add('l_review_setting_button');
-
-    const buttonImage = document.createElement('img');
-    buttonImage.src = "/images/icons/menu.png";
-
-    messageContainer.appendChild(messageElement);
-
-    profileAndCommentElement.appendChild(profileImg);
-    profileAndCommentElement.appendChild(textContainer);
-
-    messageElement.appendChild(profileAndCommentElement);
-    messageElement.appendChild(settingButton);
-
-    settingButton.appendChild(buttonImage);
-
-    textContainer.appendChild(nameElement);
-    textContainer.appendChild(textElement);
-
-    reviewContainer.appendChild(messageContainer);
-}
-
-function addCommentaryMessage(score, profile, name, message) {
-
-    const commentaryContainer = document.createElement('div');
-    commentaryContainer.classList.add('l_comment_container');
-
-    const scoreContainer = document.createElement('div');
-    scoreContainer.classList.add('l_score_container');
-
-    const scoreTitle = document.createElement('div');
-    scoreTitle.classList.add('l_score_title');
-    scoreTitle.textContent = "평점";
-
-    const scoreNumber = document.createElement('div');
-    scoreNumber.classList.add('l_score');
-    scoreNumber.textContent = score;
-
-    const messageContainer = document.createElement('div');
-    messageContainer.classList.add('l_commentary_list_container');
-
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('l_commentary_message_text');
-
-    const profileAndCommentElement = document.createElement('div');
-    profileAndCommentElement.classList.add('l_profile_comment');
-
-    const profileImg = document.createElement('div');
-    profileImg.classList.add('l_profile_img');
-    if (profile != null) {
-        profileImg.style.backgroundImage = `url(${profile})`;
-    }
-
-    const textContainer = document.createElement('div');
-    textContainer.classList.add('l_text_container');
-
-    const nameElement = document.createElement('div');
-    nameElement.classList.add('l_message_name');
-    nameElement.textContent = name;
-
-    const textElement = document.createElement('div');
-    textElement.classList.add('l_message_text');
-    textElement.textContent = message;
-
-    const settingButton = document.createElement('button');
-    settingButton.classList.add('l_commentary_setting_button');
-
-    const buttonImage = document.createElement('img');
-    buttonImage.src = "/images/icons/menu.png";
-
-    messageContainer.appendChild(messageElement);
-
-    profileAndCommentElement.appendChild(profileImg);
-    profileAndCommentElement.appendChild(textContainer);
-
-    messageElement.appendChild(profileAndCommentElement);
-    messageElement.appendChild(settingButton);
-
-    settingButton.appendChild(buttonImage);
-
-    textContainer.appendChild(nameElement);
-    textContainer.appendChild(textElement);
-
-    scoreContainer.appendChild(scoreTitle);
-    scoreContainer.appendChild(scoreNumber);
-
-    commentaryContainer.appendChild(scoreContainer);
-    commentaryContainer.appendChild(messageContainer);
-
-    commentContainer.appendChild(commentaryContainer);
-}
-
-// for문으로 addMessage하면 됩니다.
-
-addReviewMessage("", "sksk", "hihihihihi");
-addReviewMessage("", "sksk", "hihihihihi");
 
 
-addCommentaryMessage(5,"", "sksk", "hihihihihi");
-addCommentaryMessage(1,"", "sksk", "hihihihihi");
+
+
+
+
+
 
 
 // 맨 위로 가기 버튼

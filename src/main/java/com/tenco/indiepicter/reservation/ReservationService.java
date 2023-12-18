@@ -33,18 +33,18 @@ public class ReservationService {
 
 	// 영화 예매 내역 등록
 	@Transactional
-	public int saveReservationTicket(LastOrderDTO lastOrderDTO, Integer principalId) {
+	public int saveReservationTicket(LastOrderDTO requestDTO, Integer principalId) {
 		// 온라인 영화 예매 시 seats id는 없으므로 디폴트 null 처리
 		Integer seatsNumber = null;
 
-		Seat seats = seatRepository.findByRunningDateIdAndUserId(lastOrderDTO.getRunningDateId(), 1);
+		Seat seats = seatRepository.findByRunningDateIdAndUserId(requestDTO.getRunningDateId(), 1);
 
 		if(seats != null){
 			seatsNumber = seats.getId();
 		}
 
 		Reservation reservation = Reservation.builder()
-					.reservationCode(lastOrderDTO.getReservationCode())
+					.reservationCode(requestDTO.getReservationCode())
 					.seatId(seatsNumber)
 					.userId(principalId)
 					.build();

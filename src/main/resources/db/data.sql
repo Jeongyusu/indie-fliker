@@ -401,3 +401,5 @@ insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_
 insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy2.jpg', 1);
 insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 1);
 
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('스트리머', '/movies/streamer.mp4', 'streamer', '2D', false, 'mp4', '2.32MB', 1);

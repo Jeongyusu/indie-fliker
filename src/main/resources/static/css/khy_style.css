@@ -998,6 +998,7 @@ div.main i {
 .k_funding_upload_container_two textarea {
     padding-left: 10px;
     padding-top: 10px;
+    resize: none;
 }
 
 .k_funding_upload_movie_name {
