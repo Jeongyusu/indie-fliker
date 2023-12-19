@@ -76,3 +76,14 @@ function handleKeyPress(event) {
         sendMessage();
     }
 }
+
+//////////////////////////////////////////////////////////////////
+
+function toggleMore() {
+    let moreContent = document.querySelector(".n_toggleMore");
+    if (moreContent.style.display === "none") {
+        moreContent.style.display = "inline";
+    } else {
+        moreContent.style.display = "none";
+    }
+}

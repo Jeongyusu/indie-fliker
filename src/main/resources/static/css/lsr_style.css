@@ -62,8 +62,47 @@
     width: 100%;
 }
 
+/*chatroom*/
+
+.l_channel {
+    margin: 24px 0 24px;
+    font-size: 22px;
+}
+
+.l_channel_card {
+    background-color: var(--back_01);
+    border: none;
+    padding: 10px;
+}
+
+
+
+
+
 .l_mint {
     color: var(--primary_01);
+}
+
+.l_movie_title{
+    font-size: 14px;
+    font-weight: bold;
+    margin: 8px;
+}
+
+.l_channel_movie_detail {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 8px;
+}
+
+.l_channel_card_button {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    text-align: start;
+    margin-bottom: 14px;
+
 }
 
 #l_banner {
@@ -227,8 +266,9 @@
 /* chat */
 
 .l_chat_section { 
-    border: 1px solid #ddd; 
-    overflow-y: auto; 
+    border: 2px solid var(--line_01);
+    overflow-y: auto;
+    border-top: none;
 }
 
 #chatMessages {
