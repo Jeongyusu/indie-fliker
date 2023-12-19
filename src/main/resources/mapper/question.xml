@@ -91,4 +91,14 @@
 
     <!-- ___________________________________________________________________________________________________________ -->
 
+    <!-- 자주 묻는 질문 키워드 페이징 조회 -->
+    <select id="findByQuestionSearchPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.question.response.QuestionResponseDTO">
+        select *
+        from question_tb
+        WHERE question_title LIKE '%' || #{keyword} || '%'
+                  OR content LIKE '%' || #{keyword} || '%'
+        order by created_at desc
+        limit #{p.pageStart}, #{p.pageLimit}
+    </select>
+
 </mapper>

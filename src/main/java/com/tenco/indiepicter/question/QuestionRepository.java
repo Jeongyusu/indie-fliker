@@ -3,6 +3,7 @@ package com.tenco.indiepicter.question;
 import com.tenco.indiepicter.notice.Notice;
 import com.tenco.indiepicter.question.response.QuestionResponseDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -45,5 +46,7 @@ public interface QuestionRepository {
     // 자주 묻는 질문(VIP) 페이징 조회
     public List<QuestionResponseDTO> findByQuestionVipPagingLists(Map<String, Integer> pagingParams);
 //-----------------------------------------------------------------------------------------------------
+    // 자주 묻는 질문 키워드 검색결과 조회
+    public List<QuestionResponseDTO> findByQuestionSearchPagingLists(@Param("p") Map<String, Integer> pagingParams, @Param("keyword") String keyword);
 
 }

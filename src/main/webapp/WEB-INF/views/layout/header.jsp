@@ -24,7 +24,7 @@
     <!-- uuid 사용하기 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
     <script src="/js/jys/keywordset.js"></script>
-    <link href="../../../../css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 
     <title>IndieFliker</title>
 </head>

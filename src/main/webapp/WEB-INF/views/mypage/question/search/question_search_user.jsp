@@ -1,6 +1,7 @@
+<%@ include file="../../../layout/header.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../../layout/header.jsp" %>
 
 <body>
 <div class="k_ask_container">
@@ -24,16 +25,16 @@
         <a href="/question/VIP">VIP</a>
     </div>
 
-    <c:forEach var="questionResponseDTO" items="${questionReservationPagingLists}">
+    <c:forEach var="questionResponseDTO" items="${questionSearchPagingLists}">
     <div class="k_member_info">${questionResponseDTO.category}</div>
     <div class="k_member_how_info">
-            ${questionResponseDTO.questionTitle}
+        ${questionResponseDTO.questionTitle}
         <div class="k_clickMe">
             <button type="button" class="k_clickMeSymbol" onclick="handleClick(1)">∨</button>
         </div>
     </div>
     <div class="k_hiddenDiv" id="hiddenDiv1">
-            ${questionResponseDTO.content}
+        ${questionResponseDTO.content}
     </div>
     <hr>
     </c:forEach>
@@ -47,7 +48,7 @@
 
             <c:otherwise>
                 <%-- 이전을 누르면 컨트롤러에 현재 페이지보다 1 작은 페이지로 요청 --%>
-                <a href="/question/reservation?page=${paging.page-1}">[이전]</a>
+                <a href="/question/user?page=${paging.page-1}&keyword=${keyword}">[이전]</a>
             </c:otherwise>
         </c:choose>
 
@@ -61,7 +62,7 @@
 
                 <c:otherwise>
                     <%-- 다른 페이지 이동이 필요할때 컨트롤러에 요청 --%>
-                    <a href="/question/reservation?page=${i}">${i}</a>
+                    <a href="/question/search?page=${i}&keyword=${keyword}">${i}</a>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
@@ -73,10 +74,11 @@
             </c:when>
             <%-- 다음을 누르면 현재 페이지보다 1 큰 페이지로 요청 --%>
             <c:otherwise>
-                <a href="/question/reservation?page=${paging.page+1}">[다음]</a>
+                <a href="/question/user?page=${paging.page+1}&keyword=${keyword}">[다음]</a>
             </c:otherwise>
         </c:choose>
     </div>
+
 
 </div>
 
@@ -92,4 +94,4 @@
         }
     }
 </script>
-<%@ include file="../../layout/footer.jsp" %>
+<%@ include file="../../../layout/footer.jsp" %>

@@ -1472,3 +1472,7 @@ k_ask_s_container a{
     justify-content: center;
     align-items: center;
 }
+
+.k_search-input:focus::placeholder {
+    color: transparent;
+}

@@ -224,4 +224,17 @@ public class QuestionService {
 
 // -------------------------------------------------------------------------------------------------------------
 
+    public List<QuestionResponseDTO> questionSearchPaging(Integer page, String keyword){
+        // 인덱스 번호 0부터 시작이기 때문에 -1 로 처리 해줌
+        // 일단 저는 이렇게 이해했습니다!! 정확하지 않음 ㅠㅜ
+        int pageStart = (page - 1) * pageLimit;
+
+        // 쿼리문에 숫자를 두개 넘겨야 해서 Map사용
+        Map<String, Integer> pagingParams = new HashMap<>();
+        pagingParams.put("pageStart", pageStart);
+        pagingParams.put("pageLimit", pageLimit);
+
+        return this.questionRepository.findByQuestionSearchPagingLists(pagingParams, keyword);
+    }
+
 }
