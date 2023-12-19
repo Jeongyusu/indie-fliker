@@ -30,6 +30,16 @@ public class AdminController {
 			return "manager/main";
 		}
 
+//---------------------------------------------------------------------------------
+
+		// 영화 등록 허가 페이지
+		@GetMapping("/register")
+		public String register() {
+
+			return "manager/register";
+		}
+
+//---------------------------------------------------------------------------------
 		// 펀딩 현황 확인 페이지
 		@GetMapping("/check")
 		public String check() {
@@ -52,12 +62,12 @@ public class AdminController {
 			return "manager/invitation";
 		}
 
-//		// VIP 초청권 발급
-//		@GetMapping("/vip-issued/{id}")
-//		public String vipIssued(@PathVariable Integer id){
-//			this.adminService.vipIssued(id);
-//			return "redirect:/admin/invitation";
-//		}
+		// VIP 초청권 발급
+		@GetMapping("/vip-issued/{id}")
+		public String vipIssued(@PathVariable Integer id){
+			this.adminService.vipIssued(id);
+			return "redirect:/admin/invitation";
+		}
 
 //---------------------------------------------------------------------------------
 		// 일반 회원 관리
@@ -126,4 +136,4 @@ public class AdminController {
 	
 }
 
-// 12-19 17:19 학원 작업중 ~
+// 12-19 19:23 학원 작업중 ~
