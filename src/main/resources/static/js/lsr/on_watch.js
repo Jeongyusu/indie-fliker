@@ -4,9 +4,9 @@ let movieId = document.querySelector("#movieId");
 let onlineEndDate = document.querySelector("#onlineEndDate");
 let onlineReleaseDate = document.querySelector("#onlineReleaseDate");
 
-let userId = document.querySelector("#principalId");
-let username = document.querySelector("#principalUsername");
-let userPic = document.querySelector("#principalPic");
+let userId = document.querySelector("#principalId").value;
+let username = document.querySelector("#principalUsername").value;
+let userPic = document.querySelector("#principalPic").value;
 
 let reviewButton = document.querySelector(".l_review_button");
 let vipReviewButton = document.querySelector(".l_vip_review_button");
@@ -35,6 +35,11 @@ function getMovieId(){
 reviewButton.addEventListener("click", function () {
     let reviewContent = document.querySelector(".l_chat_message_input").value;
     let movieId = document.querySelector("#movieId").value;
+
+    if(reviewContent.trim() === ""){
+        alert("공백은 입력할 수 없습니다.");
+        return;
+    }
 
     let reviewSaveDTO = {
         reviewContent: reviewContent,
@@ -83,6 +88,12 @@ reviewElement.addEventListener("click", function (event) {
 function enterReviewKey(e) {
     if (window.event.keyCode === 13) {
         let reviewContent = e.value;
+
+        if(reviewContent.trim() === ""){
+            alert("공백은 입력할 수 없습니다.");
+            return;
+        }
+
         let movieId = document.querySelector("#movieId").value;
         let normalReviewId = document.querySelector(".normalReviewId").value;
 
@@ -186,6 +197,9 @@ async function findNormalReview(movieId) {
             // 매번 초기화 해서 데이터를 삽입할 때 마다 중복이 없도록 한다.
             reviewElement.innerHTML = "";
 
+            let reviewCount = document.querySelector("#count");
+            reviewCount.innerHTML = NormalReviewsToMovieDTO.length;
+
             // 응답이 성공 후, HTML에 데이터 삽입(for-each)
             NormalReviewsToMovieDTO.forEach(function (normalReview) {
                 let reviewDiv = document.createElement('div');
@@ -209,7 +223,7 @@ async function findNormalReview(movieId) {
                                 <button type="button" class="dropdown-toggle l_review_set_button" data-bs-toggle="dropdown">
                                     <img src="/images/icons/menu.png">
                                 </button>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu l_dropdown_button">
                                     <button class="dropdown-item l_review_delete">삭제하기</button>
                                     <button class="dropdown-item l_review_update">수정하기</button>
                                 </ul>
@@ -239,6 +253,26 @@ vipReviewButton.addEventListener("click", function () {
     let vipReviewPoint = document.querySelector("#l_score_point").value;
     let movieId = document.querySelector("#movieId").value;
 
+    // 공백 입력 막기
+    if(vipReviewContent.trim() === ""){
+        alert("공백은 입력할 수 없습니다.");
+        return;
+    }
+
+    // 평론을 이미 작성한 유저는 막기
+    let vipReviewUsers = document.querySelectorAll(".vipReviewUserId");
+    vipReviewUsers.forEach(function (vipReviewUser) {
+
+        if (Array.from(vipReviewUsers).some(vipReviewUser => vipReviewUser.value.includes(userId))) {
+            alert("영화 평론은 1번만 작성 가능합니다.");
+            // 중복된 경우, 여기서 더 이상의 코드 실행을 막을 수 있습니다.
+            // 예를 들어, 함수를 종료하거나 다른 처리를 추가할 수 있습니다.
+
+            vipReviewUser.preventDefault();
+            return;
+        }
+    })
+
     let vipReviewSaveDTO = {
         vipReviewContent: vipReviewContent,
         vipReviewPoint: vipReviewPoint,
@@ -256,6 +290,11 @@ function enterVipReviewKey(e) {
         let vipReviewPoint = document.querySelector(".l_score").innerHTML;
         let vipReviewId = document.querySelector(".vipReviewId").value;
         let movieId = document.querySelector("#movieId").value;
+
+        if(vipReviewContent.trim() === ""){
+            alert("공백은 입력할 수 없습니다.");
+            return;
+        }
 
         let vipReviewUpdateDTO = {
             vipReviewPoint: vipReviewPoint,
@@ -387,7 +426,6 @@ async function findVipReview(movieId) {
         });
 
         if (response.ok) {
-            console.log("조회 완료!");
             let responseData = await response.json();
             let VipReviewsToMovieDTO = responseData.response; // body
 
@@ -412,7 +450,7 @@ async function findVipReview(movieId) {
                                     <div>
                                         <img src="${vipReview.userPic}" class="l_profile_img">
                                     </div>
-                                     <div class="l_text_container">
+                                     <div class="l_vip_text_container">
                                         <input type="text" class="l_vip_message_name" value="${vipReview.username}" disabled>
                                         <input type="text" class="l_vip_message_text" value="${vipReview.vipReviewContent}" disabled onkeyup="enterVipReviewKey(this)">
                                         <input type="hidden" class="vipReviewId" value="${vipReview.vipReviewId}">
@@ -423,7 +461,7 @@ async function findVipReview(movieId) {
                                     <button type="button" class="dropdown-toggle l_review_set_button" data-bs-toggle="dropdown">
                                         <img src="/images/icons/menu.png">
                                     </button>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu l_dropdown_button">
                                         <button class="dropdown-item l_vip_review_delete">삭제하기</button>
                                         <button class="dropdown-item l_vip_review_update">수정하기</button>
                                     </ul>
