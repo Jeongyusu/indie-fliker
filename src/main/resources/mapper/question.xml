@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tenco.indiepicter.question.QuestionRepository">
+
+    <insert id="insert">
+        insert into question_tb(question_title, content, category, created_at)
+        values(#{questionTitle}, #{content}, #{category}, now());
+    </insert>
+
+    <!-- ___________________________________________________________________________________________________________ -->
+
+    <!-- 자주 묻는 질문(회원정보) 전체 갯수 조회 -->
+    <select id="pageUserCount" resultType="Integer">
+        select count('회원정보') from question_tb where category='회원정보'
+    </select>
+
+    <!-- 자주 묻는 질문(회원정보) 페이징 조회 -->
+    <select id="findByQuestionUserPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.question.response.QuestionResponseDTO">
+        select *
+        from question_tb
+        where category='회원정보'
+        order by created_at desc
+        limit #{pageStart}, #{pageLimit}
+    </select>
+
+    <!-- ___________________________________________________________________________________________________________ -->
+
+    <!-- 자주 묻는 질문(결제) 전체 갯수 조회 -->
+    <select id="pagePayCount" resultType="Integer">
+        select count('결제') from question_tb where category='결제'
+    </select>
+
+    <!-- 자주 묻는 질문(결제) 페이징 조회 -->
+    <select id="findByQuestionPayPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.question.response.QuestionResponseDTO">
+        select *
+        from question_tb
+        where category='결제'
+        order by created_at desc
+            limit #{pageStart}, #{pageLimit}
+    </select>
+
+    <!-- ___________________________________________________________________________________________________________ -->
+
+    <!-- 자주 묻는 질문(취소/환불) 전체 갯수 조회 -->
+    <select id="pageCancelCount" resultType="Integer">
+        select count('취소/환불') from question_tb where category='취소/환불'
+    </select>
+
+    <!-- 자주 묻는 질문(취소/환불) 페이징 조회 -->
+    <select id="findByQuestionCancelPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.question.response.QuestionResponseDTO">
+        select *
+        from question_tb
+        where category='취소/환불'
+        order by created_at desc
+            limit #{pageStart}, #{pageLimit}
+    </select>
+
+    <!-- ___________________________________________________________________________________________________________ -->
+
+    <!-- 자주 묻는 질문(영화예매) 전체 갯수 조회 -->
+    <select id="pageReservationCount" resultType="Integer">
+        select count('영화예매') from question_tb where category='영화예매'
+    </select>
+
+    <!-- 자주 묻는 질문(영화예매) 페이징 조회 -->
+    <select id="findByQuestionReservationPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.question.response.QuestionResponseDTO">
+        select *
+        from question_tb
+        where category='영화예매'
+        order by created_at desc
+            limit #{pageStart}, #{pageLimit}
+    </select>
+
+    <!-- ___________________________________________________________________________________________________________ -->
+
+    <!-- 자주 묻는 질문(VIP) 전체 갯수 조회 -->
+    <select id="pageVipCount" resultType="Integer">
+        select count('VIP') from question_tb where category='VIP'
+    </select>
+
+    <!-- 자주 묻는 질문(VIP) 페이징 조회 -->
+    <select id="findByQuestionVipPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.question.response.QuestionResponseDTO">
+        select *
+        from question_tb
+        where category='VIP'
+        order by created_at desc
+            limit #{pageStart}, #{pageLimit}
+    </select>
+
+    <!-- ___________________________________________________________________________________________________________ -->
+
+    <!-- 자주 묻는 질문 키워드 페이징 조회 -->
+    <select id="findByQuestionSearchPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.question.response.QuestionResponseDTO">
+        select *
+        from question_tb
+        WHERE question_title LIKE '%' || #{keyword} || '%'
+                  OR content LIKE '%' || #{keyword} || '%'
+        order by created_at desc
+        limit #{p.pageStart}, #{p.pageLimit}
+    </select>
+
+</mapper>

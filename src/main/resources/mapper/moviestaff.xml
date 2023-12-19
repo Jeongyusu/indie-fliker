@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tenco.indiepicter.movie.moviestaff.MovieStaffRepository">
+
+    <insert id="saveMovieStaff">
+        insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id)
+        values (#{director}, #{filming}, #{art}, #{sound}, #{clothes}, #{script}, #{lighting}, #{editing}, #{music}, #{movieId})
+    </insert>
+
+</mapper>

@@ -384,6 +384,13 @@ div.main i {
     background-color: green;
     margin-left: 2%;
 }
+
+.k_profile_main img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
 /*마이페이지*/
 .k_left_my {
     margin-left: 10%;
@@ -644,10 +651,27 @@ div.main i {
 }
 
 .k_btn_group {
-    display: flex;
-    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 50px;
 }
 
+.k_btn_group a{
+    width: 143px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid #8AF9CD;
+    text-align: center;
+    line-height: 50px;
+}
+
+.k_btn_group a:hover{
+    background-color: #8AF9CD;
+}
+
+.k_question_a{
+    border: none;
+}
 .k_btn {
     height: 35px;
     width: 70%;
@@ -670,7 +694,7 @@ div.main i {
 
 .k_a_btn-primary {
     height: 35px;
-    width: 70%;
+    width: 105%;
     background-color: var(--def_wh);
     border-color: var(--primary_01);
     box-shadow: none;
@@ -684,9 +708,11 @@ div.main i {
 }
 
 .k_a_btn_mem_vip {
-    border-radius: 4px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    height: 35px;
+    width: 105%;
+    background-color: var(--def_wh);
+    border-color: var(--primary_01);
+    box-shadow: none;
 }
 
 .k_b_b_none {
@@ -751,6 +777,11 @@ div.main i {
 }
 
 .k_ask_a {
+
+}
+
+k_ask_s_container a{
+
 
 }
 
@@ -923,7 +954,7 @@ div.main i {
 .k_funding_upload {
     width: 800px;
     height: 100%;
-    margin: 30px 0;
+    margin: 0;
 }
 
 .k_funding_upload_titles {
@@ -998,6 +1029,7 @@ div.main i {
 .k_funding_upload_container_two textarea {
     padding-left: 10px;
     padding-top: 10px;
+    resize: none;
 }
 
 .k_funding_upload_movie_name {
@@ -1425,4 +1457,22 @@ div.main i {
     border: none;
     background: transparent;
     color: var(--def_wh);
+}
+
+.k_custom_gif {
+    margin-top: 10px;
+    width: 50px;
+    height: 100px;
+    margin-bottom: 10px;
+    pointer-events: none;
+}
+
+.k_custom_gif_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.k_search-input:focus::placeholder {
+    color: transparent;
 }

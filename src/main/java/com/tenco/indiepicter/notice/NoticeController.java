@@ -36,15 +36,16 @@ public class NoticeController {
 		model.addAttribute("noticePagingLists", noticePagingLists);
 		model.addAttribute("paging", noticePagingResponseDTO);
 		
-		return "manager/notice";
+		return "mypage/notice";
 	}
 	
 	@GetMapping("/notice-detail/{noticeId}")
-	public String noticeDetail(@PathVariable Integer noticeId) {	
-	
-		return "manager/notice_detail";
+	public String noticeDetail(@PathVariable Integer noticeId, Model model) {
+
+		Notice notice = this.noticeService.findById(noticeId);
+		model.addAttribute("notice", notice);
+
+		return "mypage/notice_detail";
 	}
 	
 }
-
-// 12-15 5:52 학원 작업~

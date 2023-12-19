@@ -23,7 +23,7 @@ create table theater_tb(
 
 create table movie_tb(
                          id int auto_increment primary key,
-                         make_year int not null,
+                         make_year varchar(20) not null,
                          production varchar(20) not null,
                          movie_name varchar(20) not null,
                          synopsis varchar(500) not null,
@@ -81,9 +81,9 @@ create table movie_file_tb(
 create table funding_tb(
                            id int auto_increment primary key,
                            target_price int not null,
-                           present_price int not null,
+                           present_price int,
                            price_per_onetime int not null,
-                           people_count int not null,
+                           people_count int,
                            release_date date not null,
                            end_date date not null,
                            movie_id int not null,
@@ -91,14 +91,15 @@ create table funding_tb(
 );
 
 create table funding_ready_tb(
-                                 id int auto_increment primary key,
-                                 target_price int not null,
-                                 price_per_onetime int not null,
-                                 people_count int not null,
-                                 release_date date not null,
-                                 end_date date not null,
-                                 movie_id int not null,
-                                 foreign KEY(movie_id) references movie_tb(id)
+                            id int auto_increment primary key,
+                            target_price int not null,
+                            present_price int,
+                            price_per_onetime int not null,
+                            people_count int,
+                            release_date date not null,
+                            end_date date not null,
+                            movie_id int not null,
+                            foreign KEY(movie_id) references movie_tb(id)
 );
 
 create table review_tb(
@@ -211,8 +212,6 @@ create table notice_tb(
 
 
 
-
-
 create table banner_tb(
                           id int auto_increment primary key,
                           banner_pic varchar(200) not null,
@@ -233,3 +232,4 @@ CREATE TABLE moviecrawl_tb (
                                              production_company VARCHAR(255),
                                              distribution_company VARCHAR(255)
 );
+

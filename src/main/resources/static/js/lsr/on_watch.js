@@ -1,139 +1,110 @@
-/**
- * [온라인 영화 시청] 에 들어가는 댓글 + 맨 위로가기 버튼
- */
 
-const reviewContainer = document.getElementById('l_review_container');
-const commentContainer = document.getElementById('l_commentary_container');
+let normalReviewId = document.querySelector("#normalReviewId").value;
+let reviewContent = document.querySelector(".l_chat_message_input").value;
+let reviewUserId = document.querySelector("#reviewUserId").value;
+
+let vipReviewId = document.querySelector("#vipReviewId").value;
+let vipReviewContent = document.querySelector(".l_commentary_input").innerHTML;
+let vipReviewPoint = document.querySelector("#l_score_point").value;
+let vipReviewUserId = document.querySelector("#vipReviewUserId").value;
+
+let movieId = document.querySelector("#movieId").value;
+
+let onlineEndDate = document.querySelector("#onlineEndDate");
+let onlineReleaseDate = document.querySelector("#onlineReleaseDate");
+
+let userId = document.querySelector("#principalId");
+let username = document.querySelector("#principalUsername");
+let userPic = document.querySelector("#principalPic");
 
 
-function addReviewMessage(profile, name, message) {
+let reviewButton = document.querySelector(".l_review_button");
 
-    const messageContainer = document.createElement('div');
-    messageContainer.classList.add('l_message_container');
 
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('l_review_message_text');
 
-    const profileAndCommentElement = document.createElement('div');
-    profileAndCommentElement.classList.add('l_profile_comment');
 
-    const profileImg = document.createElement('div');
-    profileImg.classList.add('l_profile_img');
-    if (profile != null) {
-        profileImg.style.backgroundImage = `url(${profile})`;
+
+let reviewSaveDTO = {
+    reviewContent: reviewContent,
+    movieId: movieId
+};
+
+let reviewDeleteDTO = {
+    normalReviewId: normalReviewId,
+    movieId: movieId
+};
+
+let reviewUpdateDTO = {
+    reviewContent: reviewContent,
+    normalReviewId: normalReviewId,
+    movieId: movieId
+};
+
+let vipReviewSaveDTO = {
+    vipReviewContent: vipReviewContent,
+    vipReviewPoint: vipReviewPoint,
+    movieId: movieId
+};
+
+let vipReviewDeleteDTO = {
+    vipReviewId: vipReviewId,
+    movieId: movieId
+};
+
+let vipReviewUpdateDTO = {
+    vipReviewPoint:vipReviewPoint,
+    vipReviewContent: vipReviewContent,
+    vipReviewId: vipReviewId,
+    movieId: movieId
+};
+
+reviewButton.addEventListener("click", function () {
+    let reviewContent = document.querySelector(".l_chat_message_input").value;
+    let movieId = document.querySelector("#movieId").value;
+
+    let reviewSaveDTO = {
+        reviewContent: reviewContent,
+        movieId: movieId
+    };
+
+    saveNormalReview(reviewSaveDTO);
+    console.log("movie_id : " + reviewSaveDTO.reviewContent);
+    console.log("reviewContent : " + reviewSaveDTO.reviewContent);
+})
+
+
+
+async function saveNormalReview(reviewSaveDTO) {
+
+    console.log("movie_id : " + reviewSaveDTO.reviewContent);
+    console.log("reviewContent : " + reviewSaveDTO.reviewContent);
+
+    try {
+        let response = await fetch(`/normal-review/api/save`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(reviewSaveDTO)
+
+        });
+
+        if (response.ok) {
+            console.log("댓글 저장 완료");
+        } else {
+            console.error("실패", response.statusText);
+        }
+    } catch (e) {
+        console.error("실패", e.message);
     }
-
-    const textContainer = document.createElement('div');
-    textContainer.classList.add('l_text_container');
-
-    const nameElement = document.createElement('div');
-    nameElement.classList.add('l_message_name');
-    nameElement.textContent = name;
-
-    const textElement = document.createElement('div');
-    textElement.classList.add('l_message_text');
-    textElement.textContent = message;
-
-    const settingButton = document.createElement('button');
-    settingButton.classList.add('l_review_setting_button');
-
-    const buttonImage = document.createElement('img');
-    buttonImage.src = "/images/icons/menu.png";
-
-    messageContainer.appendChild(messageElement);
-
-    profileAndCommentElement.appendChild(profileImg);
-    profileAndCommentElement.appendChild(textContainer);
-
-    messageElement.appendChild(profileAndCommentElement);
-    messageElement.appendChild(settingButton);
-
-    settingButton.appendChild(buttonImage);
-
-    textContainer.appendChild(nameElement);
-    textContainer.appendChild(textElement);
-
-    reviewContainer.appendChild(messageContainer);
 }
 
-function addCommentaryMessage(score, profile, name, message) {
-
-    const commentaryContainer = document.createElement('div');
-    commentaryContainer.classList.add('l_comment_container');
-
-    const scoreContainer = document.createElement('div');
-    scoreContainer.classList.add('l_score_container');
-
-    const scoreTitle = document.createElement('div');
-    scoreTitle.classList.add('l_score_title');
-    scoreTitle.textContent = "평점";
-
-    const scoreNumber = document.createElement('div');
-    scoreNumber.classList.add('l_score');
-    scoreNumber.textContent = score;
-
-    const messageContainer = document.createElement('div');
-    messageContainer.classList.add('l_commentary_list_container');
-
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('l_commentary_message_text');
-
-    const profileAndCommentElement = document.createElement('div');
-    profileAndCommentElement.classList.add('l_profile_comment');
-
-    const profileImg = document.createElement('div');
-    profileImg.classList.add('l_profile_img');
-    if (profile != null) {
-        profileImg.style.backgroundImage = `url(${profile})`;
-    }
-
-    const textContainer = document.createElement('div');
-    textContainer.classList.add('l_text_container');
-
-    const nameElement = document.createElement('div');
-    nameElement.classList.add('l_message_name');
-    nameElement.textContent = name;
-
-    const textElement = document.createElement('div');
-    textElement.classList.add('l_message_text');
-    textElement.textContent = message;
-
-    const settingButton = document.createElement('button');
-    settingButton.classList.add('l_commentary_setting_button');
-
-    const buttonImage = document.createElement('img');
-    buttonImage.src = "/images/icons/menu.png";
-
-    messageContainer.appendChild(messageElement);
-
-    profileAndCommentElement.appendChild(profileImg);
-    profileAndCommentElement.appendChild(textContainer);
-
-    messageElement.appendChild(profileAndCommentElement);
-    messageElement.appendChild(settingButton);
-
-    settingButton.appendChild(buttonImage);
-
-    textContainer.appendChild(nameElement);
-    textContainer.appendChild(textElement);
-
-    scoreContainer.appendChild(scoreTitle);
-    scoreContainer.appendChild(scoreNumber);
-
-    commentaryContainer.appendChild(scoreContainer);
-    commentaryContainer.appendChild(messageContainer);
-
-    commentContainer.appendChild(commentaryContainer);
-}
-
-// for문으로 addMessage하면 됩니다.
-
-addReviewMessage("", "sksk", "hihihihihi");
-addReviewMessage("", "sksk", "hihihihihi");
 
 
-addCommentaryMessage(5,"", "sksk", "hihihihihi");
-addCommentaryMessage(1,"", "sksk", "hihihihihi");
+
+
+
+
 
 
 // 맨 위로 가기 버튼

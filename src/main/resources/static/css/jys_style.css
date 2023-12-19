@@ -9,6 +9,7 @@
     display: grid;
     grid-template-columns: auto auto;
     justify-content: space-between;
+
 }
 
 .j_nav_left {
@@ -100,6 +101,7 @@
 .j_text_area {
     margin-left: 10px;
     border: none;
+    max-width: 70%;
 }
 
 .j_search_magnifier {
@@ -166,6 +168,10 @@
     margin-top: 20px;
     margin-bottom: 20px;
 
+}
+
+.j_custom_margin30 {
+    margin-right: 30px;
 }
 
 

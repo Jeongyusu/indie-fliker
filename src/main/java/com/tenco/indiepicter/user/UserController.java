@@ -286,7 +286,7 @@ public class UserController {
 		
 		model.addAttribute("user", user);
 		
-		return "user/profile";
+		return "mypage/profile";
 	}
 	
 	// 회원 프로필 수정(POST)
@@ -351,7 +351,7 @@ public class UserController {
 		User principalId = (User)session.getAttribute(Define.PRINCIPAL);
 		this.userService.findById(principalId.getId());
 		
-		return "redirect:/user/mypage";
+		return "mypage/mypage";
 	}
 	
 //----------------------------------------------------------------------------------------------------------------	

@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
-<form action="/save" method="post" enctype="multipart/form-data">
+<form action="/fund/save" method="post" enctype="multipart/form-data">
 <div class="k_funding_save">
-    <button type="submit" class="k_custom_button">
     <p>펀딩 등록하기</p>
-    </button>
 </div>
 <div class="k_funding_main">
     <div class="k_funding_upload">
@@ -276,13 +274,18 @@
         </div>
     </div>
   </div>
-</div>
+    <div class="k_custom_gif_container">
+        <img src="/images/icons/down-arrow.gif" class="k_custom_gif">
+<%--        <div style="width: 30px"></div>--%>
+<%--        <img src="/images/icons/down-arrow.gif" class="k_custom_gif">--%>
+    </div>
     <div class="k_funding_save">
         <button type="submit" class="k_custom_button">
             <p>펀딩 등록하기</p>
         </button>
     </div>
 </form>
+
 
 <script>
     let firstDay = document.getElementById('firstDay');

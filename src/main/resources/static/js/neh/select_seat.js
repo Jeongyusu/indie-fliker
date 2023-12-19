@@ -293,7 +293,7 @@ let paymentButton = document.querySelector("#n_payment_button");
 let totalPrice = document.querySelector("#n_price");
 paymentButton.addEventListener("click", function (event){
     let wantCount = document.querySelector(".n_count").innerHTML;
-    let clickedCount = document.querySelector("clickedSeatCount");
+    let clickedCount = document.querySelector("#clickedSeatCount");
 
     if(wantCount > clickedCount.value){
         alert("관람인원만큼 좌석을 선택해주세요.");

@@ -1,15 +1,15 @@
 package com.tenco.indiepicter.funding;
 
 import com.tenco.indiepicter._core.utils.Define;
+import com.tenco.indiepicter._core.utils.Script;
 import com.tenco.indiepicter.banner.BannerService;
 import com.tenco.indiepicter.funding.request.FundingSaveDTO;
 import com.tenco.indiepicter.funding.response.*;
 import com.tenco.indiepicter.movie.MovieService;
-import com.tenco.indiepicter.order.response.LastOrderDTO;
+import com.tenco.indiepicter.movie.moviestaff.MovieStaffService;
 import com.tenco.indiepicter.scrab.ScrabService;
 import com.tenco.indiepicter.theater.TheaterService;
 import com.tenco.indiepicter.user.User;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,6 +40,9 @@ public class FundingController {
 
     @Autowired
     private MovieService movieService;
+
+    @Autowired
+    private MovieStaffService movieStaffService;
 
     @GetMapping("/funding-plus")
     public String fundingPlus (@RequestParam(name = "genre", defaultValue = "극영화") String genre, @RequestParam(name = "page", defaultValue = "1") Integer page, Model model){
@@ -79,11 +82,17 @@ public class FundingController {
         return "fund/fund_upload";
     }
 
-    @ResponseBody
+
     @PostMapping ("/save")
-    public String saveFunding(FundingSaveDTO requestDTO){
-        movieService.saveMovie(requestDTO);
-        return "성공";
+    public @ResponseBody String saveFunding(FundingSaveDTO requestDTO){
+        fundingService.saveFunding(requestDTO);
+        return Script.href("/fund/funding-plus", "펀딩 등록 성공! 심사 후 승인됩니다.");
     }
 
+    @GetMapping("/search")
+    public String searchFunding(@RequestParam( name ="keyword") String keyword, Model model){
+        List<SearchResultDTO> searchResultDTOs = fundingService.searchKeyword(keyword);
+        model.addAttribute("searchResultDTOs", searchResultDTOs);
+        return "main/search_result";
+    }
 }
