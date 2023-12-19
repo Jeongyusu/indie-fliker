@@ -31,7 +31,7 @@ public class NoticeController {
 			@RequestParam(value="page", required=false, defaultValue="1") Integer page,
 			Model model) {
 		
-		List<Notice> noticePagingLists = this.noticeService.findByNoticePagingLists(page);
+		List<Notice> noticePagingLists = this.noticeService.noticePagingLists(page);
 		NoticePagingResponseDTO noticePagingResponseDTO = this.noticeService.pagingParam(page);
 		model.addAttribute("noticePagingLists", noticePagingLists);
 		model.addAttribute("paging", noticePagingResponseDTO);

@@ -37,7 +37,7 @@ public class NoticeService {
 	int blockLimit = 5; // 하단에 보여줄 페이지 번호 갯수
 	
 	// 공지사항 페이징 조회
-	public List<Notice> findByNoticePagingLists(Integer page){
+	public List<Notice> noticePagingLists(Integer page){
 		
 		// 인덱스 번호 0부터 시작이기 때문에 -1 로 처리 해줌
 		// 일단 저는 이렇게 이해했습니다!! 정확하지 않음 ㅠㅜ
@@ -49,7 +49,6 @@ public class NoticeService {
 		pagingParams.put("pageLimit", pageLimit);
 		
 		return this.noticeRepository.findByNoticePagingLists(pagingParams);
-		
 	}
 	
 	// 페이징 계산

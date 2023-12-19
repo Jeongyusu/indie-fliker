@@ -7,7 +7,9 @@ create table user_tb(
                         grade enum('NORMAL', 'VIP') not null,
                         tel varchar(30) not null,
                         gubun enum('NORMAL', 'DIRECTOR', 'ADMIN'),
+                        is_withdrawal boolean default false,
                         created_at timestamp not null default now()
+
 );
 
 create table theater_tb(
