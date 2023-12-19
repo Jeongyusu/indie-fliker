@@ -224,6 +224,28 @@ create table banner_tb(
 
 );
 
+create table invitation_tb(
+                          id int auto_increment primary key,
+                          invitation_code varchar(30) not null,
+                          movie_name varchar(30) not null,
+                          theater_name varchar(30) not null,
+                          theater_address varchar(100) not null,
+                          movie_time datetime not null,
+                          created_at datetime not null default now(),
+                          user_id int not null,
+                          foreign KEY(user_id) references user_tb(id)
+
+);
+
+create table question_tb(
+                            id int auto_increment primary key,
+                            question_title varchar(20) not null,
+                            content varchar(200) not null,
+                            category varchar(20) not null,
+                            created_at datetime not null default now()
+);
+
+
 CREATE TABLE moviecrawl_tb (
                                              id INT AUTO_INCREMENT PRIMARY KEY,
                                              title VARCHAR(255),

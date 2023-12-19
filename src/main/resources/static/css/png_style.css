@@ -1683,5 +1683,9 @@
 .p_noticedetail_contnet p{
 
 }
+
+.p_custom_margin_bottom {
+    margin-bottom: 20px;
+}
 /*---------------------------------------------------------------------*/
 /* 공지사항 디테일 */
