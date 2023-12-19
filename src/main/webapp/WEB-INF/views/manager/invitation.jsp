@@ -23,6 +23,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
+
 </head>
 <body>
 
@@ -131,7 +132,7 @@
                             </td>
                             <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${user.createdAt}"/></td>
                             <td>${user.grade}</td>
-                            <td><a href="/admin/vip-issued/${user.id}"><button>발급 하기</button></a></td>
+                            <td><button onclick="openModal()">발급하기</button></td>
                         </tr>
 
                     </tbody>
@@ -178,11 +179,39 @@
                     </c:otherwise>
                 </c:choose>
             </div>
-        
-        </div>
 
+            <!--------------------------------- 모달 버튼 ---------------------------------------------->
+            <!-- 모달 백그라운드 -->
+            <div class="p_modal-background" id="modalBackground" onclick="closeModal()"></div>
+
+            <!-- 모달 -->
+            <div class="p_modal" id="myModal">
+                <h2>초청권 발급</h2>
+                <p>모달 내용...</p>
+                <button onclick="closeModal()">닫기</button>
+            </div>
+            <!--------------------------------- 모달 버튼 ---------------------------------------------->
+
+        </div>
         <!--컨테이너2 끝-->
-        
     </div>
+
+    <!--------------------------------- 모달 버튼 ---------------------------------------------->
+
+    <script>
+        // 모달 열기
+        function openModal() {
+            document.getElementById('myModal').style.display = 'block';
+            document.getElementById('modalBackground').style.display = 'block';
+        }
+
+        // 모달 닫기
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+            document.getElementById('modalBackground').style.display = 'none';
+        }
+    </script>
+    <!--------------------------------- 모달 버튼 ---------------------------------------------->
+
     
 </body>

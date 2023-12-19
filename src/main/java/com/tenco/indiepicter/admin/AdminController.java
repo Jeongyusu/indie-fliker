@@ -62,12 +62,12 @@ public class AdminController {
 			return "manager/invitation";
 		}
 
-		// VIP 초청권 발급
-		@GetMapping("/vip-issued/{id}")
-		public String vipIssued(@PathVariable Integer id){
-			this.adminService.vipIssued(id);
-			return "redirect:/admin/invitation";
-		}
+//		// VIP 초청권 발급
+//		@GetMapping("/vip-issued/{id}")
+//		public String vipIssued(@PathVariable Integer id){
+//			this.adminService.vipIssued(id);
+//			return "redirect:/admin/invitation";
+//		}
 
 //---------------------------------------------------------------------------------
 		// 일반 회원 관리
