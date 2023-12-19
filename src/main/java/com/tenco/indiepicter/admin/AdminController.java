@@ -30,16 +30,6 @@ public class AdminController {
 			return "manager/main";
 		}
 
-//---------------------------------------------------------------------------------
-
-		// 영화 등록 허가 페이지
-		@GetMapping("/register")
-		public String register() {
-			
-			return "manager/register";
-		}
-
-//---------------------------------------------------------------------------------
 		// 펀딩 현황 확인 페이지
 		@GetMapping("/check")
 		public String check() {
