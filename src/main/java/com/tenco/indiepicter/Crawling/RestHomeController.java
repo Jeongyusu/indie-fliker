@@ -1,13 +1,13 @@
-package com.tenco.indiepicter.controller;
+package com.tenco.indiepicter.Crawling;
 
 
 
-import com.tenco.indiepicter.entity.MovieCrawl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tenco.indiepicter.service.WebCrawlerService;
+
 
 import java.util.List;
 
@@ -20,12 +20,14 @@ public class RestHomeController {
     // http://localhost:80/webcrawler-test
     @GetMapping("/webcrawler-test")
     public List<MovieCrawl> testCrawl() {
-    // 크롤링 주소 사이트
-    String url = "https://indieground.kr/indie/dbList.do";
-        
-    List<MovieCrawl> result = webCrawlerService.crawlPage(url);
+        // 크롤링 주소 사이트
+        String url = "https://indieground.kr/indie/dbList.do";
 
-    for (MovieCrawl movieCrawl : result) {
+        webCrawlerService.saveCrawlingDataToDB(url);
+
+        List<MovieCrawl> result = webCrawlerService.crawlPage(url);
+
+        for (MovieCrawl movieCrawl : result) {
             System.out.println(movieCrawl);
         }
 

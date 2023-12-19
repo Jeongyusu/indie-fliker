@@ -53,7 +53,7 @@ public class ScrabService {
 
     }
 
-    // 좋아요 list api
+    // 좋아요 list
 
     public List<ScrabResponseDTO> scrabview(Integer userId) {
         List<ScrabResponseDTO> scrabs = scrabRepository.viewScrabList(userId);
