@@ -1,23 +1,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>자주 묻는 질문</title>
-    <script src="https://kit.fontawesome.com/0f9e652ce1.js" crossorigin="anonymous"></script>
-    <link href="/css/khy_style.css" rel="stylesheet">
-</head>
+<%@ include file="../../layout/header.jsp" %>
+
 <body>
 <div class="k_ask_container">
     <h1 class="k_ask_main">자주 묻는 질문</h1>
-    <div class="k_search-container">
-        <input type="text" class="k_search-input" placeholder="검색어를 입력하세요">
-        <a href="#" class="custom-button">
-        <img class="k_search-icon" src="
-        /images/icons/icons8-search-50.png" alt="My Image">
-        </a>
-    </div>
+    <form action="/question/search">
+        <div class="k_search-container">
+            <input type="text" class="k_search-input" name=keyword placeholder="검색어를 입력하세요">
+            <button class="j_search_magnifier" type="submit">
+                <img class="k_search-icon" src="/images/icons/icons8-search-50.png" alt="My Image">
+            </button>
+        </div>
+    </form>
 </div>
 <hr class="k_ask_hr">
 <div class="k_ask_s_container">
@@ -98,6 +93,4 @@
         }
     }
 </script>
-
-</body>
-</html>
+<%@ include file="../../layout/footer.jsp" %>
