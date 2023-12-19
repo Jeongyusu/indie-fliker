@@ -280,7 +280,7 @@
     border-radius: 8px;
     border: 0.5px solid var(--primary_01);
     margin: 8px;
-    padding: 15px 36px;
+    padding: 15px 35px;
     width: 91.5%;
     height: 70px;
     display: flex;
@@ -291,7 +291,7 @@
 .l_comment_container {
     display: flex;
     justify-content: space-between;
-    padding: 0 10px 0 0;
+    padding: 0 19px 0 0;
     margin: 10px;
 }
 
@@ -303,7 +303,7 @@
     background-color: #f4f4f8; 
     border-radius: 8px;
     margin: 8px;
-    padding: 15px 36px;
+    padding: 15px 35px;
     width: 91.5%;
     height: 70px;
     display: flex;
@@ -314,7 +314,7 @@
 
 .l_chat_message_input {
     height: 60px;
-    width: 88%;
+    width: 92%;
     border: none;
     background-color: transparent;
     outline: none;
@@ -361,6 +361,12 @@
 }
 
 .l_review_button {
+    font-size: 13px;
+    border: none;
+    background-color: transparent;
+}
+
+.l_vip_review_button {
     font-size: 13px;
     border: none;
     background-color: transparent;
@@ -454,8 +460,7 @@
 .l_message_container {
     background-color: #fff;
     border-radius: 8px;
-    margin-bottom: 10px;
-    width: 97%;
+    width: 96%;
     padding: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -463,13 +468,16 @@
     margin: 10px;
 }
 
+.l_add_color {
+    background-color: var( --point_03);
+}
+
 .l_commentary_container {
     background-color: #fff;
     border-radius: 8px;
-    margin-bottom: 10px;
     width: 97%;
     padding: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 17px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     margin: 10px;
@@ -478,7 +486,7 @@
 .l_commentary_list_container {
     background-color: var(--point_01);
     border-radius: 8px;
-    width: 92.5%;
+    width: 93.5%;
     padding: 15px;
     display: flex;
     flex-direction: column;
@@ -628,6 +636,16 @@
     background-color: #888;
     background-size: cover; 
     background-position: center;
+}
+
+.l_text_container input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.l_text_container {
+    display: grid;
 }
 
 .l_message_text {

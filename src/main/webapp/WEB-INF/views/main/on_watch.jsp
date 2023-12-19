@@ -33,8 +33,8 @@
 
                                 <div class="l_participant d-flex align-items-center">
                                     <div class="d-flex flex-column l_user_profile">
-                                        <img src="https://dummyimage.com/100/000/fff.jpg" alt="IndiFlinker" class="m-2">
-                                        <span>인디픽커</span>
+                                        <img src="${principal.pic}" alt="IndiFlinker" class="m-2">
+                                        <span>${principal.username}</span>
                                     </div>
                                     <div class="l_chat_message col-md-10">
                                         <input type="text" class="l_chat_message_input" name="reply_comment" value=""
@@ -42,29 +42,7 @@
                                         <button type="button" class="l_review_button">관람평쓰기</button>
                                     </div>
                                 </div>
-                                <div id="l_review_container" class="l_chat_container">
-                                    <div class="l_message_container">
-                                        <div class="l_review_message_text">
-                                            <div class="l_profile_comment">
-                                                <div class="l_profile_img" style=""></div>
-                                                <div class="l_text_container">
-                                                    <div class="l_message_name">sksk</div>
-                                                    <div class="l_message_text">hihihihihi</div>
-                                                    <input type="hidden" id="normalReviewId" value="">
-                                                    <input type="hidden" id="reviewUserId" value="">
-                                                </div>
-                                            </div>
-                                            <div class="dropdown l_dropdown_div">
-                                                <button type="button" class="dropdown-toggle l_review_set_button" data-bs-toggle="dropdown">
-                                                    <img src="/images/icons/menu.png">
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li class="dropdown-item" id="reviewDelete">삭제하기</li>
-                                                    <li class="dropdown-item" id="reviewUpdate">수정하기</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div id="l_review_element">
                                 </div>
                             </div>
                             <!-- 영화 평론 -->
@@ -88,44 +66,16 @@
                                 </div>
                                 <div class="l_participant d-flex align-items-center">
                                     <div class="d-flex flex-column l_user_profile">
-                                        <img src="https://dummyimage.com/100/000/fff.jpg" alt="IndiFlinker" class="m-2">
-                                        <span>인디픽커</span>
+                                        <img src="${principal.pic}" alt="IndiFlinker" class="m-2">
+                                        <span>${principal.username}</span>
                                     </div>
                                     <div class="l_commentary col-md-10">
                                         <textarea class="l_commentary_input" placeholder="영화의 다양한 생각과 느낌을 전달해주세요."
                                         onkeydown="resize(this)" onkeyup="resize(this)"></textarea>
-                                        <button type="submit" class="l_review_button">평론쓰기</button>
-                                        <input type="hidden" id="vipReviewId" value="">
-                                        <input type="hidden" id="vipReviewUserId" value="">
+                                        <button type="submit" class="l_vip_review_button">평론쓰기</button>
                                     </div>
                                 </div>
-                                <div id="l_commentary_container" class="l_chat_container">
-                                    <div class="l_comment_container">
-                                        <div class="l_score_container">
-                                            <div class="l_score_title">평점</div>
-                                            <div class="l_score">5</div>
-                                        </div>
-                                        <div class="l_commentary_list_container">
-                                            <div class="l_commentary_message_text">
-                                                <div class="l_profile_comment">
-                                                    <div class="l_profile_img" style=""></div>
-                                                    <div class="l_text_container">
-                                                        <div class="l_message_name">sksk</div>
-                                                        <div class="l_message_text">hihihihihi</div>
-                                                    </div>
-                                                </div>
-                                                <div class="dropdown l_dropdown_div">
-                                                    <button type="button" class="dropdown-toggle l_review_set_button" data-bs-toggle="dropdown">
-                                                        <img src="/images/icons/menu.png">
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li class="dropdown-item">Link 1</li>
-                                                        <li class="dropdown-item">Link 1</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div id="l_vip_review_element">
                                 </div>
                             </div>
                             <!-- 영화 포토 -->
