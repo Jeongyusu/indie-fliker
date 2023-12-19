@@ -214,4 +214,16 @@
         <result property="production" column="production"/>
     </resultMap>
 
+    <select id="findAllFundingReady" resultMap="fundingReadyDTOMap">
+        select frt.id, mt.thumbnail, mt.movie_name, mt.director from funding_ready_tb frt join movie_tb mt on frt.movie_id = mt.id
+        limit #{pageSize} offset #{offset}
+    </select>
+
+    <resultMap id="fundingReadyDTOMap" type="com.tenco.indiepicter.funding.response.FundingReadyDTO">
+        <result property="fundingReadyId" column="id"/>
+        <result property="thumbnail" column="thumbnail"/>
+        <result property="movieName" column="movie_name"/>
+        <result property="director" column="director"/>
+    </resultMap>
+
 </mapper>

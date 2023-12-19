@@ -40,4 +40,7 @@ public interface FundingRepository {
 
     // 펀딩 검색결과 조회
     public List<SearchResultDTO> findByKeyword(String keyword);
+
+    // 펀딩 준비 테이블 조회
+    public List<FundingReadyDTO> findAllFundingReady(@Param("pageSize") Integer pageSize, @Param("offset") Integer offset);
 }
