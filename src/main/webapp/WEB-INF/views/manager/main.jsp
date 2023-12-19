@@ -8,7 +8,7 @@
     <title>관리자 페이지 - 메인( main ) - 완료!</title>
     
     <!-- style.css와 연결 -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/CSS/png_style.css">
     
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -57,9 +57,9 @@
             <div class="p_section2">
                 <h3>영화</h3>
                 <ul>
-                    <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/manager/register">영화 등록 허가</a></li>
-                    <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/manager/check">펀딩 현황 확인</a></li>
-                    <li><i class="fa-solid fa-pen p_icon3"></i><a href="/manager/update_delete">펀딩 등록 / 삭제</a></li>
+                    <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/register">영화 등록 허가</a></li>
+                    <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/check">펀딩 현황 확인</a></li>
+                    <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/update_delete">펀딩 등록 / 삭제</a></li>
                 </ul>
                 <div class="p_line"></div>
             </div>
@@ -67,9 +67,9 @@
             <div class="p_section3">
                 <h3>회원</h3>
                 <ul>
-                    <li><i class="fa-solid fa-ticket-simple p_icon1"></i><a href="/manager/invitation">VIP 초청권 발급</a></li>
-                    <li><i class="fa-solid fa-user p_icon2"></i><a href="/manager/user_management">회원 관리</a></li>
-                    <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/manager/vip_management">회원 관리</a></li>
+                    <li><i class="fa-solid fa-ticket-simple p_icon1"></i><a href="/admin/invitation">VIP 초청권 발급</a></li>
+                    <li><i class="fa-solid fa-user p_icon2"></i><a href="/admin/user-management">일반 회원 관리</a></li>
+                    <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/vip-management">VIP 회원 관리</a></li>
                 </ul>
                 <div class="p_line"></div>
             </div>
@@ -77,9 +77,9 @@
             <div class="p_section4">
                 <h3>온라인 상영 가능 영화</h3>
                 <ul>
-                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/manager/playday">온라인 오픈 기간 설정</a></li>
-                    <li><i class="fa-solid fa-comment p_icon2"></i><a href="/manager/chatting">채팅방 오픈</a></li>
-                    <li><i class="fa-solid fa-note-sticky p_icon3"></i><a href="/manager/review">감상평 관리</a></li>
+                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/playday">온라인 오픈 기간 설정</a></li>
+                    <li><i class="fa-solid fa-comment p_icon2"></i><a href="/admin/chatting">채팅방 오픈</a></li>
+                    <li><i class="fa-solid fa-note-sticky p_icon3"></i><a href="/admin/review">감상평 관리</a></li>
                 </ul>
                 <div class="p_line"></div>
             </div>

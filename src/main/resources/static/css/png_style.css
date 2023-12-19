@@ -965,6 +965,20 @@
     left: 40px;
 }
 
+.p_invitation_container2 .p_section1 .table button{
+    background-color: #01DFD7;
+    width: 90px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    border-color: white;
+    transition-duration: 0.2s;
+}
+
+.p_invitation_container2 .p_section1 .table button:hover{
+    color:white;
+}
+
 .p_invitation_bottom{
     position: relative;
     top: 20px;
@@ -1105,7 +1119,6 @@
 }
 /*---------------------------------------------------------------------*/
 /* 관리자 페이지 감상평 관리 ( review ) */
-
 
 
 /* 관리자 페이지 펀딩 등록 삭제 ( update_delete ) */

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tenco.indiepicter.admin.AdminRepository">
+
+    <!-- 일반 회원, VIP 회원 전체 페이징 조회 -->
+    <select id="findByAllPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
+        select *
+        from user_tb
+        order by created_at desc
+            limit #{pageStart}, #{pageLimit}
+    </select>
+
+    <!-- 일반 회원 관리 페이징 조회 -->
+    <select id="findByAdminUserPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
+        select *
+        from user_tb
+        where grade not in('VIP')
+        order by created_at desc
+            limit #{pageStart}, #{pageLimit}
+    </select>
+
+    <!-- VIP 회원 관리 페이징 조회 -->
+    <select id="findByAdminVipPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
+        select *
+        from user_tb
+        where grade not in('NORMAL')
+        order by created_at desc
+            limit #{pageStart}, #{pageLimit}
+    </select>
+
+    <!-- 공지사항 전체 갯수 조회 -->
+    <select id="pageCount" resultType="Integer">
+        select count(id) from user_tb
+    </select>
+
+    <!-- 일반 회원 관리(회원 탈퇴) -->
+    <update id="adminUserUpdate">
+        update user_tb set is_withdrawal=true
+        where id=#{id}
+    </update>
+
+    <!-- VIP 초청권 발급 -->
+    <insert id="insert">
+        insert into reservation_tb(reservation_code, reservated_at, user_id, seat_id)
+        values(#{reservationCode}, #{reservatedAt}, #{userId}, #{seatId})
+    </insert>
+
+</mapper>

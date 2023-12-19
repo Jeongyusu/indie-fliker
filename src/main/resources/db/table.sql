@@ -7,7 +7,9 @@ create table user_tb(
                         grade enum('NORMAL', 'VIP') not null,
                         tel varchar(30) not null,
                         gubun enum('NORMAL', 'DIRECTOR', 'ADMIN'),
+                        is_withdrawal boolean default false,
                         created_at timestamp not null default now()
+
 );
 
 create table theater_tb(
@@ -210,13 +212,6 @@ create table notice_tb(
                           created_at datetime not null default now()
 );
 
-create table question_tb(
-                          id int auto_increment primary key,
-                          question_title varchar(20) not null,
-                          content varchar(200) not null,
-                          category varchar(20) not null,
-                          created_at datetime not null default now()
-);
 
 
 create table banner_tb(
@@ -242,6 +237,23 @@ create table invitation_tb(
 
 );
 
+create table question_tb(
+                            id int auto_increment primary key,
+                            question_title varchar(20) not null,
+                            content varchar(200) not null,
+                            category varchar(20) not null,
+                            created_at datetime not null default now()
+);
 
 
+CREATE TABLE moviecrawl_tb (
+                                             id INT AUTO_INCREMENT PRIMARY KEY,
+                                             title VARCHAR(255),
+                                             production_year VARCHAR(10),
+                                             genre VARCHAR(50),
+                                             director VARCHAR(255),
+                                             `cast` VARCHAR(255),
+                                             production_company VARCHAR(255),
+                                             distribution_company VARCHAR(255)
+);
 

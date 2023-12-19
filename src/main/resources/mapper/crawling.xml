@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenco.indiepicter.Crawling.MovieMapper">
+
+
+    <insert id="insertMovie" parameterType="com.tenco.indiepicter.Crawling.MovieCrawl">
+        INSERT INTO moviecrawl_tb (title, production_year, genre, director, `cast`, production_company, distribution_company)
+        VALUES (#{title}, #{productionYear}, #{genre}, #{director}, #{cast}, #{productionCompany}, #{distributionCompany})
+    </insert>
+
+    <select id="existsMovie" resultType="Integer" parameterType="com.tenco.indiepicter.Crawling.MovieCrawl">
+        SELECT EXISTS (SELECT 1 FROM moviecrawl_tb WHERE title = #{title} AND production_year = #{productionYear} AND genre = #{genre} AND director = #{director} AND `cast` = #{cast} AND production_company = #{productionCompany} AND distribution_company = #{distributionCompany})
+    </select>
+
+    <select id="getAllMovies" resultType="com.tenco.indiepicter.Crawling.MovieCrawl">
+        SELECT * FROM moviecrawl_tb
+    </select>
+
+    <select id="countMovies" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM moviecrawl_tb
+        WHERE title = #{title}
+          AND production_year = #{productionYear}
+          AND genre = #{genre}
+          AND director = #{director}
+          AND `cast` = #{cast}
+          AND production_company = #{productionCompany}
+          AND distribution_company = #{distributionCompany}
+    </select>
+
+
+</mapper>

@@ -219,6 +219,9 @@ public class UserController {
 		
 		if(oldUser == null) {
 			this.userService.join(dto); // 회원가입 자동 처리
+			log.debug("---------------------------");
+			log.debug(oldUser.toString());
+			log.debug("---------------------------");
 			oldUser = this.userService.findByUserEmail(dto.getUserEmail()); // olduser의 email정보 유지
 		}
 		
@@ -235,6 +238,7 @@ public class UserController {
 	}
 	
 //---------------------------------------------------------------------------------------------------------------
+	
 	// 로그아웃
 	@GetMapping("/logout")
 	public String logout() {
@@ -261,8 +265,8 @@ public class UserController {
 	
 	// 마이페이지 접근
 	@GetMapping("/mypage")
-	public String myPage(Model model) {
-		
+	public String myPage(Model model, Integer id) {
+
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
 		
 		if(principal == null) {
@@ -335,7 +339,6 @@ public class UserController {
 			// transferTo - 파일을 저장한다.(실제 생성)
 			file.transferTo(destination);
 			
-			
 			// 객체 상태 변경 (insert 처리 하기 위함 -> 쿼리 수정해야 함)
 			dto.setOriginFileName(file.getOriginalFilename()); // 사용자가 입력한 파일명
 			dto.setUploadFileName(fileName); // 로컬 저장소로 최종 업로드 되는 주소!!
@@ -346,17 +349,13 @@ public class UserController {
 		
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
 		this.userService.update(dto, principal.getId());
-		
-		// 업데이트 완료한 회원의 정보를 다시 가지고 와야하는데 왜 안됨??
-		User principalId = (User)session.getAttribute(Define.PRINCIPAL);
-		this.userService.findById(principalId.getId());
-		
+
 		return "mypage/mypage";
 	}
 	
 //----------------------------------------------------------------------------------------------------------------	
 
-	
+	// 회원 탈퇴
 	
 }
 
