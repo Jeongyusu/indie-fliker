@@ -29,8 +29,6 @@ public class NormalReviewRestController {
     @PostMapping("/api/save")
     public ResponseEntity<?> saveToNormalReview(@RequestBody NormalReviewSaveDTO normalReviewSaveDTO) {
 //        User principal = (User) session.getAttribute(Define.PRINCIPAL);
-        System.out.println("여기아다다다!!!!!!!!!1" + normalReviewSaveDTO.getReviewContent());
-        System.out.println("여기아다다다!!!!!!!!!1" + normalReviewSaveDTO.getMovieId());
         int rowResultCount = normalReviewService.saveToNormalReview(normalReviewSaveDTO, 1);
         return ResponseEntity.ok().body(ApiUtils.success(rowResultCount));
     }

@@ -21,11 +21,11 @@ public class QuestionController {
     @Autowired
     private QuestionService questionService;
 
-//---------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------------------------------
     // 자주 묻는 질문(회워정보)
     @GetMapping("/user")
     public String questionUser(
-            @RequestParam(value="page", required = false, defaultValue = "1") Integer page,
+            @RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
             Model model) {
 
         List<QuestionResponseDTO> questionUserPagingLists = this.questionService.questionUserPaging(page);
@@ -35,7 +35,8 @@ public class QuestionController {
 
         return "mypage/question/question_user";
     }
-//---------------------------------------------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------------------------------------------
     // 자주 묻는 질문(결제)
     @GetMapping("/pay")
     public String questionPay(
@@ -49,7 +50,8 @@ public class QuestionController {
 
         return "mypage/question/question_pay";
     }
-//---------------------------------------------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------------------------------------------
     // 자주 묻는 질문(취소/환불)
     @GetMapping("/cancel")
     public String questionCancel(
@@ -63,7 +65,8 @@ public class QuestionController {
 
         return "mypage/question/question_cancel";
     }
-//---------------------------------------------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------------------------------------------
     // 자주 묻는 질문(영화예매)
     @GetMapping("/reservation")
     public String questionReservation(
@@ -77,7 +80,8 @@ public class QuestionController {
 
         return "mypage/question/question_reservation";
     }
-//---------------------------------------------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------------------------------------------
     // 자주 묻는 질문(VIP)
     @GetMapping("/VIP")
     public String questionVip(
@@ -91,8 +95,17 @@ public class QuestionController {
 
         return "mypage/question/question_vip";
     }
+
 //---------------------------------------------------------------------------------------------------------------
 
-    // 12-18 18:23 자주 묻는 질문 작업 완료
-
+    @GetMapping("/search")
+    public String questionSearch(@RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
+                                 @RequestParam(value = "keyword", required=false, defaultValue = "") String keyword, Model model) {
+        List<QuestionResponseDTO> questionSearchPagingLists = questionService.questionSearchPaging(page, keyword);
+        QuestionPagingResponseDTO questionPagingResponseDTO = this.questionService.vipPagingParam(page);
+        model.addAttribute("questionSearchPagingLists", questionSearchPagingLists);
+        model.addAttribute("paging", questionPagingResponseDTO);
+        model.addAttribute("keyword", keyword);
+        return "mypage/question/search/question_search_user";
+    }
 }
