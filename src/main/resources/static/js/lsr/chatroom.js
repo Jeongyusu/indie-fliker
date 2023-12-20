@@ -8,25 +8,30 @@ const userId = document.getElementById('userId').value;
 
 // 메세지 보내는 버튼
 const sendMessageButtons = document.querySelectorAll('.l_send_message_button');
-console.log("버튼 수 : " + sendMessageButtons.length);
 
-// 해당 채팅 버튼을 클릭 시 채팅 내용 뜨기
 
 // 채팅방 버튼
 const chatButtons = document.querySelectorAll('.l_channel_card_button');
+
+// 해당 채팅 버튼을 클릭 시 채팅 내용 뜨기
 chatButtons.forEach((chatButton) => {
     chatButton.addEventListener('click', ()=> {
-        console.log("해당 버튼 : " + chatButton.id);
         const number = chatButton.getAttribute('id').replace('movie', ''); // 1
 
         let chatMessagesContainer = document.getElementById(`chatMessages` + number);
         let movieTitle = document.getElementById(`movieTitle` + number).value;
+
+        // 채팅방 초기화
+        chatMessagesContainer.innerHTML = "";
+        // 리스너 호출
         snapshotListener(chatMessagesContainer, movieTitle);
 
         // 화면 높이 가져와서 채팅방에 설정하기
         const windowHeight = window.innerHeight;
-        const chatContainer = document.querySelector(".l_chat_message_box");
-        chatContainer.style.height = `${windowHeight}px`;
+        const chatContainers = document.querySelectorAll(".l_chat_message_box");
+        chatContainers.forEach(chatContainer => {
+            chatContainer.style.height = `${windowHeight}px`;
+        });
     })
 });
 
@@ -37,14 +42,9 @@ sendMessageButtons.forEach((sendMessageButton) => {
 
     sendMessageButton.addEventListener('click', () => {
 
-        console.log("입력한 버튼 : " + sendMessageButton.id); // send_button1
         const number = sendMessageButton.getAttribute('id').replace('send_button', ''); // 1
-        console.log("입력한 버튼의 숫자 : " + number);
-        let chatMessagesContainer = document.getElementById(`chatMessages` + number);
-        console.log("입력한 채팅방 : " + chatMessagesContainer.id);
         const messageInput = document.getElementById(`l_message_input` + number);
         const messageText = messageInput.value;
-        console.log("입력값 : " + messageText + " / 채팅칸 : " + messageInput.id);
         const chatTitle = document.getElementById(`movieTitle` + number).value;
         console.log("채팅방 영화 : " + chatTitle);
 
@@ -69,31 +69,42 @@ sendMessageButtons.forEach((sendMessageButton) => {
 
 // 스냅샷 리스너 (채팅이 추가되는지 듣고있음)
 function snapshotListener(chatMessagesContainer, chatTitle) {
+    console.log("걍 얘가 실행됨");
     db.collection(chatTitle)
         .orderBy("timestamp")
         .onSnapshot((snapshot) => {
             console.log("스냅샷 실행");
+            console.log("스냅샷 갯수 : " + snapshot.docChanges().length);
+
+            // 이미 처리된 messageData를 저장하는 배열(중복방지)
+            let processedMessages = [];
+            console.log("처리된 애들 갯수 : " + processedMessages.length);
+            processedMessages.forEach(value => {
+                console.log("처리된 애들 : " + value.message);
+            })
+
             snapshot.docChanges().forEach((change) => {
                 console.log("스냅샷 들어와서 실행");
                 if (change.type === "added") {
-                    const messageData = change.doc.data();
-                    const messageContainer = addMessage(messageData.id, messageData.message, messageData.timestamp);
-                    console.log("메세지 컨테이너들 : " + messageData.message);
-                    chatMessagesContainer.insertBefore(messageContainer, chatMessagesContainer.lastChild);
-                    chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+                    const plusMessage = change.doc.data();
+
+                    // 이미 처리된 메세지
+                    const isAlready = processedMessages.some((processedMessage) =>
+                        processedMessage.id === plusMessage.id &&
+                        processedMessage.message === plusMessage.message &&
+                        processedMessage.timestamp === plusMessage.timestamp
+                    );
+
+                    if (!isAlready) {
+                        const messageContainer = addMessage(plusMessage.id, plusMessage.message, plusMessage.timestamp);
+                        console.log("메세지 컨테이너들 : " + plusMessage.message);
+                        chatMessagesContainer.appendChild(messageContainer);
+                        processedMessages.push(plusMessage);
+                    }
                 }
             });
         });
 }
-
-// 스냅샷 리스너 (채팅이 추가되는지 듣고있음)
-function addSnapshot(chatMessagesContainer, messageText) {
-    const messageContainer = addMessage(messageText.id, messageText.message, messageText.timestamp);
-    console.log("메세지 컨테이너들 : " + messageData.message);
-    chatMessagesContainer.insertBefore(messageContainer, chatMessagesContainer.lastChild);
-    chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
-}
-
 
 function addMessage(name, message, time) {
     const messageContainer = document.createElement('div');
