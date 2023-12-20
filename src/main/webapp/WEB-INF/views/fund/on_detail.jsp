@@ -61,7 +61,7 @@
                                 <img src="${photo}">
                             </c:forEach>
                         </div>
-                        <span id="n_toggleMore" style="display: none">
+                        <span id="n_toggle_more" style="display: none">
                             <div class="n_movie_text">
                                 <h3>감독 작품 경력</h3>
                                 <img id="n_director_img" src="${fundingDetailDTO.directorPic}">

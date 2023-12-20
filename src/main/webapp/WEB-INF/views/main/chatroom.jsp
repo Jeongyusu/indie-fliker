@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 </span>
-            <button class="p l_channel_card_button" onclick="toggleMore()"> # 그대들은 어떻게 살 것인가</button>
+            <button class="p l_channel_card_button"> # 그대들은 어떻게 살 것인가</button>
             <span class="n_toggleMore">
                     <div class="card l_channel_card" style="display: none">
                         <div class="card-title l_font_pupple l_movie_title"># 그대들은 어떻게 살 것인가</div>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </span>
-            <button class="p l_channel_card_button" onclick="toggleMore()"># 하울의 움직이는 성</button>
+            <button class="p l_channel_card_button"># 하울의 움직이는 성</button>
             <span class="n_toggleMore">
                     <div class="card l_channel_card" style="display: none">
                         <div class="card-title l_font_pupple l_movie_title"># 그대들은 어떻게 살 것인가</div>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                 </span>
-            <button class="p l_channel_card_button" onclick="toggleMore()"># 서울의 봄</button>
+            <button class="p l_channel_card_button"># 서울의 봄</button>
             <span class="n_toggleMore">
                     <div class="card l_channel_card" style="display: none">
                         <div class="card-title l_font_pupple l_movie_title"># 그대들은 어떻게 살 것인가</div>
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                 </span>
-            <button class="p l_channel_card_button" onclick="toggleMore()"># 3일의 휴가</button>
+            <button class="p l_channel_card_button"># 3일의 휴가</button>
         </div>
         <div class="l_chat_message_box col-md-8 col-12">
             <div class="l_chat_messages" id="chatMessages">
