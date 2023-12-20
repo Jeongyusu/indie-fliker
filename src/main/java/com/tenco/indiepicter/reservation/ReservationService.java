@@ -27,10 +27,6 @@ public class ReservationService {
 	private SeatRepository seatRepository;
 
 
-	public List<VipReservationDTO> invitation(Integer id){
-		return this.reservationRepository.findByUserId(id);
-	}
-
 	// 영화 예매 내역 등록
 	@Transactional
 	public int saveReservationTicket(LastOrderDTO requestDTO, Integer principalId) {

@@ -1,11 +1,17 @@
 package com.tenco.indiepicter.admin;
 
+import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
+import com.tenco.indiepicter._core.utils.TimeStampUtil;
 import com.tenco.indiepicter.admin.response.AdminPagingResponseDTO;
+import com.tenco.indiepicter.invitation.Invitation;
+import com.tenco.indiepicter.invitation.response.InvitationResponseDTO;
 import com.tenco.indiepicter.notice.Notice;
 import com.tenco.indiepicter.notice.response.NoticePagingResponseDTO;
 import com.tenco.indiepicter.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -105,9 +111,25 @@ public class AdminService {
 // ------------------------------------------------------------------------------------------
     
     // VIP 초청권 발급
-    public void vipIssued(Integer id){
-        this.adminRepository.insert(id);
+    @Transactional
+    public int vipIssued(InvitationResponseDTO responseDto) {
+
+        Invitation invitation = Invitation.builder()
+                .invitationCode(responseDto.getInvitationCode())
+                .movieName(responseDto.getMovieName())
+                .theaterName(responseDto.getTheaterName())
+                .theaterAddress(responseDto.getTheaterAddress())
+                .movieTime(responseDto.getMovieTime())
+                .userId(responseDto.getUserId())
+                .build();
+
+        int resultInvitationCount = this.adminRepository.insert(invitation);
+
+        if(resultInvitationCount != 1){
+            throw new MyDynamicException("초청권 발급에 실패했습니다.", HttpStatus.BAD_REQUEST);
+        }
+
+        return resultInvitationCount;
     }
-    
 // ------------------------------------------------------------------------------------------
 }

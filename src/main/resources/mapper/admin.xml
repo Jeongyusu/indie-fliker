@@ -43,8 +43,8 @@
 
     <!-- VIP 초청권 발급 -->
     <insert id="insert">
-        insert into reservation_tb(reservation_code, reservated_at, user_id, seat_id)
-        values(#{reservationCode}, #{reservatedAt}, #{userId}, #{seatId})
+        insert into invitation_tb(invitation_code, movie_name, theater_name, theater_address, movie_time, user_id)
+        values(#{invitationCode}, #{movieName}, #{theaterName}, #{theaterAddress}, #{movieTime}, #{userId})
     </insert>
 
 </mapper>

@@ -83,6 +83,8 @@ public class UserService {
 		if(passwordCheck == false) {
 			throw new MyDynamicException("비밀번호가 잘못되었습니다.", HttpStatus.BAD_REQUEST);
 		}
+
+		
 		
 		return user;
 	}
