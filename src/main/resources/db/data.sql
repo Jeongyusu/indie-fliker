@@ -465,7 +465,64 @@ insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_
 
 
 insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
-values ('스트리머', '/movies/streamer.mp4', 'streamer', '2D', false, 'mp4', '2.32MB', 1);
+values ('스트리머', '/movies/forest.mp4', 'streamer', '2D', false, 'mp4', '2.32MB', 1);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('만해한용운', '/movies/forest.mp4', 'streamer', '2D', false, 'mp4', '2.32MB', 2);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('홈리스권제니', '/movies/forest.mp4', 'homeless', '2D', false, 'mp4', '2.32MB', 3);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('불멸의여신', '/movies/forest.mp4', 'goddess', '2D', false, 'mp4', '2.32MB', 4);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('내가누워있을때', '/movies/forest.mp4', 'When I''m lying down', '2D', false, 'mp4', '2.32MB', 6);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('애도되지못한슬픔', '/movies/forest.mp4', 'the sorrow', '2D', false, 'mp4', '2.32MB', 5);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('불청객들', '/movies/forest.mp4', 'uninvited guests', '2D', false, 'mp4', '2.32MB', 7);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('엑스', '/movies/forest.mp4', 'ex', '2D', false, 'mp4', '2.32MB', 8);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('안 할 이유 없는 임신	', '/movies/forest.mp4', 'a pregnancy', '2D', false, 'mp4', '2.32MB', 9);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('건전지 엄마', '/movies/forest.mp4', 'Battery mom', '2D', false, 'mp4', '2.32MB', 10);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('쿠키 커피 도시락	', '/movies/forest.mp4', 'cookie', '2D', false, 'mp4', '2.32MB', 11);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('저주소년', '/movies/forest.mp4', 'a cursing boy', '2D', false, 'mp4', '2.32MB', 12);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('인형 이야기', '/movies/forest.mp4', 'doll', '2D', false, 'mp4', '2.32MB', 13);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('사라지는 것들', '/movies/forest.mp4', 'disable', '2D', false, 'mp4', '2.32MB', 14);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('도그피쉬', '/movies/forest.mp4', 'dog fish', '2D', false, 'mp4', '2.32MB', 15);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('마법이 돌아오는 날의 바다', '/movies/forest.mp4', 'magic', '2D', false, 'mp4', '2.32MB', 16);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('크로노스', '/movies/forest.mp4', 'Kronos', '2D', false, 'mp4', '2.32MB', 17);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('마녀들의 카니발', '/movies/forest.mp4', 'witches', '2D', false, 'mp4', '2.32MB', 18);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('1975', '/movies/forest.mp4', '1975', '2D', false, 'mp4', '2.32MB', 19);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('비상구 없는 집', '/movies/forest.mp4', 'a house without', '2D', false, 'mp4', '2.32MB', 20);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('곰마워', '/movies/forest.mp4', 'thank you', '2D', false, 'mp4', '2.32MB', 21);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('홈그라운드', '/movies/forest.mp4', 'home ground', '2D', false, 'mp4', '2.32MB', 22);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('인간의 마음', '/movies/forest.mp4', 'human heart', '2D', false, 'mp4', '2.32MB', 23);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('천변의 악사들', '/movies/forest.mp4', 'the musicians', '2D', false, 'mp4', '2.32MB', 24);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('분첩', '/movies/forest.mp4', 'powder puff', '2D', false, 'mp4', '2.32MB', 25);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('차가운 새들의 세계', '/movies/forest.mp4', 'cold', '2D', false, 'mp4', '2.32MB', 26);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('우리의 시간', '/movies/forest.mp4', 'ours time', '2D', false, 'mp4', '2.32MB', 27);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('이것은 보이는 것과 다르다', '/movies/forest.mp4', 'This is not what it seems', '2D', false, 'mp4', '2.32MB', 28);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('소진된 인간', '/movies/forest.mp4', 'an exhausted human being', '2D', false, 'mp4', '2.32MB', 29);
+
 
 insert into question_tb(question_title, content, category, created_at)
 values('회원 정보 변경은 어떻게 하나요?', '회원 정보 변경은 그냥 하면 됩니다.', '회원정보', now());

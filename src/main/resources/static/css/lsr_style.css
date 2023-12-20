@@ -23,7 +23,7 @@
 .l_avi_container{}
 
 #l_movie_on_watch {
-    width: 80%;
+    width: 71%;
 }
 
 #l_movie_on_watch video{
@@ -252,8 +252,8 @@
 
 .l_score_title {
     font-weight: bold;
-    font-size: 18px;
-    padding-bottom: 8px;
+    font-size: 16px;
+    padding-bottom: 14px;
     color: var(--primary_01);
 }
 
@@ -265,6 +265,7 @@
 .l_score_p {
     color: var(--primary_01);
     font-size: 20px;
+    font-weight: bold;
 }
 
 #l_score_point {
@@ -291,7 +292,7 @@
 .l_comment_container {
     display: flex;
     justify-content: space-between;
-    padding: 0 19px 0 0;
+    padding: 0 8px 0 0;
     margin: 10px;
 }
 
@@ -314,7 +315,7 @@
 
 .l_chat_message_input {
     height: 60px;
-    width: 92%;
+    width: 90%;
     border: none;
     background-color: transparent;
     outline: none;
@@ -342,10 +343,16 @@
     width: 85%;
 }
 
+.l_vip_review_comment {
+    line-height: 25px;
+    margin: 50px 0 20px;
+    font-size: 15px;
+}
+
 .l_commentary_input {
     height: 38px;
     padding-top: 10px;
-    width: 88%;
+    width: 92%;
     border: none;
     background-color: transparent;
     outline: none;
@@ -486,7 +493,7 @@
 .l_commentary_list_container {
     background-color: var(--point_01);
     border-radius: 8px;
-    width: 93.5%;
+    width: 92.5%;
     padding: 15px;
     display: flex;
     flex-direction: column;
@@ -496,6 +503,9 @@
     flex: 1;
 }
 
+.l_dropdown_div button {
+    padding-right: 10px;
+}
 
 .l_commentary_message_text, .l_review_message_text {
     display: flex;
@@ -523,6 +533,7 @@
     margin-bottom: 45px;
     display: flex;
     align-items: center;
+    background-color: var(--back_01);
 }
 
 .l_toast_show {
@@ -615,7 +626,7 @@
 .l_info_p {
     margin: 30px 0 50px;
     font-size: 18px;
-    line-height: 26px;
+    line-height: 30px;
 }
 
 
@@ -642,9 +653,36 @@
     border: none;
     outline: none;
     background-color: transparent;
+    width: 730px;
+}
+
+.l_vip_text_container input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 620px;
+}
+
+#l_select_movie {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--def_wh);
+    height: 60px;
+    background-color: var(--font_01);
+}
+
+.l_dropdown_button {
+    text-align: center;
+    line-height: 15px;
+    --bs-dropdown-link-active-bg: var(--primary_01);
 }
 
 .l_text_container {
+    display: grid;
+}
+
+.l_vip_text_container {
     display: grid;
 }
 

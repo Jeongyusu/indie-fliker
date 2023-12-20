@@ -28,12 +28,6 @@ public class MovieController {
     private MovieService movieService;
 
     @Autowired
-    private NormalReviewService normalReviewService;
-
-    @Autowired
-    VipReviewService vipReviewService;
-
-    @Autowired
     private HttpSession session;
 
     // 온라인 상영관(GET)
@@ -41,11 +35,7 @@ public class MovieController {
     public String onTheaterToMovie(@RequestParam Integer movieId, Model model){
         User principal = (User) session.getAttribute(Define.PRINCIPAL);
         OnMovieDetailDTO onMovieDetailDTO = movieService.onTheaterToMovie(movieId);
-        List<NormalReviewsToMovieDTO> normalReviewsToMovieDTOs = normalReviewService.findByReviews(movieId);
-        List<VipReviewsToMovieDTO> vipReviewsToMovieDTOs = vipReviewService.findByVipReviews(movieId);
         model.addAttribute("onMovieDetailDTO", onMovieDetailDTO);
-        model.addAttribute("normalReviewsToMovieDTOs", normalReviewsToMovieDTOs);
-        model.addAttribute("vipReviewsToMovieDTOs", vipReviewsToMovieDTOs);
         model.addAttribute("principal", principal);
         return "main/on_watch";
     }
