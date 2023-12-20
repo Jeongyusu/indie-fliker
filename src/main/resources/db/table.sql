@@ -230,7 +230,7 @@ create table invitation_tb(
                           movie_name varchar(30) not null,
                           theater_name varchar(30) not null,
                           theater_address varchar(100) not null,
-                          movie_time datetime not null,
+                          movie_time varchar(100) not null,
                           created_at datetime not null default now(),
                           user_id int not null,
                           foreign KEY(user_id) references user_tb(id)
