@@ -30,7 +30,7 @@ public class WebCrawlerService {
 
     @Transactional(rollbackFor = Exception.class)
     public List<MovieCrawl> saveCrawlingDataToDB(String domain, String path) {
-        int maxPage = 2;
+        int maxPage = 5;
 
         List<MovieCrawl> movieCrawlList = new ArrayList<>();
         for (int i = 1; i <= maxPage; i++) {
