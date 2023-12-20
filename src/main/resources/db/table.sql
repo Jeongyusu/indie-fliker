@@ -1,14 +1,17 @@
-create table user_tb
-(
-    id         int auto_increment primary key,
-    user_email varchar(20)            not null unique,
-    password   varchar(300)           not null,
-    username   varchar(10)            not null,
-    pic        varchar(300),
-    grade      enum ('NORMAL', 'VIP') not null,
-    tel        varchar(30)            not null,
-    gubun      enum ('NORMAL', 'DIRECTOR', 'ADMIN'),
-    created_at timestamp              not null default now()
+
+create table user_tb(
+                        id int auto_increment primary key,
+                        user_email varchar(20) not null unique,
+                        password varchar(300) not null,
+                        username varchar(10) not null,
+                        pic varchar(300),
+                        grade enum('NORMAL', 'VIP') not null,
+                        tel varchar(30) not null,
+                        gubun enum('NORMAL', 'DIRECTOR', 'ADMIN'),
+                        is_withdrawal boolean default false,
+                        created_at timestamp not null default now()
+
+
 );
 
 create table theater_tb
@@ -242,6 +245,7 @@ create table banner_tb
 
 );
 
+
 CREATE TABLE moviecrawl_tb
 (
     id                   INT AUTO_INCREMENT PRIMARY KEY,
@@ -275,6 +279,29 @@ CREATE TABLE moviecrawl_tb
     clothes              VARCHAR(255),
     dressing             VARCHAR(255)
 );
+create table invitation_tb(
+                          id int auto_increment primary key,
+                          invitation_code varchar(30) not null,
+                          movie_name varchar(30) not null,
+                          theater_name varchar(30) not null,
+                          theater_address varchar(100) not null,
+                          movie_time varchar(100) not null,
+                          created_at datetime not null default now(),
+                          user_id int not null,
+                          foreign KEY(user_id) references user_tb(id)
+
+);
+
+create table question_tb(
+                            id int auto_increment primary key,
+                            question_title varchar(20) not null,
+                            content varchar(200) not null,
+                            category varchar(20) not null,
+                            created_at datetime not null default now()
+);
+
+
+
 
 create table question_tb
 (

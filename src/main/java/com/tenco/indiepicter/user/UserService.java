@@ -1,9 +1,11 @@
 package com.tenco.indiepicter.user;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.tenco.indiepicter._core.utils.TimeStampUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -38,7 +40,7 @@ public class UserService {
 		
 		String password = requestDto.getPassword1();
 		// 비밀번호 인코딩
-		String encodingPassword = passwordEncoder.encode(password); 
+		String encodingPassword = passwordEncoder.encode(password);
 		
 		User user = User.builder()
 					.userEmail(requestDto.getUserEmail())
@@ -48,9 +50,8 @@ public class UserService {
 					.grade("NORMAL")
 					.tel(requestDto.getTel())
 					.gubun("NORMAL")
+				    .isWithdrawal(false)
 					.build();
-		
-		System.out.println(user.toString());
 								
 		int resultUserCount = this.userRepository.insert(user);
 		
@@ -82,6 +83,8 @@ public class UserService {
 		if(passwordCheck == false) {
 			throw new MyDynamicException("비밀번호가 잘못되었습니다.", HttpStatus.BAD_REQUEST);
 		}
+
+		
 		
 		return user;
 	}

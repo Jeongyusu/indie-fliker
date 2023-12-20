@@ -23,7 +23,7 @@
 .l_avi_container{}
 
 #l_movie_on_watch {
-    width: 80%;
+    width: 71%;
 }
 
 #l_movie_on_watch video{
@@ -252,8 +252,8 @@
 
 .l_score_title {
     font-weight: bold;
-    font-size: 18px;
-    padding-bottom: 8px;
+    font-size: 16px;
+    padding-bottom: 14px;
     color: var(--primary_01);
 }
 
@@ -265,6 +265,7 @@
 .l_score_p {
     color: var(--primary_01);
     font-size: 20px;
+    font-weight: bold;
 }
 
 #l_score_point {
@@ -280,7 +281,7 @@
     border-radius: 8px;
     border: 0.5px solid var(--primary_01);
     margin: 8px;
-    padding: 15px 36px;
+    padding: 15px 35px;
     width: 91.5%;
     height: 70px;
     display: flex;
@@ -291,7 +292,7 @@
 .l_comment_container {
     display: flex;
     justify-content: space-between;
-    padding: 0 10px 0 0;
+    padding: 0 8px 0 0;
     margin: 10px;
 }
 
@@ -303,7 +304,7 @@
     background-color: #f4f4f8; 
     border-radius: 8px;
     margin: 8px;
-    padding: 15px 36px;
+    padding: 15px 35px;
     width: 91.5%;
     height: 70px;
     display: flex;
@@ -314,7 +315,7 @@
 
 .l_chat_message_input {
     height: 60px;
-    width: 88%;
+    width: 90%;
     border: none;
     background-color: transparent;
     outline: none;
@@ -342,10 +343,16 @@
     width: 85%;
 }
 
+.l_vip_review_comment {
+    line-height: 25px;
+    margin: 50px 0 20px;
+    font-size: 15px;
+}
+
 .l_commentary_input {
     height: 38px;
     padding-top: 10px;
-    width: 88%;
+    width: 92%;
     border: none;
     background-color: transparent;
     outline: none;
@@ -361,6 +368,12 @@
 }
 
 .l_review_button {
+    font-size: 13px;
+    border: none;
+    background-color: transparent;
+}
+
+.l_vip_review_button {
     font-size: 13px;
     border: none;
     background-color: transparent;
@@ -454,8 +467,7 @@
 .l_message_container {
     background-color: #fff;
     border-radius: 8px;
-    margin-bottom: 10px;
-    width: 97%;
+    width: 96%;
     padding: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -463,13 +475,16 @@
     margin: 10px;
 }
 
+.l_add_color {
+    background-color: var( --point_03);
+}
+
 .l_commentary_container {
     background-color: #fff;
     border-radius: 8px;
-    margin-bottom: 10px;
     width: 97%;
     padding: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 17px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     margin: 10px;
@@ -488,6 +503,9 @@
     flex: 1;
 }
 
+.l_dropdown_div button {
+    padding-right: 10px;
+}
 
 .l_commentary_message_text, .l_review_message_text {
     display: flex;
@@ -515,6 +533,7 @@
     margin-bottom: 45px;
     display: flex;
     align-items: center;
+    background-color: var(--back_01);
 }
 
 .l_toast_show {
@@ -607,7 +626,7 @@
 .l_info_p {
     margin: 30px 0 50px;
     font-size: 18px;
-    line-height: 26px;
+    line-height: 30px;
 }
 
 
@@ -628,6 +647,43 @@
     background-color: #888;
     background-size: cover; 
     background-position: center;
+}
+
+.l_text_container input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 730px;
+}
+
+.l_vip_text_container input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 620px;
+}
+
+#l_select_movie {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--def_wh);
+    height: 60px;
+    background-color: var(--font_01);
+}
+
+.l_dropdown_button {
+    text-align: center;
+    line-height: 15px;
+    --bs-dropdown-link-active-bg: var(--primary_01);
+}
+
+.l_text_container {
+    display: grid;
+}
+
+.l_vip_text_container {
+    display: grid;
 }
 
 .l_message_text {

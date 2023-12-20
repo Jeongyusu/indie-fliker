@@ -3,6 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/views/layout/header.jsp"%>
 
+<div id="l_select_movie">
+    <h5>우리는 독립적이고 독특한 영화들을 즐기는 곳입니다. 함께 특별한 순간을 만들어봐요.</h5>
+</div>
 <div class="l_main_body">
     <div class="l_avi_main">
         <div class="l_avi_container">
@@ -27,14 +30,14 @@
                                         ${onMovieDetailDTO.synopsis}
                                     </div>
                                     <div class="l_info_title h5"><a class="l_green">${onMovieDetailDTO.movieName}</a>에 대한 <a
-                                            class="l_font_pupple">9,734</a>개의 이야기가 있어요!
+                                            class="l_font_pupple"><p id="count">9,734</p></a>개의 이야기가 있어요!
                                     </div>
                                 </div>
 
                                 <div class="l_participant d-flex align-items-center">
                                     <div class="d-flex flex-column l_user_profile">
-                                        <img src="https://dummyimage.com/100/000/fff.jpg" alt="IndiFlinker" class="m-2">
-                                        <span>인디픽커</span>
+                                        <img src="${principal.pic}" alt="IndiFlinker" class="m-2">
+                                        <span>${principal.username}</span>
                                     </div>
                                     <div class="l_chat_message col-md-10">
                                         <input type="text" class="l_chat_message_input" name="reply_comment" value=""
@@ -42,29 +45,7 @@
                                         <button type="button" class="l_review_button">관람평쓰기</button>
                                     </div>
                                 </div>
-                                <div id="l_review_container" class="l_chat_container">
-                                    <div class="l_message_container">
-                                        <div class="l_review_message_text">
-                                            <div class="l_profile_comment">
-                                                <div class="l_profile_img" style=""></div>
-                                                <div class="l_text_container">
-                                                    <div class="l_message_name">sksk</div>
-                                                    <div class="l_message_text">hihihihihi</div>
-                                                    <input type="hidden" id="normalReviewId" value="">
-                                                    <input type="hidden" id="reviewUserId" value="">
-                                                </div>
-                                            </div>
-                                            <div class="dropdown l_dropdown_div">
-                                                <button type="button" class="dropdown-toggle l_review_set_button" data-bs-toggle="dropdown">
-                                                    <img src="/images/icons/menu.png">
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li class="dropdown-item" id="reviewDelete">삭제하기</li>
-                                                    <li class="dropdown-item" id="reviewUpdate">수정하기</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div id="l_review_element">
                                 </div>
                             </div>
                             <!-- 영화 평론 -->
@@ -74,63 +55,41 @@
                                             class="l_font_pupple">다양한 평론</a>을 느껴보세요!
                                     </div>
                                 </div>
-                                <div class="row align-items-center">
-                                    <div class="l_score_p" style="max-width: 4rem;">
-                                        평점
-                                    </div>
-                                    <select id="l_score_point" class="form-select form-select-sm">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </div>
-                                <div class="l_participant d-flex align-items-center">
-                                    <div class="d-flex flex-column l_user_profile">
-                                        <img src="https://dummyimage.com/100/000/fff.jpg" alt="IndiFlinker" class="m-2">
-                                        <span>인디픽커</span>
-                                    </div>
-                                    <div class="l_commentary col-md-10">
-                                        <textarea class="l_commentary_input" placeholder="영화의 다양한 생각과 느낌을 전달해주세요."
-                                        onkeydown="resize(this)" onkeyup="resize(this)"></textarea>
-                                        <button type="submit" class="l_review_button">평론쓰기</button>
-                                        <input type="hidden" id="vipReviewId" value="">
-                                        <input type="hidden" id="vipReviewUserId" value="">
-                                    </div>
-                                </div>
-                                <div id="l_commentary_container" class="l_chat_container">
-                                    <div class="l_comment_container">
-                                        <div class="l_score_container">
-                                            <div class="l_score_title">평점</div>
-                                            <div class="l_score">5</div>
+<%--                                <c:if test="${principal.grade == 'VIP'}">--%>
+                                    <div class="l_vip_review_comment">"${onMovieDetailDTO.movieName}"의 매력을 어떻게 느끼셨나요?
+                                        <br/>
+                                        독립영화를 사랑하시는 VIP 여러분들의 소중한 평론은 <a class="l_green">1번</a>만 작성가능합니다. 편안하게 의견을 나누어 주세요!</div>
+                                    <div id="vip_review_write_form">
+                                        <div class="row align-items-center">
+                                            <div class="l_score_p" style="max-width: 4rem;">
+                                                평점
+                                            </div>
+                                            <select id="l_score_point" class="form-select form-select-sm">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
                                         </div>
-                                        <div class="l_commentary_list_container">
-                                            <div class="l_commentary_message_text">
-                                                <div class="l_profile_comment">
-                                                    <div class="l_profile_img" style=""></div>
-                                                    <div class="l_text_container">
-                                                        <div class="l_message_name">sksk</div>
-                                                        <div class="l_message_text">hihihihihi</div>
-                                                    </div>
-                                                </div>
-                                                <div class="dropdown l_dropdown_div">
-                                                    <button type="button" class="dropdown-toggle l_review_set_button" data-bs-toggle="dropdown">
-                                                        <img src="/images/icons/menu.png">
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li class="dropdown-item">Link 1</li>
-                                                        <li class="dropdown-item">Link 1</li>
-                                                    </ul>
-                                                </div>
+                                        <div class="l_participant d-flex align-items-center">
+                                            <div class="d-flex flex-column l_user_profile">
+                                                <img src="${principal.pic}" alt="IndiFlinker" class="m-2">
+                                                <span>${principal.username}</span>
+                                            </div>
+                                            <div class="l_commentary col-md-10">
+                                        <textarea class="l_commentary_input" placeholder="영화의 다양한 생각과 느낌을 전달해주세요."
+                                                  onkeydown="resize(this)" onkeyup="resize(this)"></textarea>
+                                                <button type="submit" class="l_vip_review_button">평론쓰기</button>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+<%--                                </c:if>--%>
+                                <div id="l_vip_review_element"></div>
                             </div>
                             <!-- 영화 포토 -->
                             <div class="content" num="3" style="display: none;">
-                                <div class="l_green l_info_title h5">영화 포토</div>
+                                <div class="l_info_title h5">영화 포토</div>
                                 <div class="l_carousel_background">
                                     <div id="carousel" class="carousel slide l_carousel">
                                         <div class="carousel-inner">
@@ -159,7 +118,7 @@
                 </div>
                 <div id="l_movie_on_poster">
                     <div class="l_chat_section l_hide_on_small border-0" style="max-width: 250px;">
-                        <div class="card bg-light border-0" id="l_poster">
+                        <div class="card border-0" id="l_poster">
                             <img src="${onMovieDetailDTO.thumbnail}"
                                  alt="채팅방 이미지" class="img-fluid m-2" style="max-width: 200px;">
                             <div id="l_movie_mini_info">

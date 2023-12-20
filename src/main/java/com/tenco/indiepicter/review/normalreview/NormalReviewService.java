@@ -38,7 +38,7 @@ public class NormalReviewService {
         if (review == null) {
             throw new MyDynamicException("댓글이 존재하지 않습니다.", HttpStatus.BAD_REQUEST);
         }
-
+        System.out.println("여기");
         return normalReviewRepository.deleteById(review.getId());
     }
 

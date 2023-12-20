@@ -11,6 +11,8 @@ import org.hibernate.validator.constraints.Length;
 import lombok.Builder;
 import lombok.Data;
 
+import java.sql.Timestamp;
+
 
 public class UserRequestDTO {
 	
@@ -38,6 +40,8 @@ public class UserRequestDTO {
 //		@NotBlank //@Size(min = 11, max = 11)
 //		@NotBlank(message = "전화번호를 입력하세요.")
 		private String tel;
+
+		private Timestamp createdAt;
 		
 	}
 	

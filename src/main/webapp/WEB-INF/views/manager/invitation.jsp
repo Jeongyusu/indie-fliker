@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../layout/header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -8,7 +11,7 @@
     <title>관리자 페이지 - 초청권( invitation ) 완료!</title>
     
     <!-- style.css와 연결 -->
-    <link rel="stylesheet" href="../../../../resources/static/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -19,6 +22,11 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">
+
 
 </head>
 <body>
@@ -57,9 +65,9 @@
             <div class="p_section2">
                 <h3>영화</h3>
                 <ul>
-                    <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="">영화 등록 허가</a></li>
-                    <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="">펀딩 현황 확인</a></li>
-                    <li><i class="fa-solid fa-pen p_icon3"></i><a href="">펀딩 등록 / 삭제</a></li>
+                    <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/register">영화 등록 허가</a></li>
+                    <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/check">펀딩 현황 확인</a></li>
+                    <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/update-delete">펀딩 등록 / 삭제</a></li>
                 </ul>
                 <div class="p_line"></div>
             </div>
@@ -67,9 +75,9 @@
             <div class="p_section3">
                 <h3>회원</h3>
                 <ul>
-                    <li><i class="fa-solid fa-ticket-simple p_icon1"></i><a href=""><a href="">VIP 초청권 발급</a></li>
-                    <li><i class="fa-solid fa-user p_icon2"></i><a href=""><a href="">회원 관리</a></li>
-                    <li><i class="fa-solid fa-user-group p_icon3"></i><a href=""><a href="">회원 관리</a></li>
+                    <li><i class="fa-solid fa-ticket-simple p_icon1"></i><a href="/admin/invitation">VIP 초청권 발급</a></li>
+                    <li><i class="fa-solid fa-user p_icon2"></i><a href="/admin/user-management">일반 회원 관리</a></li>
+                    <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/vip-management">VIP 회원 관리</a></li>
                 </ul>
                 <div class="p_line"></div>
             </div>
@@ -77,17 +85,17 @@
             <div class="p_section4">
                 <h3>온라인 상영 가능 영화</h3>
                 <ul>
-                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="">온라인 오픈 기간 설정</a></li>
-                    <li><i class="fa-solid fa-comment p_icon2"></i><a href="">채팅방 오픈</a></li>
-                    <li><i class="fa-solid fa-note-sticky p_icon3"></i><a href="">감상평 관리</a></li>
+                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/playday">온라인 오픈 기간 설정</a></li>
+                    <li><i class="fa-solid fa-comment p_icon2"></i><a href="/admin/chatting">채팅방 오픈</a></li>
+                    <li><i class="fa-solid fa-note-sticky p_icon3"></i><a href="/admin/review">감상평 관리</a></li>
                 </ul>
                 <div class="p_line"></div>
             </div>
 
-            <div class="p_section5">
-                <i class="fa-solid fa-gear p_icon1"></i>
-                <a href="">환경설정</a>
-            </div>
+<%--            <div class="p_section5">--%>
+<%--                <i class="fa-solid fa-gear p_icon1"></i>--%>
+<%--                <a href="">환경설정</a>--%>
+<%--            </div>--%>
 
         </div>
         <!--컨테이너1 끝-->
@@ -110,115 +118,128 @@
                             <th>회원 ID</th>
                             <th>회원 닉네임</th>
                             <th>회원 가입 날짜</th>
-                            <th>최근 구매 날짜</th>
                             <th>회원 등급</th>
+                            <th>초청권 발급</th>
                         </tr>
                     </thead>
+                    <c:forEach var="user" items="${adminInvitationPagingLists}">
+                    <c:set var="i" value="${i+1}"/>
                     <tbody>
                         <tr>
-                            <td>01</td>
-                            <td>#11111</td>
+                            <td>${i}</td>
+                            <td>#${user.userEmail}</td>
                             <td>
                                 <div>
-                                    <img src="" alt="">
+                                    <img src="${user.pic}" alt="">
                                 </div>
-                                <span class="p_name1 p_name">김오이</span>
+                                <span class="p_name1 p_name">${user.username}</span>
                             </td>
-                            <td>1111/11/11 11:11</td>
-                            <td>1111/11/11 11:11</td>
-                            <td>VIP</td>
+                            <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${user.createdAt}"/></td>
+                            <td>${user.grade}</td>
+                            <td><button id="${user.id}" name="${user.id}" onclick="openModal()">발급하기</button></td>
                         </tr>
-                        <tr>
-                            <td>02</td>
-                            <td>#2222</td>
-                            <td>
-                                <div>
-                                    <img src="" alt="">
-                                </div>
-                                <span class="p_name2 p_name">최배추</span>
-                                
-                            </td>
-                            <td>2222/22/22 22:22</td>
-                            <td>2222/22/22 22:22</td>
-                            <td>일반 회원</td>
-                        </tr>
-                        <tr>
-                            <td>03</td>
-                            <td>#3333</td>
-                            <td>
-                                <div>
-                                    <img src="" alt="">
-                                </div>
-                                <span class="p_name3 p_name">박딸기</span>
-                            </td>
-                            <td>3333/33/33 33:33</td>
-                            <td>3333/33/33 33:33</td>
-                            <td>일반 회원</td>
-                        </tr>
-                        <tr>
-                            <td>04</td>
-                            <td>#4444</td>
-                            <td>
-                                <div>
-                                    <img src="" alt="">
-                                </div>
-                                <span class="p_name4 p_name">이사과</span>
-                            </td>
-                            <td>4444/44/44 44:44</td>
-                            <td>4444/44/44 44:44</td>
-                            <td>신고</td>
-                        </tr>
-                        <tr>
-                            <td>05</td>
-                            <td>#5555</td>
-                            <td>
-                                <div>
-                                    <img src="" alt="">
-                                </div>
-                                <span class="p_name4 p_name">김대추</span>
-                            </td>
-                            <td>5555/55/55 55:55</td>
-                            <td>5555/55/55 55:55</td>
-                            <td>일반</td>
-                        </tr>
-
                     </tbody>
+                        <!----------------------------------- 모달 ------------------------------------------------>
+                        <!-- 모달 백그라운드 -->
+                        <div class="p_modal-background" id="modalBackground" onclick="closeModal()"></div>
 
+                        <!-- 모달 -->
+                        <div class="p_modal" id="myModal">
+                            <img src="/images/logo/IndieFliker.png" alt="">
+                            <h2>초청권 발급</h2>
+                            <button class="close" onclick="closeModal()">닫기</button>
+                            <div class="modal_from">
+                                <form action="/admin/vip-issued" method="post">
+                                    <input type="hidden" id="userId" name="userId" value ="${user.id}">
+                                    <label>날짜 및 시간 선택</label><br>
+                                    <input type="text" id="movieTime" name="movieTime" placeholder="날짜 및 시간 선택"><br>
+                                    <label>초청권 코드</label><br>
+                                    <input type="text" id="invitationCode" name="invitationCode" placeholder="초청권 코드 입력"><br>
+                                    <label>영화 제목</label><br>
+                                    <input type="text" id="movieName" name="movieName" placeholder="영화 제목 입력"><br>
+                                    <label>극장 이름</label><br>
+                                    <input type="text" id="theaterName" name="theaterName" placeholder="극장 이름 입력"><br>
+                                    <label>극장 주소</label><br>
+                                    <input type="text" id="theaterAddress" name="theaterAddress" placeholder="극장 주소 입력"><br>
+                                    <button class="submit" type="submit">발급 하기</button>
+                                </form>
+                            </div>
+                        </div>
+                        <!----------------------------------- 모달 ------------------------------------------------>
+                    </c:forEach>
                 </table>
             </div>
             
             <div class="p_invitation_bottom">
-                <nav aria-label="...">
-                    <ul class="pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link previous" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item active paging" aria-current="page" style="color:#01DFD7;">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">4</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">5</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link next" href="#">Next</a>
-                    </li>
-                    </ul>
-                </nav>  
-            </div>
-        
-        </div>
+                <c:choose>
+                    <%-- 현재 페이지가 1페이지이면 이전 글자만 보여줌 --%>
+                    <c:when test="${paging.page <= 1}">
+                        <a>[이전]</a>
+                    </c:when>
 
+                    <c:otherwise>
+                        <%-- 이전을 누르면 컨트롤러에 현재 페이지보다 1 작은 페이지로 요청 --%>
+                        <a href="/admin/invitation?page=${paging.page-1}">[이전]</a>
+                    </c:otherwise>
+                </c:choose>
+
+                <%-- 자바로 생각하면 >> for(int i = startPage; i <= endPage; i++) --%>
+                <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="i" step="1">
+                    <c:choose>
+                        <%-- 현재 페이지는 클릭할 필요가 없기 때문에 <span>태그 처리 --%>
+                        <c:when test="${i eq paging.page}">
+                            <span>${i}</span>
+                        </c:when>
+
+                        <c:otherwise>
+                            <%-- 다른 페이지 이동이 필요할때 컨트롤러에 요청 --%>
+                            <a href="/admin/invitation?page=${i}">${i}</a>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+
+                <%-- 현재 페이지가 가장 끝 페이지이면 다음이라는 text만 나오게 함 --%>
+                <c:choose>
+                    <c:when test="${paging.page >= paging.maxPage}">
+                        <a>[다음]</a>
+                    </c:when>
+                    <%-- 다음을 누르면 현재 페이지보다 1 큰 페이지로 요청 --%>
+                    <c:otherwise>
+                        <a href="/admin/invitation?page=${paging.page+1}">[다음]</a>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+
+        </div>
         <!--컨테이너2 끝-->
-        
     </div>
+
+    <!--------------------------------- 모달 버튼 ---------------------------------------------->
+    <script>
+        // 모달 열기
+        function openModal() {
+            document.getElementById('myModal').style.display = 'block';
+            document.getElementById('modalBackground').style.display = 'block';
+        }
+
+        // 모달 닫기
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+            document.getElementById('modalBackground').style.display = 'none';
+        }
+    </script>
+    <!--------------------------------- 모달 버튼 ---------------------------------------------->
+    <!--------------------------------- 달력 -------------------------------------------------->
+    <script>
+        let choiceDay = document.getElementById('movieTime');
+        flatpickr(choiceDay, {
+            enableTime: true,
+            dateFormat: "Y-m-d H:i",
+        });
+    </script>
+    <!--------------------------------- 달력 -------------------------------------------------->
     
 </body>
+
+
+

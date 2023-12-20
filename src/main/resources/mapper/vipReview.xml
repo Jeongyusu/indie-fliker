@@ -20,9 +20,29 @@
     </update>
 
     <!-- movie_id로 vip 평론 조회 -->
-    <select id="findByMovieId" resultType="com.tenco.indiepicter.review.vipreview.VipReview">
-        select * from vip_review_tb where movie_id = #{movieId} order by created_at desc
+    <select id="findByMovieId" resultMap="VipReviewsToMovieDTOResultMap">
+        select
+            r.id as vip_review_id,
+            r.content,
+            r.point,
+            r.user_id,
+            u.username,
+            u.pic
+        from vip_review_tb as r
+                 inner join user_tb as u
+                            on r.user_id = u.id
+        where r.movie_id = #{movieId}
+        order by
+            r.created_at desc
     </select>
+    <resultMap id="VipReviewsToMovieDTOResultMap" type="com.tenco.indiepicter.review.vipreview.response.VipReviewsToMovieDTO">
+        <result property="vipReviewId" column="vip_review_id"/>
+        <result property="vipReviewContent" column="content"/>
+        <result property="vipReviewPoint" column="point"/>
+        <result property="userId" column="user_id"/>
+        <result property="username" column="username"/>
+        <result property="userPic" column="pic"/>
+    </resultMap>
 
     <!-- user_id, movie_id로 vip 평론 조회 -->
     <select id="findByUserIdAndMovieId" resultType="com.tenco.indiepicter.review.vipreview.VipReview">

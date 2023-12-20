@@ -965,6 +965,20 @@
     left: 40px;
 }
 
+.p_invitation_container2 .p_section1 .table button{
+    background-color: #01DFD7;
+    width: 90px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    border-color: white;
+    transition-duration: 0.2s;
+}
+
+.p_invitation_container2 .p_section1 .table button:hover{
+    color:white;
+}
+
 .p_invitation_bottom{
     position: relative;
     top: 20px;
@@ -1105,7 +1119,6 @@
 }
 /*---------------------------------------------------------------------*/
 /* 관리자 페이지 감상평 관리 ( review ) */
-
 
 
 /* 관리자 페이지 펀딩 등록 삭제 ( update_delete ) */
@@ -1670,5 +1683,196 @@
 .p_noticedetail_contnet p{
 
 }
+
+.p_custom_margin_bottom {
+    margin-bottom: 20px;
+}
 /*---------------------------------------------------------------------*/
 /* 공지사항 디테일 */
+
+/* 모달 스타일 */
+/*---------------------------------------------------------------------*/
+ .p_modal {
+     display: none; /* 모달 초기에는 숨김 상태 */
+     position: fixed;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     padding: 20px;
+     background-color: #fff;
+     border: 1px solid #ccc;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     z-index: 1;
+     width: 40%;
+     height: 70%;
+ }
+
+ .p_modal img{
+     position: relative;
+     top: 5px;
+     left: 10px;
+     width: 100px;
+     height: 100px;
+ }
+
+.p_modal h2{
+    position: relative;
+    bottom: 70px;
+    left: 88%;
+    transform: translate(-50%, 0px);
+}
+
+.p_modal .modal_from{
+    position: relative;
+    top: 60px;
+    left: 0px;
+    width: 100%;
+    height: 80%;
+}
+
+.p_modal .modal_from label{
+    position: relative;
+    bottom: 110px;
+    left: 210px;
+}
+
+.p_modal .modal_from input{
+    position: relative;
+    bottom: 110px;
+    left: 50%;
+    transform: translate(-50%, 0px);
+    margin-bottom: 20px;
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.p_modal .modal_from .submit{
+    position: relative;
+    background-color: #01DFD7;
+    bottom: 100px;
+    left: 50%;
+    transform: translate(-50%, 0px);
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+}
+
+.p_modal .close{
+    top: 10px;
+    position: absolute;
+    right: 15px;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: #01DFD7;
+}
+
+.p_modal button:hover{
+    color:white;
+}
+
+/* 모달 백그라운드 스타일 */
+.p_modal-background {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명한 검은 배경 */
+    z-index: 1;
+}
+/*---------------------------------------------------------------------*/
+/* 모달 스타일 */
+
+/* 관리자 페이지 - 회원 등급 수정( grade_update ) */
+/*---------------------------------------------------------------------*/
+.p_grade_update_container2{
+    /* background-color: antiquewhite; */
+    position: relative;
+    width: 1300px;
+    height: 550px;
+    top: 120px;
+    left: 380px;
+}
+
+.p_grade_update_container2 .p_filter{
+    position: absolute;
+    right: 20px;
+    top: 0px;
+    width: 100px;
+    height: 40px;
+}
+
+.p_grade_update_container2 .p_filter button{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    background-color: transparent;
+}
+
+.p_grade_update_container2 .p_filter button:hover{
+    color: #01DFD7;
+}
+
+.p_grade_update_container2 .p_filter span{
+    position: relative;
+    right: 15px;
+}
+
+.p_grade_update_container2 .p_filter i{
+    position: absolute;
+    content: "\f0b0";
+    font-family: "Font Awesome 5 Free";
+    font-size: 20px;
+    color: #424242;
+    top: 10px;
+    right: 15px;
+}
+
+.p_grade_update_container2 .p_section1{
+    position: relative;
+    top: 20px;
+}
+
+.p_grade_update_container2 .p_section1 .table img{
+    background-color: #01DFD7;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+.p_grade_update_container2 .p_section1 .table .p_name{
+    position: relative;
+    bottom: 27px;
+    left: 40px;
+}
+
+.p_grade_update_container2 .p_section1 .table button{
+    background-color: #01DFD7;
+    width: 90px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    border-color: white;
+    transition-duration: 0.2s;
+}
+
+.p_grade_update_container2 .p_section1 .table button:hover{
+    color:white;
+}
+
+.p_grade_update_bottom{
+    position: relative;
+    top: 20px;
+    left: 420px;
+}
+
+
+
+
+/*---------------------------------------------------------------------*/
+/* 관리자 페이지 - 회원 등급 수정( grade_update ) */

@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="k_profile_bttns_margin">
-        <button class="k_profile_bttn_cancle"><a href="/user/mypage">취소</a></a></button>
+        <button class="k_profile_bttn_cancle"><a href="/user/mypage">취소</a></button>
         <button type="submit" class="k_profile_bttn_ok">확인</button>
     </div>
     </form>

@@ -6,8 +6,8 @@
 	
 	<!-- 회원 가입 -->
 	<insert id="insert">
-		insert into user_tb(user_email, password, pic, username, tel, grade, gubun, created_at)
-		values(#{userEmail}, #{password}, #{pic}, #{username}, #{tel}, #{grade}, #{gubun}, now())
+		insert into user_tb(user_email, password, pic, username, tel, grade, gubun, is_withdrawal, created_at)
+		values(#{userEmail}, #{password}, #{pic}, #{username}, #{tel}, #{grade}, #{gubun}, #{isWithdrawal}, now())
 	</insert>
 	
 	<!-- 이메일 중복 체크 -->
@@ -40,6 +40,13 @@
 		update user_tb set pic=#{uploadFileName}, username=#{username}, password=#{password1}, tel=#{tel}
 		where id=#{id}
 	</update>
-	
+
+	<!-- 관리자 페이지(회원 탈퇴) -->
+	<update id="adminUserUpdate">
+		update user_tb set is_withdrawal=#{isWithdrawal}
+		where id=#{id}
+	</update>
+
+	<!-- -->
 
 </mapper>

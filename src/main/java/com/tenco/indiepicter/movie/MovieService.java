@@ -5,6 +5,9 @@ import com.tenco.indiepicter._core.utils.DateUtil;
 import com.tenco.indiepicter._core.utils.PicToStringUtil;
 import com.tenco.indiepicter._core.utils.StringUtil;
 import com.tenco.indiepicter.funding.request.FundingSaveDTO;
+import com.tenco.indiepicter.review.normalreview.NormalReviewRepository;
+import com.tenco.indiepicter.review.normalreview.NormalReviewService;
+import com.tenco.indiepicter.review.vipreview.VipReviewRepository;
 import lombok.extern.slf4j.Slf4j;
 import com.tenco.indiepicter.movie.moviephoto.MoviePhoto;
 import com.tenco.indiepicter.movie.moviephoto.MoviePhotoRepository;
@@ -55,7 +58,6 @@ public class MovieService {
     // 온라인 상영 영화 정보 및 무비 파일 조회
     public OnMovieDetailDTO onTheaterToMovie(Integer movieId) {
         List<MoviePhoto> moviePhotos = moviePhotoRepository.findByMovieId(movieId);
-
         OnMovieDetailDTO responseDTO = movieRepository.findByMovieIdToMovie(movieId);
         responseDTO.setMoviePics(moviePhotos);
 

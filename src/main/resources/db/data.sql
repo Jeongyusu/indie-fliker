@@ -1,20 +1,50 @@
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
 values('ssar@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '쌀', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1122-3344', 'NORMAL', now());
-
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
 values('cos@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '코스', '/images/userbasicpic/userimg.jpg', 'VIP', '010-8455-6677', 'NORMAL', now());
-
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
 values('love@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '러브', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-9855-6677', 'DIRECTOR', now());
-
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
 values('happy@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '해피', '/images/userbasicpic/userimg.jpg', 'VIP', '010-7765-6688', 'DIRECTOR', now());
-
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
 values('travel@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '여행', '/images/userbasicpic/userimg.jpg', 'VIP', '010-3221-6677', 'DIRECTOR', now());
-
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
 values('sara@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '사라', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4594-6677', 'DIRECTOR', now());
+insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
+values('apple@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '사과', '/images/userbasicpic/userimg.jpg', 'VIP', '010-1234-5678', 'NORMAL', now());
+insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
+values('con@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '콘', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1122-3344', 'NORMAL', now());
+insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
+values('push@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '푸쉬', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-8455-6677', 'NORMAL', now());
+insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
+values('root@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '루트', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-9855-6677', 'DIRECTOR', now());
+insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
+values('zzang@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '짱짱짱', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-7765-6688', 'DIRECTOR', now());
+insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
+values('what@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '왓더', '/images/userbasicpic/userimg.jpg', 'VIP', '010-3221-6677', 'DIRECTOR', now());
+insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
+values('kind@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '친절', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4594-6677', 'DIRECTOR', now());
+insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
+values('namgyu1@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '바보1', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1234-5678', 'NORMAL', now());
+insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
+values('namgyu2@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '바보2', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1234-5678', 'NORMAL', now());
+insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
+values('namgyu3@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '바보3', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1234-5678', 'NORMAL', now());
+insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
+values('namgyu4@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '바보4', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1234-5678', 'NORMAL', now());
+insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
+values('namgyu5@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '바보5', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1234-5678', 'NORMAL', now());
+insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
+values('red@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '빨강', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4594-6677', 'DIRECTOR', now());
+insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
+values('blue@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '파랑', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4594-6677', 'DIRECTOR', now());
+insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
+values('green@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '초록', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4594-6677', 'DIRECTOR', now());
+insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
+values('yellow@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '노랑', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4594-6677', 'DIRECTOR', now());
+insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
+values('gray@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '회색', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4594-6677', 'DIRECTOR', now());
+
 
 insert into theater_tb(theater_pic, theater_name, theater_description, tel, address, park, total_seat) values ('/images/theaterpic/theater1.png', '그린시네마 부산 부전동 지점', '그린시네마 부전동 지점은 편안하고 넓은 좌석과 첨단 음향 시스템으로 최신 영화를 즐기기에 이상적인 장소입니다. 다양한 푸드 옵션과 아늑한 분위기가 영화관람을 더욱 특별하게 만듭니다. 특히, 최신 4D 기술을 도입하여 관객들에게 몰입감 넘치는 경험을 제공하고 있습니다. 영화를 넘어 다양한 이벤트와 혜택으로 관객들에게 특별한 추억을 선사합니다.', '051-494-1004', '부산시 부산진구 부전동 1004-1', '주차장 협소', 124);
 insert into theater_tb(theater_pic, theater_name, theater_description, tel, address, park, total_seat) values ('/images/theaterpic/theater2.png', '그린시네마 대구 만촌동 지점', '그린시네마 만촌동 지점은 독특한 디자인과 현대적인 시설로 꾸며져 있어, 영화를 감상하는 동안 고급스러운 분위기를 제공합니다. 특히, 최신 영화뿐만 아니라 독립 영화와 예술 영화의 상영에도 힘쓰고 있습니다. 각 프리미엄 상영관마다 다양한 주제의 특별한 이벤트를 개최하여 관객들에게 다채로운 즐거움을 선사하고 있습니다.', '054-422-2005', '대구시 수성구 만촌동 1004-1', '주차장 넓음', 124);
@@ -197,10 +227,11 @@ insert into movie_staff_tb(director, filming, art, sound, clothes, script, light
 insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('고영웅', '김상수', '남은혜', '김철수', '이사라', '박남규', '최철영', '최민수', '정지환', 27);
 insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이영수', '김재인', '이은지', '김하율', '이사라', '박남규', '이세환', '여민수', '정수민', 28);
 insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이영호', '송재익', '남은혜', '김하율', '이사라', '박남규', '박세환', '나민수', '정유진', 29);
-insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('1000000', '300000', '8000', '40', '2023-11-01', '2023-12-31', 1);
+
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('2000000', '400000', '8000', '40', '2023-11-01', '2023-12-31', 2);
-insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('3000000', '500000', '8000', '40', '2023-11-01', '2023-12-31', 3);
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('4000000', '700000', '8000', '40', '2023-11-01', '2023-12-31', 4);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('3000000', '500000', '8000', '40', '2023-11-01', '2023-12-31', 3);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('1000000', '300000', '8000', '40', '2023-11-01', '2023-12-31', 1);
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('5000000', '1000000', '8000', '40', '2023-11-01', '2023-12-31', 5);
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('4000000', '3000000', '8000', '40', '2023-11-01', '2023-12-31', 6);
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('3000000', '300000', '8000', '40', '2023-11-01', '2023-12-31', 7);
@@ -226,6 +257,37 @@ insert into funding_tb(target_price, present_price, price_per_onetime, people_co
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('2000000', '400000', '8000', '40', '2023-11-01', '2023-12-31', 27);
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('5000000', '4000000', '8000', '40', '2023-11-01', '2023-12-31', 28);
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('4000000', '3000000', '8000', '40', '2023-11-01', '2023-12-31', 29);
+
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('2000000', '400000', '8000', '40', '2023-11-01', '2023-12-31', 2);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('4000000', '700000', '8000', '40', '2023-11-01', '2023-12-31', 4);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('3000000', '500000', '8000', '40', '2023-11-01', '2023-12-31', 3);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('1000000', '300000', '8000', '40', '2023-11-01', '2023-12-31', 1);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('5000000', '1000000', '8000', '40', '2023-11-01', '2023-12-31', 5);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('4000000', '3000000', '8000', '40', '2023-11-01', '2023-12-31', 6);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('3000000', '300000', '8000', '40', '2023-11-01', '2023-12-31', 7);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('2000000', '300000', '8000', '40', '2023-11-01', '2023-12-31', 8);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('1000000', '400000', '8000', '40', '2023-11-01', '2023-12-31', 9);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('2000000', '500000', '8000', '40', '2023-11-01', '2023-12-31', 10);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('3000000', '600000', '8000', '40', '2023-11-01', '2023-12-31', 11);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('4000000', '800000', '8000', '40', '2023-11-01', '2023-12-31', 12);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('5000000', '1500000', '8000', '40', '2023-11-01', '2023-12-31', 13);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('6000000', '1200000', '8000', '40', '2023-11-01', '2023-12-31', 14);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('7000000', '2100000', '8000', '40', '2023-11-01', '2023-12-31', 15);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('6000000', '3000000', '8000', '40', '2023-11-01', '2023-12-31', 16);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('5000000', '4500000', '8000', '40', '2023-11-01', '2023-12-31', 17);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('4000000', '2800000', '8000', '40', '2023-11-01', '2023-12-31', 18);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('3000000', '2000000', '8000', '40', '2023-11-01', '2023-12-31', 19);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('2000000', '1000000', '8000', '40', '2023-11-01', '2023-12-31', 20);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('1000000', '300000', '8000', '40', '2023-11-01', '2023-12-31', 21);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('2000000', '400000', '8000', '40', '2023-11-01', '2023-12-31', 22);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('3000000', '2700000', '8000', '40', '2023-11-01', '2023-12-31', 23);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('4000000', '3600000', '8000', '40', '2023-11-01', '2023-12-31', 24);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('5000000', '3500000', '8000', '40', '2023-11-01', '2023-12-31', 25);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('3000000', '300000', '8000', '40', '2023-11-01', '2023-12-31', 26);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('2000000', '400000', '8000', '40', '2023-11-01', '2023-12-31', 27);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('5000000', '4000000', '8000', '40', '2023-11-01', '2023-12-31', 28);
+insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('4000000', '3000000', '8000', '40', '2023-11-01', '2023-12-31', 29);
+
 
 
 insert  into scrab_tb(user_id, funding_id) values ('1','1' );
@@ -403,7 +465,64 @@ insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_
 
 
 insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
-values ('스트리머', '/movies/streamer.mp4', 'streamer', '2D', false, 'mp4', '2.32MB', 1);
+values ('스트리머', '/movies/forest.mp4', 'streamer', '2D', false, 'mp4', '2.32MB', 1);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('만해한용운', '/movies/forest.mp4', 'streamer', '2D', false, 'mp4', '2.32MB', 2);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('홈리스권제니', '/movies/forest.mp4', 'homeless', '2D', false, 'mp4', '2.32MB', 3);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('불멸의여신', '/movies/forest.mp4', 'goddess', '2D', false, 'mp4', '2.32MB', 4);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('내가누워있을때', '/movies/forest.mp4', 'When I''m lying down', '2D', false, 'mp4', '2.32MB', 6);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('애도되지못한슬픔', '/movies/forest.mp4', 'the sorrow', '2D', false, 'mp4', '2.32MB', 5);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('불청객들', '/movies/forest.mp4', 'uninvited guests', '2D', false, 'mp4', '2.32MB', 7);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('엑스', '/movies/forest.mp4', 'ex', '2D', false, 'mp4', '2.32MB', 8);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('안 할 이유 없는 임신	', '/movies/forest.mp4', 'a pregnancy', '2D', false, 'mp4', '2.32MB', 9);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('건전지 엄마', '/movies/forest.mp4', 'Battery mom', '2D', false, 'mp4', '2.32MB', 10);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('쿠키 커피 도시락	', '/movies/forest.mp4', 'cookie', '2D', false, 'mp4', '2.32MB', 11);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('저주소년', '/movies/forest.mp4', 'a cursing boy', '2D', false, 'mp4', '2.32MB', 12);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('인형 이야기', '/movies/forest.mp4', 'doll', '2D', false, 'mp4', '2.32MB', 13);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('사라지는 것들', '/movies/forest.mp4', 'disable', '2D', false, 'mp4', '2.32MB', 14);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('도그피쉬', '/movies/forest.mp4', 'dog fish', '2D', false, 'mp4', '2.32MB', 15);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('마법이 돌아오는 날의 바다', '/movies/forest.mp4', 'magic', '2D', false, 'mp4', '2.32MB', 16);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('크로노스', '/movies/forest.mp4', 'Kronos', '2D', false, 'mp4', '2.32MB', 17);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('마녀들의 카니발', '/movies/forest.mp4', 'witches', '2D', false, 'mp4', '2.32MB', 18);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('1975', '/movies/forest.mp4', '1975', '2D', false, 'mp4', '2.32MB', 19);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('비상구 없는 집', '/movies/forest.mp4', 'a house without', '2D', false, 'mp4', '2.32MB', 20);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('곰마워', '/movies/forest.mp4', 'thank you', '2D', false, 'mp4', '2.32MB', 21);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('홈그라운드', '/movies/forest.mp4', 'home ground', '2D', false, 'mp4', '2.32MB', 22);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('인간의 마음', '/movies/forest.mp4', 'human heart', '2D', false, 'mp4', '2.32MB', 23);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('천변의 악사들', '/movies/forest.mp4', 'the musicians', '2D', false, 'mp4', '2.32MB', 24);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('분첩', '/movies/forest.mp4', 'powder puff', '2D', false, 'mp4', '2.32MB', 25);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('차가운 새들의 세계', '/movies/forest.mp4', 'cold', '2D', false, 'mp4', '2.32MB', 26);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('우리의 시간', '/movies/forest.mp4', 'ours time', '2D', false, 'mp4', '2.32MB', 27);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('이것은 보이는 것과 다르다', '/movies/forest.mp4', 'This is not what it seems', '2D', false, 'mp4', '2.32MB', 28);
+insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
+values ('소진된 인간', '/movies/forest.mp4', 'an exhausted human being', '2D', false, 'mp4', '2.32MB', 29);
+
 
 insert into question_tb(question_title, content, category, created_at)
 values('회원 정보 변경은 어떻게 하나요?', '회원 정보 변경은 그냥 하면 됩니다.', '회원정보', now());
