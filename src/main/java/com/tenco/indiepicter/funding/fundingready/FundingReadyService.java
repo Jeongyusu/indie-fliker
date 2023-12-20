@@ -58,7 +58,8 @@ public class FundingReadyService {
         return fundingReadyRepository.findAllFundingReady(pageSize, offset);
     }
 
-    public FundingReadyDetailDTO detailFunding(Integer fundingId) {
-        return fundingReadyRepository.findByFundingIdAboutDetailfundingReady(fundingId);
+    // 펀딩 준비테이블 상세보기
+    public FundingReadyDetailDTO detailFunding(Integer fundingReadyId) {
+        return fundingReadyRepository.findByFundingIdAboutDetailfundingReady(fundingReadyId);
     }
 }

@@ -29,7 +29,7 @@
                               WHEN curdate() >= mt.online_release_date THEN 'true'
                               ELSE 'false' END open
         from funding_ready_tb ft join movie_tb mt on ft.movie_id = mt.id join movie_photo_tb mpt on mt.id = mpt.movie_id join movie_staff_tb mst on mt.id = mst.movie_id
-        where curdate() BETWEEN mt.online_release_date AND mt.online_end_date AND ft.id = #{fundingId};
+        where ft.id = #{fundingReadyId};
     </select>
 
     <resultMap id="FundingReadyDetailDTOResultOMap" type="com.tenco.indiepicter.funding.response.FundingReadyDetailDTO">
@@ -63,6 +63,10 @@
             <result property="element" column="movie_pic"/>
         </collection>
     </resultMap>
+
+    <select id="findById" resultType="com.tenco.indiepicter.funding.fundingready.FundingReady">
+        select * from funding_ready_tb where id = #{id}
+    </select>
 
 
 </mapper>

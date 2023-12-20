@@ -28,6 +28,6 @@ public class FundingReadyController {
     public String detailFunding(@PathVariable Integer id, Model model){
         FundingReadyDetailDTO fundingDetailDTO = fundingReadyService.detailFunding(id);
         model.addAttribute("fundingDetailDTO", fundingDetailDTO);
-        return "fund/on_detail";
+        return "manager/funding_ready_preview";
     }
 }

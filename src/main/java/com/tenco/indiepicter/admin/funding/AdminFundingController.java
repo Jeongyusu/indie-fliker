@@ -1,8 +1,10 @@
-package com.tenco.indiepicter.admin;
+package com.tenco.indiepicter.admin.funding;
 
 import com.tenco.indiepicter.funding.FundingService;
+import com.tenco.indiepicter.funding.fundingready.FundingReady;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyService;
 import com.tenco.indiepicter.funding.response.FundingReadyDTO;
+import com.tenco.indiepicter.funding.response.FundingReadyDetailDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,15 +30,12 @@ public class AdminFundingController {
         return "manager/update_delete";
     }
 
-    @GetMapping("/funding/ready-list")
+    @GetMapping("/funding-ready-list")
     public String authorizationSave(@RequestParam(name = "page", defaultValue = "1") Integer page, Model model){
         List<FundingReadyDTO> fundingReadyDTOs = fundingReadyService.findAllFundingReady(page, 8);
         model.addAttribute("fundingReadyDTOs", fundingReadyDTOs);
         return "manager/register";
     }
 
-    @PostMapping ("/funding/save")
-    public String authSaveFunding(){
-    return  null;
-    }
+
 }

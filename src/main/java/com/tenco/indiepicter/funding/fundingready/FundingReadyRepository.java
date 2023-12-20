@@ -19,7 +19,9 @@ public interface FundingReadyRepository {
     public List<FundingReadyDTO> findAllFundingReady(@Param("pageSize") Integer pageSize, @Param("offset") Integer offset);
 
     //온라인 펀딩 상세보기
-    public FundingReadyDetailDTO findByFundingIdAboutDetailfundingReady(Integer fundingId);
+    public FundingReadyDetailDTO findByFundingIdAboutDetailfundingReady(Integer fundingReadyId);
 
+    //id로 펀딩 준비 테이블 튜플 조회
+    public FundingReady findById(Integer id);
 
 }

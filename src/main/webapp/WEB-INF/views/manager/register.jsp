@@ -102,7 +102,15 @@
                         <img src="${fundingReady.thumbnail}" alt="영화 사진">
                         <p>영화 제목 : ${fundingReady.movieName}</p>
                         <p>영화 감독 : ${fundingReady.director}</p>
-                        <button onclick="openModal()">영화 등록 하기</button></a>
+                        <button onclick="openModal(${status.index})">영화 등록 하기</button></a>
+                    </div>
+                    <!--모달-->
+                    <div class="j_custom_modal" id="j_fund_modal${status.index}">
+                        <iframe src="/funding-ready/${fundingReady.fundingReadyId}" id="chat_iframe" style=" width: 100%;
+   height: 100%;
+   border: none;">대체 내용</iframe>
+                        <button class="j_close" style="background-color: var(--primary_02);" onclick="closeModal(${status.index})">창 닫기</button>
+                        <button class="j_close2" style="margin-bottom: 10px;" onclick="AuthorizationFunding(${fundingReady.fundingReadyId})">등록 승인</button>
                     </div>
                 </c:forEach>
 
@@ -136,30 +144,51 @@
                     </ul>
                 </nav>  
             </div>
-            
         </div>
-        <!--모달-->
-        <div class="j_custom_modal" id="j_fund_modal">
-            <h2>초청권 발급</h2>
-            <button class="close" onclick="closeModal()">닫기</button>
-            <div class="modal_from">
-                <form action="/funding/save" method="post">
-
-                </form>
-            </div>
-        </div>
-        
 	</div>
 
 <script>
         // 모달 열기
-        function openModal() {
-        document.getElementById('j_fund_modal').style.display = 'block';
-    }
+        function openModal(id) {
+            document.getElementById('j_fund_modal'+ id).style.display = 'block';
+        }
 
         // 모달 닫기
-        function closeModal() {
-        document.getElementById('j_fund_modal').style.display = 'none';
-    }
+        function closeModal(id) {
+            document.getElementById('j_fund_modal' + id).style.display = 'none';
+         }
+
+        async function AuthorizationFunding(fundingId){
+            console.log("여기까지진입" + fundingId);
+            try {
+                let response = await fetch('/admin/funding-ready/save', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({fundingId: fundingId}),
+                });
+                console.log("여기까지진입2");
+
+                let responseBody = await response.json();
+                console.log("내부 제이슨 변환 완료");
+                console.log(responseBody);
+
+                console.log(responseBody.success);
+
+                if (responseBody.success) {
+                    alert("등록 승인 성공");
+                } else {
+                    throw new Error(responseBody.error);
+                }
+            } catch (error) {
+                console.error('에러가 발생했습니다:' + error.message);
+                alert('에러 발생 : ' + error.message);
+            }
+
+        }
+
+
+
 
 </script>
