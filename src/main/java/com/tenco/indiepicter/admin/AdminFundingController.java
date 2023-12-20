@@ -29,4 +29,6 @@ public class AdminFundingController {
         model.addAttribute("fundingReadyDTOs", fundingReadyDTOs);
         return "manager/register";
     }
+
+    @
 }
