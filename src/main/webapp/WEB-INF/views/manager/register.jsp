@@ -102,7 +102,7 @@
                         <img src="${fundingReady.thumbnail}" alt="영화 사진">
                         <p>영화 제목 : ${fundingReady.movieName}</p>
                         <p>영화 감독 : ${fundingReady.director}</p>
-                        <a href=""><button>영화 등록 하기</button></a>
+                        <button onclick="openModal()">영화 등록 하기</button></a>
                     </div>
                 </c:forEach>
 
@@ -138,6 +138,28 @@
             </div>
             
         </div>
-        <!--컨테이너2 끝-->
+        <!--모달-->
+        <div class="j_custom_modal" id="j_fund_modal">
+            <h2>초청권 발급</h2>
+            <button class="close" onclick="closeModal()">닫기</button>
+            <div class="modal_from">
+                <form action="/funding/save" method="post">
+
+                </form>
+            </div>
+        </div>
         
 	</div>
+
+<script>
+        // 모달 열기
+        function openModal() {
+        document.getElementById('j_fund_modal').style.display = 'block';
+    }
+
+        // 모달 닫기
+        function closeModal() {
+        document.getElementById('j_fund_modal').style.display = 'none';
+    }
+
+</script>

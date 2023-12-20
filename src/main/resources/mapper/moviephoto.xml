@@ -10,4 +10,8 @@
         select * from movie_photo_tb where movie_id = #{movieId}
     </select>
 
+    <!-- 영화 사진 등록 -->
+    <insert id="saveMoviePhoto">
+        insert into movie_photo_tb(movie_pic, movie_id) values (#{moviePic}, #{movieId})
+    </insert>
 </mapper>

@@ -62,11 +62,12 @@ public class FundingController {
 
     @GetMapping("/funding/{id}")
     public String detailFunding(@PathVariable Integer id, Model model){
-        User sessionUser = (User) session.getAttribute(Define.PRINCIPAL);
         FundingDetailDTO fundingDetailDTO = fundingService.detailFunding(id);
         boolean isLiked = scrabService.checkIsLiked(1, id); // 추후 1을 sessionUser.getId()로 변경
         fundingDetailDTO.setLiked(isLiked);
         model.addAttribute("fundingDetailDTO", fundingDetailDTO);
+        log.debug("==============================");
+        log.debug(fundingDetailDTO.toString());
         return "fund/on_detail";
     }
 
@@ -83,16 +84,16 @@ public class FundingController {
     }
 
 
-    @PostMapping ("/save")
-    public @ResponseBody String saveFunding(FundingSaveDTO requestDTO){
-        fundingService.saveFunding(requestDTO);
-        return Script.href("/fund/funding-plus", "펀딩 등록 성공! 심사 후 승인됩니다.");
-    }
-
     @GetMapping("/search")
     public String searchFunding(@RequestParam( name ="keyword") String keyword, Model model){
         List<SearchResultDTO> searchResultDTOs = fundingService.searchKeyword(keyword);
         model.addAttribute("searchResultDTOs", searchResultDTOs);
         return "main/search_result";
+    }
+
+    @PostMapping("/save")
+    public @ResponseBody String saveFunding(FundingSaveDTO requestDTO){
+        fundingService.saveFunding(requestDTO);
+        return Script.href("/fund/funding-plus", "펀딩 등록 성공! 심사 후 승인됩니다.");
     }
 }
