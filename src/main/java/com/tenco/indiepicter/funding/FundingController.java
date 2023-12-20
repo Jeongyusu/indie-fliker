@@ -62,12 +62,17 @@ public class FundingController {
 
     @GetMapping("/funding/{id}")
     public String detailFunding(@PathVariable Integer id, Model model){
-        FundingDetailDTO fundingDetailDTO = fundingService.detailFunding(id);
-        boolean isLiked = scrabService.checkIsLiked(1, id); // 추후 1을 sessionUser.getId()로 변경
-        fundingDetailDTO.setLiked(isLiked);
-        model.addAttribute("fundingDetailDTO", fundingDetailDTO);
         log.debug("==============================");
-        log.debug(fundingDetailDTO.toString());
+        log.debug("========상세보기 컨트롤러 진입1========");
+        FundingDetailDTO fundingDetailDTO = fundingService.detailFunding(id);
+        log.debug("========상세보기 컨트롤러 진입2========");
+//        boolean isLiked = scrabService.checkIsLiked(1, id); // 추후 1을 sessionUser.getId()로 변경
+        log.debug("========상세보기 컨트롤러 진입3========");
+//        fundingDetailDTO.setLiked(isLiked);
+        log.debug("========상세보기 컨트롤러 진입4========");
+        model.addAttribute("fundingDetailDTO", fundingDetailDTO);
+        log.debug("=========상세보기 컨트롤러 진입5========");
+//        log.debug(fundingDetailDTO.toString());
         return "fund/on_detail";
     }
 

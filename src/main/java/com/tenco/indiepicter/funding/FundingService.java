@@ -50,7 +50,7 @@ public class FundingService {
     }
 
     public FundingDetailDTO detailFunding(Integer fundingId) {
-        return fundingRepository.findByFundingIdAboutDetailfunding(fundingId);
+        return fundingRepository.findByFundingIdAboutDetailFunding(fundingId);
     }
 
     public OfflineMovieDetailDTO detailOfflineMovie(Integer fundingId) {

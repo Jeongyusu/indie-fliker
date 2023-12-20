@@ -21,7 +21,7 @@ public interface FundingRepository {
     public List<OnAirMovieRankingDTO> findAllByOnAirAndRanking();
 
     //온라인 펀딩 상세보기
-    public FundingDetailDTO findByFundingIdAboutDetailfunding(Integer fundingId);
+    public FundingDetailDTO findByFundingIdAboutDetailFunding(Integer fundingId);
 
     //오프라인 펀딩 상세보기(영화예매)
     public OfflineMovieDetailDTO findByFundingIdAboutOfflineMovie(Integer fundingId);
