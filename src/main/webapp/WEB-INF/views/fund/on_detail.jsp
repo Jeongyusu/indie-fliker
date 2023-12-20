@@ -61,57 +61,57 @@
                                 <img src="${photo}">
                             </c:forEach>
                         </div>
-                        <span id="n_toggleMore" style="display: none">
-                        <div class="n_movie_text">
-                            <h3>감독 작품 경력</h3>
-                            <img id="n_director_img" src="${fundingDetailDTO.directorPic}">
-                            <h5>${fundingDetailDTO.director}</h5>
-                            <p>
-                                ${fundingDetailDTO.directorCareers}
-                            </p>
-                        </div>
-                        <div class="n_movie_text">
-                            <h3>영화제 상영 및 수상작</h3>
-                            <p>
-                                ${fundingDetailDTO.directorAwardsFilm}
-                            </p>
-                        </div>
-                        <div class="n_movie_text">
-                            <h3>스태프</h3>
-                            <table class="table table-bordered">
-                                <tbody>
-                                <tr>
-                                    <th>감독</th>
-                                    <td>${fundingDetailDTO.director}</td>
-                                    <th>각본</th>
-                                    <td>${fundingDetailDTO.script}</td>
-                                </tr>
-                                <tr>
-                                    <th>촬영</th>
-                                    <td>${fundingDetailDTO.filming}</td>
-                                    <th>조명</th>
-                                    <td>${fundingDetailDTO.lighting}</td>
-                                </tr>
-                                <tr>
-                                    <th>미술</th>
-                                    <td>${fundingDetailDTO.art}</td>
-                                    <th>편집</th>
-                                    <td>${fundingDetailDTO.editing}</td>
-                                </tr>
-                                <tr>
-                                    <th>사운드</th>
-                                    <td>${fundingDetailDTO.sound}</td>
-                                    <th>음악</th>
-                                    <td>${fundingDetailDTO.music}</td>
-                                </tr>
-                                <tr>
-                                    <th>의상</th>
-                                    <td colspan="3">${fundingDetailDTO.clothes}</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </span>
+                        <span id="n_toggle_more" style="display: none">
+                            <div class="n_movie_text">
+                                <h3>감독 작품 경력</h3>
+                                <img id="n_director_img" src="${fundingDetailDTO.directorPic}">
+                                <h5>${fundingDetailDTO.director}</h5>
+                                <p>
+                                    ${fundingDetailDTO.directorCareers}
+                                </p>
+                            </div>
+                            <div class="n_movie_text">
+                                <h3>영화제 상영 및 수상작</h3>
+                                <p>
+                                    ${fundingDetailDTO.directorAwardsFilm}
+                                </p>
+                            </div>
+                            <div class="n_movie_text">
+                                <h3>스태프</h3>
+                                <table class="table table-bordered">
+                                    <tbody>
+                                    <tr>
+                                        <th>감독</th>
+                                        <td>${fundingDetailDTO.director}</td>
+                                        <th>각본</th>
+                                        <td>${fundingDetailDTO.script}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>촬영</th>
+                                        <td>${fundingDetailDTO.filming}</td>
+                                        <th>조명</th>
+                                        <td>${fundingDetailDTO.lighting}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>미술</th>
+                                        <td>${fundingDetailDTO.art}</td>
+                                        <th>편집</th>
+                                        <td>${fundingDetailDTO.editing}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>사운드</th>
+                                        <td>${fundingDetailDTO.sound}</td>
+                                        <th>음악</th>
+                                        <td>${fundingDetailDTO.music}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>의상</th>
+                                        <td colspan="3">${fundingDetailDTO.clothes}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </span>
                         <button id="n_toggle_button" onclick="toggleMore()">프로젝트 더 보기</button>
                     </div>
                     <!-- 기대되는 영화 목록 -->

@@ -117,7 +117,7 @@
                     </div>
                 </div>
                 <div id="l_movie_on_poster">
-                    <div class="l_chat_section l_hide_on_small border-0" style="max-width: 250px;">
+                    <div class="l_movie_card_section l_hide_on_small border-0" style="max-width: 250px;">
                         <div class="card border-0" id="l_poster">
                             <img src="${onMovieDetailDTO.thumbnail}"
                                  alt="채팅방 이미지" class="img-fluid m-2" style="max-width: 200px;">
