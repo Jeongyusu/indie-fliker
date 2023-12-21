@@ -1,4 +1,4 @@
-package com.tenco.indiepicter.Crawling;
+package com.tenco.indiepicter.crawling;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class WebCrawlerService {
 
     @Transactional(rollbackFor = Exception.class)
     public List<MovieCrawl> saveCrawlingDataToDB(String domain, String path) {
-        int maxPage = 5;
+        int maxPage = 2; // 여기서 데이터 값 조정
 
         List<MovieCrawl> movieCrawlList = new ArrayList<>();
         for (int i = 1; i <= maxPage; i++) {
@@ -56,6 +55,11 @@ public class WebCrawlerService {
             if (movieMapper.countMovies(movieCrawl) == 0) {
                 try {
                     movieMapper.insertMovie(movieCrawl);
+
+                    movieMapper.insertMovieStaff(movieCrawl);
+
+                    movieMapper.insertMoviePhoto(movieCrawl);
+
                     log.info("저장된 영화 데이터: {}", movieCrawl);
                 } catch (Exception e) {
                     // 삽입 중에 발생하는 예외 로깅
@@ -66,6 +70,7 @@ public class WebCrawlerService {
 
         return movieCrawlList;
     }
+
     private String extractPhotoUrls(Element element, String domain) {
         List<String> photoUrls = new ArrayList<>();
 
@@ -88,70 +93,32 @@ public class WebCrawlerService {
 
     private MovieCrawl extractMovieData(Element element, String domain, String path) {
         UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromUriString(domain + path);
-        String photoUrls = extractPhotoUrls(element, domain);
+        String moviePic = extractPhotoUrls(element, domain);
         Integer movieId = Integer.parseInt(uriComponentsBuilder.build().getQueryParams().get("seq").stream().findFirst().orElse("0"));
-        String imageUrl = element.selectFirst(".movie_info_poster img").attr("src");
-        String title = getElementText(element, ".movie_info_text .subject"); // 제목
-        String englishName = getElementText(element, ".movie_info_text .explain li:nth-child(1)"); // 영어 제목
-        String year = getElementText(element, ".movie_info_text .explain li:nth-child(2)"); // 제작년도
+        String thumbnail = element.selectFirst(".movie_info_poster img").attr("src");
+        String movieName = getElementText(element, ".movie_info_text .subject"); // 제목
+        String makeYear = getElementText(element, ".movie_info_text .explain li:nth-child(2)"); // 제작년도
         String genre = getElementText(element, ".movie_info_text .explain li:nth-child(3)"); // 장르
-        String duration = getElementText(element, ".movie_info_text .explain li:nth-child(4)"); // 상영시간
-        String rating = getElementText(element, ".movie_info_text .explain li:nth-child(5)"); // 영화등급
-        String color = getElementText(element, ".movie_info_text .explain li:nth-child(6)"); // 컬러
-        String productionCompany = getElementText(element, ".movie_info_text .detail dl:nth-child(1) dd"); // 제작사
-        String distributionCompany = getElementText(element, ".movie_info_text .detail dl:nth-child(2) dd");  // 배급사
-        String director = getElementText(element, ".movie_info_text .detail dl:nth-child(3) dd"); // 감독
-        String cast = getElementText(element, ".movie_info_text .detail dl:nth-child(4) dd"); // 출연
-        String keywords = getElementText(element, ".movie_info_text .detail dl:nth-child(5) dd a"); // 키워드
+        String runningGrade = getElementText(element, ".movie_info_text .explain li:nth-child(5)"); // 영화등급
+        String production = getElementText(element, ".detail dl:has(dt:containsOwn(제작사)) dd"); // 제작사
+        String director = getElementText(element, ".detail dl:has(dt:containsOwn(감독)) dd"); // 감독
+        String actor = getElementText(element, ".detail dl:has(dt:containsOwn(출연)) dd"); // 출연
         String synopsis = getElementText(element, ".movie_story .library_view_title:containsOwn(시놉시스) + dd"); // 시놉시스
-        String directorIntention = getElementText(element, ".movie_story .library_view_title:containsOwn(연출의도) + dd"); // 연출의도
-        String screeningAndAwards = getElementText(element, ".movie_story .library_view_title:containsOwn(영화제 상영 및 수상작) + dd"); // 영화제 상영 및 수상작
-        String directorFilmography = getElementText(element, ".movie_story .library_view_title:containsOwn(감독작품경력) + dd"); // 감독작품 경력
-        String screenplay = getStaffInfo(element, "각본");
-        String production = getStaffInfo(element, "제작");
-        String producer = getStaffInfo(element, "프로듀서");
+        String directingIntension = getElementText(element, ".movie_story .library_view_title:containsOwn(연출의도) + dd"); // 연출의도
+        String directorAwardsFilm = getElementText(element, ".movie_story .library_view_title:containsOwn(영화제 상영 및 수상작) + dd"); // 영화제 상영 및 수상작
+        String directorCareers = getElementText(element, ".movie_story .library_view_title:containsOwn(감독작품경력) + dd"); // 감독작품 경력
+        String eDirector = getStaffInfo(element, "감독");
         String filming = getStaffInfo(element, "촬영");
-        String lighting = getStaffInfo(element, "조명");
         String art = getStaffInfo(element, "미술");
-        String editing = getStaffInfo(element, "편집");
-        String recording = getStaffInfo(element, "동시녹음");
         String sound = getStaffInfo(element, "사운드");
-        String music = getStaffInfo(element, "음악");
         String clothes = getStaffInfo(element, "의상");
-        String dressing = getStaffInfo(element, "분장");
-        return MovieCrawl.builder()
-                .id(movieId)
-                .title(title)
-                .englishName(englishName)
-                .year(year)
-                .genre(genre)
-                .duration(duration)
-                .rating(rating)
-                .color(color)
-                .productionCompany(productionCompany)
-                .distributionCompany(distributionCompany)
-                .director(director)
-                .cast(cast)
-                .keywords(keywords)
-                .synopsis(synopsis)
-                .directorIntention(directorIntention)
-                .screeningAndAwards(screeningAndAwards)
-                .directorFilmography(directorFilmography)
-                .imageUrl(domain + imageUrl)
-                .photoUrls(photoUrls.toString())
-                .screenplay(screenplay)
-                .production(production)
-                .producer(producer)
-                .filming(filming)
-                .lighting(lighting)
-                .art(art)
-                .editing(editing)
-                .recording(recording)
-                .sound(sound)
-                .music(music)
-                .clothes(clothes)
-                .dressing(dressing)
-                .build();
+        String script = getStaffInfo(element, "프로듀서"); // 스크립트
+        String lighting = getStaffInfo(element, "조명");
+        String editing = getStaffInfo(element, "편집");
+        String music = getStaffInfo(element, "음악");
+
+
+        return MovieCrawl.builder().id(movieId).movieName(movieName).makeYear(makeYear).genre(genre).runningGrade(runningGrade).production(production).director(director).actor(actor).synopsis(synopsis).directingIntension(directingIntension).directorAwardsFilm(directorAwardsFilm).directorCareers(directorCareers).thumbnail(domain + thumbnail).moviePic(moviePic.toString()).eDirector(eDirector).filming(filming).art(art).sound(sound).production(production).clothes(clothes).script(script).lighting(lighting).editing(editing).music(music).build();
     }
 
     private String getStaffInfo(Element element, String staffRole) {
@@ -167,6 +134,7 @@ public class WebCrawlerService {
         }
         return null;
     }
+
     private String getElementText(Element element, String selector) {
         Element selectedElement = element.selectFirst(selector);
         return (selectedElement != null) ? selectedElement.text() : null;
