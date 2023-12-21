@@ -35,5 +35,7 @@ public interface UserRepository {
 	// 회원 프로필 수정
 	public int update(UserProfileRequestDTO dto);
 
-	
+	// 회원 탈퇴
+	public void userIsWithdrawal(Integer principal);
+
 }

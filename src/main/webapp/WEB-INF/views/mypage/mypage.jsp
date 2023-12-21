@@ -12,6 +12,7 @@
 
 	<link href="/css/khy_style.css" rel="stylesheet">
 
+
 </head>
 
 
@@ -65,13 +66,36 @@
 		<hr class="k_m_hr">
 		<div>
 			<button class="k_c_center_list"><a href="/user/profile">회원 정보 수정〉</a></button>
-			<button class="k_c_center_second_list">회원 탈퇴〉</button>
+			<button class="k_c_center_second_list" onclick="openModal()">회원 탈퇴〉</button>
 		</div>
 		<hr class="k_m_hr">
 		<button class="k_c_center_list_set">설정〉</button>
 		<hr class="k_m_hr">
-
 	</div>
+	<!------------------------------------- 모달 창 ------------------------------------------->
+	<!-- 모달 백그라운드 -->
+	<div class="k_isWithdrawal_modal_background" id="modalBackground" onclick="closeModal()"></div>
+	<div class="k_isWithdrawal_modal" id="myModal">
+		<h2>정말 탈퇴하겠습니까?</h2>
+		<button class="close" onclick="closeModal()">취소</button>
+		<a href="/user/isWithdrawal">탈퇴</a>
+	</div>
+	<!------------------------------------- 모달 창 ------------------------------------------->
+	<!--------------------------------- 모달 버튼 ---------------------------------------------->
+	<script>
+		// 모달 열기
+		function openModal() {
+			document.getElementById('myModal').style.display = 'block';
+			document.getElementById('modalBackground').style.display = 'block';
+		}
+		// 모달 닫기
+		function closeModal() {
+			document.getElementById('myModal').style.display = 'none';
+			document.getElementById('modalBackground').style.display = 'none';
+		}
+	</script>
+	<!--------------------------------- 모달 버튼 ---------------------------------------------->
+
 
 </body>
 
