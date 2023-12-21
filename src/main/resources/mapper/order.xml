@@ -12,7 +12,7 @@
 
     <!-- 주문 삭제 -->
     <delete id="deleteById">
-        delete from order_tb where id = #{id}
+        delete from order_tb where id = #{orderId} and user_id = #{principalId}
     </delete>
 
     <!-- 선택한 주문 상세 조회 -->

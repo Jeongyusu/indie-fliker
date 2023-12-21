@@ -13,7 +13,7 @@ public interface PaymentRepository {
   public int insert(Payment Payment);
 
   // 주문 정보 삭제
-  public int deleteById(Integer id);
+  public int deleteById(Integer paymentId);
 
   // 주문 정보 조회
   public Payment findById(Integer id);

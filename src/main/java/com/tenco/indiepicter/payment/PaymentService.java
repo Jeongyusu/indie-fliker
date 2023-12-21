@@ -88,5 +88,8 @@ public class PaymentService {
         return paymentRepository.insert(payment);
     }
 
-
+    @Transactional
+    public int deleteById(Integer paymentId) {
+        return paymentRepository.deleteById(paymentId);
+    }
 }
