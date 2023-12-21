@@ -99,50 +99,102 @@ function snapshotListener(chatMessagesContainer, chatTitle) {
 }
 
 
+
+
 function addMessage(name, message, time) {
 
-    const chatContainer = document.createElement('div');
-    chatContainer.classList.add('l_chat_container');
+    // TODO : 만약 name = principal.username이라면 본인 그외는 아님
 
-    const profileContainer = document.createElement('div');
-    profileContainer.classList.add('l_participant_in_user');
-    profileContainer.classList.add('d-flex');
-    profileContainer.classList.add('align-items-center');
+    let principal = {
+        username : 'helllo'
+    };
 
-    const profile = document.createElement('img');
-    profile.src = "https://dummyimage.com/100/000/fff.jpg";
+    console.log("usrname : " + principal.username);
 
-    const username = document.createElement('span');
+    if(name !== principal.username){
+        const chatContainer = document.createElement('div');
+        chatContainer.classList.add('l_chat_container');
 
-    const messageContainer = document.createElement('div');
-    messageContainer.classList.add('l_message_container');
+        const profileContainer = document.createElement('div');
+        profileContainer.classList.add('l_participant_chat');
+        profileContainer.classList.add('d-flex');
+        profileContainer.classList.add('align-items-center');
 
-    const textContainer = document.createElement('div');
-    textContainer.classList.add('l_message_text');
+        const profile = document.createElement('img');
+        profile.src = "https://dummyimage.com/100/000/fff.jpg";
 
-    const nameElement = document.createElement('div');
-    nameElement.classList.add('l_message_name');
-    nameElement.textContent = name;
+        const username = document.createElement('span');
 
-    const textElement = document.createElement('div');
-    textElement.textContent = message;
+        const messageContainer = document.createElement('div');
+        messageContainer.classList.add('l_message_container');
 
-    const timeElement = document.createElement('div');
-    timeElement.classList.add('l_message_time');
-    timeElement.textContent = time;
+        const textContainer = document.createElement('div');
+        textContainer.classList.add('l_message_text');
+
+        const nameElement = document.createElement('div');
+        nameElement.classList.add('l_message_name');
+        nameElement.textContent = name;
+
+        const textElement = document.createElement('div');
+        textElement.classList.add('l_message_message');
+        textElement.textContent = message;
+
+        const timeElement = document.createElement('div');
+        timeElement.classList.add('l_message_time');
+        timeElement.textContent = time;
 
 
-    profileContainer.appendChild(profile);
-    profileContainer.appendChild(username);
+        profileContainer.appendChild(profile);
+        profileContainer.appendChild(username);
 
-    messageContainer.appendChild(nameElement);
-    messageContainer.appendChild(textElement);
-    messageContainer.appendChild(timeElement);
+        messageContainer.appendChild(nameElement);
+        messageContainer.appendChild(textElement);
+        messageContainer.appendChild(timeElement);
 
-    chatContainer.appendChild(profileContainer);
-    chatContainer.appendChild(messageContainer);
+        chatContainer.appendChild(profileContainer);
+        chatContainer.appendChild(messageContainer);
 
-    return chatContainer;
+        return chatContainer;
+
+
+    } else {
+        const chatContainer = document.createElement('div');
+        chatContainer.classList.add('l_chat_container_from_user');
+
+        const profileContainer = document.createElement('div');
+        profileContainer.classList.add('l_participant_chat');
+        profileContainer.classList.add('d-flex');
+        profileContainer.classList.add('align-items-center');
+
+        const profile = document.createElement('img');
+        profile.src = "https://dummyimage.com/100/000/fff.jpg";
+
+        const messageContainer = document.createElement('div');
+        messageContainer.classList.add('l_message_container_from_user');
+
+        const textContainer = document.createElement('div');
+        textContainer.classList.add('l_message_text');
+
+        const textElement = document.createElement('div');
+        textElement.classList.add('l_message_message');
+        textElement.textContent = message;
+
+        const timeElement = document.createElement('div');
+        timeElement.classList.add('l_message_time_from_user');
+        timeElement.textContent = time;
+
+
+        profileContainer.appendChild(profile);
+
+        messageContainer.appendChild(textElement);
+        messageContainer.appendChild(timeElement);
+
+        chatContainer.appendChild(messageContainer);
+        chatContainer.appendChild(profileContainer);
+
+        return chatContainer;
+
+    }
 }
 
 

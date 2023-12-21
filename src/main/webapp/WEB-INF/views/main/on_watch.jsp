@@ -149,7 +149,8 @@
                             </div>
                             <div class="p l_toast_p">
                                 자유로운 대화를 나눠보세요<br/>
-                                선착순 입장이므로 양해 부탁드립니다 :)
+                                영화 개봉 후 <a class="l_font_pupple">1시간 뒤</a>에 입장 가능합니다.
+                                <a class="l_font_red">선착순 입장</a>이므로 양해 부탁드립니다 :)
                             </div>
                         </div>
                     </div>
