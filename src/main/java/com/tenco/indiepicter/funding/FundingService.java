@@ -122,5 +122,10 @@ public class FundingService {
         }
         return resultRowCount;
     }
+    //어드민 페이지 전체 펀딩 수정/삭제 리스트 조회
+    public List<AdminFundingModifyDTO> findAllAdminFundingModify(){
+        return fundingRepository.findAllAdminFundingModify();
+    }
+
 
 }
