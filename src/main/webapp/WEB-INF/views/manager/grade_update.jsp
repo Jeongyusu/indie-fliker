@@ -78,7 +78,7 @@
                 <li><i class="fa-solid fa-ticket-simple p_icon1"></i><a href="/admin/invitation">VIP 초청권 발급</a></li>
                 <li><i class="fa-solid fa-user p_icon2"></i><a href="/admin/user-management">일반 회원 관리</a></li>
                 <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/vip-management">VIP 회원 관리</a></li>
-                <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/vip-management">회원 등급 수정</a></li>
+                <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/grade-update">회원 등급 수정</a></li>
             </ul>
             <div class="p_line"></div>
         </div>
@@ -123,7 +123,7 @@
                     <th colspan="2">회원 등급 수정</th>
                 </tr>
                 </thead>
-                <c:forEach var="user" items="${adminInvitationPagingLists}">
+                <c:forEach var="user" items="${adminGradeUpdatePagingLists}">
                     <c:set var="i" value="${i+1}"/>
                     <tbody>
                     <tr>
@@ -137,8 +137,8 @@
                         </td>
                         <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${user.createdAt}"/></td>
                         <td>${user.grade}</td>
-                        <td><a class="p_vip">VIP</a></td>
-                        <td><a class="p_normal">NORMAL</a></td>
+                        <td><a href="/admin/grade-update-vip/${user.id}" class="p_vip">VIP</a></td>
+                        <td><a href="/admin/grade-update-normal/${user.id}" class="p_normal">NORMAL</a></td>
                     </tr>
                     </tbody>
                 </c:forEach>
@@ -154,7 +154,7 @@
 
                 <c:otherwise>
                     <%-- 이전을 누르면 컨트롤러에 현재 페이지보다 1 작은 페이지로 요청 --%>
-                    <a href="/admin/invitation?page=${paging.page-1}">[이전]</a>
+                    <a href="/admin/grade-update?page=${paging.page-1}">[이전]</a>
                 </c:otherwise>
             </c:choose>
 
@@ -168,7 +168,7 @@
 
                     <c:otherwise>
                         <%-- 다른 페이지 이동이 필요할때 컨트롤러에 요청 --%>
-                        <a href="/admin/invitation?page=${i}">${i}</a>
+                        <a href="/admin/grade-update?page=${i}">${i}</a>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
@@ -180,7 +180,7 @@
                 </c:when>
                 <%-- 다음을 누르면 현재 페이지보다 1 큰 페이지로 요청 --%>
                 <c:otherwise>
-                    <a href="/admin/invitation?page=${paging.page+1}">[다음]</a>
+                    <a href="/admin/grade-update?page=${paging.page+1}">[다음]</a>
                 </c:otherwise>
             </c:choose>
         </div>

@@ -670,3 +670,18 @@ insert into question_tb(question_title, content, category, created_at)
 values('VIP는 어떻게 하나요?', 'VIP는 그냥 하면 됩니다.', 'VIP', now());
 insert into question_tb(question_title, content, category, created_at)
 values('VIP는 어떻게 하나요?', 'VIP는 그냥 하면 됩니다.', 'VIP', now());
+
+insert into invitation_tb(invitation_code, movie_name, theater_name, theater_address, movie_time, user_id)
+values('1234', '인터스텔라', '서면 CGV', '부산 진구 서면', '2023-12-21', 1);
+insert into invitation_tb(invitation_code, movie_name, theater_name, theater_address, movie_time, user_id)
+values('5678', '인셉션', '덕천 메가박스', '부산 북구 덕천', '2023-12-22', 1);
+insert into invitation_tb(invitation_code, movie_name, theater_name, theater_address, movie_time, user_id)
+values('3597', '곡성', '서면 CGV', '부산 진구 서면', '2023-12-23', 1);
+insert into invitation_tb(invitation_code, movie_name, theater_name, theater_address, movie_time, user_id)
+values('5578', '몸값', '해운대 CGV', '부산 해운대', '2023-12-24', 1);
+insert into invitation_tb(invitation_code, movie_name, theater_name, theater_address, movie_time, user_id)
+values('7569', '명량', '사상 메가박스', '부산 진구 서면', '2023-12-25', 1);
+insert into invitation_tb(invitation_code, movie_name, theater_name, theater_address, movie_time, user_id)
+values('9987', '친구', '서면 CGV', '부산 진구 서면', '2023-12-26', 1);
+insert into invitation_tb(invitation_code, movie_name, theater_name, theater_address, movie_time, user_id)
+values('9204', '소스코드', '해운대 CGV', '부산 해운대', '2023-12-27', 1);

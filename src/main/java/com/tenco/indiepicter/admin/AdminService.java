@@ -132,4 +132,16 @@ public class AdminService {
         return resultInvitationCount;
     }
 // ------------------------------------------------------------------------------------------
+
+    // 회원 등급 수정 (VIP로 수정)
+    public void updateVip(Integer id){
+        this.adminRepository.updateVip(id);
+    }
+
+    // 회원 등급 수정 (NORML로 수정)
+    public void updateNormal(Integer id){
+        this.adminRepository.updateNormal(id);
+    }
+
+// ------------------------------------------------------------------------------------------
 }
