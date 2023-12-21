@@ -92,6 +92,16 @@
     color: var(--primary_01);
 }
 
+.l_chat_container {
+    display: flex;
+    margin: 10px;
+}
+
+.l_chat_container_from_user {
+    display: flex;
+    margin: 10px;
+    justify-content: end;
+}
 
 .l_mint {
     color: var(--primary_01);
@@ -291,11 +301,26 @@
 
 .l_chat_section_user {
     border: 2px solid var(--line_01);
-    overflow-y: auto;
+    overflow-y: scroll;
     border-top: none;
     width: 17%;
     padding: 15px;
 }
+
+/* 스크롤바의 폭 너비 */
+.l_chat_section_user::-webkit-scrollbar {
+    width: 10px;
+}
+
+.l_chat_section_user::-webkit-scrollbar-thumb {
+    background: var(--point_02); /* 스크롤바 색상 */
+    border-radius: 10px; /* 스크롤바 둥근 테두리 */
+}
+
+.l_chat_section_user::-webkit-scrollbar-track {
+    background: var(--def_wh);  /*스크롤바 뒷 배경 색상*/
+}
+
 
 .l_chat_room {
     display: none;
@@ -487,7 +512,7 @@
 }
 
 .l_chatbar {
-    width: 68.8%;
+    width: 69.8%;
     position: fixed;
     left: 0;
     transform: translate(22%);
@@ -495,6 +520,7 @@
     padding: 30px;
     background-color: white;
     height: 100px;
+    margin: 24px 0;
 }
 
 .l_participants_list {
@@ -513,6 +539,11 @@
 .l_participant_in_user {
     padding: 8px 15px;
     width: 100%;
+}
+
+.l_participant_chat {
+    padding: 8px 15px;
+    width: 5%;
 }
 
 .l_participant img {
@@ -536,6 +567,13 @@
     height: 40px;
 }
 
+.l_participant_chat img {
+    border-radius: 50%;
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+}
+
 .l_participant span {
     font-weight: bolder;
 }
@@ -546,10 +584,16 @@
 
 .l_participant_in_user span {
     font-weight: bolder;
+    font-size: 14px;
 }
 
 .l_font_pupple {
     color: var(--point_02);
+    font-weight: bold;
+}
+
+.l_font_red {
+    color: var(--point_04);
     font-weight: bold;
 }
 
@@ -570,7 +614,8 @@
 }
 
 .l_input_chat {
-    height: 50px;
+    height: 55px;
+    border-right: none;
 }
 
 .l_chat_message_box{
@@ -593,12 +638,28 @@
 }
 
 .l_chat_messages {
-    height: 80%;
+    height: 72%;
     overflow-y: scroll;
+}
+
+/* 스크롤바의 폭 너비 */
+.l_chat_messages::-webkit-scrollbar {
+    width: 10px;
+}
+
+.l_chat_messages::-webkit-scrollbar-thumb {
+    background: var(--point_02); /* 스크롤바 색상 */
+    border-radius: 10px; /* 스크롤바 둥근 테두리 */
+}
+
+.l_chat_messages::-webkit-scrollbar-track {
+    background: var(--def_wh);  /*스크롤바 뒷 배경 색상*/
 }
 
 .l_send_message_button {
     border: 0.5px solid var(--line_01);
+    border-left: none;
+    background-color: transparent;
     width: 50px;
     border-radius: 0 5px 5px 0;
 }
@@ -606,12 +667,25 @@
 .l_message_container {
     background-color: #fff;
     border-radius: 8px;
-    width: 96%;
-    padding: 15px;
+    width: 80%;
+    padding: 6px 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     margin: 10px;
+    height: 54px;
+}
+
+.l_message_container_from_user {
+    background-color: var(--point_01);
+    border-radius: 8px;
+    width: 80%;
+    padding: 6px 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    height: 54px;
 }
 
 .l_add_color {
@@ -663,8 +737,15 @@
 
 .l_message_time {
     font-size: 12px;
-    color: #888;
+    color: var(--font_03);
     align-self: flex-end;
+}
+
+.l_message_time_from_user {
+    font-size: 10px;
+    color: var(--font_03);
+    align-self: flex-end;
+    margin-top: 8px;
 }
 
 #l_poster {
@@ -759,7 +840,7 @@
     right: 0;
     bottom: 0;
     height: 2px;
-    background-color: #00C4C4;
+    background-color: var(--primary_01);
 }
 
 .l_info_p {
@@ -779,7 +860,7 @@
     width: 40px;
     height: 40px;
     margin-right: 10px;
-    background-color: #888;
+    background-color: var(--back_02);
     background-size: cover;
     background-position: center;
 }
@@ -827,13 +908,19 @@
 }
 
 .l_message_name {
+    font-size: 13px;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-.l_message_time {
+.l_message_message {
+    margin-top: 10px;
     font-size: 12px;
-    color: #888;
+}
+
+.l_message_time {
+    font-size: 10px;
+    color: var(--font_03);
     align-self: flex-end;
 }
 
