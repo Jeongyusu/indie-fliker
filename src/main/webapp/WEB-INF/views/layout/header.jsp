@@ -53,7 +53,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="/funding-plus">펀딩+</a>
+                            <a href="/fund/funding-plus">펀딩+</a>
                             <ul class="j_submenu">
                                 <li>영화 장르를 선택하세요></li>
                                 <li><a href="/fund/funding-plus">전체</a></li>

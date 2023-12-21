@@ -133,7 +133,7 @@ public class UserController {
 		// 세션 메모리에 유저정보 저장
 		session.setAttribute(Define.PRINCIPAL, principal);
 		
-		return "redirect:/main";
+		return "redirect:/fund/funding-plus";
 	}
 	
 //---------------------------------------------------------------------------------------------------------------

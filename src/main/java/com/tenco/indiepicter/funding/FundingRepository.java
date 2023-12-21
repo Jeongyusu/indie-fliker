@@ -41,5 +41,8 @@ public interface FundingRepository {
     // 펀딩 검색결과 조회
     public List<SearchResultDTO> findByKeyword(String keyword);
 
+    // 관리자 페이지 펀딩 수정/삭제 기존 펀딩 전체 조회
+    public List<AdminFundingModifyDTO> findAllAdminFundingModify();
+
 
 }
