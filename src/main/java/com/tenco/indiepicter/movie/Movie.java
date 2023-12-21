@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
@@ -30,9 +31,10 @@ public class Movie {
     private LocalDate offlineReleaseDate;
     private LocalDate offlineEndDate;
     private LocalDate dDay;
+    private LocalDateTime chatTime;
 
     @Builder
-    public Movie(Integer id, String makeYear, String production, String movieName, String synopsis, String thumbnail, String directingIntension, String genre, String runningGrade, String director, String directorPic, String actor, String directorCareers, String directorAwardsFilm, LocalDate onlineReleaseDate, LocalDate onlineEndDate, LocalDate offlineReleaseDate, LocalDate offlineEndDate, LocalDate dDay) {
+    public Movie(Integer id, String makeYear, String production, String movieName, String synopsis, String thumbnail, String directingIntension, String genre, String runningGrade, String director, String directorPic, String actor, String directorCareers, String directorAwardsFilm, LocalDate onlineReleaseDate, LocalDate onlineEndDate, LocalDate offlineReleaseDate, LocalDate offlineEndDate, LocalDate dDay, LocalDateTime chatTime) {
         this.id = id;
         this.makeYear = makeYear;
         this.production = production;
@@ -52,5 +54,6 @@ public class Movie {
         this.offlineReleaseDate = offlineReleaseDate;
         this.offlineEndDate = offlineEndDate;
         this.dDay = dDay;
+        this.chatTime = chatTime;
     }
 }

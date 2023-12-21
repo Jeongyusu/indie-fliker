@@ -33,4 +33,12 @@ public class Script {
         sb.append("</script>");
         return sb.toString();
     }
+    // 그냥 뒤로가기
+    public static String backOnly() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<script>");
+        sb.append("history.back();");
+        sb.append("</script>");
+        return sb.toString();
+    }
 }

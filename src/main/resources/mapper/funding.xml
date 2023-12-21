@@ -4,8 +4,8 @@
 
 <mapper namespace="com.tenco.indiepicter.funding.FundingRepository">
 
-    <insert id="saveFunding">
-        insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id)
+    <insert id="saveFunding" useGeneratedKeys="true" keyProperty="id">
+        insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id)
         values (#{targetPrice}, #{presentPrice}, #{pricePerOnetime}, #{peopleCount}, #{releaseDate}, #{endDate}, #{movieId})
     </insert>
 
@@ -45,7 +45,7 @@
         <result property="production" column="production"/>
     </resultMap>
 
-    <select id="findByFundingIdAboutDetailfunding" resultMap="FundingDetailDTOResultOMap">
+    <select id="findByFundingIdAboutDetailFunding" resultMap="FundingDetailDTOResultOMap">
         select ft.id, mt.thumbnail, mt.genre, (ft.present_price * 100 / ft.target_price) funding_rate, (ft.end_date - ft.release_date) rest_period,
                ft.present_price, ft.people_count, mt.movie_name, mt.director_pic, mt.synopsis, ft.price_per_onetime, concat(ft.release_date, ' ~ ', ft.end_date) funding_period, mt.d_day, mt.directing_intension,
                mt.director_careers, mt.director_awards_film, movie_pic, mt.director as mdirector, mst.filming, mst.art, mst.sound, mst.clothes, mst.script, mst.lighting, mst.editing, mst.music,
@@ -53,7 +53,7 @@
                                                                                                                                                                                                      WHEN curdate() >= mt.online_release_date THEN 'true'
                                                                                                                                                                                                      ELSE 'false' END open
         from funding_tb ft join movie_tb mt on ft.movie_id = mt.id join movie_photo_tb mpt on mt.id = mpt.movie_id join movie_staff_tb mst on mt.id = mst.movie_id
-        where curdate() BETWEEN mt.online_release_date AND mt.online_end_date AND ft.id = #{fundingId};
+        where curdate() BETWEEN mt.online_release_date AND mt.online_end_date AND ft.id = #{fundingId}
     </select>
 
     <resultMap id="FundingDetailDTOResultOMap" type="com.tenco.indiepicter.funding.response.FundingDetailDTO">
@@ -212,18 +212,6 @@
         <result property="movieName" column="movie_name"/>
         <result property="synopsis" column="synopsis"/>
         <result property="production" column="production"/>
-    </resultMap>
-
-    <select id="findAllFundingReady" resultMap="fundingReadyDTOMap">
-        select frt.id, mt.thumbnail, mt.movie_name, mt.director from funding_ready_tb frt join movie_tb mt on frt.movie_id = mt.id
-        limit #{pageSize} offset #{offset}
-    </select>
-
-    <resultMap id="fundingReadyDTOMap" type="com.tenco.indiepicter.funding.response.FundingReadyDTO">
-        <result property="fundingReadyId" column="id"/>
-        <result property="thumbnail" column="thumbnail"/>
-        <result property="movieName" column="movie_name"/>
-        <result property="director" column="director"/>
     </resultMap>
 
 </mapper>

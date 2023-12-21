@@ -1,15 +1,15 @@
-
-create table user_tb(
-                        id int auto_increment primary key,
-                        user_email varchar(20) not null unique,
-                        password varchar(300) not null,
-                        username varchar(10) not null,
-                        pic varchar(300),
-                        grade enum('NORMAL', 'VIP') not null,
-                        tel varchar(30) not null,
-                        gubun enum('NORMAL', 'DIRECTOR', 'ADMIN'),
-                        is_withdrawal boolean default false,
-                        created_at timestamp not null default now()
+create table user_tb
+(
+    id            int auto_increment primary key,
+    user_email    varchar(20)            not null unique,
+    password      varchar(300)           not null,
+    username      varchar(10)            not null,
+    pic           varchar(300),
+    grade         enum ('NORMAL', 'VIP') not null,
+    tel           varchar(30)            not null,
+    gubun         enum ('NORMAL', 'DIRECTOR', 'ADMIN'),
+    is_withdrawal boolean                         default false,
+    created_at    timestamp              not null default now()
 
 
 );
@@ -46,7 +46,8 @@ create table movie_tb
     online_end_date      Date,
     offline_release_date Date,
     offline_end_date     Date,
-    d_day                Date
+    d_day                Date,
+    chat_time            DateTime
 );
 
 create table movie_staff_tb
@@ -279,16 +280,17 @@ CREATE TABLE moviecrawl_tb
     clothes              VARCHAR(255),
     dressing             VARCHAR(255)
 );
-create table invitation_tb(
-                          id int auto_increment primary key,
-                          invitation_code varchar(30) not null,
-                          movie_name varchar(30) not null,
-                          theater_name varchar(30) not null,
-                          theater_address varchar(100) not null,
-                          movie_time varchar(100) not null,
-                          created_at datetime not null default now(),
-                          user_id int not null,
-                          foreign KEY(user_id) references user_tb(id)
+create table invitation_tb
+(
+    id              int auto_increment primary key,
+    invitation_code varchar(30)  not null,
+    movie_name      varchar(30)  not null,
+    theater_name    varchar(30)  not null,
+    theater_address varchar(100) not null,
+    movie_time      varchar(100) not null,
+    created_at      datetime     not null default now(),
+    user_id         int          not null,
+    foreign KEY (user_id) references user_tb (id)
 
 );
 

@@ -2,6 +2,9 @@ package com.tenco.indiepicter.funding;
 
 import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
 import com.tenco.indiepicter._core.utils.DateUtil;
+import com.tenco.indiepicter._core.utils.ParamStore;
+import com.tenco.indiepicter.funding.fundingready.FundingReady;
+import com.tenco.indiepicter.funding.fundingready.FundingReadyRepository;
 import com.tenco.indiepicter.funding.request.FundingSaveDTO;
 import com.tenco.indiepicter.funding.response.*;
 import com.tenco.indiepicter.movie.MovieService;
@@ -27,6 +30,9 @@ public class FundingService {
     private FundingRepository fundingRepository;
 
     @Autowired
+    private FundingReadyRepository fundingReadyRepository;
+
+    @Autowired
     private MovieService movieService;
 
     @Autowired
@@ -50,7 +56,7 @@ public class FundingService {
     }
 
     public FundingDetailDTO detailFunding(Integer fundingId) {
-        return fundingRepository.findByFundingIdAboutDetailfunding(fundingId);
+        return fundingRepository.findByFundingIdAboutDetailFunding(fundingId);
     }
 
     public OfflineMovieDetailDTO detailOfflineMovie(Integer fundingId) {
@@ -94,9 +100,27 @@ public class FundingService {
         return fundingRepository.findByKeyword(keyword);
     }
 
-    //펀딩 준비테이블 리스트 조회
-    public List<FundingReadyDTO> findAllFundingReady(Integer page, Integer pageSize){
-        Integer offset = page * pageSize - pageSize;
-        return fundingRepository.findAllFundingReady(pageSize, offset);
+    //펀딩 준비테이블 -> 펀딩 테이블 인서트하기
+    @Transactional
+    public int readyToOrigin(Integer id){
+        FundingReady fundingReady = fundingReadyRepository.findById(id);
+        Funding funding = Funding.builder()
+                .id(fundingReady.getId())
+                .targetPrice(fundingReady.getTargetPrice())
+                .pricePerOnetime(fundingReady.getPricePerOnetime())
+                .peopleCount(fundingReady.getPeopleCount())
+                .releaseDate(fundingReady.getReleaseDate())
+                .endDate(fundingReady.getEndDate())
+                .movieId(fundingReady.getMovieId())
+                .build();
+        int resultRowCount =  fundingRepository.saveFunding(funding);
+        // 등록된 funding의 PK를 기억하기
+        ParamStore.saveFundingPK = fundingReady.getId();
+
+        if(resultRowCount != 1) {
+            throw new MyDynamicException("펀딩 등록 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return resultRowCount;
     }
+
 }
