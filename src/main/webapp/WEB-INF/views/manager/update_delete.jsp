@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -94,58 +95,16 @@
         <div class="p_update_delete_container2">
 
             <div class="p_section1">
-                <div class="p_menu1">
-                    <img src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="">
-                    <p>영화 제목</p>
-                    <a href=""><button class="p_button1">영화 수정</button></a>
-                    <a href=""><button class="p_button2">영화 삭제</button></a>                  
-                </div>
-                <div class="p_menu1">
-                    <img src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="">
-                    <p>영화 제목</p>
-                    <a href=""><button class="p_button1">영화 수정</button></a>
-                    <a href=""><button class="p_button2">영화 삭제</button></a>   
-                </div>
-                <div class="p_menu1">
-                    <img src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="">
-                    <p>영화 제목</p>
-                    <a href=""><button class="p_button1">영화 수정</button></a>
-                    <a href=""><button class="p_button2">영화 삭제</button></a>    
-                </div>
-                <div class="p_menu1">
-                    <img src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="">
-                    <p>영화 제목</p>
-                    <a href=""><button class="p_button1">영화 수정</button></a>
-                    <a href=""><button class="p_button2">영화 삭제</button></a>    
-                </div>
-            </div>
+                <c:forEach var="funding" items="${adminFundingModifyDTOs}">
+                    <div class="p_menu1">
+                        <img src="${adminFundingModifyDTOs.movieThumbnail}" alt="">
+                        <p>${adminFundingModifyDTOs.movieName}</p>
+                        <a href=""><button class="p_button1">영화 수정</button></a>
+                        <a href=""><button class="p_button2">영화 삭제</button></a>
+                    </div>
+                </c:forEach>
 
-            <div class="p_section2">
-                <div class="p_menu2">
-                    <img src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="">
-                    <p>영화 제목</p>
-                    <a href=""><button class="p_button1">영화 수정</button></a>
-                    <a href=""><button class="p_button2">영화 삭제</button></a>    
-                </div>
-                <div class="p_menu2">
-                    <img src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="">
-                    <p>영화 제목</p>
-                    <a href=""><button class="p_button1">영화 수정</button></a>
-                    <a href=""><button class="p_button2">영화 삭제</button></a>   
-                </div>
-                <div class="p_menu2">
-                    <img src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="">
-                    <p>영화 제목</p>
-                    <a href=""><button class="p_button1">영화 수정</button></a>
-                    <a href=""><button class="p_button2">영화 삭제</button></a>    
-                </div>
-                <div class="p_menu2">
-                    <img src="https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg" alt="">
-                    <p>영화 제목</p>
-                    <a href=""><button class="p_button1">영화 수정</button></a>
-                    <a href=""><button class="p_button2">영화 삭제</button></a>    
-                </div>
-            </div>
+
             
         </div>
         <!--컨테이너2 끝-->

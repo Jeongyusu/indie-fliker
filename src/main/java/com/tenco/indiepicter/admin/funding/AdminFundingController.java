@@ -3,6 +3,7 @@ package com.tenco.indiepicter.admin.funding;
 import com.tenco.indiepicter.funding.FundingService;
 import com.tenco.indiepicter.funding.fundingready.FundingReady;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyService;
+import com.tenco.indiepicter.funding.response.AdminFundingModifyDTO;
 import com.tenco.indiepicter.funding.response.FundingReadyDTO;
 import com.tenco.indiepicter.funding.response.FundingReadyDetailDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +26,12 @@ public class AdminFundingController {
     @Autowired
     private FundingReadyService fundingReadyService;
 
+
     // 펀딩 등록 / 삭제 페이지 호출
     @GetMapping("/funding-management")
     public String funding(Model model) {
-
+        List<AdminFundingModifyDTO> adminFundingModifyDTOs = fundingService.findAllAdminFundingModify();
+        model.addAttribute("adminFundingModifyDTOs", adminFundingModifyDTOs);
         return "manager/update_delete";
     }
 
