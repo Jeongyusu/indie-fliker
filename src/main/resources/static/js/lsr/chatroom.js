@@ -40,7 +40,7 @@ sendMessageButtons.forEach((sendMessageButton) => {
         console.log("입력한 버튼 : " + sendMessageButton.id); // send_button1
         const number = sendMessageButton.getAttribute('id').replace('send_button', ''); // 1
         console.log("입력한 버튼의 숫자 : " + number);
-        let chatMessagesContainer = document.getElementById(`chatMessages` + number);
+        let chatMessagesContainer = document.getElementById(g`chatMessages` + number);
         console.log("입력한 채팅방 : " + chatMessagesContainer.id);
         const messageInput = document.getElementById(`l_message_input` + number);
         const messageText = messageInput.value;
