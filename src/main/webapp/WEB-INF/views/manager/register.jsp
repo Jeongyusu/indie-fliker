@@ -103,42 +103,91 @@
                         <img src="${fundingReady.thumbnail}" alt="영화 사진">
                         <p>영화 제목 : ${fundingReady.movieName}</p>
                         <p>영화 감독 : ${fundingReady.director}</p>
-                        <a href=""><button>영화 등록 하기</button></a>
+                        <button onclick="openModal(${status.index})">영화 등록 하기</button></a>
+                    </div>
+                    <!--모달-->
+                    <div class="j_custom_modal" id="j_fund_modal${status.index}">
+                        <iframe src="/funding-ready/${fundingReady.fundingReadyId}" id="chat_iframe" style=" width: 100%;
+   height: 100%;
+   border: none;">대체 내용</iframe>
+                        <button class="j_close" style="background-color: var(--primary_02);" onclick="closeModal(${status.index})">창 닫기</button>
+                        <button class="j_close2" style="margin-bottom: 10px;" onclick="AuthorizationFunding(${fundingReady.fundingReadyId})">등록 승인</button>
                     </div>
                 </c:forEach>
-
-
             </div>
-            
-            <div class="p_register_bottom">
-                <nav aria-label="...">
-                    <ul class="pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link previous" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item active paging" aria-current="page" style="color:#01DFD7;">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">4</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">5</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link next" href="#">Next</a>
-                    </li>
-                    </ul>
-                </nav>  
-            </div>
-            
+
         </div>
-        <!--컨테이너2 끝-->
-        
 	</div>
+    <div class="j_register_bottom" id="j_pagination">
+        <nav aria-label="...">
+            <ul class="pagination">
+                <li class="page-item disabled">
+                    <a class="page-link previous" href="/admin/back-only" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item paging">
+                    <a class="page-link" href="/admin/funding-ready-list?page=1">1</a>
+                </li>
+                <li class="page-item paging" aria-current="page" style="color:#01DFD7;">
+                    <a class="page-link" href="/admin/funding-ready-list?page=2">2</a>
+                </li>
+                <li class="page-item paging">
+                    <a class="page-link" href="/admin/funding-ready-list?page=3">3</a>
+                </li>
+                <li class="page-item paging">
+                    <a class="page-link" href="/admin/funding-ready-list?page=4">4</a>
+                </li>
+                <li class="page-item paging">
+                    <a class="page-link" href="/admin/funding-ready-list?page=5">5</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link next" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+<script>
+        // 모달 열기
+        function openModal(id) {
+            document.getElementById('j_fund_modal'+ id).style.display = 'block';
+            document.getElementById('j_pagination').style.display = 'none';
+
+        }
+
+        // 모달 닫기
+        function closeModal(id) {
+            document.getElementById('j_fund_modal' + id).style.display = 'none';
+            document.getElementById('j_pagination').style.display = 'block';
+
+        }
+
+        async function AuthorizationFunding(fundingId){
+            try {
+                let response = await fetch('/admin/funding-ready/save', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({fundingId: fundingId}),
+                });
+                let responseBody = await response.json();
+                if (responseBody.success) {
+                    alert("등록 승인 성공");
+                    window.location.reload();
+                    setTimeout(function() {
+                        document.getElementById('j_pagination').style.display = 'block';
+                    }, 1000);
+
+                } else {
+                    alert(responseBody.error.message);
+                }
+            } catch (error) {
+                console.log("에러 발생" + error.message);
+            }
+
+        }
+
+
+
+
+</script>

@@ -109,7 +109,6 @@ public class UserController {
 	// 로그인 페이지 요청(GET)
 	@GetMapping("/login")
 	public String joinIn() {
-	
 		return "user/login";
 	}
 	
@@ -131,8 +130,7 @@ public class UserController {
 		
 		// 세션 메모리에 유저정보 저장
 		session.setAttribute(Define.PRINCIPAL, principal);
-		
-		return "redirect:/main";
+		return "redirect:/fund/funding-plus";
 	}
 	
 //---------------------------------------------------------------------------------------------------------------
@@ -242,7 +240,8 @@ public class UserController {
 	@GetMapping("/logout")
 	public String logout() {
 		session.invalidate();
-		return "redirect:/user/login";
+
+		return "redirect:/fund/main";
 	}
 	
 //---------------------------------------------------------------------------------------------------------------	
