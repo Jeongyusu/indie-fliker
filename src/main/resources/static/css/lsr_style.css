@@ -569,10 +569,14 @@
     align-items: center;
 }
 
+.l_input_chat {
+    height: 50px;
+}
+
 .l_chat_message_box{
     width: 83%;
     padding: 10px;
-    overflow: scroll;
+    /*overflow: scroll;*/
 }
 
 .l_chat_message_box ::-webkit-scrollbar {
@@ -593,6 +597,11 @@
     overflow-y: scroll;
 }
 
+.l_send_message_button {
+    border: 0.5px solid var(--line_01);
+    width: 50px;
+    border-radius: 0 5px 5px 0;
+}
 
 .l_message_container {
     background-color: #fff;

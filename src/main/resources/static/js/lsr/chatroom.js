@@ -68,45 +68,52 @@ sendMessageButtons.forEach((sendMessageButton) => {
 });
 
 // 스냅샷 리스너 (채팅이 추가되는지 듣고있음)
+let unsubscribeSnapshotListener;  // 변수 추가
+
 function snapshotListener(chatMessagesContainer, chatTitle) {
     console.log("걍 얘가 실행됨");
-    db.collection(chatTitle)
+
+    // 이전에 등록된 스냅샷 리스너 해제
+    if (unsubscribeSnapshotListener) {
+        unsubscribeSnapshotListener();
+    }
+
+    // 새로운 스냅샷 리스너 등록
+    unsubscribeSnapshotListener = db.collection(chatTitle)
         .orderBy("timestamp")
         .onSnapshot((snapshot) => {
             console.log("스냅샷 실행");
             console.log("스냅샷 갯수 : " + snapshot.docChanges().length);
-
-            // 이미 처리된 messageData를 저장하는 배열(중복방지)
-            let processedMessages = [];
-            console.log("처리된 애들 갯수 : " + processedMessages.length);
-            processedMessages.forEach(value => {
-                console.log("처리된 애들 : " + value.message);
-            })
-
             snapshot.docChanges().forEach((change) => {
                 console.log("스냅샷 들어와서 실행");
                 if (change.type === "added") {
-                    const plusMessage = change.doc.data();
+                    const messageData = change.doc.data();
 
-                    // 이미 처리된 메세지
-                    const isAlready = processedMessages.some((processedMessage) =>
-                        processedMessage.id === plusMessage.id &&
-                        processedMessage.message === plusMessage.message &&
-                        processedMessage.timestamp === plusMessage.timestamp
-                    );
-
-                    if (!isAlready) {
-                        const messageContainer = addMessage(plusMessage.id, plusMessage.message, plusMessage.timestamp);
-                        console.log("메세지 컨테이너들 : " + plusMessage.message);
-                        chatMessagesContainer.appendChild(messageContainer);
-                        processedMessages.push(plusMessage);
-                    }
+                    const messageContainer = addMessage(messageData.id, messageData.message, messageData.timestamp);
+                    console.log("메세지 컨테이너들 : " + messageData.message);
+                    chatMessagesContainer.appendChild(messageContainer);
+                    chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
                 }
             });
         });
 }
 
+
 function addMessage(name, message, time) {
+
+    const chatContainer = document.createElement('div');
+    chatContainer.classList.add('l_chat_container');
+
+    const profileContainer = document.createElement('div');
+    profileContainer.classList.add('l_participant_in_user');
+    profileContainer.classList.add('d-flex');
+    profileContainer.classList.add('align-items-center');
+
+    const profile = document.createElement('img');
+    profile.src = "https://dummyimage.com/100/000/fff.jpg";
+
+    const username = document.createElement('span');
+
     const messageContainer = document.createElement('div');
     messageContainer.classList.add('l_message_container');
 
@@ -124,11 +131,18 @@ function addMessage(name, message, time) {
     timeElement.classList.add('l_message_time');
     timeElement.textContent = time;
 
+
+    profileContainer.appendChild(profile);
+    profileContainer.appendChild(username);
+
     messageContainer.appendChild(nameElement);
     messageContainer.appendChild(textElement);
     messageContainer.appendChild(timeElement);
 
-    return messageContainer;
+    chatContainer.appendChild(profileContainer);
+    chatContainer.appendChild(messageContainer);
+
+    return chatContainer;
 }
 
 
