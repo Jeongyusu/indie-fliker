@@ -1,5 +1,7 @@
 package com.tenco.indiepicter.admin;
 
+import com.tenco.indiepicter.invitation.Invitation;
+import com.tenco.indiepicter.invitation.response.InvitationResponseDTO;
 import com.tenco.indiepicter.notice.Notice;
 import com.tenco.indiepicter.user.User;
 import org.apache.ibatis.annotations.Mapper;
@@ -26,6 +28,6 @@ public interface AdminRepository {
     public void adminUserUpdate(Integer id);
 
     // VIP 초청권 발급
-    public void insert(Integer id);
+    public int insert(Invitation invitation);
 
 }

@@ -3,30 +3,61 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tenco.indiepicter.Crawling.MovieMapper">
 
-
     <insert id="insertMovie" parameterType="com.tenco.indiepicter.Crawling.MovieCrawl">
-        INSERT INTO moviecrawl_tb (title, production_year, genre, director, `cast`, production_company, distribution_company)
-        VALUES (#{title}, #{productionYear}, #{genre}, #{director}, #{cast}, #{productionCompany}, #{distributionCompany})
+        INSERT INTO moviecrawl_tb (
+            title, production_year, genre, duration, rating, color,
+            production_company, distribution_company, director, `cast`,
+            keywords, synopsis, director_intention, screening_and_awards,
+            director_filmography, image_url, photoUrls, screenplay, production,
+            producer, filming, lighting, art, editing, recording, sound, music,
+            clothes, dressing
+        )
+        VALUES (
+                   #{title}, #{year}, #{genre}, #{duration}, #{rating}, #{color},
+                   #{productionCompany}, #{distributionCompany}, #{director}, #{cast},
+                   #{keywords}, #{synopsis}, #{directorIntention}, #{screeningAndAwards},
+                   #{directorFilmography}, #{imageUrl}, #{photoUrls}, #{screenplay}, #{production},
+                   #{producer}, #{filming}, #{lighting}, #{art}, #{editing}, #{recording},
+                   #{sound}, #{music}, #{clothes}, #{dressing}
+               )
     </insert>
-
-    <select id="existsMovie" resultType="Integer" parameterType="com.tenco.indiepicter.Crawling.MovieCrawl">
-        SELECT EXISTS (SELECT 1 FROM moviecrawl_tb WHERE title = #{title} AND production_year = #{productionYear} AND genre = #{genre} AND director = #{director} AND `cast` = #{cast} AND production_company = #{productionCompany} AND distribution_company = #{distributionCompany})
-    </select>
 
     <select id="getAllMovies" resultType="com.tenco.indiepicter.Crawling.MovieCrawl">
         SELECT * FROM moviecrawl_tb
     </select>
 
-    <select id="countMovies" resultType="java.lang.Integer">
+    <select id="countMovies" resultType="java.lang.Integer" parameterType="com.tenco.indiepicter.Crawling.MovieCrawl">
         SELECT COUNT(*)
         FROM moviecrawl_tb
         WHERE title = #{title}
-          AND production_year = #{productionYear}
+          AND production_year = #{year}
           AND genre = #{genre}
-          AND director = #{director}
-          AND `cast` = #{cast}
+          AND duration = #{duration}
+          AND rating = #{rating}
+          AND color = #{color}
           AND production_company = #{productionCompany}
           AND distribution_company = #{distributionCompany}
+          AND director = #{director}
+          AND `cast` = #{cast}
+          AND keywords = #{keywords}
+          AND synopsis = #{synopsis}
+          AND director_intention = #{directorIntention}
+          AND screening_and_awards = #{screeningAndAwards}
+          AND director_filmography = #{directorFilmography}
+          AND image_url = #{imageUrl}
+          AND photoUrls = #{photoUrls}
+          AND screenplay = #{screenplay}
+          AND production = #{production}
+          AND producer = #{producer}
+          AND filming = #{filming}
+          AND lighting = #{lighting}
+          AND art = #{art}
+          AND editing = #{editing}
+          AND recording = #{recording}
+          AND sound = #{sound}
+          AND music = #{music}
+          AND clothes = #{clothes}
+          AND dressing = #{dressing}
     </select>
 
 

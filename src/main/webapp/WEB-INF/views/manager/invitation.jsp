@@ -136,10 +136,36 @@
                             </td>
                             <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${user.createdAt}"/></td>
                             <td>${user.grade}</td>
-                            <td><button name="${user.id}" onclick="openModal()">발급하기</button></td>
+                            <td><button id="${user.id}" name="${user.id}" onclick="openModal()">발급하기</button></td>
                         </tr>
-
                     </tbody>
+                        <!----------------------------------- 모달 ------------------------------------------------>
+                        <!-- 모달 백그라운드 -->
+                        <div class="p_modal-background" id="modalBackground" onclick="closeModal()"></div>
+
+                        <!-- 모달 -->
+                        <div class="p_modal" id="myModal">
+                            <img src="/images/logo/IndieFliker.png" alt="">
+                            <h2>초청권 발급</h2>
+                            <button class="close" onclick="closeModal()">닫기</button>
+                            <div class="modal_from">
+                                <form action="/admin/vip-issued" method="post">
+                                    <input type="hidden" id="userId" name="userId" value ="${user.id}">
+                                    <label>날짜 및 시간 선택</label><br>
+                                    <input type="text" id="movieTime" name="movieTime" placeholder="날짜 및 시간 선택"><br>
+                                    <label>초청권 코드</label><br>
+                                    <input type="text" id="invitationCode" name="invitationCode" placeholder="초청권 코드 입력"><br>
+                                    <label>영화 제목</label><br>
+                                    <input type="text" id="movieName" name="movieName" placeholder="영화 제목 입력"><br>
+                                    <label>극장 이름</label><br>
+                                    <input type="text" id="theaterName" name="theaterName" placeholder="극장 이름 입력"><br>
+                                    <label>극장 주소</label><br>
+                                    <input type="text" id="theaterAddress" name="theaterAddress" placeholder="극장 주소 입력"><br>
+                                    <button class="submit" type="submit">발급 하기</button>
+                                </form>
+                            </div>
+                        </div>
+                        <!----------------------------------- 모달 ------------------------------------------------>
                     </c:forEach>
                 </table>
             </div>
@@ -188,32 +214,6 @@
         <!--컨테이너2 끝-->
     </div>
 
-    <!----------------------------------- 모달 ------------------------------------------------>
-    <!-- 모달 백그라운드 -->
-    <div class="p_modal-background" id="modalBackground" onclick="closeModal()"></div>
-
-    <!-- 모달 -->
-    <div class="p_modal" id="myModal">
-        <img src="/images/logo/IndieFliker.png" alt="">
-        <h2>초청권 발급</h2>
-        <button class="close" onclick="closeModal()">닫기</button>
-        <div class="modal_from">
-            <form action="/vip-issued/{id}" method="post">
-                <label>날짜 및 시간 선택</label><br>
-                <input type="text" id="movieTime" name="movieTime" placeholder="날짜 및 시간 선택"><br>
-                <label>초청권 코드</label><br>
-                <input type="text" id="invitationCode" name="invitationCode" placeholder="초청권 코드 입력"><br>
-                <label>영화 제목</label><br>
-                <input type="text" id="movieName" name="movieName" placeholder="영화 제목 입력"><br>
-                <label>극장 이름</label><br>
-                <input type="text" id="theaterName" name="theaterName" placeholder="극장 이름 입력"><br>
-                <label>극장 주소</label><br>
-                <input type="text" id="theaterAddress" name="theaterAddress" placeholder="극장 주소 입력"><br>
-                <button class="submit" type="submit">발급 하기</button>
-            </form>
-        </div>
-    </div>
-    <!----------------------------------- 모달 ------------------------------------------------>
     <!--------------------------------- 모달 버튼 ---------------------------------------------->
     <script>
         // 모달 열기
@@ -232,7 +232,6 @@
     <!--------------------------------- 달력 -------------------------------------------------->
     <script>
         let choiceDay = document.getElementById('movieTime');
-
         flatpickr(choiceDay, {
             enableTime: true,
             dateFormat: "Y-m-d H:i",

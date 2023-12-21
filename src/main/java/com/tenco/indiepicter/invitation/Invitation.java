@@ -13,12 +13,12 @@ public class Invitation {
     private String movieName;
     private String theaterName;
     private String theaterAddress;
-    private Timestamp movieTime;
+    private String movieTime;
     private Timestamp createdAt;
     private Integer userId;
 
     @Builder
-    public Invitation(Integer id, String invitationCode, String movieName, String theaterName, String theaterAddress, Timestamp movieTime, Timestamp createdAt, Integer userId) {
+    public Invitation(Integer id, String invitationCode, String movieName, String theaterName, String theaterAddress, String movieTime, Timestamp createdAt, Integer userId) {
         this.id = id;
         this.invitationCode = invitationCode;
         this.movieName = movieName;

@@ -29,7 +29,6 @@
                     <input type="hidden" id="n_lastDay" value=${totalDayDTO.endRunningDate}>
                     <input type="hidden" id="n_movieId" value=${totalDayDTO.movieId}>
                     <input type="hidden" id="n_theaterId" value=${totalDayDTO.theaterId}>
-
                 </div>
                 <div class="n_select_day_movies">
                     <input type="text" id="n_otherInput" placeholder="날짜를 선택해주세요" disabled="">

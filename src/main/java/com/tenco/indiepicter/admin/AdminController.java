@@ -1,25 +1,35 @@
 package com.tenco.indiepicter.admin;
 
+import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
+import com.tenco.indiepicter._core.utils.TimeStampUtil;
 import com.tenco.indiepicter.admin.response.AdminPagingResponseDTO;
+import com.tenco.indiepicter.invitation.response.InvitationResponseDTO;
 import com.tenco.indiepicter.user.User;
 import com.tenco.indiepicter.user.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/admin")
 public class AdminController {
 
 
 	@Autowired
 	private AdminService adminService;
+
+	@Autowired
+	private UserService userService;
 
 //---------------------------------------------------------------------------------
 
@@ -63,9 +73,27 @@ public class AdminController {
 		}
 
 		// VIP 초청권 발급
-		@GetMapping("/vip-issued/{id}")
-		public String vipIssued(@PathVariable Integer id){
-			this.adminService.vipIssued(id);
+		@PostMapping("/vip-issued")
+		public String vipIssued(InvitationResponseDTO responseDto, Errors errors){
+
+			if(responseDto.getMovieTime() == null || responseDto.getMovieTime().isEmpty()){
+				throw new MyDynamicException("날짜와 시간을 지정해 주세요.", HttpStatus.BAD_REQUEST);
+			}
+			if(responseDto.getInvitationCode() == null || responseDto.getInvitationCode().isEmpty()){
+				throw new MyDynamicException("초청권 코드를 입력하세요.", HttpStatus.BAD_REQUEST);
+			}
+			if(responseDto.getMovieName() == null || responseDto.getMovieName().isEmpty()){
+				throw new MyDynamicException("영화 제목을 입력해 주세요.", HttpStatus.BAD_REQUEST);
+			}
+			if(responseDto.getTheaterName() == null || responseDto.getTheaterName().isEmpty()){
+				throw new MyDynamicException("극장 이름을 입력해 주세요.", HttpStatus.BAD_REQUEST);
+			}
+			if(responseDto.getTheaterAddress() == null || responseDto.getTheaterAddress().isEmpty()){
+				throw new MyDynamicException("극장 주소를 입력해 주세요.", HttpStatus.BAD_REQUEST);
+			}
+
+			this.adminService.vipIssued(responseDto);
+
 			return "redirect:/admin/invitation";
 		}
 
@@ -113,6 +141,23 @@ public class AdminController {
 		}
 
 //---------------------------------------------------------------------------------
+
+		// 회원 등급 수정 페이지
+		@GetMapping("/grade-update")
+		public String gradeUpdate(
+				@RequestParam(value="page", required=false, defaultValue="1") Integer page,
+				Model model) {
+
+			List<User> adminInvitationPagingLists = this.adminService.adminAllPagingLists(page);
+			AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.pagingParam(page);
+			model.addAttribute("adminInvitationPagingLists", adminInvitationPagingLists);
+			model.addAttribute("paging", adminPagingResponseDTO);
+
+			return "/manager/grade_update";
+		}
+
+
+//---------------------------------------------------------------------------------
 		// 온라인 오픈 기간 설정
 		@GetMapping("/playday")
 		public String playday() {
@@ -136,4 +181,4 @@ public class AdminController {
 	
 }
 
-// 12-19 19:23 학원 작업중 ~
+// 12-20 18:12 학원 작업 끝~

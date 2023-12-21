@@ -1692,8 +1692,8 @@
 /*---------------------------------------------------------------------*/
 /* 공지사항 디테일 */
 
-/*---------------------------------------------------------------------*/
 /* 모달 스타일 */
+/*---------------------------------------------------------------------*/
  .p_modal {
      display: none; /* 모달 초기에는 숨김 상태 */
      position: fixed;
@@ -1787,5 +1787,94 @@
     background-color: rgba(0, 0, 0, 0.5); /* 반투명한 검은 배경 */
     z-index: 1;
 }
+/*---------------------------------------------------------------------*/
+/* 모달 스타일 */
+
+/* 관리자 페이지 - 회원 등급 수정( grade_update ) */
+/*---------------------------------------------------------------------*/
+.p_grade_update_container2{
+    /* background-color: antiquewhite; */
+    position: relative;
+    width: 1300px;
+    height: 550px;
+    top: 120px;
+    left: 380px;
+}
+
+.p_grade_update_container2 .p_filter{
+    position: absolute;
+    right: 20px;
+    top: 0px;
+    width: 100px;
+    height: 40px;
+}
+
+.p_grade_update_container2 .p_filter button{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    background-color: transparent;
+}
+
+.p_grade_update_container2 .p_filter button:hover{
+    color: #01DFD7;
+}
+
+.p_grade_update_container2 .p_filter span{
+    position: relative;
+    right: 15px;
+}
+
+.p_grade_update_container2 .p_filter i{
+    position: absolute;
+    content: "\f0b0";
+    font-family: "Font Awesome 5 Free";
+    font-size: 20px;
+    color: #424242;
+    top: 10px;
+    right: 15px;
+}
+
+.p_grade_update_container2 .p_section1{
+    position: relative;
+    top: 20px;
+}
+
+.p_grade_update_container2 .p_section1 .table img{
+    background-color: #01DFD7;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+.p_grade_update_container2 .p_section1 .table .p_name{
+    position: relative;
+    bottom: 27px;
+    left: 40px;
+}
+
+.p_grade_update_container2 .p_section1 .table button{
+    background-color: #01DFD7;
+    width: 90px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    border-color: white;
+    transition-duration: 0.2s;
+}
+
+.p_grade_update_container2 .p_section1 .table button:hover{
+    color:white;
+}
+
+.p_grade_update_bottom{
+    position: relative;
+    top: 20px;
+    left: 420px;
+}
+
+
+
 
 /*---------------------------------------------------------------------*/
+/* 관리자 페이지 - 회원 등급 수정( grade_update ) */
