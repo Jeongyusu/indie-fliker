@@ -23,14 +23,14 @@ public class ChatService {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         scheduler.schedule(() -> endChat(movieTitle), 2, TimeUnit.SECONDS); //HOURS
 	}
-	
+
 	public void endChat(String movieTitle) {
 		log.debug("-----------채팅 종료------------");
 		// 채팅 종료를 해줘야함
     }
 
 	public List<OpenMovieChatDTO> findByOpenMovie() {
-
-		return null;
+		List<OpenMovieChatDTO> responseDTOs = chatRepository.findByOpenMovie();
+		return responseDTOs;
 	}
 }
