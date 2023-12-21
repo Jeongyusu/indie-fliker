@@ -174,4 +174,87 @@
     margin-right: 30px;
 }
 
+.j_custom_modal {
+    display: none; /* 모달 초기에는 숨김 상태 */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    width: 90%;
+    height: 90%;
+}
 
+.j_custom_close {
+    width: 10%;
+}
+
+.j_register_container2 {
+    /* background-color: antiquewhite; */
+    position: relative;
+    width: 1200px;
+    height: 640px;
+    top: 60px;
+    left: 420px;
+}
+
+.j_register_container2 .j_section1{
+    /* background-color: #01DFD7; */
+    height: 50%;
+}
+
+.j_custom_margin_bottom {
+    margin-bottom: 20px;
+}
+
+.j_register_container2 button{
+    background-color: #01DFD7;
+    border: none;
+    border-radius: 5px;
+    width: 120px;
+    height: 30px;
+    text-decoration: none;
+    transition-duration: 0.5s;
+    margin-bottom: 15px;
+    margin-left:15px;
+}
+
+.j_custom_margin_modal {
+    margin-left:15px;
+}
+
+.j_close{
+    top: 20%;
+    position: absolute;
+    right: 3%;
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: #01DFD7;
+}
+
+.j_close2{
+    top: 24%;
+    position: absolute;
+    right: 3%;
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--primary_02);
+}
+
+.j_register_bottom{
+    position: absolute;
+    bottom: 5%;
+    left: 45%;
+}
+
+.j_custom_display {
+    display: none;
+}

@@ -1,5 +1,6 @@
 package com.tenco.indiepicter._core.utils;
 
+
 public class Define {
     public static final String PRINCIPAL = "principal";
     public static final int MAX_FILE_SIZE = 1024 * 1024 * 50; // MB
@@ -9,6 +10,8 @@ public class Define {
 
     // uploadPath는 운영체제에 따라 동적으로 변경됨
     public static final String uploadPath;
+
+    public static Integer SaveFundingPK;
 
     static {
         // 운영 체제 확인
