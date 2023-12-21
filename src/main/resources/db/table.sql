@@ -46,7 +46,8 @@ create table movie_tb
     online_end_date      Date,
     offline_release_date Date,
     offline_end_date     Date,
-    d_day                Date
+    d_day                Date,
+    chat_time            DateTime
 );
 
 create table movie_staff_tb
@@ -247,8 +248,10 @@ create table banner_tb
 
 
 
+
 create table invitation_tb
 (
+
     id              int auto_increment primary key,
     invitation_code varchar(30)  not null,
     movie_name      varchar(30)  not null,
