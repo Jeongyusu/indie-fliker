@@ -4,7 +4,9 @@
 
 import {db} from './firebase-config.js';
 
-const userId = document.getElementById('userId').value;
+const username = document.getElementById('principalUsername').value;
+const userPic = document.getElementById('principalPic').value;
+
 
 // 메세지 보내는 버튼
 const sendMessageButtons = document.querySelectorAll('.l_send_message_button');
@@ -52,12 +54,13 @@ sendMessageButtons.forEach((sendMessageButton) => {
 
         // add 로 메세지 넣기
         db.collection(chatTitle).add({
-            id: userId,
+            name: username,
+            pic: userPic,
             message: messageText,
             timestamp: timestamp,
         })
             .then((docRef) => {
-                console.log("메시지가 성공적으로 추가되었습니다. 문서 ID:", docRef.id);
+                console.log("메시지가 성공적으로 추가되었습니다. 문서 name:", docRef.name);
             })
             .catch((error) => {
                 console.error("메시지 추가 중 오류 발생:", error);
@@ -71,7 +74,9 @@ sendMessageButtons.forEach((sendMessageButton) => {
 let unsubscribeSnapshotListener;  // 변수 추가
 
 function snapshotListener(chatMessagesContainer, chatTitle) {
-    console.log("걍 얘가 실행됨");
+
+    const username = document.getElementById('principalUsername').value;
+    const userPic = document.getElementById('principalPic').value;
 
     // 이전에 등록된 스냅샷 리스너 해제
     if (unsubscribeSnapshotListener) {
@@ -82,15 +87,32 @@ function snapshotListener(chatMessagesContainer, chatTitle) {
     unsubscribeSnapshotListener = db.collection(chatTitle)
         .orderBy("timestamp")
         .onSnapshot((snapshot) => {
-            console.log("스냅샷 실행");
-            console.log("스냅샷 갯수 : " + snapshot.docChanges().length);
             snapshot.docChanges().forEach((change) => {
-                console.log("스냅샷 들어와서 실행");
                 if (change.type === "added") {
                     const messageData = change.doc.data();
 
-                    const messageContainer = addMessage(messageData.id, messageData.message, messageData.timestamp);
-                    console.log("메세지 컨테이너들 : " + messageData.message);
+                    // username 넣기
+                    let includeUsers = [];
+                    includeUsers.push({username: username, userPic: userPic});
+                    console.log("해당 배열에 있는 애들 : " + includeUsers.toString());
+
+
+                    // 특정 값이 배열에 존재하는지 확인
+                    let existingUser = includeUsers.filter(user => user.username === messageData.name && user.userPic === messageData.pic);
+
+                    if (!existingUser) {
+                        // 해당 사용자가 배열에 존재하지 않으면 추가
+                        includeUsers.push({ username: messageData.name, userPic: messageData.pic });
+                        console.log("해당 배열에 있는 애들 : " + includeUsers.toString());
+                    }
+
+                    includeUsers.forEach((includeUser) => {
+                        console.log("참여인원들 : " + includeUser.username);
+                        // 참여인원 추가
+                        addParticipation (includeUser.username, includeUser.userPic);
+                    })
+                    // 메세지 내용 추가
+                    const messageContainer = addMessage(messageData.name, messageData.pic, messageData.message, messageData.timestamp, username, userPic);
                     chatMessagesContainer.appendChild(messageContainer);
                     chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
                 }
@@ -98,20 +120,10 @@ function snapshotListener(chatMessagesContainer, chatTitle) {
         });
 }
 
+function addMessage(name, pic, message, time, principalUsername, principalPic) {
 
 
-
-function addMessage(name, message, time) {
-
-    // TODO : 만약 name = principal.username이라면 본인 그외는 아님
-
-    let principal = {
-        username : 'helllo'
-    };
-
-    console.log("usrname : " + principal.username);
-
-    if(name !== principal.username){
+    if(name !== principalUsername){
         const chatContainer = document.createElement('div');
         chatContainer.classList.add('l_chat_container');
 
@@ -121,7 +133,7 @@ function addMessage(name, message, time) {
         profileContainer.classList.add('align-items-center');
 
         const profile = document.createElement('img');
-        profile.src = "https://dummyimage.com/100/000/fff.jpg";
+        profile.src = pic;
 
         const username = document.createElement('span');
 
@@ -167,7 +179,7 @@ function addMessage(name, message, time) {
         profileContainer.classList.add('align-items-center');
 
         const profile = document.createElement('img');
-        profile.src = "https://dummyimage.com/100/000/fff.jpg";
+        profile.src = principalPic;
 
         const messageContainer = document.createElement('div');
         messageContainer.classList.add('l_message_container_from_user');
@@ -195,6 +207,37 @@ function addMessage(name, message, time) {
         return chatContainer;
 
     }
+}
+
+// 참여인원 추가하기
+function addParticipation (participationUsername, participationPic) {
+    let profileContainer = document.querySelector(".l_participants_list");
+    console.log("참여인원추가하는 사람 이름 : " + participationUsername);
+    console.log("참여인원에 추가하는 사람 사진 명 : " + participationPic);
+
+    // 이미 존재하는지 확인
+    // if (document.getElementById(participationUsername)) {
+    //     console.log(`Element with id ${participationUsername} already exists. Skipping creation.`);
+    //     return;
+    // }
+
+    // // 없는 유저는 삭제
+    // if(document.getElementById(participationUsername).innerHTML !== profileContainer){
+    //     document.getElementById(participationUsername).remove();
+    // }
+
+    let profileForm = document.createElement('div');
+    profileForm.classList.add("l_participant_in_user");
+    profileForm.classList.add("d-flex");
+    profileForm.classList.add("align-items-center");
+
+    profileForm.innerHTML = `
+                            <img src="${participationPic}">
+                            <span id="${participationUsername}">${participationUsername}</span>
+    `;
+
+    profileContainer.appendChild(profileForm);
+
 }
 
 

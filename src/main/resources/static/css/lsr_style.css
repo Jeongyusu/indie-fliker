@@ -668,12 +668,12 @@
     background-color: #fff;
     border-radius: 8px;
     width: 80%;
-    padding: 6px 12px;
+    padding: 8px 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     margin: 10px;
-    height: 54px;
+    height: 61px;
 }
 
 .l_message_container_from_user {
@@ -914,7 +914,7 @@
 }
 
 .l_message_message {
-    margin-top: 10px;
+    margin-top: 5px;
     font-size: 12px;
 }
 
