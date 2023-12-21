@@ -44,7 +44,7 @@ public class FundingController {
     @Autowired
     private MovieStaffService movieStaffService;
 
-    @GetMapping("/funding-plus")
+    @GetMapping({"/funding-plus", "/main"})
     public String fundingPlus (@RequestParam(name = "genre", defaultValue = "극영화") String genre, @RequestParam(name = "page", defaultValue = "1") Integer page, Model model){
         List<MoviesByGenreDTO> moviesByGenreDTOs = fundingService.moviesByGenre(genre, page, 5);
         List<BannerDTO> bannerDTOs = bannerService.DisplayBanner(genre);

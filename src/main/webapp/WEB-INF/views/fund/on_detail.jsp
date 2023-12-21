@@ -260,7 +260,7 @@
                                 </c:otherwise>
                             </c:choose>
                         </button>
-                        <button type="button" class="buy_button">펀딩하기</button>
+                        <button type="button" class="buy_button"><a href="/runningschedule/1/select-day">펀딩하기</a></button></a>
                     </div>
 
                 </div>

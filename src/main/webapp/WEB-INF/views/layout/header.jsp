@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,7 +66,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#">영화예매</a>
+                            <a href="/fund/funding/1">영화예매</a>
                             <ul class="j_submenu">
                                 <li><a href="#">예매 추가메뉴1</a></li>
                                 <li><a href="#">예매 추가메뉴2</a></li>
@@ -73,7 +75,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#">채팅방</a>
+                            <a href="/chat/open-movie">채팅방</a>
                             <ul class="j_submenu">
                                 <li><a href="#">채팅 추가메뉴1</a></li>
                                 <li><a href="#">채팅 추가메뉴2</a></li>
@@ -82,7 +84,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="j_custom_margin30">더보기</a>
+                            <a href="/fund/saveForm" class="j_custom_margin30">펀딩 등록</a>
                             <ul class="j_submenu">
                                 <li><a href="#">추가메뉴1</a></li>
                                 <li><a href="#">추가메뉴2</a></li>
@@ -108,8 +110,16 @@
                 </div>
                 <div id="j_login_and_join">
                     <ul class="j_nav_menu_thin_ul">
-                        <li><a href="/user/login">로그인</a></li>
-                        <li><a href="/user/join">회원가입</a></li>
+                        <c:choose>
+                            <c:when test="${not empty sessionScope.principal}">
+                                <li><a href="/user/mypage">마이 페이지</a></li>
+                                <li><a href="/user/logout">로그아웃</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><a href="/user/login">로그인</a></li>
+                                <li><a href="/user/join">회원가입</a></li>
+                            </c:otherwise>
+                        </c:choose>
                     </ul>
                 </div>
             </div>
