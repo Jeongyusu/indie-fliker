@@ -47,4 +47,17 @@
         values(#{invitationCode}, #{movieName}, #{theaterName}, #{theaterAddress}, #{movieTime}, #{userId})
     </insert>
 
+    <!-- 회원 등급 수정 (VIP로 수정) -->
+    <update id="updateVip">
+        update user_tb set grade='VIP'
+        where id=#{id}
+    </update>
+
+    <!-- 회원 등급 수정 (NORMAL로 수정) -->
+    <update id="updateNormal">
+        update user_tb set grade='NORMAL'
+        where id=#{id}
+    </update>
+
+
 </mapper>

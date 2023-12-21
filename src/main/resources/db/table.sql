@@ -29,19 +29,19 @@ create table theater_tb
 create table movie_tb
 (
     id                   int auto_increment primary key,
-    make_year            varchar(20)  not null,
-    production           varchar(20)  not null,
-    movie_name           varchar(20)  not null,
-    synopsis             varchar(500) not null,
-    thumbnail            varchar(500) not null,
-    directing_intension  varchar(500) not null,
-    genre                varchar(20)  not null,
-    running_grade        varchar(20)  not null,
-    director             varchar(20)  not null,
-    director_pic         varchar(300) not null,
-    actor                varchar(200) not null,
+    make_year            varchar(30)   not null,
+    production           varchar(30)    null,
+    movie_name           varchar(30)   not null,
+    synopsis             varchar(1000) not null,
+    thumbnail            varchar(1000) not null,
+    directing_intension  varchar(2000) null,
+    genre                varchar(30)   null,
+    running_grade        varchar(30)   null,
+    director             varchar(30)   null,
+    director_pic         varchar(300)  null,
+    actor                varchar(200)  null,
     director_careers     varchar(500),
-    director_awards_film varchar(500),
+    director_awards_film varchar(2000),
     online_release_date  Date,
     online_end_date      Date,
     offline_release_date Date,
@@ -53,24 +53,24 @@ create table movie_tb
 create table movie_staff_tb
 (
     id       int auto_increment primary key,
-    director varchar(30) not null,
-    filming  varchar(30) not null,
-    art      varchar(30) not null,
-    sound    varchar(30) not null,
-    clothes  varchar(30) not null,
-    script   varchar(30) not null,
-    lighting varchar(30) not null,
-    editing  varchar(30) not null,
-    music    varchar(30) not null,
-    movie_id int         not null,
+    director varchar(30)  null,
+    filming  varchar(30)  null,
+    art      varchar(30)  null,
+    sound    varchar(30)  null,
+    clothes  varchar(30)  null,
+    script   varchar(30)  null,
+    lighting varchar(30)  null,
+    editing  varchar(30)  null,
+    music    varchar(30)  null,
+    movie_id int          null,
     foreign KEY (movie_id) references movie_tb (id)
 );
 
 create table movie_photo_tb
 (
     id        int auto_increment primary key,
-    movie_pic varchar(300) not null,
-    movie_id  int          not null,
+    movie_pic varchar(700) not null,
+    movie_id  int          null,
     foreign KEY (movie_id) references movie_tb (id)
 );
 
@@ -247,41 +247,11 @@ create table banner_tb
 );
 
 
-CREATE TABLE moviecrawl_tb
-(
-    id                   INT AUTO_INCREMENT PRIMARY KEY,
-    title                VARCHAR(255),
-    production_year      VARCHAR(10),
-    genre                VARCHAR(50),
-    duration             VARCHAR(20),
-    rating               VARCHAR(10),
-    color                VARCHAR(10),
-    production_company   VARCHAR(255),
-    distribution_company VARCHAR(255),
-    director             VARCHAR(255),
-    `cast`               VARCHAR(255),
-    keywords             VARCHAR(255),
-    synopsis             TEXT,
-    director_intention   TEXT,
-    screening_and_awards TEXT,
-    director_filmography TEXT,
-    image_url            VARCHAR(255),
-    photoUrls            TEXT,
-    screenplay           VARCHAR(255),
-    production           VARCHAR(255),
-    producer             VARCHAR(255),
-    filming              VARCHAR(255),
-    lighting             VARCHAR(255),
-    art                  VARCHAR(255),
-    editing              VARCHAR(255),
-    recording            VARCHAR(255),
-    sound                VARCHAR(255),
-    music                VARCHAR(255),
-    clothes              VARCHAR(255),
-    dressing             VARCHAR(255)
-);
+
+
 create table invitation_tb
 (
+
     id              int auto_increment primary key,
     invitation_code varchar(30)  not null,
     movie_name      varchar(30)  not null,

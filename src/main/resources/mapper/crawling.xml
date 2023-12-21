@@ -1,64 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tenco.indiepicter.Crawling.MovieMapper">
+<mapper namespace="com.tenco.indiepicter.crawling.MovieMapper">
 
-    <insert id="insertMovie" parameterType="com.tenco.indiepicter.Crawling.MovieCrawl">
-        INSERT INTO moviecrawl_tb (
-            title, production_year, genre, duration, rating, color,
-            production_company, distribution_company, director, `cast`,
-            keywords, synopsis, director_intention, screening_and_awards,
-            director_filmography, image_url, photoUrls, screenplay, production,
-            producer, filming, lighting, art, editing, recording, sound, music,
-            clothes, dressing
+    <insert id="insertMovie" parameterType="com.tenco.indiepicter.crawling.MovieCrawl">
+        INSERT INTO movie_tb (
+            make_year, production, movie_name, synopsis, thumbnail,
+            directing_intension, genre, running_grade, director, director_pic,
+            actor, director_careers, director_awards_film, online_release_date,
+            online_end_date, offline_release_date, offline_end_date, d_day
         )
         VALUES (
-                   #{title}, #{year}, #{genre}, #{duration}, #{rating}, #{color},
-                   #{productionCompany}, #{distributionCompany}, #{director}, #{cast},
-                   #{keywords}, #{synopsis}, #{directorIntention}, #{screeningAndAwards},
-                   #{directorFilmography}, #{imageUrl}, #{photoUrls}, #{screenplay}, #{production},
-                   #{producer}, #{filming}, #{lighting}, #{art}, #{editing}, #{recording},
-                   #{sound}, #{music}, #{clothes}, #{dressing}
+                   #{makeYear}, #{production}, #{movieName}, #{synopsis},
+                   #{thumbnail}, #{directingIntension}, #{genre}, #{runningGrade},
+                   #{director}, #{directorPic},
+                   #{actor}, #{directorCareers}, #{directorAwardsFilm},
+                   #{onlineReleaseDate}, #{onlineEndDate},
+                   #{offlineReleaseDate}, #{offlineEndDate}, #{dDay}
                )
+
     </insert>
 
-    <select id="getAllMovies" resultType="com.tenco.indiepicter.Crawling.MovieCrawl">
-        SELECT * FROM moviecrawl_tb
+    <select id="getAllMovies" resultType="com.tenco.indiepicter.crawling.MovieCrawl">
+        SELECT * FROM movie_tb
     </select>
 
-    <select id="countMovies" resultType="java.lang.Integer" parameterType="com.tenco.indiepicter.Crawling.MovieCrawl">
+    <select id="countMovies" resultType="java.lang.Integer" parameterType="com.tenco.indiepicter.crawling.MovieCrawl">
         SELECT COUNT(*)
-        FROM moviecrawl_tb
-        WHERE title = #{title}
-          AND production_year = #{year}
-          AND genre = #{genre}
-          AND duration = #{duration}
-          AND rating = #{rating}
-          AND color = #{color}
-          AND production_company = #{productionCompany}
-          AND distribution_company = #{distributionCompany}
-          AND director = #{director}
-          AND `cast` = #{cast}
-          AND keywords = #{keywords}
-          AND synopsis = #{synopsis}
-          AND director_intention = #{directorIntention}
-          AND screening_and_awards = #{screeningAndAwards}
-          AND director_filmography = #{directorFilmography}
-          AND image_url = #{imageUrl}
-          AND photoUrls = #{photoUrls}
-          AND screenplay = #{screenplay}
+        FROM movie_tb
+        WHERE make_year = #{makeYear}
           AND production = #{production}
-          AND producer = #{producer}
-          AND filming = #{filming}
-          AND lighting = #{lighting}
-          AND art = #{art}
-          AND editing = #{editing}
-          AND recording = #{recording}
-          AND sound = #{sound}
-          AND music = #{music}
-          AND clothes = #{clothes}
-          AND dressing = #{dressing}
+          AND movie_name = #{movieName}
+          AND synopsis = #{synopsis}
+          AND thumbnail = #{thumbnail}
+          AND directing_intension = #{directingIntension}
+          AND genre = #{genre}
+          AND running_grade = #{runningGrade}
+          AND director = #{director}
+          AND director_pic = #{directorPic}
+          AND actor = #{actor}
+          AND director_careers = #{directorCareers}
+          AND director_awards_film = #{directorAwardsFilm}
+          AND online_release_date = #{onlineReleaseDate}
+          AND online_end_date = #{onlineEndDate}
+          AND offline_release_date = #{offlineReleaseDate}
+          AND offline_end_date = #{offlineEndDate}
+          AND d_day = #{dDay}
     </select>
+    <insert id="insertMovieStaff" parameterType="com.tenco.indiepicter.crawling.MovieCrawl">
+        INSERT INTO movie_staff_tb (
+            director, filming, art, sound, clothes , script, lighting, editing, music
+        )
+        VALUES (
+                   #{eDirector}, #{filming}, #{art}, #{sound},
+                   #{clothes}, #{script}, #{lighting}, #{editing},
+                   #{music}
+               )
 
+    </insert>
+    <insert id="insertMoviePhoto" parameterType="com.tenco.indiepicter.crawling.MovieCrawl">
+        INSERT INTO movie_photo_tb (
+            movie_pic
+        )
+        VALUES (
+                   #{moviePic}
+               )
 
+    </insert>
 </mapper>

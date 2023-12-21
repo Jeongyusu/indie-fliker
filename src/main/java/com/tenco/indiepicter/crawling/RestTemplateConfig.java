@@ -1,4 +1,4 @@
-package com.tenco.indiepicter.Crawling;
+package com.tenco.indiepicter.crawling;
 
 import javax.net.ssl.SSLContext;
 
