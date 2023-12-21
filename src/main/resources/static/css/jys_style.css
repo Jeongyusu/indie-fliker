@@ -248,3 +248,13 @@
     border: none;
     background-color: var(--primary_02);
 }
+
+.j_register_bottom{
+    position: absolute;
+    bottom: 5%;
+    left: 45%;
+}
+
+.j_custom_display {
+    display: none;
+}

@@ -68,5 +68,9 @@
         select * from funding_ready_tb where id = #{id}
     </select>
 
+    <delete id="deleteById">
+        delete from funding_ready_tb where id = #{id}
+    </delete>
+
 
 </mapper>

@@ -20,7 +20,7 @@ public class FundingReadyController {
 
     @PostMapping("/save")
     public @ResponseBody String saveFunding(FundingSaveDTO requestDTO){
-        fundingReadyService.saveFunding(requestDTO);
+        fundingReadyService.saveFundingReady(requestDTO);
         return Script.href("/fund/funding-plus", "펀딩 등록 성공! 심사 후 승인됩니다.");
     }
 

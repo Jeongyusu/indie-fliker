@@ -4,7 +4,7 @@
 
 <mapper namespace="com.tenco.indiepicter.funding.FundingRepository">
 
-    <insert id="saveFunding">
+    <insert id="saveFunding" useGeneratedKeys="true" keyProperty="id">
         insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id)
         values (#{targetPrice}, #{presentPrice}, #{pricePerOnetime}, #{peopleCount}, #{releaseDate}, #{endDate}, #{movieId})
     </insert>

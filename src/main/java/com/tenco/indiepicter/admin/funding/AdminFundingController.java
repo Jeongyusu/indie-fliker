@@ -10,10 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+@RequestMapping("/admin")
 @Controller
 public class AdminFundingController {
 
@@ -36,6 +38,8 @@ public class AdminFundingController {
         model.addAttribute("fundingReadyDTOs", fundingReadyDTOs);
         return "manager/register";
     }
+
+
 
 
 }

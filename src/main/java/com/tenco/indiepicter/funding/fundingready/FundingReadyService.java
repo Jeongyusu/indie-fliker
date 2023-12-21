@@ -33,7 +33,7 @@ public class FundingReadyService {
     private FundingReadyRepository fundingReadyRepository;
 
     @Transactional
-    public int saveFunding(FundingSaveDTO requestDTO){
+    public int saveFundingReady(FundingSaveDTO requestDTO){
         Integer movieId = movieService.saveMovie(requestDTO);
         movieStaffService.saveMovieStaff(requestDTO, movieId);
         moviePhotoService.saveMoviePhotos(requestDTO, movieId);
@@ -61,5 +61,15 @@ public class FundingReadyService {
     // 펀딩 준비테이블 상세보기
     public FundingReadyDetailDTO detailFunding(Integer fundingReadyId) {
         return fundingReadyRepository.findByFundingIdAboutDetailfundingReady(fundingReadyId);
+    }
+
+    //펀딩 준비테이블 삭제
+    @Transactional
+    public void deleteById(Integer id){
+        fundingReadyRepository.deleteById(id);
+    }
+
+    public FundingReady findById(Integer id) {
+        return fundingReadyRepository.findById(id);
     }
 }

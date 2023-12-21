@@ -113,53 +113,54 @@
                         <button class="j_close2" style="margin-bottom: 10px;" onclick="AuthorizationFunding(${fundingReady.fundingReadyId})">등록 승인</button>
                     </div>
                 </c:forEach>
-
-
             </div>
-            
-            <div class="p_register_bottom">
-                <nav aria-label="...">
-                    <ul class="pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link previous" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item active paging" aria-current="page" style="color:#01DFD7;">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">4</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">5</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link next" href="#">Next</a>
-                    </li>
-                    </ul>
-                </nav>  
-            </div>
+
         </div>
 	</div>
+    <div class="j_register_bottom" id="j_pagination">
+        <nav aria-label="...">
+            <ul class="pagination">
+                <li class="page-item disabled">
+                    <a class="page-link previous" href="/admin/back-only" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item paging">
+                    <a class="page-link" href="/admin/funding-ready-list?page=1">1</a>
+                </li>
+                <li class="page-item paging" aria-current="page" style="color:#01DFD7;">
+                    <a class="page-link" href="/admin/funding-ready-list?page=2">2</a>
+                </li>
+                <li class="page-item paging">
+                    <a class="page-link" href="/admin/funding-ready-list?page=3">3</a>
+                </li>
+                <li class="page-item paging">
+                    <a class="page-link" href="/admin/funding-ready-list?page=4">4</a>
+                </li>
+                <li class="page-item paging">
+                    <a class="page-link" href="/admin/funding-ready-list?page=5">5</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link next" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 
 <script>
         // 모달 열기
         function openModal(id) {
             document.getElementById('j_fund_modal'+ id).style.display = 'block';
+            document.getElementById('j_pagination').style.display = 'none';
+
         }
 
         // 모달 닫기
         function closeModal(id) {
             document.getElementById('j_fund_modal' + id).style.display = 'none';
-         }
+            document.getElementById('j_pagination').style.display = 'block';
+
+        }
 
         async function AuthorizationFunding(fundingId){
-            console.log("여기까지진입" + fundingId);
             try {
                 let response = await fetch('/admin/funding-ready/save', {
                     method: 'POST',
@@ -168,22 +169,19 @@
                     },
                     body: JSON.stringify({fundingId: fundingId}),
                 });
-                console.log("여기까지진입2");
-
                 let responseBody = await response.json();
-                console.log("내부 제이슨 변환 완료");
-                console.log(responseBody);
-
-                console.log(responseBody.success);
-
                 if (responseBody.success) {
                     alert("등록 승인 성공");
+                    window.location.reload();
+                    setTimeout(function() {
+                        document.getElementById('j_pagination').style.display = 'block';
+                    }, 1000);
+
                 } else {
-                    throw new Error(responseBody.error);
+                    alert(responseBody.error.message);
                 }
             } catch (error) {
-                console.error('에러가 발생했습니다:' + error.message);
-                alert('에러 발생 : ' + error.message);
+                console.log("에러 발생" + error.message);
             }
 
         }

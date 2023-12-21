@@ -42,7 +42,8 @@ create table movie_tb(
                          online_end_date Date,
                          offline_release_date Date,
                          offline_end_date Date,
-                         d_day Date
+                         d_day Date,
+                         chat_time DateTime
 );
 
 create table movie_staff_tb(

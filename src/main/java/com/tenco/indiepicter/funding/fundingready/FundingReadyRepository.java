@@ -24,4 +24,7 @@ public interface FundingReadyRepository {
     //id로 펀딩 준비 테이블 튜플 조회
     public FundingReady findById(Integer id);
 
+    //id로 조회한 펀딩 준비테이블 튜플 삭제
+    public void deleteById(Integer id);
+
 }
