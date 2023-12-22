@@ -20,9 +20,26 @@ public class MyOfflinePaymentDTO {
 	private Integer finalPrice;
 	private Integer reservationId;
 	private String reservationCode;
-	private Integer orderId;
 	private Integer paymentId;
 	private Timestamp paymentedAt;
+	private Integer refundPayment;
+	private Timestamp refundedAt;
+	private Integer refundPaymentId;
+
+	// 생성자
+	public MyOfflinePaymentDTO() {
+		if (refundPayment == null) {
+			refundPayment = 0;
+		}
+
+		if (refundedAt == null) {
+			refundedAt = new Timestamp(System.currentTimeMillis());
+		}
+
+		if (refundPaymentId == null) {
+			refundPaymentId = 0;
+		}
+	}
 
 	// 달성률 계산 및 정수 값 포맷
 	public String formatToPercent(){
@@ -34,8 +51,18 @@ public class MyOfflinePaymentDTO {
 		return TimeStampUtil.timeStampToString(paymentedAt);
 	}
 
-	// 금액 천 단위로
+	// 결제 시간
+	public String formatToRefundDate(){
+		return TimeStampUtil.timeStampToString(refundedAt);
+	}
+
+	// 결제 금액 천 단위로
 	public String formatToPrice(){
 		return BalanceUtil.formatBalance(finalPrice);
+	}
+
+	// 환불 금액 천 단위로
+	public String formatToRefundPrice(){
+		return BalanceUtil.formatBalance(refundPayment);
 	}
 }

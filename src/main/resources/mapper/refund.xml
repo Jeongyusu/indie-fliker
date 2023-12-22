@@ -4,11 +4,14 @@
 
 <mapper namespace="com.tenco.indiepicter.refund.RefundRepository">
 
-    <!-- 좌석 예매 등록 -->
-<!--    <insert id="insert">-->
-<!--        insert into refund_tb(refund_payment, refund_payment, user_id) values (#{seats}, #{runningScheduleId}, #{userId})-->
-<!--    </insert>-->
+    <!-- 환불 등록 -->
+    <insert id="insert">
+        insert into refund_tb(refund_payment, refunded_at, payment_id) values (#{refundPayment}, now(), #{paymentId})
+    </insert>
 
-
+    <!-- 환불 조회 -->
+    <select id="findByPaymentId" resultType="com.tenco.indiepicter.reservation.response.OffReservationTicketDTO">
+        select * from refund_tb where payment_id = #{paymentId}
+    </select>
 
 </mapper>
