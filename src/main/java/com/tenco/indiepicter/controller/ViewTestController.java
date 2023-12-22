@@ -66,12 +66,7 @@ public class ViewTestController {
     public String selectSeat() {
         return "reservation/select_seat";
     }
-
-
-    @GetMapping("/main")
-    public String main() {
-        return "main/main";
-    }
+    
 
     @GetMapping("/movielist")
     public String movielist() {

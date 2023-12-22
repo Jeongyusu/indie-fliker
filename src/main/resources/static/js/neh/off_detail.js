@@ -23,7 +23,7 @@ function selectRefund(){
 }
 // 프로젝트 스토리 더보기 버튼
 function toggleMore() {
-    let moreContent = document.querySelector("#n_toggleMore");
+    let moreContent = document.querySelector("#n_toggle_more");
     if (moreContent.style.display === "none") {
         moreContent.style.display = "inline";
     } else {

@@ -6,9 +6,9 @@ import 'https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js';
 import 'https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js';
 
 const firebaseConfig = {
-//    apiKey: "AIzaSyBizQ8BXMTz4wRDIXsMiCfvOK-90kq6n1k",
-    authDomain: "indiflinker-chat.firebaseapp.com",
-    projectId: "indiflinker-chat",
+//    apiKey: "AIzaSyDHGw0dG23cGk-D9RErPdIGQrHPgfRrw-I",
+    authDomain: "indi-flicker.firebaseapp.com",
+    projectId: "indi-flicker",
 };
 
 firebase.initializeApp(firebaseConfig);

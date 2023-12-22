@@ -46,7 +46,8 @@ create table movie_tb
     online_end_date      Date,
     offline_release_date Date,
     offline_end_date     Date,
-    d_day                Date
+    d_day                Date,
+    chat_time            DateTime
 );
 
 create table movie_staff_tb
@@ -246,7 +247,6 @@ create table banner_tb
 );
 
 
-
 create table invitation_tb
 (
     id              int auto_increment primary key,
@@ -260,7 +260,6 @@ create table invitation_tb
     foreign KEY (user_id) references user_tb (id)
 
 );
-
 
 
 create table question_tb
