@@ -25,7 +25,7 @@
     <c:forEach var="funding" items="${fundingPlusDTO.moviesByGenreDTOs}" >
       <div class="col my-4">
         <div class="card">
-          <a href="/fund/funding/${funding.movieId}"><img src="${funding.movieThumbnail}" class="card-img" alt="..."></a>
+          <a href="/fund/funding/${funding.fundingId}"><img src="${funding.movieThumbnail}" class="card-img" alt="..."></a>
         </div>
         <div class="h4 card-title l_mint mt-3">펀딩 달성률 ${funding.fundingRate}%</div>
         <div class="h5 card-text mt-2">[${funding.movieName}]</div>
