@@ -612,14 +612,14 @@ div.main i {
 .k_isWithdrawal_modal h2{
     position: absolute;
     top: 50px;
-    left: 40px;
+    left: 30px;
     font-size: 25px;
 }
 
 .k_isWithdrawal_modal .close{
     bottom: 45px;
     position: absolute;
-    left: 35px;
+    left: 20px;
     width: 120px;
     height: 50px;
     border-radius: 10px;
@@ -634,7 +634,7 @@ div.main i {
 .k_isWithdrawal_modal a{
     bottom: 45px;
     position: absolute;
-    right: 32px;
+    right: 20px;
     width: 120px;
     height: 50px;
     border-radius: 10px;
