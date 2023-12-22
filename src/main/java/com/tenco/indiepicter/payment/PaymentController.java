@@ -47,44 +47,58 @@ public class PaymentController {
     @Autowired
     private HttpSession session;
 
-	
-	// 온라인 결제 내역
-	@GetMapping("/on-funding")
+// 온라인 펀딩 현황 확인(은혜씨 작업중)
+//@GetMapping("/on-payment")
+//public String myOnlinePayment(Model model){
+//	User principal = (User)session.getAttribute(Define.PRINCIPAL);
+//	List<MyOnlinePaymentDTO> myOnlinePaymentLists = this.paymentService.myOnlinePaymentLists(principal.getId());
+//	model.addAttribute("myOnlinePaymentLists", myOnlinePaymentLists);
+//	return "mypage/on_payment";
+//}
+
+//---------------------------------------------------------------------------------------------------------------------
+	// 온라인 펀딩 결제 내역
+	@GetMapping("/on-payment")
 	public String onFunding(Model model) {
-			
 		// 세션에 로그인 정보 저장
-//		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-//
+		User principal = (User)session.getAttribute(Define.PRINCIPAL);
 //		if(principal == null) {
 //			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
 //		}
+
+		List<MyOnlinePaymentDTO> MyOnlinePaymentDTOS = this.paymentService.findByOnlinePaymentId(principal.getId());
+		model.addAttribute("MyOnlinePaymentDTOS", MyOnlinePaymentDTOS);
+
 		
 		List<MyOnlinePaymentDTO> myOnlinePaymentDTOs =  this.paymentService.findByOnlinePaymentId(1);
 		
 		model.addAttribute("myOnlinePaymentDTOs", myOnlinePaymentDTOs);
 		
+
 		return "mypage/on_payment";
 	}
-	
-	
-	// 오프라인 결제 내역
-	@GetMapping("/off-funding")
+//---------------------------------------------------------------------------------------------------------------------
+	// 오프라인 상영 결제 내역
+	@GetMapping("/off-payment")
 	public String offFunding(Model model) {
-		
 		// 세션에 로그인 정보 저장
-//		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-//
+		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+
 //		if(principal == null) {
 //			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
 //		}
-//
+
+		List<MyOfflinePaymentDTO> MyOfflinePaymentDTOs =  this.paymentService.findByOfflinePaymentId(1);
+		model.addAttribute("MyOfflinePaymentDTOs", MyOfflinePaymentDTOs);
+
 		List<MyOfflinePaymentDTO> myOfflinePaymentDTOs =  this.paymentService.findByOfflinePaymentId(1);
 		
 		model.addAttribute("myOfflinePaymentDTOs", myOfflinePaymentDTOs);
 		
+
 		return "mypage/off_payment";
 	}
-	
+//---------------------------------------------------------------------------------------------------------------------
 	// 오프라인 결제 페이지 요청(GET)
     @GetMapping("/{movieId}/off")
     public String offPayment(@PathVariable Integer movieId, Model model){

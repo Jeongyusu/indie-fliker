@@ -56,13 +56,12 @@ public class PaymentService {
     }
 
 	
-	// 온라인 결제 내역
+	// 온라인 펀딩 결제 내역
 	public List<MyOnlinePaymentDTO> findByOnlinePaymentId(Integer id){
-		
 		return this.paymentRepository.findByOnlinePaymentId(id);
 	}
 	
-	// 오프라인 결제 내역
+	// 오프라인 상영 결제 내역
 	public List<MyOfflinePaymentDTO> findByOfflinePaymentId(Integer id){
 		return this.paymentRepository.findByOfflinePaymentId(id);
 	}
@@ -91,4 +90,11 @@ public class PaymentService {
     public int deleteById(Integer paymentId) {
         return paymentRepository.deleteById(paymentId);
     }
+
+//    // 나의 온라인 펀딩 현황 확인(은혜씨 작업중)
+//    public List<MyOnlinePaymentDTO> myOnlinePaymentLists(Integer pricipal){
+//        return this.paymentRepository.findByMyOnlinePaymentId(pricipal);
+//    }
+
+
 }

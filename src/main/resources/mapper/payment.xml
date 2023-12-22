@@ -16,7 +16,7 @@
 		delete from payment_tb where id = #{paymentId}
 	</delete>
 
-	<!-- 나의 온라인 펀딩 내역 -->
+	<!-- 온라인 펀딩 내역 -->
 	<select id="findByOnlinePaymentId" resultMap="MyPaymentOnlineDTOResultMap">
 		SELECT
 			o.funding_id, m.thumbnail, m.movie_name, m.director, m.synopsis, f.present_price, p.final_price, f.target_price, p.paymented_at, o.reservation_id, r.reservation_code, f.movie_id,
@@ -32,6 +32,7 @@
 			r.user_id = #{id} AND
 			r.seat_id IS NULL
 		order by payment_id desc
+
 	</select>
 	<resultMap id="MyPaymentOnlineDTOResultMap" type="com.tenco.indiepicter.payment.response.MyOnlinePaymentDTO">
 		<result property="movieId" column="movie_id"/>
@@ -52,7 +53,7 @@
 		<result property="refundPaymentId" column="refund_payment_id"/>
 	</resultMap> 
 	
-	<!-- 나의 오프라인 펀딩 내역 -->
+	<!-- 오프라인 상영 내역 -->
 	<select id="findByOfflinePaymentId" resultMap="MyPaymentOfflineDTOResultMap">
 		SELECT
 			o.funding_id, m.thumbnail, m.movie_name, m.director, m.synopsis, f.present_price, p.final_price, f.target_price, p.paymented_at, o.reservation_id, r.reservation_code, f.movie_id,
@@ -68,6 +69,7 @@
 			r.user_id = #{id} AND
 			r.seat_id IS not NULL
 		order by payment_id desc
+
 	</select>
 	<resultMap id="MyPaymentOfflineDTOResultMap" type="com.tenco.indiepicter.payment.response.MyOfflinePaymentDTO" >
 		<result property="movieId" column="movie_id"/>
@@ -87,5 +89,53 @@
 		<result property="refundedAt" column="refunded_at"/>
 		<result property="refundPaymentId" column="refund_payment_id"/>
 	</resultMap>
+
+<!--	&lt;!&ndash; 나의 온라인 펀딩 현황 확인(은혜씨 작업중) &ndash;&gt;-->
+<!--	<select id="findByMyOnlinePaymentId" resultMap="MyOnlinePaymentDTOResultMap">-->
+<!--		select-->
+<!--			mt.thumbnail,-->
+<!--			mt.movie_name,-->
+<!--			ft.present_price,-->
+<!--			ft.target_price,-->
+<!--			mt.director,-->
+<!--			mt.synopsis,-->
+<!--			pt.final_price,-->
+<!--			rt.reservation_code,-->
+<!--			pt.paymented_at-->
+<!--		from-->
+<!--			order_tb as ot-->
+<!--				inner join-->
+<!--			payment_tb as pt-->
+<!--			on ot.id = pt.order_id-->
+<!--				inner join-->
+<!--			reservation_tb as rt-->
+<!--			on rt.id = ot.reservation_id-->
+<!--				inner join-->
+<!--			user_tb as ut-->
+<!--			on ut.id = ot.user_id-->
+<!--				inner join-->
+<!--			funding_tb as ft-->
+<!--			on ft.id = ot.funding_id-->
+<!--				inner join-->
+<!--			movie_tb as mt-->
+<!--			on mt.id = ft.movie_id-->
+<!--			where ut.id = #{id}-->
+<!--	</select>-->
+<!--	<resultMap id="MyOnlinePaymentDTOResultMap" type="com.tenco.indiepicter.payment.response.MyOnlinePaymentDTO">-->
+<!--		<result property="thumbnail" column="thumbnail"/>-->
+<!--		<result property="movieId" column="movie_id"/>-->
+<!--		<result property="movieName" column="movie_name"/>-->
+<!--		<result property="fundingId" column="funding_id"/>-->
+<!--		<result property="presentPrice" column="present_price"/>-->
+<!--		<result property="targetPrice" column="target_price"/>-->
+<!--		<result property="director" column="director"/>-->
+<!--		<result property="synopsis" column="synopsis"/>-->
+<!--		<result property="finalPrice" column="final_price"/>-->
+<!--		<result property="reservationId" column="reservation_id"/>-->
+<!--		<result property="reservationCode" column="reservation_code"/>-->
+<!--		<result property="orderId" column="order_id"/>-->
+<!--		<result property="paymentId" column="payment_id"/>-->
+<!--		<result property="paymentedAt" column="paymented_at"/>-->
+<!--	</resultMap>-->
 
 </mapper>

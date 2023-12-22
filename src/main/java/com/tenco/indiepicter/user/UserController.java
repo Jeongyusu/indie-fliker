@@ -10,6 +10,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.tenco.indiepicter.invitation.Invitation;
 import org.apache.http.client.methods.HttpHead;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -216,10 +217,11 @@ public class UserController {
 		
 		if(oldUser == null) {
 			this.userService.join(dto); // 회원가입 자동 처리
-			log.debug("---------------------------");
-			log.debug(oldUser.toString());
-			log.debug("---------------------------");
 			oldUser = this.userService.UserEmail(dto.getUserEmail()); // olduser의 email정보 유지
+
+			log.debug("---------------------------");
+			log.debug("여기" + oldUser + "여기");
+			log.debug("---------------------------");
 		}
 		
 		// 로그인 처리
@@ -230,7 +232,7 @@ public class UserController {
 		oldUser.setUserPassword(null);
 		session.setAttribute(Define.PRINCIPAL, oldUser);
 		
-		return "redirect:/main";
+		return "redirect:/fund/funding-plus";
 		
 	}
 	
@@ -262,13 +264,17 @@ public class UserController {
 	// 마이페이지 접근
 	@GetMapping("/mypage")
 	public String myPage(Model model, Integer id) {
-
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-		
 		if(principal == null) {
 			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
 		}
-			
+		User userInfo = this.userService.userinfo(principal.getId());
+		Integer invitationCount = this.userService.userInvitation(principal.getId());
+		User kakaoLoginUser = this.userService.kakaoLoginUser();
+		model.addAttribute("userInfo", userInfo);
+		model.addAttribute("invitationCount", invitationCount);
+		model.addAttribute("kakaoLoginUser", kakaoLoginUser);
+
 		return "mypage/mypage";
 	}
 	
@@ -277,31 +283,25 @@ public class UserController {
 	// 회원 프로필 수정(GET)
 	@GetMapping("/profile")
 	public String profile(Model model) {
-		
 		User user = (User)session.getAttribute(Define.PRINCIPAL);
-		
 		if(user == null) {
 			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
 		}
-		
 		model.addAttribute("user", user);
-		
 		return "mypage/profile";
 	}
 	
 	// 회원 프로필 수정(POST)
 	@PostMapping("/profile")
 	public String profileUpdate(UserProfileRequestDTO dto) {
-			
+
 		MultipartFile file = dto.getFile();
 		
 		if(file.isEmpty() == false) {
-			
 			// 파일 사이즈 체크
 			if(file.getSize() > Define.MAX_FILE_SIZE) {
 				throw new MyDynamicException("파일 크기는 20MB 이상 클 수 없습니다.", HttpStatus.BAD_REQUEST);
 			}
-			
 		}
 		
 		try {
@@ -358,6 +358,10 @@ public class UserController {
 		this.userService.userIsWithdrawal(principal.getId());
 		return "redirect:/user/login";
 	}
+
+//----------------------------------------------------------------------------------------------------------------
+
+// 12-22 18:22 학원 작업 끝~~
 
 //----------------------------------------------------------------------------------------------------------------
 }
