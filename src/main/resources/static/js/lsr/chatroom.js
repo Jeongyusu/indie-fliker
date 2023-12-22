@@ -89,22 +89,23 @@ function snapshotListener(chatMessagesContainer, chatTitle) {
         .onSnapshot((snapshot) => {
             snapshot.docChanges().forEach((change) => {
                 if (change.type === "added") {
+
+                    // 스냅샷 리스너가 확인하는 채팅하고 있는 유저
                     const messageData = change.doc.data();
 
-                    // username 넣기
+                    // 중복 유저를 제거하기 위한 새로운 배열 생성
                     let includeUsers = [];
-                    includeUsers.push({username: username, userPic: userPic});
-                    console.log("해당 배열에 있는 애들 : " + includeUsers.toString());
 
+                    // 입장한 principal 유저 넣기
+                    includeUsers.push({username: username, userPic: userPic});
 
                     // 특정 값이 배열에 존재하는지 확인
-                    let existingUser = includeUsers.filter(user => user.username === messageData.name && user.userPic === messageData.pic);
-
-                    if (!existingUser) {
-                        // 해당 사용자가 배열에 존재하지 않으면 추가
-                        includeUsers.push({ username: messageData.name, userPic: messageData.pic });
-                        console.log("해당 배열에 있는 애들 : " + includeUsers.toString());
-                    }
+                    messageData.forEach((chatUser) => {
+                        if(!includeUsers.some(newUser => newUser.username === chatUser.username && newUser.userPic === chatUser.userPic)){
+                            // 해당 사용자가 배열에 존재하지 않으면 추가
+                            includeUsers.push(chatUser);
+                        }
+                    })
 
                     includeUsers.forEach((includeUser) => {
                         console.log("참여인원들 : " + includeUser.username);
