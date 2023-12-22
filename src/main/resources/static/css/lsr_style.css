@@ -111,6 +111,11 @@
     margin: 10px;
 }
 
+.l_vip_review_container {
+    display: flex;
+}
+
+
 .l_chat_container_from_user {
     display: flex;
     margin: 10px;
@@ -516,13 +521,12 @@
 }
 
 .l_commentary {
-    width: 100%;
+    width: 91.5%;
     background-color: var(--def_wh);
     border-radius: 8px;
     border: 0.5px solid var(--primary_01);
     margin: 8px;
     padding: 15px 35px;
-    width: 91.5%;
     height: 70px;
     display: flex;
     align-items: center;
@@ -530,6 +534,7 @@
 }
 
 .l_comment_container {
+width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 0 8px 0 0;
@@ -804,7 +809,7 @@
 .l_message_container {
     background-color: #fff;
     border-radius: 8px;
-    width: 80%;
+    width: 97.5%;
     padding: 8px 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -954,6 +959,7 @@
     padding: 0 2em;
     line-height: 3em;
     position: relative;
+    cursor: pointer;
 }
 
 #l_online_navbar ul li:hover {

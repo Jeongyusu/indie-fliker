@@ -437,7 +437,7 @@ async function findVipReview(movieId) {
             VipReviewsToMovieDTO.forEach(function (vipReview) {
                 let vipReviewDiv = document.createElement('div');
                 vipReviewDiv.id = "l_commentary_container";
-                vipReviewDiv.className = "l_chat_container";
+                vipReviewDiv.className = "l_vip_review_container";
                 vipReviewDiv.innerHTML = `
                     <div class="l_comment_container">
                         <div class="l_score_container">
