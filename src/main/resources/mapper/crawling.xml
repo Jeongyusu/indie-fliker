@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tenco.indiepicter.crawling.MovieMapper">
+<mapper namespace="com.tenco.indiepicter.crawling.MovieCrawlRepository">
 
-    <insert id="insertMovie" parameterType="com.tenco.indiepicter.crawling.MovieCrawl">
+    <insert id="insertMovie" parameterType="com.tenco.indiepicter.crawling.MovieCrawl" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO movie_tb (
             make_year, production, movie_name, synopsis, thumbnail,
             directing_intension, genre, running_grade, director, director_pic,
@@ -20,10 +20,6 @@
                )
 
     </insert>
-
-    <select id="getAllMovies" resultType="com.tenco.indiepicter.crawling.MovieCrawl">
-        SELECT * FROM movie_tb
-    </select>
 
     <select id="countMovies" resultType="java.lang.Integer" parameterType="com.tenco.indiepicter.crawling.MovieCrawl">
         SELECT COUNT(*)
@@ -48,23 +44,16 @@
           AND d_day = #{dDay}
     </select>
     <insert id="insertMovieStaff" parameterType="com.tenco.indiepicter.crawling.MovieCrawl">
-        INSERT INTO movie_staff_tb (
-            director, filming, art, sound, clothes , script, lighting, editing, music
-        )
-        VALUES (
-                   #{eDirector}, #{filming}, #{art}, #{sound},
-                   #{clothes}, #{script}, #{lighting}, #{editing},
-                   #{music}
-               )
-
+        INSERT INTO movie_staff_tb (director, filming, art, sound, clothes, script, lighting, editing, music, movie_id)
+        VALUES (#{director}, #{filming}, #{art}, #{sound}, #{clothes}, #{script}, #{lighting}, #{editing}, #{music}, #{movieId})
     </insert>
+
     <insert id="insertMoviePhoto" parameterType="com.tenco.indiepicter.crawling.MovieCrawl">
-        INSERT INTO movie_photo_tb (
-            movie_pic
-        )
-        VALUES (
-                   #{moviePic}
-               )
+        INSERT INTO movie_photo_tb (movie_pic, movie_id)
+        VALUES
+            (#{moviePic}, #{movieId})
 
     </insert>
+
+
 </mapper>

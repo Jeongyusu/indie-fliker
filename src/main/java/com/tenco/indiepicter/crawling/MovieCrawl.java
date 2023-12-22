@@ -1,13 +1,16 @@
 package com.tenco.indiepicter.crawling;
 
+import com.tenco.indiepicter.movie.Movie;
 import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 public class MovieCrawl {
     private Integer id;
+    // -----------------무비 테이블
     private String makeYear; // 제작년도
     private String production; // 영화사
     private String movieName; // 영화제목
@@ -26,7 +29,7 @@ public class MovieCrawl {
     private LocalDate offlineReleaseDate; // 오프라인 릴리스 날짜
     private LocalDate offlineEndDate; // 오프라인 마감 날짜
     private LocalDate dDay; // 디데이
-    //    ----------------------
+    // ---------------------- 스태프 테이블
     private String eDirector; // 감독
     private String filming; // 촬영
     private String art; // 미술
@@ -37,12 +40,14 @@ public class MovieCrawl {
     private String editing; // 편집
     private String music; // 음악
 
-    // =========
+    // =========포토 테이블
     private String moviePic;
+    private List<String> moviePicList;
 
 
     @Builder
-    public MovieCrawl(Integer id, String makeYear, String production, String movieName, String synopsis, String thumbnail, String directingIntension, String genre, String runningGrade, String director, String directorPic, String actor, String directorCareers, String directorAwardsFilm, LocalDate onlineReleaseDate, LocalDate onlineEndDate, LocalDate offlineReleaseDate, LocalDate offlineEndDate, LocalDate dDay, String eDirector, String filming, String art, String sound, String clothes, String script, String lighting, String editing, String music, String moviePic) {
+
+    public MovieCrawl(Integer id, String makeYear, String production, String movieName, String synopsis, String thumbnail, String directingIntension, String genre, String runningGrade, String director, String directorPic, String actor, String directorCareers, String directorAwardsFilm, LocalDate onlineReleaseDate, LocalDate onlineEndDate, LocalDate offlineReleaseDate, LocalDate offlineEndDate, LocalDate dDay, String eDirector, String filming, String art, String sound, String clothes, String script, String lighting, String editing, String music, String moviePic, List<String> moviePicList) {
         this.id = id;
         this.makeYear = makeYear;
         this.production = production;
@@ -72,5 +77,6 @@ public class MovieCrawl {
         this.editing = editing;
         this.music = music;
         this.moviePic = moviePic;
+        this.moviePicList = moviePicList;
     }
 }
