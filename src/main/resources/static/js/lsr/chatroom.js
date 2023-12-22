@@ -15,6 +15,12 @@ const sendMessageButtons = document.querySelectorAll('.l_send_message_button');
 // 채팅방 버튼
 const chatButtons = document.querySelectorAll('.l_channel_card_button');
 
+// 중복 유저를 제거하기 위한 새로운 배열 생성
+let includeUsers = [];
+
+// 중복 유저의 name, pic만 담기 위한 새로운 배열 생성
+let chatUserInfos = [];
+
 // 해당 채팅 버튼을 클릭 시 채팅 내용 뜨기
 chatButtons.forEach((chatButton) => {
     chatButton.addEventListener('click', ()=> {
@@ -25,8 +31,6 @@ chatButtons.forEach((chatButton) => {
 
         // 채팅방 초기화
         chatMessagesContainer.innerHTML = "";
-        // 리스너 호출
-        snapshotListener(chatMessagesContainer, movieTitle);
 
         // 화면 높이 가져와서 채팅방에 설정하기
         const windowHeight = window.innerHeight;
@@ -34,6 +38,25 @@ chatButtons.forEach((chatButton) => {
         chatContainers.forEach(chatContainer => {
             chatContainer.style.height = `${windowHeight}px`;
         });
+
+        alert("채팅방에 참여 하시겠습니까?");
+
+        includeUsers.push({title: movieTitle, name: username, pic: userPic});
+
+        // 입장한 채팅방이 다르면 배열 비우고, 현재 입장한 유저(sessionUser)를 배열에 추가하기
+        if(includeUsers[0].title !== null){
+            if(movieTitle !== includeUsers[0].title){
+                chatUserInfos = [];
+                includeUsers = [];
+                console.log("배열 비우기");
+            }
+        }
+
+        // 리스너 호출
+        const timestamp = new Date().toLocaleTimeString();
+        let messageText = username + "님이 입장하셨습니다.";
+        addListener (movieTitle, username, userPic, messageText, timestamp, number);
+        snapshotListener(chatMessagesContainer, movieTitle, number);
     })
 });
 
@@ -41,39 +64,40 @@ chatButtons.forEach((chatButton) => {
 
 // 각 채팅방에 존재하는 메시지 전송 버튼을 클릭 시 메세지를 인식하여 채팅방에 메세지 넣기
 sendMessageButtons.forEach((sendMessageButton) => {
-
     sendMessageButton.addEventListener('click', () => {
 
         const number = sendMessageButton.getAttribute('id').replace('send_button', ''); // 1
         const messageInput = document.getElementById(`l_message_input` + number);
         const messageText = messageInput.value;
         const chatTitle = document.getElementById(`movieTitle` + number).value;
-        console.log("채팅방 영화 : " + chatTitle);
-
         const timestamp = new Date().toLocaleTimeString();
 
-        // add 로 메세지 넣기
-        db.collection(chatTitle).add({
-            name: username,
-            pic: userPic,
-            message: messageText,
-            timestamp: timestamp,
-        })
-            .then((docRef) => {
-                console.log("메시지가 성공적으로 추가되었습니다. 문서 name:", docRef.name);
-            })
-            .catch((error) => {
-                console.error("메시지 추가 중 오류 발생:", error);
-            });
-
+        addListener(chatTitle, username, userPic, messageText, timestamp, number);
         messageInput.value = '';
     });
 });
 
+function addListener (chatTitle, username, userPic, messageText, timestamp, number){
+    // add 로 메세지 넣기
+    db.collection(chatTitle).add({
+        title: chatTitle,
+        name: username,
+        pic: userPic,
+        message: messageText,
+        timestamp: timestamp,
+    })
+        .then((docRef) => {
+            console.log("메시지가 성공적으로 추가되었습니다. 문서 name:", docRef.name);
+        })
+        .catch((error) => {
+            console.error("메시지 추가 중 오류 발생:", error);
+        });
+}
+
 // 스냅샷 리스너 (채팅이 추가되는지 듣고있음)
 let unsubscribeSnapshotListener;  // 변수 추가
 
-function snapshotListener(chatMessagesContainer, chatTitle) {
+function snapshotListener(chatMessagesContainer, chatTitle, number) {
 
     const username = document.getElementById('principalUsername').value;
     const userPic = document.getElementById('principalPic').value;
@@ -83,148 +107,167 @@ function snapshotListener(chatMessagesContainer, chatTitle) {
         unsubscribeSnapshotListener();
     }
 
+    // 해당 세션유저가 배열에 존재하지 않으면 추가
+    if(!includeUsers.some(newUser => newUser.name === username)){
+        includeUsers.push({title: chatTitle, name: username, pic: userPic});
+        console.log("여기서 넣음2222");
+    }
+
     // 새로운 스냅샷 리스너 등록
     unsubscribeSnapshotListener = db.collection(chatTitle)
         .orderBy("timestamp")
         .onSnapshot((snapshot) => {
             snapshot.docChanges().forEach((change) => {
                 if (change.type === "added") {
+
+                    // 스냅샷 리스너가 확인하는 채팅하고 있는 유저
                     const messageData = change.doc.data();
 
-                    // username 넣기
-                    let includeUsers = [];
-                    includeUsers.push({username: username, userPic: userPic});
-                    console.log("해당 배열에 있는 애들 : " + includeUsers.toString());
+                    // 채팅중인 user의 name과 pic만 따로 담기(messageData가 배열이 아님)
+                    chatUserInfos.push({title: chatTitle, name: messageData.name, pic:messageData.pic});
 
-
-                    // 특정 값이 배열에 존재하는지 확인
-                    let existingUser = includeUsers.filter(user => user.username === messageData.name && user.userPic === messageData.pic);
-
-                    if (!existingUser) {
-                        // 해당 사용자가 배열에 존재하지 않으면 추가
-                        includeUsers.push({ username: messageData.name, userPic: messageData.pic });
-                        console.log("해당 배열에 있는 애들 : " + includeUsers.toString());
-                    }
-
-                    includeUsers.forEach((includeUser) => {
-                        console.log("참여인원들 : " + includeUser.username);
-                        // 참여인원 추가
-                        addParticipation (includeUser.username, includeUser.userPic);
-                    })
-                    // 메세지 내용 추가
                     const messageContainer = addMessage(messageData.name, messageData.pic, messageData.message, messageData.timestamp, username, userPic);
                     chatMessagesContainer.appendChild(messageContainer);
                     chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
                 }
             });
+
+            // 해당 사용자가 배열에 존재하지 않으면 추가
+            chatUserInfos.forEach((chatUser) => {
+                console.log("chatUserIndfos에 있는 username들 = " + chatUser.name);
+                if(!includeUsers.some(newUser => newUser.name === chatUser.name)){
+                    includeUsers.push(chatUser);
+                }
+            })
+
+            // 참여인원 목록 초기화
+            let profileContainer = document.getElementById('l_participant_in' + number);
+            profileContainer.innerHTML = "";
+
+            // 참여인원 목록 생성
+            includeUsers.forEach((includeUser) => {
+                console.dir("참여한 영화 : " + includeUser.title);
+                console.dir("참여한 사람 : " + includeUser.name);
+                addParticipation (includeUser.name, includeUser.pic, number);
+            })
+            console.log("참여인원 수 : " + includeUsers.length);
         });
+
 }
 
 function addMessage(name, pic, message, time, principalUsername, principalPic) {
 
+    console.log("입장 메세지 : " + message);
 
-    if(name !== principalUsername){
+    if(message.includes('님이 입장하셨습니다.')){
         const chatContainer = document.createElement('div');
         chatContainer.classList.add('l_chat_container');
 
-        const profileContainer = document.createElement('div');
-        profileContainer.classList.add('l_participant_chat');
-        profileContainer.classList.add('d-flex');
-        profileContainer.classList.add('align-items-center');
+        const inContainer = document.createElement('div');
+        chatContainer.classList.add('l_in_container');
+        inContainer.innerHTML = message;
 
-        const profile = document.createElement('img');
-        profile.src = pic;
-
-        const username = document.createElement('span');
-
-        const messageContainer = document.createElement('div');
-        messageContainer.classList.add('l_message_container');
-
-        const textContainer = document.createElement('div');
-        textContainer.classList.add('l_message_text');
-
-        const nameElement = document.createElement('div');
-        nameElement.classList.add('l_message_name');
-        nameElement.textContent = name;
-
-        const textElement = document.createElement('div');
-        textElement.classList.add('l_message_message');
-        textElement.textContent = message;
-
-        const timeElement = document.createElement('div');
-        timeElement.classList.add('l_message_time');
-        timeElement.textContent = time;
-
-
-        profileContainer.appendChild(profile);
-        profileContainer.appendChild(username);
-
-        messageContainer.appendChild(nameElement);
-        messageContainer.appendChild(textElement);
-        messageContainer.appendChild(timeElement);
-
-        chatContainer.appendChild(profileContainer);
-        chatContainer.appendChild(messageContainer);
+        chatContainer.appendChild(inContainer);
 
         return chatContainer;
+        console.log("여기 컨테이너 만들어짐");
+
+    }else{
+        if(name !== principalUsername){
+            const chatContainer = document.createElement('div');
+            chatContainer.classList.add('l_chat_container');
+
+            const profileContainer = document.createElement('div');
+            profileContainer.classList.add('l_participant_chat');
+            profileContainer.classList.add('d-flex');
+            profileContainer.classList.add('align-items-center');
+
+            const profile = document.createElement('img');
+            profile.src = pic;
+
+            const username = document.createElement('span');
+
+            const messageContainer = document.createElement('div');
+            messageContainer.classList.add('l_message_container');
+
+            const textContainer = document.createElement('div');
+            textContainer.classList.add('l_message_text');
+
+            const nameElement = document.createElement('div');
+            nameElement.classList.add('l_message_name');
+            nameElement.textContent = name;
+
+            const textElement = document.createElement('div');
+            textElement.classList.add('l_message_message');
+            textElement.textContent = message;
+
+            const timeElement = document.createElement('div');
+            timeElement.classList.add('l_message_time');
+            timeElement.textContent = time;
 
 
-    } else {
-        const chatContainer = document.createElement('div');
-        chatContainer.classList.add('l_chat_container_from_user');
+            profileContainer.appendChild(profile);
+            profileContainer.appendChild(username);
 
-        const profileContainer = document.createElement('div');
-        profileContainer.classList.add('l_participant_chat');
-        profileContainer.classList.add('d-flex');
-        profileContainer.classList.add('align-items-center');
+            messageContainer.appendChild(nameElement);
+            messageContainer.appendChild(textElement);
+            messageContainer.appendChild(timeElement);
 
-        const profile = document.createElement('img');
-        profile.src = principalPic;
+            chatContainer.appendChild(profileContainer);
+            chatContainer.appendChild(messageContainer);
 
-        const messageContainer = document.createElement('div');
-        messageContainer.classList.add('l_message_container_from_user');
-
-        const textContainer = document.createElement('div');
-        textContainer.classList.add('l_message_text');
-
-        const textElement = document.createElement('div');
-        textElement.classList.add('l_message_message');
-        textElement.textContent = message;
-
-        const timeElement = document.createElement('div');
-        timeElement.classList.add('l_message_time_from_user');
-        timeElement.textContent = time;
+            return chatContainer;
 
 
-        profileContainer.appendChild(profile);
+        } else {
+            const chatContainer = document.createElement('div');
+            chatContainer.classList.add('l_chat_container_from_user');
 
-        messageContainer.appendChild(textElement);
-        messageContainer.appendChild(timeElement);
+            const profileContainer = document.createElement('div');
+            profileContainer.classList.add('l_participant_chat');
+            profileContainer.classList.add('d-flex');
+            profileContainer.classList.add('align-items-center');
 
-        chatContainer.appendChild(messageContainer);
-        chatContainer.appendChild(profileContainer);
+            const profile = document.createElement('img');
+            profile.src = principalPic;
 
-        return chatContainer;
+            const messageContainer = document.createElement('div');
+            messageContainer.classList.add('l_message_container_from_user');
 
+            const textContainer = document.createElement('div');
+            textContainer.classList.add('l_message_text');
+
+            const textElement = document.createElement('div');
+            textElement.classList.add('l_message_message');
+            textElement.textContent = message;
+
+            const timeElement = document.createElement('div');
+            timeElement.classList.add('l_message_time_from_user');
+            timeElement.textContent = time;
+
+
+            profileContainer.appendChild(profile);
+
+            messageContainer.appendChild(textElement);
+            messageContainer.appendChild(timeElement);
+
+            chatContainer.appendChild(messageContainer);
+            chatContainer.appendChild(profileContainer);
+
+            return chatContainer;
+
+        }
     }
+
+
 }
 
 // 참여인원 추가하기
-function addParticipation (participationUsername, participationPic) {
-    let profileContainer = document.querySelector(".l_participants_list");
+function addParticipation (participationUsername, participationPic, number) {
+    let profileContainer = document.getElementById('l_participant_in' + number);
+
     console.log("참여인원추가하는 사람 이름 : " + participationUsername);
     console.log("참여인원에 추가하는 사람 사진 명 : " + participationPic);
-
-    // 이미 존재하는지 확인
-    // if (document.getElementById(participationUsername)) {
-    //     console.log(`Element with id ${participationUsername} already exists. Skipping creation.`);
-    //     return;
-    // }
-
-    // // 없는 유저는 삭제
-    // if(document.getElementById(participationUsername).innerHTML !== profileContainer){
-    //     document.getElementById(participationUsername).remove();
-    // }
 
     let profileForm = document.createElement('div');
     profileForm.classList.add("l_participant_in_user");
@@ -237,7 +280,6 @@ function addParticipation (participationUsername, participationPic) {
     `;
 
     profileContainer.appendChild(profileForm);
-
 }
 
 
