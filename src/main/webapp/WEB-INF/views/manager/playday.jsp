@@ -20,6 +20,8 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
 
 </head>
 <body>
@@ -179,6 +181,7 @@
     function setPeriod (id){
         let firstDay = document.getElementById('release_date' + id);
         let lastDay = document.getElementById('end_date' + id);
+        let limitDay = document.getElementById('limitDay');
         let day = "";
 
         flatpickr(firstDay, {
