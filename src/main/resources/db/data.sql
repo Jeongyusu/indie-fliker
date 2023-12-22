@@ -55,12 +55,12 @@ insert into theater_tb(theater_pic, theater_name, theater_description, tel, addr
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, director_pic, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day, chat_time)
 values ('2023', '(주)시네마프로덕션', '스트리머','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
 ', '/images/moviethumbnail/gk/streamer.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '/images/movieDirector/the_boy_miyazaki.jpg','이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
-</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-21', '2024-12-15', '2023-12-01', '2023-12-30', '2023-11-29', '2023-12-21 14:00:00');
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-22', '2024-12-15', '2023-12-01', '2023-12-30', '2023-11-29', '2023-12-21 14:00:00');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, director_pic, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day, chat_time)
 values ('2023', '(주)시네마프로덕션', '만해한용운','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
 ', '/images/moviethumbnail/gk/manhae.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '/images/movieDirector/the_boy_miyazaki.jpg', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
-</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-21', '2024-12-15', '2023-12-11', '2023-12-24', '2023-12-09', '2023-12-21 14:00:00');
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-22', '2024-12-15', '2023-12-11', '2023-12-24', '2023-12-09', '2023-12-21 14:00:00');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, director_pic, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day, chat_time)
 values ('2023', '(주)시네마프로덕션', '홈리스권제니','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
@@ -341,7 +341,6 @@ insert into reservation_tb(reservation_code, user_id, seat_id) values ('11111', 
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('22222', 2, 2);
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('33334', 3, 3);
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('44444', 4, 4);
-insert into reservation_tb(reservation_code, user_id, seat_id) values ('55555', 3, 5);
 
 insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id, reservation_id)
 values ('1111', 1111, 1111, 1, 1, 1);
@@ -356,6 +355,10 @@ insert into payment_tb(total_price, discount_price, final_price, paymented_at, p
 values (1000, 1000, 1000, '2024-11-11 11:11:11', 1, 1);
 insert into payment_tb(total_price, discount_price, final_price, paymented_at, payment_type_id, order_id)
 values (2000, 2000, 2000, '2023-02-22 22:22:22', 2, 2);
+insert into payment_tb(total_price, discount_price, final_price, paymented_at, payment_type_id, order_id)
+values (3000, 3000, 3000, '2023-03-23 11:22:22', 2, 3);
+insert into payment_tb(total_price, discount_price, final_price, paymented_at, payment_type_id, order_id)
+values (4000, 4000, 4000, '2023-04-24 11:22:22', 2, 4);
 
 -- select * from order_tb;
 -- insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)
@@ -670,3 +673,18 @@ insert into question_tb(question_title, content, category, created_at)
 values('VIP는 어떻게 하나요?', 'VIP는 그냥 하면 됩니다.', 'VIP', now());
 insert into question_tb(question_title, content, category, created_at)
 values('VIP는 어떻게 하나요?', 'VIP는 그냥 하면 됩니다.', 'VIP', now());
+
+insert into invitation_tb(invitation_code, movie_name, theater_name, theater_address, movie_time, user_id)
+values('1234', '인터스텔라', '서면 CGV', '부산 진구 서면', '2023-12-21', 1);
+insert into invitation_tb(invitation_code, movie_name, theater_name, theater_address, movie_time, user_id)
+values('5678', '인셉션', '덕천 메가박스', '부산 북구 덕천', '2023-12-22', 1);
+insert into invitation_tb(invitation_code, movie_name, theater_name, theater_address, movie_time, user_id)
+values('3597', '곡성', '서면 CGV', '부산 진구 서면', '2023-12-23', 1);
+insert into invitation_tb(invitation_code, movie_name, theater_name, theater_address, movie_time, user_id)
+values('5578', '몸값', '해운대 CGV', '부산 해운대', '2023-12-24', 1);
+insert into invitation_tb(invitation_code, movie_name, theater_name, theater_address, movie_time, user_id)
+values('7569', '명량', '사상 메가박스', '부산 진구 서면', '2023-12-25', 1);
+insert into invitation_tb(invitation_code, movie_name, theater_name, theater_address, movie_time, user_id)
+values('9987', '친구', '서면 CGV', '부산 진구 서면', '2023-12-26', 1);
+insert into invitation_tb(invitation_code, movie_name, theater_name, theater_address, movie_time, user_id)
+values('9204', '소스코드', '해운대 CGV', '부산 해운대', '2023-12-27', 1);

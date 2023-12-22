@@ -41,12 +41,11 @@
 		where id=#{id}
 	</update>
 
-	<!-- 관리자 페이지(회원 탈퇴) -->
-	<update id="adminUserUpdate">
-		update user_tb set is_withdrawal=#{isWithdrawal}
+	<!-- 회원 탈퇴 -->
+	<update id="userIsWithdrawal">
+		update user_tb set is_withdrawal=true
 		where id=#{id}
 	</update>
 
-	<!-- -->
 
 </mapper>

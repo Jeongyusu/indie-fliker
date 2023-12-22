@@ -16,7 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="/css/style.css">
+    <link href="/css/png_style.css" rel="stylesheet">
 
 
 </head>
@@ -56,9 +56,9 @@
             <div class="p_section2">
                 <h3>영화</h3>
                 <ul>
-                    <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/manager/register">영화 등록 허가</a></li>
-                    <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/manager/check">펀딩 현황 확인</a></li>
-                    <li><i class="fa-solid fa-pen p_icon3"></i><a href="/manager/update_delete">펀딩 등록 / 삭제</a></li>
+                    <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/register">영화 등록 허가</a></li>
+                    <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/check">펀딩 현황 확인</a></li>
+                    <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/update-delete">펀딩 등록 / 삭제</a></li>
                 </ul>
                 <div class="p_line"></div>
             </div>
@@ -66,9 +66,10 @@
             <div class="p_section3">
                 <h3>회원</h3>
                 <ul>
-                    <li><i class="fa-solid fa-ticket-simple p_icon1"></i><a href="/manager/invitation">VIP 초청권 발급</a></li>
-                    <li><i class="fa-solid fa-user p_icon2"></i><a href="/manager/user_management">회원 관리</a></li>
-                    <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/manager/vip_management">회원 관리</a></li>
+                    <li><i class="fa-solid fa-ticket-simple p_icon1"></i><a href="/admin/invitation">VIP 초청권 발급</a></li>
+                    <li><i class="fa-solid fa-user p_icon2"></i><a href="/admin/user-management">일반 회원 관리</a></li>
+                    <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/vip-management">VIP 회원 관리</a></li>
+                    <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/grade-update">회원 등급 수정</a></li>
                 </ul>
                 <div class="p_line"></div>
             </div>
@@ -76,9 +77,9 @@
             <div class="p_section4">
                 <h3>온라인 상영 가능 영화</h3>
                 <ul>
-                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/manager/playday">온라인 오픈 기간 설정</a></li>
-                    <li><i class="fa-solid fa-comment p_icon2"></i><a href="/manager/chatting">채팅방 오픈</a></li>
-                    <li><i class="fa-solid fa-note-sticky p_icon3"></i><a href="/manager/review">감상평 관리</a></li>
+                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/playday">온라인 오픈 기간 설정</a></li>
+                    <li><i class="fa-solid fa-comment p_icon2"></i><a href="/admin/chatting">채팅방 오픈</a></li>
+                    <li><i class="fa-solid fa-note-sticky p_icon3"></i><a href="/admin/review">감상평 관리</a></li>
                 </ul>
                 <div class="p_line"></div>
             </div>
@@ -102,7 +103,7 @@
                         <img src="${fundingReady.thumbnail}" alt="영화 사진">
                         <p>영화 제목 : ${fundingReady.movieName}</p>
                         <p>영화 감독 : ${fundingReady.director}</p>
-                        <button onclick="openModal(${status.index})">영화 등록 하기</button></a>
+                        <button onclick="openModal(${status.index})">영화 등록 하기</button>
                     </div>
                     <!--모달-->
                     <div class="j_custom_modal" id="j_fund_modal${status.index}">

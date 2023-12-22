@@ -127,5 +127,10 @@ public class FundingService {
         return fundingRepository.findAllAdminFundingModify();
     }
 
+    //어드민 페이지 온라인 상영기간 설정 리스트 조회
+    public List<AdminOnlineStreamingDTO> findAllAdminPeriodSetting(){
+        return fundingRepository.findAllAdminPeriodSetting();
+    }
+
 
 }

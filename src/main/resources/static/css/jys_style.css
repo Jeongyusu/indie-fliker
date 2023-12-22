@@ -32,8 +32,10 @@
 
 .j_logo_text {
     padding-right: 50px;
-    font-size: xx-large;
+    font-weight: bold;
+    font-size: 28px;
     color: var(--primary_01);
+    padding-bottom: 3px;
 }
 
 .j_logo_text_padding {
@@ -126,20 +128,22 @@
 }
 
 .j_footer_ul {
+    line-height: 22px;
+    font-size: 14px;
+    margin: 0 0 10px 0;
     text-align: center;
-    margin: 0px auto;
 }
 
 .j_footer_img {
     display: flex;
     justify-content: center;
-    padding-top: 20px;
+    padding-top: 12px;
 }
 
 .j_footer_logo_text{
-    font-size: large;
-    color: black;
-    padding-top: 25px;
+    display: flex;
+    justify-content: center;
+    margin: 4px 0 10px;
 }
 
 .j_footer {
@@ -187,6 +191,23 @@
     z-index: 1;
     width: 90%;
     height: 90%;
+}
+
+.j_custom_streaming_modal {
+
+    display: none; /* 모달 초기에는 숨김 상태 */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    width: 20%;
+    height: 50%;
+    padding-left: 5%;
 }
 
 .j_custom_close {

@@ -17,7 +17,7 @@ public interface ReservationRepository {
 	public int insert(Reservation reservation);
 
 	// 예매 삭제
-	public int deleteById(Integer id);
+	public int deleteById(@Param("reservationId") Integer reservationId, @Param("principalId") Integer principalId);
 
 	// 예매 번호로 조회
 	public Reservation findByReservationCode(String reservationCode);

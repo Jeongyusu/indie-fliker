@@ -4,9 +4,22 @@
 
 <mapper namespace="com.tenco.indiepicter.invitation.InvitationRepository">
 
-    <!-- 나의 초청권 현황 확인 -->
+    <!-- 나의 초청권 현황 페이징 확인 -->
     <select id="findById" resultType="com.tenco.indiepicter.invitation.Invitation">
         select * from Invitation_tb where user_id=#{id}
+    </select>
+
+    <!-- 나의 초청권 현황 페이징 조회 -->
+    <select id="findByInvitationPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.invitation.Invitation">
+        select *
+        from invitation_tb
+        order by created_at desc
+        limit #{pageStart}, #{pageLimit}
+    </select>
+
+    <!-- 나의 초청권 전체 갯수 조회 -->
+    <select id="pageCount" resultType="Integer">
+        select count(id) from invitation_tb
     </select>
 
 </mapper>

@@ -17,7 +17,6 @@
 <hr class="k_notice_hr">
 <c:forEach var="notice" items="${noticePagingLists}">
 <div class="k_ask_s_container">
-
     <div class="k_notice_import">중요</div>
     <a href="/notice/notice-detail/${notice.id}" class="k_notice_service">[${notice.category}] ${notice.noticeTitle}</a>
     <div class="k_notice_time">인디피커 ${notice.createdAt}</div>

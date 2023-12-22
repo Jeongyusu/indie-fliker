@@ -75,7 +75,6 @@ public class UserService {
 		if(user == null) {
 			throw new MyDynamicException("이메일이 잘못되었습니다.", HttpStatus.BAD_REQUEST);
 		}
-		
 		// 유저 비밀번호가 db에 저장된 값과 비교
 		boolean passwordCheck = passwordEncoder.matches(requestDto.getPassword(), user.getPassword());
 		
@@ -83,9 +82,11 @@ public class UserService {
 		if(passwordCheck == false) {
 			throw new MyDynamicException("비밀번호가 잘못되었습니다.", HttpStatus.BAD_REQUEST);
 		}
+		// 탈퇴 유저 유효성 검사
+		if(user.isWithdrawal()){
+			throw new MyDynamicException("탈퇴한 계정입니다.", HttpStatus.BAD_REQUEST);
+		}
 
-		
-		
 		return user;
 	}
 	
@@ -155,11 +156,16 @@ public class UserService {
 //--------------------------------------------------------------------------------	
 	
 	// 카카오 로그인 (유저이름 찾기)
-	public User findByUserEmail(String userEmail) {
+	public User UserEmail(String userEmail) {
 		return null;
 	}
 
 //--------------------------------------------------------------------------------
-	
 
+	// 회원 탈퇴
+	public void userIsWithdrawal(Integer principal){
+		this.userRepository.userIsWithdrawal(principal);
+	}
+
+//--------------------------------------------------------------------------------
 }

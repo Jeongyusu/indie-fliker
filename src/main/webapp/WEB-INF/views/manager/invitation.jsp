@@ -11,7 +11,7 @@
     <title>관리자 페이지 - 초청권( invitation ) 완료!</title>
     
     <!-- style.css와 연결 -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link href="/css/png_style.css" rel="stylesheet">
     
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -78,6 +78,7 @@
                     <li><i class="fa-solid fa-ticket-simple p_icon1"></i><a href="/admin/invitation">VIP 초청권 발급</a></li>
                     <li><i class="fa-solid fa-user p_icon2"></i><a href="/admin/user-management">일반 회원 관리</a></li>
                     <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/vip-management">VIP 회원 관리</a></li>
+                    <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/grade-update">회원 등급 수정</a></li>
                 </ul>
                 <div class="p_line"></div>
             </div>
