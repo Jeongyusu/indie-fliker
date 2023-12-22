@@ -62,5 +62,4 @@
 </div>
 <!-- 스크립트 위로 올리면 에러나요! -->
 <script type="module" src="../../../../js/lsr/chatroom.js"></script>
-</body>
-</html>
+<%@ include file="/WEB-INF/views/layout/footer.jsp"%>

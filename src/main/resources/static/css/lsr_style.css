@@ -21,6 +21,20 @@
     width: 1280px
 }
 
+.l_my_page_title {
+    margin: 50px;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+.l_card_container {
+    margin: 30px 0;
+}
+
+.l_movie_card .l_fund_card_img {
+    width: 55%;
+}
+
 .l_movie_card_section{
     border: 2px solid var(--line_01);
     overflow-y: auto;
@@ -137,6 +151,39 @@
     margin-bottom: 14px;
 }
 
+.l_card_body {
+    flex: 1 1 auto;
+    padding: 20px;
+    color: var(--font_01);
+    height: 93%;
+}
+
+.l_card_title {
+    margin-bottom: 15px;
+    color: var(--font_01);
+    font-size: 24px;
+}
+
+.l_card_percent {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.l_card_director {
+    margin: 20px 0;
+}
+
+.l_card_synopsis {
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.l_card_pay_date, .l_card_payment {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
 .card-text:last-child {
     margin: 8px;
 }
@@ -164,19 +211,6 @@
 }
 
 
-.l_overlay_button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.l_main_card:hover .l_overlay_button {
-    opacity: 1;
-}
-
 .l_like_icon svg {
     fill: var(--point_04);
 }
@@ -185,6 +219,56 @@
     fill: var(--line_01);
 }
 
+
+<!-- -->
+.l_movie_image{
+	position: relative;
+}
+
+.l_movie_image .l_front{
+	transform: rotateY(0deg);
+    transition: 0.5s; 
+    transform-style: preserve-3d;
+}
+
+.l_movie_image .l_back{
+	position: absolute;
+	z-index: -1;
+	text-align: center;
+    transform: rotateY(-180deg);
+    transition: 0.5s;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #E6E6E6;	
+}
+
+.l_movie_image .l_button{
+	position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 120px;
+    height: 50px;
+    transform: translate(-50%,-50%) translateZ(100px);
+}
+
+.l_movie_image:hover .l_front{
+	transform: rotateY(180deg);
+}
+
+.l_movie_image:hover .l_back{
+	transform: rotateY(0deg);
+    z-index: 1;
+}
+
+<!-- -->
+
+.l_strong {
+    font-weight: bold;
+}
 
 /* funding style */
 .l_effect_underline {
@@ -227,6 +311,10 @@
     width: 100%;
 }
 
+#l_pagination {
+    margin: 40px 0;
+}
+
 .l_main_hovcard img {
     transition: transform 0.6s ease;
 }
@@ -236,8 +324,9 @@
 }
 
 .l_mint_button {
-    background-color: var(--primary_02);
+    background-color: var(--primary_01);
 }
+
 .l_mint_button:hover {
     color:#000000;
     background-color: #D9D9D9;

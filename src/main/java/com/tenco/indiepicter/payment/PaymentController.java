@@ -4,6 +4,7 @@ import com.tenco.indiepicter.funding.FundingService;
 import com.tenco.indiepicter.funding.response.SelectFundingDTO;
 import com.tenco.indiepicter.order.OrderService;
 import com.tenco.indiepicter.order.response.LastOrderDTO;
+import com.tenco.indiepicter.payment.request.MyRefundDTO;
 import com.tenco.indiepicter.reservation.ReservationService;
 import com.tenco.indiepicter.seat.SeatService;
 import com.tenco.indiepicter.seat.request.SelectSeatDTO;
@@ -52,15 +53,15 @@ public class PaymentController {
 	public String onFunding(Model model) {
 			
 		// 세션에 로그인 정보 저장
-		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-
-		if(principal == null) {
-			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
-		}
+//		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+//
+//		if(principal == null) {
+//			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
+//		}
 		
-		List<MyOnlinePaymentDTO> MyOnlinePaymentDTOLists =  this.paymentService.findByOnlinePaymentId(1);
+		List<MyOnlinePaymentDTO> MyOnlinePaymentDTOs =  this.paymentService.findByOnlinePaymentId(1);
 		
-		model.addAttribute("MyOnlinePaymentDTOLists", MyOnlinePaymentDTOLists);
+		model.addAttribute("MyOnlinePaymentDTOs", MyOnlinePaymentDTOs);
 		
 		return "mypage/on_payment";
 	}
@@ -71,15 +72,15 @@ public class PaymentController {
 	public String offFunding(Model model) {
 		
 		// 세션에 로그인 정보 저장
-		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+//		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+//
+//		if(principal == null) {
+//			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
+//		}
+//
+		List<MyOfflinePaymentDTO> MyOfflinePaymentDTOs =  this.paymentService.findByOfflinePaymentId(1);
 		
-		if(principal == null) {
-			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
-		}
-		
-		List<MyOfflinePaymentDTO> MyOfflinePaymentDTOLists =  this.paymentService.findByOfflinePaymentId(principal.getId());
-		
-		model.addAttribute("MyOfflinePaymentDTOLists", MyOfflinePaymentDTOLists);
+		model.addAttribute("MyOfflinePaymentDTOs", MyOfflinePaymentDTOs);
 		
 		return "mypage/off_payment";
 	}
@@ -147,5 +148,20 @@ public class PaymentController {
 		System.out.println("저장됨!!!!!!!!!!!!" + addFundingTarget);
 
 		return "redirect:/reservation/"+ lastOrderDTO.getMovieId() +"/on-ticket";
+	}
+
+
+	// 온라인 결제 정보 삭제(POST)
+	@PostMapping("/{movieId}/on-delete")
+	public String onPaymentDeleteProc(@RequestBody MyRefundDTO myRefundDTO){
+
+		// 유저정보 확인
+		// User principal = (User) session.getAttribute(Define.PRINCIPAL);
+
+		int deleteToPayment = paymentService.deleteById(myRefundDTO.getPaymentId());
+		int deleteToOrder = orderService.deleteById(myRefundDTO.getOrderId(), 1);
+		int deleteToReservation = reservationService.deleteById(myRefundDTO.getReservationId(), 1);
+
+		return "redirect:/payment/on-funding";
 	}
 }

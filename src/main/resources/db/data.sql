@@ -341,7 +341,6 @@ insert into reservation_tb(reservation_code, user_id, seat_id) values ('11111', 
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('22222', 2, 2);
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('33334', 3, 3);
 insert into reservation_tb(reservation_code, user_id, seat_id) values ('44444', 4, 4);
-insert into reservation_tb(reservation_code, user_id, seat_id) values ('55555', 3, 5);
 
 insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id, reservation_id)
 values ('1111', 1111, 1111, 1, 1, 1);
@@ -356,6 +355,10 @@ insert into payment_tb(total_price, discount_price, final_price, paymented_at, p
 values (1000, 1000, 1000, '2024-11-11 11:11:11', 1, 1);
 insert into payment_tb(total_price, discount_price, final_price, paymented_at, payment_type_id, order_id)
 values (2000, 2000, 2000, '2023-02-22 22:22:22', 2, 2);
+insert into payment_tb(total_price, discount_price, final_price, paymented_at, payment_type_id, order_id)
+values (3000, 3000, 3000, '2023-03-23 11:22:22', 2, 3);
+insert into payment_tb(total_price, discount_price, final_price, paymented_at, payment_type_id, order_id)
+values (4000, 4000, 4000, '2023-04-24 11:22:22', 2, 4);
 
 -- select * from order_tb;
 -- insert into order_tb(selected_seats, product_price, quantity, funding_id, user_id)

@@ -71,5 +71,9 @@ public class ReservationService {
 		return responseDTO;
 	}
 
-
+	// 환불 후 예매 내역에서 삭제
+	@Transactional
+    public int deleteById(Integer reservationId, int principalId) {
+		return reservationRepository.deleteById(reservationId, principalId);
+    }
 }
