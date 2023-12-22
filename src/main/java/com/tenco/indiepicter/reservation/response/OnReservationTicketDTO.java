@@ -23,7 +23,7 @@ public class OnReservationTicketDTO {
     public String formatToDDay(){
         return TimeStampUtil.timeStampToDate(dDay);
     }
-    public String formatToReleraseDate(){
+    public String formatToReleaseDate(){
         return TimeStampUtil.timeStampToDate(onlineReleaseDate);
     }
     public String formatToEndDate(){

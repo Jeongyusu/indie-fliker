@@ -27,6 +27,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
     <script src="/js/jys/keywordset.js"></script>
     <link href="/css/style.css" rel="stylesheet">
+    <!-- 카카오 결제하기  -->
+    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+    <!-- 카카오 환불하기   -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
 
     <title>IndieFliker</title>
 </head>
