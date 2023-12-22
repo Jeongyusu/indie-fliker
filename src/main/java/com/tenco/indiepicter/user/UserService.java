@@ -157,7 +157,7 @@ public class UserService {
 	
 	// 카카오 로그인 (유저이름 찾기)
 	public User UserEmail(String userEmail) {
-		return null;
+		return this.userRepository.findByUserEmail(userEmail);
 	}
 
 //--------------------------------------------------------------------------------

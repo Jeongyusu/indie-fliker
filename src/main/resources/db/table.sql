@@ -264,8 +264,6 @@ create table invitation_tb
 
 );
 
-
-
 create table question_tb
 (
     id             int auto_increment primary key,

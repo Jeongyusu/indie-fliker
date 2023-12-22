@@ -31,21 +31,15 @@
 	<div class="k_update_login-container">
 		<button class="k_couponpack k_m_couponpack">세 번 결제로 VIP 혜택과 쿠폰팩 지급〉</button>
 		<div class="k_invite-container">
-
-			<a href="/invitation/my-invitation"><button class="k_invite">나의 초청권 현황 0 장</button></a>
-
 			<div class="k_i_group">
-				<span class="k_invite-group" style="margin-left: 20px;">온라인 펀딩
-					<span class="k_font_weight_bold">0</span>
-				</span>
-				<span class="k_invite-group" >오프라인 상영
-					<span class="k_font_weight_bold">0</span>
-				</span>
-
-				<span class="k_invite-group" style="margin-right: 25px;">찜한 목록
-					<span class="k_font_weight_bold">0</span>
-				</span>
-
+				<a href="/invitation/my-invitation">나의 초청권 현황</a>
+				<span>0</span>
+				<a href="/payment/on-payment">온라인 펀딩</a>
+				<span>0</span>
+				<a href="/payment/off-payment">오프라인 상영</a>
+				<span>0</span>
+				<a href="">찜한 목록</a>
+				<span>0</span>
 			</div>
 
 		</div>

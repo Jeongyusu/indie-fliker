@@ -6,14 +6,14 @@
 <div class="container">
     <div class="l_my_page_title">펀딩한 내역</div>
     <div class="text-center">
-        <a href="/payment/off-funding" class="l_effect_underline" style="border-bottom: 2px solid; padding-bottom: 11px;">오프라인 상영 내역</a>
-        <a href="/payment/on-funding" class="l_effect_underline" >온라인 펀딩 내역</a>
+        <a href="/payment/on-payment" class="l_effect_underline" style="border-bottom: 2px solid; padding-bottom: 11px;">온라인 펀딩 내역</a>
+        <a href="/payment/off-payment" class="l_effect_underline" >오프라인 상영 내역</a>
     </div>
     <c:forEach var="MyOfflinePaymentDTO" items="${MyOfflinePaymentDTOs}" varStatus="status">
         <div class="l_movie_card card text-bg-light">
             <div class="row g-0">
                 <div class="col-md-4 d-flex align-items-center justify-content-center l_card_container">
-                    <img src="${MyOfflinePaymentDTO.thumbnail}" class="l_fund_card_img">
+                    <img src="${MyOfflinePaymentDTO.thumbnail}" class="l_fund_card_img" alt="">
                 </div>
                 <div class="col-md-5 d-flex align-items-center">
                     <div class="l_card_body">
@@ -48,4 +48,4 @@
 </div>
 
 <script src="../../../../js/lsr/off_payment.js"></script>
-<%@ include file="/WEB-INF/views/layout/footer.jsp"%>
+<%@ include file="../layout/footer.jsp" %>

@@ -216,10 +216,11 @@ public class UserController {
 		
 		if(oldUser == null) {
 			this.userService.join(dto); // 회원가입 자동 처리
-			log.debug("---------------------------");
-			log.debug(oldUser.toString());
-			log.debug("---------------------------");
 			oldUser = this.userService.UserEmail(dto.getUserEmail()); // olduser의 email정보 유지
+
+			log.debug("---------------------------");
+			log.debug("여기" + oldUser + "여기");
+			log.debug("---------------------------");
 		}
 		
 		// 로그인 처리
@@ -230,7 +231,7 @@ public class UserController {
 		oldUser.setUserPassword(null);
 		session.setAttribute(Define.PRINCIPAL, oldUser);
 		
-		return "redirect:/main";
+		return "redirect:/fund/funding-plus";
 		
 	}
 	
