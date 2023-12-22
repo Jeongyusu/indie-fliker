@@ -44,9 +44,7 @@
                 <div class="l_chat_section_user l_hide_on_small">
                     <div class="h5 my-4">참여 인원</div>
                     <div class="l_participants_list">
-                        <div class="l_participant_in_user d-flex align-items-center">
-                            <img src="${principal.pic}" alt="${principal.username}">
-                            <span>${principal.username}</span>
+                        <div class="l_participant_in_user align-items-center" id="l_participant_in${status.count}">
                         </div>
                     </div>
                 </div>

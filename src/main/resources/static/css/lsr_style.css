@@ -103,6 +103,16 @@
     justify-content: end;
 }
 
+.l_in_container {
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    font-size: 10px;
+    color: var(--font_03);
+}
+
 .l_mint {
     color: var(--primary_01);
 }
