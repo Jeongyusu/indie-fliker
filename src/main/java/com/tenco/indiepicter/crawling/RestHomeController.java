@@ -1,4 +1,4 @@
-package com.tenco.indiepicter.Crawling;
+package com.tenco.indiepicter.crawling;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

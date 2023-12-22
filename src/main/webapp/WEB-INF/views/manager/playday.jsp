@@ -9,7 +9,7 @@
     <title>관리자 페이지 - 온라인 오픈 기간 설정 ( playday ) 완료!</title>
     
     <!-- style.css와 연결 -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link href="/css/png_style.css" rel="stylesheet">
     
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -60,9 +60,9 @@
             <div class="p_section2">
                 <h3>영화</h3>
                 <ul>
-                    <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="">영화 등록 허가</a></li>
-                    <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="">펀딩 현황 확인</a></li>
-                    <li><i class="fa-solid fa-pen p_icon3"></i><a href="">펀딩 등록 / 삭제</a></li>
+                    <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/register">영화 등록 허가</a></li>
+                    <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/check">펀딩 현황 확인</a></li>
+                    <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/update-delete">펀딩 등록 / 삭제</a></li>
                 </ul>
                 <div class="p_line"></div>
             </div>
@@ -70,9 +70,10 @@
             <div class="p_section3">
                 <h3>회원</h3>
                 <ul>
-                    <li><i class="fa-solid fa-ticket-simple p_icon1"></i><a href=""><a href="">VIP 초청권 발급</a></li>
-                    <li><i class="fa-solid fa-user p_icon2"></i><a href=""><a href="">회원 관리</a></li>
-                    <li><i class="fa-solid fa-user-group p_icon3"></i><a href=""><a href="">회원 관리</a></li>
+                    <li><i class="fa-solid fa-ticket-simple p_icon1"></i><a href="/admin/invitation">VIP 초청권 발급</a></li>
+                    <li><i class="fa-solid fa-user p_icon2"></i><a href="/admin/user-management">일반 회원 관리</a></li>
+                    <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/vip-management">VIP 회원 관리</a></li>
+                    <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/grade-update">회원 등급 수정</a></li>
                 </ul>
                 <div class="p_line"></div>
             </div>
@@ -80,21 +81,20 @@
             <div class="p_section4">
                 <h3>온라인 상영 가능 영화</h3>
                 <ul>
-                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="">온라인 오픈 기간 설정</a></li>
-                    <li><i class="fa-solid fa-comment p_icon2"></i><a href="">채팅방 오픈</a></li>
-                    <li><i class="fa-solid fa-note-sticky p_icon3"></i><a href="">감상평 관리</a></li>
+                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/playday">온라인 오픈 기간 설정</a></li>
+                    <li><i class="fa-solid fa-comment p_icon2"></i><a href="/admin/chatting">채팅방 오픈</a></li>
+                    <li><i class="fa-solid fa-note-sticky p_icon3"></i><a href="/admin/review">감상평 관리</a></li>
                 </ul>
                 <div class="p_line"></div>
             </div>
 
-            <div class="p_section5">
-                <i class="fa-solid fa-gear p_icon1"></i>
-                <a href="">환경설정</a>
-            </div>
+<%--            <div class="p_section5">--%>
+<%--                <i class="fa-solid fa-gear p_icon1"></i>--%>
+<%--                <a href="">환경설정</a>--%>
+<%--            </div>--%>
 
         </div>
         <!--컨테이너1 끝-->
-
 
 
         <!--컨테이너2 시작-->

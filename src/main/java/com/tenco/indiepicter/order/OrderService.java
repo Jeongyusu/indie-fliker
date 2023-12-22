@@ -41,4 +41,10 @@ public class OrderService {
 
         return orderRepository.insert(order);
     }
+
+    // 환불로 인한 주문 삭제
+    @Transactional
+    public int deleteById(Integer orderId, int principalId) {
+        return orderRepository.deleteById(orderId, principalId);
+    }
 }

@@ -120,7 +120,6 @@ public class UserController {
 		if(requestDto.getUserEmail() == null || requestDto.getUserEmail().isEmpty()) {
 			throw new MyDynamicException("이메일을 입력하세요.", HttpStatus.BAD_REQUEST);
 		}
-
 		// 비밀번호 유효성 검사
 		if(requestDto.getPassword() == null || requestDto.getPassword().isEmpty()) {
 			throw new MyDynamicException("비밀번호를 입력하세요.", HttpStatus.BAD_REQUEST);
@@ -213,14 +212,14 @@ public class UserController {
 		log.debug("tencokey = " + tencokey);
 		log.debug("------------------------------");
 		
-		User oldUser = this.userService.findByUserEmail(dto.getUserEmail());
+		User oldUser = this.userService.UserEmail(dto.getUserEmail());
 		
 		if(oldUser == null) {
 			this.userService.join(dto); // 회원가입 자동 처리
 			log.debug("---------------------------");
 			log.debug(oldUser.toString());
 			log.debug("---------------------------");
-			oldUser = this.userService.findByUserEmail(dto.getUserEmail()); // olduser의 email정보 유지
+			oldUser = this.userService.UserEmail(dto.getUserEmail()); // olduser의 email정보 유지
 		}
 		
 		// 로그인 처리
@@ -240,9 +239,8 @@ public class UserController {
 	// 로그아웃
 	@GetMapping("/logout")
 	public String logout() {
-		
 		session.invalidate();
-		
+
 		return "redirect:/fund/main";
 	}
 	
@@ -354,7 +352,14 @@ public class UserController {
 //----------------------------------------------------------------------------------------------------------------	
 
 	// 회원 탈퇴
-	
+	@GetMapping("/isWithdrawal")
+	public String isWithdrawal(){
+		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+		this.userService.userIsWithdrawal(principal.getId());
+		return "redirect:/user/login";
+	}
+
+//----------------------------------------------------------------------------------------------------------------
 }
 
 

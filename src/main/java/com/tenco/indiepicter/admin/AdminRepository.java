@@ -30,4 +30,10 @@ public interface AdminRepository {
     // VIP 초청권 발급
     public int insert(Invitation invitation);
 
+    // 회원 등급 수정 (VIP로 수정)
+    public void updateVip(Integer id);
+
+    // 회원 등급 수정 (NORML로 수정)
+    public void updateNormal(Integer id);
+
 }
