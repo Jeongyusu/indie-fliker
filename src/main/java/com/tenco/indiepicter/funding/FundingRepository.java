@@ -44,5 +44,7 @@ public interface FundingRepository {
     // 관리자 페이지 펀딩 수정/삭제 기존 펀딩 전체 조회
     public List<AdminFundingModifyDTO> findAllAdminFundingModify();
 
+    // 펀딩 온라인 상영기간 설정
+    public List<AdminOnlineStreamingDTO> findAllAdminPeriodSetting();
 
 }

@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class MoviesByGenreDTO {
+    Integer fundingId;
     Integer movieId;
     String movieThumbnail;
     Long fundingRate;

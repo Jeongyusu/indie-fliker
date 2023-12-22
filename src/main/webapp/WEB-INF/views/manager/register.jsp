@@ -103,7 +103,7 @@
                         <img src="${fundingReady.thumbnail}" alt="영화 사진">
                         <p>영화 제목 : ${fundingReady.movieName}</p>
                         <p>영화 감독 : ${fundingReady.director}</p>
-                        <button onclick="openModal(${status.index})">영화 등록 하기</button></a>
+                        <button onclick="openModal(${status.index})">영화 등록 하기</button>
                     </div>
                     <!--모달-->
                     <div class="j_custom_modal" id="j_fund_modal${status.index}">
