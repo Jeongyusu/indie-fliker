@@ -14,7 +14,7 @@ public interface OrderRepository {
     public int insert(Order order);
 
     // 주문 삭제
-    public int deleteById(Integer id);
+    public int deleteById(@Param("orderId") Integer orderId, @Param("principalId") Integer principalId);
 
     // 선택한 주문 상세 조회
 
