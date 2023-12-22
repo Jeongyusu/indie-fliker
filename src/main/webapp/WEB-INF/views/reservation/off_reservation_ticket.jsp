@@ -46,8 +46,7 @@
                 </div>
             </div>
             <div id="n_reservation_list_button">
-                <form action="" method="get">
-                    <input type="hidden" name="" value="" >
+                <form action="/payment/off-funding" method="get">
                     <button type="submit" id="n_button">예매 내역</button>
                 </form>
             </div>

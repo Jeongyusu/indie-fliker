@@ -23,7 +23,7 @@
 
 .l_my_page_title {
     margin: 50px;
-    font-size: xx-large;
+    font-size: 28px;
     font-weight: bold;
 }
 
@@ -111,6 +111,11 @@
     margin: 10px;
 }
 
+.l_vip_review_container {
+    display: flex;
+}
+
+
 .l_chat_container_from_user {
     display: flex;
     margin: 10px;
@@ -158,11 +163,36 @@
     height: 93%;
 }
 
+.l_re_card_body {
+    flex: 1 1 auto;
+    padding: 20px;
+    color: var(--font_01);
+    height: 93%;
+}
+
+.l_re_card_pay_date, .l_re_card_payment{
+    font-size: 16px;
+    margin: 4px 0 10px;
+}
+
+#l_card_re_button{
+    margin-right: 3.5rem;
+    width: 8rem;
+    background-color: red;
+}
+
 .l_card_title {
     margin-bottom: 15px;
     color: var(--font_01);
     font-size: 24px;
 }
+
+.l_re_card_title {
+    margin-bottom: 15px;
+    color: var(--font_02);
+    font-size: 24px;
+}
+
 
 .l_card_percent {
     font-size: 18px;
@@ -174,9 +204,22 @@
     margin: 20px 0;
 }
 
+.l_re_card_refund {
+    font-size: 20px;
+    margin: 35px 0;
+    color: red;
+}
+
 .l_card_synopsis {
     font-size: 14px;
     line-height: 21px;
+    color: var(--font_01);
+}
+
+.l_re_card_synopsis {
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--font_02);
 }
 
 .l_card_pay_date, .l_card_payment {
@@ -478,13 +521,12 @@
 }
 
 .l_commentary {
-    width: 100%;
+    width: 91.5%;
     background-color: var(--def_wh);
     border-radius: 8px;
     border: 0.5px solid var(--primary_01);
     margin: 8px;
     padding: 15px 35px;
-    width: 91.5%;
     height: 70px;
     display: flex;
     align-items: center;
@@ -492,6 +534,7 @@
 }
 
 .l_comment_container {
+width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 0 8px 0 0;
@@ -766,7 +809,7 @@
 .l_message_container {
     background-color: #fff;
     border-radius: 8px;
-    width: 80%;
+    width: 97.5%;
     padding: 8px 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -916,6 +959,7 @@
     padding: 0 2em;
     line-height: 3em;
     position: relative;
+    cursor: pointer;
 }
 
 #l_online_navbar ul li:hover {

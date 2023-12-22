@@ -11,7 +11,6 @@ const userPic = document.getElementById('principalPic').value;
 // 메세지 보내는 버튼
 const sendMessageButtons = document.querySelectorAll('.l_send_message_button');
 
-
 // 채팅방 버튼
 const chatButtons = document.querySelectorAll('.l_channel_card_button');
 
@@ -20,6 +19,14 @@ let includeUsers = [];
 
 // 중복 유저의 name, pic만 담기 위한 새로운 배열 생성
 let chatUserInfos = [];
+
+const beforeUnloadListener = (event) => {
+    event.preventDefault();
+    return (event.returnValue = "");
+};
+
+
+
 
 // 해당 채팅 버튼을 클릭 시 채팅 내용 뜨기
 chatButtons.forEach((chatButton) => {
@@ -55,12 +62,10 @@ chatButtons.forEach((chatButton) => {
         // 리스너 호출
         const timestamp = new Date().toLocaleTimeString();
         let messageText = username + "님이 입장하셨습니다.";
-        addListener (movieTitle, username, userPic, messageText, timestamp, number);
+        addListener (movieTitle, username, userPic, messageText, timestamp);
         snapshotListener(chatMessagesContainer, movieTitle, number);
     })
 });
-
-
 
 // 각 채팅방에 존재하는 메시지 전송 버튼을 클릭 시 메세지를 인식하여 채팅방에 메세지 넣기
 sendMessageButtons.forEach((sendMessageButton) => {
@@ -72,12 +77,12 @@ sendMessageButtons.forEach((sendMessageButton) => {
         const chatTitle = document.getElementById(`movieTitle` + number).value;
         const timestamp = new Date().toLocaleTimeString();
 
-        addListener(chatTitle, username, userPic, messageText, timestamp, number);
+        addListener(chatTitle, username, userPic, messageText, timestamp);
         messageInput.value = '';
     });
 });
 
-function addListener (chatTitle, username, userPic, messageText, timestamp, number){
+function addListener (chatTitle, username, userPic, messageText, timestamp){
     // add 로 메세지 넣기
     db.collection(chatTitle).add({
         title: chatTitle,
@@ -125,7 +130,7 @@ function snapshotListener(chatMessagesContainer, chatTitle, number) {
 
                     // 채팅중인 user의 name과 pic만 따로 담기(messageData가 배열이 아님)
                     chatUserInfos.push({title: chatTitle, name: messageData.name, pic:messageData.pic});
-
+                    
                     const messageContainer = addMessage(messageData.name, messageData.pic, messageData.message, messageData.timestamp, username, userPic);
                     chatMessagesContainer.appendChild(messageContainer);
                     chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
