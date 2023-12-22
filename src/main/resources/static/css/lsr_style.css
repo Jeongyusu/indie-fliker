@@ -201,19 +201,6 @@
 }
 
 
-.l_overlay_button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.l_main_card:hover .l_overlay_button {
-    opacity: 1;
-}
-
 .l_like_icon svg {
     fill: var(--point_04);
 }
@@ -221,6 +208,53 @@
 .l_like_icon:hover svg {
     fill: var(--line_01);
 }
+
+
+<!-- -->
+.l_movie_image{
+	position: relative;
+}
+
+.l_movie_image .l_front{
+	transform: rotateY(0deg);
+    transition: 0.5s; 
+    transform-style: preserve-3d;
+}
+
+.l_movie_image .l_back{
+	position: absolute;
+	z-index: -1;
+	text-align: center;
+    transform: rotateY(-180deg);
+    transition: 0.5s;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #E6E6E6;	
+}
+
+.l_movie_image .l_button{
+	position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 120px;
+    height: 50px;
+    transform: translate(-50%,-50%) translateZ(100px);
+}
+
+.l_movie_image:hover .l_front{
+	transform: rotateY(180deg);
+}
+
+.l_movie_image:hover .l_back{
+	transform: rotateY(0deg);
+    z-index: 1;
+}
+
+<!-- -->
 
 .l_strong {
     font-weight: bold;
