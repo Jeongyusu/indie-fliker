@@ -125,7 +125,7 @@ function snapshotListener(chatMessagesContainer, chatTitle, number) {
 
                     // 채팅중인 user의 name과 pic만 따로 담기(messageData가 배열이 아님)
                     chatUserInfos.push({title: chatTitle, name: messageData.name, pic:messageData.pic});
-
+                    
                     const messageContainer = addMessage(messageData.name, messageData.pic, messageData.message, messageData.timestamp, username, userPic);
                     chatMessagesContainer.appendChild(messageContainer);
                     chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;

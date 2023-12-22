@@ -64,7 +64,6 @@ public class PaymentService {
 	
 	// 오프라인 결제 내역
 	public List<MyOfflinePaymentDTO> findByOfflinePaymentId(Integer id){
-		
 		return this.paymentRepository.findByOfflinePaymentId(id);
 	}
 

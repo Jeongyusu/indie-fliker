@@ -23,7 +23,7 @@
 
 .l_my_page_title {
     margin: 50px;
-    font-size: xx-large;
+    font-size: 28px;
     font-weight: bold;
 }
 
@@ -158,11 +158,36 @@
     height: 93%;
 }
 
+.l_re_card_body {
+    flex: 1 1 auto;
+    padding: 20px;
+    color: var(--font_01);
+    height: 93%;
+}
+
+.l_re_card_pay_date, .l_re_card_payment{
+    font-size: 16px;
+    margin: 4px 0 10px;
+}
+
+#l_card_re_button{
+    margin-right: 3.5rem;
+    width: 8rem;
+    background-color: red;
+}
+
 .l_card_title {
     margin-bottom: 15px;
     color: var(--font_01);
     font-size: 24px;
 }
+
+.l_re_card_title {
+    margin-bottom: 15px;
+    color: var(--font_02);
+    font-size: 24px;
+}
+
 
 .l_card_percent {
     font-size: 18px;
@@ -174,9 +199,22 @@
     margin: 20px 0;
 }
 
+.l_re_card_refund {
+    font-size: 20px;
+    margin: 35px 0;
+    color: red;
+}
+
 .l_card_synopsis {
     font-size: 14px;
     line-height: 21px;
+    color: var(--font_01);
+}
+
+.l_re_card_synopsis {
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--font_02);
 }
 
 .l_card_pay_date, .l_card_payment {

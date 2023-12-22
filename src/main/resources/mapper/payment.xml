@@ -18,23 +18,24 @@
 
 	<!-- 나의 온라인 펀딩 내역 -->
 	<select id="findByOnlinePaymentId" resultMap="MyPaymentOnlineDTOResultMap">
-		select
-			o.funding_id, m.thumbnail, m.movie_name, m.director, f.present_price, p.final_price, f.target_price, p.paymented_at, o.reservation_id, r.reservation_code, f.movie_id,
-			o.id as order_id, p.id as payment_id
-		from reservation_tb as r
-				 inner join order_tb as o
-							on r.id = o.reservation_id
-				 inner join payment_tb as p
-							on p.order_id = o.id
-				 inner join funding_tb as f
-							on f.id = o.funding_id
-				 inner join movie_tb as m
-							on m.id = f.movie_id
-		where r.user_id = #{id} and r.seat_id is null;
+		SELECT
+			o.funding_id, m.thumbnail, m.movie_name, m.director, m.synopsis, f.present_price, p.final_price, f.target_price, p.paymented_at, o.reservation_id, r.reservation_code, f.movie_id,
+			p.id as payment_id, re.refund_payment, re.refunded_at, re.payment_id as refund_payment_id
+		FROM
+			reservation_tb as r
+				INNER JOIN order_tb as o ON r.id = o.reservation_id
+				INNER JOIN payment_tb as p ON p.order_id = o.id
+				LEFT OUTER JOIN refund_tb as re ON p.id = re.payment_id
+				INNER JOIN funding_tb as f ON f.id = o.funding_id
+				INNER JOIN movie_tb as m ON m.id = f.movie_id
+		WHERE
+			r.user_id = #{id} AND
+			r.seat_id IS NULL
+		order by payment_id desc
 	</select>
 	<resultMap id="MyPaymentOnlineDTOResultMap" type="com.tenco.indiepicter.payment.response.MyOnlinePaymentDTO">
-		<result property="thumbnail" column="thumbnail"/>
 		<result property="movieId" column="movie_id"/>
+		<result property="thumbnail" column="thumbnail"/>
 		<result property="movieName" column="movie_name"/>
 		<result property="fundingId" column="funding_id"/>
 		<result property="director" column="director"/>
@@ -44,30 +45,33 @@
 		<result property="finalPrice" column="final_price"/>
 		<result property="reservationId" column="reservation_id"/>
 		<result property="reservationCode" column="reservation_code"/>
-		<result property="orderId" column="order_id"/>
 		<result property="paymentId" column="payment_id"/>
 		<result property="paymentedAt" column="paymented_at"/>
+		<result property="refundPayment" column="refund_payment"/>
+		<result property="refundedAt" column="refunded_at"/>
+		<result property="refundPaymentId" column="refund_payment_id"/>
 	</resultMap> 
 	
 	<!-- 나의 오프라인 펀딩 내역 -->
 	<select id="findByOfflinePaymentId" resultMap="MyPaymentOfflineDTOResultMap">
-		select
-			o.funding_id, m.thumbnail, m.movie_name, m.director, f.present_price, p.final_price, f.target_price, p.paymented_at, o.reservation_id, r.reservation_code, f.movie_id,
-			o.id as order_id, p.id as payment_id
-		from reservation_tb as r
-				 inner join order_tb as o
-							on r.id = o.reservation_id
-				 inner join payment_tb as p
-							on p.order_id = o.id
-				 inner join funding_tb as f
-							on f.id = o.funding_id
-				 inner join movie_tb as m
-							on m.id = f.movie_id
-		where r.user_id = #{id} and r.seat_id is not null;
+		SELECT
+			o.funding_id, m.thumbnail, m.movie_name, m.director, m.synopsis, f.present_price, p.final_price, f.target_price, p.paymented_at, o.reservation_id, r.reservation_code, f.movie_id,
+			p.id as payment_id, re.refund_payment, re.refunded_at, re.payment_id as refund_payment_id
+		FROM
+			reservation_tb as r
+				INNER JOIN order_tb as o ON r.id = o.reservation_id
+				INNER JOIN payment_tb as p ON p.order_id = o.id
+				LEFT OUTER JOIN refund_tb as re ON p.id = re.payment_id
+				INNER JOIN funding_tb as f ON f.id = o.funding_id
+				INNER JOIN movie_tb as m ON m.id = f.movie_id
+		WHERE
+			r.user_id = #{id} AND
+			r.seat_id IS not NULL
+		order by payment_id desc
 	</select>
 	<resultMap id="MyPaymentOfflineDTOResultMap" type="com.tenco.indiepicter.payment.response.MyOfflinePaymentDTO" >
-		<result property="thumbnail" column="thumbnail"/>
 		<result property="movieId" column="movie_id"/>
+		<result property="thumbnail" column="thumbnail"/>
 		<result property="movieName" column="movie_name"/>
 		<result property="fundingId" column="funding_id"/>
 		<result property="director" column="director"/>
@@ -77,9 +81,11 @@
 		<result property="finalPrice" column="final_price"/>
 		<result property="reservationId" column="reservation_id"/>
 		<result property="reservationCode" column="reservation_code"/>
-		<result property="orderId" column="order_id"/>
 		<result property="paymentId" column="payment_id"/>
 		<result property="paymentedAt" column="paymented_at"/>
+		<result property="refundPayment" column="refund_payment"/>
+		<result property="refundedAt" column="refunded_at"/>
+		<result property="refundPaymentId" column="refund_payment_id"/>
 	</resultMap>
 
 </mapper>

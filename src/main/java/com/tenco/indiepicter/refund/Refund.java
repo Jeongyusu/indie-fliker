@@ -9,10 +9,10 @@ import java.sql.Timestamp;
 @Getter
 @NoArgsConstructor
 public class Refund {
-    Integer id;
-    Integer refundPayment;
-    Timestamp refundedAt;
-    Integer paymentId;
+    private Integer id;
+    private Integer refundPayment;
+    private Timestamp refundedAt;
+    private Integer paymentId;
 
     @Builder
     public Refund(Integer id, Integer refundPayment, Timestamp refundedAt, Integer paymentId) {
