@@ -52,7 +52,7 @@ public class FundingReadyService {
         return resultRowCount;
     }
 
-    //펀딩 준비테이블 리스트 조회
+    //펀딩 준비테이블 리스트 조회 지금 작업
     public List<FundingReadyDTO> findAllFundingReady(Integer page, Integer pageSize){
         Integer offset = page * pageSize - pageSize;
         return fundingReadyRepository.findAllFundingReady(pageSize, offset);

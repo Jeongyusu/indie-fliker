@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.tenco.indiepicter.invitation.Invitation;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,12 +31,18 @@ public interface UserRepository {
 	public List<User> findAll();
 	
 	// 회원 아이디로 단일 조회
-	public User findById(Integer id);
+	public User findById(Integer principal);
 	
 	// 회원 프로필 수정
 	public int update(UserProfileRequestDTO dto);
 
 	// 회원 탈퇴
 	public void userIsWithdrawal(Integer principal);
+
+	// 회원의 초청권 갯수 조회
+	public Integer findByInvitation(Integer principal);
+
+	// 카카오 간편 로그인 회원만 조회
+	public User findByKakao();
 
 }

@@ -47,5 +47,16 @@
 		where id=#{id}
 	</update>
 
+	<!-- 회원 초청권 갯수 조회 -->
+	<select id="findByInvitation" resultType="Integer">
+		select count(*) from invitation_tb
+		where user_id=#{id}
+	</select>
+
+	<!-- 카카오 간편 로그인 회원만 조회 -->
+	<select	id="findByKakao" resultType="com.tenco.indiepicter.user.User">
+		select id from user_tb where user_email like 'OAuth_%'
+	</select>
+
 
 </mapper>

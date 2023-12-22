@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import com.tenco.indiepicter._core.utils.TimeStampUtil;
+import com.tenco.indiepicter.invitation.Invitation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -110,7 +111,6 @@ public class UserService {
 	
 	// 회원 전체 조회
 	public List<User> userLists(){
-		
 		List<User> userLists = this.userRepository.findAll();
 		return userLists;
 	}
@@ -152,20 +152,25 @@ public class UserService {
 		return resultRowCount;
 	}
 
-	
-//--------------------------------------------------------------------------------	
-	
+//--------------------------------------------------------------------------------
 	// 카카오 로그인 (유저이름 찾기)
 	public User UserEmail(String userEmail) {
 		return this.userRepository.findByUserEmail(userEmail);
 	}
-
 //--------------------------------------------------------------------------------
-
 	// 회원 탈퇴
 	public void userIsWithdrawal(Integer principal){
 		this.userRepository.userIsWithdrawal(principal);
 	}
-
 //--------------------------------------------------------------------------------
+	// 회원 단일 조회
+	public User userinfo(Integer principal){ return this.userRepository.findById(principal); }
+//--------------------------------------------------------------------------------
+	// 회원의 초청권 갯수 조회
+	public Integer userInvitation(Integer principal){ return this.userRepository.findByInvitation(principal); }
+//--------------------------------------------------------------------------------
+	// 카카오 간편 로그인 회원만 조회
+	public User kakaoLoginUser(){ return this.userRepository.findByKakao(); }
+//--------------------------------------------------------------------------------
+
 }
