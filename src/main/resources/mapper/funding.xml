@@ -263,7 +263,7 @@
     </resultMap>
 
     <select id="findAllAdminPeriodSetting" resultType="com.tenco.indiepicter.funding.response.AdminOnlineStreamingDTO">
-        select mt.id movie_id, mt.thumbnail, mt.movie_name from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
+        select mt.id movie_id, mt.thumbnail, mt.movie_name, ft.end_date from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
         where curdate() BETWEEN ft.release_date AND ft.end_date
     </select>
 

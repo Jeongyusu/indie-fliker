@@ -10,6 +10,8 @@ import com.tenco.indiepicter.funding.FundingService;
 import com.tenco.indiepicter.funding.fundingready.FundingReady;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyRepository;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyService;
+import com.tenco.indiepicter.movie.MovieService;
+import com.tenco.indiepicter.movie.response.OnlineStreamingDateSettingDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,6 +37,9 @@ public class AdminFundingRestController {
     @Autowired
     private FundingReadyService fundingReadyService;
 
+    @Autowired
+    private MovieService movieService;
+
     @PostMapping("/funding-ready/save")
     public ResponseEntity<?> saveFundingReady(@RequestBody Map<String, Integer> fundingReadyId){
 
@@ -48,5 +53,14 @@ public class AdminFundingRestController {
     @GetMapping("/back-only")
     public String ScriptBack(){
         return Script.backOnly();
+    }
+
+    @GetMapping("/movie-open/{id}")
+    public ResponseEntity<?> movieOpenSetting(@PathVariable Integer id){
+        OnlineStreamingDateSettingDTO onlineStreamingDateSettingDTO = movieService.findById(id);
+        log.debug("=========================");
+        log.debug(onlineStreamingDateSettingDTO.toString());
+        return ResponseEntity.ok().body(ApiUtils.success(onlineStreamingDateSettingDTO));
+
     }
 }

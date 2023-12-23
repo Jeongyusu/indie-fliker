@@ -7,21 +7,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 페이지 - 온라인 오픈 기간 설정 ( playday ) 완료!</title>
-    
-    <!-- style.css와 연결 -->
-    <link href="/css/png_style.css" rel="stylesheet">
-    
+
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
                            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
                            crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+    <link href="/css/style.css" rel="stylesheet">
+
 
 </head>
 <body>
@@ -81,7 +80,8 @@
             <div class="p_section4">
                 <h3>온라인 상영 가능 영화</h3>
                 <ul>
-                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/playday">온라인 오픈 기간 설정</a></li>
+                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/playday">온라인 상영 및 채팅 오픈 설정</a></li>
+                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/playday">오프라인 상영 기간 설정</a></li>
                     <li><i class="fa-solid fa-comment p_icon2"></i><a href="/admin/chatting">채팅방 오픈</a></li>
                     <li><i class="fa-solid fa-note-sticky p_icon3"></i><a href="/admin/review">감상평 관리</a></li>
                 </ul>
@@ -105,30 +105,39 @@
                     <div class="p_menu1">
                         <img src="${funding.thumbnail}" alt="">
                         <p>${funding.movieName}</p>
-                        <button onclick="openModal(${status.index})">온라인 상영 기간 설정</button>
+                        <button onclick="openMovieSettingModal(${funding.movieId})">온라인 상영 기간 설정</button>
                     </div>
                     <!----------------------------------- 모달 ------------------------------------------------>
                     <!-- 모달 백그라운드 -->
                     <!-- 모달 -->
-                    <div class="j_custom_streaming_modal" id="j_streaming_modal${status.index}">
-                        <form action="/" method="post">
-                            <span>[${funding.movieName}]</span>
-                            <p> 온라인 상영기간 설정</p>
-                            <input type="hidden" id="userId" name="userId" value ="">
-                            <label>온라인 스트리밍 개봉일 선택</label><br>
-                            <input type="text" id="release_date${status.index}" name="movieTime" placeholder="날짜 및 시간 선택" onclick="setPeriod(${status.index})"><br>
-                            <label>온라인 스트리밍 종료일 선택</label><br>
-                            <input type="text" id="end_date${status.index}" name="movieTime" placeholder="날짜 및 시간 선택"><br>
-                            <label>영화 제목</label><br>
-                            <input type="text" id="movieName" name="movieName" placeholder="영화 제목 입력"><br>
-                            <label>극장 이름</label><br>
-                            <input type="text" id="theaterName" name="theaterName" placeholder="극장 이름 입력"><br>
-                            <label>극장 주소</label><br>
-                            <input type="text" id="theaterAddress" name="theaterAddress" placeholder="극장 주소 입력"><br>
-                            <button class="submit" type="submit">발급 하기</button>
-                        </form>
-                    </div>
                 </c:forEach>
+                <div class="j_custom_streaming_modal" id="j_streaming_modal">
+                    <form action="/" method="post">
+                        <div id="movie_name_container">
+                            <span id="j_movie_name">영화 이름</span>
+                        </div>
+                        <p> 온라인 상영기간 설정</p>
+                        <input type="hidden" id="userId" name="userId" value =""><br>
+                        <label>온라인 스트리밍 개봉일 설정</label><br>
+                        <input type="text" id="release_date_choice" name="onlineReleaseDate" placeholder="날짜 선택"><br>
+                        <div id="release_date_container">
+                            <input type="text" id="release_date" placeholder="날짜 선택"><br>
+                        </div>
+                        <label>온라인 스트리밍 종료일 설정</label><br>
+                        <input type="text" id="end_date_choice" name="onlineEndDate" placeholder="날짜 선택"><br>
+                        <div id="end_date_container">
+                            <input type="text" id="end_date" placeholder="날짜 선택"><br>
+                        </div>
+                        <label>온라인 채팅 오픈 시간 설정</label><br>
+                        <input type="text" id="chat_time_choice" name="chatTime" placeholder="날짜 및 시간 선택"><br>
+                        <div id="chat_time_container">
+                            <input type="text" id="chat_time" placeholder="날짜 및 시간 선택"><br>
+                        </div>
+                        <button class="j_streaming_close" type="submit">설정 하기</button>
+                        <button class="j_streaming_close2" style="background-color: var(--point_05);" type="button" onclick="closeMovieSettingModal()">닫기</button>
+                        <input type="hidden" id="funding_end_date">
+                    </form>
+                </div>
             </div>
 
 
@@ -165,57 +174,128 @@
         
 	</div>
 <script>
-    // 모달 열기
-    function openModal(id) {
-        document.getElementById('j_streaming_modal'+ id).style.display = 'block';
+        <!--------------------------------- 달력 -------------------------------------------------->
 
+
+
+    // 모달 열기
+    async function openMovieSettingModal(id) {
+        try{
+        document.getElementById('j_streaming_modal').style.display = 'block';
+        let response = await fetch(`/admin/movie-open/` + id)
+        let responseBody = await response.json();
+        console.log("제이슨 변환 완료");
+        console.log(responseBody);
+        console.log(responseBody.response.onlineReleaseDate);
+        if(responseBody.success){
+
+            if(responseBody.response.onlineReleaseDate == null){
+                responseBody.response.onlineReleaseDate = '미설정';
+            }
+
+            if(responseBody.response.onlineEndDate == null){
+                responseBody.response.onlineEndDate = '미설정';
+            }
+
+            if(responseBody.response.chatTime == null){
+                responseBody.response.chatTime = '미설정';
+            }
+
+            let movieNameContainer = document.getElementById('movie_name_container');
+            movieNameContainer.innerHTML = '';
+            movieNameContainer.innerHTML = `<span id="j_movie_name">` + '[' + responseBody.response.movieName +']'+ `</span>`;
+
+            let child = document.getElementById('release_date');
+            child.parentNode.removeChild(child);
+            let newInput = document.createElement('input');
+            newInput.type = 'text';
+            newInput.id = 'release_date';
+            newInput.placeholder = '날짜를 선택하세요';
+            newInput.value = "기존 설정일 : " + responseBody.response.onlineReleaseDate;
+            newInput.disabled = true;
+            newInput.style = "width : 180px;"
+            let parent = document.getElementById('release_date_container');
+            parent.appendChild(newInput);
+
+            let child2 = document.getElementById('end_date');
+            child2.parentNode.removeChild(child2);
+            let newInput2 = document.createElement('input');
+            newInput2.type = 'text';
+            newInput2.id = 'end_date';
+            newInput2.placeholder = '날짜를 선택하세요';
+            newInput2.value = "기존 설정일 : " + responseBody.response.onlineEndDate;
+            newInput2.disabled = true;
+            newInput2.style = "width : 180px;"
+            let parent2 = document.getElementById('end_date_container');
+            parent2.appendChild(newInput2);
+
+            let child3 = document.getElementById('chat_time');
+            child3.parentNode.removeChild(child3);
+            let newInput3 = document.createElement('input');
+            newInput3.type = 'text';
+            newInput3.id = 'chat_date';
+            newInput3.placeholder = '날짜 및 시간을 선택하세요';
+            newInput3.value = "기존 설정 시간 : " + responseBody.response.onlineEndDate;
+            newInput3.disabled = true;
+            newInput3.style = "width : 180px;"
+            let parent3 = document.getElementById('end_date_container');
+            parent3.appendChild(newInput3);
+
+
+
+
+
+
+            let firstDay = document.getElementById('release_date_choice');
+            let lastDay = document.getElementById('end_date_choice');
+            let day = document.getElementById('funding_end_date');
+
+
+            flatpickr(firstDay, {
+                minDate: "today",
+
+                onChange: function (selectedDates, dateStr, instance) {
+                    firstDay.value = dateStr;
+                    console.log("firstDay.value :" + firstDay.value);
+                    // lastDay에 적용
+                    lastDayFlatpickr.set('minDate', firstDay.value);
+                    lastDayFlatpickr.set('maxDate', day.value);
+                },
+            });
+
+            // lastDay를 위한 flatpickr 객체 따로 생성
+            let lastDayFlatpickr = flatpickr(lastDay, {
+                onChange: function (selectedDates, dateStr, instance) {
+                    lastDay.value = dateStr;
+                    console.log("lastDay.value: " + lastDay.value);
+                },
+            });
+
+            let chatTime = document.getElementById('chat_time');
+            flatpickr(chatTime, {
+                enableTime: true,
+                dateFormat: "Y-m-d H:i",
+            });
+        } else {
+            throw new Error('요청 실패');
+        }
+    } catch(error) {
+        console.error('에러가 발생했습니다' + error.message);
+        alert('에러 발생 :' + error.message);
+        }
     }
 
     // 모달 닫기
-    function closeModal(id) {
-        document.getElementById('j_streaming_modal' + id).style.display = 'none';
+    function closeMovieSettingModal(id) {
+        document.getElementById('j_streaming_modal').style.display = 'none';
 
     }
 
-    <!--------------------------------- 달력 -------------------------------------------------->
-    function setPeriod (id){
-        let firstDay = document.getElementById('release_date' + id);
-        let lastDay = document.getElementById('end_date' + id);
-        let limitDay = document.getElementById('limitDay');
-        let day = "";
-
-        flatpickr(firstDay, {
-            minDate: "today",
-
-            onChange: function (selectedDates, dateStr, instance) {
-                firstDay.value = dateStr;
-                console.log("firstDay.value :" + firstDay.value);
-
-                day = getPlusOneYearDate(dateStr);
-
-                // lastDay에 적용
-                lastDayFlatpickr.set('minDate', firstDay.value);
-                lastDayFlatpickr.set('maxDate', day);
-                allDayFlatpickr.set('minDate', firstDay.value);
-            },
-        });
-
-        // lastDay를 위한 flatpickr 객체 따로 생성
-        let lastDayFlatpickr = flatpickr(lastDay, {
-            onChange: function (selectedDates, dateStr, instance) {
-                lastDay.value = dateStr;
-                console.log("lastDay.value: " + lastDay.value);
-                allDayFlatpickr.set('maxDate', lastDay.value);
-
-            },
-        });
-
-        let allDayFlatpickr = flatpickr(limitDay, {
-            locale: 'ko',
-        });
 
 
-    }
+
+
+
 
 
 

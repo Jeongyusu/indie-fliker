@@ -270,6 +270,23 @@
     background-color: var(--primary_02);
 }
 
+.j_streaming_close{
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--primary_02);
+}
+
+.j_streaming_close2{
+
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--point_03);
+}
+
 .j_register_bottom{
     position: absolute;
     bottom: 5%;

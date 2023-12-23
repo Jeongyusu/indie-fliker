@@ -5,6 +5,7 @@ import com.tenco.indiepicter._core.utils.DateUtil;
 import com.tenco.indiepicter._core.utils.PicToStringUtil;
 import com.tenco.indiepicter._core.utils.StringUtil;
 import com.tenco.indiepicter.funding.request.FundingSaveDTO;
+import com.tenco.indiepicter.movie.response.OnlineStreamingDateSettingDTO;
 import com.tenco.indiepicter.review.normalreview.NormalReviewRepository;
 import com.tenco.indiepicter.review.normalreview.NormalReviewService;
 import com.tenco.indiepicter.review.vipreview.VipReviewRepository;
@@ -62,6 +63,11 @@ public class MovieService {
         responseDTO.setMoviePics(moviePhotos);
 
         return responseDTO;
+    }
+
+    // 어드민 페이지 무비 테이블 온라인 상영기간 조회
+    public OnlineStreamingDateSettingDTO findById(Integer id){
+        return movieRepository.findById(id);
     }
 }
 

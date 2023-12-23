@@ -4,14 +4,10 @@
 
 <mapper namespace="com.tenco.indiepicter.movie.MovieRepository">
 
-<!--     펀딩 아이디로 영화 조회 -->
-<!--    <select id="getMovieByFundingId" resultType="com.tenco.indiepicter.movie.Movie">-->
-<!--        select * from movie_tb where movie_id = #{fundingId}-->
-<!--    </select>-->
-<!--    &lt;!&ndash; 회원 전체 조회 &ndash;&gt;-->
-<!--    <select id="findAll" resultType="com.tenco.indiepicter.user.User">-->
-<!--        select * from user_tb-->
-<!--    </select>-->
+<!-- admin 페이지 온라인 오픈기간 설정 : movieId로 영화 조회 -->
+    <select id="findById" resultType="com.tenco.indiepicter.movie.response.OnlineStreamingDateSettingDTO">
+        select * from movie_tb where id = #{id}
+    </select>
 
 <!--    useGeneratedKeys="true" keyProperty="id" parameterType="Integer"-->
     <insert id="saveMovie" useGeneratedKeys="true" keyProperty="id">
