@@ -14,11 +14,14 @@
                            crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
+
     <link href="/css/style.css" rel="stylesheet">
 
 
@@ -102,17 +105,18 @@
 
             <div class="p_section1">
                 <c:forEach var="funding" items="${adminOnlineStreamingDTOs}" varStatus="status">
-                    <div class="p_menu1">
+                    <div class="p_menu1" >
                         <img src="${funding.thumbnail}" alt="">
                         <p>${funding.movieName}</p>
                         <button onclick="openMovieSettingModal(${funding.movieId})">온라인 상영 기간 설정</button>
                     </div>
-                    <!----------------------------------- 모달 ------------------------------------------------>
-                    <!-- 모달 백그라운드 -->
-                    <!-- 모달 -->
                 </c:forEach>
-                <div class="j_custom_streaming_modal" id="j_streaming_modal">
-                    <form action="/admin/back-only" method="post">
+                <!----------------------------------- 모달 ------------------------------------------------>
+                <!-- 모달 백그라운드 -->
+                <!-- 모달 -->
+                <div class="j_custom_streaming_modal" id="j_streaming_modal" >
+                        <input type="hidden" id="selected_movie_id">
+                        <input type="hidden" id="funding_end_date">
                         <div id="movie_name_container">
                             <span id="j_movie_name">영화 이름</span>
                         </div>
@@ -132,10 +136,8 @@
                         <div id="chat_time_container">
                             <input type="text" id="chat_time" placeholder="날짜 및 시간 선택"><br>
                         </div>
-                        <button class="j_streaming_close" type="submit">설정 하기</button>
+                        <button class="j_streaming_close" type="submit" onclick="saveMovieOpenInfo()">설정 하기</button>
                         <button class="j_streaming_close2" style="background-color: var(--point_05);" type="button" onclick="closeMovieSettingModal()">닫기</button>
-                        <input type="hidden" id="funding_end_date">
-                    </form>
                 </div>
             </div>
 
@@ -174,35 +176,6 @@
 	</div>
 <script>
         <!--------------------------------- 달력 -------------------------------------------------->
-        let firstDay = document.getElementById('release_date_choice');
-        let lastDay = document.getElementById('end_date_choice');
-        let day = document.getElementById('funding_end_date');
-
-        flatpickr(firstDay, {
-            minDate: "today",
-
-            onChange: function (selectedDates, dateStr, instance) {
-                firstDay.value = dateStr;
-                console.log("firstDay.value :" + firstDay.value);
-                // lastDay에 적용
-                lastDayFlatpickr.set('minDate', firstDay.value);
-                lastDayFlatpickr.set('maxDate', day.value);
-            },
-        });
-
-        // lastDay를 위한 flatpickr 객체 따로 생성
-        let lastDayFlatpickr = flatpickr(lastDay, {
-            onChange: function (selectedDates, dateStr, instance) {
-                lastDay.value = dateStr;
-                console.log("lastDay.value: " + lastDay.value);
-            },
-        });
-
-        let chatTime = document.getElementById('chat_time_choice');
-        flatpickr(chatTime, {
-            enableTime: true,
-            dateFormat: "Y-m-d H:i",
-        });
 
 
     // 모달 열기
@@ -227,6 +200,8 @@
             if(responseBody.response.chatTime == null){
                 responseBody.response.chatTime = '미설정';
             }
+            let selectedMovieId = document.getElementById('selected_movie_id');
+            selectedMovieId.value = responseBody.response.id;
 
             let movieNameContainer = document.getElementById('movie_name_container');
             movieNameContainer.innerHTML = '';
@@ -335,6 +310,33 @@
 
     }
 
+    async function saveMovieOpenInfo () {
+            let movieId = document.getElementById('selected_movie_id').value;
+            let releaseDate = document.getElementById('release_date_choice').value;
+            let endDate = document.getElementById('end_date_choice').value;
+            let chatTime = document.getElementById('chat_time_choice').value;
+
+            let response = await fetch(`/admin/movie-open/save`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({id: movieId, onlineReleaseDate: releaseDate, onlineEndDate: endDate,
+                    chatTime: chatTime
+                }),
+            });
+
+            console.log("여기까지진입2");
+            let responseBody = await response.json();
+            console.log("내부 제이슨 변환 완료");
+            console.log(responseBody);
+            if (responseBody.success) {
+                alert("설정 성공");
+            } else {
+                throw new Error(responseBody.error);
+            }
+
+    }
 
 
 

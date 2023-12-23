@@ -55,5 +55,11 @@
         <result property="moviePath" column="movie_path"/>
     </resultMap>
 
+    <!-- 온라인 상영 영화 오픈 시간 및 채팅시간 설정 -->
+    <update id="updateMovieOpenDate">
+        update movie_tb set online_release_date = #{onlineReleaseDate}, online_end_date = #{onlineEndDate}, chat_time = #{chatTime}
+        where id = #{id}
+    </update>
+
 
 </mapper>

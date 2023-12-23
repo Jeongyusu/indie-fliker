@@ -1,5 +1,6 @@
 package com.tenco.indiepicter.movie;
 
+import com.tenco.indiepicter.movie.request.OnlineOpenDateSettingDTO;
 import com.tenco.indiepicter.movie.response.OnMovieDetailDTO;
 import com.tenco.indiepicter.movie.response.OnlineStreamingDateSettingDTO;
 import org.apache.ibatis.annotations.Mapper;
@@ -19,5 +20,5 @@ public interface MovieRepository {
     // admin 온라인 상영기간 설정 페이지 : movie 아이디로 movie 조회
     public OnlineStreamingDateSettingDTO findById(Integer id);
 
-    public int updateMovie();
+    public int updateMovieOpenDate(OnlineOpenDateSettingDTO onlineOpenDateSettingDTO);
 }
