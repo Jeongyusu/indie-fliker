@@ -112,12 +112,11 @@
                     <!-- 모달 -->
                 </c:forEach>
                 <div class="j_custom_streaming_modal" id="j_streaming_modal">
-                    <form action="/" method="post">
+                    <form action="/admin/back-only" method="post">
                         <div id="movie_name_container">
                             <span id="j_movie_name">영화 이름</span>
                         </div>
-                        <p> 온라인 상영기간 설정</p>
-                        <input type="hidden" id="userId" name="userId" value =""><br>
+                        <p> 온라인 상영기간 설정</p><br>
                         <label>온라인 스트리밍 개봉일 설정</label><br>
                         <input type="text" id="release_date_choice" name="onlineReleaseDate" placeholder="날짜 선택"><br>
                         <div id="release_date_container">
@@ -175,7 +174,35 @@
 	</div>
 <script>
         <!--------------------------------- 달력 -------------------------------------------------->
+        let firstDay = document.getElementById('release_date_choice');
+        let lastDay = document.getElementById('end_date_choice');
+        let day = document.getElementById('funding_end_date');
 
+        flatpickr(firstDay, {
+            minDate: "today",
+
+            onChange: function (selectedDates, dateStr, instance) {
+                firstDay.value = dateStr;
+                console.log("firstDay.value :" + firstDay.value);
+                // lastDay에 적용
+                lastDayFlatpickr.set('minDate', firstDay.value);
+                lastDayFlatpickr.set('maxDate', day.value);
+            },
+        });
+
+        // lastDay를 위한 flatpickr 객체 따로 생성
+        let lastDayFlatpickr = flatpickr(lastDay, {
+            onChange: function (selectedDates, dateStr, instance) {
+                lastDay.value = dateStr;
+                console.log("lastDay.value: " + lastDay.value);
+            },
+        });
+
+        let chatTime = document.getElementById('chat_time_choice');
+        flatpickr(chatTime, {
+            enableTime: true,
+            dateFormat: "Y-m-d H:i",
+        });
 
 
     // 모달 열기
@@ -213,6 +240,7 @@
             newInput.placeholder = '날짜를 선택하세요';
             newInput.value = "기존 설정일 : " + responseBody.response.onlineReleaseDate;
             newInput.disabled = true;
+            newInput.className = "j_custom_margin_bottom"
             newInput.style = "width : 180px;"
             let parent = document.getElementById('release_date_container');
             parent.appendChild(newInput);
@@ -225,31 +253,47 @@
             newInput2.placeholder = '날짜를 선택하세요';
             newInput2.value = "기존 설정일 : " + responseBody.response.onlineEndDate;
             newInput2.disabled = true;
+            newInput2.className = "j_custom_margin_bottom"
             newInput2.style = "width : 180px;"
             let parent2 = document.getElementById('end_date_container');
             parent2.appendChild(newInput2);
 
-            let child3 = document.getElementById('chat_time');
-            child3.parentNode.removeChild(child3);
+            let parent3 = document.getElementById('chat_time_container');
+            parent3.innerHTML='';
+
+            let chatTimeString = responseBody.response.chatTime;
+            let chatTimeConvert = new Date(chatTimeString);
+
+            // chatTime을 원하는 형식으로 변환
+            let formattedChatTime = chatTimeConvert.toLocaleString('ko-KR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: true,
+            });
+
             let newInput3 = document.createElement('input');
             newInput3.type = 'text';
-            newInput3.id = 'chat_date';
+            newInput3.id = 'chat_time';
             newInput3.placeholder = '날짜 및 시간을 선택하세요';
-            newInput3.value = "기존 설정 시간 : " + responseBody.response.onlineEndDate;
+            newInput3.value = "기존 설정 시간 : " + formattedChatTime;
             newInput3.disabled = true;
-            newInput3.style = "width : 180px;"
-            let parent3 = document.getElementById('end_date_container');
+            newInput3.style = "width : 300px;"
             parent3.appendChild(newInput3);
 
-
-
-
+            document.querySelector("#release_date_choice").value = null;
+            document.querySelector("#end_date_choice").value = null;
+            document.querySelector("#chat_time_choice").value = null;
 
 
             let firstDay = document.getElementById('release_date_choice');
             let lastDay = document.getElementById('end_date_choice');
             let day = document.getElementById('funding_end_date');
 
+
+            // day.value = responseBody.response.chatTime;
 
             flatpickr(firstDay, {
                 minDate: "today",
@@ -271,7 +315,7 @@
                 },
             });
 
-            let chatTime = document.getElementById('chat_time');
+            let chatTime = document.getElementById('chat_time_choice');
             flatpickr(chatTime, {
                 enableTime: true,
                 dateFormat: "Y-m-d H:i",

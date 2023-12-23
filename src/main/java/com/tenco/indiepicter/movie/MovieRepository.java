@@ -18,4 +18,6 @@ public interface MovieRepository {
 
     // admin 온라인 상영기간 설정 페이지 : movie 아이디로 movie 조회
     public OnlineStreamingDateSettingDTO findById(Integer id);
+
+    public int updateMovie();
 }
