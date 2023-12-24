@@ -1,6 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<%@ include file="../layout/header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <%--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>--%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+    <!-- 달력 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+    <script src="/js/jys/dropdown.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+    <!-- 포트원 결제하기  -->
+    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+    <!-- uuid 사용하기 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
+    <script src="/js/jys/keywordset.js"></script>
+    <link href="/css/style.css" rel="stylesheet">
+    <!-- 카카오 결제하기  -->
+    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+    <!-- 카카오 환불하기   -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+
+    <title>IndieFliker</title>
+</head>
+<body>
 <form action="/funding-ready/save" method="post" enctype="multipart/form-data">
 <div class="k_funding_save">
     <p>펀딩 등록하기</p>
@@ -29,7 +64,7 @@
                         <option value="15세 이상 관람가">15세 이상 관람가</option>
                         <option value="청소년 관람 불가">청소년 관람 불가</option>
                     </select>
-                    <input type="text" class="k_funding_upload_schedule_date k_margin_production" placeholder="배급사" name="production">
+                    <input type="text" class="k_funding_upload_schedule_date k_margin_production" placeholder="배급사" name="production" value="${adminFundingUpdateFormDTO.production}">
                 </div>
             </div>
 
@@ -38,20 +73,20 @@
             <div class="k_funding_upload_first_title">영화 제목
                 <span class="k_star_class">*</span>
             </div>
-            <input type=text class="k_funding_upload_movie_name" name="movieTitle">
+            <input type=text class="k_funding_upload_movie_name" name="movieTitle" value="${adminFundingUpdateFormDTO.movieName}">
         </div>
         <div class="k_funding_upload_container_third">
             <div id="k_fund">
                 <div class="k_funding_upload_fund_titles">펀딩 기간 <span class="k_star_class">*</span>
                     <div class="k_funding_upload_funding_date">1년 이내만 가능</div>
                 </div>
-                <input type="text" id="firstDay" class="k_funding_upload_first_date" placeholder="펀딩 시작일" name="fundingPeriodStart">
-                <input type="text" id="lastDay" class="k_funding_upload_last_date" placeholder="펀딩 마감일" name="fundingPeriodEnd">
+                <input type="text" id="firstDay" class="k_funding_upload_first_date" placeholder="펀딩 시작일" name="fundingPeriodStart" value="${adminFundingUpdateFormDTO.fundingReleaseDate}">
+                <input type="text" id="lastDay" class="k_funding_upload_last_date" placeholder="펀딩 마감일" name="fundingPeriodEnd" value="${adminFundingUpdateFormDTO.fundingEndDate}">
             </div>
             <div class="k_funding_upload_titles k_funding_upload_movie_schedule">(온라인) 상영 예정일
                 <span class="k_star_class">*</span>
             </div>
-            <input type="text" id="limitDay" class="k_funding_upload_schedule_date" placeholder="상영 예정일" name="dDay">
+            <input type="text" id="limitDay" class="k_funding_upload_schedule_date" placeholder="상영 예정일" name="dDay" value="${adminFundingUpdateFormDTO.dDay}">
         </div>
         <div class="k_funding_genre_container">
             <div class="k_funding_genre_grade_title">영화 장르<span class="k_star_class">*</span></div>
@@ -65,7 +100,7 @@
             <div class="k_funding_make_year k_funding_upload_movie_schedule">제작 년도
                 <span class="k_star_class">*</span>
             </div>
-            <input id="k_place_holder" type="text" class="k_funding_upload_schedule_date" placeholder="제작년도" name="makeYear">
+            <input id="k_place_holder" type="text" class="k_funding_upload_schedule_date" placeholder="제작년도" name="makeYear" value="${adminFundingUpdateFormDTO.makeYear}">
         </div>
 
         <div class="k_funding_genre_container">
@@ -285,7 +320,6 @@
         </button>
     </div>
 </form>
-
 
 <script>
     let firstDay = document.getElementById('firstDay');
@@ -552,3 +586,4 @@
 
 </script>
 <%@ include file="../layout/footer.jsp" %>
+

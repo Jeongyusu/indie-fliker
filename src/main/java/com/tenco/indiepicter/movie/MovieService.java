@@ -5,7 +5,9 @@ import com.tenco.indiepicter._core.utils.DateUtil;
 import com.tenco.indiepicter._core.utils.PicToStringUtil;
 import com.tenco.indiepicter._core.utils.StringUtil;
 import com.tenco.indiepicter.funding.request.FundingSaveDTO;
+import com.tenco.indiepicter.movie.request.OfflineOpenDateSettingDTO;
 import com.tenco.indiepicter.movie.request.OnlineOpenDateSettingDTO;
+import com.tenco.indiepicter.movie.response.OfflineStreamingDateSettingDTO;
 import com.tenco.indiepicter.movie.response.OnlineStreamingDateSettingDTO;
 import com.tenco.indiepicter.review.normalreview.NormalReviewRepository;
 import com.tenco.indiepicter.review.normalreview.NormalReviewService;
@@ -71,12 +73,26 @@ public class MovieService {
         return movieRepository.findById(id);
     }
 
+    public OfflineStreamingDateSettingDTO findByIdOffline(Integer id){
+        return movieRepository.findByIdOffline(id);
+    }
+
     @Transactional
     public int updateMovieOpenDate(OnlineOpenDateSettingDTO onlineOpenDateSettingDTO){
 
         int resultRowCount = movieRepository.updateMovieOpenDate(onlineOpenDateSettingDTO);
         if(resultRowCount != 1) {
             throw new MyDynamicException("오픈 시간 설정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return resultRowCount;
+    }
+
+    @Transactional
+    public int updateOffMovieOpenDate(OfflineOpenDateSettingDTO offlineOpenDateSettingDTO){
+
+        int resultRowCount = movieRepository.updateOffMovieOpenDate(offlineOpenDateSettingDTO);
+        if(resultRowCount != 1) {
+            throw new MyDynamicException("오프라인 상영 기간 설정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return resultRowCount;
     }

@@ -47,4 +47,9 @@ public interface FundingRepository {
     // 펀딩 온라인 상영기간 설정
     public List<AdminOnlineStreamingDTO> findAllAdminPeriodSetting();
 
+    // 펀딩 오프라인 상영기간 설정
+    public List<AdminOfflineStreamingDTO> findAllAdminOfflinePeriodSetting();
+
+    // 어드민 펀딩 수정 폼 정보조회
+    public AdminFundingUpdateFormDTO findByIdForAdminFundingModify(Integer id);
 }

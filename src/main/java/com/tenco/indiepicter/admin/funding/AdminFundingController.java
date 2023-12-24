@@ -3,10 +3,7 @@ package com.tenco.indiepicter.admin.funding;
 import com.tenco.indiepicter.funding.FundingService;
 import com.tenco.indiepicter.funding.fundingready.FundingReady;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyService;
-import com.tenco.indiepicter.funding.response.AdminFundingModifyDTO;
-import com.tenco.indiepicter.funding.response.AdminOnlineStreamingDTO;
-import com.tenco.indiepicter.funding.response.FundingReadyDTO;
-import com.tenco.indiepicter.funding.response.FundingReadyDetailDTO;
+import com.tenco.indiepicter.funding.response.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,19 +41,31 @@ public class AdminFundingController {
 
     @GetMapping("/funding/{id}/updateForm")
     public String fundingUpdateForm(@PathVariable Integer id, Model model){
-
-//        model.addAttribute()
+        AdminFundingUpdateFormDTO adminFundingUpdateFormDTO = fundingService.findByIdForAdminFundingModify(id);
+        log.debug("=======수정폼 정보조회=========");
+        log.debug(adminFundingUpdateFormDTO.toString());
+        model.addAttribute("adminFundingUpdateFormDTO", adminFundingUpdateFormDTO);
         return "manager/funding_modify";
     }
 
-    @GetMapping("/funding-period-set")
-    public String fundingPlayDay(Model model){
+    @GetMapping("/funding/movie-open/setting")
+    public String moviePlayDay(Model model){
         List<AdminOnlineStreamingDTO> adminOnlineStreamingDTOs = fundingService.findAllAdminPeriodSetting();
         log.debug("==============================");
         log.debug(adminOnlineStreamingDTOs.toString());
         model.addAttribute("adminOnlineStreamingDTOs", adminOnlineStreamingDTOs);
         return "manager/playday";
     }
+
+    @GetMapping("/funding/off-movie-open/setting")
+    public String offMoviePlayDay(Model model){
+        List<AdminOfflineStreamingDTO> adminOfflineStreamingDTOs = fundingService.findAllAdminOfflinePeriodSetting();
+        log.debug("==============================");
+        log.debug(adminOfflineStreamingDTOs.toString());
+        model.addAttribute("adminOfflineStreamingDTOs", adminOfflineStreamingDTOs);
+        return "manager/playoffday";
+    }
+
 
 
 

@@ -12,4 +12,9 @@ public class DateUtil {
     public static LocalDate stringToDate(String dateString) {
         return LocalDate.parse(dateString, DATE_FORMATTER);
     }
+
+    public static String convertLocalDateToString(LocalDate localDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return localDate.format(formatter);
+    }
 }

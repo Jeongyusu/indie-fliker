@@ -11,7 +11,9 @@ import com.tenco.indiepicter.funding.fundingready.FundingReady;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyRepository;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyService;
 import com.tenco.indiepicter.movie.MovieService;
+import com.tenco.indiepicter.movie.request.OfflineOpenDateSettingDTO;
 import com.tenco.indiepicter.movie.request.OnlineOpenDateSettingDTO;
+import com.tenco.indiepicter.movie.response.OfflineStreamingDateSettingDTO;
 import com.tenco.indiepicter.movie.response.OnlineStreamingDateSettingDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,11 +67,28 @@ public class AdminFundingRestController {
 
     }
 
+    @GetMapping("/off-movie-open/{id}")
+    public ResponseEntity<?> offMovieOpenSetting(@PathVariable Integer id){
+        OfflineStreamingDateSettingDTO offlineStreamingDateSettingDTO = movieService.findByIdOffline(id);
+        log.debug("=========================");
+        log.debug(offlineStreamingDateSettingDTO.toString());
+        return ResponseEntity.ok().body(ApiUtils.success(offlineStreamingDateSettingDTO));
+
+    }
+
     @PostMapping("/movie-open/save")
     public ResponseEntity<?> movieOpenDateUpdate(@RequestBody OnlineOpenDateSettingDTO onlineOpenDateSettingDTO){
         log.debug("====================");
         log.debug(onlineOpenDateSettingDTO.toString());
         movieService.updateMovieOpenDate(onlineOpenDateSettingDTO);
+        return ResponseEntity.ok().body(ApiUtils.success(null));
+    }
+
+    @PostMapping("/off-movie-open/save")
+    public ResponseEntity<?> offMovieOpenDateUpdate(@RequestBody OfflineOpenDateSettingDTO offlineOpenDateSettingDTO){
+        log.debug("====================");
+        log.debug(offlineOpenDateSettingDTO.toString());
+        movieService.updateOffMovieOpenDate(offlineOpenDateSettingDTO);
         return ResponseEntity.ok().body(ApiUtils.success(null));
     }
 }

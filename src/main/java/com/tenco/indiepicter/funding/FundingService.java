@@ -132,5 +132,14 @@ public class FundingService {
         return fundingRepository.findAllAdminPeriodSetting();
     }
 
+    //어드민 페이지 오프라인 상영기간 설정 리스트 조회
+    public List<AdminOfflineStreamingDTO> findAllAdminOfflinePeriodSetting(){
+        return fundingRepository.findAllAdminOfflinePeriodSetting();
+    }
+
+    public AdminFundingUpdateFormDTO findByIdForAdminFundingModify(Integer id){
+        return fundingRepository.findByIdForAdminFundingModify(id);
+    }
+
 
 }

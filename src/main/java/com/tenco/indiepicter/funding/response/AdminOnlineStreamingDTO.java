@@ -12,8 +12,5 @@ public class AdminOnlineStreamingDTO {
     private String movieName;
     private LocalDate endDate;
 
-    public String convertLocalDateToString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        return endDate.format(formatter);
-    }
+
 }

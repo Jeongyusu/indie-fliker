@@ -9,6 +9,12 @@
         select * from movie_tb where id = #{id}
     </select>
 
+<!-- admin 페이지 오프라인 오픈기간 설정 : movieId로 영화 조회 -->
+    <select id="findByIdOffline" resultType="com.tenco.indiepicter.movie.response.OfflineStreamingDateSettingDTO">
+        select mt.id, mt.movie_name, mt.offline_release_date, mt.offline_end_date, ft.end_date from movie_tb mt join funding_tb ft on mt.id = ft.movie_id where mt.id = #{id}
+    </select>
+
+
 <!--    useGeneratedKeys="true" keyProperty="id" parameterType="Integer"-->
     <insert id="saveMovie" useGeneratedKeys="true" keyProperty="id">
         insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade,
@@ -61,5 +67,9 @@
         where id = #{id}
     </update>
 
-
+    <!-- 오프라인 상영 기간 설정 -->
+    <update id="updateOffMovieOpenDate">
+        update movie_tb set offline_release_date = #{offlineReleaseDate}, offline_end_date = #{offlineEndDate}
+        where id = #{id}
+    </update>
 </mapper>

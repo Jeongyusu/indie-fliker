@@ -7,12 +7,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Data
-public class OnlineStreamingDateSettingDTO {
+public class OfflineStreamingDateSettingDTO {
 
     private Integer id;
     private String movieName;
-    private LocalDateTime chatTime;
-    private LocalDate onlineReleaseDate;
-    private LocalDate onlineEndDate;
+    private LocalDate offlineReleaseDate;
+    private LocalDate offlineEndDate;
+    private LocalDate endDate;
 
 }
