@@ -48,13 +48,16 @@
                 <label id="basicPic" for="thumbnail" class="k_funding_upload_select_photo_pic2">
                     <c:choose>
                         <c:when test="${adminFundingUpdateFormDTO.movieThumbnail != null}">
-                            <img src="${adminFundingUpdateFormDTO.movieThumbnail}" class="k_funding_upload_select_photo_pic2"></label>
+                            <img src="${adminFundingUpdateFormDTO.movieThumbnail}" class="k_funding_upload_select_photo_pic2">
+                            </label>
                         </c:when>
                         <c:otherwise>
                              <i id="fa-camera" class="fas fa-camera"></i>사진 선택 <span class="k_star_class">*</span></label>
                         </c:otherwise>
                     </c:choose>
-                <input type="file" id="thumbnail" name="movieThumbnail" accept="image/*" onchange="changeUserPic(this.id, 'basicPic', 'k_funding_thumbnail_style', event)" class="k_funding_upload_label">
+                <input type="file" id="thumbnail" accept="image/*" onchange="changeUserPic(this.id, 'basicPic', 'k_funding_thumbnail_style', event)" class="k_funding_upload_label">
+                <input type="hidden" name="movieThumbnail" value="${adminFundingUpdateFormDTO.movieThumbnail}">
+
             </div>
                 <br>
 
@@ -64,7 +67,7 @@
                     <div class="k_funding_upload_movie_level k_funding_upload_grade_title k_text_no_wrap k_margin_top55">배급사 <span class="k_star_class">*</span></div>
                 </div>
                 <div>
-                    <select class="k_custom_select_option" name="runningGrade">
+                    <select class="k_custom_select_option" name="runningGrade" id="j_running_grade_select">
                         <option value="전체 관람가">전체 관람가</option>
                         <option value="12세 이상 관람가">12세 이상 관람가</option>
                         <option value="15세 이상 관람가">15세 이상 관람가</option>
@@ -96,7 +99,7 @@
         </div>
         <div class="k_funding_genre_container">
             <div class="k_funding_genre_grade_title">영화 장르<span class="k_star_class">*</span></div>
-            <select class="k_funding_genre_select_option" name="genre">
+            <select class="k_funding_genre_select_option" name="genre" id="j_genre_select">
             <option value="극영화">극영화</option>
             <option value="애니메이션">애니메이션</option>
             <option value="다큐멘터리">다큐멘터리</option>
@@ -111,7 +114,7 @@
 
         <div class="k_funding_genre_container">
             <div class="k_funding_genre_grade_title">펀딩 목표금액<span class="k_star_class">*</span></div>
-            <select class="k_funding_genre_select_option" name="targetPrice">
+            <select class="k_funding_genre_select_option" name="targetPrice" id="j_target_price_select">
                 <option value="50000000">5천만원</option>
                 <option value="100000000">1억원</option>
                 <option value="150000000">1억 5천만원</option>
@@ -122,16 +125,15 @@
                 <option value="400000000">4억원</option>
                 <option value="450000000">4억 5천만원</option>
                 <option value="500000000">5억원</option>
-
-
-
             </select>
 
             <div class="k_funding_make_year k_funding_upload_movie_schedule">1회 펀딩금액
                 <span class="k_star_class">*</span>
             </div>
             <input type="text" class="k_funding_upload_schedule_date k_background_color" name="pricePerOnetime" value="8000" onclick="handleClick(this);" readonly>
-
+            <input type="hidden" id="j_target_price" value="${adminFundingUpdateFormDTO.targetPrice}">
+            <input type="hidden" id="j_running_grade" value="${adminFundingUpdateFormDTO.runningGrade}">
+            <input type="hidden" id="j_genre" value="${adminFundingUpdateFormDTO.genre}">
         </div>
 
 
@@ -206,8 +208,14 @@
             </div>
             <div class="k_funding_upload_container_four">
                     <label id="director_pic" for="director_photo" class="k_funding_upload_select_photo_pic">
-                        <i class="fas fa-camera"></i>
-                        사진 선택 <span class="k_star_class">*</span>
+                        <c:choose>
+                             <c:when test="${adminFundingUpdateFormDTO.directorPhoto != null}">
+                              <img src="${adminFundingUpdateFormDTO.directorPhoto}" class="k_funding_upload_select_photo_pic"></label>
+                             </c:when>
+                        <c:otherwise>
+                            <i id="fa-camera" class="fas fa-camera"></i>사진 선택 <span class="k_star_class">*</span></label>
+                        </c:otherwise>
+                        </c:choose>
                     </label>
                     <input type="file" id="director_photo" name="directorPhoto" accept="image/*" onchange="changeUserPic(this.id, 'director_pic', 'k_funding_movie_director_style', event)" class="k_funding_upload_label">
                     <br>
@@ -337,9 +345,7 @@
 </form>
 
 <script>
-
-
-
+    // 서버에서 받은 데이터 예시
     let firstDay = document.getElementById('firstDay');
     let lastDay = document.getElementById('lastDay');
     let limitDay = document.getElementById('limitDay');
@@ -407,9 +413,36 @@
     }
 
     let photoCount = 0;
+    var serverTargetPrice = document.getElementById('j_target_price').value;
+    var serverRunningGrade = document.getElementById('j_running_grade').value;
+    let serverGenre = document.getElementById('j_genre').value;
 
     window.onload = function () {
         photoCount = document.getElementById('photoListCount').value;
+        // JavaScript로 옵션 선택
+        var selectTargetPrice = document.getElementById('j_target_price_select');
+        for (var i = 0; i < selectTargetPrice.options.length; i++) {
+            if (selectTargetPrice.options[i].value === serverTargetPrice) {
+                selectTargetPrice.options[i].selected = true;
+                break;
+            }
+        }
+
+        var selectRunningGrade = document.getElementById('j_running_grade_select');
+        for (var i = 0; i < selectRunningGrade.options.length; i++) {
+            if (selectRunningGrade.options[i].value === serverRunningGrade) {
+                selectRunningGrade.options[i].selected = true;
+                break;
+            }
+        }
+
+        var selectGenre = document.getElementById('j_genre_select');
+        for (var i = 0; i < selectGenre.options.length; i++) {
+            if (selectGenre.options[i].value === serverGenre) {
+                selectGenre.options[i].selected = true;
+                break;
+            }
+        }
     }
 
 
@@ -627,13 +660,26 @@
         alert('변경 불가능한 값입니다.');
     }
 
-    // window.onload = function() {
-    //     let photoTotalCount = document.getElementById('')
-    //     // 3번 반복 호출
-    //     for (var i = 1; i <= 3; i++) {
-    //         myFunction(i);
-    //     }
-    // };
+
+    //수정할 사진을 선택하지 않았을 때 기존 사진이 들어가게 하고, 사진을 선택하면 업로드한 사진의 값이 히든 인풋의 밸류에 들어가게하기
+    function updateHiddenInput(inputFile) {
+        var hiddenInput = document.getElementById('movieThumbnail');
+        // 파일이 선택되었을 때만 hidden input의 값을 업데이트
+        if (inputFile.files.length > 0) {
+            var file = inputFile.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                hiddenInput.value = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function callMultipleFunctionsAboutThumbnail(inputFile) {
+        updateHiddenInput(inputFile);
+        changeUserPic('thumbnail', 'basicPic', 'k_funding_thumbnail_style', event);
+    }
 
 
 </script>
