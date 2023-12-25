@@ -44,7 +44,7 @@ public class AdminFundingUpdateFormDTO {
         return Arrays.asList(input.split("</br>"));
     }
 
-    public static List<String> extractNames(List<String> inputList) {
+    public List<String> extractNames(List<String> inputList) {
         List<String> names = new ArrayList<>();
 
         Pattern p = Pattern.compile("\\[(.*?)\\]");
@@ -58,7 +58,7 @@ public class AdminFundingUpdateFormDTO {
         return names;
     }
 
-    public static List<String> extractYears(List<String> inputList) {
+    public List<String> extractYears(List<String> inputList) {
         List<String> years = new ArrayList<>();
 
         Pattern p = Pattern.compile("\\((.*?)\\)");
@@ -71,5 +71,32 @@ public class AdminFundingUpdateFormDTO {
 
         return years;
     }
+
+    private List<String> extractNames2() {
+        List<String> inputList = splitStringToListCustom(this.directorAwards);
+        List<String> titles = new ArrayList<>();
+        Pattern pattern = Pattern.compile("(.+?)\\(\\d+\\)");
+        for (String input : inputList) {
+            Matcher m = pattern.matcher(input);
+            while (m.find()) {
+                titles.add(m.group(1).trim());
+            }
+        }
+        return titles;
+    }
+
+    private List<String> extractYears2() {
+        List<String> inputList = splitStringToListCustom(this.directorAwards);
+        List<String> years = new ArrayList<>();
+        Pattern pattern = Pattern.compile("\\((\\d+)\\)");
+        for (String input : inputList) {
+            Matcher m = pattern.matcher(input);
+            while (m.find()) {
+                years.add(m.group(1).trim());
+            }
+        }
+        return years;
+    }
+
 
 }

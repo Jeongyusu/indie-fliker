@@ -136,6 +136,8 @@
             <input type="hidden" id="j_genre" value="${adminFundingUpdateFormDTO.genre}">
             <input type="hidden" id="photoListCount" value="${adminFundingUpdateFormDTO.splitStringToList(adminFundingUpdateFormDTO.moviePhotos).size()}">
             <input type="hidden" id="careerCount" value="${adminFundingUpdateFormDTO.splitStringToListCustom(adminFundingUpdateFormDTO.directorCareers).size()}">
+            <input type="hidden" id="awardsCount" value="${adminFundingUpdateFormDTO.splitStringToListCustom(adminFundingUpdateFormDTO.directorAwards).size()}">
+
         </div>
 
 
@@ -247,10 +249,14 @@
         </div>
             <div class="k_funding_directer_career">
                 <div id="awards_movie" class="k_career_movie_style">
-                    <input type=text class="k_funding_awards_movie_input" placeholder="작품 이름" name="directorAwards">
+                    <c:forEach var="award" items="${adminFundingUpdateFormDTO.extractNames2()}" varStatus="status">
+                        <input type=text id="awards_movie${status.index}" class="k_funding_awards_movie_input" placeholder="작품 이름" name="directorAwards" value="${award}">
+                    </c:forEach>
                 </div>
                 <div id="awards_movie_year" class="k_funding_upload_head_limit">
-                    <input type="text" class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorAwardYears">
+                    <c:forEach var="awardYear" items="${adminFundingUpdateFormDTO.extractYears2()}" varStatus="status">
+                        <input type="text" id="awards_movie_year${status.index}" class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorAwardYears" value="${awardYear}">
+                    </c:forEach>
                 </div>
             </div>
         <div class="k_funding_upload_career">
@@ -417,7 +423,9 @@
         }
         reader.readAsDataURL(f);
     }
+
     let careerCount = 0;
+    let awardsCount = 0;
     let photoCount = 0;
     var serverTargetPrice = document.getElementById('j_target_price').value;
     var serverRunningGrade = document.getElementById('j_running_grade').value;
@@ -426,6 +434,7 @@
     window.onload = function () {
         careerCount = document.getElementById('careerCount').value;
         photoCount = document.getElementById('photoListCount').value;
+        awardsCount = document.getElementById('awardsCount')
         console.log("안녕하세요" + careerCount)
 
         // JavaScript로 옵션 선택
@@ -571,8 +580,6 @@
         careerCount--;
         console.log("커리어카운트" + careerCount)
     }
-
-    let awardsCount = 1;
 
 
     function plusAwardsMovie(){
