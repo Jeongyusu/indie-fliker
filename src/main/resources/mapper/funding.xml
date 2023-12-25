@@ -302,6 +302,7 @@
             <result property="script" column="script"/>
             <result property="lighting" column="lighting"/>
             <result property="music" column="music"/>
+            <result property="editing" column="editing"/>
         </association>
     </resultMap>
 

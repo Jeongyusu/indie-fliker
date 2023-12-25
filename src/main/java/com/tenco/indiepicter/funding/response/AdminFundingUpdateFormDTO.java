@@ -4,6 +4,7 @@ import com.tenco.indiepicter.movie.moviephoto.MoviePhoto;
 import com.tenco.indiepicter.movie.moviestaff.MovieStaff;
 import lombok.Data;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Data
@@ -32,4 +33,7 @@ public class AdminFundingUpdateFormDTO {
     private String directorCareers;//
     private String directorAwards;//
 
+    public List<String> splitStringToList(String input) {
+        return Arrays.asList(input.split(","));
+    }
 }

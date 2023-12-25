@@ -46,8 +46,14 @@
             <div class="pic_wrap">
                 <div id="pic_container" class="k_funding_pic_title">영화 대표 사진 <span class="k_star_class">*</span></div>
                 <label id="basicPic" for="thumbnail" class="k_funding_upload_select_photo_pic2">
-                        <i id="fa-camera" class="fas fa-camera"></i>
-                        사진 선택 <span class="k_star_class">*</span></label>
+                    <c:choose>
+                        <c:when test="${adminFundingUpdateFormDTO.movieThumbnail != null}">
+                            <img src="${adminFundingUpdateFormDTO.movieThumbnail}" class="k_funding_upload_select_photo_pic2"></label>
+                        </c:when>
+                        <c:otherwise>
+                             <i id="fa-camera" class="fas fa-camera"></i>사진 선택 <span class="k_star_class">*</span></label>
+                        </c:otherwise>
+                    </c:choose>
                 <input type="file" id="thumbnail" name="movieThumbnail" accept="image/*" onchange="changeUserPic(this.id, 'basicPic', 'k_funding_thumbnail_style', event)" class="k_funding_upload_label">
             </div>
                 <br>
@@ -86,7 +92,7 @@
             <div class="k_funding_upload_titles k_funding_upload_movie_schedule">(온라인) 상영 예정일
                 <span class="k_star_class">*</span>
             </div>
-            <input type="text" id="limitDay" class="k_funding_upload_schedule_date" placeholder="상영 예정일" name="dDay" value="${adminFundingUpdateFormDTO.dDay}">
+            <input type="text" id="limitDay" class="k_funding_upload_schedule_date" placeholder="상영 예정일" name="dDay" value="${adminFundingUpdateFormDTO.DDay}">
         </div>
         <div class="k_funding_genre_container">
             <div class="k_funding_genre_grade_title">영화 장르<span class="k_star_class">*</span></div>
@@ -137,7 +143,7 @@
                 </div>
             </div>
             <div class="k_funding_upload_container_two">
-                <textarea class="k_funding_upload_sibnob" name="synopsis"></textarea>
+                <textarea class="k_funding_upload_sibnob" name="synopsis">${adminFundingUpdateFormDTO.synopsis}</textarea>
             </div>
         </div>
         <div class="k_margin_top">
@@ -147,7 +153,7 @@
                 </div>
             </div>
             <div class="k_funding_upload_container_two">
-                <textarea class="k_funding_upload_sibnob" name="directingIntension"></textarea>
+                <textarea class="k_funding_upload_sibnob" name="directingIntension">${adminFundingUpdateFormDTO.directingIntension}</textarea>
             </div>
         </div>
         <div class="k_margin_top">
@@ -165,10 +171,19 @@
         </div>
 
         <div id="pic_plus" class="k_funding_upload_container_four">
-                <label id="movie_pic" for="movie_photo" class="k_funding_upload_select_photo_pic">
-                    <i class="fas fa-camera"></i>
-                    사진 선택 <span class="k_star_class">*</span></label>
-                <input type="file" id="movie_photo" name="moviePhotos" accept="image/*" onchange="changeUserPic(this.id, 'movie_pic', 'k_funding_movie_pic_style', event)" class="k_funding_upload_label">
+            <input type="hidden" id="photoListCount" value="${adminFundingUpdateFormDTO.splitStringToList(adminFundingUpdateFormDTO.moviePhotos).size()}">
+             <c:forEach var="photo" items="${adminFundingUpdateFormDTO.splitStringToList(adminFundingUpdateFormDTO.moviePhotos)}" varStatus="status">
+                 <label id="movie_pic${status.index}" for="movie_photo${status.index}" class="k_funding_upload_select_photo_pic">
+                 <c:choose>
+                     <c:when test="${photo != null}">
+                         <img src="${photo}" class="k_funding_upload_select_photo_pic"></label>
+                     </c:when>
+                     <c:otherwise>
+                         <i id="fa-camera" class="fas fa-camera"></i>사진 선택 <span class="k_star_class">*</span></label>
+                     </c:otherwise>
+                 </c:choose>
+                 <input type="file" id="movie_photo${status.index}" name="moviePhotos" accept="image/*" onchange="changeUserPic(this.id, 'movie_pic${status.index}', 'k_funding_movie_pic_style', event)" class="k_funding_upload_label">
+             </c:forEach>
                 <br>
 
         </div>
@@ -258,47 +273,47 @@
                     <tr>
                         <th>감독</th>
                         <td>
-                            <input type="text" name="staff.director">
+                            <input type="text" name="staff.director" value="${adminFundingUpdateFormDTO.staff.director}">
                         </td>
                         <th>각본</th>
                         <td>
-                            <input type="text" name="staff.script">
+                            <input type="text" name="staff.script" value="${adminFundingUpdateFormDTO.staff.script}">
                         </td>
                     </tr>
                     <tr>
                         <th>촬영</th>
                         <td>
-                            <input type="text" name="staff.filming">
+                            <input type="text" name="staff.filming" value="${adminFundingUpdateFormDTO.staff.filming}">
                         </td>
                         <th>조명</th>
                         <td>
-                            <input type="text" name="staff.lighting">
+                            <input type="text" name="staff.lighting" value="${adminFundingUpdateFormDTO.staff.lighting}">
                         </td>
                     </tr>
                     <tr>
                         <th>미술</th>
                         <td>
-                            <input type="text" name="staff.art">
+                            <input type="text" name="staff.art" value="${adminFundingUpdateFormDTO.staff.art}">
                         </td>
                         <th>편집</th>
                         <td>
-                            <input type="text" name="staff.editing">
+                            <input type="text" name="staff.editing" value="${adminFundingUpdateFormDTO.staff.editing}">
                         </td>
                     </tr>
                     <tr>
                         <th>사운드</th>
                         <td>
-                            <input type="text" name="staff.sound">
+                            <input type="text" name="staff.sound" value="${adminFundingUpdateFormDTO.staff.sound}">
                         </td>
                         <th>음악</th>
                         <td>
-                            <input type="text" name="staff.music">
+                            <input type="text" name="staff.music" value="${adminFundingUpdateFormDTO.staff.music}">
                         </td>
                     </tr>
                     <tr>
                         <th>의상</th>
                         <td>
-                            <input type="text" name="staff.clothes">
+                            <input type="text" name="staff.clothes" value="${adminFundingUpdateFormDTO.staff.clothes}">
                         </td>
                         <th></th>
                         <td></td>
@@ -322,6 +337,9 @@
 </form>
 
 <script>
+
+
+
     let firstDay = document.getElementById('firstDay');
     let lastDay = document.getElementById('lastDay');
     let limitDay = document.getElementById('limitDay');
@@ -388,27 +406,52 @@
         reader.readAsDataURL(f);
     }
 
-    let photoCount = 1;
+    let photoCount = 0;
+
+    window.onload = function () {
+        photoCount = document.getElementById('photoListCount').value;
+    }
+
 
     function addPhotoField() {
+        console.log('로그 포토카운트');
+        console.log(photoCount);
         if(photoCount > 4){
             alert("최대 5장까지만 추가할 수 있습니다.")
             return;
         }
         // 새로운 레이블 생성
         let newLabel = document.createElement("label");
-        newLabel.setAttribute("id", "movie" + photoCount);
-        newLabel.setAttribute("for", "photo" + photoCount);
+        newLabel.setAttribute("id", "movie_pic" + photoCount);
+        newLabel.setAttribute("for", "movie_photo" + photoCount);
         newLabel.className = "k_funding_upload_select_photo_pic_receive";
-        newLabel.innerHTML = '<i class="fas fa-camera"></i><span class="k_star_class"></span>';
+        var photoUrl = '${photo}';
+        if (photoUrl !== '0') {
+            var imgElement = document.createElement("img");
+            imgElement.src = "${photo}";
+            imgElement.className = "fas fa-camera";
+            newLabel.appendChild(imgElement);
+        } else {
+            var iElement = document.createElement("i");
+            iElement.id = "fa-camera";
+            iElement.className = "fas fa-camera";
+            newLabel.appendChild(iElement);
 
+            var textNode = document.createTextNode("사진 선택 ");
+            newLabel.appendChild(textNode);
+
+            var spanElement = document.createElement("span");
+            spanElement.className = "k_star_class";
+            spanElement.appendChild(document.createTextNode("*"));
+            newLabel.appendChild(spanElement);
+        }
         // 새로운 인풋 필드 생성
         let newInput = document.createElement("input");
         newInput.setAttribute("type", "file");
-        newInput.setAttribute("id", "photo" + photoCount);
+        newInput.setAttribute("id", "movie_photo" + photoCount);
         newInput.setAttribute("name", "moviePhotos");
         newInput.setAttribute("accept", "image/*");
-        newInput.setAttribute("onchange", "changeUserPic(this.id, 'movie" + photoCount + "', 'k_funding_movie_pic_style', event)");
+        newInput.setAttribute("onchange", "changeUserPic(this.id, 'movie_pic" + photoCount + "', 'k_funding_movie_pic_style', event)");
         newInput.className = "k_funding_upload_label";
 
         // 컨테이너에 새로운 레이블과 인풋 필드 추가
@@ -420,16 +463,17 @@
     }
 
     function deletePhotoField() {
-        if(photoCount < 2) {
+        if(photoCount <= 0) {
             alert("더 이상 삭제할 수 없습니다.");
             return;
         }
         // 삭제할 요소의 ID로 해당 요소를 찾아서 제거
-        document.getElementById('movie' + (photoCount - 1)).remove();
-        document.getElementById("photo" + (photoCount - 1)).remove();
+        document.getElementById('movie_pic' + (photoCount-1)).remove();
+        document.getElementById('movie_photo' + (photoCount-1)).remove();
 
         // photoCount 감소
         photoCount--;
+        console.log("포토카운트 : " + photoCount )
     }
 
     let careerCount = 1;
@@ -582,6 +626,14 @@
     function handleClick(element) {
         alert('변경 불가능한 값입니다.');
     }
+
+    // window.onload = function() {
+    //     let photoTotalCount = document.getElementById('')
+    //     // 3번 반복 호출
+    //     for (var i = 1; i <= 3; i++) {
+    //         myFunction(i);
+    //     }
+    // };
 
 
 </script>

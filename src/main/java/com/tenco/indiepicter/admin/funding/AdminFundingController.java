@@ -44,6 +44,8 @@ public class AdminFundingController {
         AdminFundingUpdateFormDTO adminFundingUpdateFormDTO = fundingService.findByIdForAdminFundingModify(id);
         log.debug("=======수정폼 정보조회=========");
         log.debug(adminFundingUpdateFormDTO.toString());
+        log.debug("=======수정폼 포토 출력=========");
+        log.debug("사이즈" + adminFundingUpdateFormDTO.splitStringToList(adminFundingUpdateFormDTO.getMoviePhotos()).size());
         model.addAttribute("adminFundingUpdateFormDTO", adminFundingUpdateFormDTO);
         return "manager/funding_modify";
     }
