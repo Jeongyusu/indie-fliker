@@ -36,7 +36,7 @@
     <title>IndieFliker</title>
 </head>
 <body>
-<form action="/funding-ready/save" method="post" enctype="multipart/form-data">
+<form action="/admin/funding/update" method="post" enctype="multipart/form-data">
 <div class="k_funding_save">
     <p>펀딩 등록하기</p>
 </div>
@@ -55,8 +55,8 @@
                              <i id="fa-camera" class="fas fa-camera"></i>사진 선택 <span class="k_star_class">*</span></label>
                         </c:otherwise>
                     </c:choose>
-                <input type="file" id="thumbnail" accept="image/*" onchange="callMultipleFunctionsAboutThumbnail(this)" class="k_funding_upload_label">
-                <input type="hidden" name="movieThumbnail" value="${adminFundingUpdateFormDTO.movieThumbnail}">
+                <input type="file" id="thumbnail" name="movieThumbnail" accept="image/*" onchange="callMultipleFunctionsAboutThumbnail(this)" class="k_funding_upload_label">
+                <input type="hidden" value="${adminFundingUpdateFormDTO.movieThumbnail}">
 
             </div>
                 <br>
@@ -109,7 +109,7 @@
             <div class="k_funding_make_year k_funding_upload_movie_schedule">제작 년도
                 <span class="k_star_class">*</span>
             </div>
-            <input id="k_place_holder" type="text" class="k_funding_upload_schedule_date" placeholder="제작년도" name="makeYear" value="${adminFundingUpdateFormDTO.makeYear}">
+            <input id="j_make_year" type="text" class="k_funding_upload_schedule_date" placeholder="제작년도" name="makeYear" value="${adminFundingUpdateFormDTO.makeYear}">
         </div>
 
         <div class="k_funding_genre_container">
@@ -138,7 +138,10 @@
             <input type="hidden" id="careerCount" value="${adminFundingUpdateFormDTO.splitStringToListCustom(adminFundingUpdateFormDTO.directorCareers).size()}">
             <input type="hidden" id="awardsCount" value="${adminFundingUpdateFormDTO.splitStringToListCustom(adminFundingUpdateFormDTO.directorAwards).size()}">
             <input type="hidden" id="actorCount" value="${adminFundingUpdateFormDTO.parseActor().get(0).size()}">
-
+            <input type="hidden" name="fundingId" value="${adminFundingUpdateFormDTO.fundingId}">
+            <input type="hidden" name="movieId" value="${adminFundingUpdateFormDTO.movieId}">
+            <input type="hidden" name="movieStaffId" value="${adminFundingUpdateFormDTO.movieStaffId}">
+            <input type="hidden" name="moviePhotoId" value="${adminFundingUpdateFormDTO.moviePhotoId}">
         </div>
 
 
@@ -713,6 +716,13 @@
             inputElement.value = defaultValue;
         }
     }
+
+    let makeYear = document.getElementById('j_make_year');
+    flatpickr(makeYear, {
+        dateFormat: "Y",
+        minDate: "today",
+        maxDate: "2030-01-01", // 현재 월의 말일까지
+    });
 
 
 </script>

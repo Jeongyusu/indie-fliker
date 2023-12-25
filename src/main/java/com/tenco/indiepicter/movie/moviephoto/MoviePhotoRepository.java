@@ -11,4 +11,6 @@ public interface MoviePhotoRepository {
     // moviePhoto 조회
     public List<MoviePhoto> findByMovieId(Integer movieId);
 
+    // 어드민페이지 영화 포토 업데이트
+    public int updateById(MoviePhoto moviePhoto);
 }

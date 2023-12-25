@@ -1,8 +1,11 @@
 package com.tenco.indiepicter.admin.funding;
 
+import com.tenco.indiepicter._core.utils.Script;
 import com.tenco.indiepicter.funding.FundingService;
 import com.tenco.indiepicter.funding.fundingready.FundingReady;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyService;
+import com.tenco.indiepicter.funding.request.AdminRequestFundingUpdateFormDTO;
+import com.tenco.indiepicter.funding.request.FundingSaveDTO;
 import com.tenco.indiepicter.funding.response.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +71,11 @@ public class AdminFundingController {
         return "manager/playoffday";
     }
 
-
+    @PostMapping("/funding/update")
+    public @ResponseBody String saveFunding(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO){
+        fundingService.updateById(adminRequestFundingUpdateFormDTO);
+        return Script.href("/admin/funding-management", "펀딩 업데이트 성공!");
+    }
 
 
 

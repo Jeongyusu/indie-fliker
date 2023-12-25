@@ -1,5 +1,6 @@
 package com.tenco.indiepicter.funding;
 
+import com.tenco.indiepicter.funding.request.AdminRequestFundingUpdateFormDTO;
 import com.tenco.indiepicter.funding.response.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -52,4 +53,7 @@ public interface FundingRepository {
 
     // 어드민 펀딩 수정 폼 정보조회
     public AdminFundingUpdateFormDTO findByIdForAdminFundingModify(Integer id);
+
+    // 어드민 페이지 펀딩 수정 업데이트
+    public int updateByIdForAdmin(Funding funding);
 }

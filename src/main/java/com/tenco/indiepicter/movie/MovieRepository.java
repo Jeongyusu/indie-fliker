@@ -1,5 +1,7 @@
 package com.tenco.indiepicter.movie;
 
+import com.tenco.indiepicter.funding.request.AdminRequestFundingUpdateFormDTO;
+import com.tenco.indiepicter.funding.response.AdminFundingUpdateFormDTO;
 import com.tenco.indiepicter.movie.request.OfflineOpenDateSettingDTO;
 import com.tenco.indiepicter.movie.request.OnlineOpenDateSettingDTO;
 import com.tenco.indiepicter.movie.response.OfflineStreamingDateSettingDTO;
@@ -31,5 +33,7 @@ public interface MovieRepository {
     // 오프라인 상영기간 설정
     public int updateOffMovieOpenDate(OfflineOpenDateSettingDTO offlineOpenDateSettingDTO);
 
+    // 어드민 페이지 영화 수정
+    public int updateById(Movie movie);
 
 }

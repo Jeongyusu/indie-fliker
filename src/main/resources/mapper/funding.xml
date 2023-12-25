@@ -318,6 +318,12 @@
         where curdate() > ft.end_date
     </select>
 
+    <!-- 어드민 페이지 펀딩 수정하기-->
+    <update id="updateByIdForAdmin">
+        update funding_tb ft set release_date = #{releaseDate}, end_date = #{endDate}, target_price = ${targetPrice}, price_per_onetime = #{pricePerOneTime}
+        where id = #{fundingId}
+    </update>
+
 
 
 

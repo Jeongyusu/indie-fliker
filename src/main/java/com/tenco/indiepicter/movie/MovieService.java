@@ -4,7 +4,9 @@ import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
 import com.tenco.indiepicter._core.utils.DateUtil;
 import com.tenco.indiepicter._core.utils.PicToStringUtil;
 import com.tenco.indiepicter._core.utils.StringUtil;
+import com.tenco.indiepicter.funding.request.AdminRequestFundingUpdateFormDTO;
 import com.tenco.indiepicter.funding.request.FundingSaveDTO;
+import com.tenco.indiepicter.funding.response.AdminFundingUpdateFormDTO;
 import com.tenco.indiepicter.movie.request.OfflineOpenDateSettingDTO;
 import com.tenco.indiepicter.movie.request.OnlineOpenDateSettingDTO;
 import com.tenco.indiepicter.movie.response.OfflineStreamingDateSettingDTO;
@@ -96,6 +98,32 @@ public class MovieService {
         }
         return resultRowCount;
     }
+
+    @Transactional
+    public int updateById(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO) {
+       Movie movie = Movie.builder()
+               .makeYear(adminRequestFundingUpdateFormDTO.getMakeYear())
+               .production(adminRequestFundingUpdateFormDTO.getProduction())
+               .movieName(adminRequestFundingUpdateFormDTO.getMovieTitle())
+               .synopsis(adminRequestFundingUpdateFormDTO.getSynopsis())
+               .thumbnail(PicToStringUtil.picToString(adminRequestFundingUpdateFormDTO.getMovieThumbnail()))
+               .directingIntension(adminRequestFundingUpdateFormDTO.getDirectingIntension())
+               .genre(adminRequestFundingUpdateFormDTO.getGenre())
+               .runningGrade(adminRequestFundingUpdateFormDTO.getRunningGrade())
+               .director(adminRequestFundingUpdateFormDTO.getStaff().getDirector())
+               .directorPic(PicToStringUtil.picToString(adminRequestFundingUpdateFormDTO.getDirectorPhoto()))
+               .actor(StringUtil.stringJoin(StringUtil.listToString(adminRequestFundingUpdateFormDTO.getActors()), StringUtil.listToString(adminRequestFundingUpdateFormDTO.getActorRoles())))
+               .directorCareers(StringUtil.stringBrJoin(StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorCareers()), StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorCareerYears())))
+               .directorAwardsFilm(StringUtil.stringBrJoin(StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorAwards()), StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorAwardYears())))
+               .dDay(DateUtil.stringToDate(adminRequestFundingUpdateFormDTO.getDDay()))
+               .build();
+        int resultRowCount = movieRepository.updateById(movie);
+        if (resultRowCount != 1) {
+            throw new MyDynamicException("영화 업데이트 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return resultRowCount;
+    }
+
 }
 
 
