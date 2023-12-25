@@ -137,6 +137,7 @@
             <input type="hidden" id="photoListCount" value="${adminFundingUpdateFormDTO.splitStringToList(adminFundingUpdateFormDTO.moviePhotos).size()}">
             <input type="hidden" id="careerCount" value="${adminFundingUpdateFormDTO.splitStringToListCustom(adminFundingUpdateFormDTO.directorCareers).size()}">
             <input type="hidden" id="awardsCount" value="${adminFundingUpdateFormDTO.splitStringToListCustom(adminFundingUpdateFormDTO.directorAwards).size()}">
+            <input type="hidden" id="actorCount" value="${adminFundingUpdateFormDTO.parseActor().get(0).size()}">
 
         </div>
 
@@ -224,12 +225,12 @@
                     <br>
                 <div class="k_funding_directer_career">
                     <div id="career_movies" class="k_career_movie_style">
-                        <c:forEach var="careerMovie" items="${adminFundingUpdateFormDTO.extractNames(adminFundingUpdateFormDTO.splitStringToListCustom(adminFundingUpdateFormDTO.directorCareers))}" varStatus="status">
+                        <c:forEach var="careerMovie" items="${adminFundingUpdateFormDTO.extractNames()}" varStatus="status">
                             <input type=text id="career_movie${status.index}" class="k_funding_upload_career_input" placeholder="작품 이름" name="directorCareers" value="${careerMovie}"}>
                         </c:forEach>
                     </div>
                     <div id="career_movie_years" class="k_funding_upload_head_limit">
-                        <c:forEach var="careerYear" items="${adminFundingUpdateFormDTO.extractYears(adminFundingUpdateFormDTO.splitStringToListCustom(adminFundingUpdateFormDTO.directorCareers))}" varStatus="status">
+                        <c:forEach var="careerYear" items="${adminFundingUpdateFormDTO.extractYears()}" varStatus="status">
                             <input type="text" id="career_movie_year${status.index}"  class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorCareerYears" value="${careerYear}">
                         </c:forEach>
 
@@ -249,12 +250,12 @@
         </div>
             <div class="k_funding_directer_career">
                 <div id="awards_movie" class="k_career_movie_style">
-                    <c:forEach var="award" items="${adminFundingUpdateFormDTO.extractNames2()}" varStatus="status">
+                    <c:forEach var="award" items="${adminFundingUpdateFormDTO.extractAwardTitles()}" varStatus="status">
                         <input type=text id="awards_movie${status.index}" class="k_funding_awards_movie_input" placeholder="작품 이름" name="directorAwards" value="${award}">
                     </c:forEach>
                 </div>
                 <div id="awards_movie_year" class="k_funding_upload_head_limit">
-                    <c:forEach var="awardYear" items="${adminFundingUpdateFormDTO.extractYears2()}" varStatus="status">
+                    <c:forEach var="awardYear" items="${adminFundingUpdateFormDTO.extractAwardYears()}" varStatus="status">
                         <input type="text" id="awards_movie_year${status.index}" class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorAwardYears" value="${awardYear}">
                     </c:forEach>
                 </div>
@@ -278,10 +279,14 @@
         </div>
         <div class="k_funding_directer_career">
             <div id="movie_actor" class="k_career_movie_style">
-                <input type=text class="k_funding_awards_movie_input" placeholder="배우 이름" name="actors">
+                <c:forEach var="actorName" items="${adminFundingUpdateFormDTO.parseActor().get(0)}" varStatus="status">
+                    <input type=text id="movie_actor${status.index}" class="k_funding_awards_movie_input" placeholder="배우 이름" name="actors" value="${actorName}">
+                </c:forEach>
             </div>
             <div id="movie_actor_role" class="k_funding_upload_head_limit">
-                <input type="text" class="k_funding_upload_movie_year" placeholder="배역" name="actorRoles">
+                <c:forEach var="actorRole" items="${adminFundingUpdateFormDTO.parseActor().get(1)}" varStatus="status">
+                    <input type="text" id="movie_actor_role${status.index}" class="k_funding_upload_movie_year" placeholder="배역" name="actorRoles" oninput="setDefaultIfEmpty(this, '미정')" value="${actorRole}">
+                </c:forEach>
             </div>
         </div>
 
@@ -427,6 +432,7 @@
     let careerCount = 0;
     let awardsCount = 0;
     let photoCount = 0;
+    let actorCount = 0;
     var serverTargetPrice = document.getElementById('j_target_price').value;
     var serverRunningGrade = document.getElementById('j_running_grade').value;
     let serverGenre = document.getElementById('j_genre').value;
@@ -434,7 +440,8 @@
     window.onload = function () {
         careerCount = document.getElementById('careerCount').value;
         photoCount = document.getElementById('photoListCount').value;
-        awardsCount = document.getElementById('awardsCount')
+        awardsCount = document.getElementById('awardsCount').value;
+        actorCount = document.getElementById('actorCount').value;
         console.log("안녕하세요" + careerCount)
 
         // JavaScript로 옵션 선택
@@ -570,7 +577,10 @@
     }
 
     function minusCareerMovie(){
-
+        if(careerCount < 1) {
+            alert("더 이상 삭제할 수 없습니다.");
+            return;
+        }
         document.getElementById('career_movie' + (careerCount - 1)).remove();
         document.getElementById('career_movie_year' + (careerCount - 1)).remove();
         document.getElementById('k_cm_margin_top' + (careerCount - 1)).remove();
@@ -615,7 +625,7 @@
     }
 
     function minusAwardsMovie(){
-        if(awardsCount < 2) {
+        if(awardsCount < 1) {
             alert("더 이상 삭제할 수 없습니다.");
             return;
         }
@@ -627,9 +637,6 @@
         // awardsCount 감소
         awardsCount--;
     }
-
-    let actorCount = 1;
-
 
     function plusActor(){
         if(actorCount > 9) {
@@ -663,7 +670,7 @@
     }
 
     function minusActor(){
-        if(actorCount < 2) {
+        if(actorCount < 1) {
             alert("더 이상 삭제할 수 없습니다.");
             return;
         }
@@ -699,6 +706,12 @@
     function callMultipleFunctionsAboutThumbnail(inputFile) {
         updateHiddenInput(inputFile);
         changeUserPic('thumbnail', 'basicPic', 'k_funding_thumbnail_style', event);
+    }
+
+    function setDefaultIfEmpty(inputElement, defaultValue) {
+        if (inputElement.value === '') {
+            inputElement.value = defaultValue;
+        }
     }
 
 

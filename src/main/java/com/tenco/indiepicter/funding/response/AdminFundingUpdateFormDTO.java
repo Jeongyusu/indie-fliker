@@ -44,7 +44,8 @@ public class AdminFundingUpdateFormDTO {
         return Arrays.asList(input.split("</br>"));
     }
 
-    public List<String> extractNames(List<String> inputList) {
+    public List<String> extractNames() {
+        List<String> inputList = splitStringToListCustom(this.directorCareers);
         List<String> names = new ArrayList<>();
 
         Pattern p = Pattern.compile("\\[(.*?)\\]");
@@ -58,9 +59,9 @@ public class AdminFundingUpdateFormDTO {
         return names;
     }
 
-    public List<String> extractYears(List<String> inputList) {
+    public List<String> extractYears() {
+        List<String> inputList = splitStringToListCustom(this.directorCareers);
         List<String> years = new ArrayList<>();
-
         Pattern p = Pattern.compile("\\((.*?)\\)");
         for (String input : inputList) {
             Matcher m = p.matcher(input);
@@ -72,7 +73,7 @@ public class AdminFundingUpdateFormDTO {
         return years;
     }
 
-    private List<String> extractNames2() {
+    public List<String> extractAwardTitles() {
         List<String> inputList = splitStringToListCustom(this.directorAwards);
         List<String> titles = new ArrayList<>();
         Pattern pattern = Pattern.compile("(.+?)\\(\\d+\\)");
@@ -85,7 +86,7 @@ public class AdminFundingUpdateFormDTO {
         return titles;
     }
 
-    private List<String> extractYears2() {
+    public List<String> extractAwardYears() {
         List<String> inputList = splitStringToListCustom(this.directorAwards);
         List<String> years = new ArrayList<>();
         Pattern pattern = Pattern.compile("\\((\\d+)\\)");
@@ -96,6 +97,30 @@ public class AdminFundingUpdateFormDTO {
             }
         }
         return years;
+    }
+
+    public List<List<String>> parseActor() {
+        List<List<String>> resultList = new ArrayList<>();
+
+        String[] tokens = this.actor.split(",");
+        Pattern pattern = Pattern.compile("(.+?)(?:\\((.*?)\\))?");
+
+        List<String> firstPartList = new ArrayList<>();
+        List<String> secondPartList = new ArrayList<>();
+
+        for (String token : tokens) {
+            Matcher matcher = pattern.matcher(token.trim());
+            if (matcher.matches()) {
+                firstPartList.add(matcher.group(1));
+                String secondPart = matcher.group(2);
+                secondPartList.add((secondPart != null ? secondPart : "미정"));
+            }
+        }
+
+        resultList.add(firstPartList);
+        resultList.add(secondPartList);
+
+        return resultList;
     }
 
 
