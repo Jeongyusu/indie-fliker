@@ -159,7 +159,7 @@
     // 모달 닫기
     function closeModal(id) {
         document.getElementById('j_fund_modify_modal' + id).style.display = 'none';
-
+        window.location.reload();
     }
 </script>
 </body>

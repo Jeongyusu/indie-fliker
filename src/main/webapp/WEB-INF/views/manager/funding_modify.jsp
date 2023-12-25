@@ -55,7 +55,7 @@
                              <i id="fa-camera" class="fas fa-camera"></i>사진 선택 <span class="k_star_class">*</span></label>
                         </c:otherwise>
                     </c:choose>
-                <input type="file" id="thumbnail" accept="image/*" onchange="changeUserPic(this.id, 'basicPic', 'k_funding_thumbnail_style', event)" class="k_funding_upload_label">
+                <input type="file" id="thumbnail" accept="image/*" onchange="callMultipleFunctionsAboutThumbnail(this)" class="k_funding_upload_label">
                 <input type="hidden" name="movieThumbnail" value="${adminFundingUpdateFormDTO.movieThumbnail}">
 
             </div>
@@ -134,6 +134,8 @@
             <input type="hidden" id="j_target_price" value="${adminFundingUpdateFormDTO.targetPrice}">
             <input type="hidden" id="j_running_grade" value="${adminFundingUpdateFormDTO.runningGrade}">
             <input type="hidden" id="j_genre" value="${adminFundingUpdateFormDTO.genre}">
+            <input type="hidden" id="photoListCount" value="${adminFundingUpdateFormDTO.splitStringToList(adminFundingUpdateFormDTO.moviePhotos).size()}">
+            <input type="hidden" id="careerCount" value="${adminFundingUpdateFormDTO.splitStringToListCustom(adminFundingUpdateFormDTO.directorCareers).size()}">
         </div>
 
 
@@ -173,7 +175,6 @@
         </div>
 
         <div id="pic_plus" class="k_funding_upload_container_four">
-            <input type="hidden" id="photoListCount" value="${adminFundingUpdateFormDTO.splitStringToList(adminFundingUpdateFormDTO.moviePhotos).size()}">
              <c:forEach var="photo" items="${adminFundingUpdateFormDTO.splitStringToList(adminFundingUpdateFormDTO.moviePhotos)}" varStatus="status">
                  <label id="movie_pic${status.index}" for="movie_photo${status.index}" class="k_funding_upload_select_photo_pic">
                  <c:choose>
@@ -220,11 +221,16 @@
                     <input type="file" id="director_photo" name="directorPhoto" accept="image/*" onchange="changeUserPic(this.id, 'director_pic', 'k_funding_movie_director_style', event)" class="k_funding_upload_label">
                     <br>
                 <div class="k_funding_directer_career">
-                    <div id="career_movie" class="k_career_movie_style">
-                        <input type=text class="k_funding_upload_career_input" placeholder="작품 이름" name="directorCareers">
+                    <div id="career_movies" class="k_career_movie_style">
+                        <c:forEach var="careerMovie" items="${adminFundingUpdateFormDTO.extractNames(adminFundingUpdateFormDTO.splitStringToListCustom(adminFundingUpdateFormDTO.directorCareers))}" varStatus="status">
+                            <input type=text id="career_movie${status.index}" class="k_funding_upload_career_input" placeholder="작품 이름" name="directorCareers" value="${careerMovie}"}>
+                        </c:forEach>
                     </div>
-                    <div id="career_movie_year" class="k_funding_upload_head_limit">
-                    <input type="text" class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorCareerYears">
+                    <div id="career_movie_years" class="k_funding_upload_head_limit">
+                        <c:forEach var="careerYear" items="${adminFundingUpdateFormDTO.extractYears(adminFundingUpdateFormDTO.splitStringToListCustom(adminFundingUpdateFormDTO.directorCareers))}" varStatus="status">
+                            <input type="text" id="career_movie_year${status.index}"  class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorCareerYears" value="${careerYear}">
+                        </c:forEach>
+
                     </div>
                 </div>
         </div>
@@ -411,14 +417,17 @@
         }
         reader.readAsDataURL(f);
     }
-
+    let careerCount = 0;
     let photoCount = 0;
     var serverTargetPrice = document.getElementById('j_target_price').value;
     var serverRunningGrade = document.getElementById('j_running_grade').value;
     let serverGenre = document.getElementById('j_genre').value;
 
     window.onload = function () {
+        careerCount = document.getElementById('careerCount').value;
         photoCount = document.getElementById('photoListCount').value;
+        console.log("안녕하세요" + careerCount)
+
         // JavaScript로 옵션 선택
         var selectTargetPrice = document.getElementById('j_target_price_select');
         for (var i = 0; i < selectTargetPrice.options.length; i++) {
@@ -442,6 +451,14 @@
                 selectGenre.options[i].selected = true;
                 break;
             }
+        }
+
+        for (var i = 0; i< careerCount; i++) {
+            let marginTopPx = 47 * (i);
+            let InputMarginTop = document.createElement("div");
+            InputMarginTop.setAttribute("id", "k_cm_margin_top" + i);
+            InputMarginTop.setAttribute("style", "margin-top: " + marginTopPx + "px;");
+            document.getElementById("k_cm_margin_top").appendChild(InputMarginTop);
         }
     }
 
@@ -509,7 +526,6 @@
         console.log("포토카운트 : " + photoCount )
     }
 
-    let careerCount = 1;
 
     //
     function plusCareerMovie(){
@@ -538,25 +554,22 @@
 
 
         // 컨테이너에 새로운 레이블과 인풋 필드 추가
-        document.getElementById("career_movie").appendChild(InputCm);
-        document.getElementById("career_movie_year").appendChild(InputCmY);
+        document.getElementById("career_movies").appendChild(InputCm);
+        document.getElementById("career_movie_years").appendChild(InputCmY);
         document.getElementById("k_cm_margin_top").appendChild(InputMarginTop);
         careerCount++;
     }
 
     function minusCareerMovie(){
-        if(careerCount < 2) {
-            alert("더 이상 삭제할 수 없습니다.");
-            return;
-        }
-        // 삭제할 요소의 ID로 해당 요소를 찾아서 제거
-        document.getElementById('career_movie' + (careerCount- 1)).remove();
-        document.getElementById("career_movie_year" + (careerCount - 1)).remove();
-        document.getElementById("k_cm_margin_top" + (careerCount - 1)).remove();
+
+        document.getElementById('career_movie' + (careerCount - 1)).remove();
+        document.getElementById('career_movie_year' + (careerCount - 1)).remove();
+        document.getElementById('k_cm_margin_top' + (careerCount - 1)).remove();
 
 
         // careerCount 감소
         careerCount--;
+        console.log("커리어카운트" + careerCount)
     }
 
     let awardsCount = 1;
