@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import com.tenco.indiepicter.invitation.Invitation;
+import com.tenco.indiepicter.user.request.MailDTO;
 import org.apache.http.client.methods.HttpHead;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,10 +25,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -213,11 +211,11 @@ public class UserController {
 		log.debug("tencokey = " + tencokey);
 		log.debug("------------------------------");
 		
-		User oldUser = this.userService.UserEmail(dto.getUserEmail());
+		User oldUser = this.userService.kakaoUserEmail(dto.getUserEmail());
 		
 		if(oldUser == null) {
 			this.userService.join(dto); // 회원가입 자동 처리
-			oldUser = this.userService.UserEmail(dto.getUserEmail()); // olduser의 email정보 유지
+			oldUser = this.userService.kakaoUserEmail(dto.getUserEmail()); // olduser의 email정보 유지
 
 			log.debug("---------------------------");
 			log.debug("여기" + oldUser + "여기");
@@ -360,10 +358,45 @@ public class UserController {
 	}
 
 //----------------------------------------------------------------------------------------------------------------
+	
+	// 이메일, 비밀번호 찾기 페이지
+	@GetMapping("/find-email-pw")
+	public String find(Model model) {
+		return "user/find_email_pw";
+	}
 
-// 12-22 18:22 학원 작업 끝~~
+	// 이메일 찾기
+	@PostMapping("/find-email")
+	@ResponseBody
+	public String findEmail(@RequestParam String username, @RequestParam String tel) {
+		log.debug("-----------------진입확인-------------------");
+		// 이름 유효성 검사
+		if(username == null || username.isEmpty()) {
+			throw new MyDynamicException("이름을 입력하세요.", HttpStatus.BAD_REQUEST);
+		}
+		// 전화번호 유효성 검사
+		if(tel == null || tel.isEmpty()) {
+			throw new MyDynamicException("전화번호를 입력하세요.", HttpStatus.BAD_REQUEST);
+		}
+
+		String userEmail = this.userService.userEmail(username, tel);
+		
+		return userEmail;
+	}
+
+	// 이메일 보내기 (임시 비밀번호 전송)
+	@PostMapping("/sendEmail")
+	public String sendEmail(@RequestParam String userEmail){
+
+		MailDTO dto =  this.userService.sendEail(userEmail);
+		this.userService.mailSend(dto);
+
+		return "redirect:/user/login";
+	}
 
 //----------------------------------------------------------------------------------------------------------------
+
+	// 12 - 26 12:33 학원 작업중 ~~
 }
 
 
