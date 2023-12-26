@@ -34,6 +34,7 @@
 			</div>
 		</form>
 		<a href="/user/find-email-pw" class="k_forget">로그인 정보를 잊으셨나요?</a>
+		<a href="/user/password-update" class="k_forget">비밀번호 변경하기</a>
 		<div class="k_no_id_aligin">
 			<div class="k_no_id">아직 인디픽터 계정이 없나요?</div>
 			<a href="/user/join" class="k_join">회원가입</a>
