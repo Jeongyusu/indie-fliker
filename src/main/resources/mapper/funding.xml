@@ -57,6 +57,24 @@
         <result property="production" column="production"/>
     </resultMap>
 
+    <select id="findAllByOffAir" resultMap="OffAirMovieDTOResultMap">
+        select mt.thumbnail, ft.id as funding_id, mt.movie_name, mt.synopsis, mt.running_grade, mt.offline_release_date, mt.offline_end_date, ft.present_price * 100 / ft.target_price funding_rate, mt.production
+        from funding_tb ft
+                 join movie_tb mt on ft.movie_id = mt.id
+        where curdate() BETWEEN mt.offline_release_date AND mt.offline_end_date
+    </select>
+    <resultMap id="OffAirMovieDTOResultMap" type="com.tenco.indiepicter.funding.response.OffAirMovieDTO">
+        <result property="movieThumbnail" column="thumbnail"/>
+        <result property="fundingId" column="funding_id"/>
+        <result property="movieName" column="movie_name"/>
+        <result property="runningGrade" column="running_grade"/>
+        <result property="synopsis" column="synopsis"/>
+        <result property="onlineReleaseDate" column="online_release_date"/>
+        <result property="onlineEndDate" column="online_end_date"/>
+        <result property="fundingRate" column="funding_rate"/>
+        <result property="production" column="production"/>
+    </resultMap>
+
     <select id="findAllByOnAirAndRanking" resultMap="OnAirMovieRankingDTOResultMap">
         select mt.thumbnail, ft.id as funding_id, mt.movie_name, mt.synopsis, mt.running_grade, mt.online_release_date, mt.online_end_date, ft.present_price * 100 / ft.target_price funding_rate, mt.production
         from funding_tb ft
@@ -72,11 +90,64 @@
         <result property="movieName" column="movie_name"/>
         <result property="runningGrade" column="running_grade"/>
         <result property="synopsis" column="synopsis"/>
-        <result property="onlineReleaseDate" column="online_release_date"/>
-        <result property="onlineEndDate" column="online_end_date"/>
+        <result property="offlineReleaseDate" column="offline_release_date"/>
+        <result property="offlineEndDate" column="offline_end_date"/>
         <result property="fundingRate" column="funding_rate"/>
         <result property="production" column="production"/>
     </resultMap>
+
+    <select id="findAllByOffAirAndRanking" resultMap="OffAirMovieRankingDTOResultMap">
+        select mt.thumbnail, ft.id as funding_id, mt.movie_name, mt.synopsis, mt.running_grade, mt.offline_release_date, mt.offline_end_date, ft.present_price * 100 / ft.target_price funding_rate, mt.production
+        from funding_tb ft
+                 join movie_tb mt on ft.movie_id = mt.id
+        where curdate() BETWEEN mt.offline_release_date AND mt.offline_end_date
+        order by ft.present_price desc
+            limit 4
+    </select>
+
+    <resultMap id="OffAirMovieRankingDTOResultMap" type="com.tenco.indiepicter.funding.response.OffAirMovieRankingDTO">
+        <result property="movieThumbnail" column="thumbnail"/>
+        <result property="fundingId" column="funding_id"/>
+        <result property="movieName" column="movie_name"/>
+        <result property="runningGrade" column="running_grade"/>
+        <result property="synopsis" column="synopsis"/>
+        <result property="offlineReleaseDate" column="offline_release_date"/>
+        <result property="offlineEndDate" column="offline_end_date"/>
+        <result property="fundingRate" column="funding_rate"/>
+        <result property="production" column="production"/>
+    </resultMap>
+
+    <select id="findByOnlineDDay" resultMap="FindByOnlineDDayDTOResultMap">
+    <![CDATA[
+        select
+            mt.thumbnail,
+            ft.id as funding_id,
+            mt.movie_name,
+            mt.synopsis,
+            mt.running_grade,
+            mt.d_day,
+            ft.present_price * 100 / ft.target_price as funding_rate,
+            mt.production
+        from
+            funding_tb ft
+                join movie_tb mt on ft.movie_id = mt.id
+        where
+            curdate() < mt.d_day
+        order by
+            mt.d_day asc
+        ]]>
+    </select>
+    <resultMap id="FindByOnlineDDayDTOResultMap" type="com.tenco.indiepicter.funding.response.OnDDayMovieDTO">
+        <result property="movieThumbnail" column="thumbnail"/>
+        <result property="fundingId" column="funding_id"/>
+        <result property="movieName" column="movie_name"/>
+        <result property="runningGrade" column="running_grade"/>
+        <result property="synopsis" column="synopsis"/>
+        <result property="dDay" column="d_day"/>
+        <result property="fundingRate" column="funding_rate"/>
+        <result property="production" column="production"/>
+    </resultMap>
+
 
     <select id="findByFundingIdAboutDetailFunding" resultMap="FundingDetailDTOResultOMap">
         select ft.id, mt.id as movie_id, mt.thumbnail, mt.genre, (ft.present_price * 100 / ft.target_price) funding_rate, (ft.end_date - ft.release_date) rest_period,

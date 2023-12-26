@@ -8,7 +8,8 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class OnAirTotalDTO {
-    List<OnAirMovieDTO> onAirMovieDTOs;
-    List<OnAirMovieRankingDTO> onAirMovieRankingDTOs;
+public class OffAirTotalDTO {
+    List<OffAirMovieDTO> offAirMovieDTOs;
+    List<OffAirMovieRankingDTO> offAirMovieRankingDTOs;
+    List<TheaterListDTO> theaterListDTOs;
 }

@@ -66,10 +66,30 @@ public class FundingController {
 
     @GetMapping("/on-air")
     public String onAirMovies(Model model){
-        OnAirTotalDTO onAirTotalDTO = new OnAirTotalDTO(fundingService.onAirMovies(), fundingService.onAirRankedMovies(), theaterService.mainPageTheaters());
+        OnAirTotalDTO onAirTotalDTO = new OnAirTotalDTO(fundingService.onAirMovies(), fundingService.onAirRankedMovies());
         model.addAttribute("onAirTotalDTO", onAirTotalDTO);
         return "main/main";
     }
+
+    @GetMapping("/on-dday")
+    public String onDDayMovies(Model model){
+        List<OnDDayMovieDTO> onDDayMovieDTOs = fundingService.onDDayMovies();
+        model.addAttribute("onDDayMovieDTOs", onDDayMovieDTOs);
+        return "main/on_movie_d_day_list";
+    }
+
+    @GetMapping("/off-air")
+    public String offAirMovies(Model model){
+        OffAirTotalDTO offAirTotalDTO = new OffAirTotalDTO(fundingService.offAirMovies(), fundingService.offAirRankedMovies(), theaterService.mainPageTheaters());
+        System.out.println("===============================================");
+        System.out.println("off" + offAirTotalDTO.getOffAirMovieRankingDTOs().toString());
+        System.out.println("===============================================");
+        model.addAttribute("offAirTotalDTO", offAirTotalDTO);
+        return "main/off_movie_main";
+    }
+
+
+
 
     @GetMapping("/funding/{id}")
     public String detailFunding(@PathVariable Integer id, Model model){

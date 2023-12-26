@@ -60,6 +60,18 @@ public class FundingService {
         return fundingRepository.findAllByOnAirAndRanking();
     }
 
+    public List<OnDDayMovieDTO> onDDayMovies() {
+        return fundingRepository.findByOnlineDDay();
+    }
+
+    public List<OffAirMovieDTO> offAirMovies() {
+        return fundingRepository.findAllByOffAir();
+    }
+
+    public List<OffAirMovieRankingDTO> offAirRankedMovies() {
+        return fundingRepository.findAllByOffAirAndRanking();
+    }
+
     public FundingDetailDTO detailFunding(Integer fundingId) {
         return fundingRepository.findByFundingIdAboutDetailFunding(fundingId);
     }
