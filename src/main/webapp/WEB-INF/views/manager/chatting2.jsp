@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -6,10 +7,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 페이지 - 채팅방 ( chatting ) 완료!</title>
-    
+
     <!-- style.css와 연결 -->
-    <link rel="stylesheet" href="/css/png_style.css">
-    
+    <link rel="stylesheet" href="/css/style.css">
+
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
                            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
@@ -19,6 +20,11 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 달력 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">
 
 </head>
 <body>
@@ -84,132 +90,67 @@
                 </ul>
                 <div class="p_line"></div>
             </div>
-
-            <!-- <div class="p_section5">
-                <i class="fa-solid fa-gear p_icon1"></i>
-                <a href="">환경설정</a>
-            </div> -->
-
         </div>
-        <!--컨테이너1 끝-->
-
-
-
-        <!--컨테이너2 시작-->
-        <div class="p_chatting_container2">
-
-            <div class="p_section1">
-                <div class="p_menu1">
-                    <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
-                    <p class="p_p1">그대들은 어떻게 살 것인가?</p>
-                    <p class="p_p2">200% 달성</p>
-                    <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop">채팅방 오픈</button>
-                </div>
-                <div class="p_menu1">
-                    <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
-                    <p class="p_p1">영화 제목</p>
-                    <p class="p_p2">달성률</p>
-                    <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop">채팅방 오픈</button>
-                </div>
-                <div class="p_menu1">
-                    <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
-                    <p class="p_p1">영화 제목</p>
-                    <p class="p_p2">달성률</p>
-                    <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop">채팅방 오픈</button>
-                </div>
-                <div class="p_menu1">
-                    <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
-                    <p class="p_p1">영화 제목</p>
-                    <p class="p_p2">달성률</p>
-                    <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop">채팅방 오픈</button>
+        <div class="n_admin_container">
+            <c:forEach var="funding" items="${adminOnFundingListDTOs}" varStatus="status">
+            <div class="n_menu1">
+                <input type="hidden" name="movieId" value="${funding.movieId}">
+                <img src="${funding.thumbnail}" alt="">
+                <p class="n_on_p1">${funding.movieName}</p>
+                <p class="n_on_p2">펀딩 날짜
+                    <br>
+                    ${funding.formatToReleaseDate()} ~ ${funding.formatToEndDate()}
+                </p>
+                <div class="n_button">
+                    <button type="button" class="btn n_modal_button" data-toggle="modal" data-target="#myModal${funding.movieId}">온라인 등록</button>
                 </div>
             </div>
-
-            <div class="p_section2">
-                <div class="p_menu2">
-                    <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
-                    <p class="p_p1">영화 제목</p>
-                    <p class="p_p2">달성률</p>
-                    <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop">채팅방 오픈</button>
-                </div>
-                <div class="p_menu2">
-                    <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
-                    <p class="p_p1">영화 제목</p>
-                    <p class="p_p2">달성률</p>
-                    <a href=""><button>채팅방 오픈</button></a>
-                </div>
-                <div class="p_menu2">
-                    <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
-                    <p class="p_p1">영화 제목</p>
-                    <p class="p_p2">달성률</p>
-                    <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop">채팅방 오픈</button>
-                </div>
-                <div class="p_menu2">
-                    <img src="https://cdn.pixabay.com/photo/2014/10/16/09/15/lens-490806_640.jpg" alt="">
-                    <p class="p_p1">영화 제목</p>
-                    <p class="p_p2">달성률</p>
-                    <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop">채팅방 오픈</button>
-                </div>
-            </div>
-            
+            </c:forEach>
         </div>
-        <!--컨테이너2 끝-->
-
-        <div class="p_chatting_bottom">
-            <nav aria-label="...">
-                <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link previous" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item paging">
-                    <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item active paging" aria-current="page" style="color:#01DFD7;">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item paging">
-                    <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item paging">
-                    <a class="page-link" href="#">4</a>
-                </li>
-                <li class="page-item paging">
-                    <a class="page-link" href="#">5</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link next" href="#">Next</a>
-                </li>
-                </ul>
-            </nav>  
-        </div>
-		
-		<!-- 채팅방 오픈 모달창 -->
-		<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="staticBackdropLabel">채팅방 오픈</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		      </div>
-		      <div class="modal-body">
-		        <div class="p">
-		          <p class="movie-title"></p>
-		          <p class="achievement-rate"></p>
-		          정말 오픈하시겠습니까?
-		        </div>
-		        <figcaption class="figure-caption">선택하시면 2시간동안 오픈됩니다.</figcaption>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-				<button type="button" class="btn btn-primary" data-dismiss="modal" id="startChatBtn">오픈 시작 하기</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-     
 	</div>
-	<script type="module" src="/js/lsr/chatting.js"></script>
+
+    <div class="n_modal_container">
+        <!-- The Modal -->
+        <c:forEach var="date" items="${adminOnFundingListDTOs}">
+            <div class="modal" id="myModal${date.movieId}">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <p class="n_admin_modal_title">'${date.movieName}' 온라인 영화 등록</p>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+<%--                        <input type="hidden" value="${date.formatToReleaseDate()}" id="fundStart${date.movieId}">--%>
+<%--                        <input type="hidden" value="${date.formatToEndDate()}" id="fundEnd${date.movieId}">--%>
+                        <!-- Modal body -->
+                        <form action="" method="post">
+                            <div class="modal-body n_admin_modal_body">
+                                <div>
+                                    <div class="n_modal_date">
+                                        <span>날짜 선택</span><input type="text" class="n_between_day" placeholder="기간">
+                                    </div>
+                                    <div class="n_modal_date_detail">
+                                        <span>온라인 영화 개봉일 :</span> <input type="text" class="n_first_day" name="onlineReleaseDate" placeholder="시작 날짜">
+                                    </div>
+                                    <div class="n_modal_date_detail">
+                                        <span>온라인 영화 종료일 :</span> <input type="text" class="n_last_day" name="onlineEndDate" placeholder="끝 날짜">
+                                    </div>
+                                </div>
+                                <div class="n_modal_chat">
+                                    <span>실시간 채팅 오픈일 & 시간</span>
+                                    <input type="text" class="n_chat_day" name="chatTime" placeholder="날짜 및 시간 선택">
+                                </div>
+                            </div>
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger">등록</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+    </div>
+<%--    <script type="module" src="../../../../js/lsr/chatting.js"></script>--%>
 </body>
 </html>

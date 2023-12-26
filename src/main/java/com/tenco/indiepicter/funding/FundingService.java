@@ -133,4 +133,10 @@ public class FundingService {
     }
 
 
+    // TODO : 확인
+    // 어드민 온라인 펀딩 목록 불러오기
+    public List<AdminOnFundingListDTO> findAllAdminFundingList(){
+        return fundingRepository.findAllAdminFundingList();
+    }
+
 }

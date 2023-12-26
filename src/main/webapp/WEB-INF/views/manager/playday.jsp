@@ -99,7 +99,6 @@
 
         <!--컨테이너2 시작-->
         <div class="p_playday_container2">
-
             <div class="p_section1">
                 <c:forEach var="funding" items="${adminOnlineStreamingDTOs}" varStatus="status">
                     <div class="p_menu1">

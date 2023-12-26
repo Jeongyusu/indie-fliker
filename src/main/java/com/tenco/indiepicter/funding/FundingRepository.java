@@ -47,4 +47,6 @@ public interface FundingRepository {
     // 펀딩 온라인 상영기간 설정
     public List<AdminOnlineStreamingDTO> findAllAdminPeriodSetting();
 
+    // TODO : 펀딩 온라인 상영기간 설정(+펀딩기간)
+    public List<AdminOnFundingListDTO> findAllAdminFundingList();
 }

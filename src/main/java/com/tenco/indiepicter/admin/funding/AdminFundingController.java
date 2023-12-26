@@ -3,10 +3,7 @@ package com.tenco.indiepicter.admin.funding;
 import com.tenco.indiepicter.funding.FundingService;
 import com.tenco.indiepicter.funding.fundingready.FundingReady;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyService;
-import com.tenco.indiepicter.funding.response.AdminFundingModifyDTO;
-import com.tenco.indiepicter.funding.response.AdminOnlineStreamingDTO;
-import com.tenco.indiepicter.funding.response.FundingReadyDTO;
-import com.tenco.indiepicter.funding.response.FundingReadyDetailDTO;
+import com.tenco.indiepicter.funding.response.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,5 +55,12 @@ public class AdminFundingController {
         return "manager/playday";
     }
 
+    // TODO : 남 - 확인(온라인 상영일자 등록)
+    @GetMapping("/chatting2")
+    public String chatting1(Model model){
+        List<AdminOnFundingListDTO> adminOnFundingListDTOs = fundingService.findAllAdminFundingList();
+        model.addAttribute("adminOnFundingListDTOs", adminOnFundingListDTOs);
+        return "manager/chatting3";
+    }
 
 }

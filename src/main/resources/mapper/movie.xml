@@ -13,6 +13,13 @@
 <!--        select * from user_tb-->
 <!--    </select>-->
 
+    <update id="updateOnlineDate">
+        UPDATE movie_tb
+        SET online_release_date = #{onlineReleaseDate}, online_end_date = #{onlineEndDate}, chat_time = #{chatTime}
+        WHERE movie_id = #{movieId}
+    </update>
+
+
 <!--    useGeneratedKeys="true" keyProperty="id" parameterType="Integer"-->
     <insert id="saveMovie" useGeneratedKeys="true" keyProperty="id">
         insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade,

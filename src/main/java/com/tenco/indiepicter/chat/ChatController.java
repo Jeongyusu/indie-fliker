@@ -38,7 +38,7 @@ public class ChatController {
         }
 
         // 영화정보 필요합니다! (model로 던져서 chatroom.jsp도 바꿔줘야함
-        List<OpenMovieChatDTO> openMovieChatDTOs = chatService.findByOpenMovie();
+        List<OpenMovieChatDTO> openMovieChatDTOs = chatService.findByOpenMovie(principal.getId());
         for (OpenMovieChatDTO openMovieChatDTO : openMovieChatDTOs){
             System.out.println("오늘 개봉 영화 정보 : " + openMovieChatDTO.toString());
         }

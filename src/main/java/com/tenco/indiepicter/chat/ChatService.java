@@ -29,8 +29,8 @@ public class ChatService {
 		// 채팅 종료를 해줘야함
     }
 
-	public List<OpenMovieChatDTO> findByOpenMovie() {
-		List<OpenMovieChatDTO> responseDTOs = chatRepository.findByOpenMovie();
+	public List<OpenMovieChatDTO> findByOpenMovie(Integer principalId) {
+		List<OpenMovieChatDTO> responseDTOs = chatRepository.findByOpenMovie(principalId);
 		return responseDTOs;
 	}
 }

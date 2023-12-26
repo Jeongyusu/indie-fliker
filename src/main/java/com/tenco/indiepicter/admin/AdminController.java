@@ -3,7 +3,10 @@ package com.tenco.indiepicter.admin;
 import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
 import com.tenco.indiepicter._core.utils.TimeStampUtil;
 import com.tenco.indiepicter.admin.response.AdminPagingResponseDTO;
+import com.tenco.indiepicter.funding.response.AdminOnlineStreamingDTO;
 import com.tenco.indiepicter.invitation.response.InvitationResponseDTO;
+import com.tenco.indiepicter.movie.MovieService;
+import com.tenco.indiepicter.movie.request.UpdateOnlineDateDTO;
 import com.tenco.indiepicter.user.User;
 import com.tenco.indiepicter.user.UserService;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +33,9 @@ public class AdminController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private MovieService movieService;
 
 //---------------------------------------------------------------------------------
 
@@ -178,14 +184,6 @@ public class AdminController {
 		return "redirect:/admin/grade-update";
 	}
 
-
-//---------------------------------------------------------------------------------
-	// 온라인 오픈 기간 설정
-	@GetMapping("/playday")
-	public String playday () {
-
-		return "manager/playday";
-	}
 //---------------------------------------------------------------------------------
 	// 채팅방 오픈
 	@GetMapping("/chatting")
@@ -200,6 +198,15 @@ public class AdminController {
 
 		return "manager/review";
 	}
+	
+	// TODO : 연습
+	// 온라인 상영일 등록(POST)
+	@PostMapping("/onlineDate-update")
+	public String updateOnlineDate(UpdateOnlineDateDTO updateOnlineDateDTO){
+		int rowResultCount = movieService.updateOnlineDate(updateOnlineDateDTO);
+		return "manager/chatting2";
+	}
+
 }
 
 // 12-22 9:55 학원 작업중

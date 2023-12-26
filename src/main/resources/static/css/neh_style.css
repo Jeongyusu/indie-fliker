@@ -1425,3 +1425,95 @@
 .n_last_price #n_person_count {
     padding-right: 5px;
 }
+
+/*남규씨*/
+
+.n_admin_container {
+    position: relative;
+    width: 1200px;
+    height: 900px;
+    top: 60px;
+    left: 420px;
+}
+
+.n_menu1 {
+    width: 220px;
+    padding: 20px;
+    border: 0.5px solid var(--line_01);
+    border-radius: 10px;
+}
+
+.n_menu1 img {
+    width: 100%;
+}
+
+.n_on_p1 {
+    font-size: 14px;
+    text-align: center;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.n_on_p2 {
+    text-align: center;
+}
+
+.n_button {
+    display: flex;
+    justify-content: center;
+}
+
+.n_menu1 .n_modal_button {
+    background-color: var(--primary_01);
+    border: none;
+    border-radius: 5px;
+    width: 150px;
+    text-decoration: none;
+    transition-duration: 0.2s;
+    font-weight: bold;
+    color: white;
+    height: 40px;
+}
+
+.n_admin_modal_title {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+.n_admin_modal_body span{
+    font-weight: bolder;
+    margin-right: 10px;
+}
+
+.n_modal_date {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.n_modal_date_detail {
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.n_between_day {
+    width: 70%;
+    padding: 0 10px;
+}
+
+
+.n_first_day, .n_last_day {
+    border: none;
+}
+
+.n_modal_chat {
+    margin-top: 20px;
+}
+
+.n_chat_day {
+    width: 50%;
+    padding: 0 10px;
+}
