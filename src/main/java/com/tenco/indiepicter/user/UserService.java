@@ -2,15 +2,16 @@ package com.tenco.indiepicter.user;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.http.HttpSession;
 
-import com.tenco.indiepicter._core.utils.TimeStampUtil;
-import com.tenco.indiepicter.invitation.Invitation;
 import com.tenco.indiepicter.user.request.MailDTO;
+import com.tenco.indiepicter.user.request.UserPasswordUpdateDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +37,9 @@ public class UserService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	@Autowired
+	private JavaMailSender javaMailSender;
+
 //--------------------------------------------------------------------------------
 	
 	// 회원 가입
@@ -48,7 +52,7 @@ public class UserService {
 		
 		User user = User.builder()
 					.userEmail(requestDto.getUserEmail())
-					.password(requestDto.getPassword1())
+					.password(encodingPassword)
 					.username(requestDto.getUsername())
 					.pic(Define.userbasicpic)
 					.grade("NORMAL")
@@ -77,13 +81,14 @@ public class UserService {
 		
 		// 이메일 유효성 검사 
 		if(user == null) {
-			throw new MyDynamicException("이메일이 잘못되었습니다.", HttpStatus.BAD_REQUEST);
+			throw new MyDynamicException("이메일을 잘못 입력했습니다.", HttpStatus.BAD_REQUEST);
 		}
+
 		// 유저 비밀번호가 db에 저장된 값과 비교
 		boolean passwordCheck = passwordEncoder.matches(requestDto.getPassword(), user.getPassword());
-		
+
 		// 비밀번호 유효성 검사
-		if(passwordCheck == false) {
+		if(!user.getPassword().equals(requestDto.getPassword()) && passwordCheck == false) {
 			throw new MyDynamicException("비밀번호가 잘못되었습니다.", HttpStatus.BAD_REQUEST);
 		}
 		// 탈퇴 유저 유효성 검사
@@ -104,7 +109,7 @@ public class UserService {
 		// 이 코드를 사용하니깐 ajax가 작동이 안됨... 일단 주석!!
 //		// 이메일 중복 유효성 검사
 //		if(result != 1) {
-//			throw new MyDynamicException("이미 존재하는 이메일입니당.", HttpStatus.BAD_REQUEST);
+//			throw new MyDynamicException("이미 존재하는 이메일입니다.", HttpStatus.BAD_REQUEST);
 //		}
 		
 		return result;
@@ -181,25 +186,28 @@ public class UserService {
 
 		String userEmail = this.userRepository.findByEmail(username, tel);
 
-		System.out.println("===================" + userEmail +"=============");
-//		if (userEmail == null){
-//			throw new MyDynamicException("이메일이 존재하지 않습니다.", HttpStatus.BAD_REQUEST);
-//		}
+		System.out.println("===================" + userEmail + "===================");
+		if (userEmail == null){
+			throw new MyDynamicException("이메일이 존재하지 않습니다.", HttpStatus.BAD_REQUEST);
+		}
+
 		return userEmail;
 	}
 
-	//랜덤함수로 임시비밀번호 구문 만들기
+	//랜덤함수로 임시비밀번호 만들기
 	public String tempPassword(){
-		char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
-				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-		String pw = "";
+		char[] charSet = new char[] {
+				'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
+				'W', 'X', 'Y', 'Z' };
+		String password = "";
 		// 문자 배열 길이의 값을 랜덤으로 10개를 뽑아 구문을 작성함
-		int idx = 0;
+		int j = 0;
 		for (int i = 0; i < 10; i++) {
-			idx = (int) (charSet.length * Math.random());
-			pw += charSet[idx];
+			j = (int) (charSet.length * Math.random());
+			password += charSet[j];
 		}
-		return pw;
+		return password;
 	}
 
 	// 이메일 보내기 (임시 비밀번호 전송)
@@ -208,30 +216,48 @@ public class UserService {
 		MailDTO dto = new MailDTO();
 		dto.setAddress(userEmail);
 		dto.setTitle("[ indiefliker ] 임시비밀번호 안내 이메일 입니다.");
-		dto.setMessage("안녕하세요. indiefliker 임시비밀번호 안내 관련 이메일 입니다." + " 회원님의 임시 비밀번호는 "
-				+ pw + " 입니다." + "로그인 후에 비밀번호를 변경을 해주세요");
+		dto.setMessage("안녕하세요. indiefliker 임시비밀번호 안내 관련 이메일 입니다." +
+				       " 회원님의 임시 비밀번호는 " + pw + " 입니다." +
+				       " 로그인 후에 비밀번호를 변경을 해주세요!");
 
-		this.userRepository.passwordUpdate(pw, userEmail);
+		this.userRepository.tempPasswordUpdate(pw, userEmail);
 
 		return dto;
 	}
 
 	// 메일보내기
 	public void mailSend(MailDTO dto) {
-		System.out.println("전송 완료!");
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setTo(dto.getAddress());
 		message.setSubject(dto.getTitle());
 		message.setText(dto.getMessage());
 		message.setFrom("indiefliker@gmail.com");
 		message.setReplyTo("indiefliker@gmail.com");
-		System.out.println("message"+message);
-//		mailSender.send(message);
+		System.out.println("message" + message);
+		javaMailSender.send(message);
 	}
 
-//	//비밀번호 변경
-//	public void updatePassWord(Long memberId, String memberPassword) {
-//		mmr.updatePassword(memberId,memberPassword);
-//	}
+//--------------------------------------------------------------------------------
+
+    // 회원 비밀번호 수정
+	@Transactional
+	public void passwordUpdate(UserPasswordUpdateDTO dto){
+
+		User user = this.userRepository.findByUserEmail(dto.getUserEmail());
+
+		if (user == null){
+			throw new MyDynamicException("이메일을 잘못 입력했습니다.",	HttpStatus.BAD_REQUEST);
+		}
+
+		String userEmail = dto.getUserEmail();
+		String password1 = dto.getPassword1();
+
+		// 비밀번호 인코딩
+		String encodingPassword = passwordEncoder.encode(password1);
+
+		this.userRepository.passwordUpdate(userEmail, encodingPassword);
+
+	}
+//--------------------------------------------------------------------------------
 
 }
