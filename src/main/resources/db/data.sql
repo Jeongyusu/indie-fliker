@@ -688,3 +688,4 @@ insert into invitation_tb(invitation_code, movie_name, theater_name, theater_add
 values('9987', '친구', '서면 CGV', '부산 진구 서면', '2023-12-26', 1);
 insert into invitation_tb(invitation_code, movie_name, theater_name, theater_address, movie_time, user_id)
 values('9204', '소스코드', '해운대 CGV', '부산 해운대', '2023-12-27', 1);
+

@@ -60,7 +60,7 @@ public class WebCrawlerService {
 // 크롤링한 데이터를 Entity로 변환하여 MyBatis를 통해 DB에 저장
         for (MovieCrawl movieCrawl : movieCrawlList) {
 
-
+            movieCrawlRepository.deletedummy();
             Movie movie = Movie.builder()
                     .makeYear(movieCrawl.getMakeYear())
                     .production(movieCrawl.getProduction())
@@ -81,7 +81,7 @@ public class WebCrawlerService {
             // 중복된 데이터 방지
             if (movieCrawlRepository.countMovies(movieCrawl) == 0) {
                 try {
-                    movieCrawlRepository.deletedummy();
+
                     movieCrawlRepository.insertMovie(movie);
                     Integer moviePk = movie.getId();
 
