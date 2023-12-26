@@ -48,12 +48,29 @@ public class FundingService {
         return fundingRepository.findAllByGenre(genre, pageSize, offset);
     }
 
+    public List<MoviesByMainDTO> moviesByMain(Integer page, Integer pageSize){
+        Integer offset = page * pageSize - pageSize;
+        return fundingRepository.findAllByMain(pageSize, offset);
+    }
+
     public List<OnAirMovieDTO> onAirMovies() {
         return fundingRepository.findAllByOnAir();
     }
 
     public List<OnAirMovieRankingDTO> onAirRankedMovies() {
         return fundingRepository.findAllByOnAirAndRanking();
+    }
+
+    public List<OnDDayMovieDTO> onDDayMovies() {
+        return fundingRepository.findByOnlineDDay();
+    }
+
+    public List<OffAirMovieDTO> offAirMovies() {
+        return fundingRepository.findAllByOffAir();
+    }
+
+    public List<OffAirMovieRankingDTO> offAirRankedMovies() {
+        return fundingRepository.findAllByOffAirAndRanking();
     }
 
     public FundingDetailDTO detailFunding(Integer fundingId) {

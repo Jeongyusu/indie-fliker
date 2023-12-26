@@ -6,24 +6,23 @@ import lombok.Data;
 import java.sql.Timestamp;
 
 @Data
-public class OnAirMovieRankingDTO {
+public class OffAirMovieRankingDTO {
     private Integer fundingId;
     private String movieThumbnail;
     private String movieName;
     private String runningGrade;
     private String synopsis;
-    private Timestamp onlineReleaseDate;
-    private Timestamp onlineEndDate;
+    private Timestamp offlineReleaseDate;
+    private Timestamp offlineEndDate;
     private Integer fundingRate;
     private String production;
 
     public String formatReleaseDate (){
-        return TimeStampUtil.timeStampToDate(onlineReleaseDate);
+        return TimeStampUtil.timeStampToDate(offlineReleaseDate);
     }
     public String formatEndDate (){
-        return TimeStampUtil.timeStampToDate(onlineEndDate);
+        return TimeStampUtil.timeStampToDate(offlineEndDate);
     }
-
     public String period(){
         return formatReleaseDate() + " ~ " + formatEndDate();
     }
