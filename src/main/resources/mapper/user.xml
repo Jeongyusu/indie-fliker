@@ -47,5 +47,26 @@
 		where id=#{id}
 	</update>
 
+	<!-- 회원 초청권 갯수 조회 -->
+	<select id="findByInvitation" resultType="Integer">
+		select count(*) from invitation_tb
+		where user_id=#{id}
+	</select>
+
+	<!-- 카카오 간편 로그인 회원만 조회 -->
+	<select	id="findByKakao" resultType="com.tenco.indiepicter.user.User">
+		select id from user_tb where user_email like 'OAuth_%'
+	</select>
+
+	<!-- 회원 이름과 전화번호로 이메일 조회 -->
+	<select id="findByEmail" resultType="java.lang.String">
+		select user_email from user_tb where username = #{username} and tel = #{tel}
+	</select>
+
+	<!-- 회원 비밀번호를 임시 비밀번호로 변경 -->
+	<select id="passwordUpdate">
+		update user_tb set password=#{pw}
+		where user_email=#{userEmail}
+	</select>
 
 </mapper>

@@ -19,7 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 
@@ -113,7 +113,7 @@
                         <p>감상평 내용2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222</p>
                     </div>
                     <div class="p_delet">
-                        <a href=""><button>삭제</button></a>
+                        <a href=""><button class="delete-comment">삭제</button></a>
                     </div>
                 </div>
                 <div class="p_list">
@@ -129,7 +129,7 @@
                         <p>감상평 내용</p>
                     </div>
                     <div class="p_delet">
-                        <a href=""><button>삭제</button></a>
+                        <a href=""><button class="delete-comment">삭제</button></a>
                     </div>
                 </div>
                 <div class="p_list">
@@ -145,7 +145,7 @@
                         <p>감상평 내용</p>
                     </div>
                     <div class="p_delet">
-                        <a href=""><button>삭제</button></a>
+                        <a href=""><button class="delete-comment">삭제</button></a>
                     </div>
                 </div>
                 <div class="p_list">
@@ -161,7 +161,7 @@
                         <p>감상평 내용</p>
                     </div>
                     <div class="p_delet">
-                        <a href=""><button>삭제</button></a>
+                        <a href=""><button class="delete-comment">삭제</button></a>
                     </div>
                 </div>
                 <div class="p_list">
@@ -177,7 +177,7 @@
                         <p>감상평 내용</p>
                     </div>
                     <div class="p_delet">
-                        <a href=""><button>삭제</button></a>
+                        <a href=""><button class="delete-comment">삭제</button></a>
                     </div>
                 </div>
                 <div class="p_list">
@@ -193,7 +193,7 @@
                         <p>감상평 내용</p>
                     </div>
                     <div class="p_delet">
-                        <a href=""><button>삭제</button></a>
+                        <a href=""><button class="delete-comment">삭제</button></a>
                     </div>
                 </div>
                 <div class="p_list">
@@ -209,7 +209,7 @@
                         <p>감상평 내용</p>
                     </div>
                     <div class="p_delet">
-                        <a href=""><button>삭제</button></a>
+                        <a href=""><button class="delete-comment">삭제</button></a>
                     </div>
                 </div>
                 <div class="p_list">
@@ -225,7 +225,7 @@
                         <p>감상평 내용</p>
                     </div>
                     <div class="p_delet">
-                        <a href=""><button>삭제</button></a>
+                        <a href=""><button class="delete-comment"> 삭제</button></a>
                     </div>
                 </div>
             </div>
@@ -261,6 +261,31 @@
         </div>
 
     </div>
+    <script>
+        $(document).ready(function() {
+            // 삭제 버튼에 클릭 이벤트 핸들러를 추가합니다.
+            $(".delete-comment").click(function(e) {
+                e.preventDefault(); // 링크의 기본 동작 방지
 
+                // 데이터 속성에서 댓글 ID를 가져옵니다.
+                var commentId = $(this).closest(".p_list").data("comment-id");
+
+                // 댓글 삭제를 위해 서버로 AJAX 요청을 보냅니다.
+                $.ajax({
+                    type: "POST",
+                    url: "/api/delete/comment", // 실제 서버 URL로 업데이트해주세요.
+                    data: { commentId: commentId },
+                    success: function(response) {
+                        // 필요하다면 UI를 업데이트합니다 (삭제된 댓글 제거 등).
+                        console.log(response); // 서버 응답을 로그로 출력합니다.
+                    },
+                    error: function(error) {
+                        console.error("댓글 삭제 중 오류 발생:", error);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>

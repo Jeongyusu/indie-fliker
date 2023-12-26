@@ -252,6 +252,7 @@ create table banner_tb
 create table invitation_tb
 (
 
+
     id              int auto_increment primary key,
     invitation_code varchar(30)  not null,
     movie_name      varchar(30)  not null,
@@ -263,7 +264,6 @@ create table invitation_tb
     foreign KEY (user_id) references user_tb (id)
 
 );
-
 
 
 create table question_tb

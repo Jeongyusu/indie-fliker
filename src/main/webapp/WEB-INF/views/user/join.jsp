@@ -81,9 +81,7 @@
 	<script>
 		// 이메일 중복 검사
 		$("#emailCheck").click(function(){
-		 
 	//	var query = {userEmail : $("#userEmail").val()};
-		 
 			$.ajax({
 				url : "/emailCkeck",
 				type : "post",

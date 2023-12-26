@@ -392,21 +392,96 @@ div.main i {
 }
 
 /*마이페이지*/
-.k_left_my {
-    margin-left: 10%;
-    top: 200px;
+/*.k_left_my {*/
+/*    background-color: #cccccc;*/
+/*    margin-left: 10%;*/
+/*    top: 200px;*/
+/*    position: relative;*/
+/*    text-align: center;*/
+/*    margin-right: 1500px;*/
+/*}*/
+
+.k_left_my{
     position: relative;
+    width: 300px;
+    height: 500px;
+    top: 150px;
+    left: 50px;
+}
+
+.k_left_my .k_profile{
+    position: relative;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%, 0px);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.k_left_my .k_m_name {
+    position: absolute;
+    top: 170px;
+    left: 50%;
+    transform: translate(-50%, 0px);
+    font-weight: bold;
+}
+
+.k_left_my .k_grade{
+    background-color: #a5e5e6;
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%, 0px);
     text-align: center;
-    margin-right: 1500px;
+    line-height: 27px;
 }
 
 .k_left_my_hr {
+    position: absolute;
+    top: 230px;
+    left: 0px;
     opacity: 0.3;
-    margin-top: 20px;
-    width: 50%;
+    width: 100%;
+}
+
+.k_left_my .kakao_login{
+    position: absolute;
+    top: 260px;
+    left: 50px;
+}
+
+.k_left_my .kakao_login img{
+    position: relative;
+    top: 8px;
+}
+
+.k_body .kakao_profile{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
 }
 
 
+.k_left_my .nomral_login{
+    position: absolute;
+    top: 260px;
+    left: 85px;
+}
+
+.k_left_my .nomral_login img{
+    position: relative;
+    top: 8px;
+}
+
+.k_body .nomral_profile{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
 
 .k_invite {
     margin-top: 15px;
@@ -418,20 +493,12 @@ div.main i {
     width:300px;
 }
 
-
-.k_update_login-container {
-    max-width: 1000px;
-    margin: auto;
-    margin-left: 500px;
-    margin-top: -120px;
-    height: 1000px;
-}
-
-
-
-.k_m_name {
-    margin-top: 15px;
-    font-weight: bold;
+.k_update_login-container{
+    position: relative;
+    bottom: 350px;
+    left: 500px;
+    width: 1200px;
+    height: 700px;
 }
 
 .k_m_button {
@@ -468,6 +535,9 @@ div.main i {
     width: 200px;
     border: 1px solid rgb(192, 192, 192);
     margin-left: 12px;
+    position: relative;
+    top: 150px;
+    left: 40px;
 }
 
 .k_couponpack,
@@ -612,14 +682,14 @@ div.main i {
 .k_isWithdrawal_modal h2{
     position: absolute;
     top: 50px;
-    left: 40px;
+    left: 30px;
     font-size: 25px;
 }
 
 .k_isWithdrawal_modal .close{
     bottom: 45px;
     position: absolute;
-    left: 35px;
+    left: 20px;
     width: 120px;
     height: 50px;
     border-radius: 10px;
@@ -634,7 +704,7 @@ div.main i {
 .k_isWithdrawal_modal a{
     bottom: 45px;
     position: absolute;
-    right: 32px;
+    right: 20px;
     width: 120px;
     height: 50px;
     border-radius: 10px;
@@ -659,6 +729,9 @@ div.main i {
     background-color: rgba(0, 0, 0, 0.5); /* 반투명한 검은 배경 */
     z-index: 1;
 }
+
+
+
 
 /*자주 묻는 질문 페이지*/
 

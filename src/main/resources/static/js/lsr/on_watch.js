@@ -1,5 +1,4 @@
-
-let movieId = document.querySelector("#movieId");
+let movieId = document.querySelector('#movieId').value;
 
 let onlineEndDate = document.querySelector("#onlineEndDate");
 let onlineReleaseDate = document.querySelector("#onlineReleaseDate");
@@ -12,21 +11,47 @@ let reviewButton = document.querySelector(".l_review_button");
 let vipReviewButton = document.querySelector(".l_vip_review_button");
 
 
+// 채팅방 form display 설정
+let chatTime = document.querySelector("#chatTime").value;
+console.log("chatTime : " + chatTime);
+let chatGetTime = new Date(chatTime).getTime();
+// timestamp로 가져온다는 가정하에
+
+// 채팅 시작 시간
+let chatFirstTime = new Date(chatTime);
+
+// 채팅 종료 시간
+let chatLastTime = new Date(chatGetTime + 2 * 60 * 60 * 1000);
+
+// 채팅 안내 시간(채팅시간 1시간 전)
+let chatInfoTime = new Date(chatGetTime - 60 * 60 * 1000);
+
+// 현재시간
+let currentDate = new Date();
+
+// 영향을 줄 요소
+let chatForm = document.getElementById('chatForm');
+
+// 채팅 입장 Form
+if(currentDate >= chatFirstTime && currentDate <= chatLastTime){
+    chatForm.style.display = 'block';
+}else {
+    chatForm.style.display = 'none';
+}
+// 채팅 안내 Form
+if(currentDate >= chatInfoTime && currentDate <= chatLastTime){
+    $(document).ready(function(){
+        $("#myModal").modal('show');
+    });
+}else {
+}
+
+
 // 페이지 로드 시 review 찾아오기
 window.onload = function () {
-    let movieId = getMovieId();
     findNormalReview(movieId);
     findVipReview(movieId);
 };
-
-
-// url에서 movieId 가져오기
-function getMovieId(){
-    let urlStr = window.location.href;
-    let url = new URL(urlStr);
-    let urlParams = url.searchParams;
-    return urlParams.get('movieId');
-}
 
 ///////////////////////////////////////////////////
 // 댓글
@@ -232,6 +257,8 @@ async function findNormalReview(movieId) {
                     </div>
             `;
                 reviewElement.appendChild(reviewDiv);
+                let replyCount = document.querySelector('#count').innerHTML;
+                replyCount = NormalReviewsToMovieDTO.length;
             })
 
         } else {
@@ -437,7 +464,7 @@ async function findVipReview(movieId) {
             VipReviewsToMovieDTO.forEach(function (vipReview) {
                 let vipReviewDiv = document.createElement('div');
                 vipReviewDiv.id = "l_commentary_container";
-                vipReviewDiv.className = "l_chat_container";
+                vipReviewDiv.className = "l_vip_review_container";
                 vipReviewDiv.innerHTML = `
                     <div class="l_comment_container">
                         <div class="l_score_container">

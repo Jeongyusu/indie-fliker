@@ -37,6 +37,7 @@
             mt.running_grade,
             mt.online_release_date,
             mt.online_end_date,
+            mt.chat_time,
             mt.synopsis,
             mft.path as movie_path
         from movie_tb as mt
@@ -56,6 +57,7 @@
         <result property="genre" column="genre"/>
         <result property="onlineReleaseDate" column="online_release_date"/>
         <result property="onlineEndDate" column="online_end_date"/>
+        <result property="chatTime" column="chat_time"/>
         <result property="moviePath" column="movie_path"/>
         <result property="synopsis" column="synopsis"/>
         <result property="moviePath" column="movie_path"/>
