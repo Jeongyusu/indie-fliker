@@ -162,6 +162,7 @@ public class FundingService {
     @Transactional
     public void updateById(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO){
         Funding funding = Funding.builder()
+                .id(adminRequestFundingUpdateFormDTO.getFundingId())
                 .targetPrice(adminRequestFundingUpdateFormDTO.getTargetPrice())
                 .pricePerOnetime(adminRequestFundingUpdateFormDTO.getPricePerOnetime())
                 .releaseDate(DateUtil.stringToDate(adminRequestFundingUpdateFormDTO.getFundingPeriodStart()))
@@ -177,5 +178,21 @@ public class FundingService {
         moviePhotoService.updateById(adminRequestFundingUpdateFormDTO);
     }
 
+    @Transactional
+    public int deleteById(Integer id){
+        int resultRowCount =  fundingRepository.deleteById(id);
+        if(resultRowCount != 1) {
+            throw new MyDynamicException("펀딩 삭제 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return resultRowCount;
+    }
 
+    @Transactional
+    public int updateEndDateById(Integer id){
+        int resultRowCount =  fundingRepository.updateEndDateById(id);
+        if(resultRowCount != 1) {
+            throw new MyDynamicException("펀딩 종료 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return resultRowCount;
+    }
 }

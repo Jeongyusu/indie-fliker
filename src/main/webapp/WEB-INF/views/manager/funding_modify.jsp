@@ -55,8 +55,7 @@
                              <i id="fa-camera" class="fas fa-camera"></i>사진 선택 <span class="k_star_class">*</span></label>
                         </c:otherwise>
                     </c:choose>
-                <input type="file" id="thumbnail" name="movieThumbnail" accept="image/*" onchange="callMultipleFunctionsAboutThumbnail(this)" class="k_funding_upload_label">
-                <input type="hidden" value="${adminFundingUpdateFormDTO.movieThumbnail}">
+                <input type="file" id="thumbnail" name="movieThumbnail" accept="image/*" onchange="changeUserPic('thumbnail', 'basicPic', 'k_funding_thumbnail_style', event)" class="k_funding_upload_label">
 
             </div>
                 <br>
@@ -115,22 +114,22 @@
         <div class="k_funding_genre_container">
             <div class="k_funding_genre_grade_title">펀딩 목표금액<span class="k_star_class">*</span></div>
             <select class="k_funding_genre_select_option" name="targetPrice" id="j_target_price_select">
+                <option value="5000000">5백만원</option>
+                <option value="10000000">1천만원</option>
+                <option value="15000000">1천5백만원</option>
+                <option value="20000000">2천만원</option>
+                <option value="25000000">2천5백만원</option>
+                <option value="30000000">3천만원</option>
+                <option value="35000000">3천5백만원</option>
+                <option value="40000000">4천만원</option>
+                <option value="45000000">4천5백만원</option>
                 <option value="50000000">5천만원</option>
-                <option value="100000000">1억원</option>
-                <option value="150000000">1억 5천만원</option>
-                <option value="200000000">2억원</option>
-                <option value="250000000">2억 5천만원</option>
-                <option value="300000000">3억원</option>
-                <option value="350000000">3억 5천만원</option>
-                <option value="400000000">4억원</option>
-                <option value="450000000">4억 5천만원</option>
-                <option value="500000000">5억원</option>
             </select>
 
             <div class="k_funding_make_year k_funding_upload_movie_schedule">1회 펀딩금액
                 <span class="k_star_class">*</span>
             </div>
-            <input type="text" class="k_funding_upload_schedule_date k_background_color" name="pricePerOnetime" value="8000" onclick="handleClick(this);" readonly>
+            <input type="text" class="k_funding_upload_schedule_date k_background_color" name="pricePerOnetime" value="8000" onclick="handleClick(this)" readonly>
             <input type="hidden" id="j_target_price" value="${adminFundingUpdateFormDTO.targetPrice}">
             <input type="hidden" id="j_running_grade" value="${adminFundingUpdateFormDTO.runningGrade}">
             <input type="hidden" id="j_genre" value="${adminFundingUpdateFormDTO.genre}">
@@ -142,6 +141,8 @@
             <input type="hidden" name="movieId" value="${adminFundingUpdateFormDTO.movieId}">
             <input type="hidden" name="movieStaffId" value="${adminFundingUpdateFormDTO.movieStaffId}">
             <input type="hidden" name="moviePhotoId" value="${adminFundingUpdateFormDTO.moviePhotoId}">
+            <input type="hidden" name="moviePhotoIds" value="${adminFundingUpdateFormDTO.moviePhotoIds}">
+
         </div>
 
 
@@ -441,6 +442,14 @@
     let serverGenre = document.getElementById('j_genre').value;
 
     window.onload = function () {
+        // let photocheck = document.querySelectorAll('#movie_photo');
+        // photocheck.forEach((
+        //     check
+        // )=> {console.log('포토체크')
+        //     console.log(check.value)})
+        let photocheck =document.getElementById('movie_photo0').value;
+        console.log('포토체크' + photocheck)
+
         careerCount = document.getElementById('careerCount').value;
         photoCount = document.getElementById('photoListCount').value;
         awardsCount = document.getElementById('awardsCount').value;
@@ -692,19 +701,19 @@
 
 
     //수정할 사진을 선택하지 않았을 때 기존 사진이 들어가게 하고, 사진을 선택하면 업로드한 사진의 값이 히든 인풋의 밸류에 들어가게하기
-    function updateHiddenInput(inputFile) {
-        var hiddenInput = document.getElementById('movieThumbnail');
-        // 파일이 선택되었을 때만 hidden input의 값을 업데이트
-        if (inputFile.files.length > 0) {
-            var file = inputFile.files[0];
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                hiddenInput.value = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-    }
+    // function updateHiddenInput(inputFile) {
+    //     var hiddenInput = document.getElementById('movieThumbnail');
+    //     // 파일이 선택되었을 때만 hidden input의 값을 업데이트
+    //     if (inputFile.files.length > 0) {
+    //         var file = inputFile.files[0];
+    //         var reader = new FileReader();
+    //
+    //         reader.onload = function (e) {
+    //             hiddenInput.value = e.target.result;
+    //         };
+    //         reader.readAsDataURL(file);
+    //     }
+    // }
 
     function callMultipleFunctionsAboutThumbnail(inputFile) {
         updateHiddenInput(inputFile);

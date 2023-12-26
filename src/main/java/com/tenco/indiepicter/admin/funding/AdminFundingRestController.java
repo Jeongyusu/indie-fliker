@@ -11,6 +11,10 @@ import com.tenco.indiepicter.funding.fundingready.FundingReady;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyRepository;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyService;
 import com.tenco.indiepicter.movie.MovieService;
+import com.tenco.indiepicter.movie.moviefile.MovieFileService;
+import com.tenco.indiepicter.movie.moviephoto.MoviePhotoService;
+import com.tenco.indiepicter.movie.moviestaff.MovieStaff;
+import com.tenco.indiepicter.movie.moviestaff.MovieStaffService;
 import com.tenco.indiepicter.movie.request.OfflineOpenDateSettingDTO;
 import com.tenco.indiepicter.movie.request.OnlineOpenDateSettingDTO;
 import com.tenco.indiepicter.movie.response.OfflineStreamingDateSettingDTO;
@@ -42,6 +46,15 @@ public class AdminFundingRestController {
 
     @Autowired
     private MovieService movieService;
+
+    @Autowired
+    private MoviePhotoService moviePhotoService;
+
+    @Autowired
+    private MovieStaffService movieStaffService;
+
+    @Autowired
+    private MovieFileService movieFileService;
 
     @PostMapping("/funding-ready/save")
     public ResponseEntity<?> saveFundingReady(@RequestBody Map<String, Integer> fundingReadyId){
@@ -89,6 +102,12 @@ public class AdminFundingRestController {
         log.debug("====================");
         log.debug(offlineOpenDateSettingDTO.toString());
         movieService.updateOffMovieOpenDate(offlineOpenDateSettingDTO);
+        return ResponseEntity.ok().body(ApiUtils.success(null));
+    }
+
+    @PostMapping("/funding/end")
+    public ResponseEntity<?> deleteFunding(@RequestBody Map<String, Integer> Index){
+        fundingService.updateEndDateById(Index.get("fundingId"));
         return ResponseEntity.ok().body(ApiUtils.success(null));
     }
 }

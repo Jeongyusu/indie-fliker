@@ -9,4 +9,6 @@ public interface MovieStaffRepository {
     public int saveMovieStaff(MovieStaff movieStaff);
 
     public int updateById(MovieStaff movieStaff);
+
+    public int deleteByMovieId(Integer movieId);
 }

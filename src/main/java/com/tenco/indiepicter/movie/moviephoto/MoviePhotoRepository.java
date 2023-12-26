@@ -13,4 +13,13 @@ public interface MoviePhotoRepository {
 
     // 어드민페이지 영화 포토 업데이트
     public int updateById(MoviePhoto moviePhoto);
+
+    // 영화 포토 삭제
+    public int deleteAllById(Integer id);
+
+    // 영화 포토 일부 삭제
+    public int deleteById(Integer id, Integer movieId);
+
+    // 해당 포토 찾기
+    public MoviePhoto findById(Integer id);
 }
