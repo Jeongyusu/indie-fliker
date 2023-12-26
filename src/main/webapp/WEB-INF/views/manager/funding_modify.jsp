@@ -1,7 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<%@ include file="../layout/header.jsp" %>
-<form action="/funding-ready/save" method="post" enctype="multipart/form-data">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <%--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>--%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+    <!-- 달력 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+    <script src="/js/jys/dropdown.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+    <!-- 포트원 결제하기  -->
+    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+    <!-- uuid 사용하기 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
+    <script src="/js/jys/keywordset.js"></script>
+    <link href="/css/style.css" rel="stylesheet">
+    <!-- 카카오 결제하기  -->
+    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+    <!-- 카카오 환불하기   -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+
+    <title>IndieFliker</title>
+</head>
+<body>
+<form action="/admin/funding/update" method="post" enctype="multipart/form-data">
 <div class="k_funding_save">
     <p>펀딩 등록하기</p>
 </div>
@@ -11,9 +46,18 @@
             <div class="pic_wrap">
                 <div id="pic_container" class="k_funding_pic_title">영화 대표 사진 <span class="k_star_class">*</span></div>
                 <label id="basicPic" for="thumbnail" class="k_funding_upload_select_photo_pic2">
-                        <i id="fa-camera" class="fas fa-camera"></i>
-                        사진 선택 <span class="k_star_class">*</span></label>
-                <input type="file" id="thumbnail" name="movieThumbnail" accept="image/*" onchange="changeUserPic(this.id, 'basicPic', 'k_funding_thumbnail_style', event)" class="k_funding_upload_label">
+                    <c:choose>
+                        <c:when test="${adminFundingUpdateFormDTO.movieThumbnail != null}">
+                            <img src="${adminFundingUpdateFormDTO.movieThumbnail}" class="k_funding_upload_select_photo_pic2">
+                            </label>
+                        </c:when>
+                        <c:otherwise>
+                             <i id="fa-camera" class="fas fa-camera"></i>사진 선택 <span class="k_star_class">*</span></label>
+                        </c:otherwise>
+                    </c:choose>
+                <input type="file" id="thumbnail" name="movieThumbnail" accept="image/*" onchange="callMultipleFunctionsAboutThumbnail(this)" class="k_funding_upload_label">
+                <input type="hidden" value="${adminFundingUpdateFormDTO.movieThumbnail}">
+
             </div>
                 <br>
 
@@ -23,13 +67,13 @@
                     <div class="k_funding_upload_movie_level k_funding_upload_grade_title k_text_no_wrap k_margin_top55">배급사 <span class="k_star_class">*</span></div>
                 </div>
                 <div>
-                    <select class="k_custom_select_option" name="runningGrade">
+                    <select class="k_custom_select_option" name="runningGrade" id="j_running_grade_select">
                         <option value="전체 관람가">전체 관람가</option>
                         <option value="12세 이상 관람가">12세 이상 관람가</option>
                         <option value="15세 이상 관람가">15세 이상 관람가</option>
                         <option value="청소년 관람 불가">청소년 관람 불가</option>
                     </select>
-                    <input type="text" class="k_funding_upload_schedule_date k_margin_production" placeholder="배급사" name="production">
+                    <input type="text" class="k_funding_upload_schedule_date k_margin_production" placeholder="배급사" name="production" value="${adminFundingUpdateFormDTO.production}">
                 </div>
             </div>
 
@@ -38,24 +82,24 @@
             <div class="k_funding_upload_first_title">영화 제목
                 <span class="k_star_class">*</span>
             </div>
-            <input type=text class="k_funding_upload_movie_name" name="movieTitle">
+            <input type=text class="k_funding_upload_movie_name" name="movieTitle" value="${adminFundingUpdateFormDTO.movieName}">
         </div>
         <div class="k_funding_upload_container_third">
             <div id="k_fund">
                 <div class="k_funding_upload_fund_titles">펀딩 기간 <span class="k_star_class">*</span>
                     <div class="k_funding_upload_funding_date">1년 이내만 가능</div>
                 </div>
-                <input type="text" id="firstDay" class="k_funding_upload_first_date" placeholder="펀딩 시작일" name="fundingPeriodStart">
-                <input type="text" id="lastDay" class="k_funding_upload_last_date" placeholder="펀딩 마감일" name="fundingPeriodEnd">
+                <input type="text" id="firstDay" class="k_funding_upload_first_date" placeholder="펀딩 시작일" name="fundingPeriodStart" value="${adminFundingUpdateFormDTO.fundingReleaseDate}">
+                <input type="text" id="lastDay" class="k_funding_upload_last_date" placeholder="펀딩 마감일" name="fundingPeriodEnd" value="${adminFundingUpdateFormDTO.fundingEndDate}">
             </div>
             <div class="k_funding_upload_titles k_funding_upload_movie_schedule">(온라인) 상영 예정일
                 <span class="k_star_class">*</span>
             </div>
-            <input type="text" id="limitDay" class="k_funding_upload_schedule_date" placeholder="상영 예정일" name="dDay">
+            <input type="text" id="limitDay" class="k_funding_upload_schedule_date" placeholder="상영 예정일" name="dDay" value="${adminFundingUpdateFormDTO.DDay}">
         </div>
         <div class="k_funding_genre_container">
             <div class="k_funding_genre_grade_title">영화 장르<span class="k_star_class">*</span></div>
-            <select class="k_funding_genre_select_option" name="genre">
+            <select class="k_funding_genre_select_option" name="genre" id="j_genre_select">
             <option value="극영화">극영화</option>
             <option value="애니메이션">애니메이션</option>
             <option value="다큐멘터리">다큐멘터리</option>
@@ -65,12 +109,12 @@
             <div class="k_funding_make_year k_funding_upload_movie_schedule">제작 년도
                 <span class="k_star_class">*</span>
             </div>
-            <input id="k_place_holder" type="text" class="k_funding_upload_schedule_date" placeholder="제작년도" name="makeYear">
+            <input id="j_make_year" type="text" class="k_funding_upload_schedule_date" placeholder="제작년도" name="makeYear" value="${adminFundingUpdateFormDTO.makeYear}">
         </div>
 
         <div class="k_funding_genre_container">
             <div class="k_funding_genre_grade_title">펀딩 목표금액<span class="k_star_class">*</span></div>
-            <select class="k_funding_genre_select_option" name="targetPrice">
+            <select class="k_funding_genre_select_option" name="targetPrice" id="j_target_price_select">
                 <option value="50000000">5천만원</option>
                 <option value="100000000">1억원</option>
                 <option value="150000000">1억 5천만원</option>
@@ -81,16 +125,23 @@
                 <option value="400000000">4억원</option>
                 <option value="450000000">4억 5천만원</option>
                 <option value="500000000">5억원</option>
-
-
-
             </select>
 
             <div class="k_funding_make_year k_funding_upload_movie_schedule">1회 펀딩금액
                 <span class="k_star_class">*</span>
             </div>
             <input type="text" class="k_funding_upload_schedule_date k_background_color" name="pricePerOnetime" value="8000" onclick="handleClick(this);" readonly>
-
+            <input type="hidden" id="j_target_price" value="${adminFundingUpdateFormDTO.targetPrice}">
+            <input type="hidden" id="j_running_grade" value="${adminFundingUpdateFormDTO.runningGrade}">
+            <input type="hidden" id="j_genre" value="${adminFundingUpdateFormDTO.genre}">
+            <input type="hidden" id="photoListCount" value="${adminFundingUpdateFormDTO.splitStringToList(adminFundingUpdateFormDTO.moviePhotos).size()}">
+            <input type="hidden" id="careerCount" value="${adminFundingUpdateFormDTO.splitStringToListCustom(adminFundingUpdateFormDTO.directorCareers).size()}">
+            <input type="hidden" id="awardsCount" value="${adminFundingUpdateFormDTO.splitStringToListCustom(adminFundingUpdateFormDTO.directorAwards).size()}">
+            <input type="hidden" id="actorCount" value="${adminFundingUpdateFormDTO.parseActor().get(0).size()}">
+            <input type="hidden" name="fundingId" value="${adminFundingUpdateFormDTO.fundingId}">
+            <input type="hidden" name="movieId" value="${adminFundingUpdateFormDTO.movieId}">
+            <input type="hidden" name="movieStaffId" value="${adminFundingUpdateFormDTO.movieStaffId}">
+            <input type="hidden" name="moviePhotoId" value="${adminFundingUpdateFormDTO.moviePhotoId}">
         </div>
 
 
@@ -102,7 +153,7 @@
                 </div>
             </div>
             <div class="k_funding_upload_container_two">
-                <textarea class="k_funding_upload_sibnob" name="synopsis"></textarea>
+                <textarea class="k_funding_upload_sibnob" name="synopsis">${adminFundingUpdateFormDTO.synopsis}</textarea>
             </div>
         </div>
         <div class="k_margin_top">
@@ -112,7 +163,7 @@
                 </div>
             </div>
             <div class="k_funding_upload_container_two">
-                <textarea class="k_funding_upload_sibnob" name="directingIntension"></textarea>
+                <textarea class="k_funding_upload_sibnob" name="directingIntension">${adminFundingUpdateFormDTO.directingIntension}</textarea>
             </div>
         </div>
         <div class="k_margin_top">
@@ -130,10 +181,18 @@
         </div>
 
         <div id="pic_plus" class="k_funding_upload_container_four">
-                <label id="movie_pic" for="movie_photo" class="k_funding_upload_select_photo_pic">
-                    <i class="fas fa-camera"></i>
-                    사진 선택 <span class="k_star_class">*</span></label>
-                <input type="file" id="movie_photo" name="moviePhotos" accept="image/*" onchange="changeUserPic(this.id, 'movie_pic', 'k_funding_movie_pic_style', event)" class="k_funding_upload_label">
+             <c:forEach var="photo" items="${adminFundingUpdateFormDTO.splitStringToList(adminFundingUpdateFormDTO.moviePhotos)}" varStatus="status">
+                 <label id="movie_pic${status.index}" for="movie_photo${status.index}" class="k_funding_upload_select_photo_pic">
+                 <c:choose>
+                     <c:when test="${photo != null}">
+                         <img src="${photo}" class="k_funding_upload_select_photo_pic"></label>
+                     </c:when>
+                     <c:otherwise>
+                         <i id="fa-camera" class="fas fa-camera"></i>사진 선택 <span class="k_star_class">*</span></label>
+                     </c:otherwise>
+                 </c:choose>
+                 <input type="file" id="movie_photo${status.index}" name="moviePhotos" accept="image/*" onchange="changeUserPic(this.id, 'movie_pic${status.index}', 'k_funding_movie_pic_style', event)" class="k_funding_upload_label">
+             </c:forEach>
                 <br>
 
         </div>
@@ -156,17 +215,28 @@
             </div>
             <div class="k_funding_upload_container_four">
                     <label id="director_pic" for="director_photo" class="k_funding_upload_select_photo_pic">
-                        <i class="fas fa-camera"></i>
-                        사진 선택 <span class="k_star_class">*</span>
+                        <c:choose>
+                             <c:when test="${adminFundingUpdateFormDTO.directorPhoto != null}">
+                              <img src="${adminFundingUpdateFormDTO.directorPhoto}" class="k_funding_upload_select_photo_pic"></label>
+                             </c:when>
+                        <c:otherwise>
+                            <i id="fa-camera" class="fas fa-camera"></i>사진 선택 <span class="k_star_class">*</span></label>
+                        </c:otherwise>
+                        </c:choose>
                     </label>
                     <input type="file" id="director_photo" name="directorPhoto" accept="image/*" onchange="changeUserPic(this.id, 'director_pic', 'k_funding_movie_director_style', event)" class="k_funding_upload_label">
                     <br>
                 <div class="k_funding_directer_career">
-                    <div id="career_movie" class="k_career_movie_style">
-                        <input type=text class="k_funding_upload_career_input" placeholder="작품 이름" name="directorCareers">
+                    <div id="career_movies" class="k_career_movie_style">
+                        <c:forEach var="careerMovie" items="${adminFundingUpdateFormDTO.extractNames()}" varStatus="status">
+                            <input type=text id="career_movie${status.index}" class="k_funding_upload_career_input" placeholder="작품 이름" name="directorCareers" value="${careerMovie}"}>
+                        </c:forEach>
                     </div>
-                    <div id="career_movie_year" class="k_funding_upload_head_limit">
-                    <input type="text" class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorCareerYears">
+                    <div id="career_movie_years" class="k_funding_upload_head_limit">
+                        <c:forEach var="careerYear" items="${adminFundingUpdateFormDTO.extractYears()}" varStatus="status">
+                            <input type="text" id="career_movie_year${status.index}"  class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorCareerYears" value="${careerYear}">
+                        </c:forEach>
+
                     </div>
                 </div>
         </div>
@@ -183,10 +253,14 @@
         </div>
             <div class="k_funding_directer_career">
                 <div id="awards_movie" class="k_career_movie_style">
-                    <input type=text class="k_funding_awards_movie_input" placeholder="작품 이름" name="directorAwards">
+                    <c:forEach var="award" items="${adminFundingUpdateFormDTO.extractAwardTitles()}" varStatus="status">
+                        <input type=text id="awards_movie${status.index}" class="k_funding_awards_movie_input" placeholder="작품 이름" name="directorAwards" value="${award}">
+                    </c:forEach>
                 </div>
                 <div id="awards_movie_year" class="k_funding_upload_head_limit">
-                    <input type="text" class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorAwardYears">
+                    <c:forEach var="awardYear" items="${adminFundingUpdateFormDTO.extractAwardYears()}" varStatus="status">
+                        <input type="text" id="awards_movie_year${status.index}" class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorAwardYears" value="${awardYear}">
+                    </c:forEach>
                 </div>
             </div>
         <div class="k_funding_upload_career">
@@ -208,10 +282,14 @@
         </div>
         <div class="k_funding_directer_career">
             <div id="movie_actor" class="k_career_movie_style">
-                <input type=text class="k_funding_awards_movie_input" placeholder="배우 이름" name="actors">
+                <c:forEach var="actorName" items="${adminFundingUpdateFormDTO.parseActor().get(0)}" varStatus="status">
+                    <input type=text id="movie_actor${status.index}" class="k_funding_awards_movie_input" placeholder="배우 이름" name="actors" value="${actorName}">
+                </c:forEach>
             </div>
             <div id="movie_actor_role" class="k_funding_upload_head_limit">
-                <input type="text" class="k_funding_upload_movie_year" placeholder="배역" name="actorRoles">
+                <c:forEach var="actorRole" items="${adminFundingUpdateFormDTO.parseActor().get(1)}" varStatus="status">
+                    <input type="text" id="movie_actor_role${status.index}" class="k_funding_upload_movie_year" placeholder="배역" name="actorRoles" oninput="setDefaultIfEmpty(this, '미정')" value="${actorRole}">
+                </c:forEach>
             </div>
         </div>
 
@@ -223,47 +301,47 @@
                     <tr>
                         <th>감독</th>
                         <td>
-                            <input type="text" name="staff.director">
+                            <input type="text" name="staff.director" value="${adminFundingUpdateFormDTO.staff.director}">
                         </td>
                         <th>각본</th>
                         <td>
-                            <input type="text" name="staff.script">
+                            <input type="text" name="staff.script" value="${adminFundingUpdateFormDTO.staff.script}">
                         </td>
                     </tr>
                     <tr>
                         <th>촬영</th>
                         <td>
-                            <input type="text" name="staff.filming">
+                            <input type="text" name="staff.filming" value="${adminFundingUpdateFormDTO.staff.filming}">
                         </td>
                         <th>조명</th>
                         <td>
-                            <input type="text" name="staff.lighting">
+                            <input type="text" name="staff.lighting" value="${adminFundingUpdateFormDTO.staff.lighting}">
                         </td>
                     </tr>
                     <tr>
                         <th>미술</th>
                         <td>
-                            <input type="text" name="staff.art">
+                            <input type="text" name="staff.art" value="${adminFundingUpdateFormDTO.staff.art}">
                         </td>
                         <th>편집</th>
                         <td>
-                            <input type="text" name="staff.editing">
+                            <input type="text" name="staff.editing" value="${adminFundingUpdateFormDTO.staff.editing}">
                         </td>
                     </tr>
                     <tr>
                         <th>사운드</th>
                         <td>
-                            <input type="text" name="staff.sound">
+                            <input type="text" name="staff.sound" value="${adminFundingUpdateFormDTO.staff.sound}">
                         </td>
                         <th>음악</th>
                         <td>
-                            <input type="text" name="staff.music">
+                            <input type="text" name="staff.music" value="${adminFundingUpdateFormDTO.staff.music}">
                         </td>
                     </tr>
                     <tr>
                         <th>의상</th>
                         <td>
-                            <input type="text" name="staff.clothes">
+                            <input type="text" name="staff.clothes" value="${adminFundingUpdateFormDTO.staff.clothes}">
                         </td>
                         <th></th>
                         <td></td>
@@ -286,8 +364,8 @@
     </div>
 </form>
 
-
 <script>
+    // 서버에서 받은 데이터 예시
     let firstDay = document.getElementById('firstDay');
     let lastDay = document.getElementById('lastDay');
     let limitDay = document.getElementById('limitDay');
@@ -354,27 +432,95 @@
         reader.readAsDataURL(f);
     }
 
-    let photoCount = 1;
+    let careerCount = 0;
+    let awardsCount = 0;
+    let photoCount = 0;
+    let actorCount = 0;
+    var serverTargetPrice = document.getElementById('j_target_price').value;
+    var serverRunningGrade = document.getElementById('j_running_grade').value;
+    let serverGenre = document.getElementById('j_genre').value;
+
+    window.onload = function () {
+        careerCount = document.getElementById('careerCount').value;
+        photoCount = document.getElementById('photoListCount').value;
+        awardsCount = document.getElementById('awardsCount').value;
+        actorCount = document.getElementById('actorCount').value;
+        console.log("안녕하세요" + careerCount)
+
+        // JavaScript로 옵션 선택
+        var selectTargetPrice = document.getElementById('j_target_price_select');
+        for (var i = 0; i < selectTargetPrice.options.length; i++) {
+            if (selectTargetPrice.options[i].value === serverTargetPrice) {
+                selectTargetPrice.options[i].selected = true;
+                break;
+            }
+        }
+
+        var selectRunningGrade = document.getElementById('j_running_grade_select');
+        for (var i = 0; i < selectRunningGrade.options.length; i++) {
+            if (selectRunningGrade.options[i].value === serverRunningGrade) {
+                selectRunningGrade.options[i].selected = true;
+                break;
+            }
+        }
+
+        var selectGenre = document.getElementById('j_genre_select');
+        for (var i = 0; i < selectGenre.options.length; i++) {
+            if (selectGenre.options[i].value === serverGenre) {
+                selectGenre.options[i].selected = true;
+                break;
+            }
+        }
+
+        for (var i = 0; i< careerCount; i++) {
+            let marginTopPx = 47 * (i);
+            let InputMarginTop = document.createElement("div");
+            InputMarginTop.setAttribute("id", "k_cm_margin_top" + i);
+            InputMarginTop.setAttribute("style", "margin-top: " + marginTopPx + "px;");
+            document.getElementById("k_cm_margin_top").appendChild(InputMarginTop);
+        }
+    }
+
 
     function addPhotoField() {
+        console.log('로그 포토카운트');
+        console.log(photoCount);
         if(photoCount > 4){
             alert("최대 5장까지만 추가할 수 있습니다.")
             return;
         }
         // 새로운 레이블 생성
         let newLabel = document.createElement("label");
-        newLabel.setAttribute("id", "movie" + photoCount);
-        newLabel.setAttribute("for", "photo" + photoCount);
+        newLabel.setAttribute("id", "movie_pic" + photoCount);
+        newLabel.setAttribute("for", "movie_photo" + photoCount);
         newLabel.className = "k_funding_upload_select_photo_pic_receive";
-        newLabel.innerHTML = '<i class="fas fa-camera"></i><span class="k_star_class"></span>';
+        var photoUrl = '${photo}';
+        if (photoUrl !== '0') {
+            var imgElement = document.createElement("img");
+            imgElement.src = "${photo}";
+            imgElement.className = "fas fa-camera";
+            newLabel.appendChild(imgElement);
+        } else {
+            var iElement = document.createElement("i");
+            iElement.id = "fa-camera";
+            iElement.className = "fas fa-camera";
+            newLabel.appendChild(iElement);
 
+            var textNode = document.createTextNode("사진 선택 ");
+            newLabel.appendChild(textNode);
+
+            var spanElement = document.createElement("span");
+            spanElement.className = "k_star_class";
+            spanElement.appendChild(document.createTextNode("*"));
+            newLabel.appendChild(spanElement);
+        }
         // 새로운 인풋 필드 생성
         let newInput = document.createElement("input");
         newInput.setAttribute("type", "file");
-        newInput.setAttribute("id", "photo" + photoCount);
+        newInput.setAttribute("id", "movie_photo" + photoCount);
         newInput.setAttribute("name", "moviePhotos");
         newInput.setAttribute("accept", "image/*");
-        newInput.setAttribute("onchange", "changeUserPic(this.id, 'movie" + photoCount + "', 'k_funding_movie_pic_style', event)");
+        newInput.setAttribute("onchange", "changeUserPic(this.id, 'movie_pic" + photoCount + "', 'k_funding_movie_pic_style', event)");
         newInput.className = "k_funding_upload_label";
 
         // 컨테이너에 새로운 레이블과 인풋 필드 추가
@@ -386,19 +532,19 @@
     }
 
     function deletePhotoField() {
-        if(photoCount < 2) {
+        if(photoCount <= 0) {
             alert("더 이상 삭제할 수 없습니다.");
             return;
         }
         // 삭제할 요소의 ID로 해당 요소를 찾아서 제거
-        document.getElementById('movie' + (photoCount - 1)).remove();
-        document.getElementById("photo" + (photoCount - 1)).remove();
+        document.getElementById('movie_pic' + (photoCount-1)).remove();
+        document.getElementById('movie_photo' + (photoCount-1)).remove();
 
         // photoCount 감소
         photoCount--;
+        console.log("포토카운트 : " + photoCount )
     }
 
-    let careerCount = 1;
 
     //
     function plusCareerMovie(){
@@ -427,28 +573,26 @@
 
 
         // 컨테이너에 새로운 레이블과 인풋 필드 추가
-        document.getElementById("career_movie").appendChild(InputCm);
-        document.getElementById("career_movie_year").appendChild(InputCmY);
+        document.getElementById("career_movies").appendChild(InputCm);
+        document.getElementById("career_movie_years").appendChild(InputCmY);
         document.getElementById("k_cm_margin_top").appendChild(InputMarginTop);
         careerCount++;
     }
 
     function minusCareerMovie(){
-        if(careerCount < 2) {
+        if(careerCount < 1) {
             alert("더 이상 삭제할 수 없습니다.");
             return;
         }
-        // 삭제할 요소의 ID로 해당 요소를 찾아서 제거
-        document.getElementById('career_movie' + (careerCount- 1)).remove();
-        document.getElementById("career_movie_year" + (careerCount - 1)).remove();
-        document.getElementById("k_cm_margin_top" + (careerCount - 1)).remove();
+        document.getElementById('career_movie' + (careerCount - 1)).remove();
+        document.getElementById('career_movie_year' + (careerCount - 1)).remove();
+        document.getElementById('k_cm_margin_top' + (careerCount - 1)).remove();
 
 
         // careerCount 감소
         careerCount--;
+        console.log("커리어카운트" + careerCount)
     }
-
-    let awardsCount = 1;
 
 
     function plusAwardsMovie(){
@@ -484,7 +628,7 @@
     }
 
     function minusAwardsMovie(){
-        if(awardsCount < 2) {
+        if(awardsCount < 1) {
             alert("더 이상 삭제할 수 없습니다.");
             return;
         }
@@ -496,9 +640,6 @@
         // awardsCount 감소
         awardsCount--;
     }
-
-    let actorCount = 1;
-
 
     function plusActor(){
         if(actorCount > 9) {
@@ -532,7 +673,7 @@
     }
 
     function minusActor(){
-        if(actorCount < 2) {
+        if(actorCount < 1) {
             alert("더 이상 삭제할 수 없습니다.");
             return;
         }
@@ -550,5 +691,40 @@
     }
 
 
+    //수정할 사진을 선택하지 않았을 때 기존 사진이 들어가게 하고, 사진을 선택하면 업로드한 사진의 값이 히든 인풋의 밸류에 들어가게하기
+    function updateHiddenInput(inputFile) {
+        var hiddenInput = document.getElementById('movieThumbnail');
+        // 파일이 선택되었을 때만 hidden input의 값을 업데이트
+        if (inputFile.files.length > 0) {
+            var file = inputFile.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                hiddenInput.value = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function callMultipleFunctionsAboutThumbnail(inputFile) {
+        updateHiddenInput(inputFile);
+        changeUserPic('thumbnail', 'basicPic', 'k_funding_thumbnail_style', event);
+    }
+
+    function setDefaultIfEmpty(inputElement, defaultValue) {
+        if (inputElement.value === '') {
+            inputElement.value = defaultValue;
+        }
+    }
+
+    let makeYear = document.getElementById('j_make_year');
+    flatpickr(makeYear, {
+        dateFormat: "Y",
+        minDate: "today",
+        maxDate: "2030-01-01", // 현재 월의 말일까지
+    });
+
+
 </script>
 <%@ include file="../layout/footer.jsp" %>
+

@@ -5,6 +5,7 @@ import com.tenco.indiepicter._core.utils.DateUtil;
 import com.tenco.indiepicter._core.utils.ParamStore;
 import com.tenco.indiepicter.funding.fundingready.FundingReady;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyRepository;
+import com.tenco.indiepicter.funding.request.AdminRequestFundingUpdateFormDTO;
 import com.tenco.indiepicter.funding.request.FundingSaveDTO;
 import com.tenco.indiepicter.funding.response.*;
 import com.tenco.indiepicter.movie.MovieService;
@@ -147,6 +148,33 @@ public class FundingService {
     //어드민 페이지 온라인 상영기간 설정 리스트 조회
     public List<AdminOnlineStreamingDTO> findAllAdminPeriodSetting(){
         return fundingRepository.findAllAdminPeriodSetting();
+    }
+
+    //어드민 페이지 오프라인 상영기간 설정 리스트 조회
+    public List<AdminOfflineStreamingDTO> findAllAdminOfflinePeriodSetting(){
+        return fundingRepository.findAllAdminOfflinePeriodSetting();
+    }
+
+    public AdminFundingUpdateFormDTO findByIdForAdminFundingModify(Integer id){
+        return fundingRepository.findByIdForAdminFundingModify(id);
+    }
+
+    @Transactional
+    public void updateById(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO){
+        Funding funding = Funding.builder()
+                .targetPrice(adminRequestFundingUpdateFormDTO.getTargetPrice())
+                .pricePerOnetime(adminRequestFundingUpdateFormDTO.getPricePerOnetime())
+                .releaseDate(DateUtil.stringToDate(adminRequestFundingUpdateFormDTO.getFundingPeriodStart()))
+                .endDate(DateUtil.stringToDate(adminRequestFundingUpdateFormDTO.getFundingPeriodEnd()))
+                .movieId(adminRequestFundingUpdateFormDTO.getMovieId())
+                .build();
+        int resultRowCount =  fundingRepository.updateByIdForAdmin(funding);
+        if(resultRowCount != 1) {
+            throw new MyDynamicException("펀딩 업데이트 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        movieService.updateById(adminRequestFundingUpdateFormDTO);
+        movieStaffService.updateById(adminRequestFundingUpdateFormDTO);
+        moviePhotoService.updateById(adminRequestFundingUpdateFormDTO);
     }
 
 
