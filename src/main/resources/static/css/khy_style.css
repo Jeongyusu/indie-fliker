@@ -1264,7 +1264,8 @@ k_ask_s_container a{
     justify-content: center;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 10px;
+    margin-left: 3px;
+    margin-right: 5px;
 }
 
 .k_funding_upload_select_photo_pic2 {
@@ -1280,7 +1281,7 @@ k_ask_s_container a{
 }
 
 .k_funding_thumbnail_style {
-    width: 105px;
+    width: 120px;
     height: 100px;
     border-radius: 5px;
 }
@@ -1292,7 +1293,7 @@ k_ask_s_container a{
 }
 
 .k_funding_movie_director_style {
-    width: 110px;
+    width: 130px;
     height: 100px;
     border-radius: 5px;
 }
@@ -1553,7 +1554,7 @@ k_ask_s_container a{
     font-size: 16px;
     font-weight: 600;
     width: 50%;
-    margin-right: 37px;
+    margin-right: 52px;
 }
 
 .k_custom_margin {

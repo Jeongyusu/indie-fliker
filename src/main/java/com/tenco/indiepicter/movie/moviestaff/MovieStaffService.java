@@ -1,7 +1,9 @@
 package com.tenco.indiepicter.movie.moviestaff;
 
 import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
+import com.tenco.indiepicter.funding.request.AdminRequestFundingUpdateFormDTO;
 import com.tenco.indiepicter.funding.request.FundingSaveDTO;
+import com.tenco.indiepicter.funding.response.AdminFundingUpdateFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -32,6 +34,28 @@ public class MovieStaffService {
         int resultRowCount = movieStaffRepository.saveMovieStaff(movieStaff);
         if(resultRowCount != 1) {
             throw new MyDynamicException("무비 스태프 등록 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return resultRowCount;
+    }
+
+    @Transactional
+    public int updateById(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO){
+        MovieStaff movieStaff = MovieStaff.builder()
+                .director(adminRequestFundingUpdateFormDTO.getStaff().getDirector())
+                .filming(adminRequestFundingUpdateFormDTO.getStaff().getFilming())
+                .art(adminRequestFundingUpdateFormDTO.getStaff().getArt())
+                .sound(adminRequestFundingUpdateFormDTO.getStaff().getSound())
+                .clothes(adminRequestFundingUpdateFormDTO.getStaff().getClothes())
+                .script(adminRequestFundingUpdateFormDTO.getStaff().getScript())
+                .lighting(adminRequestFundingUpdateFormDTO.getStaff().getLighting())
+                .editing(adminRequestFundingUpdateFormDTO.getStaff().getEditing())
+                .music(adminRequestFundingUpdateFormDTO.getStaff().getMusic())
+                .movieId(adminRequestFundingUpdateFormDTO.getMovieId())
+                .build();
+
+        int resultRowCount = movieStaffRepository.updateById(movieStaff);
+        if(resultRowCount != 1) {
+            throw new MyDynamicException("무비 스태프 수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return resultRowCount;
     }
