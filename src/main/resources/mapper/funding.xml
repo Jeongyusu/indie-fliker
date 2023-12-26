@@ -10,7 +10,7 @@
     </insert>
 
     <select id="findAllByGenre" resultMap="moviesByGenreDTOResultMap">
-            select ft.id, ft.movie_id, mt.thumbnail, ft.present_price * 100 / ft.target_price funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id where genre = #{genre}
+            select ft.id, ft.movie_id, mt.thumbnail, ft.present_price / (ft.target_price/10) * 10 funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id where genre = #{genre}
                 limit #{pageSize} offset #{offset}
     </select>
     <resultMap id="moviesByGenreDTOResultMap" type="com.tenco.indiepicter.funding.response.MoviesByGenreDTO">
@@ -24,7 +24,7 @@
     </resultMap>
 
     <select id="findAllByMain" resultMap="MoviesByMainDTOResultMap">
-        select ft.id, ft.movie_id, mt.thumbnail, ft.present_price * 100 / ft.target_price funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
+        select ft.id, ft.movie_id, mt.thumbnail, ft.present_price / (ft.target_price/10) * 10 funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
         limit #{pageSize} offset #{offset}
     </select>
     <resultMap id="MoviesByMainDTOResultMap" type="com.tenco.indiepicter.funding.response.MoviesByMainDTO">
@@ -39,7 +39,7 @@
 
 
     <select id="findAllByOnAir" resultMap="OnAirMovieDTOResultMap">
-        select mt.thumbnail, ft.id as funding_id, mt.movie_name, mt.synopsis, mt.running_grade, mt.online_release_date, mt.online_end_date, ft.present_price * 100 / ft.target_price funding_rate, mt.production
+        select mt.thumbnail, ft.id as funding_id, mt.movie_name, mt.synopsis, mt.running_grade, mt.online_release_date, mt.online_end_date, ft.present_price / (ft.target_price/10) * 10 funding_rate, mt.production
         from funding_tb ft
                  join movie_tb mt on ft.movie_id = mt.id
         where curdate() BETWEEN mt.online_release_date AND mt.online_end_date limit 4
@@ -58,7 +58,7 @@
     </resultMap>
 
     <select id="findAllByOffAir" resultMap="OffAirMovieDTOResultMap">
-        select mt.thumbnail, ft.id as funding_id, mt.movie_name, mt.synopsis, mt.running_grade, mt.offline_release_date, mt.offline_end_date, ft.present_price * 100 / ft.target_price funding_rate, mt.production
+        select mt.thumbnail, ft.id as funding_id, mt.movie_name, mt.synopsis, mt.running_grade, mt.offline_release_date, mt.offline_end_date, ft.present_price / (ft.target_price/10) * 10 funding_rate, mt.production
         from funding_tb ft
                  join movie_tb mt on ft.movie_id = mt.id
         where curdate() BETWEEN mt.offline_release_date AND mt.offline_end_date
@@ -76,7 +76,7 @@
     </resultMap>
 
     <select id="findAllByOnAirAndRanking" resultMap="OnAirMovieRankingDTOResultMap">
-        select mt.thumbnail, ft.id as funding_id, mt.movie_name, mt.synopsis, mt.running_grade, mt.online_release_date, mt.online_end_date, ft.present_price * 100 / ft.target_price funding_rate, mt.production
+        select mt.thumbnail, ft.id as funding_id, mt.movie_name, mt.synopsis, mt.running_grade, mt.online_release_date, mt.online_end_date, ft.present_price / (ft.target_price/10) * 10 funding_rate, mt.production
         from funding_tb ft
             join movie_tb mt on ft.movie_id = mt.id
         where curdate() BETWEEN mt.online_release_date AND mt.online_end_date
@@ -97,7 +97,7 @@
     </resultMap>
 
     <select id="findAllByOffAirAndRanking" resultMap="OffAirMovieRankingDTOResultMap">
-        select mt.thumbnail, ft.id as funding_id, mt.movie_name, mt.synopsis, mt.running_grade, mt.offline_release_date, mt.offline_end_date, ft.present_price * 100 / ft.target_price funding_rate, mt.production
+        select mt.thumbnail, ft.id as funding_id, mt.movie_name, mt.synopsis, mt.running_grade, mt.offline_release_date, mt.offline_end_date, ft.present_price / (ft.target_price/10) * 10 funding_rate, mt.production
         from funding_tb ft
                  join movie_tb mt on ft.movie_id = mt.id
         where curdate() BETWEEN mt.offline_release_date AND mt.offline_end_date
@@ -126,7 +126,7 @@
             mt.synopsis,
             mt.running_grade,
             mt.d_day,
-            ft.present_price * 100 / ft.target_price as funding_rate,
+            ft.present_price / (ft.target_price/10) * 10 funding_rate,
             mt.production
         from
             funding_tb ft
@@ -150,7 +150,7 @@
 
 
     <select id="findByFundingIdAboutDetailFunding" resultMap="FundingDetailDTOResultOMap">
-        select ft.id, mt.id as movie_id, mt.thumbnail, mt.genre, (ft.present_price * 100 / ft.target_price) funding_rate, (ft.end_date - ft.release_date) rest_period,
+        select ft.id, mt.id as movie_id, mt.thumbnail, mt.genre, ft.present_price / (ft.target_price/10) * 10 funding_rate, (ft.end_date - ft.release_date) rest_period,
                ft.present_price, ft.people_count, mt.movie_name, mt.director_pic, mt.synopsis, ft.price_per_onetime, concat(ft.release_date, ' ~ ', ft.end_date) funding_period, mt.d_day, mt.directing_intension,
                mt.director_careers, mt.director_awards_film, movie_pic, mt.director as mdirector, mst.filming, mst.art, mst.sound, mst.clothes, mst.script, mst.lighting, mst.editing, mst.music,
                mst.sound, CASE
@@ -194,7 +194,7 @@
     </resultMap>
 
     <select id="findByFundingIdAboutOfflineMovie" resultMap="OfflineMovieDetailDTOResultOMap">
-        select ft.id, mt.thumbnail, mt.genre, (ft.present_price * 100 / ft.target_price) as funding_rate, (ft.end_date - ft.release_date) rest_period,
+        select ft.id, mt.thumbnail, mt.genre, ft.present_price / (ft.target_price/10) * 10 funding_rate, (ft.end_date - ft.release_date) rest_period,
                ft.present_price, ft.people_count, mt.movie_name, mt.director_pic, mt.synopsis, ft.price_per_onetime, concat(ft.release_date, ' ~ ', ft.end_date) funding_period, mt.d_day, mt.directing_intension,
                mt.director_careers, mt.director_awards_film, movie_pic, mt.director as mdirector, mst.filming, mst.art, mst.sound, mst.clothes, mst.script, mst.lighting, mst.editing, mst.music,
                concat(mt.offline_release_date, ' ~ ' , mt.offline_end_date) offline_running_period, tt.theater_name, tt.address, tt.tel, tt.park ,CASE
@@ -304,7 +304,7 @@
 
     <!-- 키워드로 펀딩 검색 -->
     <select id="findByKeyword" resultMap="searchResultDTOResultMap">
-        select ft.id, mt.thumbnail, (ft.present_price * 100 / ft.target_price) funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
+        select ft.id, mt.thumbnail, ft.present_price / (ft.target_price/10) * 10 funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
         WHERE mt.movie_name LIKE '%' || #{keyword} || '%'
                   OR mt.actor LIKE '%' || #{keyword} || '%'
                   OR mt.director LIKE '%' || #{keyword} || '%'
@@ -439,8 +439,5 @@
     <update id="updateEndDateById">
         update funding_tb set end_date = curdate() - 1 where id = #{id}
     </update>
-
-
-
 
 </mapper>
