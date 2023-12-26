@@ -124,7 +124,7 @@ public class PaymentController {
 		// 유저 확인
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
 
-		SelectFundingDTO selectFundingDTO = paymentService.onPayment(1);
+		SelectFundingDTO selectFundingDTO = paymentService.onPayment(movieId);
 		model.addAttribute("selectFundingDTO", selectFundingDTO);
 		model.addAttribute("principal", principal);
 		return "payment/on_payment";
