@@ -11,7 +11,6 @@ const userPic = document.getElementById('principalPic').value;
 // 메세지 보내는 버튼
 const sendMessageButtons = document.querySelectorAll('.l_send_message_button');
 
-
 // 채팅방 버튼
 const chatButtons = document.querySelectorAll('.l_channel_card_button');
 
@@ -20,6 +19,54 @@ let includeUsers = [];
 
 // 중복 유저의 name, pic만 담기 위한 새로운 배열 생성
 let chatUserInfos = [];
+
+window.onload = function (){
+    let selectMovieId = document.getElementById('selectMovieId').value;
+    let chatButton = document.getElementById(`movie` + selectMovieId);
+    if(chatButton){
+        chatButton.click();
+    }else{
+        alert("채팅방이 존재하지 않습니다.");
+        return;
+    }
+    chatTime();
+}
+
+
+function chatTime(){
+    console.log("시작");
+    let chatTimes = document.querySelectorAll('[id*=chatTime]');
+    chatTimes.forEach((chatTimeInput) => {
+        let movieId = chatTimeInput.getAttribute('id').replace("chatTime","");
+        let chatTime = chatTimeInput.value;
+
+        let chatGetTime = new Date(chatTime).getTime();
+        console.log("해당 movie_id : " + movieId);
+        console.log("채팅 개봉 시간 : " + chatGetTime);
+
+        // 채팅 시작 시간
+        let chatFirstTime = new Date(chatTime);
+
+        // 채팅 종료 시간
+        let chatLastTime = new Date(chatGetTime + 2 * 60 * 60 * 1000);
+
+        // 현재시간
+        let currentDate = new Date();
+
+        // 영향을 줄 요소
+        let chatButton = document.getElementById('movie'+movieId);
+
+        // 채팅방 버튼
+        if(currentDate >= chatFirstTime && currentDate <= chatLastTime){
+            chatButton.style.display = 'block';
+        }else {
+            chatButton.style.display = 'none';
+        }
+    })
+}
+
+
+
 
 // 해당 채팅 버튼을 클릭 시 채팅 내용 뜨기
 chatButtons.forEach((chatButton) => {
@@ -39,8 +86,6 @@ chatButtons.forEach((chatButton) => {
             chatContainer.style.height = `${windowHeight}px`;
         });
 
-        alert("채팅방에 참여 하시겠습니까?");
-
         includeUsers.push({title: movieTitle, name: username, pic: userPic});
 
         // 입장한 채팅방이 다르면 배열 비우고, 현재 입장한 유저(sessionUser)를 배열에 추가하기
@@ -55,12 +100,10 @@ chatButtons.forEach((chatButton) => {
         // 리스너 호출
         const timestamp = new Date().toLocaleTimeString();
         let messageText = username + "님이 입장하셨습니다.";
-        addListener (movieTitle, username, userPic, messageText, timestamp, number);
+        addListener (movieTitle, username, userPic, messageText, timestamp);
         snapshotListener(chatMessagesContainer, movieTitle, number);
     })
 });
-
-
 
 // 각 채팅방에 존재하는 메시지 전송 버튼을 클릭 시 메세지를 인식하여 채팅방에 메세지 넣기
 sendMessageButtons.forEach((sendMessageButton) => {
@@ -72,12 +115,12 @@ sendMessageButtons.forEach((sendMessageButton) => {
         const chatTitle = document.getElementById(`movieTitle` + number).value;
         const timestamp = new Date().toLocaleTimeString();
 
-        addListener(chatTitle, username, userPic, messageText, timestamp, number);
+        addListener(chatTitle, username, userPic, messageText, timestamp);
         messageInput.value = '';
     });
 });
 
-function addListener (chatTitle, username, userPic, messageText, timestamp, number){
+function addListener (chatTitle, username, userPic, messageText, timestamp){
     // add 로 메세지 넣기
     db.collection(chatTitle).add({
         title: chatTitle,
@@ -125,7 +168,7 @@ function snapshotListener(chatMessagesContainer, chatTitle, number) {
 
                     // 채팅중인 user의 name과 pic만 따로 담기(messageData가 배열이 아님)
                     chatUserInfos.push({title: chatTitle, name: messageData.name, pic:messageData.pic});
-
+                    
                     const messageContainer = addMessage(messageData.name, messageData.pic, messageData.message, messageData.timestamp, username, userPic);
                     chatMessagesContainer.appendChild(messageContainer);
                     chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
@@ -134,11 +177,18 @@ function snapshotListener(chatMessagesContainer, chatTitle, number) {
 
             // 해당 사용자가 배열에 존재하지 않으면 추가
             chatUserInfos.forEach((chatUser) => {
-                console.log("chatUserIndfos에 있는 username들 = " + chatUser.name);
                 if(!includeUsers.some(newUser => newUser.name === chatUser.name)){
+                    console.log("챗 유저" + chatUser.name);
                     includeUsers.push(chatUser);
                 }
             })
+
+            // 중복된 이름 제거
+            includeUsers = includeUsers.filter((user, index, self) =>
+                    index === self.findIndex((t) => (
+                        t.name === user.name
+                    ))
+            );
 
             // 참여인원 목록 초기화
             let profileContainer = document.getElementById('l_participant_in' + number);
@@ -156,9 +206,6 @@ function snapshotListener(chatMessagesContainer, chatTitle, number) {
 }
 
 function addMessage(name, pic, message, time, principalUsername, principalPic) {
-
-    console.log("입장 메세지 : " + message);
-
     if(message.includes('님이 입장하셨습니다.')){
         const chatContainer = document.createElement('div');
         chatContainer.classList.add('l_chat_container');
@@ -170,7 +217,6 @@ function addMessage(name, pic, message, time, principalUsername, principalPic) {
         chatContainer.appendChild(inContainer);
 
         return chatContainer;
-        console.log("여기 컨테이너 만들어짐");
 
     }else{
         if(name !== principalUsername){
@@ -299,7 +345,6 @@ channelButton.forEach(function (button) {
         // .l_toggle_more을 순회하면서 모든 display를 none 하기
         let allMoreContent = document.querySelectorAll(".l_toggle_more");
         allMoreContent.forEach(function (moreContent) {
-
             if (moreContent.style.display === "none") {
                 moreContent.style.display = "none";
             } else {

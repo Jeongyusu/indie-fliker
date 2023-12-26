@@ -260,7 +260,9 @@
                                 </c:otherwise>
                             </c:choose>
                         </button>
-                        <button type="button" class="buy_button"><a href="/runningschedule/1/select-day">펀딩하기</a></button></a>
+                        <form action="/payment/${fundingDetailDTO.movieId}/on" method="get" id="n_funding_button">
+                            <button type="submit" class="n_buy_button">펀딩하기</button>
+                        </form>
                     </div>
 
                 </div>
@@ -269,38 +271,4 @@
     </div>
 </main>
 <script src="../../../../js/neh/on_detail.js"></script>
-<script>
-    // jQuery를 사용한 비동기 통신 코드
-    $(document).ready(function () {
-        $("#scrap_icon").on('click', function () {
-            // AJAX POST 요청
-            let sendData = {
-                userId: 2,
-                fundingId: 2
-            }
-            $.ajax({
-                type: "POST",
-                url: "/api/scrabs/toggle",
-                data: JSON.stringify(sendData),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json"
-            }).done(function (data, textStatus, xhr) {
-                console.log(typeof data); // 만약 문자열 -> 파싱
-                console.log(data);
-
-                // 좋아요가 추가된 경우
-                if (data.response.scrabbed) {
-                    $("#scrap_icon").attr("src", "images/icons/icons8-heart-24-red.png");
-                } else {
-                    // 좋아요가 제거된 경우
-                    $("#scrap_icon").attr("src", "images/icons/icons8-heart-24-black.png");
-                }
-
-            }).fail(function (error) {
-                alert(error.responseText);
-            });
-
-        });
-    });
-</script>
 <%@ include file="../layout/footer.jsp" %>

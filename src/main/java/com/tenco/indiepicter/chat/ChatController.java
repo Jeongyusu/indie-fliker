@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -27,7 +29,7 @@ public class ChatController {
     private HttpSession session;
 
     @GetMapping("/open-movie")
-    public String openMovieChatRoom(Model model) {
+    public String openMovieChatRoom(@RequestParam Integer movieId,Model model) {
 
        	// 인증검사 필요!!! (로그인 인증 & vip인증?)
     	User principal = (User) session.getAttribute(Define.PRINCIPAL);
@@ -43,6 +45,7 @@ public class ChatController {
 
         model.addAttribute("openMovieChatDTOs", openMovieChatDTOs);
         model.addAttribute("principal", principal);
+        model.addAttribute("movieId", movieId);
         return "main/chatroom";
     }
     

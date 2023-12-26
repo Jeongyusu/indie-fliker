@@ -20,6 +20,16 @@ for (let i = 1; i <= pageInfo.totalPages; i++) {
     pagination.append(li);
 }
 
+// 환불 진행 시 안내창
+
+function confirmModal(num) {
+    if (window.confirm("계속 환불 진행 하시겠습니까?")) {
+        getToken(num);
+    } else {
+        console.log("취소. 변화 없음");
+    }
+}
+
 // 토큰 발급 요청
 async function getToken(num){
     try {
@@ -48,7 +58,7 @@ async function getToken(num){
 }
 
 
-// 카카오 페이 환불 요청
+// 페이 환불 요청
 async function cancelPay(num, token) {
     let merchantUid = document.querySelector('#reservationCode' + num).value;
     let formatPrice = document.querySelector('#finalPrice' + num).innerHTML;
@@ -69,8 +79,8 @@ async function cancelPay(num, token) {
         });
 
         if (response.ok) {
-            console.log("성공이닷");
-            deletePayments(num);
+            alert("환불이 완료 되었습니다.");
+            saveRefund(num, finalPrice);
         } else {
             console.error("환불 실패:", response.status, response.statusText);
             response.status(500).json(/* 오류 응답 생성 */);
@@ -82,30 +92,26 @@ async function cancelPay(num, token) {
     }
 }
 
-// 결제 내역 삭제
-async function deletePayments(num){
-    let reservationId = document.querySelector('#reservationId' + num).value;
-    let orderId = document.querySelector('#orderId' + num).value;
+// 환불 내역 등록
+async function saveRefund(num, finalPrice){
     let paymentId = document.querySelector('#paymentId' + num).value;
-    let movieId = document.querySelector('#movieId' + num).value;
 
-    let deleteIds = {
-        reservationId:reservationId,
-        orderId:orderId,
+    let saveRefund = {
+        refundPayment:finalPrice,
         paymentId:paymentId
     };
 
     try {
-        const response = await fetch(`/payment/${movieId}/on-delete`, {
+        const response = await fetch(`/refund/${paymentId}/save`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(deleteIds),
+            body: JSON.stringify(saveRefund),
         });
 
         if (response.ok) {
-            console.log("삭제 성공");
+            console.log("등록 성공");
             location.reload();
         } else {
             response.status(500).json(/* 오류 응답 생성 */);
@@ -114,5 +120,4 @@ async function deletePayments(num){
         console.error("Ajax 요청 중에 오류 발생:", error);
 
     }
-
 }

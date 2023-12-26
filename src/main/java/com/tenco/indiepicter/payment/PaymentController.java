@@ -65,8 +65,16 @@ public class PaymentController {
 //		if(principal == null) {
 //			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
 //		}
+
 		List<MyOnlinePaymentDTO> MyOnlinePaymentDTOS = this.paymentService.findByOnlinePaymentId(principal.getId());
 		model.addAttribute("MyOnlinePaymentDTOS", MyOnlinePaymentDTOS);
+
+		
+		List<MyOnlinePaymentDTO> myOnlinePaymentDTOs =  this.paymentService.findByOnlinePaymentId(1);
+		
+		model.addAttribute("myOnlinePaymentDTOs", myOnlinePaymentDTOs);
+		
+
 		return "mypage/on_payment";
 	}
 //---------------------------------------------------------------------------------------------------------------------
@@ -79,8 +87,15 @@ public class PaymentController {
 //		if(principal == null) {
 //			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
 //		}
+
 		List<MyOfflinePaymentDTO> MyOfflinePaymentDTOs =  this.paymentService.findByOfflinePaymentId(1);
 		model.addAttribute("MyOfflinePaymentDTOs", MyOfflinePaymentDTOs);
+
+		List<MyOfflinePaymentDTO> myOfflinePaymentDTOs =  this.paymentService.findByOfflinePaymentId(1);
+		
+		model.addAttribute("myOfflinePaymentDTOs", myOfflinePaymentDTOs);
+		
+
 		return "mypage/off_payment";
 	}
 //---------------------------------------------------------------------------------------------------------------------
@@ -109,7 +124,7 @@ public class PaymentController {
 		// 유저 확인
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
 
-		SelectFundingDTO selectFundingDTO = paymentService.onPayment(1);
+		SelectFundingDTO selectFundingDTO = paymentService.onPayment(movieId);
 		model.addAttribute("selectFundingDTO", selectFundingDTO);
 		model.addAttribute("principal", principal);
 		return "payment/on_payment";
@@ -147,20 +162,5 @@ public class PaymentController {
 		System.out.println("저장됨!!!!!!!!!!!!" + addFundingTarget);
 
 		return "redirect:/reservation/"+ lastOrderDTO.getMovieId() +"/on-ticket";
-	}
-
-
-	// 온라인 결제 정보 삭제(POST)
-	@PostMapping("/{movieId}/on-delete")
-	public String onPaymentDeleteProc(@RequestBody MyRefundDTO myRefundDTO){
-
-		// 유저정보 확인
-		// User principal = (User) session.getAttribute(Define.PRINCIPAL);
-
-		int deleteToPayment = paymentService.deleteById(myRefundDTO.getPaymentId());
-		int deleteToOrder = orderService.deleteById(myRefundDTO.getOrderId(), 1);
-		int deleteToReservation = reservationService.deleteById(myRefundDTO.getReservationId(), 1);
-
-		return "redirect:/payment/on-funding";
 	}
 }

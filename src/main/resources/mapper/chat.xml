@@ -7,9 +7,9 @@
 
      <!-- 오늘 개봉하는 영화 목록 - 시간까지 -->
     <select id="findByOpenMovie"  resultMap="OpenMovieChatDTOResultMap">
-        select
-            f.id as funding_id,
-            m.id as movie_id,
+        SELECT
+            f.id AS funding_id,
+            m.id AS movie_id,
             m.movie_name,
             m.thumbnail,
             m.director,
@@ -17,10 +17,12 @@
             m.running_grade,
             m.online_release_date,
             m.chat_time
-        from movie_tb as m
-                 inner join funding_tb as f
-                            on m.id = f.movie_id
-        where online_release_date = curdate();
+        FROM
+            movie_tb AS m
+                INNER JOIN
+            funding_tb AS f ON m.id = f.movie_id
+        WHERE
+            m.online_release_date = current_date();
     </select>
     <resultMap id="OpenMovieChatDTOResultMap" type="com.tenco.indiepicter.chat.response.OpenMovieChatDTO">
         <result property="fundingId" column="funding_id"/>
