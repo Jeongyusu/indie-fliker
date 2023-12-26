@@ -23,7 +23,8 @@ public interface MovieCrawlRepository {
     // 중복 데이터 방지
     Integer countMovies(MovieCrawl movieCrawl);
 
-
+    // 더미데이터 삭제
+    void deletedummy();
 
 
 }

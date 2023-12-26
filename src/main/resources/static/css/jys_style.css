@@ -205,7 +205,7 @@
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1;
-    width: 20%;
+    width: 25%;
     height: 50%;
     padding-left: 5%;
 }
@@ -270,6 +270,23 @@
     background-color: var(--primary_02);
 }
 
+.j_streaming_close{
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--primary_02);
+}
+
+.j_streaming_close2{
+
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--point_03);
+}
+
 .j_register_bottom{
     position: absolute;
     bottom: 5%;
@@ -278,4 +295,8 @@
 
 .j_custom_display {
     display: none;
+}
+
+.j_custom_margin_bottom30{
+
 }

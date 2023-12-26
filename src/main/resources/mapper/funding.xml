@@ -228,18 +228,50 @@
     </resultMap>
 
     <!-- 어드민 페이지 펀딩 수정 폼 바인딩 정보 조회-->
-    <select id="findByIdForAdminFundingModify" resultMap="FundingUpdateFormDTOResultMap">
-        select ft.id funding_id, mt.id movie_id, mst.id movie_staff_id, mpt.id movie_photo_id, ft.target_price, ft.price_per_onetime,
-               mt.thumbnail, mt.movie_name, mt.production, mt.make_year, mt.genre,
-               mt.actor, ft.release_date, ft.end_date, mt.d_day, mt.running_grade,
-               mt.synopsis, mt.directing_intension, mst.director, mst.filming, mst.art,
-               mst.sound, mst.clothes, mst.script, mst.lighting, mst.editing, mst.music,
-               mpt.id, mpt.movie_pic, mpt.movie_id, mt.director_pic, mt.director_careers,
-               mt.director_awards_film, mt.d_day
-        from funding_tb ft join movie_tb mt on ft.movie_id = mt.id join movie_photo_tb mpt on mt.id = mpt.movie_id join movie_staff_tb mst on mt.id = mst.movie_id;
+    <select id="findByIdForAdminFundingModify" resultMap="AdminFundingUpdateFormDTOResultMap">
+        SELECT
+            MAX(ft.id) AS funding_id,
+            MAX(mt.id) AS movie_id,
+            MAX(mst.id) AS movie_staff_id,
+            MAX(mpt.id) AS movie_photo_id,
+            MAX(ft.target_price) AS target_price,
+            MAX(ft.price_per_onetime) AS price_per_onetime,
+            MAX(mt.thumbnail) AS thumbnail,
+            MAX(mt.movie_name) AS movie_name,
+            MAX(mt.production) AS production,
+            MAX(mt.make_year) AS make_year,
+            MAX(mt.genre) AS genre,
+            MAX(mt.actor) AS actor,
+            MAX(ft.release_date) AS release_date,
+            MAX(ft.end_date) AS end_date,
+            MAX(mt.d_day) AS d_day,
+            MAX(mt.running_grade) AS running_grade,
+            MAX(mt.synopsis) AS synopsis,
+            MAX(mt.directing_intension) AS directing_intension,
+            MAX(mst.director) AS director,
+            MAX(mst.filming) AS filming,
+            MAX(mst.art) AS art,
+            MAX(mst.sound) AS sound,
+            MAX(mst.clothes) AS clothes,
+            MAX(mst.script) AS script,
+            MAX(mst.lighting) AS lighting,
+            MAX(mst.editing) AS editing,
+            MAX(mst.music) AS music,
+            GROUP_CONCAT(mpt.movie_pic) AS movie_pic,
+            MAX(mt.director_pic) AS director_pic,
+            MAX(mt.director_careers) AS director_careers,
+            MAX(mt.director_awards_film) AS director_awards_film
+        FROM
+            funding_tb ft
+                JOIN movie_tb mt ON ft.movie_id = mt.id
+                JOIN movie_photo_tb mpt ON mt.id = mpt.movie_id
+                JOIN movie_staff_tb mst ON mt.id = mst.movie_id
+        WHERE
+            ft.id = #{id};
+
     </select>
 
-    <resultMap id="FundingUpdateFormDTOResultMap" type="com.tenco.indiepicter.funding.response.FundingUpdateFormDTO">
+    <resultMap id="AdminFundingUpdateFormDTOResultMap" type="com.tenco.indiepicter.funding.response.AdminFundingUpdateFormDTO">
         <result property="fundingId" column="funding_id"/>
         <result property="movieId" column="movie_id"/>
         <result property="movieStaffId" column="movie_staff_id"/>
@@ -258,15 +290,41 @@
         <result property="runningGrade" column="running_grade"/>
         <result property="synopsis" column="synopsis"/>
         <result property="directingIntension" column="directing_intension"/>
-        <result property="staff.director" column="director"/>
-        <result property="movieName" column="movie_name"/>
-        <result property="movieName" column="movie_name"/>
+        <result property="directorPhoto" column="director_pic"/>
+        <result property="directorCareers" column="director_careers"/>
+        <result property="directorAwards" column="director_awards_film"/>
+        <result property="moviePhotos" column="movie_pic"/>
+        <association property="staff" javaType="com.tenco.indiepicter.movie.moviestaff.MovieStaff">
+            <result property="director" column="director"/>
+            <result property="filming" column="filming"/>
+            <result property="art" column="art"/>
+            <result property="sound" column="sound"/>
+            <result property="clothes" column="clothes"/>
+            <result property="script" column="script"/>
+            <result property="lighting" column="lighting"/>
+            <result property="music" column="music"/>
+            <result property="editing" column="editing"/>
+        </association>
     </resultMap>
 
+    <!-- 어드민 페이지 온라인 오픈기간 설정 영화 조회-->
     <select id="findAllAdminPeriodSetting" resultType="com.tenco.indiepicter.funding.response.AdminOnlineStreamingDTO">
-        select mt.id movie_id, mt.thumbnail, mt.movie_name from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
+        select mt.id movie_id, mt.thumbnail, mt.movie_name, ft.end_date from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
         where curdate() BETWEEN ft.release_date AND ft.end_date
     </select>
+
+    <!-- 어드민 페이지 오프라인 오픈기간 설정 영화 조회-->
+    <select id="findAllAdminOfflinePeriodSetting" resultType="com.tenco.indiepicter.funding.response.AdminOfflineStreamingDTO">
+        select mt.id movie_id, mt.thumbnail, mt.movie_name, ft.end_date from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
+        where curdate() > ft.end_date
+    </select>
+
+    <!-- 어드민 페이지 펀딩 수정하기-->
+    <update id="updateByIdForAdmin">
+        update funding_tb ft set release_date = #{releaseDate}, end_date = #{endDate}, target_price = ${targetPrice}, price_per_onetime = #{pricePerOneTime}
+        where id = #{fundingId}
+    </update>
+
 
 
 

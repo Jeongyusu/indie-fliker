@@ -4,20 +4,16 @@
 <mapper namespace="com.tenco.indiepicter.crawling.MovieCrawlRepository">
 
     <insert id="insertMovie" parameterType="com.tenco.indiepicter.crawling.MovieCrawl" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO movie_tb (
-            make_year, production, movie_name, synopsis, thumbnail,
-            directing_intension, genre, running_grade, director, director_pic,
-            actor, director_careers, director_awards_film, online_release_date,
-            online_end_date, offline_release_date, offline_end_date, d_day
-        )
-        VALUES (
-                   #{makeYear}, #{production}, #{movieName}, #{synopsis},
-                   #{thumbnail}, #{directingIntension}, #{genre}, #{runningGrade},
-                   #{director}, #{directorPic},
-                   #{actor}, #{directorCareers}, #{directorAwardsFilm},
-                   #{onlineReleaseDate}, #{onlineEndDate},
-                   #{offlineReleaseDate}, #{offlineEndDate}, #{dDay}
-               )
+        INSERT INTO movie_tb (make_year, production, movie_name, synopsis, thumbnail,
+                              directing_intension, genre, running_grade, director, director_pic,
+                              actor, director_careers, director_awards_film, online_release_date,
+                              online_end_date, offline_release_date, offline_end_date, d_day)
+        VALUES (#{makeYear}, #{production}, #{movieName}, #{synopsis},
+                #{thumbnail}, #{directingIntension}, #{genre}, #{runningGrade},
+                #{director}, #{directorPic},
+                #{actor}, #{directorCareers}, #{directorAwardsFilm},
+                #{onlineReleaseDate}, #{onlineEndDate},
+                #{offlineReleaseDate}, #{offlineEndDate}, #{dDay})
 
     </insert>
 
@@ -54,6 +50,26 @@
             (#{moviePic}, #{movieId})
 
     </insert>
+    <delete id="deletedummy">
 
+        SET foreign_key_checks = 0;
+
+
+--         ALTER TABLE movie_tb AUTO_INCREMENT = 1;
+        DELETE FROM movie_tb WHERE id BETWEEN 1 AND 29;
+
+
+
+--         ALTER TABLE movie_staff_tb AUTO_INCREMENT = 1;
+        DELETE FROM movie_staff_tb WHERE id BETWEEN 1 AND 29;
+
+
+--         ALTER TABLE movie_photo_tb AUTO_INCREMENT = 1;
+        DELETE FROM movie_photo_tb WHERE id BETWEEN 1 AND 87;
+
+
+        SET foreign_key_checks = 1;
+
+    </delete>
 
 </mapper>
