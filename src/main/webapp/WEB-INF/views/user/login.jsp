@@ -24,8 +24,6 @@
 				<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력입력하세요."
 					onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 입력'" value="1234">
 			</div>
-			<a href="" class="k_forget">로그인
-				정보를 잊으셨나요?</a>
 			<div class="k_email">
 				<button type="submit" class="btn btn-primary btn-block">이메일로 로그인</button>
 			</div>
@@ -35,6 +33,7 @@
 				</a>
 			</div>
 		</form>
+		<a href="/user/find-email-pw" class="k_forget">로그인 정보를 잊으셨나요?</a>
 		<div class="k_no_id_aligin">
 			<div class="k_no_id">아직 인디픽터 계정이 없나요?</div>
 			<a href="/user/join" class="k_join">회원가입</a>
