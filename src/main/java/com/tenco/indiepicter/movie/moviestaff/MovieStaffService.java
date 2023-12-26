@@ -40,7 +40,20 @@ public class MovieStaffService {
 
     @Transactional
     public int updateById(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO){
-        int resultRowCount = movieStaffRepository.updateById(adminRequestFundingUpdateFormDTO);
+        MovieStaff movieStaff = MovieStaff.builder()
+                .director(adminRequestFundingUpdateFormDTO.getStaff().getDirector())
+                .filming(adminRequestFundingUpdateFormDTO.getStaff().getFilming())
+                .art(adminRequestFundingUpdateFormDTO.getStaff().getArt())
+                .sound(adminRequestFundingUpdateFormDTO.getStaff().getSound())
+                .clothes(adminRequestFundingUpdateFormDTO.getStaff().getClothes())
+                .script(adminRequestFundingUpdateFormDTO.getStaff().getScript())
+                .lighting(adminRequestFundingUpdateFormDTO.getStaff().getLighting())
+                .editing(adminRequestFundingUpdateFormDTO.getStaff().getEditing())
+                .music(adminRequestFundingUpdateFormDTO.getStaff().getMusic())
+                .movieId(adminRequestFundingUpdateFormDTO.getMovieId())
+                .build();
+
+        int resultRowCount = movieStaffRepository.updateById(movieStaff);
         if(resultRowCount != 1) {
             throw new MyDynamicException("무비 스태프 수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
         }

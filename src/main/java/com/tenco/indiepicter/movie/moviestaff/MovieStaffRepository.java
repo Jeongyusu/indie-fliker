@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface MovieStaffRepository {
     public int saveMovieStaff(MovieStaff movieStaff);
 
-    public int updateById(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO);
+    public int updateById(MovieStaff movieStaff);
 }
