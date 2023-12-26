@@ -65,6 +65,9 @@ function loadMoreData(genre) {
                     card.className = 'card';
                     card.classList.add('l_movie_card');
 
+                    const a = document.createElement('a');
+                    a.href = `/fund/funding/${funding.fundingId}`;
+
                     const img = document.createElement('img');
                     img.src = funding.movieThumbnail;
                     img.className = 'card-img';
@@ -87,7 +90,8 @@ function loadMoreData(genre) {
                     product.className = 'l_production';
                     product.textContent = funding.production;
 
-                    card.appendChild(img);
+                    card.appendChild(a);
+                    a.appendChild(img);
                     col.appendChild(card);
                     col.appendChild(h4);
                     col.appendChild(h5);

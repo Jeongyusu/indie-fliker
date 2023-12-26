@@ -24,19 +24,21 @@
     <br>
     <p class="l_list_comment">다양한 독립영화를 즐겨보세요</p>
   </div>
-  <div class="container" id="l_movie_list_container">
-  <div id="data-container" class="row row-cols-xl-5">
-    <c:forEach var="funding" items="${fundingPlusDTO.moviesByMainDTOs}" >
-      <div class="col my-4 l_movie_card_form">
-        <div class="card l_movie_card">
-          <a href="/fund/funding/${funding.fundingId}"><img src="${funding.movieThumbnail}" class="card-img" alt="..."></a>
+  <div class="container l_movie_list_container">
+    <div id="data-container" class="row row-cols-xl-5">
+      <c:forEach var="funding" items="${fundingPlusDTO.moviesByMainDTOs}" >
+        <div class="col my-4 l_movie_card_form">
+          <div class="card l_movie_card">
+            <a href="/fund/funding/${funding.fundingId}"><img src="${funding.movieThumbnail}" class="card-img" alt="..."></a>
+          </div>
+          <div class="l_percent l_mint l_strong">${funding.fundingRate}% 달성</div>
+          <div class="l_title">${funding.movieName}</div>
+          <div class="l_content">${funding.synopsis}</div>
+          <div class="l_production">${funding.production}</div>
         </div>
-        <div class="l_percent l_mint l_strong">${funding.fundingRate}% 달성</div>
-        <div class="l_title">${funding.movieName}</div>
-        <div class="l_content">${funding.synopsis}</div>
-        <div class="l_production">${funding.production}</div>
-      </div>
-    </c:forEach>
+      </c:forEach>
+    </div>
+  </div>
 
 
 
