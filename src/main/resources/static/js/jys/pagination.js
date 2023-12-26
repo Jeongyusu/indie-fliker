@@ -59,36 +59,40 @@ function loadMoreData(genre) {
                 newData.forEach(funding => {
                     const col = document.createElement('div');
                     col.className = 'col my-4';
+                    col.classList.add('l_movie_card_form');
 
                     const card = document.createElement('div');
                     card.className = 'card';
+                    card.classList.add('l_movie_card');
 
                     const img = document.createElement('img');
                     img.src = funding.movieThumbnail;
                     img.className = 'card-img';
 
                     const h4 = document.createElement('div');
-                    h4.className = 'h4 card-title l_mint mt-3';
-                    h4.textContent = `펀딩 달성률 ${funding.fundingRate}%`;
+                    h4.className = 'l_percent';
+                    h4.classList.add('l_mint');
+                    h4.classList.add('l_strong');
+                    h4.textContent = `${funding.fundingRate}% 달성`;
 
                     const h5 = document.createElement('div');
-                    h5.className = 'h5 card-text mt-2';
-                    h5.textContent = `[${funding.movieName}]`;
+                    h5.className = 'l_title';
+                    h5.textContent = funding.movieName;
 
                     const p = document.createElement('div');
-                    p.className = 'card-text mt-2';
+                    p.className = 'l_content';
                     p.textContent = funding.synopsis;
 
-                    const figcaption = document.createElement('figcaption');
-                    figcaption.className = 'figure-caption';
-                    figcaption.textContent = funding.production;
+                    const product = document.createElement('div');
+                    product.className = 'l_production';
+                    product.textContent = funding.production;
 
                     card.appendChild(img);
                     col.appendChild(card);
                     col.appendChild(h4);
                     col.appendChild(h5);
                     col.appendChild(p);
-                    col.appendChild(figcaption);
+                    col.appendChild(product);
 
                     row.appendChild(col);
                     const footer = document.querySelector('footer');

@@ -71,24 +71,6 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="/fund/funding/1">영화예매</a>
-                            <ul class="j_submenu">
-                                <li><a href="#">예매 추가메뉴1</a></li>
-                                <li><a href="#">예매 추가메뉴2</a></li>
-                                <li><a href="#">예매 추가메뉴3</a></li>
-                                <li><a href="#">예매 추가메뉴4</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="/chat/open-movie">채팅방</a>
-                            <ul class="j_submenu">
-                                <li><a href="#">채팅 추가메뉴1</a></li>
-                                <li><a href="#">채팅 추가메뉴2</a></li>
-                                <li><a href="#">채팅 추가메뉴3</a></li>
-                                <li><a href="#">채팅 추가메뉴4</a></li>
-                            </ul>
-                        </li>
-                        <li>
                             <a href="/fund/saveForm" class="j_custom_margin30">펀딩 등록</a>
                             <ul class="j_submenu">
                                 <li><a href="#">추가메뉴1</a></li>

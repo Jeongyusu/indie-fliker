@@ -44,12 +44,23 @@ public class FundingController {
     @Autowired
     private MovieStaffService movieStaffService;
 
+//    @GetMapping({"/funding-plus", "/main"})
+//    public String fundingPlus (@RequestParam(name = "genre", defaultValue = "극영화") String genre, @RequestParam(name = "page", defaultValue = "1") Integer page, Model model){
+//        List<MoviesByGenreDTO> moviesByGenreDTOs = fundingService.moviesByGenre(genre, page, 5);
+//        List<BannerDTO> bannerDTOs = bannerService.DisplayBanner(genre);
+//        FundingPlusDTO fundingPlusDTO = new FundingPlusDTO(moviesByGenreDTOs, bannerDTOs);
+//        model.addAttribute("fundingPlusDTO", fundingPlusDTO);
+//        return "main/movielist";
+//    }
+
     @GetMapping({"/funding-plus", "/main"})
     public String fundingPlus (@RequestParam(name = "genre", defaultValue = "극영화") String genre, @RequestParam(name = "page", defaultValue = "1") Integer page, Model model){
-        List<MoviesByGenreDTO> moviesByGenreDTOs = fundingService.moviesByGenre(genre, page, 5);
+        List<MoviesByMainDTO> moviesByMainDTOs = fundingService.moviesByMain(page, 5);
+        System.out.println("찾은 목록 : " + moviesByMainDTOs.toString());
         List<BannerDTO> bannerDTOs = bannerService.DisplayBanner(genre);
-        FundingPlusDTO fundingPlusDTO = new FundingPlusDTO(moviesByGenreDTOs, bannerDTOs);
+        FundingPlus2DTO fundingPlusDTO = new FundingPlus2DTO(moviesByMainDTOs, bannerDTOs);
         model.addAttribute("fundingPlusDTO", fundingPlusDTO);
+        System.out.println("펀딩 목록 : " + fundingPlusDTO.toString());
         return "main/movielist";
     }
 

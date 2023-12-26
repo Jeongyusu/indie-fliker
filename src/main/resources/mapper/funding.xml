@@ -13,7 +13,6 @@
             select ft.id, ft.movie_id, mt.thumbnail, ft.present_price * 100 / ft.target_price funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id where genre = #{genre}
                 limit #{pageSize} offset #{offset}
     </select>
-
     <resultMap id="moviesByGenreDTOResultMap" type="com.tenco.indiepicter.funding.response.MoviesByGenreDTO">
         <result property="fundingId" column="id"/>
         <result property="movieId" column="movie_id"/>
@@ -23,6 +22,21 @@
         <result property="synopsis" column="synopsis"/>
         <result property="production" column="production"/>
     </resultMap>
+
+    <select id="findAllByMain" resultMap="MoviesByMainDTOResultMap">
+        select ft.id, ft.movie_id, mt.thumbnail, ft.present_price * 100 / ft.target_price funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
+        limit #{pageSize} offset #{offset}
+    </select>
+    <resultMap id="MoviesByMainDTOResultMap" type="com.tenco.indiepicter.funding.response.MoviesByMainDTO">
+        <result property="fundingId" column="id"/>
+        <result property="movieId" column="movie_id"/>
+        <result property="movieThumbnail" column="thumbnail"/>
+        <result property="fundingRate" column="funding_rate"/>
+        <result property="movieName" column="movie_name"/>
+        <result property="synopsis" column="synopsis"/>
+        <result property="production" column="production"/>
+    </resultMap>
+
 
     <select id="findAllByOnAir" resultMap="OnAirMovieDTOResultMap">
         select mt.thumbnail, mt.movie_name, ft.present_price * 100 / ft.target_price funding_rate, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id where curdate() BETWEEN mt.online_release_date AND mt.online_end_date limit 4;

@@ -47,6 +47,11 @@ public class FundingService {
         return fundingRepository.findAllByGenre(genre, pageSize, offset);
     }
 
+    public List<MoviesByMainDTO> moviesByMain(Integer page, Integer pageSize){
+        Integer offset = page * pageSize - pageSize;
+        return fundingRepository.findAllByMain(pageSize, offset);
+    }
+
     public List<OnAirMovieDTO> onAirMovies() {
         return fundingRepository.findAllByOnAir();
     }
