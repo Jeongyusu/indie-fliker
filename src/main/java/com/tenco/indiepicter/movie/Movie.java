@@ -1,6 +1,7 @@
 package com.tenco.indiepicter.movie;
 
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +10,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Getter
+@Data
 @NoArgsConstructor
 public class Movie {
     private Integer id;

@@ -35,10 +35,9 @@ public class WebCrawlerService {
     }
 
 
-
     @Transactional(rollbackFor = Exception.class)
     public List<MovieCrawl> saveCrawlingDataToDB(String domain, String path) {
-        int maxPage = 2; // 여기서 데이터 값 조정
+        int maxPage = 1; // 여기서 데이터 값 조정
 
         List<MovieCrawl> movieCrawlList = new ArrayList<>();
         for (int i = 1; i <= maxPage; i++) {
@@ -62,7 +61,6 @@ public class WebCrawlerService {
         for (MovieCrawl movieCrawl : movieCrawlList) {
 
 
-
             Movie movie = Movie.builder()
                     .makeYear(movieCrawl.getMakeYear())
                     .production(movieCrawl.getProduction())
@@ -80,13 +78,10 @@ public class WebCrawlerService {
                     .build();
 
 
-
-
-
-
             // 중복된 데이터 방지
             if (movieCrawlRepository.countMovies(movieCrawl) == 0) {
                 try {
+                    movieCrawlRepository.deletedummy();
                     movieCrawlRepository.insertMovie(movie);
                     Integer moviePk = movie.getId();
 
@@ -102,7 +97,6 @@ public class WebCrawlerService {
                             .music(movieCrawl.getMusic())
                             .movieId(moviePk)
                             .build();
-
 
 
                     movieCrawlRepository.insertMovieStaff(movieStaff);
@@ -141,7 +135,6 @@ public class WebCrawlerService {
     }
 
 
-
     private String extractPhotoUrls(Element element, String domain) {
         List<String> photoUrls = new ArrayList<>();
 
@@ -159,7 +152,6 @@ public class WebCrawlerService {
         // photoUrls를 JSON 형식의 문자열로 변환 (대괄호 []를 제거)
         return photoUrls.toString().replaceAll("[\\[\\]]", "");
     }
-
 
 
     // 데이터 파싱
@@ -224,6 +216,7 @@ public class WebCrawlerService {
                 .music(music)
                 .build();
     }
+
     private String formatDirectorAwardsFilm(Element element, String selector) {
         Elements awardsFilmElements = element.select(selector);
         if (!awardsFilmElements.isEmpty()) {
@@ -246,8 +239,6 @@ public class WebCrawlerService {
 
 
     }
-
-
 
 
     //  감독 작품 경력 정보 추출 및 포맷팅
@@ -280,9 +271,6 @@ public class WebCrawlerService {
 
         return resultBuilder.toString().trim();
     }
-
-
-
 
 
     private String getStaffInfo(Element element, String staffRole) {

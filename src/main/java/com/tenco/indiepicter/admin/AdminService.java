@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.xml.stream.events.Comment;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +22,7 @@ import java.util.Map;
 public class AdminService {
 
     @Autowired
-	private AdminRepository adminRepository;
+    private AdminRepository adminRepository;
 
     // 페이징을 위한 클래스 변수 선언
     int pageLimit = 5; // 한 페이지당 보여줄 글 갯수
@@ -31,7 +32,7 @@ public class AdminService {
 
     // VIP 초청권 관리 전체 페이징 조회
 
-    public List<User> adminAllPagingLists(Integer page){
+    public List<User> adminAllPagingLists(Integer page) {
 
         // 인덱스 번호 0부터 시작이기 때문에 -1 로 처리 해줌
         int pageStart = (page - 1) * pageLimit;
@@ -47,7 +48,7 @@ public class AdminService {
 // ------------------------------------------------------------------------------------------
 
     // 일반 회원 관리 페이징 조회
-    public List<User> adminUserPagingLists(Integer page){
+    public List<User> adminUserPagingLists(Integer page) {
 
         // 인덱스 번호 0부터 시작이기 때문에 -1 로 처리 해줌
         int pageStart = (page - 1) * pageLimit;
@@ -63,7 +64,7 @@ public class AdminService {
 // ------------------------------------------------------------------------------------------
 
     // VIP 회원 관리 페이징 조회
-    public List<User> adminVipPagingLists(Integer page){
+    public List<User> adminVipPagingLists(Integer page) {
 
         // 인덱스 번호 0부터 시작이기 때문에 -1 로 처리 해줌
         int pageStart = (page - 1) * pageLimit;
@@ -83,12 +84,12 @@ public class AdminService {
         // 전체 글 갯수 조회
         int pageCount = this.adminRepository.pageCount();
         // 전체 페이지 갯수 계산 ( 총 갯수 / 한 페이지 당 갯수를 계산 후 소숫점 올림 계산 )
-        int maxPage = (int)(Math.ceil((double) pageCount / pageLimit));
+        int maxPage = (int) (Math.ceil((double) pageCount / pageLimit));
         // 시작 페이지 값 계산(1, 6, 11, 16 ~~~)
-        int startPage = (((int)(Math.ceil((double) page/ blockLimit))) - 1) * blockLimit + 1;
+        int startPage = (((int) (Math.ceil((double) page / blockLimit))) - 1) * blockLimit + 1;
         // 끝 페이지 값 계산(5, 10, 15, 20 ~~~)
         int endPage = startPage + blockLimit - 1;
-        if(endPage > maxPage) {
+        if (endPage > maxPage) {
             endPage = maxPage;
         }
 
@@ -104,12 +105,12 @@ public class AdminService {
 // ------------------------------------------------------------------------------------------
 
     // 일반 회원, VIP 회원 관리(회원 탈퇴)
-    public void isWithdrawal(Integer id){
+    public void isWithdrawal(Integer id) {
         this.adminRepository.adminUserUpdate(id);
     }
 
 // ------------------------------------------------------------------------------------------
-    
+
     // VIP 초청권 발급
     @Transactional
     public int vipIssued(InvitationResponseDTO responseDto) {
@@ -125,7 +126,7 @@ public class AdminService {
 
         int resultInvitationCount = this.adminRepository.insert(invitation);
 
-        if(resultInvitationCount != 1){
+        if (resultInvitationCount != 1) {
             throw new MyDynamicException("초청권 발급에 실패했습니다.", HttpStatus.BAD_REQUEST);
         }
 
@@ -134,14 +135,25 @@ public class AdminService {
 // ------------------------------------------------------------------------------------------
 
     // 회원 등급 수정 (VIP로 수정)
-    public void updateVip(Integer id){
+    public void updateVip(Integer id) {
         this.adminRepository.updateVip(id);
     }
 
     // 회원 등급 수정 (NORML로 수정)
-    public void updateNormal(Integer id){
+    public void updateNormal(Integer id) {
         this.adminRepository.updateNormal(id);
     }
 
-// ------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------
+    // 댓글 삭제
+    public void deleteComment(int commentIdToDelete) {
+        adminRepository.deleteComment(commentIdToDelete);
+    }
+
+    // 댓글 불러오기
+    public List<Comment> getCommentsByUserId(int userId) {
+        return adminRepository.getCommentsByUserId(userId);
+    }
+
+
 }

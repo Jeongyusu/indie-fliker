@@ -6,6 +6,7 @@ import com.tenco.indiepicter.notice.Notice;
 import com.tenco.indiepicter.user.User;
 import org.apache.ibatis.annotations.Mapper;
 
+import javax.xml.stream.events.Comment;
 import java.util.List;
 import java.util.Map;
 
@@ -35,5 +36,12 @@ public interface AdminRepository {
 
     // 회원 등급 수정 (NORML로 수정)
     public void updateNormal(Integer id);
+
+    // 댓글삭제
+    public void deleteComment(Integer id);
+
+    // 댓글 불러오기
+    List<Comment> getCommentsByUserId(int userId);
+
 
 }
