@@ -26,7 +26,9 @@
 
 .n_first_movie_img #n_movie_img{
     width: 100%;
-    height: 100%;
+    height: 376px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 #n_fund_attention {
@@ -391,10 +393,14 @@
     height: 22px;
     width: 22px;
 }
-#n_sell_button .buy_button {
+#n_sell_button #n_funding_button {
+    width: 100%;
+}
+
+#n_sell_button .n_buy_button {
     background-color: var(--point_05);
     height: 60px;
-    width: 92%;
+    width: 100%;
     border-radius: 8px;
     border-color: transparent;
     color: var(--def_wh);

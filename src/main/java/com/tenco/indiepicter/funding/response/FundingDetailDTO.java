@@ -17,6 +17,8 @@ public class FundingDetailDTO {
     private String movieThumbnail;
     // 개봉 여부
     private String isOpen;
+    // 영화 ID
+    private int movieId;
     // 영화 장르
     private String genre;
     // 펀딩 달성률

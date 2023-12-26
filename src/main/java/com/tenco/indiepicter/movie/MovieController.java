@@ -31,8 +31,8 @@ public class MovieController {
     private HttpSession session;
 
     // 온라인 상영관(GET)
-    @GetMapping("/on-theater")
-    public String onTheaterToMovie(@RequestParam Integer movieId, Model model){
+    @GetMapping("/{movieId}/on-theater")
+    public String onTheaterToMovie(@PathVariable Integer movieId, Model model){
         User principal = (User) session.getAttribute(Define.PRINCIPAL);
         OnMovieDetailDTO onMovieDetailDTO = movieService.onTheaterToMovie(movieId);
         model.addAttribute("onMovieDetailDTO", onMovieDetailDTO);

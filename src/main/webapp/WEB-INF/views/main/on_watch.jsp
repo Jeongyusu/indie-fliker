@@ -30,7 +30,7 @@
                                         ${onMovieDetailDTO.synopsis}
                                     </div>
                                     <div class="l_info_title h5"><a class="l_green">${onMovieDetailDTO.movieName}</a>에 대한 <a
-                                            class="l_font_pupple"><p id="count">9,734</p></a>개의 이야기가 있어요!
+                                            class="l_font_pupple"><p id="count">0</p></a>개의 이야기가 있어요!
                                     </div>
                                 </div>
 
@@ -55,7 +55,7 @@
                                             class="l_font_pupple">다양한 평론</a>을 느껴보세요!
                                     </div>
                                 </div>
-<%--                                <c:if test="${principal.grade == 'VIP'}">--%>
+                                <c:if test="${principal.grade == 'VIP'}">
                                     <div class="l_vip_review_comment">"${onMovieDetailDTO.movieName}"의 매력을 어떻게 느끼셨나요?
                                         <br/>
                                         독립영화를 사랑하시는 VIP 여러분들의 소중한 평론은 <a class="l_green">1번</a>만 작성가능합니다. 편안하게 의견을 나누어 주세요!</div>
@@ -84,7 +84,7 @@
                                             </div>
                                         </div>
                                     </div>
-<%--                                </c:if>--%>
+                                </c:if>
                                 <div id="l_vip_review_element"></div>
                             </div>
                             <!-- 영화 포토 -->
@@ -135,10 +135,12 @@
                         </div>
                     </div>
                     <!-- 채팅방 오픈 알림창 -->
-                    <!-- 오픈하는 날 2시간만 열림 -->
-                    <div class="toast show l_toast_show">
+                    <!-- 오픈하는 날 2시간만 열림 & VIP만 가능-->
+<%--                    <c:if test="${principal.grade == 'VIP'}">--%>
+                    <div class="toast show l_toast_show" id="chatForm" style="display: none">
                         <div class="toast-header l_toast_header">
-                            <form action="" method="get">
+                            <form action="/chat/open-movie" method="get">
+                                <input type="hidden" name="movieId" value="${onMovieDetailDTO.movieId}">
                                 <button type="submit">실시간 채팅 입장하기</button>
                             </form>
                         </div>
@@ -149,13 +151,44 @@
                             </div>
                             <div class="p l_toast_p">
                                 자유로운 대화를 나눠보세요<br/>
-                                영화 개봉 후 <a class="l_font_pupple">1시간 뒤</a>에 입장 가능합니다.
-                                <a class="l_font_red">선착순 입장</a>이므로 양해 부탁드립니다 :)
                             </div>
                         </div>
                     </div>
+                    <!-- 실시간 채팅 안내 -->
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content" id="l_movie_modal">
+                                <!-- Modal Header -->
+                                <div class="modal-header" id="l_movie_modal_header">
+                                    <p class="modal-title" id="l_movie_modal_title">실시간 채팅 안내</p>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body" id="l_movie_modal_body">
+                                    <a class="l_font_pupple">'${onMovieDetailDTO.movieName}'</a>가 드디어 개봉했습니다!
+                                    <br>
+                                    <br>
+                                    <a>여러분의 열렬한 기대에 보답하고자,<br>
+                                        <span class="l_font_pupple">'${onMovieDetailDTO.movieName}'</span>의 감독님과 함께하는 <span class="l_strong">실시간 채팅방</span>을 마련했습니다.
+                                    </a>
+                                    <br>
+                                    <br>
+                                    <a class="l_font_red">${onMovieDetailDTO.chatFormat()}</a>
+                                    <br>
+                                    여러분의 의견을 자유롭게 나누어보세요!
+                                    <br>
+                                    <br>
+                                    모두 즐거운 영화 시간 되세요 :)
+                                </div>
+                                <div class="l_movie_modal_close_button">
+                                    <button type="button" data-bs-dismiss="modal">영화보기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<%--                    </c:if>--%>
                 </div>
             </div>
+            <input type="hidden" name="chatTime" id="chatTime" value="${onMovieDetailDTO.chatTime}">
             <input type="hidden" name="movieId" id="movieId" value="${onMovieDetailDTO.movieId}">
             <input type="hidden" name="onlineEndDate" id="onlineEndDate" value="${onMovieDetailDTO.onlineEndDate}">
             <input type="hidden" name="onlineEndDate" id="onlineReleaseDate" value="${onMovieDetailDTO.onlineReleaseDate}">
