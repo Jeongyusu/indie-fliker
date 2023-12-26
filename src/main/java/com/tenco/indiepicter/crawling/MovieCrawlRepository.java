@@ -24,7 +24,10 @@ public interface MovieCrawlRepository {
     Integer countMovies(MovieCrawl movieCrawl);
 
     // 더미데이터 삭제
-    void deletedummy();
+    void deleteDummyMovieData();
+    
+    // Id 리셋
+    void  resetAutoIncrement();
 
 
 }

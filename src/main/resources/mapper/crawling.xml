@@ -50,22 +50,20 @@
             (#{moviePic}, #{movieId})
 
     </insert>
-    <delete id="deletedummy">
-
-
+    <delete id="deleteDummyMovieData">
         SET foreign_key_checks = 0;
 
-        DELETE FROM movie_tb WHERE id BETWEEN 1 AND 29;
-        DELETE FROM movie_staff_tb WHERE id BETWEEN 1 AND 29;
-        DELETE FROM movie_photo_tb WHERE id BETWEEN 1 AND 87;
+        DELETE FROM movie_tb;
+        DELETE FROM movie_staff_tb;
+        DELETE FROM movie_photo_tb;
 
         SET foreign_key_checks = 1;
-
-
-        ALTER TABLE movie_tb ALTER COLUMN id RESTART WITH 1;
-        ALTER TABLE movie_staff_tb ALTER COLUMN id RESTART WITH 1;
-        ALTER TABLE movie_photo_tb ALTER COLUMN id RESTART WITH 1;
     </delete>
 
+    <update id="resetAutoIncrement">
+        ALTER TABLE movie_tb AUTO_INCREMENT = 1;
+        ALTER TABLE movie_staff_tb AUTO_INCREMENT = 1;
+        ALTER TABLE movie_photo_tb AUTO_INCREMENT = 1;
+    </update>
 
 </mapper>

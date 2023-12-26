@@ -13,7 +13,7 @@ public class RestHomeController {
 
     @Autowired
     private WebCrawlerService webCrawlerService;
-
+    // http://localhost/ctest1 < 반드시 먼저 실행
     // http://localhost:80/api-webcrawler
     @GetMapping("/api-webcrawler")
     public List<MovieCrawl> testCrawl() {

@@ -50,6 +50,7 @@ create table movie_tb
     chat_time            DateTime
 );
 
+
 create table movie_staff_tb
 (
     id       int auto_increment primary key,

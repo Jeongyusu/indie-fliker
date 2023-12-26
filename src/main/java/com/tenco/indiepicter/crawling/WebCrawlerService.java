@@ -35,9 +35,9 @@ public class WebCrawlerService {
     }
 
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public List<MovieCrawl> saveCrawlingDataToDB(String domain, String path) {
-        int maxPage = 1; // 여기서 데이터 값 조정
+        int maxPage = 5; // 여기서 데이터 값 조정
 
         List<MovieCrawl> movieCrawlList = new ArrayList<>();
         for (int i = 1; i <= maxPage; i++) {
@@ -57,10 +57,10 @@ public class WebCrawlerService {
             }
         }
 
-// 크롤링한 데이터를 Entity로 변환하여 MyBatis를 통해 DB에 저장
+        // 크롤링한 데이터를 Entity로 변환하여 MyBatis를 통해 DB에 저장
         for (MovieCrawl movieCrawl : movieCrawlList) {
 
-            movieCrawlRepository.deletedummy();
+
             Movie movie = Movie.builder()
                     .makeYear(movieCrawl.getMakeYear())
                     .production(movieCrawl.getProduction())
@@ -77,12 +77,24 @@ public class WebCrawlerService {
                     .directorAwardsFilm(movieCrawl.getDirectorAwardsFilm())
                     .build();
 
-
-            // 중복된 데이터 방지
             if (movieCrawlRepository.countMovies(movieCrawl) == 0) {
                 try {
+                    // 중복된 데이터를 무시하고 계속 진행
+                    // 각 이미지 URL을 따로 저장
+                    String[] photoUrls = movieCrawl.getMoviePic().split(", ");
+                    List<String> moviePicList = Arrays.asList(photoUrls);
 
+                    // 더미 데이터 삭제
+//                    movieCrawlRepository.deleteDummyMovieData();
+//                    // Id 값 초기화
+//                    movieCrawlRepository.resetAutoIncrement();
+                    //testSaveCrawlingDataToDB();
+
+
+                    // 영화 데이터 삽입 - 한건에 데이터 가 들어 가능 상황
                     movieCrawlRepository.insertMovie(movie);
+
+
                     Integer moviePk = movie.getId();
 
                     MovieStaff movieStaff = MovieStaff.builder()
@@ -98,26 +110,20 @@ public class WebCrawlerService {
                             .movieId(moviePk)
                             .build();
 
-
                     movieCrawlRepository.insertMovieStaff(movieStaff);
 
-
-                    // 각 이미지 URL을 따로 저장
-                    String[] photoUrls = movieCrawl.getMoviePic().split(", ");
-                    List<String> moviePicList = Arrays.asList(photoUrls);
-
+                    // 이미지 데이터 삽입
                     for (String photoUrl : moviePicList) {
-                        // 각 이미지 URL에 대한 MovieCrawl 객체 생성
-                        MovieCrawl photoMovieCrawl = MovieCrawl.builder()
-                                .id(movieCrawl.getId())  // 같은 영화에 속한 이미지이므로 같은 ID 사용
-                                .moviePic(photoUrl.trim())// 여기서 trim()을 사용하여 공백을 제거합니다.
-                                .build();
+                        // 이미지 URL을 기반으로 고유한 값을 생성
+                        String uniqueId = generateUniqueId(photoUrl);
 
+                        // MoviePhoto 객체 생성
                         MoviePhoto moviePhoto = MoviePhoto.builder()
-                                .moviePic(photoMovieCrawl.getMoviePic())
+                                .moviePic(photoUrl.trim())
                                 .movieId(moviePk)
                                 .build();
-                        // 각 이미지 URL을 따로 저장
+
+                        // 고유한 값으로 MoviePhoto를 저장
                         movieCrawlRepository.insertMoviePhoto(moviePhoto);
                     }
 
@@ -128,10 +134,16 @@ public class WebCrawlerService {
                 }
             }
 
+
+
         }
 
 
         return movieCrawlList;
+    }
+
+    private String generateUniqueId(String photoUrl) {
+        return Integer.toString(photoUrl.hashCode());
     }
 
 
