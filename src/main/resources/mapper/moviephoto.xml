@@ -36,4 +36,5 @@
         select * from movie_photo_tb where id = #{id}
     </select>
 
+
 </mapper>

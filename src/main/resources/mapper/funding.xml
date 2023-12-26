@@ -218,11 +218,13 @@
 
     <!-- 어드민 페이지 펀딩 수정/삭제 리스트 전체조회 -->
     <select id="findAllAdminFundingModify" resultMap="AdminFundingModifyDTOResultMap">
-        select ft.id, mt.thumbnail, mt.movie_name from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
+        select ft.id, mt.id as movie_id, mt.thumbnail, mt.movie_name from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
+        where curdate() between ft.release_date and ft.end_date;
     </select>
 
     <resultMap id="AdminFundingModifyDTOResultMap" type="com.tenco.indiepicter.funding.response.AdminFundingModifyDTO">
         <result property="fundingId" column="id"/>
+        <result property="movieId" column="movie_id"/>
         <result property="movieThumbnail" column="thumbnail"/>
         <result property="movieName" column="movie_name"/>
     </resultMap>
@@ -325,6 +327,15 @@
         where id = #{id}
     </update>
 
+    <!-- 어드민 페이지 펀딩 삭제-->
+    <delete id="deleteById">
+        delete from funding_tb where id = #{id}
+    </delete>
+
+    <!-- 어드민 페이지 펀딩 종료-->
+    <update id="updateEndDateById">
+        update funding_tb set end_date = curdate() - 1 where id = #{id}
+    </update>
 
 
 

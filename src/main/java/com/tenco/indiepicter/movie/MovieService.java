@@ -172,6 +172,15 @@ public class MovieService {
 //        return resultRowCount;
     }
 
+    @Transactional
+    public int deleteById(Integer id){
+        int resultRowCount =  movieRepository.deleteById(id);
+        if(resultRowCount != 1) {
+            throw new MyDynamicException("영화 삭제 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return resultRowCount;
+    }
+
 }
 
 

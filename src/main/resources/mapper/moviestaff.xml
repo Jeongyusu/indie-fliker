@@ -15,4 +15,8 @@
                                   music = #{music}, movie_id = #{movieId} where id = #{id}
     </update>
 
+    <delete id="deleteByMovieId">
+        delete from movie_staff_tb where movie_id = #{movieId}
+    </delete>
+
 </mapper>

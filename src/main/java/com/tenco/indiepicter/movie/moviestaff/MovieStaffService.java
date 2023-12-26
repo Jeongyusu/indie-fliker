@@ -60,4 +60,13 @@ public class MovieStaffService {
         }
         return resultRowCount;
     }
+
+    @Transactional
+    public int deleteByMovieId(Integer movieId){
+        int resultRowCount = movieStaffRepository.deleteByMovieId(movieId);
+        if(resultRowCount != 1) {
+            throw new MyDynamicException("무비 스태프 삭제 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return resultRowCount;
+    }
 }
