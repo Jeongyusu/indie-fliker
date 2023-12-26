@@ -16,7 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="/css/png_style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
 
@@ -94,16 +94,25 @@
     <div class="p_update_delete_container2">
 
         <div class="p_section1">
-            <c:forEach var="funding" items="${adminFundingModifyDTOs}">
+            <c:forEach var="funding" items="${adminFundingModifyDTOs}" varStatus="status">
                 <div class="p_menu1">
                     <img src="${funding.movieThumbnail}">
                     <p>${funding.movieName}</p>
-                    <a href="">
-                        <button class="p_button1">영화 수정</button>
-                    </a>
+                    <button onclick="openModal(${status.index})">영화 수정</button>
                     <a href="">
                         <button class="p_button2">영화 삭제</button>
                     </a>
+                </div>
+                <!--모달-->
+                <div class="j_custom_modal" id="j_fund_modify_modal${status.index}">
+                    <iframe src="/admin/funding/1/updateForm"
+                    id="chat_iframe" style=" width: 100%; height: 100%; border: none;">대체 내용</iframe>
+                    <button class="j_close" style="background-color: var(--primary_02);"
+                            onclick="closeModal(${status.index})">창 닫기
+                    </button>
+                    <button class="j_close2" style="margin-bottom: 10px;"
+                            onclick="AuthorizationFunding(${fundingReady.fundingReadyId})">등록 승인
+                    </button>
                 </div>
             </c:forEach>
         </div>
@@ -138,5 +147,20 @@
         </div>
 
     </div>
+</div>
+
+<script>
+    // 모달 열기
+    function openModal(id) {
+        document.getElementById('j_fund_modify_modal' + id).style.display = 'block';
+
+    }
+
+    // 모달 닫기
+    function closeModal(id) {
+        document.getElementById('j_fund_modify_modal' + id).style.display = 'none';
+        window.location.reload();
+    }
+</script>
 </body>
 </html>

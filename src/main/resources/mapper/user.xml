@@ -58,5 +58,15 @@
 		select id from user_tb where user_email like 'OAuth_%'
 	</select>
 
+	<!-- 회원 이름과 전화번호로 이메일 조회 -->
+	<select id="findByEmail" resultType="java.lang.String">
+		select user_email from user_tb where username = #{username} and tel = #{tel}
+	</select>
+
+	<!-- 회원 비밀번호를 임시 비밀번호로 변경 -->
+	<select id="passwordUpdate">
+		update user_tb set password=#{pw}
+		where user_email=#{userEmail}
+	</select>
 
 </mapper>

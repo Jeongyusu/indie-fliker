@@ -1140,15 +1140,16 @@
 }
 
 .p_update_delete_container2 .p_section1 .p_menu1{
-    float: left;
-    width: 23%;
-    height: 300px;
-    background-color: white;
-    margin-right: 2%;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: rgb(66, 66, 66) 5px 5px 5px;
-    border-radius: 10px;
+        float: left;
+        width: 23%;
+        height: 300px;
+        background-color: white;
+        margin-right: 2%;
+        border-radius: 15px;
+        text-align: center;
+        border-radius: 10px;
+        border: 1px solid lightgray;
+        margin-bottom: 2%;
 }
 
 .p_update_delete_container2 .p_section1 .p_menu1 img{
@@ -1162,6 +1163,7 @@
 
 .p_update_delete_container2 .p_section1 .p_menu1 p{
     /* background-color: #E6E6E6; */
+    padding-bottom: 20px;
 }
 
 .p_update_delete_container2 .p_section2{
