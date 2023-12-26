@@ -91,7 +91,7 @@
     </resultMap>
 
     <select id="findByFundingIdAboutOfflineMovie" resultMap="OfflineMovieDetailDTOResultOMap">
-        select ft.id, mt.thumbnail, mt.genre, (ft.present_price * 100 / ft.target_price) funding_rate, (ft.end_date - ft.release_date) rest_period,
+        select ft.id, mt.thumbnail, mt.genre, (ft.present_price * 100 / ft.target_price) as funding_rate, (ft.end_date - ft.release_date) rest_period,
                ft.present_price, ft.people_count, mt.movie_name, mt.director_pic, mt.synopsis, ft.price_per_onetime, concat(ft.release_date, ' ~ ', ft.end_date) funding_period, mt.d_day, mt.directing_intension,
                mt.director_careers, mt.director_awards_film, movie_pic, mt.director as mdirector, mst.filming, mst.art, mst.sound, mst.clothes, mst.script, mst.lighting, mst.editing, mst.music,
                concat(mt.offline_release_date, ' ~ ' , mt.offline_end_date) offline_running_period, tt.theater_name, tt.address, tt.tel, tt.park ,CASE
@@ -258,6 +258,7 @@
             MAX(mst.editing) AS editing,
             MAX(mst.music) AS music,
             GROUP_CONCAT(mpt.movie_pic) AS movie_pic,
+            GROUP_CONCAT(mpt.id) AS movie_photo_id,
             MAX(mt.director_pic) AS director_pic,
             MAX(mt.director_careers) AS director_careers,
             MAX(mt.director_awards_film) AS director_awards_film
@@ -294,6 +295,7 @@
         <result property="directorCareers" column="director_careers"/>
         <result property="directorAwards" column="director_awards_film"/>
         <result property="moviePhotos" column="movie_pic"/>
+        <result property="moviePhotoIds" column="movie_photo_id"/>
         <association property="staff" javaType="com.tenco.indiepicter.movie.moviestaff.MovieStaff">
             <result property="director" column="director"/>
             <result property="filming" column="filming"/>
@@ -321,8 +323,8 @@
 
     <!-- 어드민 페이지 펀딩 수정하기-->
     <update id="updateByIdForAdmin">
-        update funding_tb ft set release_date = #{releaseDate}, end_date = #{endDate}, target_price = ${targetPrice}, price_per_onetime = #{pricePerOneTime}
-        where id = #{fundingId}
+        update funding_tb ft set release_date = #{releaseDate}, end_date = #{endDate}, target_price = ${targetPrice}, price_per_onetime = #{pricePerOnetime}
+        where id = #{id}
     </update>
 
 

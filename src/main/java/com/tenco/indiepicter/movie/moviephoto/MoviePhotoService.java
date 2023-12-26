@@ -5,12 +5,14 @@ import com.tenco.indiepicter._core.utils.PicToStringUtil;
 import com.tenco.indiepicter.funding.request.AdminRequestFundingUpdateFormDTO;
 import com.tenco.indiepicter.funding.request.FundingSaveDTO;
 import com.tenco.indiepicter.funding.response.AdminFundingUpdateFormDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+@Slf4j
 @Service
 public class MoviePhotoService {
 
@@ -34,7 +36,17 @@ public class MoviePhotoService {
 
     @Transactional
     public void updateById(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO){
+        log.debug("====포토 테스트==========");
+        log.debug(adminRequestFundingUpdateFormDTO.getMoviePhotos().toString());
+        for (int i = 0; i < adminRequestFundingUpdateFormDTO.getMoviePhotos().size(); i++) {
+            if (adminRequestFundingUpdateFormDTO.getMoviePhotos().get(i) != null && !adminRequestFundingUpdateFormDTO.getMoviePhotos().get(i).isEmpty()) {
+
+            } else {
+                return;
+            }
+        }
         for(int i=0; i < adminRequestFundingUpdateFormDTO.getMoviePhotos().size(); i++){
+            log.debug("포토인서트");
             MoviePhoto moviePhoto = MoviePhoto.builder()
                     .id(adminRequestFundingUpdateFormDTO.getMoviePhotoId())
                     .moviePic(PicToStringUtil.picToString(adminRequestFundingUpdateFormDTO.getMoviePhotos().get(i)))

@@ -41,6 +41,7 @@ public class MovieStaffService {
     @Transactional
     public int updateById(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO){
         MovieStaff movieStaff = MovieStaff.builder()
+                .id(adminRequestFundingUpdateFormDTO.getMovieStaffId())
                 .director(adminRequestFundingUpdateFormDTO.getStaff().getDirector())
                 .filming(adminRequestFundingUpdateFormDTO.getStaff().getFilming())
                 .art(adminRequestFundingUpdateFormDTO.getStaff().getArt())

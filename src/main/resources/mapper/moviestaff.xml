@@ -10,9 +10,9 @@
     </insert>
 
     <update id="updateById">
-        update movie_staff_tb set director = #{director}, filming = #{filming}, art = ${art}, sound = #{sound},
-                                  clothes = #{clothes}, script = #{script}, lighting = ${lighting}, editing = #{editing},
-                                  music = #{music}, movie_id = #{movieId} where id = #{movieStaffId}
+        update movie_staff_tb set director = #{director}, filming = #{filming}, art = #{art}, sound = #{sound},
+                                  clothes = #{clothes}, script = #{script}, lighting = #{lighting}, editing = #{editing},
+                                  music = #{music}, movie_id = #{movieId} where id = #{id}
     </update>
 
 </mapper>

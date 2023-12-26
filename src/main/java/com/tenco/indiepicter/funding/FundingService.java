@@ -145,6 +145,7 @@ public class FundingService {
     @Transactional
     public void updateById(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO){
         Funding funding = Funding.builder()
+                .id(adminRequestFundingUpdateFormDTO.getFundingId())
                 .targetPrice(adminRequestFundingUpdateFormDTO.getTargetPrice())
                 .pricePerOnetime(adminRequestFundingUpdateFormDTO.getPricePerOnetime())
                 .releaseDate(DateUtil.stringToDate(adminRequestFundingUpdateFormDTO.getFundingPeriodStart()))

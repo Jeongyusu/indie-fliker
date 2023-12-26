@@ -100,28 +100,76 @@ public class MovieService {
     }
 
     @Transactional
-    public int updateById(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO) {
-       Movie movie = Movie.builder()
-               .makeYear(adminRequestFundingUpdateFormDTO.getMakeYear())
-               .production(adminRequestFundingUpdateFormDTO.getProduction())
-               .movieName(adminRequestFundingUpdateFormDTO.getMovieTitle())
-               .synopsis(adminRequestFundingUpdateFormDTO.getSynopsis())
-               .thumbnail(PicToStringUtil.picToString(adminRequestFundingUpdateFormDTO.getMovieThumbnail()))
-               .directingIntension(adminRequestFundingUpdateFormDTO.getDirectingIntension())
-               .genre(adminRequestFundingUpdateFormDTO.getGenre())
-               .runningGrade(adminRequestFundingUpdateFormDTO.getRunningGrade())
-               .director(adminRequestFundingUpdateFormDTO.getStaff().getDirector())
-               .directorPic(PicToStringUtil.picToString(adminRequestFundingUpdateFormDTO.getDirectorPhoto()))
-               .actor(StringUtil.stringJoin(StringUtil.listToString(adminRequestFundingUpdateFormDTO.getActors()), StringUtil.listToString(adminRequestFundingUpdateFormDTO.getActorRoles())))
-               .directorCareers(StringUtil.stringBrJoin(StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorCareers()), StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorCareerYears())))
-               .directorAwardsFilm(StringUtil.stringBrJoin(StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorAwards()), StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorAwardYears())))
-               .dDay(DateUtil.stringToDate(adminRequestFundingUpdateFormDTO.getDDay()))
-               .build();
-        int resultRowCount = movieRepository.updateById(movie);
-        if (resultRowCount != 1) {
-            throw new MyDynamicException("영화 업데이트 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+    public void updateById(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO) {
+        String moviePic = "";
+        String directorPic ="";
+        log.debug("무비 디버그11");
+
+        log.debug("movieThumbnail: {}", adminRequestFundingUpdateFormDTO.getMovieThumbnail());
+        log.debug("directorPhoto: {}", adminRequestFundingUpdateFormDTO.getDirectorPhoto());
+
+        if (adminRequestFundingUpdateFormDTO.getMovieThumbnail() == null || adminRequestFundingUpdateFormDTO.getMovieThumbnail().isEmpty()) {
+            log.debug("movieThumbnail is null or empty");
+            moviePic = null;
+        } else {
+            log.debug("Setting moviePic");
+            moviePic = PicToStringUtil.picToString(adminRequestFundingUpdateFormDTO.getMovieThumbnail());
         }
-        return resultRowCount;
+
+        if (adminRequestFundingUpdateFormDTO.getDirectorPhoto() == null || adminRequestFundingUpdateFormDTO.getDirectorPhoto().isEmpty()) {
+            log.debug("directorPhoto is null or empty");
+            directorPic = null;
+        } else {
+            log.debug("Setting directorPic");
+            directorPic = PicToStringUtil.picToString(adminRequestFundingUpdateFormDTO.getDirectorPhoto());
+        }
+
+           log.debug("무비 디버그0");
+
+          try{ Movie movie = Movie.builder()
+                   .id(adminRequestFundingUpdateFormDTO.getMovieId())
+                   .makeYear(adminRequestFundingUpdateFormDTO.getMakeYear())
+                   .production(adminRequestFundingUpdateFormDTO.getProduction())
+                   .movieName(adminRequestFundingUpdateFormDTO.getMovieTitle())
+                   .synopsis(adminRequestFundingUpdateFormDTO.getSynopsis())
+                   .thumbnail(moviePic)
+                   .directingIntension(adminRequestFundingUpdateFormDTO.getDirectingIntension())
+                   .genre(adminRequestFundingUpdateFormDTO.getGenre())
+                   .runningGrade(adminRequestFundingUpdateFormDTO.getRunningGrade())
+                   .director(adminRequestFundingUpdateFormDTO.getStaff().getDirector())
+                   .directorPic(directorPic)
+                   .actor(StringUtil.stringJoin(StringUtil.listToString(adminRequestFundingUpdateFormDTO.getActors()), StringUtil.listToString(adminRequestFundingUpdateFormDTO.getActorRoles())))
+                   .directorCareers(StringUtil.stringBrJoin(StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorCareers()), StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorCareerYears())))
+                   .directorAwardsFilm(StringUtil.stringAwardBrJoin(StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorAwards()), StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorAwardYears())))
+                   .dDay(DateUtil.stringToDate(adminRequestFundingUpdateFormDTO.getDDay()))
+                   .build();
+
+           log.debug("무비 디버그1");
+
+//           log.debug("무비 디버그0");
+//
+           if(adminRequestFundingUpdateFormDTO.getDirectorPhoto() == null || adminRequestFundingUpdateFormDTO.getDirectorPhoto().isEmpty()){
+               movie.setDirectorPic(null);
+           }
+           log.debug("무비 디버그1");
+
+
+           if(adminRequestFundingUpdateFormDTO.getMovieThumbnail() == null || adminRequestFundingUpdateFormDTO.getMovieThumbnail().isEmpty()){
+               movie.setThumbnail(null);
+           }
+           log.debug("무비 디버그2");
+           movieRepository.updateById(movie);
+       } catch (Exception e){
+           throw new MyDynamicException("영화 업데이트 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+       }
+//       log.debug("테스트-나요기1");
+//        int resultRowCount = movieRepository.updateById(movie);
+//        log.debug("테스트-나요기2");
+//
+//        if (resultRowCount != 1) {
+//            throw new MyDynamicException("영화 업데이트 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//        return resultRowCount;
     }
 
 }

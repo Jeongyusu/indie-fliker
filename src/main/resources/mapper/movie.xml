@@ -77,11 +77,26 @@
 
     <!-- 어드민 페이지 펀딩 수정페이지 영화 수정 -->
     <update id="updateById">
-        update movie_tb set make_year = #{makeYear}, production = #{production}, movie_name = #{movieName}, sysnopsis = #{synopsis},
-                            thumbnail = #{thumbnail}, directing_intension = #{directingIntension}, genre = #{genre}, running_grade = #{runningGrade},
-                            director = #{director}, director_pic = #{directorPic}, actor = #{actor}, director_careers = #{directorCareers},
-                            director_awards_film = #{directorAwardsFilm}, online_release_date = #{onlineReleaseDate}, offline_end_date = #{offlineEndDate},
-                            d_day = #{dDAy} where id = #{movieId}
+        update movie_tb
+        <set>
+        <if test="makeYear != null">make_year = #{makeYear},</if>
+        <if test="production != null">production = #{production},</if>
+        <if test="movieName != null">movie_name = #{movieName},</if>
+        <if test="synopsis != null">synopsis = #{synopsis},</if>
+        <if test="thumbnail != null and thumbnail != ''">thumbnail = #{thumbnail},</if>
+        <if test="directingIntension != null">directing_intension = #{directingIntension},</if>
+        <if test="genre != null">genre = #{genre},</if>
+        <if test="runningGrade != null">running_grade = #{runningGrade},</if>
+        <if test="director != null">director = #{director},</if>
+        <if test="directorPic != null and directorPic !=''">director_pic = #{directorPic},</if>
+        <if test="actor != null">actor = #{actor},</if>
+        <if test="directorCareers != null">director_careers = #{directorCareers},</if>
+        <if test="directorAwardsFilm != null">director_awards_film = #{directorAwardsFilm},</if>
+        <if test="onlineReleaseDate != null">online_release_date = #{onlineReleaseDate},</if>
+        <if test="offlineEndDate != null">offline_end_date = #{offlineEndDate},</if>
+        <if test="dDay != null">d_day = #{dDay}</if>
+        </set>
+        where id = #{id}
     </update>
 
 </mapper>
