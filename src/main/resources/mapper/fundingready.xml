@@ -22,7 +22,7 @@
     </resultMap>
 
     <select id="findByFundingIdAboutDetailfundingReady" resultMap="FundingReadyDetailDTOResultOMap">
-        select ft.id, mt.thumbnail, mt.genre, (ft.present_price * 100 / ft.target_price) funding_rate, (ft.end_date - ft.release_date) rest_period,
+        select ft.id, mt.thumbnail, mt.genre, ft.present_price / (ft.target_price/10) * 10 funding_rate, (ft.end_date - ft.release_date) rest_period,
                ft.present_price, ft.people_count, mt.movie_name, mt.director_pic, mt.synopsis, ft.price_per_onetime, concat(ft.release_date, ' ~ ', ft.end_date) funding_period, mt.d_day, mt.directing_intension,
                mt.director_careers, mt.director_awards_film, movie_pic, mt.director as mdirector, mst.filming, mst.art, mst.sound, mst.clothes, mst.script, mst.lighting, mst.editing, mst.music,
                mst.sound, CASE
