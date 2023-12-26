@@ -23,7 +23,7 @@ public interface UserRepository {
 	public User findByUseruserEmailAndPassword(UserRequestDTO.JoinDTO requestDto);
 	
 	// 회원 이메일로 단일 조회
-	public User findByUserEmail(String userEmail);
+	public User findByUserEmail(@Param("userEmail") String userEmail);
 	
 	// 이메일 중복 체크
 	public int findByEmailCheck(String userEmail);
@@ -50,6 +50,10 @@ public interface UserRepository {
 	public String findByEmail(@RequestParam String username, @RequestParam String tel);
 
 	// 회원 비밀번호를 임시 비밀번호로 변경
-	public void passwordUpdate(@RequestParam String pw, @RequestParam String userEmail);
+	public void tempPasswordUpdate(@RequestParam String password, @RequestParam String userEmail);
+
+	// 회원 비밀번호 수정
+	public void passwordUpdate(@RequestParam String userEmail, @RequestParam String encodingPassword);
+
 
 }

@@ -5,13 +5,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.tenco.indiepicter._core.utils.ApiUtils;
 import com.tenco.indiepicter.invitation.Invitation;
-import com.tenco.indiepicter.user.request.MailDTO;
+import com.tenco.indiepicter.user.request.*;
 import org.apache.http.client.methods.HttpHead;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,8 +35,6 @@ import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
 import com.tenco.indiepicter._core.utils.Define;
 import com.tenco.indiepicter._core.vo.MyPath;
 import com.tenco.indiepicter.reservation.ReservationService;
-import com.tenco.indiepicter.user.request.UserProfileRequestDTO;
-import com.tenco.indiepicter.user.request.UserRequestDTO;
 import com.tenco.indiepicter.user.response.KakaoProfile;
 import com.tenco.indiepicter.user.response.OAuthToken;
 
@@ -368,24 +368,23 @@ public class UserController {
 	// 이메일 찾기
 	@PostMapping("/find-email")
 	@ResponseBody
-	public String findEmail(@RequestParam String username, @RequestParam String tel) {
-		log.debug("-----------------진입확인-------------------");
+	public ResponseEntity<?> findEmail(FindUserInfoDTO findUserInfoDTO) {
 		// 이름 유효성 검사
-		if(username == null || username.isEmpty()) {
-			throw new MyDynamicException("이름을 입력하세요.", HttpStatus.BAD_REQUEST);
+		if(findUserInfoDTO.getUsername() == null || findUserInfoDTO.getUsername().isEmpty()) {
+//			throw new MyDynamicException("이름을 입력하세요.", HttpStatus.BAD_REQUEST);
 		}
 		// 전화번호 유효성 검사
-		if(tel == null || tel.isEmpty()) {
-			throw new MyDynamicException("전화번호를 입력하세요.", HttpStatus.BAD_REQUEST);
+		if(findUserInfoDTO.getTel() == null || findUserInfoDTO.getTel().isEmpty()) {
+//			throw new MyDynamicException("전화번호를 입력하세요.", HttpStatus.BAD_REQUEST);
 		}
 
-		String userEmail = this.userService.userEmail(username, tel);
+		String userEmail = this.userService.userEmail(findUserInfoDTO.getUsername(), findUserInfoDTO.getTel());
 		
-		return userEmail;
+		return ResponseEntity.ok().body(ApiUtils.success(userEmail));
 	}
 
 	// 이메일 보내기 (임시 비밀번호 전송)
-	@PostMapping("/sendEmail")
+	@PostMapping("/send-email")
 	public String sendEmail(@RequestParam String userEmail){
 
 		MailDTO dto =  this.userService.sendEail(userEmail);
@@ -396,7 +395,38 @@ public class UserController {
 
 //----------------------------------------------------------------------------------------------------------------
 
+	// 회원 비밀번호 수정 페이지
+	@GetMapping("/password-update")
+	public String passwordUpdatePage(){
+		return "user/password_update";
+	}
+
+	// 회원 비밀번호 수정
+	@PostMapping("/password-update")
+	public String passwordUpdate(UserPasswordUpdateDTO dto){
+
+		if(dto.getUserEmail() == null || dto.getUserEmail().isEmpty()){
+			throw new MyDynamicException("이메일을 입력해 주세요.", HttpStatus.BAD_REQUEST);
+		}
+		if(dto.getPassword1() == null || dto.getPassword1().isEmpty()){
+			throw new MyDynamicException("변경할 비밀번호를 입력해 주세요..", HttpStatus.BAD_REQUEST);
+		}
+		if(dto.getPassword2() == null || dto.getPassword2().isEmpty()){
+			throw new MyDynamicException("변경할 비밀번호를 확인해 주세요.", HttpStatus.BAD_REQUEST);
+		}
+		if(!dto.getPassword1().equals(dto.getPassword2())){
+			throw new MyDynamicException("비밀번호가 일치하지 않습니다.", HttpStatus.BAD_REQUEST);
+		}
+
+		this.userService.passwordUpdate(dto);
+
+		return "redirect:/user/login";
+	}
+
+//----------------------------------------------------------------------------------------------------------------
+
 	// 12 - 26 12:33 학원 작업중 ~~
+
 }
 
 

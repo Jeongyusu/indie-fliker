@@ -85,7 +85,7 @@
 			$.ajax({
 				url : "/emailCkeck",
 				type : "post",
-				dataType : "jSON",
+				dataType : "json",
 				data : {"userEmail" : $("#userEmail").val()},
 				success : function(data) {
 		  
