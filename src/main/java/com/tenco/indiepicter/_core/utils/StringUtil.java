@@ -1,5 +1,6 @@
 package com.tenco.indiepicter._core.utils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 
@@ -30,7 +31,7 @@ public class StringUtil {
         return result.toString();
     }
 
-    public static String stringJoin(String a, String b){
+    public static String stringJoin(String a, String b) {
         String[] arr1 = a.split(", ");
         String[] arr2 = b.split(", ");
 
@@ -46,7 +47,7 @@ public class StringUtil {
         return resultJoiner.toString();
     }
 
-    public static String stringBrJoin(String a, String b){
+    public static String stringBrJoin(String a, String b) {
         String[] arr1 = a.split(", ");
         String[] arr2 = b.split(", ");
 
@@ -56,13 +57,13 @@ public class StringUtil {
         for (int i = 0; i < arr1.length; i++) {
 
             // StringJoiner에 요소 추가
-            resultJoiner.add("[" +arr1[i] + "]" + " (" + arr2[i] + ")</br>");
+            resultJoiner.add("[" + arr1[i] + "]" + " (" + arr2[i] + ")</br>");
         }
 
         return resultJoiner.toString();
     }
 
-    public static String stringAwardBrJoin(String a, String b){
+    public static String stringAwardBrJoin(String a, String b) {
         String[] arr1 = a.split(", ");
         String[] arr2 = b.split(", ");
 
@@ -72,9 +73,21 @@ public class StringUtil {
         for (int i = 0; i < arr1.length; i++) {
 
             // StringJoiner에 요소 추가
-            resultJoiner.add( arr1[i] + " (" + arr2[i] + ")</br>");
+            resultJoiner.add(arr1[i] + " (" + arr2[i] + ")</br>");
         }
 
         return resultJoiner.toString();
+    }
+
+    public static List<Integer> convertStringToListInteger(String inputString) {
+        List<Integer> resultList = new ArrayList<>();
+
+        String[] stringArray = inputString.split(",");
+
+        for (String str : stringArray) {
+            resultList.add(Integer.parseInt(str.trim()));
+        }
+
+        return resultList;
     }
 }

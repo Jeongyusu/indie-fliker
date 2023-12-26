@@ -233,7 +233,6 @@
             MAX(ft.id) AS funding_id,
             MAX(mt.id) AS movie_id,
             MAX(mst.id) AS movie_staff_id,
-            MAX(mpt.id) AS movie_photo_id,
             MAX(ft.target_price) AS target_price,
             MAX(ft.price_per_onetime) AS price_per_onetime,
             MAX(mt.thumbnail) AS thumbnail,
@@ -258,7 +257,7 @@
             MAX(mst.editing) AS editing,
             MAX(mst.music) AS music,
             GROUP_CONCAT(mpt.movie_pic) AS movie_pic,
-            GROUP_CONCAT(mpt.id) AS movie_photo_id,
+            GROUP_CONCAT(mpt.id) AS movie_photo_index,
             MAX(mt.director_pic) AS director_pic,
             MAX(mt.director_careers) AS director_careers,
             MAX(mt.director_awards_film) AS director_awards_film
@@ -269,7 +268,6 @@
                 JOIN movie_staff_tb mst ON mt.id = mst.movie_id
         WHERE
             ft.id = #{id};
-
     </select>
 
     <resultMap id="AdminFundingUpdateFormDTOResultMap" type="com.tenco.indiepicter.funding.response.AdminFundingUpdateFormDTO">
@@ -295,7 +293,7 @@
         <result property="directorCareers" column="director_careers"/>
         <result property="directorAwards" column="director_awards_film"/>
         <result property="moviePhotos" column="movie_pic"/>
-        <result property="moviePhotoIds" column="movie_photo_id"/>
+        <result property="moviePhotoIds" column="movie_photo_index"/>
         <association property="staff" javaType="com.tenco.indiepicter.movie.moviestaff.MovieStaff">
             <result property="director" column="director"/>
             <result property="filming" column="filming"/>

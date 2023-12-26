@@ -141,6 +141,8 @@
             <input type="hidden" name="movieId" value="${adminFundingUpdateFormDTO.movieId}">
             <input type="hidden" name="movieStaffId" value="${adminFundingUpdateFormDTO.movieStaffId}">
             <input type="hidden" name="moviePhotoId" value="${adminFundingUpdateFormDTO.moviePhotoId}">
+            <input type="hidden" name="moviePhotoIds" value="${adminFundingUpdateFormDTO.moviePhotoIds}">
+
         </div>
 
 
