@@ -14,6 +14,10 @@ import javax.validation.Valid;
 import com.tenco.indiepicter._core.utils.ApiUtils;
 import com.tenco.indiepicter._core.utils.PicToStringUtil;
 import com.tenco.indiepicter.invitation.Invitation;
+import com.tenco.indiepicter.order.OrderService;
+import com.tenco.indiepicter.order.response.OrderCountDTO;
+import com.tenco.indiepicter.scrab.ScrabService;
+import com.tenco.indiepicter.scrab.response.ScrabResponseDTO;
 import com.tenco.indiepicter.user.request.*;
 import org.apache.http.client.methods.HttpHead;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +64,12 @@ public class UserController {
 	
 	@Autowired
 	private ReservationService reservationService;
+
+	@Autowired
+	private OrderService orderService;
+
+	@Autowired
+	private ScrabService scrabService;
 
 //------------------------------------------------------------------------------------------------------------------
 	
@@ -270,9 +280,15 @@ public class UserController {
 		User userInfo = this.userService.userinfo(principal.getId());
 		Integer invitationCount = this.userService.userInvitation(principal.getId());
 		User kakaoLoginUser = this.userService.kakaoLoginUser();
+		OrderCountDTO orderCountDTO = orderService.countByOrder(principal.getId());
+		List<ScrabResponseDTO> scrabDTOs = scrabService.scrabview(principal.getId());
+		int scrabCount = scrabDTOs.size();
+
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("invitationCount", invitationCount);
 		model.addAttribute("kakaoLoginUser", kakaoLoginUser);
+		model.addAttribute("orderCountDTO", orderCountDTO);
+		model.addAttribute("scrabCount", scrabCount);
 
 		return "mypage/mypage";
 	}
