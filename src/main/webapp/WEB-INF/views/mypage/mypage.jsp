@@ -2,22 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../layout/header.jsp" %>
 
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>마이페이지</title>
-
-	<link href="/css/khy_style.css" rel="stylesheet">
-
-
-</head>
-
-
-<body class="k_body">
+<body class="_body">
 	<div class="k_left_my">
 		<img class="k_profile" src="${userInfo.pic}" alt="My Image">
 		<p class="k_m_name">${userInfo.username} 님</p>
