@@ -40,4 +40,4 @@
     </div>
 </main>
 <script src="../../../../js/neh/select_day.js"></script>
-<%@ include file="/WEB-INF/views/layout/footer.jsp"%>
+<%@ include file="../layout/footer.jsp" %>

@@ -26,7 +26,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="container l_main">
+	<div class="container l_main_margin_bottom">
 		<div class="container l_movie_list_title">
 			<p class="l_list_title">BEST 영화</p>
 		</div>
@@ -57,12 +57,12 @@
 		</div>
 	</div>
 	<hr class="l_hr">
-	<div class="container l_movie_list_title">
-		<p class="l_list_title">직접 만나는 독립영화</p>
-		<br>
-		<p class="l_list_comment">펀딩 150%을 달성한 작품들을 영화관에서 만나보세요</p>
-	</div>
-	<div class="container l_movie_list_container">
+	<div class="container l_main_margin_bottom">
+		<div class="container l_movie_list_title">
+			<p class="l_list_title">직접 만나는 독립영화</p>
+			<br>
+			<p class="l_list_comment">펀딩 150%을 달성한 작품들을 영화관에서 만나보세요</p>
+		</div>
 		<div id="data-container" class="row row-cols-xl-4">
 			<c:forEach var="funding" items="${offAirTotalDTO.offAirMovieDTOs}" varStatus="status">
 				<div class="col my-4 l_movie_card_form">
@@ -83,7 +83,7 @@
 		</div>
 	</div>
 	<hr class="l_hr">
-	<div class="container ">
+	<div class="container l_main_margin_bottom">
 		<div class="container l_movie_list_title">
 			<p class="l_list_title">오프라인 영화 상영관</p>
 			<br>
