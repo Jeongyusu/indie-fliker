@@ -3,7 +3,7 @@ package com.tenco.indiepicter.funding.response;
 import lombok.Data;
 
 @Data
-public class MoviesByGenreDTO {
+public class FundingDTO {
     Integer fundingId;
     Integer movieId;
     String movieThumbnail;

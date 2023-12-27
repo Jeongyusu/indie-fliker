@@ -21,4 +21,8 @@ public class BannerService {
                 .map(BannerDTO::new)
                 .collect(Collectors.toList());
     }
+
+    public List<BannerDTO> DisplayBannerByAll(){
+        return bannerRepository.findByAll().stream().map(BannerDTO::new).collect(Collectors.toList());
+    }
 }

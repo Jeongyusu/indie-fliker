@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/layout/header.jsp"%>
+<%@ include file="../layout/header.jsp" %>
 
 <div id="n_select_movie">
     <h5>선택하신 영화는 "${choiceDayDTO.movieName}"입니다. 원하시는 좌석을 선택해주세요!</h5>
@@ -100,4 +100,4 @@
     </div>
 </main>
 <script src="../../../../js/neh/select_seat.js"></script>
-<%@ include file="/WEB-INF/views/layout/footer.jsp"%>
+<%@ include file="../layout/footer.jsp" %>
