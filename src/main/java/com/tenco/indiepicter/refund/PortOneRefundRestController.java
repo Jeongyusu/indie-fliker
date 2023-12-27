@@ -16,11 +16,11 @@ import java.util.Map;
 @Controller
 public class PortOneRefundRestController {
 
-//    @Value("${imp.rest-api.key}")
-    private String apiKey = "5064237412678407";
+    @Value("${imp.api-key}")
+    private String apiKey;
 
-//    @Value("${imp.rest-api.secret-key}")
-    private String secretKey = "k4MtJ9y69ErPEGGhWQdE41KIFktLgp9uzgGXE8XMVUL0F4kZKzmCE7p8fsv0G8L2UDs5iLW3LYXdNUrE";
+    @Value("${imp.secret-key}")
+    private String secretKey;
 
     // 환불요청하는 메소드
     // http://localhost:8080/wantRefund
