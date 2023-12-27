@@ -345,7 +345,23 @@ insert into funding_tb(target_price, present_price, price_per_onetime, people_co
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('5000000', '4000000', '8000', '40', '2023-11-01', '2023-12-16', 27);
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('25000000', '40000000', '8000', '40', '2023-11-01', '2023-12-17', 28);
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('30000000', '30000000', '8000', '40', '2023-11-01', '2023-12-18', 29);
-insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '30000000', '8000', '40', '2023-11-01', '2023-12-18', 29);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '30000000', '8000', '40', '2023-11-01', '2023-12-18', 30);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '30000000', '8000', '40', '2023-11-01', '2023-12-18', 31);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '30000000', '8000', '40', '2023-11-01', '2023-12-18', 32);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('3500000', '3000000', '8000', '40', '2023-11-01', '2023-12-18', 33);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('30000000', '30000000', '8000', '40', '2023-11-30', '2023-12-31', 34);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '30000000', '8000', '40', '2023-11-30', '2023-12-31', 35);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('15000000', '30000000', '8000', '40', '2023-11-30', '2023-12-31', 36);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '20000000', '8000', '40', '2023-11-30', '2023-12-31', 37);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '30000000', '8000', '40', '2023-11-30', '2023-12-31', 38);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('20000000', '30000000', '8000', '40', '2023-11-30', '2023-12-31', 39);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '10000000', '8000', '40', '2023-11-30', '2023-12-31', 40);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '30000000', '8000', '40', '2023-11-30', '2023-12-31', 41);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('15000000', '30000000', '8000', '40', '2023-11-30', '2023-12-31', 42);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('25000000', '15000000', '8000', '40', '2023-11-30', '2023-12-31', 43);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '30000000', '8000', '40', '2023-11-30', '2023-12-31', 44);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('20000000', '10000000', '8000', '40', '2023-11-30', '2023-12-31', 45);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '30000000', '8000', '40', '2023-11-30', '2023-12-31', 46);
 
 insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('1000000', '300000', '8000', '40', '2023-11-01', '2023-12-31', 1);
 insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('2000000', '400000', '8000', '40', '2023-11-01', '2023-12-31', 2);

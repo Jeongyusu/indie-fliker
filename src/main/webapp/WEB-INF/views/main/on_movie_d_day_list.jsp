@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <body class="l_body">
   <div class="l_dday_banner">
-    온라인 개봉 예정작
+    온라인 개봉 예정 작품
   </div>
 
 <!-- 영화 목록 (20개씩 비동기로 받아올 예정) -->
@@ -13,7 +13,7 @@
     <br>
     <p class="l_list_comment">다양한 독립영화를 즐겨보세요</p>
   </div>
-  <div class="container l_movie_list_container">
+  <div class="container l_movie_list_container" style="margin-bottom: 20px">
     <div id="data-container" class="row row-cols-xl-5">
       <c:forEach var="dday" items="${onDDayMovieDTOs}" >
         <div class="col my-4 l_movie_card_form">

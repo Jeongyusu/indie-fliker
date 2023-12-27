@@ -7,7 +7,7 @@
   <div class="banner-container" style="background: linear-gradient(to bottom, #201111, #2b2626);">
   <div class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-      <c:forEach var="banner" items="${fundingPlusDTO.banners}" varStatus="status">
+      <c:forEach var="banner" items="${fundingListDTO.banners}" varStatus="status">
         <div class="l_banner_item carousel-item${status.first ? ' active' : ''}">
           <div class="d-block">
             <img src="${banner.bannerPic}" class="card-img" alt="..." style="object-fit: contain; height: 300px;">
@@ -26,9 +26,9 @@
   </div>
   <div class="container l_movie_list_container">
     <div id="data-container" class="row row-cols-xl-5">
-      <c:forEach var="funding" items="${fundingPlusDTO.moviesByMainDTOs}" >
+      <c:forEach var="funding" items="${fundingListDTO.fundingDTOs}">
         <div class="col my-4 l_movie_card_form">
-          <div class="card l_movie_card" id="j_paging">
+          <div class="card l_movie_card j_paging">
             <a href="/fund/funding/${funding.fundingId}"><img src="${funding.movieThumbnail}" class="card-img" alt="..."></a>
           </div>
           <div class="l_percent l_mint l_strong">${funding.fundingRate}% 달성</div>

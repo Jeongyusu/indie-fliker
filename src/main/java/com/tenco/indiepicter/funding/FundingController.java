@@ -54,13 +54,25 @@ public class FundingController {
 //    }
 
     @GetMapping({"/funding-plus", "/main"})
-    public String fundingPlus (@RequestParam(name = "genre", defaultValue = "극영화") String genre, @RequestParam(name = "page", defaultValue = "1") Integer page, Model model){
-        List<MoviesByMainDTO> moviesByMainDTOs = fundingService.moviesByMain(page, 5, genre);
-        System.out.println("찾은 목록 : " + moviesByMainDTOs.toString());
+    public String fundingPlus (@RequestParam(name = "genre", defaultValue = "") String genre, @RequestParam(name = "page", defaultValue = "1") Integer page, Model model){
+        if(genre.isEmpty() || genre == null){
+            List<FundingDTO> moviesByMainDTOs = fundingService.moviesByMain(page, 5);
+            List<BannerDTO> bannerDTOs = bannerService.DisplayBannerByAll();
+            FundingListDTO fundingListDTO = new FundingListDTO(moviesByMainDTOs, bannerDTOs);
+            model.addAttribute("fundingListDTO", fundingListDTO);
+            System.out.println("없다!");
+            System.out.println("없는 결과 : " + fundingListDTO.getFundingDTOs().toString());
+            return "main/movielist";
+        }
+
+        List<FundingDTO> moviesByGenreDTOs = fundingService.moviesByGenre(genre, page, 5);
         List<BannerDTO> bannerDTOs = bannerService.DisplayBanner(genre);
-        FundingPlus2DTO fundingPlusDTO = new FundingPlus2DTO(moviesByMainDTOs, bannerDTOs);
-        model.addAttribute("fundingPlusDTO", fundingPlusDTO);
-        System.out.println("펀딩 목록 : " + fundingPlusDTO.toString());
+        FundingListDTO fundingListDTO = new FundingListDTO(moviesByGenreDTOs, bannerDTOs);
+        model.addAttribute("fundingListDTO", fundingListDTO);
+        System.out.println("장르있데");
+        System.out.println("장르 : " + genre);
+        System.out.println("장르 결과 : " + fundingListDTO.getFundingDTOs().toString());
+
         return "main/movielist";
     }
 
@@ -81,15 +93,9 @@ public class FundingController {
     @GetMapping("/off-air")
     public String offAirMovies(Model model){
         OffAirTotalDTO offAirTotalDTO = new OffAirTotalDTO(fundingService.offAirMovies(), fundingService.offAirRankedMovies(), theaterService.mainPageTheaters());
-        System.out.println("===============================================");
-        System.out.println("off" + offAirTotalDTO.getOffAirMovieRankingDTOs().toString());
-        System.out.println("===============================================");
         model.addAttribute("offAirTotalDTO", offAirTotalDTO);
         return "main/off_movie_main";
     }
-
-
-
 
     @GetMapping("/funding/{id}")
     public String detailFunding(@PathVariable Integer id, Model model){

@@ -26,39 +26,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="container l_movie_list_container">
-		<div class="row l_main l_movie_list_container">
-			<div class="container l_movie_list_title">
-				<p class="l_list_title" style="padding-left: 10px">박스 오피스</p>
-			</div>
-			<div class="row row-cols-xl-4 l_main">
-				<c:forEach var="funding" items="${onAirTotalDTO.onAirMovieDTOs}" varStatus="status">
-					<div class="col" style="max-width: 250px;">
-						<div class="card l_main_card" style="border: none;">
-							<div class="l_movie_image">
-								<figure class="l_front">
-									<img src="${funding.movieThumbnail}" class="card-img" alt="...">
-								</figure>
-								<div class="l_overlay_button l_back">
-									<a href="/fund/funding/${funding.fundingId}"><button class="btn btn-outline-success l_button">예매하기</button></a>
-								</div>
-							</div>
-							<div class="l_percent l_mint l_strong">${funding.fundingRate}% 달성</div>
-							<div class="l_movie_online_title">
-								<img src="" class="l_grade_img">
-								<div class="l_title">${funding.movieName}</div>
-								<input type="hidden" value="${funding.runningGrade}" class="grade">
-							</div>
-							<div class="l_period">상영 : ${funding.period()}</div>
-							<div class="l_content">${funding.synopsis}</div>
-							<div class="l_production">${funding.production}</div>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
-		</div>
-	</div>
-	<hr class="l_hr">
 	<div class="container l_main_margin_bottom">
 		<div class="container l_movie_list_title">
 			<p class="l_list_title">BEST 영화</p>
@@ -91,6 +58,33 @@
 			</c:forEach>
 		</div>
 	</div>
+	<hr class="l_hr">
+	<!-- 영화 목록 (20개씩 비동기로 받아올 예정) -->
+	<div class="container l_movie_list_title">
+		<p class="l_list_title">취향 맞춤 독립영화</p>
+		<br>
+		<p class="l_list_comment">다양한 독립영화를 즐겨보세요</p>
+	</div>
+	<div class="container l_movie_list_container">
+		<div id="data-container" class="row row-cols-xl-4">
+			<c:forEach var="funding" items="${onAirTotalDTO.onAirMovieDTOs}" varStatus="status">
+					<div class="col my-4 l_movie_card_form">
+						<div class="card l_main_card">
+							<a href="/fund/funding/${funding.fundingId}"><img src="${funding.movieThumbnail}" class="card-img" alt="..."></a>
+							<div class="l_percent l_mint l_strong">${funding.fundingRate}% 달성</div>
+							<div class="l_movie_online_title">
+								<img src="" class="l_grade_img">
+								<div class="l_title">${funding.movieName}</div>
+								<input type="hidden" value="${funding.runningGrade}" class="grade">
+							</div>
+							<div class="l_period">상영 : ${funding.period()}</div>
+							<div class="l_content">${funding.synopsis}</div>
+							<div class="l_production">${funding.production}</div>
+						</div>
+					</div>
+			</c:forEach>
+		</div>
+	</div>
 	<div class="container l_up_container">
 		<div class="alert alert-success" role="alert">
 			영화의 매력을 경험하고 싶다면... <a href="#" class="alert-link">지금 상영중인 인기영화</a>를
@@ -98,31 +92,5 @@
 		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-	<script>
-		window.onload = function () {
-			onLoadImg();
-		}
-
-		function onLoadImg(){
-			let gradeImgs = document.querySelectorAll(".l_grade_img");
-			let runningGrades = document.querySelectorAll(".grade");
-			gradeImgs.forEach((gradeImg) => {
-				runningGrades.forEach((grade) => {
-					let src = "";
-					if(grade.value === "전체 관람가"){
-						src = "/images/icons/movie_level_all.png";
-					}else if(grade.value === "12세 이상 관람가"){
-						src = "/images/icons/movie_level_12.png";
-					}else if(grade.value === "15세 이상 관람가"){
-						src = "/images/icons/movie_level_15.png";
-					}else {
-						src = "/images/icons/movie_level_19.png";
-					}
-
-					gradeImg.src = src;
-					console.log("src : " + gradeImg.src);
-				})
-			})
-		}
-	</script>
+	<script type="module" src="/js/jys/on_pagination.js"></script>
 	<%@ include file="../layout/footer.jsp" %>

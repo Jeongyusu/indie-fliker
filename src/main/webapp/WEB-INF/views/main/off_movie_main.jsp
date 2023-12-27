@@ -63,16 +63,21 @@
 		<p class="l_list_comment">펀딩 150%을 달성한 작품들을 영화관에서 만나보세요</p>
 	</div>
 	<div class="container l_movie_list_container">
-		<div id="data-container" class="row row-cols-xl-5">
-			<c:forEach var="funding" items="${offAirTotalDTO.offAirMovieDTOs}" >
+		<div id="data-container" class="row row-cols-xl-4">
+			<c:forEach var="funding" items="${offAirTotalDTO.offAirMovieDTOs}" varStatus="status">
 				<div class="col my-4 l_movie_card_form">
-					<div class="card l_movie_card">
+					<div class="card l_main_card">
 						<a href="/fund/offline-movie/${funding.fundingId}"><img src="${funding.movieThumbnail}" class="card-img" alt="..."></a>
+						<div class="l_percent l_mint l_strong">${funding.fundingRate}% 달성</div>
+						<div class="l_movie_online_title">
+							<img src="" class="l_grade_img">
+							<div class="l_title">${funding.movieName}</div>
+							<input type="hidden" value="${funding.runningGrade}" class="grade">
+						</div>
+						<div class="l_period">상영 : ${funding.period()}</div>
+						<div class="l_content">${funding.synopsis}</div>
+						<div class="l_production">${funding.production}</div>
 					</div>
-					<div class="l_percent l_mint l_strong">${funding.fundingRate}% 달성</div>
-					<div class="l_title">${funding.movieName}</div>
-					<div class="l_content">${funding.synopsis}</div>
-					<div class="l_production">${funding.production}</div>
 				</div>
 			</c:forEach>
 		</div>
@@ -111,32 +116,5 @@
 		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-	<script>
-		window.onload = function () {
-			onLoadImg();
-		}
-
-		function onLoadImg(){
-			let gradeImgs = document.querySelectorAll(".l_grade_img");
-			let runningGrades = document.querySelectorAll(".grade");
-			gradeImgs.forEach((gradeImg) => {
-				runningGrades.forEach((grade) => {
-					let src = "";
-					if(grade.value === "전체 관람가"){
-						src = "/images/icons/movie_level_all.png";
-					}else if(grade.value === "12세 이상 관람가"){
-						src = "/images/icons/movie_level_12.png";
-					}else if(grade.value === "15세 이상 관람가"){
-						src = "/images/icons/movie_level_15.png";
-					}else {
-						src = "/images/icons/movie_level_19.png";
-					}
-
-					gradeImg.src = src;
-					console.log("src : " + gradeImg.src);
-				})
-			})
-		}
-	</script>
-	<script type="module" src="/js/jys/pagination.js"></script>
+	<script type="module" src="/js/jys/off_pagination.js"></script>
 	<%@ include file="../layout/footer.jsp" %>
