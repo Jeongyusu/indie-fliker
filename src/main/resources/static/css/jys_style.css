@@ -156,7 +156,7 @@
 .j_navi > ul > li > ul {
     position: absolute;
     left: 0;
-    top: 60px;
+    top: 75px;
     z-index: 1000;
     background-color: var(--point_01);
     width: 100%;
@@ -299,4 +299,17 @@
 
 .j_custom_margin_bottom30{
 
+}
+
+.j_up_button {
+    width: 5%;
+    position: fixed;
+    bottom: 20%;
+    right: 10%;
+    display: block;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    outline: none;
 }

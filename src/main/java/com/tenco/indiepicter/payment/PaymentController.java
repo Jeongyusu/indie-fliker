@@ -69,8 +69,8 @@ public class PaymentController {
 		List<MyOnlinePaymentDTO> MyOnlinePaymentDTOS = this.paymentService.findByOnlinePaymentId(principal.getId());
 		model.addAttribute("MyOnlinePaymentDTOS", MyOnlinePaymentDTOS);
 
-		
-		List<MyOnlinePaymentDTO> myOnlinePaymentDTOs =  this.paymentService.findByOnlinePaymentId(1);
+
+		List<MyOnlinePaymentDTO> myOnlinePaymentDTOs =  this.paymentService.findByOnlinePaymentId(principal.getId());
 		
 		model.addAttribute("myOnlinePaymentDTOs", myOnlinePaymentDTOs);
 		

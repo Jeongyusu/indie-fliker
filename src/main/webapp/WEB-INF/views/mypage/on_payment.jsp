@@ -6,8 +6,8 @@
 <div class="container">
     <div class="l_my_page_title">펀딩한 내역</div>
     <div class="text-center">
-        <a href="/payment/on-payment" class="l_effect_underline">온라인 펀딩 내역</a>
-        <a href="/payment/off-payment" class="l_effect_underline" style="border-bottom: 2px solid; padding-bottom: 11px;">오프라인 상영 내역</a>
+        <a href="/payment/on-payment" class="l_effect_underline">오프라인 펀딩 내역</a>
+        <a href="/payment/off-payment" class="l_effect_underline" style="border-bottom: 2px solid; padding-bottom: 11px;">온라인 상영 내역</a>
     </div>
 
     <c:forEach var="myOnlinePaymentDTO" items="${myOnlinePaymentDTOs}" varStatus="status">

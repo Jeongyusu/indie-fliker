@@ -43,9 +43,27 @@ public class FundingService {
     private MoviePhotoService moviePhotoService;
 
 
-    public List<MoviesByGenreDTO> moviesByGenre(String genre, Integer page, Integer pageSize){
+    public List<FundingDTO> moviesByGenre(String genre, Integer page, Integer pageSize){
         Integer offset = page * pageSize - pageSize;
         return fundingRepository.findAllByGenre(genre, pageSize, offset);
+    }
+
+    // 펀딩
+    public List<FundingDTO> moviesByMain(Integer page, Integer pageSize){
+        Integer offset = page * pageSize - pageSize;
+        return fundingRepository.findAllByMain(pageSize, offset);
+    }
+
+    // 개봉한 온라인 영화 페이징
+    public List<OnAirMoviePageDTO> onAirMoviePage(Integer page, Integer pageSize){
+        Integer offset = page * pageSize - pageSize;
+        return fundingRepository.findAllByOnAirPage(pageSize, offset);
+    }
+
+    // 개봉한 오프라인 영화 페이징
+    public List<OffAirMoviePageDTO> offAirMoviePage(Integer page, Integer pageSize){
+        Integer offset = page * pageSize - pageSize;
+        return fundingRepository.findAllByOffAirPage(pageSize, offset);
     }
 
     public List<OnAirMovieDTO> onAirMovies() {
@@ -54,6 +72,18 @@ public class FundingService {
 
     public List<OnAirMovieRankingDTO> onAirRankedMovies() {
         return fundingRepository.findAllByOnAirAndRanking();
+    }
+
+    public List<OnDDayMovieDTO> onDDayMovies() {
+        return fundingRepository.findByOnlineDDay();
+    }
+
+    public List<OffAirMovieDTO> offAirMovies() {
+        return fundingRepository.findAllByOffAir();
+    }
+
+    public List<OffAirMovieRankingDTO> offAirRankedMovies() {
+        return fundingRepository.findAllByOffAirAndRanking();
     }
 
     public FundingDetailDTO detailFunding(Integer fundingId) {
@@ -145,6 +175,7 @@ public class FundingService {
     @Transactional
     public void updateById(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO){
         Funding funding = Funding.builder()
+                .id(adminRequestFundingUpdateFormDTO.getFundingId())
                 .targetPrice(adminRequestFundingUpdateFormDTO.getTargetPrice())
                 .pricePerOnetime(adminRequestFundingUpdateFormDTO.getPricePerOnetime())
                 .releaseDate(DateUtil.stringToDate(adminRequestFundingUpdateFormDTO.getFundingPeriodStart()))
@@ -160,5 +191,26 @@ public class FundingService {
         moviePhotoService.updateById(adminRequestFundingUpdateFormDTO);
     }
 
+    @Transactional
+    public int deleteById(Integer id){
+        int resultRowCount =  fundingRepository.deleteById(id);
+        if(resultRowCount != 1) {
+            throw new MyDynamicException("펀딩 삭제 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return resultRowCount;
+    }
 
+    @Transactional
+    public int updateEndDateById(Integer id){
+        int resultRowCount =  fundingRepository.updateEndDateById(id);
+        if(resultRowCount != 1) {
+            throw new MyDynamicException("펀딩 종료 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return resultRowCount;
+    }
+
+    // 어드민 페이지 펀딩 종료/수정 검색어 조회
+    public List<AdminFundingManagementSearchDTO> findAllAdminFundingModifySearch(String keyword){
+        return fundingRepository.findAllAdminFundingModifySearch(keyword);
+    }
 }
