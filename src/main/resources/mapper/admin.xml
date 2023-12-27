@@ -61,8 +61,8 @@
 
     <!-- 댓글삭제-->
     <delete id="deleteComment" parameterType="int">
-        DELETE FROM comment_tb
-        WHERE comment_id = #{commentId}
+        DELETE FROM review_tb
+        WHERE id = #{commentIdToDelete}
     </delete>
 
 

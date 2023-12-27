@@ -150,6 +150,7 @@ public class AdminService {
         adminRepository.deleteComment(commentIdToDelete);
     }
 
+
     // 댓글 불러오기
     public List<Comment> getCommentsByUserId(int userId) {
         return adminRepository.getCommentsByUserId(userId);
