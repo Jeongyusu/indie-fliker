@@ -303,7 +303,7 @@ public class UserController {
 				throw new MyDynamicException("파일 크기는 20MB 이상 클 수 없습니다.", HttpStatus.BAD_REQUEST);
 			}
 		}
-		// 아래 주석 과정을 이 코드로 수정!!
+		// 아래 주석한 과정을 이 코드로 수정!!
 		dto.setUploadFileName(PicToStringUtil.picToString(dto.getFile()));
 //		try {
 //			// 업로드 파일 경로(로컬 저장소)
