@@ -107,7 +107,7 @@
         <div class="p_playday_container2">
 
             <div class="p_section1">
-                <c:forEach var="funding" items="${adminOfflineStreamingDTOs}" varStatus="status">
+                <c:forEach var="funding" items="${searchResultDTOs}" varStatus="status">
                     <div class="p_menu1" >
                         <img src="${funding.thumbnail}" alt="">
                         <p>${funding.movieName}</p>

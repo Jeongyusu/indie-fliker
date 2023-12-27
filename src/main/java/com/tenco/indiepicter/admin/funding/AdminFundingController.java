@@ -90,4 +90,39 @@ public class AdminFundingController {
         return "manager/register_search";
     }
 
+    @GetMapping("/movie-open-setting/search")
+    public String movieOpenSettingSearch(@RequestParam( name ="keyword") String keyword, Model model){
+        List<AdminOnlineStreamingSearchDTO> searchResultDTOs = fundingService.searchKeywordAboutOnlineStreaming(keyword);
+        model.addAttribute("searchResultDTOs", searchResultDTOs);
+        return "manager/playday_search";
+    }
+
+    @GetMapping("/off-movie-open-setting/search")
+    public String offMovieOpenSettingSearch(@RequestParam( name ="keyword") String keyword, Model model){
+        List<AdminOfflineStreamingSearchDTO> searchResultDTOs = fundingService.searchKeywordAboutOfflineStreaming(keyword);
+        model.addAttribute("searchResultDTOs", searchResultDTOs);
+        return "manager/playoffday_search";
+    }
+
+    @GetMapping("/funding/confirm")
+    public String fundingConfirm(@RequestParam(name = "page", defaultValue = "1") Integer page, Model model){
+        List<AdminFundingProceedingDTO> adminFundingProceedingDTOs = fundingService.findAllAboutFundingProceeding(page, 10);
+        model.addAttribute("adminFundingProceedingDTOs", adminFundingProceedingDTOs);
+        return "manager/check";
+    }
+
+    @GetMapping("/funding/detail/{id}")
+    public String detailFunding(@PathVariable Integer id, Model model){
+        FundingDetailDTO fundingDetailDTO = fundingService.detailFunding(id);
+        model.addAttribute("fundingDetailDTO", fundingDetailDTO);
+        return "manager/funding_ready_preview";
+    }
+
+    @GetMapping("/funding/confirm/search")
+    public String fundingConfirmSearch(@RequestParam( name ="keyword") String keyword, Model model){
+        List<AdminFundingProceedingSearchDTO> searchResultDTOs = fundingService.searchKeywordAboutFundingProceeding(keyword);
+        model.addAttribute("searchResultDTOs", searchResultDTOs);
+        return "manager/check_search";
+    }
+
 }

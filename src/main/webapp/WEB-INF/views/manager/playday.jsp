@@ -37,10 +37,14 @@
                 <a href=""><h2>IndiFlinker</h2></a>
             </div>
 
-            <div class="p_search">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="검색 하기">
-            </div>
+            <form id="search-form" action="/admin/movie-open-setting/search" method="get">
+                <div class="p_search">
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <input type="text" name="keyword" placeholder="검색 하기">
+                </div>
+            </form>
 
             <div class="p_inform">
                 <a href=""><i class="fa-regular fa-bell"></i></a>
