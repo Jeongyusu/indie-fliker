@@ -2,9 +2,7 @@ package com.tenco.indiepicter.funding;
 
 import com.tenco.indiepicter._core.utils.ApiUtils;
 import com.tenco.indiepicter.banner.BannerService;
-import com.tenco.indiepicter.funding.response.BannerDTO;
-import com.tenco.indiepicter.funding.response.FundingPlusDTO;
-import com.tenco.indiepicter.funding.response.MoviesByGenreDTO;
+import com.tenco.indiepicter.funding.response.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,4 +32,17 @@ public class FundingRestController {
         return ResponseEntity.ok().body(ApiUtils.success(fundingPlusDTO.getMoviesByGenreDTOs()));
     }
 
+    // 온라인 영화 페이징
+    @GetMapping ("/api/on-movies")
+    public ResponseEntity<?> onlineMoviePlus(@RequestParam(name="page", defaultValue = "1") Integer page) {
+        List<OnAirMoviePageDTO> onAirMoviePageDTOs = fundingService.onAirMoviePage(page, 4);
+        return ResponseEntity.ok().body(ApiUtils.success(onAirMoviePageDTOs));
+    }
+
+    // 오프라인 영화 페이징
+    @GetMapping ("/api/off-movies")
+    public ResponseEntity<?> offlineMoviePlus(@RequestParam(name="page", defaultValue = "1") Integer page) {
+        List<OffAirMoviePageDTO> offAirMoviePageDTOs = fundingService.offAirMoviePage(page, 4);
+        return ResponseEntity.ok().body(ApiUtils.success(offAirMoviePageDTOs));
+    }
 }

@@ -81,15 +81,9 @@ public class FundingController {
     @GetMapping("/off-air")
     public String offAirMovies(Model model){
         OffAirTotalDTO offAirTotalDTO = new OffAirTotalDTO(fundingService.offAirMovies(), fundingService.offAirRankedMovies(), theaterService.mainPageTheaters());
-        System.out.println("===============================================");
-        System.out.println("off" + offAirTotalDTO.getOffAirMovieRankingDTOs().toString());
-        System.out.println("===============================================");
         model.addAttribute("offAirTotalDTO", offAirTotalDTO);
         return "main/off_movie_main";
     }
-
-
-
 
     @GetMapping("/funding/{id}")
     public String detailFunding(@PathVariable Integer id, Model model){

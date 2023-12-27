@@ -377,6 +377,10 @@
     -webkit-box-orient: vertical;
 }
 
+.l_main_card {
+    border: none;
+}
+
 .l_main_card .l_percent{
     font-size: 16px;
     margin: 16px 0 10px;

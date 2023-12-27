@@ -1,4 +1,3 @@
-let genre = '극영화';
 let currentPage = 2;
 let isLoading = false;
 
@@ -7,14 +6,11 @@ window.onload = function () {
     onLoadImg();
 
     console.log("온로드 실행");
-    loadMoreData(genre);
-    //genre를 현재URL의 쿼리스트링 키 값을 검색해서 가져오기
-    genre = getQueryStringValue('genre');
-    console.log("genre : " + genre);
+    loadMoreData();
 
     // 스크롤 이벤트에 이벤트 리스너를 추가
     document.getElementById('data-container').addEventListener('scroll', function () {
-        loadMoreData(genre);
+        loadMoreData();
     })};
 
 // 현재 URL에서 쿼리스트링을 가져오기
@@ -25,8 +21,8 @@ function getQueryStringValue(key) {
 }
 
 // fetch로 새로운 데이터 받아오기
-async function fetchFundingList(genre, page) {
-    let response = await fetch(`/api/fundings?genre=${genre}&page=${page}`);
+async function fetchMovieList(page) {
+    let response = await fetch(`/api/on-movies?page=${page}`);
     let responseBody = await response.json();
     console.log("fetch펀딩 내부 제이슨 변환완료");
     if (responseBody.success) {
@@ -39,7 +35,7 @@ async function fetchFundingList(genre, page) {
 
 
 // 마우스 스크롤 감지 후 새로운 데이터를 받아온 후 새로운 요소 생성하기
-function loadMoreData(genre) {
+function loadMoreData() {
     console.log("loadMoreData 진입");
 
     if (isLoading) {
@@ -55,7 +51,7 @@ function loadMoreData(genre) {
         // 로딩 딜레이 주기
         setTimeout(async () => {
             try {
-                const newData = await fetchFundingList(genre, currentPage);
+                const newData = await fetchMovieList(currentPage);
                 console.log("newData 확인" + newData);
                 // Append new data to the container
                 const row = document.querySelector('#data-container'); // Assuming you have a row element to append the new columns
@@ -66,7 +62,7 @@ function loadMoreData(genre) {
 
                     const card = document.createElement('div');
                     card.className = 'card';
-                    card.classList.add('l_movie_card');
+                    card.classList.add('l_main_card');
 
                     const a = document.createElement('a');
                     a.href = `/fund/funding/${funding.fundingId}`;
@@ -82,24 +78,43 @@ function loadMoreData(genre) {
                     h4.textContent = `${funding.fundingRate}% 달성`;
 
                     const h5 = document.createElement('div');
-                    h5.className = 'l_title';
-                    h5.textContent = funding.movieName;
+                    h5.className = 'l_movie_online_title';
 
-                    const p = document.createElement('div');
-                    p.className = 'l_content';
-                    p.textContent = funding.synopsis;
+                    const grade = document.createElement('img');
+                    grade.className = 'l_grade_img';
+
+                    const name = document.createElement('div');
+                    name.className = 'l_title';
+                    name.innerHTML = funding.movieName;
+
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.className = 'grade';
+                    input.value = funding.runningGrade;
+
+                    const period = document.createElement('div');
+                    period.className = 'l_period';
+                    period.innerHTML = '상영 : ' + funding.period();
+
+                    const synopsis = document.createElement('div');
+                    synopsis.className = 'l_content';
+                    synopsis.innerHTML = funding.synopsis;
 
                     const product = document.createElement('div');
                     product.className = 'l_production';
-                    product.textContent = funding.production;
+                    product.innerHTML = funding.production;
 
-                    card.appendChild(a);
                     a.appendChild(img);
+                    h5.appendChild(grade);
+                    h5.appendChild(name);
+                    h5.appendChild(input);
+                    card.appendChild(a);
+                    card.appendChild(h4);
+                    card.appendChild(h5);
+                    card.appendChild(period);
+                    card.appendChild(synopsis);
+                    card.appendChild(product);
                     col.appendChild(card);
-                    col.appendChild(h4);
-                    col.appendChild(h5);
-                    col.appendChild(p);
-                    col.appendChild(product);
 
                     row.appendChild(col);
                     const footer = document.querySelector('footer');
@@ -124,6 +139,9 @@ function onLoadImg(){
     let runningGrades = document.querySelectorAll(".grade");
     gradeImgs.forEach((gradeImg) => {
         runningGrades.forEach((grade) => {
+            console.log("gradeImg" + gradeImg);
+            console.log("grade" + grade);
+
             let src = "";
             if(grade.value === "전체 관람가"){
                 src = "/images/icons/movie_level_all.png";

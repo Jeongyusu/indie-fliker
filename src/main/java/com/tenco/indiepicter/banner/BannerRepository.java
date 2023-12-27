@@ -7,4 +7,7 @@ import java.util.List;
 @Mapper
 public interface BannerRepository {
     public List<Banner> findByGenre(String genre);
+
+    public List<Banner>
+
 }

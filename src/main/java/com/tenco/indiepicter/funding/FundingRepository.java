@@ -12,9 +12,14 @@ public interface FundingRepository {
     //펀딩 장르별 조회
     public List<MoviesByGenreDTO> findAllByGenre(@Param("genre") String genre, @Param("pageSize") Integer pageSize, @Param("offset") Integer offset);
 
-
     //펀딩 모두(메인) 조회
     public List<MoviesByMainDTO> findAllByMain(@Param("pageSize") Integer pageSize, @Param("offset") Integer offset);
+
+    //온라인 영화 페이징 조회
+    public List<OnAirMoviePageDTO> findAllByOnAirPage(@Param("pageSize") Integer pageSize, @Param("offset") Integer offset);
+
+    //오프라인 영화 페이징 조회
+    public List<OffAirMoviePageDTO> findAllByOffAirPage(@Param("pageSize") Integer pageSize, @Param("offset") Integer offset);
 
     // movie_id로 funding_id 조회
     public FindByFundingIdDTO findByMovieId(Integer movieId);
@@ -60,6 +65,7 @@ public interface FundingRepository {
 
     // 펀딩 온라인 개봉 예정 영화보기
     public List<OnDDayMovieDTO> findByOnlineDDay();
+
     // 펀딩 오프라인 상영기간 설정
     public List<AdminOfflineStreamingDTO> findAllAdminOfflinePeriodSetting();
 
@@ -68,4 +74,6 @@ public interface FundingRepository {
 
     // 어드민 페이지 펀딩 수정 업데이트
     public int updateByIdForAdmin(Funding funding);
+
+
 }

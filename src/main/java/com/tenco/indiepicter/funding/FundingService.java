@@ -48,9 +48,22 @@ public class FundingService {
         return fundingRepository.findAllByGenre(genre, pageSize, offset);
     }
 
+    // 펀딩
     public List<MoviesByMainDTO> moviesByMain(Integer page, Integer pageSize){
         Integer offset = page * pageSize - pageSize;
         return fundingRepository.findAllByMain(pageSize, offset);
+    }
+
+    // 개봉한 온라인 영화 페이징
+    public List<OnAirMoviePageDTO> onAirMoviePage(Integer page, Integer pageSize){
+        Integer offset = page * pageSize - pageSize;
+        return fundingRepository.findAllByOnAirPage(pageSize, offset);
+    }
+
+    // 개봉한 오프라인 영화 페이징
+    public List<OffAirMoviePageDTO> offAirMoviePage(Integer page, Integer pageSize){
+        Integer offset = page * pageSize - pageSize;
+        return fundingRepository.findAllByOffAirPage(pageSize, offset);
     }
 
     public List<OnAirMovieDTO> onAirMovies() {
@@ -176,6 +189,7 @@ public class FundingService {
         movieStaffService.updateById(adminRequestFundingUpdateFormDTO);
         moviePhotoService.updateById(adminRequestFundingUpdateFormDTO);
     }
+
 
 
 }
