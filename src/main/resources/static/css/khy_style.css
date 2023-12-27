@@ -188,24 +188,24 @@ input:active, input:focus{
 }
 
 .k_form_group {
-    margin-top: 18px;
+    margin-top: 25px;
 }
 
 .k_form_group input {
     height: 50px;
 }
 
-.k_form_group .k_input-group {
+.k_form_group .k_input_group {
     display: flex;
 }
 
-.k_form_group .k_input-group input {
-    flex: 1;
-    margin-right: 5px;
+.k_form_group .k_input_group input {
+    /*flex: 1;*/
+    /*margin-right: 5px;*/
 }
 
 .k_pwd_backcolor {
-    background-color: #f6f6f6;;
+    background-color: var(--back_02);;
 }
 
 .k_pwd_input_margin {
@@ -213,13 +213,18 @@ input:active, input:focus{
 }
 
 .k_validation {
-    background-color: #99e7e7;
-    color: white;
+    background-color: var(--point_01);
+    color: var(--font_01);
+    font-weight: bold;
     border: none;
     border-radius: 5px;
     height: 38px;
-    font-size: 12px;
-    width: 70px;
+    font-size: 13px;
+    width: 25%;
+}
+
+.k_validation_button {
+    margin-left: 5px;
 }
 
 .k_complete {
@@ -234,10 +239,11 @@ input:active, input:focus{
 }
 
 .k_complete button {
-    background-color: #99e7e7;
-    color: white;
+    background-color: var(--point_01);
+    color: var(--font_01);
     border: none;
-    height: 50px;
+    height: 55.5px;
+    font-weight: bold;
 }
 
 .k_complete button:hover,
