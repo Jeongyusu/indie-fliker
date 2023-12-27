@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/layout/header.jsp"%>
+<%@ include file="../layout/header.jsp" %>
 
 <div id="n_select_movie">
     <h5>선택하신 영화와 상영시간을 확인해주세요!</h5>
@@ -102,4 +102,4 @@
     </div>
 </main>
 <script src="../../../../js/neh/off_payment.js"></script>
-<%@ include file="/WEB-INF/views/layout/footer.jsp"%>
+<%@ include file="../layout/footer.jsp" %>

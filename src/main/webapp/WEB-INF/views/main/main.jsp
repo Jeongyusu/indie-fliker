@@ -60,12 +60,12 @@
 	</div>
 	<hr class="l_hr">
 	<!-- 영화 목록 (20개씩 비동기로 받아올 예정) -->
-	<div class="container l_movie_list_title">
-		<p class="l_list_title">취향 맞춤 독립영화</p>
-		<br>
-		<p class="l_list_comment">다양한 독립영화를 즐겨보세요</p>
-	</div>
-	<div class="container l_movie_list_container">
+	<div class="container l_main_margin_bottom">
+		<div class="container l_movie_list_title">
+			<p class="l_list_title">취향 맞춤 독립영화</p>
+			<br>
+			<p class="l_list_comment">다양한 독립영화를 즐겨보세요</p>
+		</div>
 		<div id="data-container" class="row row-cols-xl-4">
 			<c:forEach var="funding" items="${onAirTotalDTO.onAirMovieDTOs}" varStatus="status">
 					<div class="col my-4 l_movie_card_form">

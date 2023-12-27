@@ -17,14 +17,13 @@ input:active, input:focus{
 
 .k_login {
     font-weight: bold;
-    margin-top: 250px;
-    font-size: 30px;
+    font-size: 24px;
+    margin-bottom: 22px;
 }
 
-.k_login-container {
+.k_login_container {
     max-width: 400px;
-    margin: auto;
-    margin-top: 100px;
+    margin: 100px auto;
 }
 
 .k_forget {
@@ -49,28 +48,88 @@ input:active, input:focus{
 .k_join {
     display: inline-block;
     margin-left: 10px;
-    color: #00c4c4;
+    color: var(--primary_01);
     text-decoration-line: underline;
+    font-weight: bold;
 }
 
-.k_email {
-    margin-top: 30px;
-    background-color: #e7f9f9;
-    color: #00c4c4;
+.k_radio_group {
+    position: relative;
+    height: 20px;
+    margin: 30px 0;
+    line-height: 20px;
+}
+.k_radio_group label {
+    font-size: 16px;
+    color: #666;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.k_radio_group input[type="radio"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+.k_radio_group input[type="radio"]+label {
+    display: inline-block;
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.k_radio_group input[type="radio"]+label:before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    background: var(--def_wh);
+    border: 1px solid var(--point_03);
+    border-radius: 100%;
+    box-shadow: none;
+}
+.k_radio_group input[type="radio"]:checked+label:before {
+    background: var(--def_wh);
+    border-color: var(--point_02);
+}
+
+.k_radio_group input[type="radio"]:checked+label:after {
+    content: '';
+    position: absolute;
+    top: 4.5px;
+    left: 4px;
+    width: 14px;
+    height: 14px;
+    background: var(--point_02);
+    border-radius: 100%;
+    box-shadow: none;
+}
+
+.k_input_button button {
+    background-color: var(--point_01);
+    color: var(--font_01);
     border: none;
-}
-
-.k_email button {
+    border-radius: 8px;
+    height: 55.5px;
+    width: 100%;
     margin-top: 30px;
-    background-color: #e7f9f9;
-    color: #00c4c4;
-    border: none;
-    height: 50px;
+    font-weight: bold;
 }
 
-.k_email button:hover,
-.k_email button:active,
-.k_email button:focus {
+.k_input_button button:hover,
+.k_input_button button:active,
+.k_input_button button:focus {
     background-color: #e7f9f9;
     color: #00c4c4;
     border: none;
@@ -78,8 +137,19 @@ input:active, input:focus{
     outline: none;
 }
 
+.l_email_info {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: var(--font_02);
+}
+
+
 .k_kakao {
     margin-top: 10px;
+}
+
+.k_kakao a, .k_kakao img {
+    width: 100%;
 }
 
 .k_kakao-btn {
@@ -101,14 +171,13 @@ input:active, input:focus{
     background-color: #ffd200;
 }
 
-/*회원가입 페이지*/
+/*비밀번호 찾기*/
 
-
-.k_login-container {
-    max-width: 400px;
-    margin: auto;
-    margin-top: 150px;
+.k_input_label {
+    margin-bottom: 10px;
 }
+
+/*회원가입 페이지*/
 
 .k_join_bottom {
     margin-bottom: 15px;
@@ -118,21 +187,25 @@ input:active, input:focus{
     border-radius: 5px;
 }
 
-.k_form-group {
-    margin-top: 20px;
+.k_form_group {
+    margin-top: 25px;
 }
 
-.k_form-group .k_input-group {
+.k_form_group input {
+    height: 50px;
+}
+
+.k_form_group .k_input_group {
     display: flex;
 }
 
-.k_form-group .k_input-group input {
-    flex: 1;
-    margin-right: 5px;
+.k_form_group .k_input_group input {
+    /*flex: 1;*/
+    /*margin-right: 5px;*/
 }
 
 .k_pwd_backcolor {
-    background-color: #f6f6f6;;
+    background-color: var(--back_02);;
 }
 
 .k_pwd_input_margin {
@@ -140,13 +213,18 @@ input:active, input:focus{
 }
 
 .k_validation {
-    background-color: #99e7e7;
-    color: white;
+    background-color: var(--point_01);
+    color: var(--font_01);
+    font-weight: bold;
     border: none;
     border-radius: 5px;
     height: 38px;
-    font-size: 12px;
-    width: 70px;
+    font-size: 13px;
+    width: 25%;
+}
+
+.k_validation_button {
+    margin-left: 5px;
 }
 
 .k_complete {
@@ -161,10 +239,11 @@ input:active, input:focus{
 }
 
 .k_complete button {
-    background-color: #99e7e7;
-    color: white;
+    background-color: var(--point_01);
+    color: var(--font_01);
     border: none;
-    height: 50px;
+    height: 55.5px;
+    font-weight: bold;
 }
 
 .k_complete button:hover,

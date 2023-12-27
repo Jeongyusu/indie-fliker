@@ -13,7 +13,7 @@
     <br>
     <p class="l_list_comment">다양한 독립영화를 즐겨보세요</p>
   </div>
-  <div class="container l_movie_list_container" style="margin-bottom: 20px">
+  <div class="container l_main_margin_bottom" style="margin-bottom: 20px">
     <div id="data-container" class="row row-cols-xl-5">
       <c:forEach var="dday" items="${onDDayMovieDTOs}" >
         <div class="col my-4 l_movie_card_form">
