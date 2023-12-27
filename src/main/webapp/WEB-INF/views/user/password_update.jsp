@@ -13,11 +13,11 @@
 
 <body>
 
-    <div>
-        <div>
-            <h2>비밀번호 변경</h2>
+    <div class="p_password_update_main">
+        <div class="p_title">
+            <h2>비밀번호 변경하기</h2>
         </div>
-        <form action="/user/password-update" method="post">
+        <form class="p_menu" action="/user/password-update" method="post">
             <div>
                 <label>이메일</label><br>
                 <input type="text" name="userEmail" id="userEmail" value="">
@@ -32,10 +32,7 @@
             </div>
             <button type="submit">변경하기</button>
         </form>
-
     </div>
-
-
 
 
 </body>

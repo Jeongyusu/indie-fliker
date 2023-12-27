@@ -371,15 +371,13 @@ public class UserController {
 	public ResponseEntity<?> findEmail(FindUserInfoDTO findUserInfoDTO) {
 		// 이름 유효성 검사
 		if(findUserInfoDTO.getUsername() == null || findUserInfoDTO.getUsername().isEmpty()) {
-//			throw new MyDynamicException("이름을 입력하세요.", HttpStatus.BAD_REQUEST);
+			throw new MyDynamicException("이름을 입력하세요.", HttpStatus.BAD_REQUEST);
 		}
 		// 전화번호 유효성 검사
 		if(findUserInfoDTO.getTel() == null || findUserInfoDTO.getTel().isEmpty()) {
-//			throw new MyDynamicException("전화번호를 입력하세요.", HttpStatus.BAD_REQUEST);
+			throw new MyDynamicException("전화번호를 입력하세요.", HttpStatus.BAD_REQUEST);
 		}
-
 		String userEmail = this.userService.userEmail(findUserInfoDTO.getUsername(), findUserInfoDTO.getTel());
-		
 		return ResponseEntity.ok().body(ApiUtils.success(userEmail));
 	}
 
@@ -425,7 +423,8 @@ public class UserController {
 
 //----------------------------------------------------------------------------------------------------------------
 
-	// 12 - 26 20:24 학원 작업끝 ~~
+	// 12-27 10:58 학원 작업중 ~~
+
 
 }
 

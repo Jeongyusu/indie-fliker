@@ -13,18 +13,19 @@
 
 <body>
 
-<div>
-    <h2>이메일/비밀번호 찾기</h2>
+<div class="p_find_email_pw_main">
 
-    <label>
-        <input type="radio" name="screen" id="emailRadio" checked> 이메일 찾기
-    </label>
+    <div class="p_menu">
+        <label>
+            <input type="radio" name="screen" id="emailRadio" checked> 이메일 찾기
+        </label>
 
-    <label>
-        <input type="radio" name="screen" id="passwordRadio"> 비밀번호 찾기
-    </label>
+        <label>
+            <input type="radio" name="screen" id="passwordRadio"> 비밀번호 찾기
+        </label>
+    </div>
 
-    <div id="emailScreen">
+    <div class="p_find_email" id="emailScreen">
         <label>이름</label><br>
         <input type="text" name="username" id="username"><br>
         <label>전화번호</label><br>
@@ -32,8 +33,8 @@
         <button name="findEmail" id="findEmail">이메일 찾기</button>
     </div>
 
-    <form action="/user/send-email" method="post" name="sendEmail" id="sendEmail">
-        <div id="passwordScreen" style="display: none;">
+    <form action="/user/send-email" method="post"  name="sendEmail" id="sendEmail">
+        <div class="p_find_password" id="passwordScreen" style="display: none;">
             <p>입력하신 이메일로 임시 비밀번호가 전송됩니다.</p>
             <label>이메일</label><br>
             <input type="text" name="userEmail" id="userEmail"><br>
@@ -79,32 +80,29 @@
 </script>
 <!--------------------------------- 회원 이메일 찾기 ------------------------------------------->
 <!--------------------------------- 임시 비밀번호 발송 ------------------------------------------->
-<script>
-    $("#sendPassword").click(function () {
-        const userEmail = $("#userEmail").val();
-        const sendEmail = document.forms["sendEmail"];
-        $.ajax({
-            type: 'post',
-            url: 'emailDuplication',
-            data: {
-                'memberEmail': userEmail
-            },
-            dataType: "text",
-            success: function (result) {
-                if(result == "no"){
-                    // 중복되는 것이 있다면 no == 일치하는 이메일이 있다!
-                    alert('임시비밀번호를 전송 했습니다.');
-                    sendEmail.submit();
-                }else {
-                    alert('가입되지 않은 이메일입니다.');
-                }
+<%--<script>--%>
+<%--    $("#sendPassword").click(function () {--%>
+<%--        const userEmail = $("#userEmail").val();--%>
+<%--        const sendEmail = document.forms["sendEmail"];--%>
+<%--        $.ajax({--%>
+<%--            url: "/user/send-email",--%>
+<%--            type: 'post',--%>
+<%--            data: {'memberEmail': userEmail},--%>
+<%--            success: function (result) {--%>
+<%--                if(result == "no"){--%>
+<%--                    // 중복되는 것이 있다면 no == 일치하는 이메일이 있다!--%>
+<%--                    alert('임시비밀번호를 전송 했습니다.');--%>
+<%--                    sendEmail.submit();--%>
+<%--                }else {--%>
+<%--                    alert('가입되지 않은 이메일입니다.');--%>
+<%--                }--%>
 
-            },error: function () {
-                console.log('에러 체크!!')
-            }
-        })
-    });
-</script>
+<%--            },error: function () {--%>
+<%--                console.log('에러 체크!!')--%>
+<%--            }--%>
+<%--        })--%>
+<%--    });--%>
+<%--</script>--%>
 <!--------------------------------- 임시 비밀번호 발송 ------------------------------------------->
 </body>
 
