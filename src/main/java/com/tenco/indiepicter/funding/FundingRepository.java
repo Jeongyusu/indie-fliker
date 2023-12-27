@@ -77,4 +77,16 @@ public interface FundingRepository {
 
     //어드민 페이지 펀딩 수정/종료 페이지 검색어 조회
     public List<AdminFundingManagementSearchDTO> findAllAdminFundingModifySearch(String keyword);
+
+    //어드민 온라인 상영기간, 채팅시간 설정 페이지 검색어 조회
+    public List<AdminOnlineStreamingSearchDTO> searchKeywordAboutOnlineStreaming(String keyword);
+
+    //어드민 오프라인 상영기간 설정 페이지 검색어 조회
+    public List<AdminOfflineStreamingSearchDTO>  searchKeywordAboutOfflineStreaming(String keyword);
+
+    //어드민 페이지 펀딩 현황 조회
+    public List<AdminFundingProceedingDTO> findAllAboutFundingProceeding(@Param("pageSize") Integer pageSize, @Param("offset") Integer offset);
+
+    //어드민 페이지 펀딩 현황 검색어 조회
+    public List<AdminFundingProceedingSearchDTO> searchKeywordAboutFundingProceeding(String keyword);
 }

@@ -37,7 +37,7 @@
                 <a href=""><h2>IndiFlinker</h2></a>
             </div>
 
-            <form id="search-form" action="/admin/off-movie-open-setting/search" method="get">
+            <form id="search-form" action="/admin/movie-open-setting/search" method="get">
                 <div class="p_search">
                     <button type="submit">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -107,11 +107,11 @@
         <div class="p_playday_container2">
 
             <div class="p_section1">
-                <c:forEach var="funding" items="${adminOfflineStreamingDTOs}" varStatus="status">
+                <c:forEach var="funding" items="${searchResultDTOs}" varStatus="status">
                     <div class="p_menu1" >
                         <img src="${funding.thumbnail}" alt="">
                         <p>${funding.movieName}</p>
-                        <button onclick="openMovieSettingModal(${funding.movieId})">오프라인 상영기간 설정</button>
+                        <button onclick="openMovieSettingModal(${funding.movieId})">상영기간 및 채팅오픈시간 설정</button>
                     </div>
                 </c:forEach>
                 <!----------------------------------- 모달 ------------------------------------------------>
@@ -123,22 +123,23 @@
                         <div id="movie_name_container">
                             <span id="j_movie_name">영화 이름</span>
                         </div>
-                        <p> 오프라인 상영기간 설정</p><br>
-                        <label>오프라인 상영 개봉일 설정</label><br>
-                        <input type="text" id="release_date_choice" name="offlineReleaseDate" placeholder="날짜 선택"><br>
+                        <p> 온라인 상영기간 설정</p><br>
+                        <label>온라인 스트리밍 개봉일 설정</label><br>
+                        <input type="text" id="release_date_choice" name="onlineReleaseDate" placeholder="날짜 선택"><br>
                         <div id="release_date_container">
                             <input type="text" id="release_date" placeholder="날짜 선택"><br>
                         </div>
-                        <label>오프라인 상영 종료일 설정</label><br>
-                        <input type="text" id="end_date_choice" name="offlineEndDate" placeholder="날짜 선택"><br>
+                        <label>온라인 스트리밍 종료일 설정</label><br>
+                        <input type="text" id="end_date_choice" name="onlineEndDate" placeholder="날짜 선택"><br>
                         <div id="end_date_container">
                             <input type="text" id="end_date" placeholder="날짜 선택"><br>
                         </div>
-                        <label>펀딩 종료일자</label><br>
-                        <div id="off_funding_end_container">
-                            <input type="text" id="off_funding_end" placeholder="날짜 및 시간 선택"><br>
+                        <label>온라인 채팅 오픈 시간 설정</label><br>
+                        <input type="text" id="chat_time_choice" name="chatTime" placeholder="날짜 및 시간 선택"><br>
+                        <div id="chat_time_container">
+                            <input type="text" id="chat_time" placeholder="날짜 및 시간 선택"><br>
                         </div>
-                        <button class="j_streaming_close" type="submit" onclick="saveOffMovieOpenInfo()">설정 하기</button>
+                        <button class="j_streaming_close" type="submit" onclick="saveMovieOpenInfo()">설정 하기</button>
                         <button class="j_streaming_close2" style="background-color: var(--point_05);" type="button" onclick="closeMovieSettingModal()">닫기</button>
                 </div>
             </div>
@@ -147,6 +148,33 @@
         </div>
         <!--컨테이너2 끝-->
 
+        <div class="p_playday_bottom">
+            <nav aria-label="...">
+                <ul class="pagination">
+                <li class="page-item disabled">
+                    <a class="page-link previous" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item paging">
+                    <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item active paging" aria-current="page" style="color:#01DFD7;">
+                    <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item paging">
+                    <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item paging">
+                    <a class="page-link" href="#">4</a>
+                </li>
+                <li class="page-item paging">
+                    <a class="page-link" href="#">5</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link next" href="#">Next</a>
+                </li>
+                </ul>
+            </nav>  
+        </div>
         
 	</div>
 <script>
@@ -157,23 +185,23 @@
     async function openMovieSettingModal(id) {
         try{
         document.getElementById('j_streaming_modal').style.display = 'block';
-        let response = await fetch(`/admin/off-movie-open/` + id)
+        let response = await fetch(`/admin/movie-open/` + id)
         let responseBody = await response.json();
         console.log("제이슨 변환 완료");
         console.log(responseBody);
-        console.log(responseBody.response.offlineReleaseDate);
+        console.log(responseBody.response.onlineReleaseDate);
         if(responseBody.success){
 
-            if(responseBody.response.offlineReleaseDate == null){
-                responseBody.response.offlineReleaseDate = '미설정';
+            if(responseBody.response.onlineReleaseDate == null){
+                responseBody.response.onlineReleaseDate = '미설정';
             }
 
-            if(responseBody.response.offlineEndDate == null){
-                responseBody.response.offlineEndDate = '미설정';
+            if(responseBody.response.onlineEndDate == null){
+                responseBody.response.onlineEndDate = '미설정';
             }
 
-            if(responseBody.response.endDate == null){
-                responseBody.response.endDate = '미설정';
+            if(responseBody.response.chatTime == null){
+                responseBody.response.chatTime = '미설정';
             }
             let selectedMovieId = document.getElementById('selected_movie_id');
             selectedMovieId.value = responseBody.response.id;
@@ -188,7 +216,7 @@
             newInput.type = 'text';
             newInput.id = 'release_date';
             newInput.placeholder = '날짜를 선택하세요';
-            newInput.value = "기존 설정일 : " + responseBody.response.offlineReleaseDate;
+            newInput.value = "기존 설정일 : " + responseBody.response.onlineReleaseDate;
             newInput.disabled = true;
             newInput.className = "j_custom_margin_bottom"
             newInput.style = "width : 180px;"
@@ -201,31 +229,46 @@
             newInput2.type = 'text';
             newInput2.id = 'end_date';
             newInput2.placeholder = '날짜를 선택하세요';
-            newInput2.value = "기존 설정일 : " + responseBody.response.offlineEndDate;
+            newInput2.value = "기존 설정일 : " + responseBody.response.onlineEndDate;
             newInput2.disabled = true;
             newInput2.className = "j_custom_margin_bottom"
             newInput2.style = "width : 180px;"
             let parent2 = document.getElementById('end_date_container');
             parent2.appendChild(newInput2);
 
-            let parent3 = document.getElementById('off_funding_end_container');
+            let parent3 = document.getElementById('chat_time_container');
             parent3.innerHTML='';
+
+            let chatTimeString = responseBody.response.chatTime;
+            let chatTimeConvert = new Date(chatTimeString);
+
+            // chatTime을 원하는 형식으로 변환
+            let formattedChatTime = chatTimeConvert.toLocaleString('ko-KR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: true,
+            });
 
             let newInput3 = document.createElement('input');
             newInput3.type = 'text';
-            newInput3.id = 'off_funding_end';
+            newInput3.id = 'chat_time';
             newInput3.placeholder = '날짜 및 시간을 선택하세요';
-            newInput3.value = "기존 설정 시간 : " + responseBody.response.endDate;
+            newInput3.value = "기존 설정 시간 : " + formattedChatTime;
             newInput3.disabled = true;
-            newInput3.style = "width : 250px;"
+            newInput3.style = "width : 300px;"
             parent3.appendChild(newInput3);
 
             document.querySelector("#release_date_choice").value = null;
             document.querySelector("#end_date_choice").value = null;
+            document.querySelector("#chat_time_choice").value = null;
 
 
             let firstDay = document.getElementById('release_date_choice');
             let lastDay = document.getElementById('end_date_choice');
+            let day = document.getElementById('funding_end_date');
 
 
             // day.value = responseBody.response.chatTime;
@@ -238,6 +281,7 @@
                     console.log("firstDay.value :" + firstDay.value);
                     // lastDay에 적용
                     lastDayFlatpickr.set('minDate', firstDay.value);
+                    lastDayFlatpickr.set('maxDate', day.value);
                 },
             });
 
@@ -249,6 +293,11 @@
                 },
             });
 
+            let chatTime = document.getElementById('chat_time_choice');
+            flatpickr(chatTime, {
+                enableTime: true,
+                dateFormat: "Y-m-d H:i",
+            });
         } else {
             throw new Error('요청 실패');
         }
@@ -264,17 +313,19 @@
 
     }
 
-    async function saveOffMovieOpenInfo () {
+    async function saveMovieOpenInfo () {
             let movieId = document.getElementById('selected_movie_id').value;
             let releaseDate = document.getElementById('release_date_choice').value;
             let endDate = document.getElementById('end_date_choice').value;
+            let chatTime = document.getElementById('chat_time_choice').value;
 
-            let response = await fetch(`/admin/off-movie-open/save`, {
+            let response = await fetch(`/admin/movie-open/save`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({id: movieId, offlineReleaseDate: releaseDate, offlineEndDate: endDate
+                body: JSON.stringify({id: movieId, onlineReleaseDate: releaseDate, onlineEndDate: endDate,
+                    chatTime: chatTime
                 }),
             });
 
@@ -284,7 +335,6 @@
             console.log(responseBody);
             if (responseBody.success) {
                 alert("설정 성공");
-
                 let child = document.getElementById('release_date');
                 child.parentNode.removeChild(child);
                 let newInput = document.createElement('input');
@@ -311,8 +361,17 @@
                 let parent2 = document.getElementById('end_date_container');
                 parent2.appendChild(newInput2);
 
+                let parent3 = document.getElementById('chat_time_container');
+                parent3.innerHTML='';
 
-
+                let newInput3 = document.createElement('input');
+                newInput3.type = 'text';
+                newInput3.id = 'chat_time';
+                newInput3.placeholder = '날짜 및 시간을 선택하세요';
+                newInput3.value = "기존 설정 시간 : " + chatTime;
+                newInput3.disabled = true;
+                newInput3.style = "width : 300px;"
+                parent3.appendChild(newInput3);
             } else {
                 throw new Error(responseBody.error);
             }
