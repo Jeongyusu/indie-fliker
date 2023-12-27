@@ -1,10 +1,7 @@
 package com.tenco.indiepicter.funding.fundingready;
 
 import com.tenco.indiepicter.funding.Funding;
-import com.tenco.indiepicter.funding.response.FundingDetailDTO;
-import com.tenco.indiepicter.funding.response.FundingReadyDTO;
-import com.tenco.indiepicter.funding.response.FundingReadyDetailDTO;
-import com.tenco.indiepicter.funding.response.OfflineMovieDetailDTO;
+import com.tenco.indiepicter.funding.response.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -26,5 +23,8 @@ public interface FundingReadyRepository {
 
     //id로 조회한 펀딩 준비테이블 튜플 삭제
     public void deleteById(Integer id);
+
+    //펀딩 등록 승인 페이지 검색어 조회
+    public List<SearchFundingReadyDTO> searchFundingReady(String keyword);
 
 }

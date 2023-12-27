@@ -300,3 +300,16 @@
 .j_custom_margin_bottom30{
 
 }
+
+.j_up_button {
+    width: 5%;
+    position: fixed;
+    bottom: 20%;
+    right: 10%;
+    display: block;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    outline: none;
+}

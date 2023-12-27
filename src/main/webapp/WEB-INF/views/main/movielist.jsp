@@ -28,7 +28,7 @@
     <div id="data-container" class="row row-cols-xl-5">
       <c:forEach var="funding" items="${fundingPlusDTO.moviesByMainDTOs}" >
         <div class="col my-4 l_movie_card_form">
-          <div class="card l_movie_card">
+          <div class="card l_movie_card" id="j_paging">
             <a href="/fund/funding/${funding.fundingId}"><img src="${funding.movieThumbnail}" class="card-img" alt="..."></a>
           </div>
           <div class="l_percent l_mint l_strong">${funding.fundingRate}% 달성</div>
@@ -40,6 +40,9 @@
     </div>
   </div>
 
+  <div>
+    <button id="scrollToTopBtn"><img src="/images/icons/upArrow.gif" class="j_up_button"></button>
+  </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

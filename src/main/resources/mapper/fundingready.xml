@@ -9,6 +9,7 @@
         values (#{targetPrice}, #{presentPrice}, #{pricePerOnetime}, #{peopleCount}, #{releaseDate}, #{endDate}, #{movieId})
     </insert>
 
+    <!-- 펀딩 준비 테이블 조회 -->
     <select id="findAllFundingReady" resultMap="fundingReadyDTOMap">
         select frt.id, mt.thumbnail, mt.movie_name, mt.director from funding_ready_tb frt join movie_tb mt on frt.movie_id = mt.id
         limit #{pageSize} offset #{offset}
@@ -20,6 +21,24 @@
         <result property="movieName" column="movie_name"/>
         <result property="director" column="director"/>
     </resultMap>
+
+    <!-- 펀딩 준비 테이블 검색어 조회 -->
+    <select id="searchFundingReady" resultMap="SearchFundingReadyDTOMap">
+        select frt.id, mt.id as movie_id, mt.thumbnail, mt.movie_name, mt.director from funding_ready_tb frt join movie_tb mt on frt.movie_id = mt.id
+        where mt.movie_name LIKE CONCAT('%', #{keyword}, '%') or mt.director LIKE CONCAT('%', #{keyword}, '%')
+    </select>
+
+    <resultMap id="SearchFundingReadyDTOMap" type="com.tenco.indiepicter.funding.response.SearchFundingReadyDTO">
+        <result property="fundingReadyId" column="id"/>
+        <result property="movieId" column="movie_id"/>
+        <result property="thumbnail" column="thumbnail"/>
+        <result property="movieName" column="movie_name"/>
+        <result property="director" column="director"/>
+    </resultMap>
+
+
+
+
 
     <select id="findByFundingIdAboutDetailfundingReady" resultMap="FundingReadyDetailDTOResultOMap">
         select ft.id, mt.thumbnail, mt.genre, ft.present_price / (ft.target_price/10) * 10 funding_rate, (ft.end_date - ft.release_date) rest_period,
