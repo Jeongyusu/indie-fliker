@@ -366,7 +366,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
-    margin: 6px 0;
+    margin: 10px 0;
 }
 
 .l_movie_card_form .l_production {
@@ -461,12 +461,24 @@
     line-height: 20px;
 }
 
+.l_bookmark_button {
+    border: none;
+    background-color: transparent;
+}
+
 .l_like_icon svg {
     fill: var(--point_04);
+    margin: 16px 0 10px;
 }
 
 .l_like_icon:hover svg {
     fill: var(--line_01);
+}
+
+.l_align_flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 
