@@ -21,7 +21,7 @@
 
         <div class="k_form_group">
             <label class="k_input_label">닉네임</label><br>
-            <input type="text" class="form-control input" id="username" name="username" value="123"
+            <input type="text" class="form-control k_join_radius" id="username" name="username" value="123"
                    placeholder="닉네임을 입력하세요."
                    onfocus="this.placeholder = ''" onblur="this.placeholder = '닉네임을 입력하세요.'">
             <p id="usernameCkeck"></p>
@@ -30,7 +30,7 @@
         <div class="k_form_group">
             <label class="k_input_label">비밀번호</label><br>
             <div class="input-group k_input">
-                <input type="password" class="form-control k_pwd_backcolor" id="password1" name="password1" value="1234"
+                <input type="password" class="form-control k_join_radius k_pwd_backcolor" id="password1" name="password1" value="1234"
                        placeholder="비밀번호를 입력하세요."
                        onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 입력를 입력하세요.'"
                        style="border-radius: 0.25rem">
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="input-group k_input">
-                <input type="password" class="form-control k_pwd_backcolor k_pwd_input_margin" id="password2"
+                <input type="password" class="form-control k_join_radius k_pwd_backcolor k_pwd_input_margin" id="password2"
                        name="password2" value="1234"
                        placeholder="비밀번호 확인"
                        onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 확인'"
@@ -54,7 +54,7 @@
 
         <div class="k_form_group">
             <label class="k_input_label">전화번호</label><br>
-            <input type="text" class="form-control input" id="tel" name="tel" value="123"
+            <input type="text" class="form-control k_join_radius" id="tel" name="tel" value="123"
                    placeholder="전화번호 입력를 입력하세요."
                    onfocus="this.placeholder = ''" onblur="this.placeholder = '전화번호를 입력하세요.'">
             <p id="telCkeck"></p>

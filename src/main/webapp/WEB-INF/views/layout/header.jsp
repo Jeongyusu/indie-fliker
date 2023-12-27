@@ -46,7 +46,7 @@
         <nav class="j_nav">
             <div class="j_nav_left">
                 <div id="j_logo">
-                    <a href="#">
+                    <a href="/fund/funding-plus">
                         <img class="j_logo" src="/images/logo/IndieFliker.png" alt="로고">
                     </a>
                     <a class="j_logo_text_padding" href="#">

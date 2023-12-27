@@ -336,6 +336,12 @@
     font-size: 16px;
 }
 
+.l_movie_list_title .l_announce {
+    margin-top: 16px;
+    color: var(--point_04);
+    text-align: start;
+}
+
 .l_movie_card_form .l_movie_card {
     border: none;
     margin: 0;
@@ -407,7 +413,7 @@
 .l_main_card .l_period{
     font-size: 15px;
     font-weight: bold;
-    margin-top: 10px;
+    margin: 12px 0;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -430,7 +436,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    margin-top: 10px;
+    margin: 0;
 }
 
 .l_ranking_card {
@@ -444,6 +450,40 @@
     width: 220px;
 }
 
+
+.l_on_movie_card .l_title{
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.l_on_movie_card .l_period{
+    font-size: 14px;
+    color: var(--font_01);
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    line-height: 18px;
+}
+
+.l_on_movie_card .l_movie_online_title {
+    margin: 10px 0;
+}
+
+.l_on_movie_card .l_dday {
+    border-radius: 5px;
+    padding: 8px;
+    width: 38%;
+    text-align: center;
+    margin-bottom: 10px;
+    background-color: var(--def_bl);
+    color: var(--def_wh);
+    font-weight: bold;
+    font-size: 15px;
+}
 
 
 .l_movie_card .l_theater_title{
@@ -481,6 +521,11 @@
     justify-content: space-between;
 }
 
+.l_flex_end {
+    display: flex;
+    justify-content: end;
+    align-content: center;
+}
 
 <!-- -->
 .l_movie_image{
@@ -509,7 +554,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background: #E6E6E6;	
+    background: var(--back_02);
 }
 
 .l_movie_image .l_button{
