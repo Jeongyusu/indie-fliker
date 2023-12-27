@@ -2,10 +2,8 @@ package com.tenco.indiepicter.admin.funding;
 
 import com.tenco.indiepicter._core.utils.Script;
 import com.tenco.indiepicter.funding.FundingService;
-import com.tenco.indiepicter.funding.fundingready.FundingReady;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyService;
 import com.tenco.indiepicter.funding.request.AdminRequestFundingUpdateFormDTO;
-import com.tenco.indiepicter.funding.request.FundingSaveDTO;
 import com.tenco.indiepicter.funding.response.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,6 +75,19 @@ public class AdminFundingController {
         return Script.href("/admin/funding-management", "펀딩 업데이트 성공!");
     }
 
+    @GetMapping("/funding-management/search")
+    public String searchFunding(@RequestParam( name ="keyword") String keyword, Model model){
+        List<AdminFundingManagementSearchDTO> searchResultDTOs = fundingService.findAllAdminFundingModifySearch(keyword);
+        model.addAttribute("searchResultDTOs", searchResultDTOs);
+        return "manager/update_delete_search";
+    }
 
+
+    @GetMapping("/funding-ready-list/search")
+    public String searchReadyList(@RequestParam( name ="keyword") String keyword, Model model){
+        List<SearchFundingReadyDTO> searchResultDTOs = fundingReadyService.searchFundingReady(keyword);
+        model.addAttribute("searchResultDTOs", searchResultDTOs);
+        return "manager/register_search";
+    }
 
 }

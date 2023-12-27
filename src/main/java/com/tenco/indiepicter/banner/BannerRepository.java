@@ -8,6 +8,5 @@ import java.util.List;
 public interface BannerRepository {
     public List<Banner> findByGenre(String genre);
 
-    public List<Banner>
 
 }

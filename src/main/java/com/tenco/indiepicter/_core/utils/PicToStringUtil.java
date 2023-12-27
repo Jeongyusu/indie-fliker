@@ -21,7 +21,7 @@ public class PicToStringUtil {
         } catch (Exception e) {
             throw new MyDynamicException("사진 변환 실패", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return fileName;
+        return "/images/uploads/" + fileName;
 
     }
 }

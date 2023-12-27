@@ -13,7 +13,7 @@ public interface FundingRepository {
     public List<MoviesByGenreDTO> findAllByGenre(@Param("genre") String genre, @Param("pageSize") Integer pageSize, @Param("offset") Integer offset);
 
     //펀딩 모두(메인) 조회
-    public List<MoviesByMainDTO> findAllByMain(@Param("pageSize") Integer pageSize, @Param("offset") Integer offset);
+    public List<MoviesByMainDTO> findAllByMain(@Param("pageSize") Integer pageSize, @Param("offset") Integer offset, @Param("genre") String genre);
 
     //온라인 영화 페이징 조회
     public List<OnAirMoviePageDTO> findAllByOnAirPage(@Param("pageSize") Integer pageSize, @Param("offset") Integer offset);
@@ -75,5 +75,12 @@ public interface FundingRepository {
     // 어드민 페이지 펀딩 수정 업데이트
     public int updateByIdForAdmin(Funding funding);
 
+    // 어드민 페이지 펀딩 삭제
+    public int deleteById(Integer id);
 
+    //어드민 페이지 펀딩 종료
+    public int updateEndDateById(Integer id);
+
+    //어드민 페이지 펀딩 수정/종료 페이지 검색어 조회
+    public List<AdminFundingManagementSearchDTO> findAllAdminFundingModifySearch(String keyword);
 }

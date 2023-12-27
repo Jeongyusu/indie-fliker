@@ -49,9 +49,9 @@ public class FundingService {
     }
 
     // 펀딩
-    public List<MoviesByMainDTO> moviesByMain(Integer page, Integer pageSize){
+    public List<MoviesByMainDTO> moviesByMain(Integer page, Integer pageSize, String genre){
         Integer offset = page * pageSize - pageSize;
-        return fundingRepository.findAllByMain(pageSize, offset);
+        return fundingRepository.findAllByMain(pageSize, offset, genre);
     }
 
     // 개봉한 온라인 영화 페이징
@@ -175,6 +175,7 @@ public class FundingService {
     @Transactional
     public void updateById(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO){
         Funding funding = Funding.builder()
+                .id(adminRequestFundingUpdateFormDTO.getFundingId())
                 .targetPrice(adminRequestFundingUpdateFormDTO.getTargetPrice())
                 .pricePerOnetime(adminRequestFundingUpdateFormDTO.getPricePerOnetime())
                 .releaseDate(DateUtil.stringToDate(adminRequestFundingUpdateFormDTO.getFundingPeriodStart()))
@@ -190,6 +191,26 @@ public class FundingService {
         moviePhotoService.updateById(adminRequestFundingUpdateFormDTO);
     }
 
+    @Transactional
+    public int deleteById(Integer id){
+        int resultRowCount =  fundingRepository.deleteById(id);
+        if(resultRowCount != 1) {
+            throw new MyDynamicException("펀딩 삭제 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return resultRowCount;
+    }
 
+    @Transactional
+    public int updateEndDateById(Integer id){
+        int resultRowCount =  fundingRepository.updateEndDateById(id);
+        if(resultRowCount != 1) {
+            throw new MyDynamicException("펀딩 종료 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return resultRowCount;
+    }
 
+    // 어드민 페이지 펀딩 종료/수정 검색어 조회
+    public List<AdminFundingManagementSearchDTO> findAllAdminFundingModifySearch(String keyword){
+        return fundingRepository.findAllAdminFundingModifySearch(keyword);
+    }
 }
