@@ -1,13 +1,15 @@
 package com.tenco.indiepicter.admin;
 
+import com.tenco.indiepicter._core.utils.ApiUtils;
+import com.tenco.indiepicter._core.utils.Define;
+import com.tenco.indiepicter.admin.response.AdminReviewResponseDTO;
 import com.tenco.indiepicter.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import javax.xml.stream.events.Comment;
 import java.util.List;
 
@@ -15,18 +17,22 @@ import java.util.List;
 public class AdminRestController {
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private HttpSession session;
 
-    @PostMapping("/api/delete/comment")
-    public String deleteComment(User userId) {
-        int commentIdToDelete = userId.getId();
-        adminService.deleteComment(commentIdToDelete);
+    // 댓글 삭제
+//    @PostMapping("/api/delete/comment")
+//    public ResponseEntity<?> deleteComment(@RequestBody AdminReviewResponseDTO.DeleteCommentRequest request) {
+//        adminService.deleteComment(request.getCommentId());
+//        return ResponseEntity.ok().body(ApiUtils.success(null));
+//    }
 
-        return "redirect:/admin/review";
+    // 댓글 조회
+    @GetMapping("/user/comment")
+    public String getUserComments(@RequestParam int userId, @RequestParam int movieId, Model model) {
+        List<Comment> userMovieComments = adminService.getCommentsByUserId(userId, movieId);
+        model.addAttribute("userMovieComments", userMovieComments);
+        return "manager/review";
     }
-    @GetMapping("/user/{userId}")
-    public String getUserComments(@PathVariable int userId, Model model) {
-        List<Comment> userComments = adminService.getCommentsByUserId(userId);
-        model.addAttribute("userComments", userComments);
-        return null;
-    }
+
 }

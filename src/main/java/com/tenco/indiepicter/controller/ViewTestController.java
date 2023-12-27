@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ViewTestController {
 
+    @GetMapping("/review")
+    public String review(){
+        return "manager/review";
+    }
 
     @GetMapping("/login")
     public String login() {

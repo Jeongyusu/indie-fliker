@@ -1,8 +1,6 @@
 package com.tenco.indiepicter.admin;
 
 import com.tenco.indiepicter.invitation.Invitation;
-import com.tenco.indiepicter.invitation.response.InvitationResponseDTO;
-import com.tenco.indiepicter.notice.Notice;
 import com.tenco.indiepicter.user.User;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -38,10 +36,10 @@ public interface AdminRepository {
     public void updateNormal(Integer id);
 
     // 댓글삭제
-    public void deleteComment(Integer id);
+//    public void deleteComment(Integer id);
 
     // 댓글 불러오기
-    List<Comment> getCommentsByUserId(int userId);
+    List<Comment> findByUserIdAndMovieId(int userId, int movieId);
 
 
 }

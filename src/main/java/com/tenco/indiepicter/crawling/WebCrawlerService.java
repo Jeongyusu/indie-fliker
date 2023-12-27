@@ -37,7 +37,7 @@ public class WebCrawlerService {
 
     @Transactional
     public List<MovieCrawl> saveCrawlingDataToDB(String domain, String path) {
-        int maxPage = 5; // 여기서 데이터 값 조정
+        int maxPage = 20; // 여기서 데이터 값 조정
 
         List<MovieCrawl> movieCrawlList = new ArrayList<>();
         for (int i = 1; i <= maxPage; i++) {
