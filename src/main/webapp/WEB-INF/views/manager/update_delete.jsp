@@ -29,10 +29,14 @@
             <a href=""><h2>IndiFlinker</h2></a>
         </div>
 
-        <div class="p_search">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="검색 하기">
-        </div>
+        <form id="search-form" action="/admin/funding-management/search" method="get">
+            <div class="p_search">
+                <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <input type="text" name="keyword" placeholder="검색 하기">
+            </div>
+        </form>
 
         <div class="p_inform">
             <a href=""><i class="fa-regular fa-bell"></i></a>
@@ -54,9 +58,9 @@
         <div class="p_section2">
             <h3>영화</h3>
             <ul>
-                <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/manager/register">영화 등록 허가</a></li>
-                <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/manager/check">펀딩 현황 확인</a></li>
-                <li><i class="fa-solid fa-pen p_icon3"></i><a href="/manager/update_delete">펀딩 등록 / 삭제</a></li>
+                <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/funding-ready-list">펀딩 등록 승인</a></li>
+                <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/funding-info">펀딩 현황 확인</a></li>
+                <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/funding-management">펀딩 수정 / 종료</a></li>
             </ul>
             <div class="p_line"></div>
         </div>
@@ -74,8 +78,8 @@
         <div class="p_section4">
             <h3>온라인 상영 가능 영화</h3>
             <ul>
-                <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/manager/playday">온라인 오픈 기간 설정</a></li>
-                <li><i class="fa-solid fa-comment p_icon2"></i><a href="/manager/chatting">채팅방 오픈</a></li>
+                <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/movie-open/setting">온라인 상영 기간 설정/채팅 오픈 시간 설정</a></li>
+                <li><i class="fa-solid fa-comment p_icon2"></i><a href="/admin/funding/off-movie-open/setting">오프라인 상영 기간 설정</a></li>
                 <li><i class="fa-solid fa-note-sticky p_icon3"></i><a href="/manager/review">감상평 관리</a></li>
             </ul>
             <div class="p_line"></div>
@@ -98,20 +102,15 @@
                 <div class="p_menu1">
                     <img src="${funding.movieThumbnail}">
                     <p>${funding.movieName}</p>
-                    <button onclick="openModal(${status.index})">영화 수정</button>
-                    <a href="">
-                        <button class="p_button2">영화 삭제</button>
-                    </a>
+                    <button onclick="openModal(${status.index})">펀딩 수정</button>
+                    <button class="p_button2" onclick="updateById(${funding.fundingId})">펀딩 종료</button>
                 </div>
                 <!--모달-->
                 <div class="j_custom_modal" id="j_fund_modify_modal${status.index}">
-                    <iframe src="/admin/funding/1/updateForm"
+                    <iframe src="/admin/funding/${funding.fundingId}/updateForm"
                     id="chat_iframe" style=" width: 100%; height: 100%; border: none;">대체 내용</iframe>
                     <button class="j_close" style="background-color: var(--primary_02);"
                             onclick="closeModal(${status.index})">창 닫기
-                    </button>
-                    <button class="j_close2" style="margin-bottom: 10px;"
-                            onclick="AuthorizationFunding(${fundingReady.fundingReadyId})">등록 승인
                     </button>
                 </div>
             </c:forEach>
@@ -161,6 +160,46 @@
         document.getElementById('j_fund_modify_modal' + id).style.display = 'none';
         window.location.reload();
     }
+
+    async function updateById(fundingId) {
+        // 확인 창 띄우기
+        const userConfirmed = window.confirm('정말로 삭제하시겠습니까?');
+
+        // 확인을 누른 경우에만 서버로 통신 시작
+        if (userConfirmed) {
+            try {
+                let response = await fetch('/admin/funding/end', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ fundingId: fundingId }),
+                });
+
+                console.log("여기까지 진입2");
+
+                let responseBody = await response.json();
+                console.log("내부 제이슨 변환 완료");
+                console.log(responseBody);
+
+                console.log(responseBody.success);
+
+                if (responseBody.success) {
+                    alert("펀딩 종료 성공");
+                    location.reload();
+                } else {
+                    throw new Error(responseBody.error);
+                }
+            } catch (error) {
+                console.error('에러가 발생했습니다:' + error.message);
+                alert('에러 발생 : ' + error.message);
+            }
+        } else {
+            // 사용자가 취소를 누른 경우
+            alert('취소되었습니다.');
+        }
+    }
+
 </script>
 </body>
 </html>

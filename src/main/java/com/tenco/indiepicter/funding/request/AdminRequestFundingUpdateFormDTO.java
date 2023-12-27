@@ -29,6 +29,7 @@ public class AdminRequestFundingUpdateFormDTO {
     private String directingIntension;
     private MovieStaff staff;
     private List<MultipartFile> moviePhotos;
+    private String moviePhotoIds;
     private MultipartFile directorPhoto;
     private List<String> directorCareers;
     private List<String> directorCareerYears;

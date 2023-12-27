@@ -12,14 +12,24 @@ public interface FundingRepository {
     //펀딩 장르별 조회
     public List<MoviesByGenreDTO> findAllByGenre(@Param("genre") String genre, @Param("pageSize") Integer pageSize, @Param("offset") Integer offset);
 
+
+    //펀딩 모두(메인) 조회
+    public List<MoviesByMainDTO> findAllByMain(@Param("pageSize") Integer pageSize, @Param("offset") Integer offset, @Param("genre") String genre);
+
     // movie_id로 funding_id 조회
     public FindByFundingIdDTO findByMovieId(Integer movieId);
 
-    //상영중 영화 조회
+    //온라인 상영중 영화 조회
     public List<OnAirMovieDTO> findAllByOnAir();
 
-    //상영중 영화 장르별 조회
+    //온라인 상영중 영화 장르별 조회
     public List<OnAirMovieRankingDTO> findAllByOnAirAndRanking();
+
+    //오프라인 상영중 영화 조회
+    List<OffAirMovieDTO> findAllByOffAir();
+
+    //오프라인 상영중 영화 장르별 조회
+    List<OffAirMovieRankingDTO> findAllByOffAirAndRanking();
 
     //온라인 펀딩 상세보기
     public FundingDetailDTO findByFundingIdAboutDetailFunding(Integer fundingId);
@@ -48,6 +58,8 @@ public interface FundingRepository {
     // 펀딩 온라인 상영기간 설정
     public List<AdminOnlineStreamingDTO> findAllAdminPeriodSetting();
 
+    // 펀딩 온라인 개봉 예정 영화보기
+    public List<OnDDayMovieDTO> findByOnlineDDay();
     // 펀딩 오프라인 상영기간 설정
     public List<AdminOfflineStreamingDTO> findAllAdminOfflinePeriodSetting();
 
@@ -56,4 +68,13 @@ public interface FundingRepository {
 
     // 어드민 페이지 펀딩 수정 업데이트
     public int updateByIdForAdmin(Funding funding);
+
+    // 어드민 페이지 펀딩 삭제
+    public int deleteById(Integer id);
+
+    //어드민 페이지 펀딩 종료
+    public int updateEndDateById(Integer id);
+
+    //어드민 페이지 펀딩 수정/종료 페이지 검색어 조회
+    public List<AdminFundingManagementSearchDTO> findAllAdminFundingModifySearch(String keyword);
 }

@@ -7,6 +7,7 @@ import com.tenco.indiepicter.funding.request.FundingSaveDTO;
 import com.tenco.indiepicter.funding.response.FundingDetailDTO;
 import com.tenco.indiepicter.funding.response.FundingReadyDTO;
 import com.tenco.indiepicter.funding.response.FundingReadyDetailDTO;
+import com.tenco.indiepicter.funding.response.SearchFundingReadyDTO;
 import com.tenco.indiepicter.movie.MovieService;
 import com.tenco.indiepicter.movie.moviephoto.MoviePhotoService;
 import com.tenco.indiepicter.movie.moviestaff.MovieStaffService;
@@ -71,5 +72,10 @@ public class FundingReadyService {
 
     public FundingReady findById(Integer id) {
         return fundingReadyRepository.findById(id);
+    }
+
+    //펀딩 준비 리스트 검색어 조회
+    public List<SearchFundingReadyDTO> searchFundingReady(String keyword){
+        return fundingReadyRepository.searchFundingReady(keyword);
     }
 }

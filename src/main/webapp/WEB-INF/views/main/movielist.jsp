@@ -10,7 +10,7 @@
       <c:forEach var="banner" items="${fundingPlusDTO.banners}" varStatus="status">
         <div class="l_banner_item carousel-item${status.first ? ' active' : ''}">
           <div class="d-block">
-            <img src="${banner.bannerPic}" class="card-img" alt="..." style="object-fit: cover;height: 400px;">
+            <img src="${banner.bannerPic}" class="card-img" alt="..." style="object-fit: contain; height: 300px;">
           </div>
         </div>
       </c:forEach>
@@ -19,21 +19,30 @@
 </div>
 
 <!-- 영화 목록 (20개씩 비동기로 받아올 예정) -->
-<div class="container">
-  <div id="data-container" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-
-    <c:forEach var="funding" items="${fundingPlusDTO.moviesByGenreDTOs}" >
-      <div class="col my-4">
-        <div class="card">
-          <a href="/fund/funding/${funding.fundingId}"><img src="${funding.movieThumbnail}" class="card-img" alt="..."></a>
+  <div class="container l_movie_list_title">
+    <p class="l_list_title">취향 맞춤 독립영화</p>
+    <br>
+    <p class="l_list_comment">다양한 독립영화를 즐겨보세요</p>
+  </div>
+  <div class="container l_movie_list_container">
+    <div id="data-container" class="row row-cols-xl-5">
+      <c:forEach var="funding" items="${fundingPlusDTO.moviesByMainDTOs}" >
+        <div class="col my-4 l_movie_card_form">
+          <div class="card l_movie_card" id="j_paging">
+            <a href="/fund/funding/${funding.fundingId}"><img src="${funding.movieThumbnail}" class="card-img" alt="..."></a>
+          </div>
+          <div class="l_percent l_mint l_strong">${funding.fundingRate}% 달성</div>
+          <div class="l_title">${funding.movieName}</div>
+          <div class="l_content">${funding.synopsis}</div>
+          <div class="l_production">${funding.production}</div>
         </div>
-        <div class="h4 card-title l_mint mt-3">펀딩 달성률 ${funding.fundingRate}%</div>
-        <div class="h5 card-text mt-2">[${funding.movieName}]</div>
-        <div class="card-text mt-2">${funding.synopsis}</div>
-        <figcaption class="figure-caption">${funding.production}</figcaption>
-      </div>
-    </c:forEach>
+      </c:forEach>
+    </div>
+  </div>
 
+  <div>
+    <button id="scrollToTopBtn"><img src="/images/icons/upArrow.gif" class="j_up_button"></button>
+  </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

@@ -29,7 +29,9 @@ public class WebMvcConfig implements WebMvcConfigurer{
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/images/uploads/**")
-		.addResourceLocations("file:///C:\\spring_upload\\indiepictor\\upload/");
+//		.addResourceLocations("file:///C:\\spring_upload\\indiepictor\\upload/");
+		.addResourceLocations("file:images/");
+
 	}
 	
 	@Bean // IOC 관리대상 처리 - 싱글톤

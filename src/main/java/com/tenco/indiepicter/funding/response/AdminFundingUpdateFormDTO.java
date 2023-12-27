@@ -32,6 +32,7 @@ public class AdminFundingUpdateFormDTO {
     private String directingIntension;//
     private MovieStaff staff;//
     private String moviePhotos;
+    private String moviePhotoIds;
     private String directorPhoto;//
     private String directorCareers;//
     private String directorAwards;//

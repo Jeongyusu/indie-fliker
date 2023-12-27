@@ -48,12 +48,29 @@ public class FundingService {
         return fundingRepository.findAllByGenre(genre, pageSize, offset);
     }
 
+    public List<MoviesByMainDTO> moviesByMain(Integer page, Integer pageSize, String genre){
+        Integer offset = page * pageSize - pageSize;
+        return fundingRepository.findAllByMain(pageSize, offset, genre);
+    }
+
     public List<OnAirMovieDTO> onAirMovies() {
         return fundingRepository.findAllByOnAir();
     }
 
     public List<OnAirMovieRankingDTO> onAirRankedMovies() {
         return fundingRepository.findAllByOnAirAndRanking();
+    }
+
+    public List<OnDDayMovieDTO> onDDayMovies() {
+        return fundingRepository.findByOnlineDDay();
+    }
+
+    public List<OffAirMovieDTO> offAirMovies() {
+        return fundingRepository.findAllByOffAir();
+    }
+
+    public List<OffAirMovieRankingDTO> offAirRankedMovies() {
+        return fundingRepository.findAllByOffAirAndRanking();
     }
 
     public FundingDetailDTO detailFunding(Integer fundingId) {
@@ -145,6 +162,7 @@ public class FundingService {
     @Transactional
     public void updateById(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO){
         Funding funding = Funding.builder()
+                .id(adminRequestFundingUpdateFormDTO.getFundingId())
                 .targetPrice(adminRequestFundingUpdateFormDTO.getTargetPrice())
                 .pricePerOnetime(adminRequestFundingUpdateFormDTO.getPricePerOnetime())
                 .releaseDate(DateUtil.stringToDate(adminRequestFundingUpdateFormDTO.getFundingPeriodStart()))
@@ -160,5 +178,26 @@ public class FundingService {
         moviePhotoService.updateById(adminRequestFundingUpdateFormDTO);
     }
 
+    @Transactional
+    public int deleteById(Integer id){
+        int resultRowCount =  fundingRepository.deleteById(id);
+        if(resultRowCount != 1) {
+            throw new MyDynamicException("펀딩 삭제 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return resultRowCount;
+    }
 
+    @Transactional
+    public int updateEndDateById(Integer id){
+        int resultRowCount =  fundingRepository.updateEndDateById(id);
+        if(resultRowCount != 1) {
+            throw new MyDynamicException("펀딩 종료 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return resultRowCount;
+    }
+
+    // 어드민 페이지 펀딩 종료/수정 검색어 조회
+    public List<AdminFundingManagementSearchDTO> findAllAdminFundingModifySearch(String keyword){
+        return fundingRepository.findAllAdminFundingModifySearch(keyword);
+    }
 }

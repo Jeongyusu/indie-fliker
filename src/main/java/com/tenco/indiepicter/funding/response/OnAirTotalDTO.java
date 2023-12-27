@@ -11,5 +11,4 @@ import java.util.List;
 public class OnAirTotalDTO {
     List<OnAirMovieDTO> onAirMovieDTOs;
     List<OnAirMovieRankingDTO> onAirMovieRankingDTOs;
-    List<TheaterListDTO> theaterListDTOs;
 }
