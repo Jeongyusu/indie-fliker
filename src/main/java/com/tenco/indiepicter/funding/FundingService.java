@@ -48,9 +48,9 @@ public class FundingService {
         return fundingRepository.findAllByGenre(genre, pageSize, offset);
     }
 
-    public List<MoviesByMainDTO> moviesByMain(Integer page, Integer pageSize){
+    public List<MoviesByMainDTO> moviesByMain(Integer page, Integer pageSize, String genre){
         Integer offset = page * pageSize - pageSize;
-        return fundingRepository.findAllByMain(pageSize, offset);
+        return fundingRepository.findAllByMain(pageSize, offset, genre);
     }
 
     public List<OnAirMovieDTO> onAirMovies() {
@@ -194,5 +194,10 @@ public class FundingService {
             throw new MyDynamicException("펀딩 종료 실패", HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return resultRowCount;
+    }
+
+    // 어드민 페이지 펀딩 종료/수정 검색어 조회
+    public List<AdminFundingManagementSearchDTO> findAllAdminFundingModifySearch(String keyword){
+        return fundingRepository.findAllAdminFundingModifySearch(keyword);
     }
 }

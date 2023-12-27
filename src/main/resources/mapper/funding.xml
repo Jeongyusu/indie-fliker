@@ -25,6 +25,7 @@
 
     <select id="findAllByMain" resultMap="MoviesByMainDTOResultMap">
         select ft.id, ft.movie_id, mt.thumbnail, ft.present_price / (ft.target_price/10) * 10 funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
+        where mt.genre = #{genre}
         limit #{pageSize} offset #{offset}
     </select>
     <resultMap id="MoviesByMainDTOResultMap" type="com.tenco.indiepicter.funding.response.MoviesByMainDTO">
@@ -326,6 +327,22 @@
     </select>
 
     <resultMap id="AdminFundingModifyDTOResultMap" type="com.tenco.indiepicter.funding.response.AdminFundingModifyDTO">
+        <result property="fundingId" column="id"/>
+        <result property="movieId" column="movie_id"/>
+        <result property="movieThumbnail" column="thumbnail"/>
+        <result property="movieName" column="movie_name"/>
+    </resultMap>
+
+    <!-- 어드민 페이지 펀딩 수정/삭제 리스트 검색어 조회 -->
+    <select id="findAllAdminFundingModifySearch" resultMap="AdminFundingManagementSearchDTOResultMap">
+        SELECT ft.id, mt.id AS movie_id, mt.thumbnail, mt.movie_name
+        FROM funding_tb ft
+                 JOIN movie_tb mt ON ft.movie_id = mt.id
+        WHERE curdate() BETWEEN ft.release_date AND ft.end_date
+        AND mt.movie_name LIKE CONCAT('%', #{keyword}, '%');
+    </select>
+
+    <resultMap id="AdminFundingManagementSearchDTOResultMap" type="com.tenco.indiepicter.funding.response.AdminFundingManagementSearchDTO">
         <result property="fundingId" column="id"/>
         <result property="movieId" column="movie_id"/>
         <result property="movieThumbnail" column="thumbnail"/>

@@ -31,10 +31,14 @@
                 <a href=""><h2>IndiFlinker</h2></a>
             </div>
 
-            <div class="p_search">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="검색 하기">
-            </div>
+            <form id="search-form" action="/admin/funding-ready-list/search" method="get">
+                <div class="p_search">
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <input type="text" name="keyword" placeholder="검색 하기">
+                </div>
+            </form>
 
             <div class="p_inform">
                 <a href=""><i class="fa-regular fa-bell"></i></a>
@@ -118,33 +122,7 @@
 
         </div>
 	</div>
-    <div class="j_register_bottom" id="j_pagination">
-        <nav aria-label="...">
-            <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link previous" href="/admin/back-only" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item paging">
-                    <a class="page-link" href="/admin/funding-ready-list?page=1">1</a>
-                </li>
-                <li class="page-item paging" aria-current="page" style="color:#01DFD7;">
-                    <a class="page-link" href="/admin/funding-ready-list?page=2">2</a>
-                </li>
-                <li class="page-item paging">
-                    <a class="page-link" href="/admin/funding-ready-list?page=3">3</a>
-                </li>
-                <li class="page-item paging">
-                    <a class="page-link" href="/admin/funding-ready-list?page=4">4</a>
-                </li>
-                <li class="page-item paging">
-                    <a class="page-link" href="/admin/funding-ready-list?page=5">5</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link next" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+
 
 <script>
         // 모달 열기

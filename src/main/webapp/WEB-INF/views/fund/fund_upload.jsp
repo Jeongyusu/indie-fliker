@@ -71,16 +71,16 @@
         <div class="k_funding_genre_container">
             <div class="k_funding_genre_grade_title">펀딩 목표금액<span class="k_star_class">*</span></div>
             <select class="k_funding_genre_select_option" name="targetPrice">
+                <option value="5000000">5백만원</option>
+                <option value="10000000">1천만원</option>
+                <option value="15000000">1천5백만원</option>
+                <option value="20000000">2천만원</option>
+                <option value="25000000">2천5백만원</option>
+                <option value="30000000">3천만원</option>
+                <option value="35000000">3천5백만원</option>
+                <option value="40000000">4천만원</option>
+                <option value="45000000">4천5백만원</option>
                 <option value="50000000">5천만원</option>
-                <option value="100000000">1억원</option>
-                <option value="150000000">1억 5천만원</option>
-                <option value="200000000">2억원</option>
-                <option value="250000000">2억 5천만원</option>
-                <option value="300000000">3억원</option>
-                <option value="350000000">3억 5천만원</option>
-                <option value="400000000">4억원</option>
-                <option value="450000000">4억 5천만원</option>
-                <option value="500000000">5억원</option>
 
 
 
