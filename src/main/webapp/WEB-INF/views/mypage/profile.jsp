@@ -21,24 +21,24 @@
     <h1 class="k_profile_info_set">프로필 정보 설정</h1>
     <h2 class="k_profile_pic">프로필 사진</h2>
     <form action="/user/profile" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="id" id="id" value ="${user.id}">
-    <img id="preview" class="k_profile" alt="" name="pic" id="pic" src="${user.pic}" onclick="return false;">
+    <input type="hidden" name="id" id="id" value ="${sessionScope.principal.id}">
+    <img id="preview" class="k_profile" alt="" name="pic" id="pic" src="${sessionScope.principal.pic}" onclick="return false;">
     <input type="file" id="file" name="file" onchange="changeUserPic(event)">
     <div class="k_profile_first_container">
         <div>닉네임</div>
-        <input type="text" class="k_profile_nicknmae" id="username" name="username" placeholder="${user.username}">
+        <input type="text" class="k_profile_nicknmae" id="username" name="username" value="${sessionScope.principal.username}">
         <div class="k_profile_tel_div">전화번호</div>
-        <input type="text" class="k_profile_tel_input" id="tel" name="tel" placeholder="${user.tel}">
+        <input type="text" class="k_profile_tel_input" id="tel" name="tel" value="${sessionScope.principal.tel}">
     </div>
     <div>
         <div class="k_profile_password_div">비밀번호</div>
-        <input type="password" placeholder="비밀번호 입력" class="k_profile_tel_input" id="password1" name="password1">
+            <input type="password" placeholder="비밀번호 입력" class="k_profile_tel_input" id="password1" name="password1">
         <div class="k_profile_password_div">
             <input type="password" placeholder="비밀번호 확인" class="k_profile_tel_input" id="password2" name="password2">
         </div>
     </div>
     <div class="k_profile_bttns_margin">
-        <button class="k_profile_bttn_cancle"><a href="/user/mypage">취소</a></button>
+        <a class="k_profile_bttn_cancle" href="/user/mypage">취소</a>
         <button type="submit" class="k_profile_bttn_ok">확인</button>
     </div>
     </form>

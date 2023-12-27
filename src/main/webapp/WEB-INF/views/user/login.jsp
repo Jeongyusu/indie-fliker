@@ -1,35 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
+<%@ include file="../layout/header.jsp" %>
+<body class="l_body">
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<link href="/css/khy_style.css" rel="stylesheet">
-	<title>Login Page</title>
-</head>
-
-<body class="k_body">
-
-	<div class="container k_login-container">
-		<h2 class="text-left k_login">로그인</h2>
-		
+	<div class="container k_login_container">
+		<div class="text-left k_login">로그인</div>
 		<form action="/user/login" method="post" enctype="multipart/form-data">
-			<div class="k_form-group">
+			<div class="k_form_group">
 				<input type="text" class="form-control" id="userEmail" name="userEmail" placeholder="이메일을 입력하세요."
 					onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일 입력'" value="ssar@nate.com">
 			</div>
-			<div class="k_form-group">
+			<div class="k_form_group">
 				<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력입력하세요."
 					onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 입력'" value="1234">
 			</div>
-			<div class="k_email">
-				<button type="submit" class="btn btn-primary btn-block">이메일로 로그인</button>
+			<div class="k_input_button">
+				<button type="submit">이메일로 로그인</button>
 			</div>
 			<div class="k_kakao">
 				<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=eaa873dc471f9ad17affff6005825aef&redirect_uri=http://localhost:80/user/kakao-callback">
-					<img alt="" src="/images/kakao/kakao_login_medium_narrow.png" width="370" height="50">
+					<img alt="" src="/images/kakao/kakao_login_medium_wide.png">
 				</a>
 			</div>
 		</form>
@@ -40,11 +30,4 @@
 			<a href="/user/join" class="k_join">회원가입</a>
 		</div>
 	</div>
-
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-</body>
-
-</html>
+<%@ include file="../layout/footer.jsp" %>

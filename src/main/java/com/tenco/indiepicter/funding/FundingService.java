@@ -43,14 +43,27 @@ public class FundingService {
     private MoviePhotoService moviePhotoService;
 
 
-    public List<MoviesByGenreDTO> moviesByGenre(String genre, Integer page, Integer pageSize){
+    public List<FundingDTO> moviesByGenre(String genre, Integer page, Integer pageSize){
         Integer offset = page * pageSize - pageSize;
         return fundingRepository.findAllByGenre(genre, pageSize, offset);
     }
 
-    public List<MoviesByMainDTO> moviesByMain(Integer page, Integer pageSize, String genre){
+    // 펀딩
+    public List<FundingDTO> moviesByMain(Integer page, Integer pageSize){
         Integer offset = page * pageSize - pageSize;
-        return fundingRepository.findAllByMain(pageSize, offset, genre);
+        return fundingRepository.findAllByMain(pageSize, offset);
+    }
+
+    // 개봉한 온라인 영화 페이징
+    public List<OnAirMoviePageDTO> onAirMoviePage(Integer page, Integer pageSize){
+        Integer offset = page * pageSize - pageSize;
+        return fundingRepository.findAllByOnAirPage(pageSize, offset);
+    }
+
+    // 개봉한 오프라인 영화 페이징
+    public List<OffAirMoviePageDTO> offAirMoviePage(Integer page, Integer pageSize){
+        Integer offset = page * pageSize - pageSize;
+        return fundingRepository.findAllByOffAirPage(pageSize, offset);
     }
 
     public List<OnAirMovieDTO> onAirMovies() {

@@ -68,6 +68,19 @@ values ('2023', '(주)시네마프로덕션', '홈리스권제니','한 BJ가 �
 </br>Lanterna Mágica International Animation Festival(2022)</br>Winter Cicle Film Festival(2023)</br>','2023-12-01', '2024-12-15', '2023-11-28', '2023-12-15', '2023-11-29', '2023-12-01 14:00:00');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, director_pic, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day, chat_time)
+
+values ('2023', '(주)시네마프로덕션', '만해한용운','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
+', '/images/moviethumbnail/gk/manhae.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '/images/movieDirector/the_boy_miyazaki.jpg', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-26', '2024-12-15', '2023-12-11', '2023-12-24', '2023-12-09', '2023-12-26 01:50:00');
+
+insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, director_pic, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day, chat_time)
+values ('2023', '(주)시네마프로덕션', '홈리스권제니','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
+', '/images/moviethumbnail/gk/homeless.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '/images/movieDirector/the_boy_miyazaki.jpg', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
+</br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-26', '2024-12-15', '2023-11-28', '2023-12-15', '2023-11-29', '2023-12-26 14:00:00');
+
+
+insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, director_pic, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day, chat_time)
+
 values ('2023', '(주)시네마프로덕션', '불멸의여신','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
 ', '/images/moviethumbnail/gk/bulmyeol.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '/images/movieDirector/the_boy_miyazaki.jpg', '이푸름(손흥민역), 권민혁(김민재역), 김모범(정우영역), 김준형(이정재역), 심소영(황희찬역)', '[스트리머](2023)</br>[아기공룡둘리](2021)</br>[그린영화제](2021)</br>', '청룡영화제 우수작(2023)</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)</br>제26회 부천국제판타스틱영화제(2022)</br>Philadelphia Film Festival(2022)</br>Uppsala Short Film Festival(2022)
 </br>Lanterna Mágica International Animation Festival(2022)</br>Winter Cicle Film Festival(2023)</br>','2023-12-01', '2024-12-15', '2023-12-19', '2023-12-30', '2023-12-18', '2023-12-01 14:00:00');
@@ -345,7 +358,23 @@ insert into funding_tb(target_price, present_price, price_per_onetime, people_co
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('5000000', '4000000', '8000', '40', '2023-11-01', '2023-12-16', 27);
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('25000000', '40000000', '8000', '40', '2023-11-01', '2023-12-17', 28);
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('30000000', '30000000', '8000', '40', '2023-11-01', '2023-12-18', 29);
-insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '30000000', '8000', '40', '2023-11-01', '2023-12-18', 29);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '30000000', '8000', '40', '2023-11-01', '2023-12-18', 30);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '30000000', '8000', '40', '2023-11-01', '2023-12-18', 31);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '30000000', '8000', '40', '2023-11-01', '2023-12-18', 32);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('3500000', '3000000', '8000', '40', '2023-11-01', '2023-12-18', 33);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('30000000', '30000000', '8000', '40', '2023-11-30', '2023-12-31', 34);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '30000000', '8000', '40', '2023-11-30', '2023-12-31', 35);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('15000000', '30000000', '8000', '40', '2023-11-30', '2023-12-31', 36);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '20000000', '8000', '40', '2023-11-30', '2023-12-31', 37);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '30000000', '8000', '40', '2023-11-30', '2023-12-31', 38);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('20000000', '30000000', '8000', '40', '2023-11-30', '2023-12-31', 39);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '10000000', '8000', '40', '2023-11-30', '2023-12-31', 40);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '30000000', '8000', '40', '2023-11-30', '2023-12-31', 41);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('15000000', '30000000', '8000', '40', '2023-11-30', '2023-12-31', 42);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('25000000', '15000000', '8000', '40', '2023-11-30', '2023-12-31', 43);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '30000000', '8000', '40', '2023-11-30', '2023-12-31', 44);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('20000000', '10000000', '8000', '40', '2023-11-30', '2023-12-31', 45);
+insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('35000000', '30000000', '8000', '40', '2023-11-30', '2023-12-31', 46);
 
 insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('1000000', '300000', '8000', '40', '2023-11-01', '2023-12-31', 1);
 insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('2000000', '400000', '8000', '40', '2023-11-01', '2023-12-31', 2);
@@ -778,3 +807,11 @@ values('9987', '친구', '서면 CGV', '부산 진구 서면', '2023-12-26', 1);
 insert into invitation_tb(invitation_code, movie_name, theater_name, theater_address, movie_time, user_id)
 values('9204', '소스코드', '해운대 CGV', '부산 해운대', '2023-12-27', 1);
 
+insert into review_tb(content, created_at, user_id, movie_id)
+values ('재밌어요', now(),1 , 1);
+insert into review_tb(content, created_at, user_id, movie_id)
+values ('개노잼', now(),1 , 2);
+insert into review_tb(content, created_at, user_id, movie_id)
+values ('대유잼', now(),2 , 2);
+insert into review_tb(content, created_at, user_id, movie_id)
+values ('영화 너무 힝쿠리퐁퐁 ㅠㅠ', now(),2 , 3);

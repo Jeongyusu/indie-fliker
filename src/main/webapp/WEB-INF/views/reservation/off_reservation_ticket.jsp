@@ -2,7 +2,6 @@
          pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
 
-
 <main>
     <div class="n_custom_fluid">
         <div class="row justify-content-center">
@@ -58,4 +57,4 @@
         </div>
     </div>
 </main>
-<%@ include file="/WEB-INF/views/layout/footer.jsp"%>
+<%@ include file="../layout/footer.jsp" %>

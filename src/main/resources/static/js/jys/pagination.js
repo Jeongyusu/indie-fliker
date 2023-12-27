@@ -2,11 +2,20 @@ let currentPage = 2;
 let isLoading = false;
 let genre = "";
 window.onload = function () {
+    // 영화 등급 이미지 로드
+    onLoadImg();
+
     console.log("온로드 실행");
     // genre를 현재 URL의 쿼리스트링 키 값을 검색해서 가져오기
     genre = getQueryStringValue('genre');
     console.log("genre: " + genre);
+    if(genre === null){
+        genre = "";
+    }
     isLoading = false;
+    
+    // 페이지 타이틀
+    changeTitle(genre);
 };
 
 $(window).scroll(function() {
@@ -133,4 +142,42 @@ function loadMoreData(genre) {
     // 버튼에 클릭 이벤트 리스너 추가
     scrollToTopBtn.addEventListener("click", scrollToTop);
 
+}
+
+function changeTitle(genre){
+    let title = document.querySelector('.l_list_title');
+
+    if(genre === '극영화'){
+        title.textContent = '취향 맞춤 독립영화 - 극영화';
+    }else if(genre === '애니메이션'){
+        title.textContent = '취향 맞춤 독립영화 - 애니메이션';
+    }else if(genre === '다큐멘터리'){
+        title.textContent = '취향 맞춤 독립영화 - 다큐멘터리';
+    }else if(genre === '실험영화'){
+        title.textContent = '취향 맞춤 독립영화 - 실험영화';
+    }
+}
+
+
+
+function onLoadImg(){
+    let gradeImgs = document.querySelectorAll(".l_grade_img");
+    let runningGrades = document.querySelectorAll(".grade");
+    gradeImgs.forEach((gradeImg) => {
+        runningGrades.forEach((grade) => {
+            let src = "";
+            if(grade.value === "전체 관람가"){
+                src = "/images/icons/movie_level_all.png";
+            }else if(grade.value === "12세 이상 관람가"){
+                src = "/images/icons/movie_level_12.png";
+            }else if(grade.value === "15세 이상 관람가"){
+                src = "/images/icons/movie_level_15.png";
+            }else {
+                src = "/images/icons/movie_level_19.png";
+            }
+
+            gradeImg.src = src;
+            console.log("src : " + gradeImg.src);
+        })
+    })
 }

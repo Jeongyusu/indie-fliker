@@ -104,6 +104,7 @@
     margin-left: 10px;
     border: none;
     max-width: 70%;
+    font-size: 12px;
 }
 
 .j_search_magnifier {
@@ -302,10 +303,10 @@
 }
 
 .j_up_button {
-    width: 5%;
+    width: 3%;
     position: fixed;
     bottom: 20%;
-    right: 10%;
+    right: 15%;
     display: block;
     padding: 10px;
     border: none;
