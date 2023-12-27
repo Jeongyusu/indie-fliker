@@ -6,8 +6,7 @@ import java.util.Objects;
 
 import javax.servlet.http.HttpSession;
 
-import com.tenco.indiepicter.user.request.MailDTO;
-import com.tenco.indiepicter.user.request.UserPasswordUpdateDTO;
+import com.tenco.indiepicter.user.request.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.mail.SimpleMailMessage;
@@ -18,8 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
 import com.tenco.indiepicter._core.utils.Define;
-import com.tenco.indiepicter.user.request.UserProfileRequestDTO;
-import com.tenco.indiepicter.user.request.UserRequestDTO;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -103,15 +100,7 @@ public class UserService {
 	
 	// 이메일 중복 검사
 	public int findByEmailCheck(String userEmail) {
-		
 		int result = this.userRepository.findByEmailCheck(userEmail);
-		
-		// 이 코드를 사용하니깐 ajax가 작동이 안됨... 일단 주석!!
-//		// 이메일 중복 유효성 검사
-//		if(result != 1) {
-//			throw new MyDynamicException("이미 존재하는 이메일입니다.", HttpStatus.BAD_REQUEST);
-//		}
-		
 		return result;
 	}
 	
@@ -127,37 +116,38 @@ public class UserService {
 
 	// 회원 프로필 조회
 	public User findById(Integer id) {
-		
 		User user = this.userRepository.findById(id);
-		
 		return user;
 	}
 	
 	// 회원 프로필 수정
 	@Transactional
-	public int update(UserProfileRequestDTO dto, Integer principalId) {
+	public void profileUpdate(UserProfileRequestDTO dto) {
 		
-		User sessionUser = (User)session.getAttribute(Define.PRINCIPAL);
-		
+		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+
 		if(!dto.getPassword1().equals(dto.getPassword2())) {
 			throw new MyDynamicException("비밀번호를 다시 확인해주세요.", HttpStatus.BAD_REQUEST);
 		}
 		
-		String password = dto.getPassword1();
-		
-		String encodingPassword = passwordEncoder.encode(password);
-		dto.setPassword1(encodingPassword);
-		
-		int resultRowCount = userRepository.update(dto);
-		
-		if(resultRowCount != 1) {	
-			throw new MyDynamicException("수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+		if (dto.getPassword1() == null || dto.getPassword1().isEmpty()){
+			this.userRepository.profileUpdateNotPassword(dto);
+		}else {
+			String password = dto.getPassword1();
+			String encodingPassword = passwordEncoder.encode(password);
+			dto.setPassword1(encodingPassword);
+			this.userRepository.profileUpdate(dto);
 		}
-		
-		sessionUser = userRepository.findById(principalId);
-		session.setAttribute("sessionUser", sessionUser);
-		
-		return resultRowCount;
+
+
+//		if(resultRowCount != 1) {
+//			throw new MyDynamicException("수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+//		}
+//
+//		sessionUser = userRepository.findById(principalId);
+//		session.setAttribute("sessionUser", sessionUser);
+//
+//		return resultRowCount;
 	}
 
 //--------------------------------------------------------------------------------
@@ -181,12 +171,11 @@ public class UserService {
 	public User kakaoLoginUser(){ return this.userRepository.findByKakao(); }
 //--------------------------------------------------------------------------------
 
-	// 회원 이메일 찾기
+	// 회원 이름, 전화번호를 이용해서 이메일 찾기
 	public String userEmail(@RequestParam String username, @RequestParam String tel){
 
 		String userEmail = this.userRepository.findByEmail(username, tel);
 
-		System.out.println("===================" + userEmail + "===================");
 		if (userEmail == null){
 			throw new MyDynamicException("이메일이 존재하지 않습니다.", HttpStatus.BAD_REQUEST);
 		}
@@ -210,31 +199,37 @@ public class UserService {
 		return password;
 	}
 
-	// 이메일 보내기 (임시 비밀번호 전송)
-	public MailDTO sendEail(@RequestParam String userEmail){
-		String pw = tempPassword();
-		MailDTO dto = new MailDTO();
-		dto.setAddress(userEmail);
-		dto.setTitle("[ indiefliker ] 임시비밀번호 안내 이메일 입니다.");
-		dto.setMessage("안녕하세요. indiefliker 임시비밀번호 안내 관련 이메일 입니다." +
-				       " 회원님의 임시 비밀번호는 " + pw + " 입니다." +
-				       " 로그인 후에 비밀번호를 변경을 해주세요!");
+	// 이메일 보내기 (이메일 작성 후 ~ㄴ 임시 비밀번호로 회원 비밀번호 업데이트)
+	public MailDTO sendEail(SendEmailDTO sendEmailDto){
+		String pw = tempPassword(); // 임시 비밀번호 생성
+		MailDTO maildto = new MailDTO();
+		maildto.setAddress(sendEmailDto.getUserEmail());
+		maildto.setTitle("[ indiefliker ] 임시비밀번호 안내 이메일 입니다.");
+		maildto.setMessage("안녕하세요. indiefliker 임시비밀번호 안내 관련 이메일 입니다." +
+				           " 회원님의 임시 비밀번호는 " + pw + " 입니다." +
+				           " 로그인 후에 비밀번호를 변경을 해주세요!");
 
-		this.userRepository.tempPasswordUpdate(pw, userEmail);
+		this.userRepository.tempPasswordUpdate(pw, sendEmailDto.getUserEmail());
 
-		return dto;
+		return maildto;
 	}
 
-	// 메일보내기
-	public void mailSend(MailDTO dto) {
+	// 실제 이메일 보내기
+	public void mailSend(MailDTO mailDto) {
 		SimpleMailMessage message = new SimpleMailMessage();
-		message.setTo(dto.getAddress());
-		message.setSubject(dto.getTitle());
-		message.setText(dto.getMessage());
+		message.setTo(mailDto.getAddress());
+		message.setSubject(mailDto.getTitle());
+		message.setText(mailDto.getMessage());
 		message.setFrom("indiefliker@gmail.com");
 		message.setReplyTo("indiefliker@gmail.com");
-		System.out.println("message" + message);
+//		System.out.println("message" + message);
 		javaMailSender.send(message);
+	}
+
+	// 입력한 이메일로 DB에 저장된 이메일 찾기
+	public String emailSearch(String userEmail){
+		String email = this.userRepository.findByMail(userEmail);
+		return email;
 	}
 
 //--------------------------------------------------------------------------------
@@ -251,9 +246,7 @@ public class UserService {
 
 		String userEmail = dto.getUserEmail();
 		String password1 = dto.getPassword1();
-
-		// 비밀번호 인코딩
-		String encodingPassword = passwordEncoder.encode(password1);
+		String encodingPassword = passwordEncoder.encode(password1); // 비밀번호 인코딩
 
 		this.userRepository.passwordUpdate(userEmail, encodingPassword);
 

@@ -23,7 +23,7 @@ public interface UserRepository {
 	public User findByUseruserEmailAndPassword(UserRequestDTO.JoinDTO requestDto);
 	
 	// 회원 이메일로 단일 조회
-	public User findByUserEmail(@Param("userEmail") String userEmail);
+	public User findByUserEmail(@RequestParam String userEmail);
 	
 	// 이메일 중복 체크
 	public int findByEmailCheck(String userEmail);
@@ -35,7 +35,10 @@ public interface UserRepository {
 	public User findById(Integer principal);
 	
 	// 회원 프로필 수정
-	public int update(UserProfileRequestDTO dto);
+	public void profileUpdate(UserProfileRequestDTO dto);
+
+	// 회원 프로필 수정(비밀번호는 수정 안한 경우)
+	public void profileUpdateNotPassword(UserProfileRequestDTO dto);
 
 	// 회원 탈퇴
 	public void userIsWithdrawal(Integer principal);
@@ -55,5 +58,6 @@ public interface UserRepository {
 	// 회원 비밀번호 수정
 	public void passwordUpdate(@RequestParam String userEmail, @RequestParam String encodingPassword);
 
-
+	// 입력한 이메일로 DB에 저장된 이메일 찾기
+	public String findByMail(@RequestParam String userEmail);
 }

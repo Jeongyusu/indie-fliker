@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import com.tenco.indiepicter._core.utils.ApiUtils;
+import com.tenco.indiepicter._core.utils.PicToStringUtil;
 import com.tenco.indiepicter.invitation.Invitation;
 import com.tenco.indiepicter.user.request.*;
 import org.apache.http.client.methods.HttpHead;
@@ -281,11 +282,11 @@ public class UserController {
 	// 회원 프로필 수정(GET)
 	@GetMapping("/profile")
 	public String profile(Model model) {
-		User user = (User)session.getAttribute(Define.PRINCIPAL);
-		if(user == null) {
+		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+		if(principal == null) {
 			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
 		}
-		model.addAttribute("user", user);
+		model.addAttribute("principal", principal);
 		return "mypage/profile";
 	}
 	
@@ -294,56 +295,52 @@ public class UserController {
 	public String profileUpdate(UserProfileRequestDTO dto) {
 
 		MultipartFile file = dto.getFile();
-		
+
+		User sessionUser = (User)session.getAttribute(Define.PRINCIPAL);
 		if(file.isEmpty() == false) {
 			// 파일 사이즈 체크
 			if(file.getSize() > Define.MAX_FILE_SIZE) {
 				throw new MyDynamicException("파일 크기는 20MB 이상 클 수 없습니다.", HttpStatus.BAD_REQUEST);
 			}
 		}
-		
-		try {
-			// 업로드 파일 경로
-			String saveDirectory = Define.UPLOAD_DIRECTORY;
-			// 폴더가 없다면 오류 발생
-			File dir = new File(saveDirectory);
-			
-			// exists - 파일이 존재하는지 여부를 알 수 있습니다. (존재하면 true, 아니면 false)
-			// mkdir - 폴더가 없다면 생성합니다.
-			// 따라서 dir에 폴더가 없다면 폴더를 만들어라~		
-			if(dir.exists() == false) {
-				dir.mkdir();
-			}
-			
-			// 파일 이름 (중복 이름 처리 예방)			
-			UUID uuid = UUID.randomUUID(); // UUID - 개체를 고유하게 식별 가능한 값을 랜덤으로 생성해준다.
-			
-			// 새로운 파일 이름 생성(파일 이름의 중복을 방지하므로 파일 덮어쓰기가 안된다.)
-			String fileName = uuid + "_" + file.getOriginalFilename();
-			
-			// 전체 경로 지정 생성
-			// separator - 각각의 OS는 파일 구분자가 다르게 인식하기 때문에 (윈도우:\ , 리눅스:/)
-			// 실행되는 OS에 따라 맞추어서 제공한다
-			String uploadPath = Define.UPLOAD_DIRECTORY + File.separator + fileName;
-			
-			// 목적지
-			File destination = new File(uploadPath);
-			
-			// 반드시 사용!!
-			// transferTo - 파일을 저장한다.(실제 생성)
-			file.transferTo(destination);
-			
-			// 객체 상태 변경 (insert 처리 하기 위함 -> 쿼리 수정해야 함)
-			dto.setOriginFileName(file.getOriginalFilename()); // 사용자가 입력한 파일명
-			dto.setUploadFileName(fileName); // 로컬 저장소로 최종 업로드 되는 주소!!
-			
-		} catch(Exception e) {
-			log.debug(e.getMessage());
-		}
-		
-		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-		this.userService.update(dto, principal.getId());
+		// 아래 주석 과정을 이 코드로 수정!!
+		dto.setUploadFileName(PicToStringUtil.picToString(dto.getFile()));
+//		try {
+//			// 업로드 파일 경로(로컬 저장소)
+//			String saveDirectory = Define.UPLOAD_DIRECTORY;
+//			// 폴더가 없다면 오류 발생
+//			File dir = new File(saveDirectory);
+//
+//			// exists - 파일이 존재하는지 여부를 알 수 있습니다. (존재하면 true, 아니면 false)
+//			// mkdir - 폴더가 없다면 생성합니다.
+//			// 따라서 dir에 폴더가 없다면 폴더를 만들어라~
+//			if(dir.exists() == false) {
+//				dir.mkdir();
+//			}
+//			// 파일 이름 (중복 이름 처리 예방)
+//			UUID uuid = UUID.randomUUID(); // UUID - 개체를 고유하게 식별 가능한 값을 랜덤으로 생성해준다.
+//			// 새로운 파일 이름 생성(파일 이름의 중복을 방지하므로 파일 덮어쓰기가 안된다.)
+//			String fileName = uuid + "_" + file.getOriginalFilename();
+//			// 전체 경로 지정 생성
+//			// separator - 각각의 OS는 파일 구분자가 다르게 인식하기 때문에 (윈도우:\ , 리눅스:/)
+//			// 실행되는 OS에 따라 맞추어서 제공한다
+//			String uploadPath = Define.UPLOAD_DIRECTORY + File.separator + fileName;
+//			// 목적지
+//			File destination = new File(uploadPath);
+//			// 반드시 사용!!
+//			// transferTo - 파일을 저장한다.(실제 생성)
+//			file.transferTo(destination);
+//			// 객체 상태 변경 (insert 처리 하기 위함 -> 쿼리 수정해야 함)
+//			dto.setOriginFileName(file.getOriginalFilename()); // 사용자가 입력한 파일명
+//			dto.setUploadFileName(fileName); // 로컬 저장소로 최종 업로드 되는 주소!!
+//		} catch(Exception e) {
+//			log.debug(e.getMessage());
+//		}
 
+		this.userService.profileUpdate(dto);
+
+		User user = this.userService.findById(sessionUser.getId());
+		session.setAttribute(Define.PRINCIPAL, user);
 		return "mypage/mypage";
 	}
 	
@@ -371,26 +368,35 @@ public class UserController {
 	public ResponseEntity<?> findEmail(FindUserInfoDTO findUserInfoDTO) {
 		// 이름 유효성 검사
 		if(findUserInfoDTO.getUsername() == null || findUserInfoDTO.getUsername().isEmpty()) {
-//			throw new MyDynamicException("이름을 입력하세요.", HttpStatus.BAD_REQUEST);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiUtils.error("이메일을 입력해주세요.", HttpStatus.BAD_REQUEST));
 		}
 		// 전화번호 유효성 검사
 		if(findUserInfoDTO.getTel() == null || findUserInfoDTO.getTel().isEmpty()) {
-//			throw new MyDynamicException("전화번호를 입력하세요.", HttpStatus.BAD_REQUEST);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiUtils.error("전화번호를 입력해주세요.", HttpStatus.BAD_REQUEST));
 		}
-
 		String userEmail = this.userService.userEmail(findUserInfoDTO.getUsername(), findUserInfoDTO.getTel());
-		
+
 		return ResponseEntity.ok().body(ApiUtils.success(userEmail));
 	}
 
 	// 이메일 보내기 (임시 비밀번호 전송)
 	@PostMapping("/send-email")
-	public String sendEmail(@RequestParam String userEmail){
+	@ResponseBody
+	public ResponseEntity<?> sendEmail(SendEmailDTO sendEmailDto){
 
-		MailDTO dto =  this.userService.sendEail(userEmail);
-		this.userService.mailSend(dto);
+		if (sendEmailDto.getUserEmail() == null || sendEmailDto.getUserEmail().isEmpty()){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiUtils.error("이메일을 입력해주세요.", HttpStatus.BAD_REQUEST));
+		}
 
-		return "redirect:/user/login";
+		String userEmail = this.userService.emailSearch(sendEmailDto.getUserEmail());
+		if (userEmail == null){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiUtils.error("존재하지 않은 이메일입니다.", HttpStatus.BAD_REQUEST));
+		}
+
+		MailDTO mailDto =  this.userService.sendEail(sendEmailDto);
+		this.userService.mailSend(mailDto);
+
+		return ResponseEntity.ok().body(ApiUtils.success(userEmail));
 	}
 
 //----------------------------------------------------------------------------------------------------------------
@@ -425,7 +431,8 @@ public class UserController {
 
 //----------------------------------------------------------------------------------------------------------------
 
-	// 12 - 26 20:24 학원 작업끝 ~~
+	// 12-27 18:07 학원 작업중 ~~
+
 
 }
 
