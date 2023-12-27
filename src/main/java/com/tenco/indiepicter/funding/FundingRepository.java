@@ -75,5 +75,12 @@ public interface FundingRepository {
     // 어드민 페이지 펀딩 수정 업데이트
     public int updateByIdForAdmin(Funding funding);
 
+    // 어드민 페이지 펀딩 삭제
+    public int deleteById(Integer id);
 
+    //어드민 페이지 펀딩 종료
+    public int updateEndDateById(Integer id);
+
+    //어드민 페이지 펀딩 수정/종료 페이지 검색어 조회
+    public List<AdminFundingManagementSearchDTO> findAllAdminFundingModifySearch(String keyword);
 }

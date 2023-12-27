@@ -57,4 +57,5 @@ public class Movie {
         this.dDay = dDay;
         this.chatTime = chatTime;
     }
+
 }

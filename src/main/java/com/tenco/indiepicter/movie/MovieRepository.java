@@ -36,4 +36,7 @@ public interface MovieRepository {
     // 어드민 페이지 영화 수정
     public int updateById(Movie movie);
 
+    // 어드민 페이지 펀딩 삭제
+    public int deleteById(Integer id);
+
 }
