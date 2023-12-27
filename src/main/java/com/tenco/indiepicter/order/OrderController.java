@@ -25,4 +25,5 @@ public class OrderController {
         session.setAttribute("selectSeatDTO", selectSeatDTO);
         return "redirect:/payment/" + selectSeatDTO.getMovieId() +"/off";
     }
+
 }

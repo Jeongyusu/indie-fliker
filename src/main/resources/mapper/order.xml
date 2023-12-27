@@ -61,5 +61,14 @@
         select * from order_tb
     </select>
 
+    <!-- 온라인 주문 갯수 조회 -->
+    <select id="countByOnlineOrder" resultType="int">
+        select count(*) from order_tb where selected_seats is null and user_id = #{principalId}
+    </select>
+
+    <!-- 오프라인 주문 갯수 조회 -->
+    <select id="countByOfflineOrder" resultType="int">
+        select count(*) from order_tb where selected_seats is not null and user_id = #{principalId}
+    </select>
 
 </mapper>
