@@ -1,4 +1,4 @@
-let genre = '극영화';
+let genre = '';
 let currentPage = 2;
 let isLoading = false;
 

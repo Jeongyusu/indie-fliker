@@ -23,13 +23,14 @@ public class FundingRestController {
     private BannerService bannerService;
 
     @GetMapping ("/api/fundings")
-    public ResponseEntity<?> fundingPlus(@RequestParam(name="genre", defaultValue = "극영화") String genre, @RequestParam(name="page", defaultValue = "1") Integer page) {
-        List<MoviesByGenreDTO> moviesByGenreDTOs = fundingService.moviesByGenre(genre, page, 5);
-        log.debug("무비장르DTO 테스트 중" + moviesByGenreDTOs.toString());
-        List<BannerDTO> bannerDTOs = bannerService.DisplayBanner(genre);
-        FundingPlusDTO fundingPlusDTO = new FundingPlusDTO(moviesByGenreDTOs, bannerDTOs);
-        log.debug("펀딩플러스 테스트 중" + moviesByGenreDTOs.toString());
-        return ResponseEntity.ok().body(ApiUtils.success(fundingPlusDTO.getMoviesByGenreDTOs()));
+    public ResponseEntity<?> fundingPlus(@RequestParam(name="genre", defaultValue = "") String genre, @RequestParam(name="page", defaultValue = "1") Integer page) {
+        if(genre.isEmpty()){
+            List<MoviesByMainDTO> moviesByMainDTOs = fundingService.moviesByMain(page, 5);
+            return ResponseEntity.ok().body(ApiUtils.success(moviesByMainDTOs));
+        }else{
+            List<MoviesByGenreDTO> moviesByGenreDTOs = fundingService.moviesByGenre(genre, page, 5);
+            return ResponseEntity.ok().body(ApiUtils.success(moviesByGenreDTOs));
+        }
     }
 
     // 온라인 영화 페이징

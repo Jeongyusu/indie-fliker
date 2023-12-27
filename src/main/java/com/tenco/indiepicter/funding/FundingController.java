@@ -54,13 +54,20 @@ public class FundingController {
 //    }
 
     @GetMapping({"/funding-plus", "/main"})
-    public String fundingPlus (@RequestParam(name = "genre", defaultValue = "극영화") String genre, @RequestParam(name = "page", defaultValue = "1") Integer page, Model model){
-        List<MoviesByMainDTO> moviesByMainDTOs = fundingService.moviesByMain(page, 5);
-        System.out.println("찾은 목록 : " + moviesByMainDTOs.toString());
-        List<BannerDTO> bannerDTOs = bannerService.DisplayBanner(genre);
-        FundingPlus2DTO fundingPlusDTO = new FundingPlus2DTO(moviesByMainDTOs, bannerDTOs);
-        model.addAttribute("fundingPlusDTO", fundingPlusDTO);
-        System.out.println("펀딩 목록 : " + fundingPlusDTO.toString());
+    public String fundingPlus (@RequestParam(name = "genre", defaultValue = "") String genre, @RequestParam(name = "page", defaultValue = "1") Integer page, Model model){
+        if(genre.isEmpty()){
+            List<MoviesByMainDTO> moviesByMainDTOs = fundingService.moviesByMain(page, 5);
+            System.out.println("찾은 목록 : " + moviesByMainDTOs.toString());
+            List<BannerDTO> bannerDTOs = bannerService.DisplayBannerByAll();
+            FundingPlus2DTO fundingPlusDTO = new FundingPlus2DTO(moviesByMainDTOs, bannerDTOs);
+            model.addAttribute("fundingPlusDTO", fundingPlusDTO);
+            System.out.println("펀딩 목록 : " + fundingPlusDTO.toString());
+        }else{
+            List<MoviesByGenreDTO> moviesByGenreDTOs = fundingService.moviesByGenre(genre, page, 5);
+            List<BannerDTO> bannerDTOs = bannerService.DisplayBanner(genre);
+            FundingPlusDTO fundingPlusDTO = new FundingPlusDTO(moviesByGenreDTOs, bannerDTOs);
+            model.addAttribute("fundingPlusDTO", fundingPlusDTO);
+        }
         return "main/movielist";
     }
 
