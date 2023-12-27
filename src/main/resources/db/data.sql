@@ -796,3 +796,9 @@ values('9204', '소스코드', '해운대 CGV', '부산 해운대', '2023-12-27'
 
 insert into review_tb(content, created_at, user_id, movie_id)
 values ('재밌어요', now(),1 , 1);
+insert into review_tb(content, created_at, user_id, movie_id)
+values ('개노잼', now(),1 , 2);
+insert into review_tb(content, created_at, user_id, movie_id)
+values ('대유잼', now(),2 , 2);
+insert into review_tb(content, created_at, user_id, movie_id)
+values ('영화 너무 힝쿠리퐁퐁 ㅠㅠ', now(),2 , 3);

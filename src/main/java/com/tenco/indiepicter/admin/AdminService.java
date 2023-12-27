@@ -146,15 +146,17 @@ public class AdminService {
 
     // ------------------------------------------------------------------------------------------
     // 댓글 삭제
-    public void deleteComment(int commentIdToDelete) {
-        adminRepository.deleteComment(commentIdToDelete);
-    }
+//    public void deleteComment(int commentIdToDelete) {
+//        adminRepository.deleteComment(commentIdToDelete);
+//    }
 
 
     // 댓글 불러오기
-    public List<Comment> getCommentsByUserId(int userId) {
-        return adminRepository.getCommentsByUserId(userId);
+    public List<Comment> getCommentsByUserId(int userId, int movieId) {
+        return adminRepository.findByUserIdAndMovieId(userId, movieId);
     }
+
+
 
 
 }

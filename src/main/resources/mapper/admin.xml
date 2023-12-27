@@ -64,6 +64,10 @@
         DELETE FROM review_tb
         WHERE id = #{commentIdToDelete}
     </delete>
+    <!-- user_id, movie_id로 댓글 조회 -->
+    <select id="findByUserIdAndMovieId" resultType="com.tenco.indiepicter.admin.AdminRepository">
+        select * from review_tb where user_id = #{userId} and movie_id = #{movieId}
+    </select>
 
 
 </mapper>
