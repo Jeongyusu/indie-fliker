@@ -12,8 +12,7 @@ import com.tenco.indiepicter.funding.fundingready.FundingReadyRepository;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyService;
 import com.tenco.indiepicter.funding.response.AdminFundingProceedingDTO;
 import com.tenco.indiepicter.funding.response.BannerDTO;
-import com.tenco.indiepicter.funding.response.FundingPlusDTO;
-import com.tenco.indiepicter.funding.response.MoviesByGenreDTO;
+
 import com.tenco.indiepicter.movie.MovieService;
 import com.tenco.indiepicter.movie.moviefile.MovieFileService;
 import com.tenco.indiepicter.movie.moviephoto.MoviePhotoService;
