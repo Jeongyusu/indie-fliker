@@ -33,18 +33,16 @@
         <button name="findEmail" id="findEmail">이메일 찾기</button>
     </div>
 
-    <form action="/user/send-email" method="post"  name="sendEmail" id="sendEmail">
-        <div class="p_find_password" id="passwordScreen" style="display: none;">
-            <p>입력하신 이메일로 임시 비밀번호가 전송됩니다.</p>
-            <label>이메일</label><br>
-            <input type="text" name="userEmail" id="userEmail"><br>
-            <button type="submit" name="sendPassword" id="sendPassword">임시 비밀번호 전송</button>
-        </div>
-    </form>
+    <div class="p_find_password" id="passwordScreen" style="display: none;">
+        <p>입력하신 이메일로 임시 비밀번호가 전송됩니다.</p>
+        <label>이메일</label><br>
+        <input type="text" name="userEmail" id="userEmail"><br>
+        <button type="" name="sendPassword" id="sendPassword">임시 비밀번호 전송</button>
+    </div>
 
 </div>
 
-<!--------------------------------- 라디오 버튼 --------------------------------------------->
+<!----------------------------------- 라디오 버튼 --------------------------------------------->
 <script>
     // 라디오 버튼에 대한 이벤트 리스너 추가
     document.getElementById('emailRadio').addEventListener('change', function() {
@@ -57,13 +55,11 @@
         document.getElementById('passwordScreen').style.display = 'block';
     });
 </script>
-<!--------------------------------- 라디오 버튼 --------------------------------------------->
+<!----------------------------------- 라디오 버튼 --------------------------------------------->
 <!--------------------------------- 회원 이메일 찾기 ------------------------------------------->
 <script>
-    // 회원 이메일 찾기
     $(document).ready(function(){
         $("#findEmail").click(function(){
-            console.log("진입확인")
             $.ajax({
                 url : "/user/find-email",
                 type : "post",
@@ -71,38 +67,34 @@
                 success : function(response) {
                     alert("회원님의 이메일은 " + response.response + ' 입니다.');
                 },
-                error: function (){
-                    alert("에러");
+                error: function (response){
+                    alert(response.responseJSON.error.message);
                 }
             });
         })
     });
 </script>
-<!--------------------------------- 회원 이메일 찾기 ------------------------------------------->
-<!--------------------------------- 임시 비밀번호 발송 ------------------------------------------->
-<%--<script>--%>
-<%--    $("#sendPassword").click(function () {--%>
-<%--        const userEmail = $("#userEmail").val();--%>
-<%--        const sendEmail = document.forms["sendEmail"];--%>
-<%--        $.ajax({--%>
-<%--            url: "/user/send-email",--%>
-<%--            type: 'post',--%>
-<%--            data: {'memberEmail': userEmail},--%>
-<%--            success: function (result) {--%>
-<%--                if(result == "no"){--%>
-<%--                    // 중복되는 것이 있다면 no == 일치하는 이메일이 있다!--%>
-<%--                    alert('임시비밀번호를 전송 했습니다.');--%>
-<%--                    sendEmail.submit();--%>
-<%--                }else {--%>
-<%--                    alert('가입되지 않은 이메일입니다.');--%>
-<%--                }--%>
-
-<%--            },error: function () {--%>
-<%--                console.log('에러 체크!!')--%>
-<%--            }--%>
-<%--        })--%>
-<%--    });--%>
-<%--</script>--%>
+<!---------------------------------- 회원 이메일 찾기 ------------------------------------------->
+<!--------------------------------- 임시 비밀번호 발송 ----------------------------------------->
+<script>
+    $(document).ready(function(){
+        $("#sendPassword").click(function () {
+            console.log("진입 확인~");
+            $.ajax({
+                url: "/user/send-email",
+                type: "post",
+                data: {"userEmail" : $("#userEmail").val()},
+                success: function (response) {
+                    console.log("여기"+ response.response +"여기");
+                    alert("회원님의 " + response.response + " 로 임시 비밀번호를 발송했습니다!");
+                },
+                error: function (response) {
+                    alert(response.responseJSON.error.message);
+                }
+            })
+        });
+    });
+</script>
 <!--------------------------------- 임시 비밀번호 발송 ------------------------------------------->
 </body>
 

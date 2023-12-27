@@ -68,7 +68,7 @@ values ('2023', '(주)시네마프로덕션', '홈리스권제니','한 BJ가 �
 </br>Lanterna Mágica International Animation Festival(2022)</br>Winter Cicle Film Festival(2023)</br>','2023-12-01', '2024-12-15', '2023-11-28', '2023-12-15', '2023-11-29', '2023-12-01 14:00:00');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, director_pic, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day, chat_time)
-<<<<<<< HEAD
+
 values ('2023', '(주)시네마프로덕션', '만해한용운','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
 ', '/images/moviethumbnail/gk/manhae.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '/images/movieDirector/the_boy_miyazaki.jpg', '이푸름, 권민혁, 김모범, 김준형, 심소영', '[2023]스트리머</br>[2022]아기공룡둘리</br>[2021]그린영화제</br>', '2023 청룡영화제 우수작</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)제26회 부천국제판타스틱영화제(2022)</br>2022 Philadelphia Film Festival(2022)2022 Uppsala Short Film Festival(2022)
 </br>2022 Lanterna Mágica International Animation Festival(2022)</br>2023 Winter Cicle Film Festival(2023)','2023-12-26', '2024-12-15', '2023-12-11', '2023-12-24', '2023-12-09', '2023-12-26 01:50:00');
@@ -80,8 +80,7 @@ values ('2023', '(주)시네마프로덕션', '홈리스권제니','한 BJ가 �
 
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, director_pic, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day, chat_time)
-=======
->>>>>>> dev
+
 values ('2023', '(주)시네마프로덕션', '불멸의여신','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
 ', '/images/moviethumbnail/gk/bulmyeol.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '/images/movieDirector/the_boy_miyazaki.jpg', '이푸름(손흥민역), 권민혁(김민재역), 김모범(정우영역), 김준형(이정재역), 심소영(황희찬역)', '[스트리머](2023)</br>[아기공룡둘리](2021)</br>[그린영화제](2021)</br>', '청룡영화제 우수작(2023)</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)</br>제26회 부천국제판타스틱영화제(2022)</br>Philadelphia Film Festival(2022)</br>Uppsala Short Film Festival(2022)
 </br>Lanterna Mágica International Animation Festival(2022)</br>Winter Cicle Film Festival(2023)</br>','2023-12-01', '2024-12-15', '2023-12-19', '2023-12-30', '2023-12-18', '2023-12-01 14:00:00');
