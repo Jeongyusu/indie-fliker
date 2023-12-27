@@ -5,26 +5,26 @@
 <body class="l_body">
   <!-- 배너 object-fit: contain 아니면 cover 고민중 -->
   <div class="banner-container" style="background: linear-gradient(to bottom, #201111, #2b2626);">
-  <div class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <c:forEach var="banner" items="${fundingListDTO.banners}" varStatus="status">
-        <div class="l_banner_item carousel-item${status.first ? ' active' : ''}">
-          <div class="d-block">
-            <img src="${banner.bannerPic}" class="card-img" alt="..." style="object-fit: contain; height: 300px;">
+    <div class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <c:forEach var="banner" items="${fundingListDTO.banners}" varStatus="status">
+          <div class="l_banner_item carousel-item${status.first ? ' active' : ''}">
+            <div class="d-block">
+              <img src="${banner.bannerPic}" class="card-img" alt="..." style="object-fit: contain; height: 300px;">
+            </div>
           </div>
-        </div>
-      </c:forEach>
+        </c:forEach>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- 영화 목록 (20개씩 비동기로 받아올 예정) -->
-  <div class="container l_movie_list_title">
-    <p class="l_list_title">취향 맞춤 독립영화</p>
-    <br>
-    <p class="l_list_comment">다양한 독립영화를 즐겨보세요</p>
-  </div>
-  <div class="container l_movie_list_container">
+  <!-- 영화 목록 (20개씩 비동기로 받아올 예정) -->
+  <div class="container l_main_margin_bottom">
+    <div class="container l_movie_list_title">
+      <p class="l_list_title">취향 맞춤 독립영화</p>
+      <br>
+      <p class="l_list_comment">독립영화의 매력을 더 깊게 체험하고 쉽게 만나보세요. </p>
+    </div>
     <div id="data-container" class="row row-cols-xl-5">
       <c:forEach var="funding" items="${fundingListDTO.fundingDTOs}">
         <div class="col my-4 l_movie_card_form">
@@ -43,9 +43,5 @@
   <div>
     <button id="scrollToTopBtn"><img src="/images/icons/upArrow.gif" class="j_up_button"></button>
   </div>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-      <script type="module" src="/js/jys/pagination.js"></script>
-
+  <script type="module" src="/js/jys/pagination.js"></script>
     <%@ include file="../layout/footer.jsp" %>

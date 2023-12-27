@@ -323,8 +323,8 @@
     display: flex;
     max-width: 1000px;
     flex-direction: column;
-    padding-top: 26px;
-    margin-bottom: 24px;
+    margin: 48px 0 20px;
+    padding: 0;
 }
 
 .l_movie_list_title .l_list_title {
@@ -603,7 +603,7 @@
 
 .l_hr {
     border: 1px solid var(--line_01);
-    margin: 48px 100px 22px;
+    margin: 48px 100px 0;
 }
 
 #l_sidebar {

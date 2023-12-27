@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 public class UserProfileRequestDTO {
-	
 	private Integer id;
 	private String username;
 	private String tel;
@@ -15,5 +14,4 @@ public class UserProfileRequestDTO {
 	private MultipartFile file;
 	private String originFileName;
 	private String uploadFileName;
-
 }
