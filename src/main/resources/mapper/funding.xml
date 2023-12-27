@@ -471,6 +471,34 @@
         where curdate() > ft.end_date
     </select>
 
+    <!-- 어드민 페이지 온라인 오픈기간 설정 영화 검색어 조회-->
+    <select id="searchKeywordAboutOnlineStreaming" resultType="com.tenco.indiepicter.funding.response.AdminOnlineStreamingSearchDTO">
+        select mt.id movie_id, mt.thumbnail, mt.movie_name, ft.end_date from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
+        where curdate() BETWEEN ft.release_date AND ft.end_date
+        AND mt.movie_name LIKE CONCAT('%', #{keyword}, '%') or mt.director LIKE CONCAT('%', #{keyword}, '%')
+    </select>
+
+
+    <!-- 어드민 페이지 오프라인 오픈기간 설정 영화 검색어 조회-->
+    <select id="searchKeywordAboutOfflineStreaming" resultType="com.tenco.indiepicter.funding.response.AdminOfflineStreamingSearchDTO">
+        select mt.id movie_id, mt.thumbnail, mt.movie_name, ft.end_date from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
+        where curdate() > ft.end_date AND mt.movie_name LIKE CONCAT('%', #{keyword}, '%') or mt.director LIKE CONCAT('%', #{keyword}, '%')
+    </select>
+
+    <!-- 어드민 페이지 펀딩 현황 조회-->
+    <select id="findAllAboutFundingProceeding" resultType="com.tenco.indiepicter.funding.response.AdminFundingProceedingDTO">
+        select ft.id funding_id, mt.thumbnail movie_thumbnail, mt.movie_name, mt.director, ft.present_price / (ft.target_price/10) * 10 funding_rate, ft.present_price, ft.end_date
+             , ft.people_count from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
+        limit #{pageSize} offset #{offset}
+    </select>
+
+    <!-- 어드민 페이지 펀딩 현황 검색어 조회-->
+    <select id="searchKeywordAboutFundingProceeding" resultType="com.tenco.indiepicter.funding.response.AdminFundingProceedingSearchDTO">
+        select ft.id funding_id, mt.thumbnail movie_thumbnail, mt.movie_name, mt.director, ft.present_price / (ft.target_price/10) * 10 funding_rate, ft.present_price, ft.end_date
+             , ft.people_count from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
+               where mt.movie_name LIKE CONCAT('%', #{keyword}, '%') or mt.director LIKE CONCAT('%', #{keyword}, '%');
+    </select>
+
     <!-- 어드민 페이지 펀딩 수정하기-->
     <update id="updateByIdForAdmin">
         update funding_tb ft set release_date = #{releaseDate}, end_date = #{endDate}, target_price = ${targetPrice}, price_per_onetime = #{pricePerOnetime}

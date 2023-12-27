@@ -119,4 +119,7 @@ public class FundingController {
         fundingService.saveFunding(requestDTO);
         return Script.href("/fund/funding-plus", "펀딩 등록 성공! 심사 후 승인됩니다.");
     }
+
+
+
 }

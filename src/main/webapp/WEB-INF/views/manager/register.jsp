@@ -61,7 +61,7 @@
                 <h3>영화</h3>
                 <ul>
                     <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/funding-ready-list">펀딩 등록 승인</a></li>
-                    <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/funding-info">펀딩 현황 확인</a></li>
+                    <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/funding/confirm">펀딩 현황 확인</a></li>
                     <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/funding-management">펀딩 수정 / 종료</a></li>
                 </ul>
                 <div class="p_line"></div>

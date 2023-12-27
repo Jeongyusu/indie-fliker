@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -101,17 +102,28 @@
             </div>
             <div class="p_section1">
                 <div class="p_list">
-                    <div class="p_frofile">
-                        <img src="https://cdn.pixabay.com/photo/2022/10/19/01/02/woman-7531315_1280.png" alt="">
-                        <p>사용자 아이디2222222222222222222222222222222222222222222</p>
-                    </div>
-                    <div class="p_score">
-                        <span>평점</span>
-                        <p>4</p>
-                    </div>
-                    <div class="p_coment">
-                        <p>감상평 내용2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222</p>
-                    </div>
+                    <c:choose>
+                        <c:when test="${sessionScope.user_id}">
+                            <div class="p_frofile">
+                                <img src="https://cdn.pixabay.com/photo/2022/10/19/01/02/woman-7531315_1280.png" alt="">
+                                <p>사용자 아이디2222222222222222222222222222222222222222222</p>
+                            </div>
+                        </c:when>
+                        <c:when test="${sessionScope.review_id}">
+                            <div class="p_coment">
+                                <p>감상평 내용2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222</p>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="p_score">
+                                <span>평점</span>
+                                <p>4</p>
+                            </div>
+                            <div class="p_coment">
+                                <p>감상평 내용</p>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                     <div class="p_delet">
                         <a href=""><button class="delete-comment">삭제</button></a>
                     </div>

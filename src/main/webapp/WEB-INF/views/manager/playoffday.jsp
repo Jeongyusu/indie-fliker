@@ -37,10 +37,14 @@
                 <a href=""><h2>IndiFlinker</h2></a>
             </div>
 
-            <div class="p_search">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="검색 하기">
-            </div>
+            <form id="search-form" action="/admin/off-movie-open-setting/search" method="get">
+                <div class="p_search">
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <input type="text" name="keyword" placeholder="검색 하기">
+                </div>
+            </form>
 
             <div class="p_inform">
                 <a href=""><i class="fa-regular fa-bell"></i></a>
@@ -143,33 +147,6 @@
         </div>
         <!--컨테이너2 끝-->
 
-        <div class="p_playday_bottom">
-            <nav aria-label="...">
-                <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link previous" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item paging">
-                    <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item active paging" aria-current="page" style="color:#01DFD7;">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item paging">
-                    <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item paging">
-                    <a class="page-link" href="#">4</a>
-                </li>
-                <li class="page-item paging">
-                    <a class="page-link" href="#">5</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link next" href="#">Next</a>
-                </li>
-                </ul>
-            </nav>  
-        </div>
         
 	</div>
 <script>

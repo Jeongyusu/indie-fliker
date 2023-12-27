@@ -28,7 +28,6 @@
 	</div>
 
 	<div class="k_update_login-container">
-		<button class="k_couponpack k_m_couponpack">세 번 결제로 VIP 혜택과 쿠폰팩 지급〉</button>
 		<div class="k_invite-container">
 			<div class="k_i_group">
 				<a href="/invitation/my-invitation">나의 초청권 현황</a>
@@ -43,7 +42,7 @@
 
 		</div>
 		<button class="k_see_movie">인디픽터에서
-			<div class="k_font_weight_bold">온라인 상영 시작한 영화 보러가기</div>
+			<div class="k_font_weight_bold"><a href="/fund/main">온라인 상영 시작한 영화 보러가기</a></div>
 		</button>
 		<hr class="k_m_hr">
 		<div class="k_c_center">고객센터</div>

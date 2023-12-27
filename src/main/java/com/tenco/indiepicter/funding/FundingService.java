@@ -213,4 +213,25 @@ public class FundingService {
     public List<AdminFundingManagementSearchDTO> findAllAdminFundingModifySearch(String keyword){
         return fundingRepository.findAllAdminFundingModifySearch(keyword);
     }
+
+    //어드민 온라인 상영기간 및 채팅기간 설정 페이지 검색어 조회
+    public List<AdminOnlineStreamingSearchDTO> searchKeywordAboutOnlineStreaming(String keyword){
+        return fundingRepository.searchKeywordAboutOnlineStreaming(keyword);
+    }
+
+    //어드민 오프라인 상영기간 설정 페이지 검색어 조회
+    public List<AdminOfflineStreamingSearchDTO> searchKeywordAboutOfflineStreaming(String keyword){
+        return fundingRepository.searchKeywordAboutOfflineStreaming(keyword);
+    }
+
+    //어드민 페이지 펀딩현황 조회
+    public List<AdminFundingProceedingDTO> findAllAboutFundingProceeding(Integer page, Integer pageSize){
+        Integer offset = page * pageSize - pageSize;
+        return fundingRepository.findAllAboutFundingProceeding(pageSize, offset);
+    }
+
+    //어드민 페이지 펀딩 현황 검색어 조회
+    public List<AdminFundingProceedingSearchDTO> searchKeywordAboutFundingProceeding(String keyword){
+        return fundingRepository.searchKeywordAboutFundingProceeding(keyword);
+    }
 }
