@@ -10,10 +10,10 @@ import java.util.List;
 @Mapper
 public interface FundingRepository {
     //펀딩 장르별 조회
-    public List<MoviesByGenreDTO> findAllByGenre(@Param("genre") String genre, @Param("pageSize") Integer pageSize, @Param("offset") Integer offset);
+    public List<FundingDTO> findAllByGenre(@Param("genre") String genre, @Param("pageSize") Integer pageSize, @Param("offset") Integer offset);
 
     //펀딩 모두(메인) 조회
-    public List<MoviesByMainDTO> findAllByMain(@Param("pageSize") Integer pageSize, @Param("offset") Integer offset);
+    public List<FundingDTO> findAllByMain(@Param("pageSize") Integer pageSize, @Param("offset") Integer offset);
 
     //온라인 영화 페이징 조회
     public List<OnAirMoviePageDTO> findAllByOnAirPage(@Param("pageSize") Integer pageSize, @Param("offset") Integer offset);

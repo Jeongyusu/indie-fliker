@@ -13,7 +13,7 @@
             select ft.id, ft.movie_id, mt.thumbnail, ft.present_price / (ft.target_price/10) * 10 funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id where genre = #{genre}
                 limit #{pageSize} offset #{offset}
     </select>
-    <resultMap id="moviesByGenreDTOResultMap" type="com.tenco.indiepicter.funding.response.MoviesByGenreDTO">
+    <resultMap id="moviesByGenreDTOResultMap" type="com.tenco.indiepicter.funding.response.FundingDTO">
         <result property="fundingId" column="id"/>
         <result property="movieId" column="movie_id"/>
         <result property="movieThumbnail" column="thumbnail"/>
@@ -27,7 +27,7 @@
         select ft.id, ft.movie_id, mt.thumbnail, ft.present_price / (ft.target_price/10) * 10 funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
         limit #{pageSize} offset #{offset}
     </select>
-    <resultMap id="MoviesByMainDTOResultMap" type="com.tenco.indiepicter.funding.response.MoviesByMainDTO">
+    <resultMap id="MoviesByMainDTOResultMap" type="com.tenco.indiepicter.funding.response.FundingDTO">
         <result property="fundingId" column="id"/>
         <result property="movieId" column="movie_id"/>
         <result property="movieThumbnail" column="thumbnail"/>

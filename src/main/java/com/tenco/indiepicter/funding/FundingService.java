@@ -43,13 +43,13 @@ public class FundingService {
     private MoviePhotoService moviePhotoService;
 
 
-    public List<MoviesByGenreDTO> moviesByGenre(String genre, Integer page, Integer pageSize){
+    public List<FundingDTO> moviesByGenre(String genre, Integer page, Integer pageSize){
         Integer offset = page * pageSize - pageSize;
         return fundingRepository.findAllByGenre(genre, pageSize, offset);
     }
 
     // 펀딩
-    public List<MoviesByMainDTO> moviesByMain(Integer page, Integer pageSize){
+    public List<FundingDTO> moviesByMain(Integer page, Integer pageSize){
         Integer offset = page * pageSize - pageSize;
         return fundingRepository.findAllByMain(pageSize, offset);
     }

@@ -55,19 +55,24 @@ public class FundingController {
 
     @GetMapping({"/funding-plus", "/main"})
     public String fundingPlus (@RequestParam(name = "genre", defaultValue = "") String genre, @RequestParam(name = "page", defaultValue = "1") Integer page, Model model){
-        if(genre.isEmpty()){
-            List<MoviesByMainDTO> moviesByMainDTOs = fundingService.moviesByMain(page, 5);
-            System.out.println("찾은 목록 : " + moviesByMainDTOs.toString());
+        if(genre.isEmpty() || genre == null){
+            List<FundingDTO> moviesByMainDTOs = fundingService.moviesByMain(page, 5);
             List<BannerDTO> bannerDTOs = bannerService.DisplayBannerByAll();
-            FundingPlus2DTO fundingPlusDTO = new FundingPlus2DTO(moviesByMainDTOs, bannerDTOs);
-            model.addAttribute("fundingPlusDTO", fundingPlusDTO);
-            System.out.println("펀딩 목록 : " + fundingPlusDTO.toString());
-        }else{
-            List<MoviesByGenreDTO> moviesByGenreDTOs = fundingService.moviesByGenre(genre, page, 5);
-            List<BannerDTO> bannerDTOs = bannerService.DisplayBanner(genre);
-            FundingPlusDTO fundingPlusDTO = new FundingPlusDTO(moviesByGenreDTOs, bannerDTOs);
-            model.addAttribute("fundingPlusDTO", fundingPlusDTO);
+            FundingListDTO fundingListDTO = new FundingListDTO(moviesByMainDTOs, bannerDTOs);
+            model.addAttribute("fundingListDTO", fundingListDTO);
+            System.out.println("없다!");
+            System.out.println("없는 결과 : " + fundingListDTO.getFundingDTOs().toString());
+            return "main/movielist";
         }
+
+        List<FundingDTO> moviesByGenreDTOs = fundingService.moviesByGenre(genre, page, 5);
+        List<BannerDTO> bannerDTOs = bannerService.DisplayBanner(genre);
+        FundingListDTO fundingListDTO = new FundingListDTO(moviesByGenreDTOs, bannerDTOs);
+        model.addAttribute("fundingListDTO", fundingListDTO);
+        System.out.println("장르있데");
+        System.out.println("장르 : " + genre);
+        System.out.println("장르 결과 : " + fundingListDTO.getFundingDTOs().toString());
+
         return "main/movielist";
     }
 

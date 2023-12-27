@@ -9,7 +9,13 @@ window.onload = function () {
     // genre를 현재 URL의 쿼리스트링 키 값을 검색해서 가져오기
     genre = getQueryStringValue('genre');
     console.log("genre: " + genre);
+    if(genre === null){
+        genre = "";
+    }
     isLoading = false;
+    
+    // 페이지 타이틀
+    changeTitle(genre);
 };
 
 $(window).scroll(function() {
@@ -137,6 +143,22 @@ function loadMoreData(genre) {
     scrollToTopBtn.addEventListener("click", scrollToTop);
 
 }
+
+function changeTitle(genre){
+    let title = document.querySelector('.l_list_title');
+
+    if(genre === '극영화'){
+        title.textContent = '취향 맞춤 독립영화 - 극영화';
+    }else if(genre === '애니메이션'){
+        title.textContent = '취향 맞춤 독립영화 - 애니메이션';
+    }else if(genre === '다큐멘터리'){
+        title.textContent = '취향 맞춤 독립영화 - 다큐멘터리';
+    }else if(genre === '실험영화'){
+        title.textContent = '취향 맞춤 독립영화 - 실험영화';
+    }
+}
+
+
 
 function onLoadImg(){
     let gradeImgs = document.querySelectorAll(".l_grade_img");

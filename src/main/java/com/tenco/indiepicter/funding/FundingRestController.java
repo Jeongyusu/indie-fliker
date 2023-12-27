@@ -25,12 +25,15 @@ public class FundingRestController {
     @GetMapping ("/api/fundings")
     public ResponseEntity<?> fundingPlus(@RequestParam(name="genre", defaultValue = "") String genre, @RequestParam(name="page", defaultValue = "1") Integer page) {
         if(genre.isEmpty()){
-            List<MoviesByMainDTO> moviesByMainDTOs = fundingService.moviesByMain(page, 5);
+            List<FundingDTO> moviesByMainDTOs = fundingService.moviesByMain(page, 5);
+            System.out.println("api 장르 있음");
             return ResponseEntity.ok().body(ApiUtils.success(moviesByMainDTOs));
-        }else{
-            List<MoviesByGenreDTO> moviesByGenreDTOs = fundingService.moviesByGenre(genre, page, 5);
-            return ResponseEntity.ok().body(ApiUtils.success(moviesByGenreDTOs));
         }
+
+        List<FundingDTO> moviesByGenreDTOs = fundingService.moviesByGenre(genre, page, 5);
+        System.out.println("api 장르 없음");
+        return ResponseEntity.ok().body(ApiUtils.success(moviesByGenreDTOs));
+
     }
 
     // 온라인 영화 페이징
