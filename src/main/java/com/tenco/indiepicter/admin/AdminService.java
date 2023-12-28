@@ -30,6 +30,77 @@ public class AdminService {
 
 // ------------------------------------------------------------------------------------------
 
+    // 전체 조회 페이징 계산
+    public AdminPagingResponseDTO pagingParam(Integer page) {
+        // 전체 글 갯수 조회
+        int pageCount = this.adminRepository.pageCount();
+        // 전체 페이지 갯수 계산 ( 총 갯수 / 한 페이지 당 갯수를 계산 후 소숫점 올림 계산 )
+        int maxPage = (int) (Math.ceil((double) pageCount / pageLimit));
+        // 시작 페이지 값 계산(1, 6, 11, 16 ~~~)
+        int startPage = (((int) (Math.ceil((double) page / blockLimit))) - 1) * blockLimit + 1;
+        // 끝 페이지 값 계산(5, 10, 15, 20 ~~~)
+        int endPage = startPage + blockLimit - 1;
+        if (endPage > maxPage) {
+            endPage = maxPage;
+        }
+
+        AdminPagingResponseDTO pagingDto = new AdminPagingResponseDTO();
+        pagingDto.setPage(page);
+        pagingDto.setMaxPage(maxPage);
+        pagingDto.setStartPage(startPage);
+        pagingDto.setEndPage(endPage);
+
+        return pagingDto;
+    }
+    
+    // 일반 회원 조회 페이징 계산
+    public AdminPagingResponseDTO normalPagingParam(Integer page) {
+        // 전체 글 갯수 조회
+        int pageCount = this.adminRepository.normalPageCount();
+        // 전체 페이지 갯수 계산 ( 총 갯수 / 한 페이지 당 갯수를 계산 후 소숫점 올림 계산 )
+        int maxPage = (int) (Math.ceil((double) pageCount / pageLimit));
+        // 시작 페이지 값 계산(1, 6, 11, 16 ~~~)
+        int startPage = (((int) (Math.ceil((double) page / blockLimit))) - 1) * blockLimit + 1;
+        // 끝 페이지 값 계산(5, 10, 15, 20 ~~~)
+        int endPage = startPage + blockLimit - 1;
+        if (endPage > maxPage) {
+            endPage = maxPage;
+        }
+
+        AdminPagingResponseDTO pagingDto = new AdminPagingResponseDTO();
+        pagingDto.setPage(page);
+        pagingDto.setMaxPage(maxPage);
+        pagingDto.setStartPage(startPage);
+        pagingDto.setEndPage(endPage);
+
+        return pagingDto;
+    }
+
+    // VIP 회원 조회 페이징 계산
+    public AdminPagingResponseDTO vipPagingParam(Integer page) {
+        // 전체 글 갯수 조회
+        int pageCount = this.adminRepository.vipPageCount();
+        // 전체 페이지 갯수 계산 ( 총 갯수 / 한 페이지 당 갯수를 계산 후 소숫점 올림 계산 )
+        int maxPage = (int) (Math.ceil((double) pageCount / pageLimit));
+        // 시작 페이지 값 계산(1, 6, 11, 16 ~~~)
+        int startPage = (((int) (Math.ceil((double) page / blockLimit))) - 1) * blockLimit + 1;
+        // 끝 페이지 값 계산(5, 10, 15, 20 ~~~)
+        int endPage = startPage + blockLimit - 1;
+        if (endPage > maxPage) {
+            endPage = maxPage;
+        }
+
+        AdminPagingResponseDTO pagingDto = new AdminPagingResponseDTO();
+        pagingDto.setPage(page);
+        pagingDto.setMaxPage(maxPage);
+        pagingDto.setStartPage(startPage);
+        pagingDto.setEndPage(endPage);
+
+        return pagingDto;
+    }
+
+// ------------------------------------------------------------------------------------------
+
     // VIP 초청권 관리 전체 페이징 조회
 
     public List<User> adminAllPagingLists(Integer page) {
@@ -75,31 +146,6 @@ public class AdminService {
         pagingParams.put("pageLimit", pageLimit);
 
         return this.adminRepository.findByAdminVipPagingLists(pagingParams);
-    }
-
-// ------------------------------------------------------------------------------------------
-
-    // 페이징 계산
-    public AdminPagingResponseDTO pagingParam(Integer page) {
-        // 전체 글 갯수 조회
-        int pageCount = this.adminRepository.pageCount();
-        // 전체 페이지 갯수 계산 ( 총 갯수 / 한 페이지 당 갯수를 계산 후 소숫점 올림 계산 )
-        int maxPage = (int) (Math.ceil((double) pageCount / pageLimit));
-        // 시작 페이지 값 계산(1, 6, 11, 16 ~~~)
-        int startPage = (((int) (Math.ceil((double) page / blockLimit))) - 1) * blockLimit + 1;
-        // 끝 페이지 값 계산(5, 10, 15, 20 ~~~)
-        int endPage = startPage + blockLimit - 1;
-        if (endPage > maxPage) {
-            endPage = maxPage;
-        }
-
-        AdminPagingResponseDTO pagingDto = new AdminPagingResponseDTO();
-        pagingDto.setPage(page);
-        pagingDto.setMaxPage(maxPage);
-        pagingDto.setStartPage(startPage);
-        pagingDto.setEndPage(endPage);
-
-        return pagingDto;
     }
 
 // ------------------------------------------------------------------------------------------
@@ -156,6 +202,47 @@ public class AdminService {
         return adminRepository.findByUserIdAndMovieId(userId, movieId);
     }
 
+
+
+    // 초청권 관리 검색어 페이징 조회
+    public List<User> adminUserPagingKeywordLists(Integer page, String keyword) {
+
+        // 인덱스 번호 0부터 시작이기 때문에 -1 로 처리 해줌
+        int pageStart = (page - 1) * pageLimit;
+
+        // 쿼리문에 숫자를 두개 넘겨야 해서 Map사용
+        Map<String, Integer> pagingParams = new HashMap<>();
+        pagingParams.put("pageStart", pageStart);
+        pagingParams.put("pageLimit", pageLimit);
+
+        return this.adminRepository.findByAllPagingListsAboutKeyword(pagingParams, keyword);
+    }
+
+    //VIP 회원 관리 검색어 페이징 조회
+    public List<User> findByAdminVipPagingKeywordLists(Integer page, String keyword) {
+        // 인덱스 번호 0부터 시작이기 때문에 -1 로 처리 해줌
+        int pageStart = (page - 1) * pageLimit;
+
+        // 쿼리문에 숫자를 두개 넘겨야 해서 Map사용
+        Map<String, Integer> pagingParams = new HashMap<>();
+        pagingParams.put("pageStart", pageStart);
+        pagingParams.put("pageLimit", pageLimit);
+
+        return this.adminRepository.findByAdminVipPagingKeywordLists(pagingParams, keyword);
+    }
+
+    //일반 회원 관리 검색어 페이징 조회
+    public List<User> findByAdminNormalPagingKeywordLists(Integer page, String keyword) {
+        // 인덱스 번호 0부터 시작이기 때문에 -1 로 처리 해줌
+        int pageStart = (page - 1) * pageLimit;
+
+        // 쿼리문에 숫자를 두개 넘겨야 해서 Map사용
+        Map<String, Integer> pagingParams = new HashMap<>();
+        pagingParams.put("pageStart", pageStart);
+        pagingParams.put("pageLimit", pageLimit);
+
+        return this.adminRepository.findByAdminNormalPagingKeywordLists(pagingParams, keyword);
+    }
 
 
 

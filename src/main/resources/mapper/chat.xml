@@ -21,8 +21,10 @@
             movie_tb AS m
                 INNER JOIN
             funding_tb AS f ON m.id = f.movie_id
+                INNER JOIN
+            order_tb AS o ON o.funding_id = f.id
         WHERE
-            m.online_release_date = current_date();
+            o.user_id = #{principalId} and m.online_release_date = current_date();
     </select>
     <resultMap id="OpenMovieChatDTOResultMap" type="com.tenco.indiepicter.chat.response.OpenMovieChatDTO">
         <result property="fundingId" column="funding_id"/>

@@ -113,6 +113,9 @@
                             </div>
                         </span>
                         <button id="n_toggle_button" onclick="toggleMore()">프로젝트 더 보기</button>
+                        <input type="hidden" id="k_user_id" value="${sessionScope.principal.id}">
+                        <input type="hidden" id="k_funding_id" value="${fundingDetailDTO.fundingId}">
+
                     </div>
                     <!-- 기대되는 영화 목록 -->
                     <div id="n_more_movie">
@@ -250,13 +253,13 @@
                         </div>
                     </div>
                     <div id="n_sell_button">
-                        <button type="button" class="bookmark_button" >
+                        <button type="button" class="bookmark_button">
                             <c:choose>
                                 <c:when test="${isLiked}">
-                                    <img id="scrap_icon" src="/images/icons/icons8-heart-24-black.png">
+                                    <img class="scrap_icon" src="/images/icons/icons8-heart-24-red.png">
                                 </c:when>
                                 <c:otherwise>
-                                    <img id="scrap_icon" src="/images/icons/icons8-heart-24-red.png">
+                                    <img class="scrap_icon" src="/images/icons/icons8-heart-24-black.png">
                                 </c:otherwise>
                             </c:choose>
                         </button>
@@ -265,10 +268,12 @@
                         </form>
                     </div>
 
+
                 </div>
             </div>
         </div>
     </div>
 </main>
 <script src="../../../../js/neh/on_detail.js"></script>
+
 <%@ include file="../layout/footer.jsp" %>

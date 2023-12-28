@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../layout/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -40,14 +39,18 @@
             <a href=""><h2>IndiFlinker</h2></a>
         </div>
 
-        <div class="p_search">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="검색 하기">
-        </div>
+        <form id="search-form" action="/admin/grade/search" method="get">
+            <div class="p_search">
+                <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <input type="text" name="keyword" placeholder="검색 하기">
+            </div>
+        </form>
 
-        <div class="p_inform">
-            <a href=""><i class="fa-regular fa-bell"></i></a>
-        </div>
+<%--        <div class="p_inform">--%>
+<%--            <a href=""><i class="fa-regular fa-bell"></i></a>--%>
+<%--        </div>--%>
 
     </div>
     <!--탑 끝-->
@@ -65,9 +68,9 @@
         <div class="p_section2">
             <h3>영화</h3>
             <ul>
-                <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/register">영화 등록 허가</a></li>
-                <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/check">펀딩 현황 확인</a></li>
-                <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/update-delete">펀딩 등록 / 삭제</a></li>
+                <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/funding-ready-list">펀딩 등록 승인</a></li>
+                <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/funding/confirm">펀딩 현황 확인</a></li>
+                <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/funding-management">펀딩 수정 / 종료</a></li>
             </ul>
             <div class="p_line"></div>
         </div>
@@ -84,19 +87,13 @@
         </div>
 
         <div class="p_section4">
-            <h3>온라인 상영 가능 영화</h3>
+            <h3>기간 설정</h3>
             <ul>
-                <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/playday">온라인 오픈 기간 설정</a></li>
-                <li><i class="fa-solid fa-comment p_icon2"></i><a href="/admin/chatting">채팅방 오픈</a></li>
-                <li><i class="fa-solid fa-note-sticky p_icon3"></i><a href="/admin/review">감상평 관리</a></li>
+                <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/movie-open/setting">온라인 상영 기간 설정/채팅 오픈 시간 설정</a></li>
+                <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/off-movie-open/setting">오프라인 상영 기간 설정</a></li>
             </ul>
             <div class="p_line"></div>
         </div>
-
-        <%--            <div class="p_section5">--%>
-        <%--                <i class="fa-solid fa-gear p_icon1"></i>--%>
-        <%--                <a href="">환경설정</a>--%>
-        <%--            </div>--%>
 
     </div>
     <!--컨테이너1 끝-->
@@ -104,12 +101,12 @@
     <!--컨테이너2 시작-->
     <div class="p_grade_update_container2">
         <div class="p_title">
-            <h3>VIP 초청권 발급</h3>
+            <h3>회원 등급 수정</h3>
         </div>
-        <div class="p_filter">
-            <a href=""><button><span>Filter</span></button></a>
-            <i class="fa-solid fa-filter"></i>
-        </div>
+<%--        <div class="p_filter">--%>
+<%--            <a href=""><button><span>Filter</span></button></a>--%>
+<%--            <i class="fa-solid fa-filter"></i>--%>
+<%--        </div>--%>
 
         <div class="p_section1">
             <table class="table table-hover">
@@ -145,16 +142,16 @@
             </table>
         </div>
 
-        <div class="p_grade_update_bottom">
+        <div class="p_paging p_grage_update_paging">
             <c:choose>
                 <%-- 현재 페이지가 1페이지이면 이전 글자만 보여줌 --%>
                 <c:when test="${paging.page <= 1}">
-                    <a>[이전]</a>
+                    <a class="p_priveous">이전</a>
                 </c:when>
 
                 <c:otherwise>
                     <%-- 이전을 누르면 컨트롤러에 현재 페이지보다 1 작은 페이지로 요청 --%>
-                    <a href="/admin/grade-update?page=${paging.page-1}">[이전]</a>
+                    <a class="p_priveous" href="/admin/grade-update?page=${paging.page-1}">이전</a>
                 </c:otherwise>
             </c:choose>
 
@@ -168,7 +165,7 @@
 
                     <c:otherwise>
                         <%-- 다른 페이지 이동이 필요할때 컨트롤러에 요청 --%>
-                        <a href="/admin/grade-update?page=${i}">${i}</a>
+                        <a class="page_number" href="/admin/grade-update?page=${i}" style="color: #7f7f7f">${i}</a>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
@@ -176,11 +173,11 @@
             <%-- 현재 페이지가 가장 끝 페이지이면 다음이라는 text만 나오게 함 --%>
             <c:choose>
                 <c:when test="${paging.page >= paging.maxPage}">
-                    <a>[다음]</a>
+                    <a class="p_next">다음</a>
                 </c:when>
                 <%-- 다음을 누르면 현재 페이지보다 1 큰 페이지로 요청 --%>
                 <c:otherwise>
-                    <a href="/admin/grade-update?page=${paging.page+1}">[다음]</a>
+                    <a class="p_next" href="/admin/grade-update?page=${paging.page+1}">다음</a>
                 </c:otherwise>
             </c:choose>
         </div>

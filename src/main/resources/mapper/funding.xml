@@ -9,6 +9,7 @@
         values (#{targetPrice}, #{presentPrice}, #{pricePerOnetime}, #{peopleCount}, #{releaseDate}, #{endDate}, #{movieId})
     </insert>
 
+    <!-- 펀딩 장르별 조회 -->
     <select id="findAllByGenre" resultMap="moviesByGenreDTOResultMap">
             select ft.id, ft.movie_id, mt.thumbnail, ft.present_price / (ft.target_price/10) * 10 funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id where genre = #{genre}
                 limit #{pageSize} offset #{offset}
@@ -23,6 +24,7 @@
         <result property="production" column="production"/>
     </resultMap>
 
+    <!-- 펀딩 모두(메인) 조회 -->
     <select id="findAllByMain" resultMap="MoviesByMainDTOResultMap">
         select ft.id, ft.movie_id, mt.thumbnail, ft.present_price / (ft.target_price/10) * 10 funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
         limit #{pageSize} offset #{offset}
@@ -37,6 +39,7 @@
         <result property="production" column="production"/>
     </resultMap>
 
+    <!-- 온라인 영화 페이징 조회 -->
     <select id="findAllByOnAirPage" resultMap="OnAirMoviePageDTOResultMap">
         select ft.id, mt.thumbnail, mt.movie_name, mt.running_grade, mt.synopsis, mt.online_release_date, mt.online_end_date, ft.present_price * 100 / ft.target_price funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
             limit #{pageSize} offset #{offset}
@@ -53,6 +56,7 @@
         <result property="production" column="production"/>
     </resultMap>
 
+    <!-- 오프라인 영화 페이징 조회 -->
     <select id="findAllByOffAirPage" resultMap="OffAirMoviePageDTOResultMap">
         select ft.id, mt.thumbnail, mt.movie_name, mt.running_grade, mt.synopsis, mt.offline_release_date, mt.offline_end_date, ft.present_price * 100 / ft.target_price funding_rate, mt.movie_name, mt.synopsis, mt.production from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
             limit #{pageSize} offset #{offset}
@@ -69,7 +73,7 @@
         <result property="production" column="production"/>
     </resultMap>
 
-
+    <!-- 온라인 상영중 영화 조회 -->
     <select id="findAllByOnAir" resultMap="OnAirMovieDTOResultMap">
         select mt.thumbnail, ft.id as funding_id, mt.movie_name, mt.synopsis, mt.running_grade, mt.online_release_date, mt.online_end_date, ft.present_price / (ft.target_price/10) * 10 funding_rate, mt.production
         from funding_tb ft
@@ -89,6 +93,7 @@
         <result property="production" column="production"/>
     </resultMap>
 
+    <!-- 오프라인 상영중 영화 조회 -->
     <select id="findAllByOffAir" resultMap="OffAirMovieDTOResultMap">
         select mt.thumbnail, ft.id as funding_id, mt.movie_name, mt.synopsis, mt.running_grade, mt.offline_release_date, mt.offline_end_date, ft.present_price / (ft.target_price/10) * 10 funding_rate, mt.production
         from funding_tb ft
@@ -107,6 +112,7 @@
         <result property="production" column="production"/>
     </resultMap>
 
+    <!-- 온라인 상영중 영화 장르별 조회 -->
     <select id="findAllByOnAirAndRanking" resultMap="OnAirMovieRankingDTOResultMap">
         select mt.thumbnail, ft.id as funding_id, mt.movie_name, mt.synopsis, mt.running_grade, mt.online_release_date, mt.online_end_date, ft.present_price / (ft.target_price/10) * 10 funding_rate, mt.production
         from funding_tb ft
@@ -128,6 +134,7 @@
         <result property="production" column="production"/>
     </resultMap>
 
+    <!-- 오프라인 상영중 영화 장르별 조회 -->
     <select id="findAllByOffAirAndRanking" resultMap="OffAirMovieRankingDTOResultMap">
         select mt.thumbnail, ft.id as funding_id, mt.movie_name, mt.synopsis, mt.running_grade, mt.offline_release_date, mt.offline_end_date, ft.present_price / (ft.target_price/10) * 10 funding_rate, mt.production
         from funding_tb ft
@@ -415,11 +422,11 @@
             MAX(mt.director_awards_film) AS director_awards_film
         FROM
             funding_tb ft
-                JOIN movie_tb mt ON ft.movie_id = mt.id
-                JOIN movie_photo_tb mpt ON mt.id = mpt.movie_id
-                JOIN movie_staff_tb mst ON mt.id = mst.movie_id
+                left outer join movie_tb mt ON ft.movie_id = mt.id
+                left outer JOIN movie_photo_tb mpt ON mt.id = mpt.movie_id
+                left outer JOIN movie_staff_tb mst ON mt.id = mst.movie_id
         WHERE
-            ft.id = #{id};
+            ft.id = #{id}
     </select>
 
     <resultMap id="AdminFundingUpdateFormDTOResultMap" type="com.tenco.indiepicter.funding.response.AdminFundingUpdateFormDTO">
@@ -514,5 +521,92 @@
     <update id="updateEndDateById">
         update funding_tb set end_date = curdate() - 1 where id = #{id}
     </update>
+
+    <!-- 유저가 구매한 온라인 상영중 영화 조회(구매가 빠른 순) -->
+    <select id="findByUserToOnAir" resultMap="OnAirMovieByUserDTOResultMap">
+        SELECT
+            mt.thumbnail,
+            ft.id AS funding_id,
+            mt.id AS movie_id,
+            mt.movie_name,
+            mt.synopsis,
+            mt.running_grade,
+            mt.online_release_date,
+            mt.online_end_date,
+            ft.present_price / (ft.target_price / 10) * 10 AS funding_rate,
+            mt.production,
+            rt.reservated_at
+        FROM
+            funding_tb ft
+                JOIN
+            movie_tb mt ON ft.movie_id = mt.id
+                JOIN
+            order_tb ot ON ft.id = ot.funding_id
+                JOIN
+            reservation_tb rt ON ot.user_id = rt.user_id
+        WHERE
+            ot.user_id = #{principalId}
+          AND ot.selected_seats IS NULL
+          AND curdate() BETWEEN mt.online_release_date AND mt.online_end_date
+        ORDER BY
+            rt.reservated_at ASC
+    </select>
+
+    <resultMap id="OnAirMovieByUserDTOResultMap" type="com.tenco.indiepicter.funding.response.OnAirMovieByUserDTO">
+        <result property="movieThumbnail" column="thumbnail"/>
+        <result property="fundingId" column="funding_id"/>
+        <result property="movieId" column="movie_id"/>
+        <result property="movieName" column="movie_name"/>
+        <result property="runningGrade" column="running_grade"/>
+        <result property="synopsis" column="synopsis"/>
+        <result property="onlineReleaseDate" column="online_release_date"/>
+        <result property="onlineEndDate" column="online_end_date"/>
+        <result property="fundingRate" column="funding_rate"/>
+        <result property="production" column="production"/>
+        <result property="reservatedAt" column="reservated_at"/>
+    </resultMap>
+
+    <!-- 유저가 구매한 오프라인 상영중 영화 조회(상영 종료 날짜 빠른 순) -->
+    <select id="findByUserToOffAir" resultMap="OffAirMovieByUserDTOResultMap">
+        SELECT
+            mt.thumbnail,
+            ft.id AS funding_id,
+            mt.id AS movie_id,
+            mt.movie_name,
+            mt.synopsis,
+            mt.running_grade,
+            mt.online_release_date,
+            mt.online_end_date,
+            ft.present_price / (ft.target_price / 10) * 10 AS funding_rate,
+            mt.production,
+            rt.reservated_at
+        FROM
+            funding_tb ft
+                JOIN
+            movie_tb mt ON ft.movie_id = mt.id
+                JOIN
+            order_tb ot ON ft.id = ot.funding_id
+                JOIN
+            reservation_tb rt ON ot.user_id = rt.user_id
+        WHERE
+            ot.user_id = #{principalId}
+          AND ot.selected_seats IS NOT NULL
+          AND curdate() BETWEEN mt.online_release_date AND mt.online_end_date
+        ORDER BY
+            rt.reservated_at ASC
+    </select>
+    <resultMap id="OffAirMovieByUserDTOResultMap" type="com.tenco.indiepicter.funding.response.OffAirMovieByUserDTO">
+        <result property="movieThumbnail" column="thumbnail"/>
+        <result property="fundingId" column="funding_id"/>
+        <result property="movieId" column="movie_id"/>
+        <result property="movieName" column="movie_name"/>
+        <result property="runningGrade" column="running_grade"/>
+        <result property="synopsis" column="synopsis"/>
+        <result property="offlineReleaseDate" column="offline_release_date"/>
+        <result property="offlineEndDate" column="offline_end_date"/>
+        <result property="fundingRate" column="funding_rate"/>
+        <result property="production" column="production"/>
+        <result property="reservatedAt" column="reservated_at"/>
+    </resultMap>
 
 </mapper>

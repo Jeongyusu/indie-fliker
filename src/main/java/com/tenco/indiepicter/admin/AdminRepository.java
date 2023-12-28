@@ -3,6 +3,7 @@ package com.tenco.indiepicter.admin;
 import com.tenco.indiepicter.invitation.Invitation;
 import com.tenco.indiepicter.user.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import javax.xml.stream.events.Comment;
 import java.util.List;
@@ -23,6 +24,12 @@ public interface AdminRepository {
     // 일반 회원, VIP 회원 관리 전체 갯수 조회
     public Integer pageCount();
 
+    // 일반 회원만 전체 갯수 조회
+    public Integer normalPageCount();
+    
+    // VIP 회원만 전체 갯수 조회
+    public Integer vipPageCount();
+
     // 일반 회원, VIP 회원 관리(회원 탈퇴)
     public void adminUserUpdate(Integer id);
 
@@ -41,5 +48,13 @@ public interface AdminRepository {
     // 댓글 불러오기
     List<Comment> findByUserIdAndMovieId(int userId, int movieId);
 
+    // 초청권관리 전체 페이징 검색어 조회
+    public List<User> findByAllPagingListsAboutKeyword(@Param("pagingParams") Map<String, Integer> pagingParams, @Param("keyword") String keyword);
 
+    // VIP 회원관리 전체 페이징 검색어 조회
+    public List<User> findByAdminVipPagingKeywordLists(@Param("pagingParams") Map<String, Integer> pagingParams, @Param("keyword") String keyword);
+
+
+    // 일반 회원관리 전체 페이징 검색어 조회
+    public List<User> findByAdminNormalPagingKeywordLists(@Param("pagingParams") Map<String, Integer> pagingParams, @Param("keyword") String keyword);
 }

@@ -2,18 +2,15 @@
 		 pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-
-</head>
-<body>
+<body class="l_body">
 
 <main>
 	<div class="n_custom_fluid">
+		<div class="container l_movie_list_title">
+			<p class="l_list_title">VIP 초청권</p>
+			<br>
+			<p class="l_list_comment">VIP 회원을 위한 시사회 초청권</p>
+		</div>
 		<div class="row justify-content-center">
 			<c:forEach var="invitation" items="${myInvitationPagingLists}">
 			<div id="n_reservation_ticket">
@@ -48,16 +45,16 @@
 			</div>
 			</c:forEach>
 
-			<div>
+			<div class="p_paging p_my_invitation_paging">
 				<c:choose>
 					<%-- 현재 페이지가 1페이지이면 이전 글자만 보여줌 --%>
 					<c:when test="${paging.page <= 1}">
-						<a>[이전]</a>
+						<a class="p_priveous">이전</a>
 					</c:when>
 
 					<c:otherwise>
 						<%-- 이전을 누르면 컨트롤러에 현재 페이지보다 1 작은 페이지로 요청 --%>
-						<a href="/invitation/my-invitation?page=${paging.page-1}">[이전]</a>
+						<a class="p_priveous" href="/invitation/my-invitation?page=${paging.page-1}">이전</a>
 					</c:otherwise>
 				</c:choose>
 
@@ -71,7 +68,7 @@
 
 						<c:otherwise>
 							<%-- 다른 페이지 이동이 필요할때 컨트롤러에 요청 --%>
-							<a href="/invitation/my-invitation?page=${i}">${i}</a>
+							<a class="page_number" href="/invitation/my-invitation?page=${i}" style="color: #7f7f7f">${i}</a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -79,27 +76,23 @@
 				<%-- 현재 페이지가 가장 끝 페이지이면 다음이라는 text만 나오게 함 --%>
 				<c:choose>
 					<c:when test="${paging.page >= paging.maxPage}">
-						<a>[다음]</a>
+						<a class="p_next">다음</a>
 					</c:when>
 					<%-- 다음을 누르면 현재 페이지보다 1 큰 페이지로 요청 --%>
 					<c:otherwise>
-						<a href="/invitation/my-invitation?page=${paging.page+1}">[다음]</a>
+						<a class="p_next" href="/invitation/my-invitation?page=${paging.page+1}">다음</a>
 					</c:otherwise>
 				</c:choose>
 
 			</div>
 
 			<div id="n_attention_comment">
-				<p>· 관람안내</p>
-				<p class="n_comment">- 구매하신 예매권은 온라인 상영관에서 언제든지 관람이 가능합니다.</p>
-				<p class="n_comment">- 관람 기간은 <strong>총 4일</strong>이며, <strong>온라인 상영 기간 내</strong>에 관람이 가능합니다.</p>
-				<p class="n_comment">- 관람 시작 기준은 구매 시점이며, 이후 4일이 지나면 자동으로 관람이 종료됩니다.</p>
+				<p>· 상영안내</p>
+				<p class="n_comment">- 쾌적한 관람 환경을 위해 상영시간 이전에 입장 부탁드립니다.</p>
+				<p class="n_comment">- 상영시간 1시간 전까지 취소 가능하며, 갭쳐화면으로는 입장하실 수 없습니다.</p>
 			</div>
 		</div>
 	</div>
 </main>
 <!-- footer -->
 <%@ include file="../layout/footer.jsp" %>
-
-</body>
-</html>

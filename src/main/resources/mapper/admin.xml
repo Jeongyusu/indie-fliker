@@ -25,14 +25,9 @@
     <select id="findByAdminVipPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
         select *
         from user_tb
-        where grade not in('NORMAL')
+        where grade != 'NORMAL'
         order by created_at desc
             limit #{pageStart}, #{pageLimit}
-    </select>
-
-    <!-- 공지사항 전체 갯수 조회 -->
-    <select id="pageCount" resultType="Integer">
-        select count(id) from user_tb
     </select>
 
     <!-- 일반 회원 관리(회원 탈퇴) -->
@@ -69,5 +64,48 @@
         select * from review_tb where user_id = #{userId} and movie_id = #{movieId}
     </select>
 
+    <!-- 초청권관리 + 검색어 조회 -->
+    <select id="findByAllPagingListsAboutKeyword" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
+        select *
+        from user_tb ut
+        where ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%')
+        order by created_at desc
+        limit #{pagingParams.pageStart}, #{pagingParams.pageLimit}
+    </select>
+
+    <!-- VIP 회원 관리 검색어 페이징 조회 -->
+    <select id="findByAdminVipPagingKeywordLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
+        select *
+        from user_tb ut
+        where grade not in('NORMAL')
+        and ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%')
+        order by created_at desc
+        limit #{pagingParams.pageStart}, #{pagingParams.pageLimit}
+    </select>
+
+    <!-- 일반 회원 관리 검색어 페이징 조회 -->
+    <select id="findByAdminNormalPagingKeywordLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
+        select *
+        from user_tb ut
+        where grade not in('VIP')
+            and ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%')
+        order by created_at desc
+        limit #{pagingParams.pageStart}, #{pagingParams.pageLimit}
+    </select>
+
+    <!-- 페이징 전체 갯수 조회 -->
+    <select id="pageCount" resultType="Integer">
+        select count(id) from user_tb
+    </select>
+
+    <!-- 페이징 일반 회원만 전체 갯수 조회 -->
+    <select id="normalPageCount" resultType="Integer">
+        select count(id) from user_tb where grade = 'NORMAL'
+    </select>
+
+    <!-- 페이징 VIP 회원만 전체 갯수 조회 -->
+    <select id="vipPageCount" resultType="Integer">
+        select count(id) from user_tb where grade = 'VIP'
+    </select>
 
 </mapper>

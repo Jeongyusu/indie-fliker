@@ -3,10 +3,12 @@ package com.tenco.indiepicter.admin;
 import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
 import com.tenco.indiepicter._core.utils.TimeStampUtil;
 import com.tenco.indiepicter.admin.response.AdminPagingResponseDTO;
+import com.tenco.indiepicter.funding.response.AdminOfflineStreamingSearchDTO;
 import com.tenco.indiepicter.invitation.response.InvitationResponseDTO;
 import com.tenco.indiepicter.user.User;
 import com.tenco.indiepicter.user.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/admin")
@@ -72,11 +75,11 @@ public class AdminController {
 			@RequestParam(value="page", required=false, defaultValue="1") Integer page,
 			Model model) {
 
-		List<User> adminInvitationPagingLists = this.adminService.adminAllPagingLists(page);
-		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.pagingParam(page);
-		model.addAttribute("adminInvitationPagingLists", adminInvitationPagingLists);
-		model.addAttribute("paging", adminPagingResponseDTO);
-			
+			List<User> adminInvitationPagingLists = this.adminService.adminAllPagingLists(page);
+			AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.pagingParam(page);
+			model.addAttribute("adminInvitationPagingLists", adminInvitationPagingLists);
+			model.addAttribute("paging", adminPagingResponseDTO);
+
 		return "manager/invitation";
 	}
 
@@ -112,7 +115,7 @@ public class AdminController {
 			@RequestParam(value="page", required=false, defaultValue="1") Integer page,
 			Model model) {
 		List<User> adminUserPagingLists = this.adminService.adminUserPagingLists(page);
-		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.pagingParam(page);
+		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.normalPagingParam(page);
 		model.addAttribute("adminUserPagingLists", adminUserPagingLists);
 		model.addAttribute("paging", adminPagingResponseDTO);
 
@@ -134,7 +137,7 @@ public class AdminController {
 			Model model) {
 
 		List<User> adminVipPagingLists = this.adminService.adminVipPagingLists(page);
-		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.pagingParam(page);
+		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.vipPagingParam(page);
 		model.addAttribute("adminVipPagingLists", adminVipPagingLists);
 		model.addAttribute("paging", adminPagingResponseDTO);
 			
@@ -200,6 +203,44 @@ public class AdminController {
 
 		return "manager/review";
 	}
-}
 
-// 12-22 9:55 학원 작업중
+	// 초청권 관리 검색어 조회
+	@GetMapping("/invitation/search")
+	public String userInvitationSearch(@RequestParam( name ="keyword") String keyword, @RequestParam(value="page", required=false, defaultValue="1") Integer page, Model model){
+		List<User> adminInvitationPagingLists = adminService.adminUserPagingKeywordLists(page,keyword);
+		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.pagingParam(page);
+		model.addAttribute("adminInvitationPagingLists", adminInvitationPagingLists);
+		model.addAttribute("paging", adminPagingResponseDTO);
+		return "manager/invitation_search";
+	}
+	 //회원 등급 검색어 조회
+	@GetMapping("/grade/search")
+	public String userGradeSearch(@RequestParam( name ="keyword") String keyword, @RequestParam(value="page", required=false, defaultValue="1") Integer page, Model model){
+		List<User> adminGradeUpdatePagingLists = adminService.adminUserPagingKeywordLists(page,keyword);
+		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.pagingParam(page);
+		model.addAttribute("adminGradeUpdatePagingLists", adminGradeUpdatePagingLists);
+		model.addAttribute("paging", adminPagingResponseDTO);
+		return "manager/grade_update_search";
+	}
+//
+	// 일반 회원 관리 검색어 조회
+	@GetMapping("/normal/search")
+	public String userNormalSearch(@RequestParam( name ="keyword") String keyword, @RequestParam(value="page", required=false, defaultValue="1") Integer page, Model model){
+		List<User> adminUserPagingLists = adminService.findByAdminNormalPagingKeywordLists(page,keyword);
+		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.pagingParam(page);
+		model.addAttribute("adminUserPagingLists", adminUserPagingLists);
+		model.addAttribute("paging", adminPagingResponseDTO);
+		return "manager/user_management_search";
+	}
+//
+	// vip회원 관리 검색어 조회
+	@GetMapping("/vip/search")
+	public String userVIPSearch(@RequestParam( name ="keyword") String keyword, @RequestParam(value="page", required=false, defaultValue="1") Integer page, Model model){
+		List<User> adminVipPagingLists = adminService.findByAdminVipPagingKeywordLists(page,keyword);
+		log.debug("출력결과 : " + adminVipPagingLists.toString());
+		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.pagingParam(page);
+		model.addAttribute("adminVipPagingLists", adminVipPagingLists);
+		model.addAttribute("paging", adminPagingResponseDTO);
+		return "manager/vip_management_search";
+	}
+}

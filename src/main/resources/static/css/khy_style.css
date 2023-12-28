@@ -23,7 +23,11 @@ input:active, input:focus{
 
 .k_login_container {
     max-width: 400px;
-    margin: 100px auto;
+    margin: 70px auto;
+}
+
+.k_login_container input {
+    font-size: 14px;
 }
 
 .k_forget {
@@ -117,14 +121,13 @@ input:active, input:focus{
 }
 
 .k_input_button button {
-    background-color: var(--point_01);
-    color: var(--font_01);
+    background-color: var(--primary_01);
+    color: var(--def_wh);
     border: none;
     border-radius: 8px;
     height: 55.5px;
     width: 100%;
     margin-top: 30px;
-    font-weight: bold;
 }
 
 .k_input_button button:hover,
@@ -175,6 +178,7 @@ input:active, input:focus{
 
 .k_input_label {
     margin-bottom: 10px;
+    font-size: 14px;
 }
 
 /*회원가입 페이지*/
@@ -213,9 +217,8 @@ input:active, input:focus{
 }
 
 .k_validation {
-    background-color: var(--point_01);
-    color: var(--font_01);
-    font-weight: bold;
+    background-color: var(--primary_01);
+    color: var(--def_wh);
     border: none;
     border-radius: 5px;
     height: 38px;
@@ -239,11 +242,10 @@ input:active, input:focus{
 }
 
 .k_complete button {
-    background-color: var(--point_01);
-    color: var(--font_01);
+    background-color: var(--primary_01);
+    color: var(--def_wh);
     border: none;
     height: 55.5px;
-    font-weight: bold;
 }
 
 .k_complete button:hover,
@@ -263,9 +265,9 @@ input:active, input:focus{
 
 .eyes {
     position: absolute;
-    top: 10px;
-    bottom: 0;
-    right: 5px;
+    top: 15px;
+    bottom: 5px;
+    right: 6px;
     margin: auto 2px;
     height: 30px;
     font-size: 14px;
@@ -274,9 +276,9 @@ input:active, input:focus{
 
 .eyes2 {
     position: absolute;
-    top: 35px;
-    bottom: 0;
-    right: 780px; /* 위치 조정 */
+    top: 25px;
+    bottom: 5px;
+    right: 6px; /* 위치 조정 */
     margin: auto 2px;
     height: 30px;
     font-size: 14px;
@@ -387,16 +389,23 @@ div.main i {
 /* 프로필 수정 페이지 */
 .k_profile_main{
     max-width: 400px;
-    margin: auto;
-    margin-top: 150px;
+    margin: 70px auto;
 }
+
+.k_profile_main input {
+    font-size: 14px;
+}
+
 .k_profile_info_set{
-    font-size: 20px;
     font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 22px;
 }
+
 .k_profile_pic{
-    margin-top: 20px;
+    margin: 20px 0 10px;
 }
+
 .k_profile_pic_set{
     border-radius: 50%;
     width: 30%;
@@ -418,28 +427,12 @@ div.main i {
 .k_profile_bttn_margin{
     margin-left: 36%;
 }
-.k_profile_first_container{
-    margin-top: 10%;
+
+.k_profile_input{
+    background-color: var(--back_01);
 }
-.k_profile_nicknmae{
-    margin-top: 10px;
-    width: 100%;
-    height: 35px;
-}
-.k_profile_tel_div{
+.k_profile_margin_top{
     margin-top: 15px;
-}
-.k_profile_tel_input{
-    margin-top: 10px;
-    width: 100%;
-    height: 35px;
-    background-color: rgba(234, 234, 234, 0.58);
-    border: 1px solid #ccc; /* 테두리 추가 */
-    box-sizing: border-box; /* 테두리와 패딩 포함하여 요소 크기 계산 */
-    padding: 5px; /* 내부 패딩 설정 */
-}
-.k_profile_password_div{
-    margin-top: 20px;
 }
 .k_profile_bttns_margin{
     margin-top: 30px;
@@ -448,29 +441,42 @@ div.main i {
 }
 .k_profile_bttn_cancle{
     width: 50%;
-    height: 60px;
-    color: white;
+    height: 55.5px;
+    color: var(--def_wh);
     border: none;
     border-radius: 5px;
-    background-color: grey;
+    background-color: var(--line_01);
     text-align: center;
     line-height: 60px;
     text-decoration: none;
 }
+
+.k_profile_bttn_cancle:hover {
+    color: var(--font_01);
+    text-decoration: none;
+}
+
 .k_profile_bttn_ok{
     width: 50%;
-    height: 60px;
-    color: white;
+    height: 55.5px;
+    color: var(--def_wh);
     border: none;
     border-radius: 5px;
-    background-color: green;
+    background-color: var(--primary_01);
     margin-left: 2%;
 }
 
 .k_profile_main img{
-    width: 150px;
-    height: 150px;
+    width: 130px;
     border-radius: 50%;
+}
+
+.k_file_button {
+    width: 100%;
+}
+
+.k_file_button input {
+
 }
 
 /*마이페이지*/
@@ -484,60 +490,76 @@ div.main i {
 /*}*/
 
 .k_left_my{
-    position: relative;
-    width: 300px;
-    height: 500px;
-    top: 150px;
-    left: 50px;
+    width: 25%;
+    text-align: center;
+    padding: 20px;
+}
+
+.k_user_grade {
+    display: flex;
+    justify-content: center;
+}
+
+.k_my_main {
+    display: flex;
+    justify-content: center;
+}
+
+.k_my_group {
+    width: 1140px;
+    display: flex;
+    justify-content: space-between;
+    margin: 70px auto;
 }
 
 .k_left_my .k_profile{
-    position: relative;
-    top: 0px;
-    left: 50%;
-    transform: translate(-50%, 0px);
-    width: 150px;
-    height: 150px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
 }
 
 .k_left_my .k_m_name {
-    position: absolute;
-    top: 170px;
-    left: 50%;
-    transform: translate(-50%, 0px);
     font-weight: bold;
+    margin: 15px;
 }
 
-.k_left_my .k_grade{
-    background-color: #a5e5e6;
-    position: absolute;
-    width: 100px;
-    height: 30px;
-    border-radius: 10px;
-    top: 200px;
-    left: 50%;
-    transform: translate(-50%, 0px);
-    text-align: center;
+.k_left_my .k_grade_normal{
+    font-size: 11px;
+    background-color: var(--point_01);
+    width: 75px;
+    height: 33px;
+    border-radius: 20px;
     line-height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.k_left_my .k_grade_vip{
+    font-size: 11px;
+    background-color: var(--point_03);
+    width: 75px;
+    height: 33px;
+    border-radius: 20px;
+    line-height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .k_left_my_hr {
-    position: absolute;
-    top: 230px;
-    left: 0px;
-    opacity: 0.3;
     width: 100%;
+    background-color: var(--line_01);
 }
 
 .k_left_my .kakao_login{
-    position: absolute;
+    /*position: absolute;*/
     top: 260px;
     left: 50px;
 }
 
 .k_left_my .kakao_login img{
-    position: relative;
+    /*position: relative;*/
     top: 8px;
 }
 
@@ -549,14 +571,15 @@ div.main i {
 
 
 .k_left_my .nomral_login{
-    position: absolute;
-    top: 260px;
-    left: 85px;
+margin-bottom: 20px;
 }
 
 .k_left_my .nomral_login img{
-    position: relative;
-    top: 8px;
+    width: 11px;
+}
+
+.k_left_my .nomral_login span{
+    font-size: 13px;
 }
 
 .k_body .nomral_profile{
@@ -576,11 +599,9 @@ div.main i {
 }
 
 .k_update_login-container{
-    position: relative;
-    bottom: 350px;
-    left: 500px;
-    width: 1200px;
-    height: 700px;
+    border-left: 0.1px solid var(--back_02);
+    padding: 20px 0 20px 20px;
+    width: 75%;
 }
 
 .k_m_button {
@@ -608,18 +629,17 @@ div.main i {
 }
 
 .k_m_logout {
-    display: block;
-    margin-top: 15px;
-    height: 40px;
+    /* display: block; */
+    /* margin-top: 15px; */
+    height: 36px;
     background-color: var(--def_wh);
-    border-radius: 10px;
+    border-radius: 25px;
     cursor: pointer;
     width: 200px;
     border: 1px solid rgb(192, 192, 192);
-    margin-left: 12px;
-    position: relative;
-    top: 150px;
-    left: 40px;
+    /* position: relative; */
+    /* top: 150px; */
+    font-size: 13px;
 }
 
 .k_couponpack,
@@ -641,6 +661,7 @@ div.main i {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
 }
 
 .k_invite {
@@ -665,17 +686,54 @@ div.main i {
     opacity: 0.3;
 }
 
-.k_i_group {
-    margin-top: 15px;
+.k_i_group_list {
     height: 80px;
     border-radius: 5px;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(192, 192, 192);
-    width: 100%;
-    margin-left: 0px;
+    background-color: var(--def_wh);
+    border: 1px solid var(--font_02);
+    width: 70%;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    font-size: 14px;
+}
+
+.k_only_flex {
+    display: flex;
+}
+
+.k_i_flex {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.k_icon_img {
+    width: 20px;
+    margin-right: 5px;
+}
+
+.k_i_column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.k_i_column a{
+margin-bottom: 10px;
+}
+
+.k_i_group_invite {
+    height: 80px;
+    border-radius: 5px;
+    background-color: var(--def_wh);
+    border: 1px solid var(--font_02);
+    width: 28%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 14px;
 }
 
 .k_invite-group {
@@ -701,15 +759,16 @@ div.main i {
     margin-top: 30px;
     border-radius: 10px;
     border: none;
-    background-color: #a5e5e6;
+    background-color: var(--primary_01);
     width: 100%;
     height: 60px;
     cursor: pointer;
+    line-height: 20px;
 }
 
 .k_my_active,
 .k_c_center {
-    margin-top: 30px;
+    margin-top: 40px;
     font-weight: bold;
 }
 
@@ -727,6 +786,8 @@ div.main i {
     border: none;
     background-color: var(--def_wh);
     cursor: pointer;
+    width: 50%;
+    text-align: start;
 }
 
 .k_c_center_list_set {
@@ -819,22 +880,21 @@ div.main i {
 
 .k_ask_container {
     max-width: 400px;
-    margin: auto;
-    margin-top: 150px;
+    margin: 48px auto 20px;
 }
 
 .k_ask_main {
     text-align: center;
     font-weight: bold;
-    margin-bottom: 40px;
-    font-size: 35px;
+    margin-bottom: 25px;
+    font-size: 24px;
 }
 
 .k_search-container {
     display: flex;
     max-width: 400px;
     width: 100%;
-    border: 2px solid var(--def_bl);
+    border: 1px solid var(--def_bl);
     border-radius: 4px;
     overflow: hidden;
 }
@@ -844,6 +904,10 @@ div.main i {
     padding: 10px;
     border: none;
     font-size: 16px;
+}
+
+.k_search-container button{
+    padding: 0 10px;
 }
 
 .k_search-icon {
@@ -882,13 +946,17 @@ div.main i {
     width: 143px;
     height: 50px;
     border-radius: 10px;
-    border: 1px solid #8AF9CD;
+    border: 1px solid var(--primary_01);
     text-align: center;
     line-height: 50px;
+    background-color: var(--primary_01);
+
 }
 
 .k_btn_group a:hover{
-    background-color: #8AF9CD;
+    background-color: var(--def_wh);
+    color: var(--font_01);
+    text-decoration: none;
 }
 
 .k_question_a{
@@ -952,31 +1020,32 @@ div.main i {
     font-weight: bold;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .k_clickMe {
     cursor: pointer;
-    padding: 10px;
-    background-color: var(--def_wh);
+    background-color: transparent;
     color: var(--back_02);
     display: inline-block;
     margin: 10px;
 }
 
 .k_clickMeSymbol {
-    margin-left: 450px;
     border: none;
-    background-color: var(--def_wh);
+    background-color: transparent;
     cursor: pointer;
-
+    width: 33px;
+    height: 33px;
 }
 
 .k_hiddenDiv {
-    display: none;
     padding: 20px;
-    background-color: var(--back_02);
+    background-color: var(--font_01);
     color: var(--def_wh);
-    margin: 10px;
+    display: none;
+    font-size: 14px;
+    width: 98%;
 }
 
 .k_a_l {
@@ -1010,7 +1079,7 @@ k_ask_s_container a{
 /*공지 사항*/
 
 .k_notice_hr {
-    margin-top: 100px;
+    margin-top: 48px;
 }
 
 .k_notice_import {

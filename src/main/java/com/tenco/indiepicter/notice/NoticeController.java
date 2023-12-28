@@ -31,7 +31,7 @@ public class NoticeController {
 			@RequestParam(value="page", required=false, defaultValue="1") Integer page,
 			Model model) {
 		
-		List<Notice> noticePagingLists = this.noticeService.noticePagingLists(page);
+		List<NoticeResponseDTO> noticePagingLists = this.noticeService.noticePagingLists(page);
 		NoticePagingResponseDTO noticePagingResponseDTO = this.noticeService.pagingParam(page);
 		model.addAttribute("noticePagingLists", noticePagingLists);
 		model.addAttribute("paging", noticePagingResponseDTO);
@@ -42,7 +42,7 @@ public class NoticeController {
 	@GetMapping("/notice-detail/{noticeId}")
 	public String noticeDetail(@PathVariable Integer noticeId, Model model) {
 
-		Notice notice = this.noticeService.findById(noticeId);
+		NoticeResponseDTO notice = this.noticeService.findById(noticeId);
 		model.addAttribute("notice", notice);
 
 		return "mypage/notice_detail";

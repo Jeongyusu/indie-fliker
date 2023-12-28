@@ -10,5 +10,5 @@ import java.util.List;
 public interface ChatRepository {
 
     // 온라인 영화 개봉하는 영화 목록
-    public List<OpenMovieChatDTO> findByOpenMovie();
+    public List<OpenMovieChatDTO> findByOpenMovie(Integer principalId);
 }

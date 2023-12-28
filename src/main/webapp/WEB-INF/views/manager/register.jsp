@@ -79,19 +79,13 @@
             </div>
 
             <div class="p_section4">
-                <h3>온라인 상영 가능 영화</h3>
+                <h3>기간 설정</h3>
                 <ul>
                     <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/movie-open/setting">온라인 상영 기간 설정/채팅 오픈 시간 설정</a></li>
-                    <li><i class="fa-solid fa-comment p_icon2"></i><a href="/admin/funding/off-movie-open/setting">오프라인 상영 기간 설정</a></li>
-                    <li><i class="fa-solid fa-note-sticky p_icon3"></i><a href="/admin/review">감상평 관리</a></li>
+                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/off-movie-open/setting">오프라인 상영 기간 설정</a></li>
                 </ul>
                 <div class="p_line"></div>
             </div>
-
-            <!-- <div class="p_section5">
-                <i class="fa-solid fa-gear p_icon1"></i>
-                <a href="">환경설정</a>
-            </div> -->
 
         </div>
         <!--컨테이너1 끝-->
@@ -100,8 +94,7 @@
 
         <!--컨테이너2 시작-->
         <div class="p_register_container2">
-
-            <div class="p_section1">
+            <div class="p_section1" id="data-container">
                 <c:forEach var="fundingReady" items="${fundingReadyDTOs}" varStatus="status">
                     <div class="p_menu1 p_custom_margin_bottom">
                         <img src="${fundingReady.thumbnail}" alt="영화 사진">
@@ -118,6 +111,7 @@
                         <button class="j_close2" style="margin-bottom: 10px;" onclick="AuthorizationFunding(${fundingReady.fundingReadyId})">등록 승인</button>
                     </div>
                 </c:forEach>
+                <div id="j_hidden_modal"></div>
             </div>
 
         </div>
@@ -162,7 +156,161 @@
             } catch (error) {
                 console.log("에러 발생" + error.message);
             }
+        }
 
+        let currentPage = 2;
+        let isLoading = false;
+        let modalNumber = 8;
+        window.onload = function () {
+            console.log("온로드 실행");
+            isLoading = false;
+        };
+
+        $(window).scroll(function() {
+            // 스크롤 이동 시 실행되는 코드
+            console.log("제이쿼리 스크롤");
+            if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
+                // 페이지 하단에 도달했을 때만 추가 데이터 로드
+                loadMoreData();
+            }
+
+        });
+
+
+
+        // fetch로 새로운 데이터 받아오기
+        async function fetchFundingList(page) {
+            console.log("현재 페이지 확인")
+            console.log(page)
+            let response = await fetch('/admin/funding/register/more-data?page=' + page);
+            let responseBody = await response.json();
+            if (responseBody.success) {
+                return responseBody.response;
+            } else {
+                throw new Error(responseBody.error);
+            }
+        }
+
+        // 마우스 스크롤 감지 후 새로운 데이터를 받아온 후 새로운 요소 생성하기
+        function loadMoreData() {
+
+            if (isLoading) {
+                return;
+            }
+            isLoading = true;
+
+            // 로딩 딜레이 주기
+            setTimeout(async () => {
+                try {
+
+                    // 비동기로 데이터를 받아오는 함수 (fetchFundingList를 적절한 함수로 변경)
+                    const newData = await fetchFundingList();
+
+                    // data-container 요소 가져오기
+                    const container = document.getElementById('data-container');
+
+                    // 현재 모달 번호를 추적하는 변수
+
+                    // newData를 순회하며 DOM에 추가
+                    newData.forEach((fundingReady) => {
+
+
+                        // Outer container
+                        const outerContainer = document.createElement('div');
+                        outerContainer.classList.add('p_menu1', 'p_custom_margin_bottom');
+
+                        // Image
+                        const image = document.createElement('img');
+                        image.src = fundingReady.thumbnail;
+                        image.alt = '영화 사진';
+
+                        // Title paragraph
+                        const titleParagraph = document.createElement('p');
+                        titleParagraph.textContent = '영화 제목: ' + fundingReady.movieName;
+
+                        // Director paragraph
+                        const directorParagraph = document.createElement('p');
+                        directorParagraph.textContent = '영화 감독: ' + fundingReady.director;
+
+                        // Button
+                        const button = document.createElement('button');
+                        button.textContent = '영화 등록 하기';
+                        button.addEventListener('click', () => openModal(modalNumber));
+
+                        // Append elements to outer container
+                        outerContainer.appendChild(image);
+                        outerContainer.appendChild(titleParagraph);
+                        outerContainer.appendChild(directorParagraph);
+                        outerContainer.appendChild(button);
+
+                        // Modal container
+                        const modalContainer = document.createElement('div');
+                        modalContainer.classList.add('j_custom_modal');
+                        modalContainer.id = 'j_fund_modal' + modalNumber;
+
+                        // Iframe for modal content
+                        const iframe = document.createElement('iframe');
+                        iframe.src = '/funding-ready/' + fundingReady.fundingReadyId;
+                        iframe.id = 'chat_iframe';
+                        iframe.style.width = '100%';
+                        iframe.style.height = '100%';
+                        iframe.style.border = 'none';
+
+                        // Close button for modal
+                        const closeButton = document.createElement('button');
+                        closeButton.classList.add('j_close');
+                        closeButton.style.backgroundColor = 'var(--primary_02)';
+                        closeButton.textContent = '창 닫기';
+                        closeButton.addEventListener('click', () => closeModal(modalNumber));
+
+                        // Approval button for modal
+                        const approvalButton = document.createElement('button');
+                        approvalButton.classList.add('j_close2');
+                        approvalButton.style.marginBottom = '10px';
+                        approvalButton.textContent = '등록 승인';
+                        approvalButton.addEventListener('click', () => AuthorizationFunding(fundingReady.fundingReadyId));
+
+                        // Append elements to modal container
+                        modalContainer.appendChild(iframe);
+                        modalContainer.appendChild(closeButton);
+                        modalContainer.appendChild(approvalButton);
+
+                        // Append containers to the main container
+                        container.appendChild(outerContainer);
+                        document.getElementById('j_hidden_modal').appendChild(modalContainer);
+
+                        // 모달 번호 증가
+                        modalNumber++;
+                    });
+                } catch (error) {
+                    console.error('Error fetching and rendering data:', error);
+                }
+            }, 1000);
+
+            var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+            window.addEventListener("scroll", function() {
+                // 현재 스크롤 위치 가져오기
+                var scrollPosition = window.scrollY;
+
+                // 스크롤 위치가 300px 이상이면 버튼 표시, 아니면 숨김
+                if (scrollPosition > 500) {
+                    scrollToTopBtn.style.display = "block";
+                } else {
+                    scrollToTopBtn.style.display = "none";
+                }
+            });
+
+            // 버튼 클릭 시 맨 위로 스크롤하는 함수
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth" // 부드러운 스크롤 적용
+                });
+            }
+
+            // 버튼에 클릭 이벤트 리스너 추가
+            scrollToTopBtn.addEventListener("click", scrollToTop);
         }
 
 

@@ -13,9 +13,11 @@
             <div id="emailScreen">
                 <div class="k_form_group">
                     <label class="k_input_label">이름</label><br>
-                    <input type="text" class="form-control" name="username" id="username"><br>
+                    <input type="text" class="form-control" name="username" id="username">
+                </div>
+                <div class="k_form_group">
                     <label class="k_input_label">전화번호</label><br>
-                    <input type="text" class="form-control" name="tel" id="tel"><br>
+                    <input type="text" class="form-control" name="tel" id="tel">
                 </div>
                 <div class="k_input_button">
                     <button name="findEmail" id="findEmail">이메일 찾기</button>
