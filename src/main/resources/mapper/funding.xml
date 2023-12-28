@@ -361,7 +361,8 @@
     <!-- 어드민 페이지 펀딩 수정/삭제 리스트 전체조회 -->
     <select id="findAllAdminFundingModify" resultMap="AdminFundingModifyDTOResultMap">
         select ft.id, mt.id as movie_id, mt.thumbnail, mt.movie_name from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
-        where curdate() between ft.release_date and ft.end_date;
+        where curdate() between ft.release_date and ft.end_date
+        limit #{pageSize} offset #{offset}
     </select>
 
     <resultMap id="AdminFundingModifyDTOResultMap" type="com.tenco.indiepicter.funding.response.AdminFundingModifyDTO">
