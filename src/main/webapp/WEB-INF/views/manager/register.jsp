@@ -1,72 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../manager/layout/manager_header.jsp" %>
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 페이지 - 등록 허가( register ) 완료!</title>
-    <!-- fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-                           integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-                           crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="/css/style.css" rel="stylesheet">
-
-
-</head>
-<body>
-
-	<div class="p_main">
-        <!--탑 시작-->
-        <div class="p_top">
-
-            <div class="p_title">
-                <div class="p_line"></div>
-                <a href=""><h2>IndiFlinker</h2></a>
-            </div>
-
-            <form id="search-form" action="/admin/funding-ready-list/search" method="get">
-                <div class="p_search">
-                    <button type="submit">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                    <input type="text" name="keyword" placeholder="검색 하기">
-                </div>
-            </form>
-        </div>
-        <!--탑 끝-->
-
-        <!--컨테이너1 시작-->
+<!--컨테이너1 시작-->
+<div class="p_flex_center">
+    <div class="p_main">
         <div class="p_container1">
-
             <div class="p_section1">
-                <div class="p_dashboard">
-                    <i class="fa-solid fa-table-cells-large"></i>
-                    <a href="">대시보드</a>
-                </div>
-            </div>
-
-            <div class="p_section2">
-                <h3>영화</h3>
-                <ul>
+                <div class="p_section_title">영화</div>
+                <ul class="p_section_ul">
                     <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/funding-ready-list">펀딩 등록 승인</a></li>
                     <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/funding/confirm">펀딩 현황 확인</a></li>
-                    <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/funding-management">펀딩 수정 / 종료</a></li>
+                    <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/funding-management">펀딩 수정 · 종료</a></li>
                 </ul>
                 <div class="p_line"></div>
             </div>
 
-            <div class="p_section3">
-                <h3>회원</h3>
-                <ul>
+            <div class="p_section2">
+                <div class="p_section_title">회원</div>
+                <ul class="p_section_ul">
                     <li><i class="fa-solid fa-ticket-simple p_icon1"></i><a href="/admin/invitation">VIP 초청권 발급</a></li>
                     <li><i class="fa-solid fa-user p_icon2"></i><a href="/admin/user-management">일반 회원 관리</a></li>
                     <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/vip-management">VIP 회원 관리</a></li>
@@ -75,68 +27,71 @@
                 <div class="p_line"></div>
             </div>
 
-            <div class="p_section4">
-                <h3>기간 설정</h3>
-                <ul>
-                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/movie-open/setting">온라인 상영 기간 설정/채팅 오픈 시간 설정</a></li>
+            <div class="p_section3">
+                <div class="p_section_title">기간 설정</div>
+                <ul class="p_section_ul">
+                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/movie-open/setting">온라인 상영 기간 · 채팅 오픈 설정</a></li>
                     <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/off-movie-open/setting">오프라인 상영 기간 설정</a></li>
                 </ul>
                 <div class="p_line"></div>
             </div>
-
         </div>
         <!--컨테이너1 끝-->
-
-
-
         <!--컨테이너2 시작-->
         <div class="p_register_container2">
-            <div class="j_font_style">
-                <h3>펀딩 등록 승인</h3>
+            <div class="p_container_title">
+                <p>펀딩 등록 승인</p>
             </div>
-            <div class="p_section1" id="data-container">
+            <form id="search-form" action="/admin/funding-ready-list/search" method="get">
+                <div class="p_search">
+                    <input type="text" name="keyword" placeholder="검색 하기">
+                    <button type="submit" class="p_search_button">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </form>
+            <div class="p_movie_form" id="movie_container">
                 <c:forEach var="fundingReady" items="${fundingReadyDTOs}" varStatus="status">
-                    <div class="p_menu1 p_custom_margin_bottom">
+                    <div class="p_movie_card">
                         <img src="${fundingReady.thumbnail}" alt="영화 사진">
-                        <p>영화 제목 : ${fundingReady.movieName}</p>
-                        <p>영화 감독 : ${fundingReady.director}</p>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#j_fund_modal" data-id="${fundingReady.fundingReadyId}"
-                        data-name="${fundingReady.movieName}">
+                        <p class="p_movie_title">${fundingReady.movieName}</p>
+                        <p class="p_movie_director">감독 : ${fundingReady.director}</p>
+                        <button type="button" class="p_movie_card_button" data-bs-toggle="modal" data-bs-target="#j_fund_modal" data-id="${fundingReady.fundingReadyId}"
+                                data-name="${fundingReady.movieName}">
                             영화 등록 하기
                         </button>
                     </div>
                 </c:forEach>
             </div>
-                <div class="modal" id="j_fund_modal">
-                    <div class="modal-dialog" style="max-width: none; width: 70%" >
-                        <input type="hidden" id="original">
-                        <div class="modal-content">
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="modal_title">Modal Heading</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div>
-                            <!-- Modal body -->
-                            <div class="modal-body">
-                                <iframe id="fund_frame" style="width: 100%; height: 100%;
-                              border: none;">대체 내용</iframe>
-                            </div>
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" id="auth_button" onclick="AuthorizationFunding()">등록 승인</button>
-                                <button type="button" class="btn btn-danger" style="background-color: #ea6161" data-bs-dismiss="modal">Close</button>
-                            </div>
+            <div class="modal" id="j_fund_modal">
+                <div class="modal-dialog" style="max-width: none; width: 70%" >
+                    <input type="hidden" id="original">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="modal_title">Modal Heading</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <iframe id="fund_frame" style="width: 100%; height: 100%;
+                          border: none;">대체 내용</iframe>
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" id="auth_button" onclick="AuthorizationFunding()">등록 승인</button>
+                            <button type="button" class="btn btn-danger" style="background-color: #ea6161" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
-                <input type="hidden" id="hidden_id">
             </div>
-
+            <input type="hidden" id="hidden_id">
         </div>
-    <div>
-        <button id="scrollToTopBtn"><img src="/images/icons/upArrow.gif" class="j_up_button"></button>
+        <div>
+            <button id="scrollToTopBtn"><img src="/images/icons/upArrow.gif" class="j_up_button"></button>
+        </div>
     </div>
-
+</div>
 
 <script>
 
@@ -227,17 +182,18 @@
 
                     // newData를 순회하며 DOM에 추가
                     newData.forEach((data) => {
-                        var newElement = '<div class="p_menu1 p_custom_margin_bottom">' +
+                        var newElement = '<div class="p_movie_card">' +
                             '<img src="' + data.thumbnail + '" alt="영화 사진">' +
-                            '<p>영화 제목 : ' + data.movieName + '</p>' +
-                            '<p>영화 감독 : ' + data.director + '</p>' +
-                            '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#j_fund_modal" data-id="' + data.fundingReadyId + '" data-name="' + data.movieName + '">' +
+                            '<p class="p_movie_title">' + data.movieName + '</p>' +
+                            '<p class="p_movie_director">감독 : ' + data.director + '</p>' +
+                            '<button type="button" class="p_movie_card_button" data-bs-toggle="modal" data-bs-target="#j_fund_modal" data-id="' + data.fundingReadyId + '" data-name="' + data.movieName + '">' +
                             '영화 등록 하기' +
                             '</button>' +
                             '</div>';
 
                         // 데이터를 추가할 컨테이너 선택
-                        var container = $('#data-container');
+                        var container = $('#movie_container');
+                        console.log("가져옴");
 
                         // 컨테이너에 새로운 요소 추가
                         container.append(newElement);
