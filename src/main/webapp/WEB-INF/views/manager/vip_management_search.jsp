@@ -42,7 +42,6 @@
                     <input type="text" name="keyword" placeholder="검색 하기">
                 </div>
             </form>
-
             <div class="p_inform">
                 <a href=""><i class="fa-regular fa-bell"></i></a>
             </div>
@@ -145,7 +144,7 @@
 
                     <c:otherwise>
                         <%-- 이전을 누르면 컨트롤러에 현재 페이지보다 1 작은 페이지로 요청 --%>
-                        <a href="/admin/vip-management?page=${paging.page-1}">[이전]</a>
+                        <a href="/admin/vip-management?page=${paging.page-1}&keyword=${param.keyword}">[이전]</a>
                     </c:otherwise>
                 </c:choose>
 
@@ -159,7 +158,7 @@
 
                         <c:otherwise>
                             <%-- 다른 페이지 이동이 필요할때 컨트롤러에 요청 --%>
-                            <a href="/admin/vip-management?page=${i}">${i}</a>
+                            <a href="/admin/vip-management?page=${i}&keyword=${param.keyword}">${i}</a>
                         </c:otherwise>
                     </c:choose>
                 </c:forEach>
@@ -171,7 +170,7 @@
                     </c:when>
                     <%-- 다음을 누르면 현재 페이지보다 1 큰 페이지로 요청 --%>
                     <c:otherwise>
-                        <a href="/admin/vip-management?page=${paging.page+1}">[다음]</a>
+                        <a href="/admin/vip-management?page=${paging.page+1}&keyword=${param.keyword}">[다음]</a>
                     </c:otherwise>
                 </c:choose>
             </div>

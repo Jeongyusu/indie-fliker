@@ -7,10 +7,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 페이지 - VIP회원 관리 ( vip_management ) 완료!</title>
+    <title>관리자 페이지 - 초청권( invitation ) 완료!</title>
     
     <!-- style.css와 연결 -->
-    <link rel="stylesheet" href="/CSS/png_style.css">
+    <link href="/css/png_style.css" rel="stylesheet">
     
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -21,6 +21,11 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">
+
 
 </head>
 <body>
@@ -34,12 +39,12 @@
                 <a href=""><h2>IndiFlinker</h2></a>
             </div>
 
-            <form id="search-form" action="/admin/vip/search" method="get">
+            <form id="search-form" action="/admin/invitation/search" method="get">
                 <div class="p_search">
                     <button type="submit">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
-                    <input type="text" name="keyword" placeholder="검색 하기">
+                    <input id=keyword_value type="text" name="keyword" placeholder="검색 하기">
                 </div>
             </form>
 
@@ -94,9 +99,9 @@
         <!--컨테이너1 끝-->
 
         <!--컨테이너2 시작-->
-        <div class="p_vipmanagement_container2">
+        <div class="p_invitation_container2">
             <div class="p_title">
-                <h3>VIP회원 관리</h3>
+                <h3>VIP 초청권 발급</h3>
             </div>
             <div class="p_filter">
                 <a href=""><button><span>Filter</span></button></a>
@@ -112,10 +117,10 @@
                             <th>회원 닉네임</th>
                             <th>회원 가입 날짜</th>
                             <th>회원 등급</th>
-                            <th>회원 삭제</th>
+                            <th>초청권 발급</th>
                         </tr>
                     </thead>
-                    <c:forEach var="user" items="${adminVipPagingLists}">
+                    <c:forEach var="user" items="${adminInvitationPagingLists}">
                     <c:set var="i" value="${i+1}"/>
                     <tbody>
                         <tr>
@@ -129,14 +134,41 @@
                             </td>
                             <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${user.createdAt}"/></td>
                             <td>${user.grade}</td>
-                            <td><a href="/admin/vip-management-isWithdrawal/${user.id}"><button>삭제</button></a></td>
+                            <td><button id="${user.id}" name="${user.id}" onclick="openModal()">발급하기</button></td>
                         </tr>
                     </tbody>
+                        <!----------------------------------- 모달 ------------------------------------------------>
+                        <!-- 모달 백그라운드 -->
+                        <div class="p_modal-background" id="modalBackground" onclick="closeModal()"></div>
+
+                        <!-- 모달 -->
+                        <div class="p_modal" id="myModal">
+                            <img src="/images/logo/IndieFliker.png" alt="">
+                            <h2>초청권 발급</h2>
+                            <button class="close" onclick="closeModal()">닫기</button>
+                            <div class="modal_from">
+                                <form action="/admin/vip-issued" method="post">
+                                    <input type="hidden" id="userId" name="userId" value ="${user.id}">
+                                    <label>날짜 및 시간 선택</label><br>
+                                    <input type="text" id="movieTime" name="movieTime" placeholder="날짜 및 시간 선택"><br>
+                                    <label>초청권 코드</label><br>
+                                    <input type="text" id="invitationCode" name="invitationCode" placeholder="초청권 코드 입력"><br>
+                                    <label>영화 제목</label><br>
+                                    <input type="text" id="movieName" name="movieName" placeholder="영화 제목 입력"><br>
+                                    <label>극장 이름</label><br>
+                                    <input type="text" id="theaterName" name="theaterName" placeholder="극장 이름 입력"><br>
+                                    <label>극장 주소</label><br>
+                                    <input type="text" id="theaterAddress" name="theaterAddress" placeholder="극장 주소 입력"><br>
+                                    <button class="submit" type="submit">발급 하기</button>
+                                </form>
+                            </div>
+                        </div>
+                        <!----------------------------------- 모달 ------------------------------------------------>
                     </c:forEach>
                 </table>
             </div>
             
-            <div class="p_vipmanagement_bottom">
+            <div class="p_invitation_bottom">
                 <c:choose>
                     <%-- 현재 페이지가 1페이지이면 이전 글자만 보여줌 --%>
                     <c:when test="${paging.page <= 1}">
@@ -145,7 +177,7 @@
 
                     <c:otherwise>
                         <%-- 이전을 누르면 컨트롤러에 현재 페이지보다 1 작은 페이지로 요청 --%>
-                        <a href="/admin/vip-management?page=${paging.page-1}">[이전]</a>
+                        <a href="/admin/invitation?page=${paging.page-1}&keyword=${param.keyword}">[이전]</a>
                     </c:otherwise>
                 </c:choose>
 
@@ -159,7 +191,7 @@
 
                         <c:otherwise>
                             <%-- 다른 페이지 이동이 필요할때 컨트롤러에 요청 --%>
-                            <a href="/admin/vip-management?page=${i}">${i}</a>
+                            <a href="/admin/invitation?page=${i}&keyword=${param.keyword}">${i}</a>
                         </c:otherwise>
                     </c:choose>
                 </c:forEach>
@@ -171,15 +203,64 @@
                     </c:when>
                     <%-- 다음을 누르면 현재 페이지보다 1 큰 페이지로 요청 --%>
                     <c:otherwise>
-                        <a href="/admin/vip-management?page=${paging.page+1}">[다음]</a>
+                        <a href="/admin/invitation?page=${paging.page+1}&keyword=${param.keyword}">[다음]</a>
                     </c:otherwise>
                 </c:choose>
             </div>
-        
-        </div>
 
+        </div>
         <!--컨테이너2 끝-->
-        
     </div>
+
+    <!--------------------------------- 모달 버튼 ---------------------------------------------->
+    <script>
+        // 모달 열기
+        function openModal() {
+            document.getElementById('myModal').style.display = 'block';
+            document.getElementById('modalBackground').style.display = 'block';
+        }
+
+        // 모달 닫기
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+            document.getElementById('modalBackground').style.display = 'none';
+        }
+    </script>
+    <!--------------------------------- 모달 버튼 ---------------------------------------------->
+    <!--------------------------------- 달력 -------------------------------------------------->
+    <script>
+        let choiceDay = document.getElementById('movieTime');
+        flatpickr(choiceDay, {
+            enableTime: true,
+            dateFormat: "Y-m-d H:i",
+        });
+
+        // 현재 URL에서 쿼리스트링을 가져오기
+        function getQueryStringValue(key) {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            return urlParams.get(key);
+        }
+
+        let keyword = "";
+
+        window.onload = function () {
+            // 영화 등급 이미지 로드
+            onLoadImg();
+
+            console.log("온로드 실행");
+            // genre를 현재 URL의 쿼리스트링 키 값을 검색해서 가져오기
+            keyword = getQueryStringValue('keyword');
+            console.log("keyword: " + keyword);
+            if(keyword === null){
+                keyword = "";
+            }
+        };
+
+    </script>
+    <!--------------------------------- 달력 -------------------------------------------------->
     
 </body>
+
+
+
