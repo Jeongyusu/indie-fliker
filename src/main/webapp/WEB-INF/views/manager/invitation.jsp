@@ -47,14 +47,7 @@
                     <input type="text" name="keyword" placeholder="검색 하기">
                 </div>
             </form>
-<<<<<<< HEAD
-=======
 
-<%--            <div class="p_inform">--%>
-<%--                <a href=""><i class="fa-regular fa-bell"></i></a>--%>
-<%--            </div>--%>
-
->>>>>>> dev
         </div>
         <!--탑 끝-->
 
