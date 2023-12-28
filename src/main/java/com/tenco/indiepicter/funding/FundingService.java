@@ -164,8 +164,9 @@ public class FundingService {
         return resultRowCount;
     }
     //어드민 페이지 전체 펀딩 수정/삭제 리스트 조회
-    public List<AdminFundingModifyDTO> findAllAdminFundingModify(){
-        return fundingRepository.findAllAdminFundingModify();
+    public List<AdminFundingModifyDTO> findAllAdminFundingModify(Integer page, Integer pageSize){
+        Integer offset = page * pageSize - pageSize;
+        return fundingRepository.findAllAdminFundingModify(pageSize, offset);
     }
 
     //어드민 페이지 온라인 상영기간 설정 리스트 조회

@@ -41,4 +41,25 @@ public class Script {
         sb.append("</script>");
         return sb.toString();
     }
+
+    // 경고창 + 페이지 리로드
+    public static String reload(String msg) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<script>");
+        sb.append("alert('" + msg + "');");
+        sb.append("location.reload()");
+        sb.append("</script>");
+
+        return sb.toString();
+    }
+
+    // 경고창만
+    public static String alertOnly(String msg) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<script>");
+        sb.append("alert('" + msg + "');");
+        sb.append("</script>");
+        return sb.toString();
+    }
+
 }

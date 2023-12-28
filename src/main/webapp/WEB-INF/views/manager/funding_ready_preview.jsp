@@ -300,7 +300,7 @@
                                 </c:otherwise>
                             </c:choose>
                         </button>
-                        <button type="button" class="buy_button">펀딩하기</button>
+                        <button type="button" class="j_buy_button">펀딩하기</button>
                     </div>
 
                 </div>

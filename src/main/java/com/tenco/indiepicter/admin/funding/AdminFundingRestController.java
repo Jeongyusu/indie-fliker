@@ -10,6 +10,7 @@ import com.tenco.indiepicter.funding.FundingService;
 import com.tenco.indiepicter.funding.fundingready.FundingReady;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyRepository;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyService;
+import com.tenco.indiepicter.funding.response.AdminFundingModifyDTO;
 import com.tenco.indiepicter.funding.response.AdminFundingProceedingDTO;
 import com.tenco.indiepicter.funding.response.BannerDTO;
 
@@ -128,5 +129,13 @@ public class AdminFundingRestController {
         log.debug(page.toString());
         List<FundingReadyDTO> fundingReadyDTOs = fundingReadyService.findAllFundingReady(page, 8);
         return ResponseEntity.ok().body(ApiUtils.success(fundingReadyDTOs));
+    }
+
+    @GetMapping ("/funding/modify/more-data")
+    public ResponseEntity<?> modifyMoreData(@RequestParam(name = "page") Integer page) {
+        log.debug("-----나여기용------");
+        log.debug(page.toString());
+        List<AdminFundingModifyDTO> adminFundingModifyDTOs = fundingService.findAllAdminFundingModify(page, 8);
+        return ResponseEntity.ok().body(ApiUtils.success(adminFundingModifyDTOs));
     }
 }

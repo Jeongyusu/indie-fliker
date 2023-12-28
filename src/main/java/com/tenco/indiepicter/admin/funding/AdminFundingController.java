@@ -27,8 +27,8 @@ public class AdminFundingController {
 
     // 펀딩 등록 / 삭제 페이지 호출
     @GetMapping("/funding-management")
-    public String funding(Model model) {
-        List<AdminFundingModifyDTO> adminFundingModifyDTOs = fundingService.findAllAdminFundingModify();
+    public String funding(@RequestParam(name="page", defaultValue = "1") Integer page ,Model model) {
+        List<AdminFundingModifyDTO> adminFundingModifyDTOs = fundingService.findAllAdminFundingModify(page, 8);
         model.addAttribute("adminFundingModifyDTOs", adminFundingModifyDTOs);
         return "manager/update_delete";
     }
@@ -72,7 +72,7 @@ public class AdminFundingController {
     @PostMapping("/funding/update")
     public @ResponseBody String saveFunding(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO){
         fundingService.updateById(adminRequestFundingUpdateFormDTO);
-        return Script.href("/admin/funding-management", "펀딩 업데이트 성공!");
+        return Script.href("/admin/funding/detail/" + adminRequestFundingUpdateFormDTO.getFundingId(),"펀딩 업데이트 성공!");
     }
 
     @GetMapping("/funding-management/search")
