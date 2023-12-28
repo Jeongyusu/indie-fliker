@@ -40,7 +40,7 @@ $(document).ready(function () {
 
         console.log("값 검증 확인" + userId + '펀딩아이디' + fundingId)
         // 클릭된 버튼 안에서 .scrap_icon 찾기
-        var scrapIcon = $(this).children(".scrap_icon");
+        var scrapIcon = $(this).find(".scrap_icon");
 
         // AJAX POST 요청
         var sendData = {
