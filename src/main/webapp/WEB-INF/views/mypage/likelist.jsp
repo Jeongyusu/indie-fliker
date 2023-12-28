@@ -35,7 +35,6 @@
     </div>
 </div>
 
-
-<script src="../../../../js/lsr/likelist.js"></script>
+<script src="../../../../js/khy/likelist.js"></script>
 
 <%@ include file="../layout/footer.jsp" %>

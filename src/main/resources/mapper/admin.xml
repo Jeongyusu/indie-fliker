@@ -69,5 +69,35 @@
         select * from review_tb where user_id = #{userId} and movie_id = #{movieId}
     </select>
 
+    <!-- 초청권관리 + 검색어 조회 -->
+    <select id="findByAllPagingListsAboutKeyword" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
+        select *
+        from user_tb ut
+        where ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%')
+        order by created_at desc
+        limit #{pagingParams.pageStart}, #{pagingParams.pageLimit}
+    </select>
+
+    <!-- VIP 회원 관리 검색어 페이징 조회 -->
+    <select id="findByAdminVipPagingKeywordLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
+        select *
+        from user_tb ut
+        where grade not in('NORMAL')
+        and ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%')
+        order by created_at desc
+        limit #{pagingParams.pageStart}, #{pagingParams.pageLimit}
+    </select>
+
+    <!-- 일반 회원 관리 검색어 페이징 조회 -->
+    <select id="findByAdminNormalPagingKeywordLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
+        select *
+        from user_tb ut
+        where grade not in('VIP')
+            and ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%')
+        order by created_at desc
+        limit #{pagingParams.pageStart}, #{pagingParams.pageLimit}
+    </select>
+
+
 
 </mapper>

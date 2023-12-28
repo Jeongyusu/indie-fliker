@@ -12,7 +12,7 @@
                 <div class="pic_wrap">
                     <div id="pic_container" class="k_funding_pic_title">영화 대표 사진 <span class="k_star_class">*</span></div>
                     <label id="basicPic" for="thumbnail" class="k_funding_upload_select_photo_pic2">
-                            <i id="fa-camera" class="fas fa-camera"></i>
+                        <img src="/images/icons/add_camera.png" class="k_camera_icon">
                             사진 선택 <span class="k_star_class">*</span></label>
                     <input type="file" id="thumbnail" name="movieThumbnail" accept="image/*" onchange="changeUserPic(this.id, 'basicPic', 'k_funding_thumbnail_style', event)" class="k_funding_upload_label">
                 </div>
@@ -132,7 +132,7 @@
 
             <div id="pic_plus" class="k_funding_upload_container_four">
                     <label id="movie_pic" for="movie_photo" class="k_funding_upload_select_photo_pic">
-                        <i class="fas fa-camera"></i>
+                        <img src="/images/icons/add_camera.png" class="k_camera_icon">
                         사진 선택 <span class="k_star_class">*</span></label>
                     <input type="file" id="movie_photo" name="moviePhotos" accept="image/*" onchange="changeUserPic(this.id, 'movie_pic', 'k_funding_movie_pic_style', event)" class="k_funding_upload_label">
                     <br>
@@ -157,7 +157,7 @@
                 </div>
                 <div class="k_funding_upload_container_four">
                         <label id="director_pic" for="director_photo" class="k_funding_upload_select_photo_pic">
-                            <i class="fas fa-camera"></i>
+                            <img src="/images/icons/add_camera.png" class="k_camera_icon">
                             사진 선택 <span class="k_star_class">*</span>
                         </label>
                         <input type="file" id="director_photo" name="directorPhoto" accept="image/*" onchange="changeUserPic(this.id, 'director_pic', 'k_funding_movie_director_style', event)" class="k_funding_upload_label">
@@ -367,7 +367,8 @@
         newLabel.setAttribute("id", "movie" + photoCount);
         newLabel.setAttribute("for", "photo" + photoCount);
         newLabel.className = "k_funding_upload_select_photo_pic_receive";
-        newLabel.innerHTML = '<i class="fas fa-camera"></i><span class="k_star_class"></span>';
+        newLabel.innerHTML = '<img src="/images/icons/add_camera.png" class="k_camera_icon">' +
+            '<span class="k_star_class"></span>';
 
         // 새로운 인풋 필드 생성
         let newInput = document.createElement("input");

@@ -11,6 +11,8 @@ import java.util.List;
 public class OfflineMovieDetailDTO {
     // 펀딩 ID(PK)
     private int fundingId;
+    // 영화 ID
+    private int movieId;
     // 펀딩 대표 사진
     private String movieThumbnail;
     // 개봉 여부

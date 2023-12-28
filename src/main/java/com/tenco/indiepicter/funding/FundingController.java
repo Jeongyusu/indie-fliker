@@ -87,12 +87,12 @@ public class FundingController {
     public String detailFunding(@PathVariable Integer id, Model model){
         User pricipal = (User) session.getAttribute(Define.PRINCIPAL);
         FundingDetailDTO fundingDetailDTO = fundingService.detailFunding(id);
-        boolean isLiked = scrabService.checkIsLiked(pricipal.getId(), id); // 추후 1을 sessionUser.getId()로 변경
-        System.out.println("=============================");
-        System.out.println("isLiked : " + isLiked);
-        System.out.println("=============================");
-        fundingDetailDTO.setLiked(isLiked);
+        boolean isLiked = scrabService.checkIsLiked(1, id); // 추후 1을 sessionUser.getId()로 변경
+        List<FundingDTO> moviesByMainDTOs = fundingService.moviesByMain(1, 10);
+
         model.addAttribute("fundingDetailDTO", fundingDetailDTO);
+        model.addAttribute("moviesByMainDTOs", moviesByMainDTOs);
+        model.addAttribute("isLiked", isLiked);
         return "fund/on_detail";
     }
 
@@ -100,6 +100,8 @@ public class FundingController {
     public String detailOfflineMovie(@PathVariable Integer id, Model model){
         OfflineMovieDetailDTO offlineMovieDetailDTO = fundingService.detailOfflineMovie(id);
         model.addAttribute("offlineMovieDetailDTO", offlineMovieDetailDTO);
+        List<FundingDTO> moviesByMainDTOs = fundingService.moviesByMain(1, 10);
+        model.addAttribute("moviesByMainDTOs", moviesByMainDTOs);
         return "fund/off_detail";
     }
 

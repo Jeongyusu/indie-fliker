@@ -57,7 +57,7 @@
             <h3>영화</h3>
             <ul>
                 <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/funding-ready-list">펀딩 등록 승인</a></li>
-                <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/funding-info">펀딩 현황 확인</a></li>
+                <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/funding/confirm">펀딩 현황 확인</a></li>
                 <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/funding-management">펀딩 수정 / 종료</a></li>
             </ul>
             <div class="p_line"></div>
@@ -66,27 +66,22 @@
         <div class="p_section3">
             <h3>회원</h3>
             <ul>
-                <li><i class="fa-solid fa-ticket-simple p_icon1"></i><a href="/manager/invitation">VIP 초청권 발급</a></li>
-                <li><i class="fa-solid fa-user p_icon2"></i><a href="/manager/user_management">회원 관리</a></li>
-                <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/manager/vip_management">회원 관리</a></li>
+                <li><i class="fa-solid fa-ticket-simple p_icon1"></i><a href="/admin/invitation">VIP 초청권 발급</a></li>
+                <li><i class="fa-solid fa-user p_icon2"></i><a href="/admin/user-management">일반 회원 관리</a></li>
+                <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/vip-management">VIP 회원 관리</a></li>
+                <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/grade-update">회원 등급 수정</a></li>
             </ul>
             <div class="p_line"></div>
         </div>
 
         <div class="p_section4">
-            <h3>온라인 상영 가능 영화</h3>
+            <h3>기간 설정</h3>
             <ul>
                 <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/movie-open/setting">온라인 상영 기간 설정/채팅 오픈 시간 설정</a></li>
-                <li><i class="fa-solid fa-comment p_icon2"></i><a href="/admin/funding/off-movie-open/setting">오프라인 상영 기간 설정</a></li>
-                <li><i class="fa-solid fa-note-sticky p_icon3"></i><a href="/manager/review">감상평 관리</a></li>
+                <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/off-movie-open/setting">오프라인 상영 기간 설정</a></li>
             </ul>
             <div class="p_line"></div>
         </div>
-
-        <!-- <div class="p_section5">
-            <i class="fa-solid fa-gear p_icon1"></i>
-            <a href="">환경설정</a>
-        </div> -->
 
     </div>
     <!--컨테이너1 끝-->
@@ -115,7 +110,7 @@
         </div>
         <!--컨테이너2 끝-->
 
-        <div class="p_update_delete_bottom">
+        <div class="p_update_delete_bottom" style="display: none">
             <nav aria-label="...">
                 <ul class="pagination">
                     <li class="page-item disabled">

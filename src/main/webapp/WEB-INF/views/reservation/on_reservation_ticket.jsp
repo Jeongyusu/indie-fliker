@@ -3,8 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../layout/header.jsp" %>
 <body class="l_body">
-    <main>
-        <div class="n_custom_fluid">
+<div class="n_flex_center">
+        <div class="n_thousand_body n_body_margin">
             <div class="row justify-content-center">
                 <div id="n_reservation_ticket">
                         <div class="n_movie_img">
@@ -63,6 +63,6 @@
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 <!-- footer -->
 <%@ include file="../layout/footer.jsp" %>

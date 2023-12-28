@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../layout/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -40,10 +39,14 @@
             <a href=""><h2>IndiFlinker</h2></a>
         </div>
 
-        <div class="p_search">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="검색 하기">
-        </div>
+        <form id="search-form" action="/admin/grade/search" method="get">
+            <div class="p_search">
+                <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <input type="text" name="keyword" placeholder="검색 하기">
+            </div>
+        </form>
 
         <div class="p_inform">
             <a href=""><i class="fa-regular fa-bell"></i></a>
@@ -65,9 +68,9 @@
         <div class="p_section2">
             <h3>영화</h3>
             <ul>
-                <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/register">영화 등록 허가</a></li>
-                <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/check">펀딩 현황 확인</a></li>
-                <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/update-delete">펀딩 등록 / 삭제</a></li>
+                <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/funding-ready-list">펀딩 등록 승인</a></li>
+                <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/funding/confirm">펀딩 현황 확인</a></li>
+                <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/funding-management">펀딩 수정 / 종료</a></li>
             </ul>
             <div class="p_line"></div>
         </div>
@@ -84,19 +87,13 @@
         </div>
 
         <div class="p_section4">
-            <h3>온라인 상영 가능 영화</h3>
+            <h3>기간 설정</h3>
             <ul>
-                <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/playday">온라인 오픈 기간 설정</a></li>
-                <li><i class="fa-solid fa-comment p_icon2"></i><a href="/admin/chatting">채팅방 오픈</a></li>
-                <li><i class="fa-solid fa-note-sticky p_icon3"></i><a href="/admin/review">감상평 관리</a></li>
+                <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/movie-open/setting">온라인 상영 기간 설정/채팅 오픈 시간 설정</a></li>
+                <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/off-movie-open/setting">오프라인 상영 기간 설정</a></li>
             </ul>
             <div class="p_line"></div>
         </div>
-
-        <%--            <div class="p_section5">--%>
-        <%--                <i class="fa-solid fa-gear p_icon1"></i>--%>
-        <%--                <a href="">환경설정</a>--%>
-        <%--            </div>--%>
 
     </div>
     <!--컨테이너1 끝-->

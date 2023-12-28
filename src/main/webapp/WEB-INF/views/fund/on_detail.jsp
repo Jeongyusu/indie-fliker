@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <%@ include file="../layout/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<main>
-    <div class="n_custom_container_fluid">
+
+<body class="l_body">
+<div class="n_flex_center">
+    <div class="n_thousand_add_body">
         <div class="body n_body">
             <div class="row justify-content-center n_row">
                 <!-- 펀딩 영화 상세 내용-->
-                <div class="col-sm-7">
+                <div class="n_detail_info">
                     <!-- 펀딩 영화 대표 이미지 -->
                     <div class="n_first_movie_img">
                         <img id="n_movie_img" src="${fundingDetailDTO.movieThumbnail}">
@@ -17,18 +19,18 @@
                         <div>
                             <ul>
                                 <li onclick="selectFund()">
-                                    <span class="n_fund" aria-hidden="true">
-                                        <img id="n_fund"
-                                             src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuMDMxMjUgMjguODI0SDI1Ljk1OTJDMjcuMDU1MyAyOC44MjQgMjcuOTU5MiAyNy45MiAyNy45NTEyIDI2LjgyNFYxMy41SDI5VjlDMjkgNy44OTU0MyAyOC4xMDQ2IDcgMjcgN0g1QzMuODk1NDMgNyAzIDcuODk1NDMgMyA5VjEzLjUwMDFINC4wMzEyNVYyNi44MjRDNC4wMzEyNSAyNy45MjggNC45MjcyNSAyOC44MjQgNi4wMzEyNSAyOC44MjRaIiBmaWxsPSIjQjlFRUVFIi8+CjxwYXRoIGQ9Ik0xNiA2LjVDMTguMDMzIDQuMDE4NDkgMjAuMTIxMyAyLjcxMTEzIDIxLjExMTcgMi40NjM1M0MyMi42NDc3IDIuMDcxNTMgMjMuNzE5NyAzLjc0MzUzIDIyLjY1NTcgNC45MTE1M0MyMS45MjYxIDUuNzExNzYgMjAuODc5IDYuNDI0MDQgMTkuNSA2Ljg2NSIgc3Ryb2tlPSIjMjEyNTI5IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiLz4KPHBhdGggZD0iTTE2IDYuNUMxMy45MzY5IDMuOTcyMTcgMTEuODc3NiAyLjcxMzA5IDEwLjg4NjEgMi40NjM1M0M5LjM1MDE0IDIuMDcxNTMgOC4yNzgxNCAzLjc0MzUzIDkuMzQyMTQgNC45MTE1M0M5LjkwNzcyIDUuNTMxODUgMTEuMzMyNiA2LjMzMTg3IDEyLjUgNi44MDk4MiIgc3Ryb2tlPSIjMjEyNTI5IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiLz4KPHBhdGggZD0iTTQuMDMxMjUgMTMuNVYyNi44MjRDNC4wMzEyNSAyNy45MjggNC45MjcyNSAyOC44MjQgNi4wMzEyNSAyOC44MjRIMjUuOTU5MkMyNy4wNTUyIDI4LjgyNCAyNy45NTkyIDI3LjkyIDI3Ljk1MTIgMjYuODI0VjEzLjQ5OTkiIHN0cm9rZT0iIzIxMjUyOSIvPgo8cGF0aCBkPSJNMjguNzgzIDEzLjU2NzhWOC44Mzk4NEMyOC43ODMgNy43MzU4NCAyNy44ODcgNi44Mzk4NCAyNi43ODMgNi44Mzk4NEg1LjIwNzAzQzQuMTAzMDMgNi44Mzk4NCAzLjIwNzAzIDcuNzM1ODQgMy4yMDcwMyA4LjgzOTg0VjEzLjU2NzhIMjguNzgzWiIgc3Ryb2tlPSIjMjEyNTI5Ii8+CjxwYXRoIGQ9Ik0xNS45NzQ2IDYuNzUxOTVWMjguODI0IiBzdHJva2U9IiMyMTI1MjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8L3N2Zz4K">
-                                    </span>
-                                    <span>펀딩</span>
+                                        <span class="n_fund" aria-hidden="true">
+                                            <img id="n_fund"
+                                                 src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuMDMxMjUgMjguODI0SDI1Ljk1OTJDMjcuMDU1MyAyOC44MjQgMjcuOTU5MiAyNy45MiAyNy45NTEyIDI2LjgyNFYxMy41SDI5VjlDMjkgNy44OTU0MyAyOC4xMDQ2IDcgMjcgN0g1QzMuODk1NDMgNyAzIDcuODk1NDMgMyA5VjEzLjUwMDFINC4wMzEyNVYyNi44MjRDNC4wMzEyNSAyNy45MjggNC45MjcyNSAyOC44MjQgNi4wMzEyNSAyOC44MjRaIiBmaWxsPSIjQjlFRUVFIi8+CjxwYXRoIGQ9Ik0xNiA2LjVDMTguMDMzIDQuMDE4NDkgMjAuMTIxMyAyLjcxMTEzIDIxLjExMTcgMi40NjM1M0MyMi42NDc3IDIuMDcxNTMgMjMuNzE5NyAzLjc0MzUzIDIyLjY1NTcgNC45MTE1M0MyMS45MjYxIDUuNzExNzYgMjAuODc5IDYuNDI0MDQgMTkuNSA2Ljg2NSIgc3Ryb2tlPSIjMjEyNTI5IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiLz4KPHBhdGggZD0iTTE2IDYuNUMxMy45MzY5IDMuOTcyMTcgMTEuODc3NiAyLjcxMzA5IDEwLjg4NjEgMi40NjM1M0M5LjM1MDE0IDIuMDcxNTMgOC4yNzgxNCAzLjc0MzUzIDkuMzQyMTQgNC45MTE1M0M5LjkwNzcyIDUuNTMxODUgMTEuMzMyNiA2LjMzMTg3IDEyLjUgNi44MDk4MiIgc3Ryb2tlPSIjMjEyNTI5IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiLz4KPHBhdGggZD0iTTQuMDMxMjUgMTMuNVYyNi44MjRDNC4wMzEyNSAyNy45MjggNC45MjcyNSAyOC44MjQgNi4wMzEyNSAyOC44MjRIMjUuOTU5MkMyNy4wNTUyIDI4LjgyNCAyNy45NTkyIDI3LjkyIDI3Ljk1MTIgMjYuODI0VjEzLjQ5OTkiIHN0cm9rZT0iIzIxMjUyOSIvPgo8cGF0aCBkPSJNMjguNzgzIDEzLjU2NzhWOC44Mzk4NEMyOC43ODMgNy43MzU4NCAyNy44ODcgNi44Mzk4NCAyNi43ODMgNi44Mzk4NEg1LjIwNzAzQzQuMTAzMDMgNi44Mzk4NCAzLjIwNzAzIDcuNzM1ODQgMy4yMDcwMyA4LjgzOTg0VjEzLjU2NzhIMjguNzgzWiIgc3Ryb2tlPSIjMjEyNTI5Ii8+CjxwYXRoIGQ9Ik0xNS45NzQ2IDYuNzUxOTVWMjguODI0IiBzdHJva2U9IiMyMTI1MjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8L3N2Zz4K">
+                                        </span>
+                                    <span style="font-size: 11px;">펀딩</span>
                                 </li>
                                 <li onclick="selectRefund()">
-                                    <span class="n_refund" aria-hidden="true">
-                                    <img id="n_refund"
-                                         src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iNy41IiB5PSI3LjUiIHdpZHRoPSIxNyIgaGVpZ2h0PSIxNyIgcng9IjEiIHN0cm9rZT0iIzIxMjUyOSIvPgo8cGF0aCBkPSJNMjIuMjc2NSA1LjMzNzIzTDIxLjUgMi40Mzk0NUwyNC4zOTc4IDEuNjYzIiBzdHJva2U9IiMyMTI1MjkiLz4KPHBhdGggZD0iTTE2IDEuNUM3Ljk5MTg3IDEuNSAxLjUgNy45OTE4NyAxLjUgMTZDMS41IDI0LjAwODEgNy45OTE4NyAzMC41IDE2IDMwLjVDMjQuMDA4MSAzMC41IDMwLjUgMjQuMDA4MSAzMC41IDE2QzMwLjUgMTAuNzM2OCAyNy42OTU4IDYuMTI4NTcgMjMuNSAzLjU4NzgyQzIzLjAxNzcgMy4yOTU3NSAyMi41MTcgMy4wMzEwMSAyMiAyLjc5NTczIiBzdHJva2U9IiMyMTI1MjkiLz4KPHBhdGggZD0iTTE0LjUgOFYxMUgxNy41VjgiIHN0cm9rZT0iIzIxMjUyOSIvPgo8L3N2Zz4K">
-                                    </span>
-                                    <span>환불</span>
+                                        <span class="n_refund" aria-hidden="true">
+                                        <img id="n_refund"
+                                             src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iNy41IiB5PSI3LjUiIHdpZHRoPSIxNyIgaGVpZ2h0PSIxNyIgcng9IjEiIHN0cm9rZT0iIzIxMjUyOSIvPgo8cGF0aCBkPSJNMjIuMjc2NSA1LjMzNzIzTDIxLjUgMi40Mzk0NUwyNC4zOTc4IDEuNjYzIiBzdHJva2U9IiMyMTI1MjkiLz4KPHBhdGggZD0iTTE2IDEuNUM3Ljk5MTg3IDEuNSAxLjUgNy45OTE4NyAxLjUgMTZDMS41IDI0LjAwODEgNy45OTE4NyAzMC41IDE2IDMwLjVDMjQuMDA4MSAzMC41IDMwLjUgMjQuMDA4MSAzMC41IDE2QzMwLjUgMTAuNzM2OCAyNy42OTU4IDYuMTI4NTcgMjMuNSAzLjU4NzgyQzIzLjAxNzcgMy4yOTU3NSAyMi41MTcgMy4wMzEwMSAyMiAyLjc5NTczIiBzdHJva2U9IiMyMTI1MjkiLz4KPHBhdGggZD0iTTE0LjUgOFYxMUgxNy41VjgiIHN0cm9rZT0iIzIxMjUyOSIvPgo8L3N2Zz4K">
+                                        </span>
+                                    <span style="font-size: 11px;">환불</span>
                                 </li>
                             </ul>
                         </div>
@@ -40,7 +42,7 @@
                     <!-- 펀딩 영화 정보 -->
                     <div id="n_movie_info">
                         <div>
-                            <h4>프로젝트 시나리오</h4>
+                            <h2>프로젝트 시나리오</h2>
                         </div>
                         <div class="n_movie_text">
                             <h3>시놉시스</h3>
@@ -52,136 +54,86 @@
                             <h3>연출의도</h3>
                             <p>
                                 ${fundingDetailDTO.directingIntension}
-
                             </p>
                         </div>
                         <div class="n_movie_img">
                             <h3>포토</h3>
-                            <c:forEach var="photo" items="${fundingDetailDTO.moviePhotos}" >
+                            <c:forEach var="photo" items="${fundingDetailDTO.moviePhotos}">
                                 <img src="${photo}">
                             </c:forEach>
                         </div>
                         <span id="n_toggle_more" style="display: none">
-                            <div class="n_movie_text">
-                                <h3>감독 작품 경력</h3>
-                                <img id="n_director_img" src="${fundingDetailDTO.directorPic}">
-                                <h5>${fundingDetailDTO.director}</h5>
-                                <p>
-                                    ${fundingDetailDTO.directorCareers}
-                                </p>
-                            </div>
-                            <div class="n_movie_text">
-                                <h3>영화제 상영 및 수상작</h3>
-                                <p>
-                                    ${fundingDetailDTO.directorAwardsFilm}
-                                </p>
-                            </div>
-                            <div class="n_movie_text">
-                                <h3>스태프</h3>
-                                <table class="table table-bordered">
-                                    <tbody>
-                                    <tr>
-                                        <th>감독</th>
-                                        <td>${fundingDetailDTO.director}</td>
-                                        <th>각본</th>
-                                        <td>${fundingDetailDTO.script}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>촬영</th>
-                                        <td>${fundingDetailDTO.filming}</td>
-                                        <th>조명</th>
-                                        <td>${fundingDetailDTO.lighting}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>미술</th>
-                                        <td>${fundingDetailDTO.art}</td>
-                                        <th>편집</th>
-                                        <td>${fundingDetailDTO.editing}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>사운드</th>
-                                        <td>${fundingDetailDTO.sound}</td>
-                                        <th>음악</th>
-                                        <td>${fundingDetailDTO.music}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>의상</th>
-                                        <td colspan="3">${fundingDetailDTO.clothes}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </span>
+                                <div class="n_movie_text">
+                                    <h3>감독 작품 경력</h3>
+                                    <img id="n_director_img" src="${fundingDetailDTO.directorPic}">
+                                    <h5>${fundingDetailDTO.director}</h5>
+                                    <p>
+                                        ${fundingDetailDTO.directorCareers}
+                                    </p>
+                                </div>
+                                <div class="n_movie_text">
+                                    <h3>영화제 상영 및 수상작</h3>
+                                    <p>
+                                        ${fundingDetailDTO.directorAwardsFilm}
+                                    </p>
+                                </div>
+                                <div class="n_movie_text">
+                                    <h3>스태프</h3>
+                                    <table class="table table-bordered n_staff_table">
+                                        <tbody>
+                                        <tr>
+                                            <th>감독</th>
+                                            <td>${fundingDetailDTO.director}</td>
+                                            <th>각본</th>
+                                            <td>${fundingDetailDTO.script}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>촬영</th>
+                                            <td>${fundingDetailDTO.filming}</td>
+                                            <th>조명</th>
+                                            <td>${fundingDetailDTO.lighting}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>미술</th>
+                                            <td>${fundingDetailDTO.art}</td>
+                                            <th>편집</th>
+                                            <td>${fundingDetailDTO.editing}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>사운드</th>
+                                            <td>${fundingDetailDTO.sound}</td>
+                                            <th>음악</th>
+                                            <td>${fundingDetailDTO.music}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>의상</th>
+                                            <td colspan="3">${fundingDetailDTO.clothes}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                             </span>
                         <button id="n_toggle_button" onclick="toggleMore()">프로젝트 더 보기</button>
-                        <input type="hidden" id="k_user_id" value="${sessionScope.principal.id}">
                         <input type="hidden" id="k_funding_id" value="${fundingDetailDTO.fundingId}">
-
                     </div>
                     <!-- 기대되는 영화 목록 -->
                     <div id="n_more_movie">
                         <h4>기대되는 좋은 영화들</h4>
-                        <div class="row n_movie_list">
-                            <div class="n_more_movie">
-                                <img src="/images/moviePoster/the_boy_poster1.jpg">
-                                <p class="n_achieve">70%달성</p>
-                                <p class="n_title">3월의 휴가</p>
-                                <p class="n_content">“따님은 어머님을 보거나 목소리를 들을 수 없고요.</p>
-                                <p class="n_directer">육상효</p>
-                            </div>
-                            <div class="n_more_movie">
-                                <img src="/images/moviePoster/the_boy_poster1.jpg">
-                                <p class="n_achieve">70%달성</p>
-                                <p class="n_title">3월의 휴가</p>
-                                <p class="n_content">“따님은 어머님을 보거나 목소리를 들을 수 없고요.</p>
-                                <p class="n_directer">육상효</p>
-                            </div>
-                            <div class="n_more_movie">
-                                <img src="/images/moviePoster/the_boy_poster1.jpg">
-                                <p class="n_achieve">70%달성</p>
-                                <p class="n_title">3월의 휴가</p>
-                                <p class="n_content">“따님은 어머님을 보거나 목소리를 들을 수 없고요.</p>
-                                <p class="n_directer">육상효</p>
-                            </div>
-                            <div class="n_more_movie">
-                                <img src="/images/moviePoster/the_boy_poster1.jpg">
-                                <p class="n_achieve">70%달성</p>
-                                <p class="n_title">3월의 휴가</p>
-                                <p class="n_content">“따님은 어머님을 보거나 목소리를 들을 수 없고요.</p>
-                                <p class="n_directer">육상효</p>
-                            </div>
-                            <div class="n_more_movie">
-                                <img src="/images/moviePoster/the_boy_poster1.jpg">
-                                <p class="n_achieve">70%달성</p>
-                                <p class="n_title">3월의 휴가</p>
-                                <p class="n_content">“따님은 어머님을 보거나 목소리를 들을 수 없고요.</p>
-                                <p class="n_directer">육상효</p>
-                            </div>
-                            <div class="n_more_movie">
-                                <img src="/images/moviePoster/the_boy_poster1.jpg">
-                                <p class="n_achieve">70%달성</p>
-                                <p class="n_title">3월의 휴가</p>
-                                <p class="n_content">“따님은 어머님을 보거나 목소리를 들을 수 없고요.</p>
-                                <p class="n_directer">육상효</p>
-                            </div>
-                            <div class="n_more_movie">
-                                <img src="/images/moviePoster/the_boy_poster1.jpg">
-                                <p class="n_achieve">70%달성</p>
-                                <p class="n_title">3월의 휴가</p>
-                                <p class="n_content">“따님은 어머님을 보거나 목소리를 들을 수 없고요.</p>
-                                <p class="n_directer">육상효</p>
-                            </div>
-                            <div class="n_more_movie">
-                                <img src="/images/moviePoster/the_boy_poster1.jpg">
-                                <p class="n_achieve">70%달성</p>
-                                <p class="n_title">3월의 휴가</p>
-                                <p class="n_content">“따님은 어머님을 보거나 목소리를 들을 수 없고요.</p>
-                                <p class="n_directer">육상효</p>
-                            </div>
+                        <div class="n_movie_list">
+                            <c:forEach var="fund" items="${moviesByMainDTOs}">
+                                <div class="row n_more_movie">
+                                    <a href="/fund/funding/${fund.fundingId}"><img src="${fund.movieThumbnail}"></a>
+                                    <p class="n_achieve">${fund.fundingRate}%달성</p>
+                                    <p class="n_title">${fund.movieName}</p>
+                                    <p class="n_content">${fund.synopsis}</p>
+                                    <p class="n_directer">${fund.production}</p>
+                                </div>
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
                 <!-- 결제 관련 상세 내역-->
-                <div class="col-sm-5 n_col_sm_5">
+                <div class="n_detail_pay">
                     <div id="n_sell_info">
                         <div class="n_movie_category">
                             <p id="n_sharp">#</p>
@@ -194,7 +146,7 @@
                         <div class="n_movie_title">
                             <p id="n_state">
                                 <c:if test="${fundingDetailDTO.isOpen == 'true'}">
-                                        [상영중]
+                                    [상영중]
                                 </c:if>
                             </p>
                             <p id="n_title">${fundingDetailDTO.movieName}</p>
@@ -203,28 +155,28 @@
                             <p>${fundingDetailDTO.synopsis}</p>
                         </div>
                         <div class="n_sell_archive">
-                            <span>
-                            <p id="n_percent">${fundingDetailDTO.fundingRate}</p>
-                            <p id="n_per_comment">% 달성</p>
-                            </span>
+                                <span>
+                                <p id="n_percent">${fundingDetailDTO.fundingRate}</p>
+                                <p id="n_per_comment">% 달성</p>
+                                </span>
                             <span id="n_dday"><p>${fundingDetailDTO.restPeriod}일 남음</p></span>
                         </div>
                         <div class="n_sell_fund_state">
-                            <span>
-                            <p id="n_price">${fundingDetailDTO.formatPresentPrice()}</p>
-                            <p id="n_pri_comment">원 달성</p>
-                            </span>
+                                <span>
+                                <p id="n_price">${fundingDetailDTO.formatPresentPrice()}</p>
+                                <p id="n_pri_comment">원 달성</p>
+                                </span>
                             <span id="n_play"><p>${fundingDetailDTO.peopleCount}명 참여</p></span>
                         </div>
                         <div class="n_sell_period">
-                            <span id="n_fund_type">
-                                <p>진행기간</p>
-                                <p>온라인 상영 예정일</p>
-                            </span>
+                                <span id="n_fund_type">
+                                    <p>진행기간</p>
+                                    <p>온라인 상영 예정일</p>
+                                </span>
                             <span id="n_period">
-                                <p>${fundingDetailDTO.fundingPeriod}</p>
-                                <p>${fundingDetailDTO.formatTimeStamp()}</p>
-                            </span>
+                                    <p>${fundingDetailDTO.fundingPeriod}</p>
+                                    <p>${fundingDetailDTO.formatTimeStamp()}</p>
+                                </span>
                         </div>
                     </div>
                     <div id="n_sell_ticket">
@@ -272,7 +224,9 @@
             </div>
         </div>
     </div>
+
 </main>
+
 
 <script src="../../../../js/neh/on_detail.js">
     console.log("isLiked 값 확인:", isLiked);

@@ -55,17 +55,17 @@ insert into theater_tb(theater_pic, theater_name, theater_description, tel, addr
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, director_pic, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day, chat_time)
 values ('2023', '(주)시네마프로덕션', '스트리머','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
 ', '/images/moviethumbnail/gk/streamer.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '/images/movieDirector/the_boy_miyazaki.jpg','이푸름(손흥민역), 권민혁(김민재역), 김모범(정우영역), 김준형(이정재역), 심소영(황희찬역)', '[스트리머](2023)</br>[아기공룡둘리](2021)</br>[그린영화제](2021)</br>', '청룡영화제 우수작(2023)</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)</br>제26회 부천국제판타스틱영화제(2022)</br>Philadelphia Film Festival(2022)</br>Uppsala Short Film Festival(2022)
-</br>Lanterna Mágica International Animation Festival(2022)</br>Winter Cicle Film Festival(2023)</br>','2023-12-27', '2024-12-15', '2023-12-01', '2023-12-30', '2023-11-29', '2023-12-27 18:00:00');
+</br>Lanterna Mágica International Animation Festival(2022)</br>Winter Cicle Film Festival(2023)</br>','2023-12-27', '2024-12-15', '2023-12-01', '2023-12-30', '2023-11-29', '2023-12-28 15:00:00');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, director_pic, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day, chat_time)
 values ('2023', '(주)시네마프로덕션', '만해한용운','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
 ', '/images/moviethumbnail/gk/manhae.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '/images/movieDirector/the_boy_miyazaki.jpg', '이푸름(손흥민역), 권민혁(김민재역), 김모범(정우영역), 김준형(이정재역), 심소영(황희찬역)', '[스트리머](2023)</br>[아기공룡둘리](2021)</br>[그린영화제](2021)</br>', '청룡영화제 우수작(2023)</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)</br>제26회 부천국제판타스틱영화제(2022)</br>Philadelphia Film Festival(2022)</br>Uppsala Short Film Festival(2022)
-</br>Lanterna Mágica International Animation Festival(2022)</br>Winter Cicle Film Festival(2023)</br>','2023-12-27', '2024-12-15', '2023-12-11', '2023-12-24', '2023-12-09', '2023-12-27 17:00:00');
+</br>Lanterna Mágica International Animation Festival(2022)</br>Winter Cicle Film Festival(2023)</br>','2023-12-27', '2024-12-15', '2023-12-20', '2024-01-04', '2023-12-27', '2023-12-28 15:00:00');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, director_pic, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day, chat_time)
 values ('2023', '(주)시네마프로덕션', '홈리스권제니','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
 ', '/images/moviethumbnail/gk/homeless.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '/images/movieDirector/the_boy_miyazaki.jpg', '이푸름(손흥민역), 권민혁(김민재역), 김모범(정우영역), 김준형(이정재역), 심소영(황희찬역)', '[스트리머](2023)</br>[아기공룡둘리](2021)</br>[그린영화제](2021)</br>', '청룡영화제 우수작(2023)</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)</br>제26회 부천국제판타스틱영화제(2022)</br>Philadelphia Film Festival(2022)</br>Uppsala Short Film Festival(2022)
-</br>Lanterna Mágica International Animation Festival(2022)</br>Winter Cicle Film Festival(2023)</br>','2023-12-01', '2024-12-15', '2023-11-28', '2023-12-15', '2023-11-29', '2023-12-01 14:00:00');
+</br>Lanterna Mágica International Animation Festival(2022)</br>Winter Cicle Film Festival(2023)</br>','2023-12-01', '2024-12-15', '2023-11-28', '2023-12-15', '2023-11-29', '2023-12-28 15:00:00');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, director_pic, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day, chat_time)
 
@@ -83,7 +83,7 @@ insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, dir
 
 values ('2023', '(주)시네마프로덕션', '불멸의여신','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
 ', '/images/moviethumbnail/gk/bulmyeol.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '/images/movieDirector/the_boy_miyazaki.jpg', '이푸름(손흥민역), 권민혁(김민재역), 김모범(정우영역), 김준형(이정재역), 심소영(황희찬역)', '[스트리머](2023)</br>[아기공룡둘리](2021)</br>[그린영화제](2021)</br>', '청룡영화제 우수작(2023)</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)</br>제26회 부천국제판타스틱영화제(2022)</br>Philadelphia Film Festival(2022)</br>Uppsala Short Film Festival(2022)
-</br>Lanterna Mágica International Animation Festival(2022)</br>Winter Cicle Film Festival(2023)</br>','2023-12-01', '2024-12-15', '2023-12-19', '2023-12-30', '2023-12-18', '2023-12-01 14:00:00');
+</br>Lanterna Mágica International Animation Festival(2022)</br>Winter Cicle Film Festival(2023)</br>','2023-12-01', '2024-12-15', '2023-12-29', '2024-01-04', '2023-12-01', '2023-12-01 14:00:00');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, director_pic, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day, chat_time)
 values ('2023', '(주)시네마프로덕션', '내가누워있을때','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
@@ -104,10 +104,6 @@ insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, dir
 values ('2024', '(주)시네마프로덕션', '엑스','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
 ', '/images/moviethumbnail/gk/streamer.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '/images/movieDirector/the_boy_miyazaki.jpg', '이푸름(손흥민역), 권민혁(김민재역), 김모범(정우영역), 김준형(이정재역), 심소영(황희찬역)', '[스트리머](2023)</br>[아기공룡둘리](2021)</br>[그린영화제](2021)</br>', '청룡영화제 우수작(2023)</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)</br>제26회 부천국제판타스틱영화제(2022)</br>Philadelphia Film Festival(2022)</br>Uppsala Short Film Festival(2022)
 </br>Lanterna Mágica International Animation Festival(2022)</br>Winter Cicle Film Festival(2023)</br>','2023-12-01', '2024-12-15', '2023-11-30', '2023-12-15', '2023-11-25', '2023-12-01 14:00:00');
-
-values ('2023', '(주)시네마프로덕션', '스트리머2','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
-', '/images/moviethumbnail/gk/streamer.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '/images/movieDirector/the_boy_miyazaki.jpg','이푸름(손흥민역), 권민혁(김민재역), 김모범(정우영역), 김준형(이정재역), 심소영(황희찬역)', '[스트리머](2023)</br>[아기공룡둘리](2021)</br>[그린영화제](2021)</br>', '청룡영화제 우수작(2023)</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)</br>제26회 부천국제판타스틱영화제(2022)</br>Philadelphia Film Festival(2022)</br>Uppsala Short Film Festival(2022)
-</br>Lanterna Mágica International Animation Festival(2022)</br>Winter Cicle Film Festival(2023)</br>','2023-12-22', '2024-12-15', '2023-12-01', '2023-12-30', '2023-11-29', '2023-12-21 14:00:00');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, director_pic, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day, chat_time)
 values ('2023', '(주)시네마프로덕션', '만해한용운2','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
@@ -461,6 +457,23 @@ insert into movie_staff_tb(director, filming, art, sound, clothes, script, light
 insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('고영웅', '김상수', '남은혜', '김철수', '이사라', '박남규', '최철영', '최민수', '정지환', 27);
 insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이영수', '김재인', '이은지', '김하율', '이사라', '박남규', '이세환', '여민수', '정수민', 28);
 insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이영호', '송재익', '남은혜', '김하율', '이사라', '박남규', '박세환', '나민수', '정유진', 29);
+insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이영호', '김상수', '남은혜', '김하율', '이사라', '정지민', '최대홍', '이성웅', '최영호', 30);
+insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이영호', '김철수', '윤혜림', '김고은', '이사라', '최인호', '민선웅', '박재영', '최영재', 31);
+insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이영호', '김민수', '남은혜', '김하율', '이사라', '박남규', '최지웅', '김철수', '이인재', 32);
+insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이영호', '김민지', '김하은', '김하율', '이사라', '이설아', '이영웅', '민지은', '이철환', 33);
+insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이영민', '김지수', '남은혜', '정유수', '이사라', '최정민', '김사라', '김은지', '남필규', 34);
+insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이성호', '송민환', '남은혜', '김하율', '이사라', '김사랑', '박재영', '최민영', '이민지', 35);
+insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('김진희', '송제인', '남은혜', '김하율', '이사라', '이미소', '이민서', '박인호', '이은혜', 36);
+insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('지진희', '김상수', '정유수', '김하율', '이사라', '이혜수', '박민환', '장준은', '김사랑', 37);
+insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이민호', '송익상', '남은혜', '김하율', '이사라', '박남규', '이인형', '김보미', '박필규', 38);
+insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이영호', '김상수', '윤혜림', '김하율', '이사라', '박철민', '김택수', '이근호', '정유수', 39);
+insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이영호', '김상수', '남은혜', '김그린', '이사라', '박남규', '박세환', '김언약', '김라희', 40);
+insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이근호', '박수호', '정유수', '김하율', '이사라', '박남규', '박세인', '고민영', '이철민', 41);
+insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이웅진', '김상수', '남은혜', '김하율', '이사라', '박남규', '김철영', '김라희', '고만영', 42);
+insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('최민재', '박나래', '윤혜림', '김하율', '이사라', '박남규', '박후민', '이미소', '윤민수', 43);
+insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('이진수', '김상수', '남은혜', '김하율', '이사라', '박남규', '이영희', '박영환', '박민서', 44);
+insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('박남기', '김수환', '김하은', '김하율', '이사라', '박남규', '진영수', '김영민', '서문환', 45);
+insert into movie_staff_tb(director, filming, art, sound, clothes, script, lighting, editing, music, movie_id) values ('김영웅', '박수환', '윤혜림', '김그린', '이사라', '박남규', '여민재', '이인제', '이인영', 46);
 
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('10000000', '3000000', '8000', '40', '2023-11-01', '2023-12-31', 1);
 insert into funding_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('15000000', '4000000', '8000', '40', '2023-11-01', '2023-12-31', 2);
@@ -697,6 +710,17 @@ insert into running_schedule_tb (running_time, running_date, start_time, end_tim
 insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-28', '15:27', '16:56', 1, 1);
 insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-29', '09:19', '10:48', 1, 1);
 insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-30', '13:14', '14:43', 1, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-29', '13:22', '14:51', 2, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-29', '17:30', '18:59', 2, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-30', '19:56', '21:25', 2, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-31', '18:07', '19:36', 2, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2024-01-01', '09:02', '10:31', 2, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2024-01-01', '13:38', '15:07', 2, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2024-01-01', '20:33', '22:02', 2, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2024-01-02', '15:27', '16:56', 2, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2024-01-03', '09:19', '10:48', 2, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2024-01-04', '13:14', '14:43', 2, 2);
+
 
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/sen.png', '극영화', 1);
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/naengjung.png', '극영화', 2);
@@ -934,6 +958,65 @@ insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_
 insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy1.jpg', 29);
 insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy2.jpg', 29);
 insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 29);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy1.jpg', 30);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy2.jpg', 30);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 30);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy1.jpg', 31);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy2.jpg', 31);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 31);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 32);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 32);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 32);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 33);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 33);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 33);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 33);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 34);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 34);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 34);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 35);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 35);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 35);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 36);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 36);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 36);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 37);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 37);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 37);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 38);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 38);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 38);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 39);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 39);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 39);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 40);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 40);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 40);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 41);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 41);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 41);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 42);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 42);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 42);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 43);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 43);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 43);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 44);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 44);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 44);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 45);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 45);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 45);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 46);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 46);
+insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy3.jpg', 46);
+
+
+
+
+
+
+
 
 insert into movie_file_tb(origin_name, path, file_name, graphics, has_subtitles, file_type, file_size, movie_id)
 values ('스트리머', '/movies/forest.mp4', 'streamer', '2D', false, 'mp4', '2.32MB', 1);
