@@ -13,6 +13,8 @@ import javax.validation.Valid;
 
 import com.tenco.indiepicter._core.utils.ApiUtils;
 import com.tenco.indiepicter._core.utils.PicToStringUtil;
+import com.tenco.indiepicter.funding.FundingService;
+import com.tenco.indiepicter.funding.response.OnAirMovieByUserDTO;
 import com.tenco.indiepicter.invitation.Invitation;
 import com.tenco.indiepicter.order.OrderService;
 import com.tenco.indiepicter.order.response.OrderCountDTO;
@@ -70,6 +72,9 @@ public class UserController {
 
 	@Autowired
 	private ScrabService scrabService;
+
+	@Autowired
+	private FundingService fundingService;
 
 //------------------------------------------------------------------------------------------------------------------
 	
@@ -449,6 +454,13 @@ public class UserController {
 
 	// 12-27 18:07 학원 작업중 ~~
 
+	@GetMapping("/open-movie")
+	public String openOnMovieByOrder (Model model){
+		User principal = (User) session.getAttribute(Define.PRINCIPAL);
+		List<OnAirMovieByUserDTO> onAirMovieByUserDTOs = fundingService.onAirMovieByUser(principal.getId());
+		model.addAttribute("onAirMovieByUserDTOs", onAirMovieByUserDTOs);
+		return "mypage/on_movie_list";
+	}
 
 }
 

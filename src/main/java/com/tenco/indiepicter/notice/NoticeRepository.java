@@ -11,13 +11,13 @@ import com.tenco.indiepicter.notice.response.NoticeResponseDTO;
 public interface NoticeRepository {
 
 	// 공지사항 단일 조회
-	public Notice findById(Integer id);
+	public NoticeResponseDTO findById(Integer id);
 	
 	// 공지사항 전체 조회
-	public List<Notice> findAll();
+	public List<NoticeResponseDTO> findAll();
 	
 	// 공지사항 페이징 조회
-	public List<Notice> findByNoticePagingLists(Map<String, Integer> pagingParams);
+	public List<NoticeResponseDTO> findByNoticePagingLists(Map<String, Integer> pagingParams);
 	
 	// 공지사항 전체 갯수 조회
 	public Integer pageCount();

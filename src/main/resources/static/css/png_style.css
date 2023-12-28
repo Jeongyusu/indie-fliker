@@ -1636,54 +1636,46 @@
 /* 공지사항 디테일 */
 /*---------------------------------------------------------------------*/
 .p_noticedetail_title{
-    position: relative;
-    top: 180px;
-    left: 400px;
-    width: 100%;
-    height: 100px;
+    display: flex;
+    max-width: 1000px;
+    flex-direction: column;
+    margin: 48px 0 20px;
+    padding: 0;
+    font-size: 24px;
     font-weight: bold;
-    font-size: 20px;
 }
 
 .p_noticedetail_img{
-    position: relative;
-    top: 200px;
-    left: 400px;
+    display: flex;
+    align-items: center;
 }
 
 .p_noticedetail_img img{
-    width: 100px;
-    height: 100px;
+    width: 50px;
     border-radius: 50%;
+    margin-right: 8px;
 }
 
 .p_noticedetail_img p{
-    position: relative;
-    bottom: 80px;
-    left: 120px;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
 }
 
 .p_noticedetail_coment{
-    position: relative;
-    top: 170px;
-    left: 400px;
-}
-
-.p_noticedetail_contnet{
-    position: relative;
-    top: 210px;
-    left: 400px;
+    margin: 40px 0;
+    line-height: 20px;
+    font-size: 14px;
 }
 
 .p_noticedetail_contnet h3{
     font-size: 20px;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .p_noticedetail_contnet p{
-
+    line-height: 20px;
+    font-size: 14px;
 }
 
 .p_custom_margin_bottom {

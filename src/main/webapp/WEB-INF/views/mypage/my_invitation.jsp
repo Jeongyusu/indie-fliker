@@ -2,18 +2,15 @@
 		 pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-
-</head>
-<body>
+<body class="l_body">
 
 <main>
 	<div class="n_custom_fluid">
+		<div class="container l_movie_list_title">
+			<p class="l_list_title">VIP 초청권</p>
+			<br>
+			<p class="l_list_comment">VIP 회원을 위한 시사회 초청권</p>
+		</div>
 		<div class="row justify-content-center">
 			<c:forEach var="invitation" items="${myInvitationPagingLists}">
 			<div id="n_reservation_ticket">
@@ -90,16 +87,12 @@
 			</div>
 
 			<div id="n_attention_comment">
-				<p>· 관람안내</p>
-				<p class="n_comment">- 구매하신 예매권은 온라인 상영관에서 언제든지 관람이 가능합니다.</p>
-				<p class="n_comment">- 관람 기간은 <strong>총 4일</strong>이며, <strong>온라인 상영 기간 내</strong>에 관람이 가능합니다.</p>
-				<p class="n_comment">- 관람 시작 기준은 구매 시점이며, 이후 4일이 지나면 자동으로 관람이 종료됩니다.</p>
+				<p>· 상영안내</p>
+				<p class="n_comment">- 쾌적한 관람 환경을 위해 상영시간 이전에 입장 부탁드립니다.</p>
+				<p class="n_comment">- 상영시간 1시간 전까지 취소 가능하며, 갭쳐화면으로는 입장하실 수 없습니다.</p>
 			</div>
 		</div>
 	</div>
 </main>
 <!-- footer -->
 <%@ include file="../layout/footer.jsp" %>
-
-</body>
-</html>

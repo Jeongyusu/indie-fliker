@@ -27,11 +27,17 @@ public interface FundingRepository {
     //온라인 상영중 영화 조회
     public List<OnAirMovieDTO> findAllByOnAir();
 
-    //온라인 상영중 영화 장르별 조회
-    public List<OnAirMovieRankingDTO> findAllByOnAirAndRanking();
-
     //오프라인 상영중 영화 조회
     List<OffAirMovieDTO> findAllByOffAir();
+
+    //유저가 구매한 온라인 상영중 영화 조회
+    public List<OnAirMovieByUserDTO> findByUserToOnAir(Integer principalId);
+
+    //유저가 구매한 오프라인 상영중 영화 조회
+    List<OffAirMovieByUserDTO> findByUserToOffAir(Integer principalId);
+
+    //온라인 상영중 영화 장르별 조회
+    public List<OnAirMovieRankingDTO> findAllByOnAirAndRanking();
 
     //오프라인 상영중 영화 장르별 조회
     List<OffAirMovieRankingDTO> findAllByOffAirAndRanking();
