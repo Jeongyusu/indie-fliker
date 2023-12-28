@@ -1,48 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ include file="../layout/header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link href="/css/khy_style.css" rel="stylesheet">
-    <title></title>
-</head>
-
-<body>
+<body class="l_body">
 
 <div class="k_profile_main">
-    <h1 class="k_profile_info_set">프로필 정보 설정</h1>
-    <h2 class="k_profile_pic">프로필 사진</h2>
+    <div class="k_profile_info_set">프로필 정보 설정</div>
     <form action="/user/profile" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="id" id="id" value ="${sessionScope.principal.id}">
-    <img id="preview" class="k_profile" alt="" name="pic" id="pic" src="${sessionScope.principal.pic}" onclick="return false;">
-    <input type="file" id="file" name="file" onchange="changeUserPic(event)">
-    <div class="k_profile_first_container">
-        <div>닉네임</div>
-        <input type="text" class="k_profile_nicknmae" id="username" name="username" value="${sessionScope.principal.username}">
-        <div class="k_profile_tel_div">전화번호</div>
-        <input type="text" class="k_profile_tel_input" id="tel" name="tel" value="${sessionScope.principal.tel}">
-    </div>
-    <div>
-        <div class="k_profile_password_div">비밀번호</div>
-            <input type="password" placeholder="비밀번호 입력" class="k_profile_tel_input" id="password1" name="password1">
-        <div class="k_profile_password_div">
-            <input type="password" placeholder="비밀번호 확인" class="k_profile_tel_input" id="password2" name="password2">
+        <div class="k_form_group">
+            <label class="k_profile_pic">프로필 사진</label>
+            <div style="text-align: center">
+                <input type="hidden" name="id" id="id" value ="${sessionScope.principal.id}">
+                <img id="preview" class="k_profile" alt="" id="pic" src="${sessionScope.principal.pic}" onclick="return false;">
+                <div class="k_file_button">
+                    <input type="file" id="file" name="file" onchange="changeUserPic(event)">
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="k_profile_bttns_margin">
-        <a class="k_profile_bttn_cancle" href="/user/mypage">취소</a>
-        <button type="submit" class="k_profile_bttn_ok">확인</button>
-    </div>
+        <div class="k_form_group">
+            <label class="k_input_label">닉네임</label>
+            <input type="text" class="form-control k_join_radius" id="username" name="username" value="${sessionScope.principal.username}">
+        </div>
+        <div class="k_form_group">
+            <label class="k_input_label">전화번호</label>
+            <input type="text" class="form-control k_join_radius k_profile_input" id="tel" name="tel" value="${sessionScope.principal.tel}">
+        </div>
+        <div class="k_form_group">
+            <label class="k_input_label">비밀번호</label>
+                <input type="password" placeholder="비밀번호 입력" class="form-control k_join_radius k_profile_input" id="password1" name="password1">
+            <div class="k_form_group">
+                <input type="password" placeholder="비밀번호 확인" class="form-control k_join_radius k_profile_input" id="password2" name="password2">
+            </div>
+        </div>
+        <div class="k_profile_bttns_margin">
+            <a class="k_profile_bttn_cancle" href="/user/mypage">취소</a>
+            <button type="submit" class="k_profile_bttn_ok">확인</button>
+        </div>
     </form>
-
 </div>
 
 	<script>
@@ -61,11 +55,4 @@
 		    reader.readAsDataURL(f); // 파일 읽기 onload()
 		  	}
 	</script>
-
-
-</body>
-
-
-</html>
-
-
+<%@ include file="../layout/footer.jsp" %>

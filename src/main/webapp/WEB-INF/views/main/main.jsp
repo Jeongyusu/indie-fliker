@@ -37,7 +37,7 @@
 				<div class="col l_ranking_card" style="max-width: 250px;">
 					<div class="card l_main_card" style="border: none;">
 						<div class="l_movie_image">
-							<figure class="l_ranking">
+							<figure class="l_front">
 								<img src="${ranker.movieThumbnail}" class="card-img" alt="...">
 							</figure>
 							<div class="l_overlay_button l_back">
@@ -68,20 +68,27 @@
 		</div>
 		<div id="data-container" class="row row-cols-xl-4">
 			<c:forEach var="funding" items="${onAirTotalDTO.onAirMovieDTOs}" varStatus="status">
-					<div class="col my-4 l_movie_card_form">
-						<div class="card l_main_card">
-							<a href="/fund/funding/${funding.fundingId}"><img src="${funding.movieThumbnail}" class="card-img" alt="..."></a>
-							<div class="l_percent l_mint l_strong">${funding.fundingRate}% 달성</div>
-							<div class="l_movie_online_title">
-								<img src="" class="l_grade_img">
-								<div class="l_title">${funding.movieName}</div>
-								<input type="hidden" value="${funding.runningGrade}" class="grade">
+				<div class="col my-4 l_movie_card_form">
+					<div class="card l_main_card">
+						<div class="l_movie_image">
+							<figure class="l_front">
+								<img src="${funding.movieThumbnail}" class="card-img" alt="...">
+							</figure>
+							<div class="l_overlay_button l_back">
+								<a href="/fund/funding/${funding.fundingId}"><button class="btn btn-outline-success l_button">예매하기</button></a>
 							</div>
-							<div class="l_period">상영 : ${funding.period()}</div>
-							<div class="l_content">${funding.synopsis}</div>
-							<div class="l_production">${funding.production}</div>
 						</div>
+						<div class="l_percent l_mint l_strong">${funding.fundingRate}% 달성</div>
+						<div class="l_movie_online_title">
+							<img src="" class="l_grade_img">
+							<div class="l_title">${funding.movieName}</div>
+							<input type="hidden" value="${funding.runningGrade}" class="grade">
+						</div>
+						<div class="l_period">상영 : ${funding.period()}</div>
+						<div class="l_content">${funding.synopsis}</div>
+						<div class="l_production">${funding.production}</div>
 					</div>
+				</div>
 			</c:forEach>
 		</div>
 	</div>

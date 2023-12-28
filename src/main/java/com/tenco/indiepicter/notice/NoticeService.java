@@ -17,14 +17,12 @@ public class NoticeService {
 	private NoticeRepository noticeRepository;
 	
 	// 공지사항 단일 조회
-	public Notice findById(Integer id) {
-		
+	public NoticeResponseDTO findById(Integer id) {
 		return this.noticeRepository.findById(id);
 	}
 	
 	// 공지사항 전체 조회
-	public List<Notice> findAll(){
-		
+	public List<NoticeResponseDTO> findAll(){
 		return this.noticeRepository.findAll();
 	}
 	
@@ -37,7 +35,7 @@ public class NoticeService {
 	int blockLimit = 5; // 하단에 보여줄 페이지 번호 갯수
 	
 	// 공지사항 페이징 조회
-	public List<Notice> noticePagingLists(Integer page){
+	public List<NoticeResponseDTO> noticePagingLists(Integer page){
 		
 		// 인덱스 번호 0부터 시작이기 때문에 -1 로 처리 해줌
 		int pageStart = (page - 1) * pageLimit;

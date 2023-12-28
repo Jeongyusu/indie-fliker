@@ -26,4 +26,10 @@ public interface OrderRepository {
 
     // 예매 번호로 order와 reservation 조회
     public OrderAndReservationInfoDTO findByReservationCode(String reservationCode);
+
+    // 온라인 주문 갯수
+    public int countByOnlineOrder(int principalId);
+
+    // 오프라인 주문 갯수
+    public int countByOfflineOrder(int principalId);
 }
