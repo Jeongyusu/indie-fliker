@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 페이지 - VIP회원 관리 ( vip_management ) 완료!</title>
+    <title>관리자 페이지 - 회원 관리 ( user_management ) 완료!</title>
     
     <!-- style.css와 연결 -->
     <link rel="stylesheet" href="/CSS/png_style.css">
@@ -34,7 +34,7 @@
                 <a href=""><h2>IndiFlinker</h2></a>
             </div>
 
-            <form id="search-form" action="/admin/vip/search" method="get">
+            <form id="search-form" action="/admin/normal/search" method="get">
                 <div class="p_search">
                     <button type="submit">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -94,14 +94,11 @@
         <!--컨테이너1 끝-->
 
         <!--컨테이너2 시작-->
-        <div class="p_vipmanagement_container2">
+        <div class="p_usermanagement_container2">
             <div class="p_title">
-                <h3>VIP회원 관리</h3>
+                <h3>회원 관리</h3>
             </div>
-            <div class="p_filter">
-                <a href=""><button><span>Filter</span></button></a>
-                <i class="fa-solid fa-filter"></i>
-            </div>
+
 
             <div class="p_section1">
                 <table class="table table-hover">
@@ -115,7 +112,7 @@
                             <th>회원 삭제</th>
                         </tr>
                     </thead>
-                    <c:forEach var="user" items="${adminVipPagingLists}">
+                    <c:forEach var="user" items="${adminUserPagingLists}">
                     <c:set var="i" value="${i+1}"/>
                     <tbody>
                         <tr>
@@ -129,14 +126,25 @@
                             </td>
                             <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${user.createdAt}"/></td>
                             <td>${user.grade}</td>
-                            <td><a href="/admin/vip-management-isWithdrawal/${user.id}"><button>삭제</button></a></td>
+                            <td><a href="/admin/user-management-isWithdrawal/${user.id}"><button>삭제</button></a></td>
+
+<%--                    <c:choose>--%>
+<%--                        <c:when test="${user.isWithdrawal eq true}">--%>
+<%--                             <td><a href="/admin/user-management-isWithdrawal/${user.id}"><button>삭제</button></a></td>--%>
+<%--                        </c:when>--%>
+<%--                        <c:otherwise>--%>
+<%--                             <td><a><button>삭제 완료</button></a></td>--%>
+<%--                        </c:otherwise>--%>
+<%--                    </c:choose>--%>
+
                         </tr>
                     </tbody>
                     </c:forEach>
+
                 </table>
             </div>
-            
-            <div class="p_vipmanagement_bottom">
+
+            <div class="p_usermanagement_bottom">
                 <c:choose>
                     <%-- 현재 페이지가 1페이지이면 이전 글자만 보여줌 --%>
                     <c:when test="${paging.page <= 1}">
@@ -145,7 +153,7 @@
 
                     <c:otherwise>
                         <%-- 이전을 누르면 컨트롤러에 현재 페이지보다 1 작은 페이지로 요청 --%>
-                        <a href="/admin/vip-management?page=${paging.page-1}">[이전]</a>
+                        <a href="/admin/user-management?page=${paging.page-1}&keyword=${param.keyword}">[이전]</a>
                     </c:otherwise>
                 </c:choose>
 
@@ -159,7 +167,7 @@
 
                         <c:otherwise>
                             <%-- 다른 페이지 이동이 필요할때 컨트롤러에 요청 --%>
-                            <a href="/admin/vip-management?page=${i}">${i}</a>
+                            <a href="/admin/user-management?page=${i}&keyword=${param.keyword}">${i}</a>
                         </c:otherwise>
                     </c:choose>
                 </c:forEach>
@@ -171,7 +179,7 @@
                     </c:when>
                     <%-- 다음을 누르면 현재 페이지보다 1 큰 페이지로 요청 --%>
                     <c:otherwise>
-                        <a href="/admin/vip-management?page=${paging.page+1}">[다음]</a>
+                        <a href="/admin/user-management?page=${paging.page+1}&keyword=${param.keyword}">[다음]</a>
                     </c:otherwise>
                 </c:choose>
             </div>
