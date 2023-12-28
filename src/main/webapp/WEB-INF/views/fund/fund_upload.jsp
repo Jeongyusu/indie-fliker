@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
-<body class="l_body">
     <form action="/funding-ready/save" method="post" enctype="multipart/form-data">
     <div class="k_funding_save">
         <p>펀딩 등록하기</p>

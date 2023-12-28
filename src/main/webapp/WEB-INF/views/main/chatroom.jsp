@@ -3,8 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../layout/header.jsp" %>
 
-<body style="overflow: hidden">
-
 <div class="container-fluid">
     <div class="row">
         <div id="l_select_movie">

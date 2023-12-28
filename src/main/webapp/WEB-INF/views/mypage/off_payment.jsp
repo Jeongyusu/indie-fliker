@@ -3,7 +3,6 @@
 <%@ include file="../layout/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<body class="l_body">
     <div class="container">
         <div class="l_my_page_title">펀딩한 내역</div>
         <div class="text-center">
