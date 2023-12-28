@@ -25,14 +25,9 @@
     <select id="findByAdminVipPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
         select *
         from user_tb
-        where grade not in('NORMAL')
+        where grade != 'NORMAL'
         order by created_at desc
             limit #{pageStart}, #{pageLimit}
-    </select>
-
-    <!-- 공지사항 전체 갯수 조회 -->
-    <select id="pageCount" resultType="Integer">
-        select count(id) from user_tb
     </select>
 
     <!-- 일반 회원 관리(회원 탈퇴) -->
@@ -98,6 +93,19 @@
         limit #{pagingParams.pageStart}, #{pagingParams.pageLimit}
     </select>
 
+    <!-- 페이징 전체 갯수 조회 -->
+    <select id="pageCount" resultType="Integer">
+        select count(id) from user_tb
+    </select>
 
+    <!-- 페이징 일반 회원만 전체 갯수 조회 -->
+    <select id="normalPageCount" resultType="Integer">
+        select count(id) from user_tb where grade = 'NORMAL'
+    </select>
+
+    <!-- 페이징 VIP 회원만 전체 갯수 조회 -->
+    <select id="vipPageCount" resultType="Integer">
+        select count(id) from user_tb where grade = 'VIP'
+    </select>
 
 </mapper>
