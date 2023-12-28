@@ -2079,3 +2079,44 @@
 /*---------------------------------------------------------------------*/
 /* 비밀번호 수정 페이지 ( password_update ) */
 
+/* 페이징 버튼 스타일 */
+/*---------------------------------------------------------------------*/
+.p_paging .p_priveous{
+    background-color: #a5e5e6;
+    width: 40px;
+    height: 35px;
+    border-radius: 30%;
+    text-align: center;
+    line-height: 35px;
+    text-decoration: none;
+}
+
+.p_paging .p_priveous:hover{
+    color: #ea6161;
+}
+
+.p_paging .p_next{
+    background-color: #a5e5e6;
+    width: 40px;
+    height: 35px;
+    border-radius: 30%;
+    text-align: center;
+    line-height: 35px;
+    text-decoration: none;
+}
+
+.p_paging .p_next:hover{
+    color: #ea6161;
+}
+
+.p_paging .page_number{
+    margin-left: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.p_paging .page_number:hover{
+    color: #ea6161;
+}
+/*---------------------------------------------------------------------*/
+/* 페이징 버튼 */

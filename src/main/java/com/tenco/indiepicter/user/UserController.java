@@ -341,7 +341,7 @@ public class UserController {
 
 		User user = this.userService.findById(sessionUser.getId());
 		session.setAttribute(Define.PRINCIPAL, user);
-		return "mypage/mypage";
+		return "redirect:/user/mypage";
 	}
 	
 //----------------------------------------------------------------------------------------------------------------	
@@ -368,7 +368,7 @@ public class UserController {
 	public ResponseEntity<?> findEmail(FindUserInfoDTO findUserInfoDTO) {
 		// 이름 유효성 검사
 		if(findUserInfoDTO.getUsername() == null || findUserInfoDTO.getUsername().isEmpty()) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiUtils.error("이메일을 입력해주세요.", HttpStatus.BAD_REQUEST));
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiUtils.error("이름을 입력해주세요.", HttpStatus.BAD_REQUEST));
 		}
 		// 전화번호 유효성 검사
 		if(findUserInfoDTO.getTel() == null || findUserInfoDTO.getTel().isEmpty()) {
@@ -431,7 +431,7 @@ public class UserController {
 
 //----------------------------------------------------------------------------------------------------------------
 
-	// 12-27 18:07 학원 작업중 ~~
+	// 12-28 14:30 학원 작업중~
 
 
 }
