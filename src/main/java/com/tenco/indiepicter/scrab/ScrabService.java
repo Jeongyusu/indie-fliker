@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,13 +26,14 @@ public class ScrabService {
     // 좋아요
 
     public boolean toggleScrab(Integer userId, Integer fundingId) {
+        log.debug("들어오니??", userId , fundingId);
         Integer scrabExists = scrabRepository.isScrabExists(userId, fundingId);
         if (scrabExists != null) {
             try {
                 scrabRepository.deleteScrab(userId, fundingId);
                 log.info("좋아요를 취소했습니다.");
             } catch (Exception e) {
-                throw new MyDynamicException("좋아요 서비스 중 서버 에러 발생", HttpStatus.INTERNAL_SERVER_ERROR);
+                throw new MyDynamicException("로그인이 필요합니다.", HttpStatus.INTERNAL_SERVER_ERROR);
             }
             return false;
         } else {
@@ -39,7 +41,7 @@ public class ScrabService {
                 scrabRepository.insertScrab(userId, fundingId);
                 log.info("좋아요를 추가했습니다.");
             } catch (Exception e) {
-                throw new MyDynamicException("좋아요 서비스 중 서버 에러 발생", HttpStatus.INTERNAL_SERVER_ERROR);
+                throw new MyDynamicException("로그인이 필요합니다.", HttpStatus.INTERNAL_SERVER_ERROR);
             }
             return true;
         }

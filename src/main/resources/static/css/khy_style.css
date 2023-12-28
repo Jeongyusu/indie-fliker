@@ -265,9 +265,9 @@ input:active, input:focus{
 
 .eyes {
     position: absolute;
-    top: 10px;
-    bottom: 0;
-    right: 5px;
+    top: 15px;
+    bottom: 5px;
+    right: 6px;
     margin: auto 2px;
     height: 30px;
     font-size: 14px;
@@ -276,9 +276,9 @@ input:active, input:focus{
 
 .eyes2 {
     position: absolute;
-    top: 35px;
-    bottom: 0;
-    right: 780px; /* 위치 조정 */
+    top: 25px;
+    bottom: 5px;
+    right: 6px; /* 위치 조정 */
     margin: auto 2px;
     height: 30px;
     font-size: 14px;
