@@ -10,11 +10,8 @@ import com.tenco.indiepicter.funding.FundingService;
 import com.tenco.indiepicter.funding.fundingready.FundingReady;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyRepository;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyService;
-import com.tenco.indiepicter.funding.response.AdminFundingModifyDTO;
-import com.tenco.indiepicter.funding.response.AdminFundingProceedingDTO;
-import com.tenco.indiepicter.funding.response.BannerDTO;
+import com.tenco.indiepicter.funding.response.*;
 
-import com.tenco.indiepicter.funding.response.FundingReadyDTO;
 import com.tenco.indiepicter.movie.MovieService;
 import com.tenco.indiepicter.movie.moviefile.MovieFileService;
 import com.tenco.indiepicter.movie.moviephoto.MoviePhotoService;
@@ -125,17 +122,25 @@ public class AdminFundingRestController {
 
     @GetMapping ("/funding/register/more-data")
     public ResponseEntity<?> registerMoreData(@RequestParam(name = "page") Integer page) {
-        log.debug("-----나여기용------");
-        log.debug(page.toString());
         List<FundingReadyDTO> fundingReadyDTOs = fundingReadyService.findAllFundingReady(page, 8);
         return ResponseEntity.ok().body(ApiUtils.success(fundingReadyDTOs));
     }
 
     @GetMapping ("/funding/modify/more-data")
     public ResponseEntity<?> modifyMoreData(@RequestParam(name = "page") Integer page) {
-        log.debug("-----나여기용------");
-        log.debug(page.toString());
         List<AdminFundingModifyDTO> adminFundingModifyDTOs = fundingService.findAllAdminFundingModify(page, 8);
         return ResponseEntity.ok().body(ApiUtils.success(adminFundingModifyDTOs));
+    }
+
+    @GetMapping ("/funding/online-period-setting/more-data")
+    public ResponseEntity<?> onlinePeriodSetting(@RequestParam(name = "page") Integer page) {
+        List<AdminOnlineStreamingDTO> adminOnlineStreamingDTOs = fundingService.findAllAdminPeriodSetting(page, 8);
+        return ResponseEntity.ok().body(ApiUtils.success(adminOnlineStreamingDTOs));
+    }
+
+    @GetMapping ("/funding/offline-period-setting/more-data")
+    public ResponseEntity<?> offlinePeriodSetting(@RequestParam(name = "page") Integer page) {
+        List<AdminOnlineStreamingDTO> adminOnlineStreamingDTOs = fundingService.findAllAdminPeriodSetting(page, 8);
+        return ResponseEntity.ok().body(ApiUtils.success(adminOnlineStreamingDTOs));
     }
 }

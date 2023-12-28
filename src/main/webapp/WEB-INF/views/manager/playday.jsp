@@ -97,7 +97,7 @@
             <div class="j_font_style">
                 <h3>온라인 상영 기간 설정 / 채팅 오픈 시간 설정</h3>
             </div>
-            <div class="p_section1">
+            <div class="p_section1" id="j_data_container">
                 <c:forEach var="funding" items="${adminOnlineStreamingDTOs}" varStatus="status">
                     <div class="p_menu1" >
                         <img src="${funding.thumbnail}" alt="">
@@ -138,37 +138,13 @@
 
         </div>
         <!--컨테이너2 끝-->
-
-        <div class="p_playday_bottom">
-            <nav aria-label="...">
-                <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link previous" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item paging">
-                    <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item active paging" aria-current="page" style="color:#01DFD7;">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item paging">
-                    <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item paging">
-                    <a class="page-link" href="#">4</a>
-                </li>
-                <li class="page-item paging">
-                    <a class="page-link" href="#">5</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link next" href="#">Next</a>
-                </li>
-                </ul>
-            </nav>  
-        </div>
         
 	</div>
-<script>
+    <div>
+        <button id="scrollToTopBtn"><img src="/images/icons/upArrow.gif" class="j_up_button"></button>
+    </div>
+
+    <script>
         <!--------------------------------- 달력 -------------------------------------------------->
 
 
@@ -368,6 +344,98 @@
             }
 
     }
+
+        let currentPage = 2;
+        let isLoading = false;
+        window.onload = function () {
+            console.log("온로드 실행");
+            isLoading = false;
+        };
+
+        $(window).scroll(function() {
+            // 스크롤 이동 시 실행되는 코드
+            console.log("제이쿼리 스크롤");
+            if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
+                // 페이지 하단에 도달했을 때만 추가 데이터 로드
+                loadMoreData();
+            }
+
+        });
+
+
+        // fetch로 새로운 데이터 받아오기
+        async function fetchFundingList(page) {
+            let response = await fetch('/admin/funding/online-period-setting/more-data?page=' + page);
+            let responseBody = await response.json();
+
+            if (responseBody.success) {
+                return responseBody.response;
+            } else {
+                throw new Error(responseBody.error);
+            }
+        }
+
+        // 마우스 스크롤 감지 후 새로운 데이터를 받아온 후 새로운 요소 생성하기
+        function loadMoreData() {
+
+            if (isLoading) {
+                return;
+            }
+            isLoading = true;
+
+            // 로딩 딜레이 주기
+            setTimeout(async () => {
+                try {
+                    const newData = await fetchFundingList(currentPage);
+                    newData.forEach((funding) => {
+                        var newElement = '<div class="p_menu1" >' +
+                            '<img src="' + funding.thumbnail + '" alt="">' +
+                            '<p>' + funding.movieName + '</p>' +
+                            '<button onclick="openMovieSettingModal(' + funding.movieId + ')">상영기간 및 채팅오픈시간 설정</button>' +
+                            '</div>';
+
+                        // Append new content to the container with class 'p_section1'
+                        $('#j_data_container').append(newElement);
+                    });
+                    currentPage++;
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                } finally {
+                    isLoading = false;
+                }
+            }, 1000);
+
+            var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+            window.addEventListener("scroll", function() {
+                // 현재 스크롤 위치 가져오기
+                var scrollPosition = window.scrollY;
+
+                // 스크롤 위치가 300px 이상이면 버튼 표시, 아니면 숨김
+                if (scrollPosition > 500) {
+                    scrollToTopBtn.style.display = "block";
+                } else {
+                    scrollToTopBtn.style.display = "none";
+                }
+            });
+
+            // 버튼 클릭 시 맨 위로 스크롤하는 함수
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth" // 부드러운 스크롤 적용
+                });
+            }
+
+            // 버튼에 클릭 이벤트 리스너 추가
+            scrollToTopBtn.addEventListener("click", scrollToTop);
+        }
+
+        function formatPrice(number) {
+            const formatter = new Intl.NumberFormat('en-US');
+            return formatter.format(number);
+        }
+
 
 
 

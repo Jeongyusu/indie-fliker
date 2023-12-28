@@ -471,13 +471,13 @@
     <!-- 어드민 페이지 온라인 오픈기간 설정 영화 조회-->
     <select id="findAllAdminPeriodSetting" resultType="com.tenco.indiepicter.funding.response.AdminOnlineStreamingDTO">
         select mt.id movie_id, mt.thumbnail, mt.movie_name, ft.end_date from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
-        where curdate() BETWEEN ft.release_date AND ft.end_date
+        where curdate() BETWEEN ft.release_date AND ft.end_date limit #{pageSize} offset #{offset}
     </select>
 
     <!-- 어드민 페이지 오프라인 오픈기간 설정 영화 조회-->
     <select id="findAllAdminOfflinePeriodSetting" resultType="com.tenco.indiepicter.funding.response.AdminOfflineStreamingDTO">
         select mt.id movie_id, mt.thumbnail, mt.movie_name, ft.end_date from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
-        where curdate() > ft.end_date
+        where curdate() > ft.end_date limit #{pageSize} offset #{offset}
     </select>
 
     <!-- 어드민 페이지 온라인 오픈기간 설정 영화 검색어 조회-->
