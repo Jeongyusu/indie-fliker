@@ -7,9 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 페이지 - 펀딩 현황( check ) 완료!</title>
-    
+
     <!-- style.css와 연결 -->
-    <link href="/css/style.css" rel="stylesheet">
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
                            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
@@ -21,6 +20,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="/css/style.css" rel="stylesheet">
 
 
 
@@ -86,7 +88,6 @@
                 </ul>
                 <div class="p_line"></div>
             </div>
-
         </div>
         <!--컨테이너1 끝-->
 
@@ -99,30 +100,49 @@
             <div id="data-container">
             <c:forEach var="funding" items="${adminFundingProceedingDTOs}" varStatus="status">
                 <div class="p_section1 p_box">
-                    <button style="border: none; background: transparent" onclick="openModal(${status.index})"><img src="${funding.movieThumbnail}" alt="영화사진"></button>
+                    <button type="button" style="border: none; background: transparent" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#j_fund_modal" data-id="${funding.fundingId}"
+                            data-name="${funding.movieName}">
+                        <img src="${funding.movieThumbnail}" alt="영화사진">
+                    </button>
                     <div class="p_list">
-                        <p class="p_p1">${funding.movieName}</p>
-                        <p class="p_p2">디렉터:${funding.director}</p>
+                        <p class="p_p1">${funding.movieName}</p><br>
+                        <p class="p_p2">디렉터:${funding.director}</p><br>
                         <div class="p_flex">
-                            <p class="p_p3">${funding.fundingRate}</p>
-                            <p class="p_p4">% 달성</p>
-                            <p class="p_p5">${funding.endDate}</p>
+                            <p class="p_p3" style="margin-top: 15px">${funding.fundingRate}</p>
+                            <p class="p_p4" style="margin-top: 3px">% 달성</p><br>
+                            <p class="p_p5">${funding.endDate}</p><br>
                         </div>
                         <div class="p_flex">
-                            <p class="p_p6">${funding.formatPrice()}</p>
-                            <p class="p_p7">원 달성</p>
-                            <p class="p_p8">${funding.peopleCount}명 달성</p>
+                            <p class="p_p6" style="margin-top: 25px">${funding.formatPrice()}</p>
+                            <p class="p_p7" style="margin-top: 15px">원 달성</p><br>
+                            <p class="p_p8" style="margin-top: 15px; font-size: small; padding-top: 2px;">참여 ${funding.peopleCount}</p>
                         </div>
                     </div>
                 </div>
-                <!--모달-->
-                <div class="j_custom_modal" id="j_fund_modal${status.index}">
-                    <iframe src="/admin/funding/detail/${funding.fundingId}" id="chat_iframe" style=" width: 100%; height: 100%; border: none;">대체 내용</iframe>
-                    <button class="j_close" style="background-color: var(--primary_02);" onclick="closeModal(${status.index})">창 닫기</button>
-                </div>
             </c:forEach>
             </div>
-
+            <div class="modal" id="j_fund_modal">
+                <div class="modal-dialog" style="max-width: none; width: 70%" >
+                    <input type="hidden" id="original">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="modal_title">Modal Heading</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <iframe id="fund_frame" style="width: 100%; height: 100%;
+                              border: none;">대체 내용</iframe>
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" id="hidden_id">
         </div>
         <div>
             <button id="scrollToTopBtn"><img src="/images/icons/upArrow.gif" class="j_up_button"></button>
@@ -133,17 +153,6 @@
         
     </div>
 <script>
-    // 모달 열기
-    function openModal(id) {
-        document.getElementById('j_fund_modal'+ id).style.display = 'block';
-
-    }
-
-    // 모달 닫기
-    function closeModal(id) {
-        document.getElementById('j_fund_modal' + id).style.display = 'none';
-
-    }
 
     let currentPage = 2;
     let isLoading = false;
@@ -186,83 +195,29 @@
         // 로딩 딜레이 주기
         setTimeout(async () => {
             try {
-                const container = document.getElementById('data-container');
                 const newData = await fetchFundingList(currentPage);
-
-                newData.forEach((funding, index) => {
-                    const newElement = document.createElement('div');
-                    newElement.classList.add('p_section1', 'p_box');
-
-                    const button = document.createElement('button');
-                    button.style.border = 'none';
-                    button.style.background = 'transparent';
-                    button.addEventListener('click', () => openModal(index));
-
-                    const image = document.createElement('img');
-                    image.src = funding.movieThumbnail;
-                    image.alt = '영화사진';
-
-                    button.appendChild(image);
-                    newElement.appendChild(button);
-
-                    const innerDiv = document.createElement('div');
-                    innerDiv.classList.add('p_list');
-
-                    const p1 = document.createElement('p');
-                    p1.classList.add('p_p1');
-                    p1.textContent = funding.movieName;
-
-                    const p2 = document.createElement('p');
-                    p2.classList.add('p_p2');
-                    p2.textContent = '디렉터 : ' + funding.director;
-
-                    const pFlex1 = document.createElement('div');
-                    pFlex1.classList.add('p_flex');
-
-                    const p3 = document.createElement('p');
-                    p3.classList.add('p_p3');
-                    p3.textContent = funding.fundingRate;
-
-                    const p4 = document.createElement('p');
-                    p4.classList.add('p_p4');
-                    p4.textContent = '% 달성';
-
-                    const p5 = document.createElement('p');
-                    p5.classList.add('p_p5');
-                    p5.textContent = funding.endDate;
-
-                    pFlex1.appendChild(p3);
-                    pFlex1.appendChild(p4);
-                    pFlex1.appendChild(p5);
-
-                    const pFlex2 = document.createElement('div');
-                    pFlex2.classList.add('p_flex');
-
-                    const p6 = document.createElement('p');
-                    p6.classList.add('p_p6');
-                    p6.textContent = formatPrice(funding.presentPrice);
-
-                    const p7 = document.createElement('p');
-                    p7.classList.add('p_p7');
-                    p7.textContent = '원 달성';
-
-                    const p8 = document.createElement('p');
-                    p8.classList.add('p_p8');
-                    p8.textContent = funding.peopleCount + '명 달성';
-
-                    pFlex2.appendChild(p6);
-                    pFlex2.appendChild(p7);
-                    pFlex2.appendChild(p8);
-
-                    innerDiv.appendChild(p1);
-                    innerDiv.appendChild(p2);
-                    innerDiv.appendChild(pFlex1);
-                    innerDiv.appendChild(pFlex2);
-
-                    newElement.appendChild(innerDiv);
-
-                    // Append the new element to the container
-                    container.appendChild(newElement);
+                newData.forEach((funding) => {
+                    var newElement = '<div class="p_section1 p_box">' +
+                        '<button type="button" style="border: none; background: transparent" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#j_fund_modal" data-id="' + funding.fundingId + '" data-name="' + funding.movieName + '">' +
+                        '<img src="' + funding.movieThumbnail + '" alt="영화사진">' +
+                        '</button>' +
+                        '<div class="p_list">' +
+                        '<p class="p_p1">' + funding.movieName + '</p><br>' +
+                        '<p class="p_p2">디렉터:' + funding.director + '</p><br>' +
+                        '<div class="p_flex">' +
+                        '<p class="p_p3" style="margin-top: 15px">' + funding.fundingRate + '</p>' +
+                        '<p class="p_p4" style="margin-top: 3px">% 달성</p><br>' +
+                        '<p class="p_p5">' + funding.endDate + '</p><br>' +
+                        '</div>' +
+                        '<div class="p_flex">' +
+                        '<p class="p_p6" style="margin-top: 25px">' + formatPrice(funding.presentPrice) + '</p>' +
+                        '<p class="p_p7" style="margin-top: 15px">원 달성</p><br>' +
+                        '<p class="p_p8" style="margin-top: 15px; font-size: small; padding-top: 2px;">참여 ' + funding.peopleCount + '</p>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+                    // Append new content to the container (assumes you have a container with id 'data-container')
+                    $('#data-container').append(newElement);
                 });
                 currentPage++;
             } catch (error) {
@@ -303,8 +258,16 @@
         return formatter.format(number);
     }
 
-        // 버튼에 클릭 이벤트 리스너 추가
-
+    $('#j_fund_modal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var id = button.data('id');
+        var title = button.data('name');
+        // 모달 팝업에 데이터 집어넣기
+        var modal = $(this);
+        $('#fund_frame').attr('src', '/fund/funding/' + id);
+        $('#modal_title').text(title);
+        $('#hidden_id').attr('value', id);
+    })
 
 
 </script>
