@@ -67,11 +67,5 @@
                 </c:otherwise>
             </c:choose>
         </c:forEach>
-
-            <nav aria-label="Page navigation ">
-                <ul class="pagination justify-content-center" id="l_pagination">
-                </ul>
-            </nav>
-
-<script src="../../../../js/lsr/on_payment.js"></script>
+    <script src="../../../../js/lsr/on_payment.js"></script>
 <%@ include file="../layout/footer.jsp" %>

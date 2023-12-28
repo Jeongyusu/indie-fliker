@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../layout/header.jsp" %>
 
+<body class="l_body">
 <div id="l_select_movie">
     <h5>우리는 독립적이고 독특한 영화들을 즐기는 곳입니다. 함께 특별한 순간을 만들어봐요.</h5>
 </div>
@@ -29,7 +30,7 @@
                                     <div class="l_info_p">
                                         ${onMovieDetailDTO.synopsis}
                                     </div>
-                                    <div class="l_info_title h5"><a class="l_green">${onMovieDetailDTO.movieName}</a>에 대한 <a
+                                    <div class="l_info_title"><a class="l_green">${onMovieDetailDTO.movieName}</a>에 대한 <a
                                             class="l_font_pupple"><p id="count">0</p></a>개의 이야기가 있어요!
                                     </div>
                                 </div>

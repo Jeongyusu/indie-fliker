@@ -33,7 +33,7 @@
         <c:forEach var="chat" items="${openMovieChatDTOs}" varStatus="status">
             <div class="l_chat_room" id="movie_chat${chat.movieId}">
                 <input id="movieTitle${chat.movieId}" value="${chat.movieName}" type="hidden" />
-                <div class="l_chat_message_box col-12">
+                <div class="l_chat_message_box">
                     <div class="l_chat_messages" id="chatMessages${chat.movieId}">
                         <!-- 채팅 메시지들 -->
                     </div>

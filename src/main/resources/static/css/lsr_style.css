@@ -18,7 +18,7 @@
 }
 
 .l_avi_main {
-    width: 1280px
+    width: 1140px
 }
 
 .l_main {
@@ -52,6 +52,8 @@
     border: 2px solid var(--line_01);
     overflow-y: auto;
     border-top: none;
+    max-width: 250px;
+    margin-top: 26px;
 }
 
 #l_movie_on_watch {
@@ -828,9 +830,9 @@ width: 100%;
     background-color: #f4f4f8;
     border-radius: 8px;
     margin: 8px;
-    padding: 15px 35px;
+    padding: 15px 20px;
     width: 91.5%;
-    height: 70px;
+    height: 50px;
     display: flex;
     align-items: center;
     outline: none;
@@ -838,6 +840,7 @@ width: 100%;
 }
 
 .l_chat_message_input {
+    font-size: 12px;
     height: 60px;
     width: 90%;
     border: none;
@@ -845,6 +848,7 @@ width: 100%;
     outline: none;
     resize: none;
 }
+
 
 .l_info_title {
     font-weight: bold;
@@ -892,7 +896,7 @@ width: 100%;
 }
 
 .l_review_button {
-    font-size: 13px;
+    font-size: 12px;
     border: none;
     background-color: transparent;
 }
@@ -1262,10 +1266,9 @@ width: 100%;
 #l_online_navbar {
     width: 100%;
     color: var(--point_05);
-    font-weight: bold;
     letter-spacing: 0.025em;
     margin-top: 30px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 #l_online_navbar ul {
@@ -1308,8 +1311,8 @@ width: 100%;
 
 .l_info_p {
     margin: 30px 0 50px;
-    font-size: 18px;
-    line-height: 30px;
+    font-size: 14px;
+    line-height: 24px;
 }
 
 
