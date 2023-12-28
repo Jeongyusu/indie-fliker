@@ -56,19 +56,15 @@ public class AdminFundingController {
     }
 
     @GetMapping("/funding/movie-open/setting")
-    public String moviePlayDay(Model model){
-        List<AdminOnlineStreamingDTO> adminOnlineStreamingDTOs = fundingService.findAllAdminPeriodSetting();
-        log.debug("==============================");
-        log.debug(adminOnlineStreamingDTOs.toString());
+    public String moviePlayDay(@RequestParam(name = "page", defaultValue = "1") Integer page, Model model){
+        List<AdminOnlineStreamingDTO> adminOnlineStreamingDTOs = fundingService.findAllAdminPeriodSetting(page, 8);
         model.addAttribute("adminOnlineStreamingDTOs", adminOnlineStreamingDTOs);
         return "manager/playday";
     }
 
     @GetMapping("/funding/off-movie-open/setting")
-    public String offMoviePlayDay(Model model){
-        List<AdminOfflineStreamingDTO> adminOfflineStreamingDTOs = fundingService.findAllAdminOfflinePeriodSetting();
-        log.debug("==============================");
-        log.debug(adminOfflineStreamingDTOs.toString());
+    public String offMoviePlayDay(@RequestParam(name = "page", defaultValue = "1") Integer page, Model model){
+        List<AdminOfflineStreamingDTO> adminOfflineStreamingDTOs = fundingService.findAllAdminOfflinePeriodSetting(page, 8);
         model.addAttribute("adminOfflineStreamingDTOs", adminOfflineStreamingDTOs);
         return "manager/playoffday";
     }

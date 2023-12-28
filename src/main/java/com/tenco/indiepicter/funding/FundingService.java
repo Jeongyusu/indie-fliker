@@ -169,14 +169,16 @@ public class FundingService {
         return fundingRepository.findAllAdminFundingModify(pageSize, offset);
     }
 
-    //어드민 페이지 온라인 상영기간 설정 리스트 조회
-    public List<AdminOnlineStreamingDTO> findAllAdminPeriodSetting(){
-        return fundingRepository.findAllAdminPeriodSetting();
+    //어드민 페이지 온라인 상영기간 설정 리스트 페이징 조회
+    public List<AdminOnlineStreamingDTO> findAllAdminPeriodSetting(Integer page, Integer pageSize){
+        Integer offset = page * pageSize - pageSize;
+        return fundingRepository.findAllAdminPeriodSetting(pageSize, offset);
     }
 
     //어드민 페이지 오프라인 상영기간 설정 리스트 조회
-    public List<AdminOfflineStreamingDTO> findAllAdminOfflinePeriodSetting(){
-        return fundingRepository.findAllAdminOfflinePeriodSetting();
+    public List<AdminOfflineStreamingDTO> findAllAdminOfflinePeriodSetting(Integer page, Integer pageSize){
+        Integer offset = page * pageSize - pageSize;
+        return fundingRepository.findAllAdminOfflinePeriodSetting(pageSize, offset);
     }
 
     public AdminFundingUpdateFormDTO findByIdForAdminFundingModify(Integer id){
