@@ -2,6 +2,7 @@ package com.tenco.indiepicter.order;
 
 import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
 import com.tenco.indiepicter.order.response.LastOrderDTO;
+import com.tenco.indiepicter.order.response.OrderCountDTO;
 import com.tenco.indiepicter.reservation.Reservation;
 import com.tenco.indiepicter.reservation.ReservationRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -47,4 +48,16 @@ public class OrderService {
     public int deleteById(Integer orderId, int principalId) {
         return orderRepository.deleteById(orderId, principalId);
     }
+
+
+    // 주문 갯수(count)
+    public OrderCountDTO countByOrder(int principalId){
+        int onlineCount = orderRepository.countByOnlineOrder(principalId);
+        int offlineCount = orderRepository.countByOfflineOrder(principalId);
+        OrderCountDTO responseDTO = new OrderCountDTO();
+        responseDTO.setOnlineCount(onlineCount);
+        responseDTO.setOfflineCount(offlineCount);
+        return responseDTO;
+    }
+
 }

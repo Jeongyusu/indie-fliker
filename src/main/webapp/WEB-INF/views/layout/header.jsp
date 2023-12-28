@@ -56,7 +56,7 @@
                 <div id="j_nav_menu" class="j_navi">
                     <ul class="j_nav_menu_ul">
                         <li>
-                            <a href="/fund/on-air">영화목록</a>
+                            <a href="/fund/on-air">영화 목록</a>
                             <ul class="j_submenu">
                                 <li>메뉴를 선택하세요></li>
                                 <li><a href="/fund/on-air">온라인 상영중인 영화보기</a></li>
