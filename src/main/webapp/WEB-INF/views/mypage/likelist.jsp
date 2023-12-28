@@ -53,7 +53,6 @@
             xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
             var scrab = {
-                userId: userId, // 서버에서 올바른 유저 아이디로 대체해야 함
                 fundingId: fundingId
             };
 

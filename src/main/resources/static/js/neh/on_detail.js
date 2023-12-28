@@ -32,13 +32,21 @@ function toggleMore() {
 }
 
 // jQuery를 사용한 비동기 통신 코드
+
 $(document).ready(function () {
-    $("#scrap_icon").on('click', function () {
+    $(".bookmark_button").on('click', function () {
+        let userId = document.getElementById('k_user_id').value;
+        let fundingId = document.getElementById('k_funding_id').value;
+
+        console.log("값 검증 확인" + userId + '펀딩아이디' + fundingId)
+        // 클릭된 버튼 안에서 .scrap_icon 찾기
+        var scrapIcon = $(this).children(".scrap_icon");
+
         // AJAX POST 요청
-        let sendData = {
-            userId: 2,
-            fundingId: 2
-        }
+        var sendData = {
+            fundingId: fundingId
+        };
+
         $.ajax({
             type: "POST",
             url: "/api/scrabs/toggle",
@@ -46,20 +54,19 @@ $(document).ready(function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json"
         }).done(function (data, textStatus, xhr) {
-            console.log(typeof data); // 만약 문자열 -> 파싱
+            console.log(typeof data);
             console.log(data);
 
             // 좋아요가 추가된 경우
             if (data.response.scrabbed) {
-                $("#scrap_icon").attr("src", "images/icons/icons8-heart-24-red.png");
+                scrapIcon.attr("src", "/images/icons/icons8-heart-24-red.png");
             } else {
                 // 좋아요가 제거된 경우
-                $("#scrap_icon").attr("src", "images/icons/icons8-heart-24-black.png");
+                scrapIcon.attr("src", "/images/icons/icons8-heart-24-black.png");
             }
 
         }).fail(function (error) {
             alert(error.responseText);
         });
-
     });
 });

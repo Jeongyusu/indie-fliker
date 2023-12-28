@@ -407,16 +407,16 @@ insert into funding_ready_tb(target_price, present_price, price_per_onetime, peo
 insert into funding_ready_tb(target_price, present_price, price_per_onetime, people_count, release_date, end_date, movie_id) values ('4000000', '3000000', '8000', '40', '2023-11-01', '2023-12-31', 29);
 
 
-insert  into scrab_tb(user_id, funding_id) values ('1','1' );
-insert  into scrab_tb(user_id, funding_id) values ('1','2' );
-insert  into scrab_tb(user_id, funding_id) values ('1','3' );
-insert  into scrab_tb(user_id, funding_id) values ('1','4' );
-insert  into scrab_tb(user_id, funding_id) values ('1','5' );
-insert  into scrab_tb(user_id, funding_id) values ('2','1' );
-insert  into scrab_tb(user_id, funding_id) values ('2','2' );
-insert  into scrab_tb(user_id, funding_id) values ('2','3' );
-insert  into scrab_tb(user_id, funding_id) values ('3','1' );
-insert  into scrab_tb(user_id, funding_id) values ('3','2' );
+insert  into scrab_tb(user_id, funding_id) values ('1','1');
+insert  into scrab_tb(user_id, funding_id) values ('1','2');
+insert  into scrab_tb(user_id, funding_id) values ('1','3');
+insert  into scrab_tb(user_id, funding_id) values ('1','4');
+insert  into scrab_tb(user_id, funding_id) values ('1','5');
+insert  into scrab_tb(user_id, funding_id) values ('2','1');
+insert  into scrab_tb(user_id, funding_id) values ('2','2');
+insert  into scrab_tb(user_id, funding_id) values ('2','3');
+insert  into scrab_tb(user_id, funding_id) values ('3','1');
+insert  into scrab_tb(user_id, funding_id) values ('3','2');
 
 
 insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2023-12-24', '13:22', '14:51', 1, 1);
