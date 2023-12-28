@@ -20,22 +20,24 @@ public class ScrabRestController {
 
     @Autowired
     private ScrabService scrabService;
-
     @Autowired
     private HttpSession session;
 
     // 좋아요 목록 api
     @GetMapping("/api/scrabs/view")
     public ResponseEntity<?> scrabview() {
+
         User principal = (User) session.getAttribute(Define.PRINCIPAL);
         List<ScrabResponseDTO> scrabs = scrabService.scrabview(principal.getId());
+
         return ResponseEntity.ok().body(ApiUtils.success(scrabs));
     }
 
     // 좋아요 기능 api
     @PostMapping("/api/scrabs/toggle")
     public ResponseEntity<?> toggleScrab(@RequestBody Scrab scrab) {
-        boolean scrabs = scrabService.toggleScrab(scrab.getUserId(), scrab.getFundingId());
+        User pricipal = (User) session.getAttribute(Define.PRINCIPAL);
+        boolean scrabs = scrabService.toggleScrab(pricipal.getId(), scrab.getFundingId());
         return ResponseEntity.ok().body(ApiUtils.success(new ToggleResponseDTO(scrabs)));
 
     }
@@ -43,7 +45,8 @@ public class ScrabRestController {
     // 좋아요 목록 삭제
     @PostMapping("/api/scrabs/delete")
     public ResponseEntity<?> deleteListScrab(@RequestBody Scrab scrab) {
-        boolean scrabs = scrabService.deleteListScrab(scrab.getUserId(), scrab.getFundingId());
+        User pricipal = (User) session.getAttribute(Define.PRINCIPAL);
+        boolean scrabs = scrabService.deleteListScrab(pricipal.getId(), scrab.getFundingId());
         return ResponseEntity.ok().body(ApiUtils.success(new ToggleResponseDTO(scrabs)));
     }
 

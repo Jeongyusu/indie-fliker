@@ -113,6 +113,7 @@
                                 </div>
                             </span>
                             <button id="n_toggle_button" onclick="toggleMore()">프로젝트 더 보기</button>
+                            <input type="hidden" id="k_funding_id" value="${fundingDetailDTO.fundingId}">
                         </div>
                         <!-- 기대되는 영화 목록 -->
                         <div id="n_more_movie">
@@ -120,7 +121,7 @@
                             <div class="n_movie_list">
                                 <c:forEach var="fund" items="${moviesByMainDTOs}">
                                     <div class="row n_more_movie">
-                                        <img src="${fund.movieThumbnail}">
+                                        <a href="/fund/funding/${fund.fundingId}"><img src="${fund.movieThumbnail}"></a>
                                         <p class="n_achieve">${fund.fundingRate}%달성</p>
                                         <p class="n_title">${fund.movieName}</p>
                                         <p class="n_content">${fund.synopsis}</p>
@@ -200,10 +201,10 @@
                             <button type="button" class="bookmark_button">
                                 <c:choose>
                                     <c:when test="${isLiked}">
-                                        <img id="scrap_icon" src="/images/icons/icons8-heart-24-black.png">
+                                        <img id="scrap_icon" src="/images/icons/icons8-heart-24-red.png">
                                     </c:when>
                                     <c:otherwise>
-                                        <img id="scrap_icon" src="/images/icons/icons8-heart-24-red.png">
+                                        <img id="scrap_icon" src="/images/icons/icons8-heart-24-black.png">
                                     </c:otherwise>
                                 </c:choose>
                             </button>
@@ -219,13 +220,16 @@
 <script src="../../../../js/neh/off_detail.js"></script>
 
 <script>
+    var userId = ${Scrab.userId};
+    var fundingId = ${Scrab.fundingId};
     // jQuery를 사용한 비동기 통신 코드
     $(document).ready(function () {
         $("#scrap_icon").on('click', function () {
+
             // AJAX POST 요청
             let sendData = {
-                userId: 2,
-                fundingId: 2
+                userId: 1,
+                fundingId: 1
             }
             $.ajax({
                 type: "POST",
@@ -239,10 +243,10 @@
 
                 // 좋아요가 추가된 경우
                 if (data.response.scrabbed) {
-                    $("#scrap_icon").attr("src", "images/icons/icons8-heart-24-red.png");
+                    $("#scrap_icon").attr("src", "/images/icons/icons8-heart-24-red.png");
                 } else {
                     // 좋아요가 제거된 경우
-                    $("#scrap_icon").attr("src", "images/icons/icons8-heart-24-black.png");
+                    $("#scrap_icon").attr("src", "/images/icons/icons8-heart-24-black.png");
                 }
 
             }).fail(function (error) {

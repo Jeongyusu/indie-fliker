@@ -158,5 +158,46 @@ public class AdminService {
 
 
 
+    // 초청권 관리 검색어 페이징 조회
+    public List<User> adminUserPagingKeywordLists(Integer page, String keyword) {
+
+        // 인덱스 번호 0부터 시작이기 때문에 -1 로 처리 해줌
+        int pageStart = (page - 1) * pageLimit;
+
+        // 쿼리문에 숫자를 두개 넘겨야 해서 Map사용
+        Map<String, Integer> pagingParams = new HashMap<>();
+        pagingParams.put("pageStart", pageStart);
+        pagingParams.put("pageLimit", pageLimit);
+
+        return this.adminRepository.findByAllPagingListsAboutKeyword(pagingParams, keyword);
+    }
+
+    //VIP 회원 관리 검색어 페이징 조회
+    public List<User> findByAdminVipPagingKeywordLists(Integer page, String keyword) {
+        // 인덱스 번호 0부터 시작이기 때문에 -1 로 처리 해줌
+        int pageStart = (page - 1) * pageLimit;
+
+        // 쿼리문에 숫자를 두개 넘겨야 해서 Map사용
+        Map<String, Integer> pagingParams = new HashMap<>();
+        pagingParams.put("pageStart", pageStart);
+        pagingParams.put("pageLimit", pageLimit);
+
+        return this.adminRepository.findByAdminVipPagingKeywordLists(pagingParams, keyword);
+    }
+
+    //일반 회원 관리 검색어 페이징 조회
+    public List<User> findByAdminNormalPagingKeywordLists(Integer page, String keyword) {
+        // 인덱스 번호 0부터 시작이기 때문에 -1 로 처리 해줌
+        int pageStart = (page - 1) * pageLimit;
+
+        // 쿼리문에 숫자를 두개 넘겨야 해서 Map사용
+        Map<String, Integer> pagingParams = new HashMap<>();
+        pagingParams.put("pageStart", pageStart);
+        pagingParams.put("pageLimit", pageLimit);
+
+        return this.adminRepository.findByAdminNormalPagingKeywordLists(pagingParams, keyword);
+    }
+
+
 
 }
