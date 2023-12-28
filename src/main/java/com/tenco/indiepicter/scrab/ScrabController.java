@@ -23,12 +23,6 @@ public class ScrabController {
     @Autowired
     private ScrabService scrabService;
 
-    // 좋아요 기능
-    @PostMapping("/like-list")
-    public String likeList(@ModelAttribute Scrab scrab) {
-        boolean scrabs = scrabService.toggleScrab(scrab.getUserId(), scrab.getFundingId());
-        return "redirect:/my-likelist";
-    }
 
     // 좋아요 목록보기
     @GetMapping("/my-likelist")

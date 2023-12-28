@@ -30,4 +30,5 @@
 			<a href="/user/join" class="k_join">회원가입</a>
 		</div>
 	</div>
+
 <%@ include file="../layout/footer.jsp" %>

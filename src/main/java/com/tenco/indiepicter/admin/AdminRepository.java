@@ -24,6 +24,12 @@ public interface AdminRepository {
     // 일반 회원, VIP 회원 관리 전체 갯수 조회
     public Integer pageCount();
 
+    // 일반 회원만 전체 갯수 조회
+    public Integer normalPageCount();
+    
+    // VIP 회원만 전체 갯수 조회
+    public Integer vipPageCount();
+
     // 일반 회원, VIP 회원 관리(회원 탈퇴)
     public void adminUserUpdate(Integer id);
 
