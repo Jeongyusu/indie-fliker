@@ -23,11 +23,16 @@ public class ScrabRestController {
     @Autowired
     private HttpSession session;
 
+    @Autowired
+    private HttpSession session;
+
     // 좋아요 목록 api
     @GetMapping("/api/scrabs/view")
     public ResponseEntity<?> scrabview() {
-        User pricipal = (User) session.getAttribute(Define.PRINCIPAL);
-        List<ScrabResponseDTO> scrabs = scrabService.scrabview(pricipal.getId());
+
+        User principal = (User) session.getAttribute(Define.PRINCIPAL);
+        List<ScrabResponseDTO> scrabs = scrabService.scrabview(principal.getId());
+
         return ResponseEntity.ok().body(ApiUtils.success(scrabs));
     }
 

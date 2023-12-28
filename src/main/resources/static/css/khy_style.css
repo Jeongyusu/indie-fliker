@@ -26,6 +26,10 @@ input:active, input:focus{
     margin: 70px auto;
 }
 
+.k_login_container input {
+    font-size: 14px;
+}
+
 .k_forget {
     margin-top: 15px;
     display: block;
@@ -117,14 +121,13 @@ input:active, input:focus{
 }
 
 .k_input_button button {
-    background-color: var(--point_01);
-    color: var(--font_01);
+    background-color: var(--primary_01);
+    color: var(--def_wh);
     border: none;
     border-radius: 8px;
     height: 55.5px;
     width: 100%;
     margin-top: 30px;
-    font-weight: bold;
 }
 
 .k_input_button button:hover,
@@ -175,6 +178,7 @@ input:active, input:focus{
 
 .k_input_label {
     margin-bottom: 10px;
+    font-size: 14px;
 }
 
 /*회원가입 페이지*/
@@ -213,9 +217,8 @@ input:active, input:focus{
 }
 
 .k_validation {
-    background-color: var(--point_01);
-    color: var(--font_01);
-    font-weight: bold;
+    background-color: var(--primary_01);
+    color: var(--def_wh);
     border: none;
     border-radius: 5px;
     height: 38px;
@@ -239,11 +242,10 @@ input:active, input:focus{
 }
 
 .k_complete button {
-    background-color: var(--point_01);
-    color: var(--font_01);
+    background-color: var(--primary_01);
+    color: var(--def_wh);
     border: none;
     height: 55.5px;
-    font-weight: bold;
 }
 
 .k_complete button:hover,
@@ -387,16 +389,23 @@ div.main i {
 /* 프로필 수정 페이지 */
 .k_profile_main{
     max-width: 400px;
-    margin: auto;
-    margin-top: 150px;
+    margin: 70px auto;
 }
+
+.k_profile_main input {
+    font-size: 14px;
+}
+
 .k_profile_info_set{
-    font-size: 20px;
     font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 22px;
 }
+
 .k_profile_pic{
-    margin-top: 20px;
+    margin: 20px 0 10px;
 }
+
 .k_profile_pic_set{
     border-radius: 50%;
     width: 30%;
@@ -418,28 +427,12 @@ div.main i {
 .k_profile_bttn_margin{
     margin-left: 36%;
 }
-.k_profile_first_container{
-    margin-top: 10%;
+
+.k_profile_input{
+    background-color: var(--back_01);
 }
-.k_profile_nicknmae{
-    margin-top: 10px;
-    width: 100%;
-    height: 35px;
-}
-.k_profile_tel_div{
+.k_profile_margin_top{
     margin-top: 15px;
-}
-.k_profile_tel_input{
-    margin-top: 10px;
-    width: 100%;
-    height: 35px;
-    background-color: rgba(234, 234, 234, 0.58);
-    border: 1px solid #ccc; /* 테두리 추가 */
-    box-sizing: border-box; /* 테두리와 패딩 포함하여 요소 크기 계산 */
-    padding: 5px; /* 내부 패딩 설정 */
-}
-.k_profile_password_div{
-    margin-top: 20px;
 }
 .k_profile_bttns_margin{
     margin-top: 30px;
@@ -448,29 +441,42 @@ div.main i {
 }
 .k_profile_bttn_cancle{
     width: 50%;
-    height: 60px;
-    color: white;
+    height: 55.5px;
+    color: var(--def_wh);
     border: none;
     border-radius: 5px;
-    background-color: grey;
+    background-color: var(--line_01);
     text-align: center;
     line-height: 60px;
     text-decoration: none;
 }
+
+.k_profile_bttn_cancle:hover {
+    color: var(--font_01);
+    text-decoration: none;
+}
+
 .k_profile_bttn_ok{
     width: 50%;
-    height: 60px;
-    color: white;
+    height: 55.5px;
+    color: var(--def_wh);
     border: none;
     border-radius: 5px;
-    background-color: green;
+    background-color: var(--primary_01);
     margin-left: 2%;
 }
 
 .k_profile_main img{
-    width: 150px;
-    height: 150px;
+    width: 130px;
     border-radius: 50%;
+}
+
+.k_file_button {
+    width: 100%;
+}
+
+.k_file_button input {
+
 }
 
 /*마이페이지*/
@@ -593,7 +599,7 @@ margin-bottom: 20px;
 }
 
 .k_update_login-container{
-    border-left: 0.5px solid var(--line_01);
+    border-left: 0.1px solid var(--back_02);
     padding: 20px 0 20px 20px;
     width: 75%;
 }
@@ -874,22 +880,21 @@ margin-bottom: 10px;
 
 .k_ask_container {
     max-width: 400px;
-    margin: auto;
-    margin-top: 150px;
+    margin: 48px auto 20px;
 }
 
 .k_ask_main {
     text-align: center;
     font-weight: bold;
-    margin-bottom: 40px;
-    font-size: 35px;
+    margin-bottom: 25px;
+    font-size: 24px;
 }
 
 .k_search-container {
     display: flex;
     max-width: 400px;
     width: 100%;
-    border: 2px solid var(--def_bl);
+    border: 1px solid var(--def_bl);
     border-radius: 4px;
     overflow: hidden;
 }
@@ -899,6 +904,10 @@ margin-bottom: 10px;
     padding: 10px;
     border: none;
     font-size: 16px;
+}
+
+.k_search-container button{
+    padding: 0 10px;
 }
 
 .k_search-icon {
@@ -937,13 +946,17 @@ margin-bottom: 10px;
     width: 143px;
     height: 50px;
     border-radius: 10px;
-    border: 1px solid #8AF9CD;
+    border: 1px solid var(--primary_01);
     text-align: center;
     line-height: 50px;
+    background-color: var(--primary_01);
+
 }
 
 .k_btn_group a:hover{
-    background-color: #8AF9CD;
+    background-color: var(--def_wh);
+    color: var(--font_01);
+    text-decoration: none;
 }
 
 .k_question_a{
@@ -1007,31 +1020,32 @@ margin-bottom: 10px;
     font-weight: bold;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .k_clickMe {
     cursor: pointer;
-    padding: 10px;
-    background-color: var(--def_wh);
+    background-color: transparent;
     color: var(--back_02);
     display: inline-block;
     margin: 10px;
 }
 
 .k_clickMeSymbol {
-    margin-left: 450px;
     border: none;
-    background-color: var(--def_wh);
+    background-color: transparent;
     cursor: pointer;
-
+    width: 33px;
+    height: 33px;
 }
 
 .k_hiddenDiv {
-    display: none;
     padding: 20px;
-    background-color: var(--back_02);
+    background-color: var(--font_01);
     color: var(--def_wh);
-    margin: 10px;
+    display: none;
+    font-size: 14px;
+    width: 98%;
 }
 
 .k_a_l {
@@ -1065,7 +1079,7 @@ k_ask_s_container a{
 /*공지 사항*/
 
 .k_notice_hr {
-    margin-top: 100px;
+    margin-top: 48px;
 }
 
 .k_notice_import {

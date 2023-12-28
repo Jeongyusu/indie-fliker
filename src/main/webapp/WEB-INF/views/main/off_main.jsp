@@ -35,7 +35,7 @@
 				<div class="col l_ranking_card" style="max-width: 250px;">
 					<div class="card l_main_card" style="border: none;">
 						<div class="l_movie_image">
-							<figure class="l_ranking">
+							<figure class="l_front">
 								<img src="${ranker.movieThumbnail}" class="card-img" alt="...">
 							</figure>
 							<div class="l_overlay_button l_back">
@@ -67,7 +67,14 @@
 			<c:forEach var="funding" items="${offAirTotalDTO.offAirMovieDTOs}" varStatus="status">
 				<div class="col my-4 l_movie_card_form">
 					<div class="card l_main_card">
-						<a href="/fund/offline-movie/${funding.fundingId}"><img src="${funding.movieThumbnail}" class="card-img" alt="..."></a>
+						<div class="l_movie_image">
+							<figure class="l_front">
+								<img src="${funding.movieThumbnail}" class="card-img" alt="...">
+							</figure>
+							<div class="l_overlay_button l_back">
+								<a href="/fund/offline-movie/${funding.fundingId}"><button class="btn btn-outline-success l_button">예매하기</button></a>
+							</div>
+						</div>
 						<div class="l_percent l_mint l_strong">${funding.fundingRate}% 달성</div>
 						<div class="l_movie_online_title">
 							<img src="" class="l_grade_img">

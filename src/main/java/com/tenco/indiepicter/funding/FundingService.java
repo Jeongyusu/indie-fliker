@@ -66,24 +66,34 @@ public class FundingService {
         return fundingRepository.findAllByOffAirPage(pageSize, offset);
     }
 
+    // 개봉한 온라인 영화 목록
     public List<OnAirMovieDTO> onAirMovies() {
         return fundingRepository.findAllByOnAir();
     }
 
+    // 개봉한 온라인 영화 랭킹 순
     public List<OnAirMovieRankingDTO> onAirRankedMovies() {
         return fundingRepository.findAllByOnAirAndRanking();
     }
 
+    // 개봉 예정인 온라인 영화 목록
     public List<OnDDayMovieDTO> onDDayMovies() {
         return fundingRepository.findByOnlineDDay();
     }
 
+    // 개봉한 오프라인 영화 목록
     public List<OffAirMovieDTO> offAirMovies() {
         return fundingRepository.findAllByOffAir();
     }
 
+    // 개봉한 오프라인 영화 랭킹 순
     public List<OffAirMovieRankingDTO> offAirRankedMovies() {
         return fundingRepository.findAllByOffAirAndRanking();
+    }
+
+    // 유저가 구매한 개봉 온라인 영화 목록
+    public List<OnAirMovieByUserDTO> onAirMovieByUser(Integer principalId){
+        return fundingRepository.findByUserToOnAir(principalId);
     }
 
     public FundingDetailDTO detailFunding(Integer fundingId) {
