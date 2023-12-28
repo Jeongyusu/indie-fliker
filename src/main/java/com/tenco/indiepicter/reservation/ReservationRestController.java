@@ -30,7 +30,7 @@ public class ReservationRestController {
    // 가장 최근 예매한 예매 번호 조회
     @GetMapping("/api/reservation-id")
     public ResponseEntity<?> selectReservationId() {
-//        User principal = (User) session.getAttribute(Define.PRINCIPAL);
-        ReservationIdDTO responseDTO = reservationService.selectReservationId(1);
+        User principal = (User) session.getAttribute(Define.PRINCIPAL);
+        ReservationIdDTO responseDTO = reservationService.selectReservationId(principal.getId());
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }}

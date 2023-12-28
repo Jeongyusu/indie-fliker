@@ -32,7 +32,7 @@ public class ReservationController {
 	@GetMapping("/{movieId}/off-ticket")
 	public String offReservationTicket(@RequestParam Integer reservationId, Model model){
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-		OffReservationTicketDTO offReservationTicketDTO = reservationService.offReservationTicket(reservationId, 1);
+		OffReservationTicketDTO offReservationTicketDTO = reservationService.offReservationTicket(reservationId, principal.getId());
 		model.addAttribute("offReservationTicketDTO", offReservationTicketDTO);
 		return "reservation/off_reservation_ticket";
 	}
@@ -41,7 +41,7 @@ public class ReservationController {
 	@GetMapping("/{movieId}/on-ticket")
 	public String onReservationTicket(@RequestParam Integer reservationId, Model model){
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-		OnReservationTicketDTO onReservationTicketDTO = reservationService.onReservationTicket(reservationId, 1);
+		OnReservationTicketDTO onReservationTicketDTO = reservationService.onReservationTicket(reservationId, principal.getId());
 		model.addAttribute("onReservationTicketDTO", onReservationTicketDTO);
 		return "reservation/on_reservation_ticket";
 	}
