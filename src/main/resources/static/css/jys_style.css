@@ -327,3 +327,9 @@
     font-size: 14px;
     outline: none;
 }
+
+.j_font_style {
+    font-size: 27px;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
