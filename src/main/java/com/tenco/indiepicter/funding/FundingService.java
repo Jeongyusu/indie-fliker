@@ -77,8 +77,9 @@ public class FundingService {
     }
 
     // 개봉 예정인 온라인 영화 목록
-    public List<OnDDayMovieDTO> onDDayMovies() {
-        return fundingRepository.findByOnlineDDay();
+    public List<OnDDayMovieDTO> onDDayMovies(Integer page, Integer pageSize) {
+        Integer offset = page * pageSize - pageSize;
+        return fundingRepository.findByOnlineDDay(pageSize, offset);
     }
 
     // 개봉한 오프라인 영화 목록
