@@ -24,7 +24,7 @@
 </c:forEach>
 </div>
 
-<div class="p_paging">
+<div class="p_paging p_notice_paging">
 	<c:choose>	
 		<%-- 현재 페이지가 1페이지이면 이전 글자만 보여줌 --%>
 		<c:when test="${paging.page <= 1}">
