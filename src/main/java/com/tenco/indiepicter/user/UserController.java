@@ -362,7 +362,7 @@ public class UserController {
 
 		User user = this.userService.findById(sessionUser.getId());
 		session.setAttribute(Define.PRINCIPAL, user);
-		return "mypage/mypage";
+		return "redirect:/user/mypage";
 	}
 	
 //----------------------------------------------------------------------------------------------------------------	
@@ -372,6 +372,7 @@ public class UserController {
 	public String isWithdrawal(){
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
 		this.userService.userIsWithdrawal(principal.getId());
+		session.invalidate();
 		return "redirect:/user/login";
 	}
 

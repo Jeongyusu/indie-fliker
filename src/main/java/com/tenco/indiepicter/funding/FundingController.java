@@ -88,10 +88,10 @@ public class FundingController {
 
         FundingDetailDTO fundingDetailDTO = fundingService.detailFunding(id);
         boolean isLiked = scrabService.checkIsLiked(1, id); // 추후 1을 sessionUser.getId()로 변경
-        fundingDetailDTO.setLiked(isLiked);
         List<FundingDTO> moviesByMainDTOs = fundingService.moviesByMain(1, 10);
         model.addAttribute("fundingDetailDTO", fundingDetailDTO);
         model.addAttribute("moviesByMainDTOs", moviesByMainDTOs);
+        model.addAttribute("isLiked", isLiked);
         return "fund/on_detail";
     }
 

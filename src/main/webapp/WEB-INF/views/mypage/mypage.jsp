@@ -7,7 +7,7 @@
 	<div class="k_my_main">
 		<div class="k_my_group">
 			<div class="k_left_my">
-				<img class="k_profile" src="${userInfo.pic}" alt="My Image">
+				<img class="k_profile" src="${sessionScope.principal.pic}" alt="My Image">
 				<p class="k_m_name">${userInfo.username} 님</p>
 				<div class="k_user_grade">
 					<c:choose>

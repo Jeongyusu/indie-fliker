@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="/WEB-INF/views/layout/header.jsp"%>
+<%@ include file="../layout/header.jsp" %>
 
 <div id="l_select_movie">
     <h5>우리는 독립적이고 독특한 영화들을 즐기는 곳입니다. 함께 특별한 순간을 만들어봐요.</h5>
@@ -136,7 +136,7 @@
                     </div>
                     <!-- 채팅방 오픈 알림창 -->
                     <!-- 오픈하는 날 2시간만 열림 & VIP만 가능-->
-<%--                    <c:if test="${principal.grade == 'VIP'}">--%>
+                    <c:if test="${principal.grade == 'VIP'}">
                     <div class="toast show l_toast_show" id="chatForm" style="display: none">
                         <div class="toast-header l_toast_header">
                             <form action="/chat/open-movie" method="get">
@@ -185,7 +185,7 @@
                             </div>
                         </div>
                     </div>
-<%--                    </c:if>--%>
+                    </c:if>
                 </div>
             </div>
             <input type="hidden" name="chatTime" id="chatTime" value="${onMovieDetailDTO.chatTime}">
@@ -204,4 +204,4 @@
 
 <!-- 스크립트 위로 올리면 에러나요! -->
 <script src="../../../../js/lsr/on_watch.js"></script>
-<%@ include file="/WEB-INF/views/layout/footer.jsp"%>
+<%@ include file="../layout/footer.jsp" %>

@@ -47,16 +47,6 @@ public class PaymentController {
     @Autowired
     private HttpSession session;
 
-// 온라인 펀딩 현황 확인(은혜씨 작업중)
-//@GetMapping("/on-payment")
-//public String myOnlinePayment(Model model){
-//	User principal = (User)session.getAttribute(Define.PRINCIPAL);
-//	List<MyOnlinePaymentDTO> myOnlinePaymentLists = this.paymentService.myOnlinePaymentLists(principal.getId());
-//	model.addAttribute("myOnlinePaymentLists", myOnlinePaymentLists);
-//	return "mypage/on_payment";
-//}
-
-//---------------------------------------------------------------------------------------------------------------------
 	// 온라인 펀딩 결제 내역
 	@GetMapping("/on-payment")
 	public String onFunding(Model model) {
@@ -136,14 +126,14 @@ public class PaymentController {
 	@PostMapping("/{movieId}/off-save")
 	public String offPaymentProc(@RequestBody LastOrderDTO lastOrderDTO){
 		// 유저정보 확인
-		// User principal = (User) session.getAttribute(Define.PRINCIPAL);
 
-		int seatResult = seatService.saveSeat(lastOrderDTO, 1);
-		int reservationResult = reservationService.saveReservationTicket(lastOrderDTO, 1);
-		int orderResult = orderService.saveOrder(lastOrderDTO, 1);
+		 User principal = (User) session.getAttribute(Define.PRINCIPAL);
+
+		int seatResult = seatService.saveSeat(lastOrderDTO, principal.getId());
+		int reservationResult = reservationService.saveReservationTicket(lastOrderDTO, principal.getId());
+		int orderResult = orderService.saveOrder(lastOrderDTO, principal.getId());
 		int paymentResult = paymentService.savePayment(lastOrderDTO);
 		int addFundingTarget = fundingService.addFundingTarget(lastOrderDTO);
-		System.out.println("저장됨!!!!!!!!!!!!" + addFundingTarget);
 
 		return "redirect:/reservation/"+ lastOrderDTO.getMovieId() +"/off-ticket";
 	}
@@ -153,13 +143,12 @@ public class PaymentController {
 	@PostMapping("/{movieId}/on-save")
 	public String onPaymentProc(@RequestBody LastOrderDTO lastOrderDTO){
 		// 유저정보 확인
-		// User principal = (User) session.getAttribute(Define.PRINCIPAL);
+		 User principal = (User) session.getAttribute(Define.PRINCIPAL);
 
-		int reservationResult = reservationService.saveReservationTicket(lastOrderDTO, 1);
-		int orderResult = orderService.saveOrder(lastOrderDTO, 1);
+		int reservationResult = reservationService.saveReservationTicket(lastOrderDTO, principal.getId());
+		int orderResult = orderService.saveOrder(lastOrderDTO, principal.getId());
 		int paymentResult = paymentService.savePayment(lastOrderDTO);
 		int addFundingTarget = fundingService.addFundingTarget(lastOrderDTO);
-		System.out.println("저장됨!!!!!!!!!!!!" + addFundingTarget);
 
 		return "redirect:/reservation/"+ lastOrderDTO.getMovieId() +"/on-ticket";
 	}
