@@ -23,9 +23,6 @@ public class ScrabRestController {
     @Autowired
     private HttpSession session;
 
-    @Autowired
-    private HttpSession session;
-
     // 좋아요 목록 api
     @GetMapping("/api/scrabs/view")
     public ResponseEntity<?> scrabview() {
