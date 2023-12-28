@@ -16,6 +16,8 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link href="/css/style.css" rel="stylesheet">
 
 
@@ -39,11 +41,6 @@
                     <input type="text" name="keyword" placeholder="검색 하기">
                 </div>
             </form>
-
-            <div class="p_inform">
-                <a href=""><i class="fa-regular fa-bell"></i></a>
-            </div>
-
         </div>
         <!--탑 끝-->
 
@@ -94,31 +91,55 @@
 
         <!--컨테이너2 시작-->
         <div class="p_register_container2">
+            <div class="j_font_style">
+                <h3>펀딩 등록 승인</h3>
+            </div>
             <div class="p_section1" id="data-container">
                 <c:forEach var="fundingReady" items="${fundingReadyDTOs}" varStatus="status">
                     <div class="p_menu1 p_custom_margin_bottom">
                         <img src="${fundingReady.thumbnail}" alt="영화 사진">
                         <p>영화 제목 : ${fundingReady.movieName}</p>
                         <p>영화 감독 : ${fundingReady.director}</p>
-                        <button onclick="openModal(${status.index})">영화 등록 하기</button>
-                    </div>
-                    <!--모달-->
-                    <div class="j_custom_modal" id="j_fund_modal${status.index}">
-                        <iframe src="/funding-ready/${fundingReady.fundingReadyId}" id="chat_iframe" style=" width: 100%;
-   height: 100%;
-   border: none;">대체 내용</iframe>
-                        <button class="j_close" style="background-color: var(--primary_02);" onclick="closeModal(${status.index})">창 닫기</button>
-                        <button class="j_close2" style="margin-bottom: 10px;" onclick="AuthorizationFunding(${fundingReady.fundingReadyId})">등록 승인</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#j_fund_modal" data-id="${fundingReady.fundingReadyId}"
+                        data-name="${fundingReady.movieName}">
+                            영화 등록 하기
+                        </button>
                     </div>
                 </c:forEach>
-                <div id="j_hidden_modal"></div>
+            </div>
+                <div class="modal" id="j_fund_modal">
+                    <div class="modal-dialog" style="max-width: none; width: 70%" >
+                        <input type="hidden" id="original">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal_title">Modal Heading</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <iframe id="fund_frame" style="width: 100%; height: 100%;
+                              border: none;">대체 내용</iframe>
+                            </div>
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" id="auth_button" onclick="AuthorizationFunding()">등록 승인</button>
+                                <button type="button" class="btn btn-danger" style="background-color: #ea6161" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" id="hidden_id">
             </div>
 
         </div>
-	</div>
+    <div>
+        <button id="scrollToTopBtn"><img src="/images/icons/upArrow.gif" class="j_up_button"></button>
+    </div>
 
 
 <script>
+
         // 모달 열기
         function openModal(id) {
             document.getElementById('j_fund_modal'+ id).style.display = 'block';
@@ -133,7 +154,8 @@
 
         }
 
-        async function AuthorizationFunding(fundingId){
+        async function AuthorizationFunding(){
+            let fundingId = document.getElementById('hidden_id').value;
             try {
                 let response = await fetch('/admin/funding-ready/save', {
                     method: 'POST',
@@ -160,7 +182,6 @@
 
         let currentPage = 2;
         let isLoading = false;
-        let modalNumber = 8;
         window.onload = function () {
             console.log("온로드 실행");
             isLoading = false;
@@ -202,86 +223,26 @@
             // 로딩 딜레이 주기
             setTimeout(async () => {
                 try {
-
-                    // 비동기로 데이터를 받아오는 함수 (fetchFundingList를 적절한 함수로 변경)
-                    const newData = await fetchFundingList();
-
-                    // data-container 요소 가져오기
-                    const container = document.getElementById('data-container');
-
-                    // 현재 모달 번호를 추적하는 변수
+                    const newData = await fetchFundingList(currentPage);
 
                     // newData를 순회하며 DOM에 추가
-                    newData.forEach((fundingReady) => {
+                    newData.forEach((data) => {
+                        var newElement = '<div class="p_menu1 p_custom_margin_bottom">' +
+                            '<img src="' + data.thumbnail + '" alt="영화 사진">' +
+                            '<p>영화 제목 : ' + data.movieName + '</p>' +
+                            '<p>영화 감독 : ' + data.director + '</p>' +
+                            '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#j_fund_modal" data-id="' + data.fundingReadyId + '" data-name="' + data.movieName + '">' +
+                            '영화 등록 하기' +
+                            '</button>' +
+                            '</div>';
 
+                        // 데이터를 추가할 컨테이너 선택
+                        var container = $('#data-container');
 
-                        // Outer container
-                        const outerContainer = document.createElement('div');
-                        outerContainer.classList.add('p_menu1', 'p_custom_margin_bottom');
-
-                        // Image
-                        const image = document.createElement('img');
-                        image.src = fundingReady.thumbnail;
-                        image.alt = '영화 사진';
-
-                        // Title paragraph
-                        const titleParagraph = document.createElement('p');
-                        titleParagraph.textContent = '영화 제목: ' + fundingReady.movieName;
-
-                        // Director paragraph
-                        const directorParagraph = document.createElement('p');
-                        directorParagraph.textContent = '영화 감독: ' + fundingReady.director;
-
-                        // Button
-                        const button = document.createElement('button');
-                        button.textContent = '영화 등록 하기';
-                        button.addEventListener('click', () => openModal(modalNumber));
-
-                        // Append elements to outer container
-                        outerContainer.appendChild(image);
-                        outerContainer.appendChild(titleParagraph);
-                        outerContainer.appendChild(directorParagraph);
-                        outerContainer.appendChild(button);
-
-                        // Modal container
-                        const modalContainer = document.createElement('div');
-                        modalContainer.classList.add('j_custom_modal');
-                        modalContainer.id = 'j_fund_modal' + modalNumber;
-
-                        // Iframe for modal content
-                        const iframe = document.createElement('iframe');
-                        iframe.src = '/funding-ready/' + fundingReady.fundingReadyId;
-                        iframe.id = 'chat_iframe';
-                        iframe.style.width = '100%';
-                        iframe.style.height = '100%';
-                        iframe.style.border = 'none';
-
-                        // Close button for modal
-                        const closeButton = document.createElement('button');
-                        closeButton.classList.add('j_close');
-                        closeButton.style.backgroundColor = 'var(--primary_02)';
-                        closeButton.textContent = '창 닫기';
-                        closeButton.addEventListener('click', () => closeModal(modalNumber));
-
-                        // Approval button for modal
-                        const approvalButton = document.createElement('button');
-                        approvalButton.classList.add('j_close2');
-                        approvalButton.style.marginBottom = '10px';
-                        approvalButton.textContent = '등록 승인';
-                        approvalButton.addEventListener('click', () => AuthorizationFunding(fundingReady.fundingReadyId));
-
-                        // Append elements to modal container
-                        modalContainer.appendChild(iframe);
-                        modalContainer.appendChild(closeButton);
-                        modalContainer.appendChild(approvalButton);
-
-                        // Append containers to the main container
-                        container.appendChild(outerContainer);
-                        document.getElementById('j_hidden_modal').appendChild(modalContainer);
-
-                        // 모달 번호 증가
-                        modalNumber++;
+                        // 컨테이너에 새로운 요소 추가
+                        container.append(newElement);
                     });
+                    currentPage++;
                 } catch (error) {
                     console.error('Error fetching and rendering data:', error);
                 }
@@ -313,7 +274,16 @@
             scrollToTopBtn.addEventListener("click", scrollToTop);
         }
 
-
+        $('#j_fund_modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var id = button.data('id');
+            var title = button.data('name');
+            // 모달 팝업에 데이터 집어넣기
+            var modal = $(this);
+            $('#fund_frame').attr('src', '/funding-ready/' + id);
+            $('#modal_title').text(title);
+            $('#hidden_id').attr('value', id);
+        })
 
 
 </script>

@@ -36,10 +36,6 @@
                  <input type="text" name="keyword" placeholder="검색 하기">
              </div>
         </form>
-        <div class="p_inform">
-            <a href=""><i class="fa-regular fa-bell"></i></a>
-        </div>
-
     </div>
     <!--탑 끝-->
 
@@ -89,7 +85,9 @@
 
     <!--컨테이너2 시작-->
     <div class="p_update_delete_container2">
-
+        <div class="j_font_style">
+            <h3>펀딩 수정 / 종료</h3>
+        </div>
         <div class="p_section1">
             <c:forEach var="funding" items="${searchResultDTOs}" varStatus="status">
                 <div class="p_menu1">

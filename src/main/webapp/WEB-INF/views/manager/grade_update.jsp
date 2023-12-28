@@ -47,11 +47,6 @@
                 <input type="text" name="keyword" placeholder="검색 하기">
             </div>
         </form>
-
-<%--        <div class="p_inform">--%>
-<%--            <a href=""><i class="fa-regular fa-bell"></i></a>--%>
-<%--        </div>--%>
-
     </div>
     <!--탑 끝-->
 
@@ -101,12 +96,17 @@
     <!--컨테이너2 시작-->
     <div class="p_grade_update_container2">
         <div class="p_title">
+<<<<<<< HEAD
+            <h3>VIP 초청권 발급</h3>
+        </div>
+=======
             <h3>회원 등급 수정</h3>
         </div>
 <%--        <div class="p_filter">--%>
 <%--            <a href=""><button><span>Filter</span></button></a>--%>
 <%--            <i class="fa-solid fa-filter"></i>--%>
 <%--        </div>--%>
+>>>>>>> dev
 
         <div class="p_section1">
             <table class="table table-hover">
