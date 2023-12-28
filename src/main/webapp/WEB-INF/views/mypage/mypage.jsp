@@ -3,6 +3,7 @@
 <%@ include file="../layout/header.jsp" %>
 
 <body class="l_body">
+
 	<div class="k_my_main">
 		<div class="k_my_group">
 			<div class="k_left_my">
@@ -57,7 +58,7 @@
 							<span>${orderCountDTO.offlineCount}</span>
 						</div>
 						<div class="k_i_column">
-							<a href="">찜한 목록</a>
+							<a href="/scrab/my-likelist">찜한 목록</a>
 							<span>${scrabCount}</span>
 						</div>
 					</div>
@@ -76,14 +77,14 @@
 									<p>찜한 목록</p>
 								</div>
 							</a></button>
-							<button class="k_c_center_list"><a href="">
+							<button class="k_c_center_list"><a href="/user/open-movie">
 								<div class="k_i_flex">
 									<img src="/images/icons/movie2.png" class="k_icon_img">
 									<p>개봉한 영화</p>
 								</div>
 							</a></button>
 						</div>
-					<hr class="k_m_hr">
+					<hr class="k_left_my_hr">
 				</div>
 				<div>
 					<div class="k_c_center">고객 센터</div>
@@ -101,7 +102,7 @@
 							</div>
 						</a></button>
 					</div>
-					<hr class="k_m_hr">
+					<hr class="k_left_my_hr">
 					<div class="k_only_flex">
 						<button class="k_c_center_list"><a href="/user/profile">
 							<div class="k_i_flex">
@@ -116,7 +117,7 @@
 							</div>
 						</button>
 					</div>
-					<hr class="k_m_hr">
+					<hr class="k_left_my_hr">
 				</div>
 			</div>
 			<!------------------------------------- 모달 창 ------------------------------------------->
