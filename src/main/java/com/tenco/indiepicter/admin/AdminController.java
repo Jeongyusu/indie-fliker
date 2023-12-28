@@ -115,7 +115,7 @@ public class AdminController {
 			@RequestParam(value="page", required=false, defaultValue="1") Integer page,
 			Model model) {
 		List<User> adminUserPagingLists = this.adminService.adminUserPagingLists(page);
-		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.pagingParam(page);
+		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.normalPagingParam(page);
 		model.addAttribute("adminUserPagingLists", adminUserPagingLists);
 		model.addAttribute("paging", adminPagingResponseDTO);
 
@@ -137,7 +137,7 @@ public class AdminController {
 			Model model) {
 
 		List<User> adminVipPagingLists = this.adminService.adminVipPagingLists(page);
-		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.pagingParam(page);
+		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.vipPagingParam(page);
 		model.addAttribute("adminVipPagingLists", adminVipPagingLists);
 		model.addAttribute("paging", adminPagingResponseDTO);
 			

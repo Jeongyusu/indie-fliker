@@ -2071,3 +2071,120 @@
 /*---------------------------------------------------------------------*/
 /* 비밀번호 수정 페이지 ( password_update ) */
 
+/* 전체 페이징 버튼 스타일 */
+/*---------------------------------------------------------------------*/
+.p_paging .p_priveous{
+    background-color: var(--primary_01);
+    width: 45px;
+    height: 35px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: center;
+    line-height: 35px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.p_paging .p_priveous:hover{
+    color: white;
+}
+
+.p_paging .p_next{
+    background-color: var(--primary_01);
+    width: 45px;
+    height: 35px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    text-align: center;
+    line-height: 35px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.p_paging .p_next:hover{
+    color: white;
+}
+
+.p_paging .page_number{
+    margin-left: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.p_paging .page_number:hover{
+    color: #ea6161;
+}
+
+.p_paging span{
+    font-size: 20px;
+}
+
+/*---------------------------------------------------------------------*/
+/* 전체 페이징 버튼 스타일 */
+
+/* 전체 페이지 페이징 위치 잡기 */
+/*---------------------------------------------------------------------*/
+/* 공지사항 페이지 */
+.p_notice_paging{
+    position: relative;
+    left: 42%;
+}
+/* 자주 묻는 질문 페이지(회원 정보) */
+.p_question_user_paging{
+    position: relative;
+    left: 45%;
+}
+/* 자주 묻는 질문 페이지(결제) */
+.p_question_pay_paging{
+    position: relative;
+    left: 45%;
+}
+/* 자주 묻는 질문 페이지(취소/환불) */
+.p_question_cancle_paging{
+    position: relative;
+    left: 45%;
+}
+/* 자주 묻는 질문 페이지(영화 예매) */
+.p_question_reservation_paging{
+    position: relative;
+    left: 45%;
+}
+/* 자주 묻는 질문 페이지(VIP) */
+.p_question_vip_paging{
+    position: relative;
+    left: 45%;
+}
+/* 나의 초청권 현황 페이지 */
+.p_my_invitation_paging{
+    position: relative;
+    left: 42%;
+}
+/* 관리자 페이지(VIP 초청권 발급) */
+.p_invitation_paging{
+    position: relative;
+    left: 42%;
+}
+/* 관리자 페이지(일반 회원 관리) */
+.p_user_management_paging{
+    position: relative;
+    left: 42%;
+}
+/* 관리자 페이지(VIP 회원 관리) */
+.p_vip_management_paging{
+    position: relative;
+    left: 42%;
+}
+/* 관리자 페이지(회원 등급 수정) */
+.p_grage_update_paging{
+    position: relative;
+    left: 42%;
+}
+/*---------------------------------------------------------------------*/
+/* 전체 페이지 페이징 위치 잡기 */
