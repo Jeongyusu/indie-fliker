@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../layout/header.jsp" %>
 
-<body class="l_body">
 
 	<div class="k_my_main">
 		<div class="k_my_group">

@@ -41,7 +41,7 @@
 
     <title>IndieFliker</title>
 </head>
-<body>
+<body class="l_body">
     <header class="j_header">
         <nav class="j_nav">
             <div class="j_nav_left">
@@ -115,4 +115,3 @@
             </div>
         </nav>
     </header>
-

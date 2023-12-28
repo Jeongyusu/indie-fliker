@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<body class="l_body">
   <!-- 배너 object-fit: contain 아니면 cover 고민중 -->
   <div class="banner-container" style="background: linear-gradient(to bottom, #201111, #2b2626);">
     <div class="carousel slide" data-bs-ride="carousel">

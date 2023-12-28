@@ -143,13 +143,15 @@ function onLoadImg(){
             console.log("grade" + grade);
 
             let src = "";
-            if(grade.value === "전체 관람가"){
+            if(grade.value === "전체관람가"){
                 src = "/images/icons/movie_level_all.png";
-            }else if(grade.value === "12세 이상 관람가"){
+            }else if(grade.value === "12세이상 관람가"){
                 src = "/images/icons/movie_level_12.png";
-            }else if(grade.value === "15세 이상 관람가"){
+            }else if(grade.value === "15세이상 관람가"){
                 src = "/images/icons/movie_level_15.png";
-            }else {
+            }else if(grade.value === "등급 미분류"){
+                src = "/images/icons/movie_level_no.png";
+            }else{
                 src = "/images/icons/movie_level_19.png";
             }
 

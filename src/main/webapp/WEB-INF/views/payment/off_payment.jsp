@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
-<body class="l_body">
     <div id="n_select_movie">
         <h5>선택하신 영화와 상영시간을 확인해주세요!</h5>
     </div>

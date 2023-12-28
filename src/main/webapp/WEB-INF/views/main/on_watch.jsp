@@ -29,17 +29,17 @@
                                     <div class="l_info_p">
                                         ${onMovieDetailDTO.synopsis}
                                     </div>
-                                    <div class="l_info_title h5"><a class="l_green">${onMovieDetailDTO.movieName}</a>에 대한 <a
+                                    <div class="l_info_title"><a class="l_green">${onMovieDetailDTO.movieName}</a>에 대한 <a
                                             class="l_font_pupple"><p id="count">0</p></a>개의 이야기가 있어요!
                                     </div>
                                 </div>
 
                                 <div class="l_participant d-flex align-items-center">
                                     <div class="d-flex flex-column l_user_profile">
-                                        <img src="${principal.pic}" alt="IndiFlinker" class="m-2">
+                                        <img src="${principal.pic}" alt="IndiFlinker">
                                         <span>${principal.username}</span>
                                     </div>
-                                    <div class="l_chat_message col-md-10">
+                                    <div class="l_chat_message">
                                         <input type="text" class="l_chat_message_input" name="reply_comment" value=""
                                                placeholder="재미있게 보셨나요? 영화의 어떤 점이 좋았는지 이야기해주세요.">
                                         <button type="button" class="l_review_button">관람평쓰기</button>
@@ -51,11 +51,11 @@
                             <!-- 영화 평론 -->
                             <div class="content" num="2" style="display:none;">
                                 <div class="l_commentary_info">
-                                    <div class="l_info_title h5"><a class="l_green">${onMovieDetailDTO.movieName}</a>에 대한 <a
+                                    <div class="l_info_title"><a class="l_green">${onMovieDetailDTO.movieName}</a>에 대한 <a
                                             class="l_font_pupple">다양한 평론</a>을 느껴보세요!
                                     </div>
                                 </div>
-                                <c:if test="${principal.grade == 'VIP'}">
+<%--                                <c:if test="${principal.grade == 'VIP'}">--%>
                                     <div class="l_vip_review_comment">"${onMovieDetailDTO.movieName}"의 매력을 어떻게 느끼셨나요?
                                         <br/>
                                         독립영화를 사랑하시는 VIP 여러분들의 소중한 평론은 <a class="l_green">1번</a>만 작성가능합니다. 편안하게 의견을 나누어 주세요!</div>
@@ -74,17 +74,17 @@
                                         </div>
                                         <div class="l_participant d-flex align-items-center">
                                             <div class="d-flex flex-column l_user_profile">
-                                                <img src="${principal.pic}" alt="IndiFlinker" class="m-2">
+                                                <img src="${principal.pic}" alt="IndiFlinker">
                                                 <span>${principal.username}</span>
                                             </div>
-                                            <div class="l_commentary col-md-10">
+                                            <div class="l_commentary">
                                         <textarea class="l_commentary_input" placeholder="영화의 다양한 생각과 느낌을 전달해주세요."
                                                   onkeydown="resize(this)" onkeyup="resize(this)"></textarea>
                                                 <button type="submit" class="l_vip_review_button">평론쓰기</button>
                                             </div>
                                         </div>
                                     </div>
-                                </c:if>
+<%--                                </c:if>--%>
                                 <div id="l_vip_review_element"></div>
                             </div>
                             <!-- 영화 포토 -->

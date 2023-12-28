@@ -18,7 +18,7 @@
 }
 
 .l_avi_main {
-    width: 1280px
+    width: 1140px
 }
 
 .l_main {
@@ -52,6 +52,8 @@
     border: 2px solid var(--line_01);
     overflow-y: auto;
     border-top: none;
+    max-width: 250px;
+    margin-top: 26px;
 }
 
 #l_movie_on_watch {
@@ -767,6 +769,7 @@
 
 .l_user_profile {
     align-items: center;
+    margin-right: 10px;
 }
 
 .l_score_container {
@@ -788,28 +791,20 @@
 
 .l_score_p {
     color: var(--primary_01);
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
 }
 
 #l_score_point {
     border: 0.5px solid var(--primary_01);
-    max-width: 80px;
+    max-width: 60px;
     border-radius: 10px;
-    height: 40px;
+    height: 36px;
 }
 
 .l_commentary {
-    width: 91.5%;
-    background-color: var(--def_wh);
-    border-radius: 8px;
-    border: 0.5px solid var(--primary_01);
-    margin: 8px;
-    padding: 15px 35px;
-    height: 70px;
+    width: 100%;
     display: flex;
-    align-items: center;
-    outline: none;
 }
 
 .l_comment_container {
@@ -828,9 +823,9 @@ width: 100%;
     background-color: #f4f4f8;
     border-radius: 8px;
     margin: 8px;
-    padding: 15px 35px;
+    padding: 15px 20px;
     width: 91.5%;
-    height: 70px;
+    height: 50px;
     display: flex;
     align-items: center;
     outline: none;
@@ -838,13 +833,15 @@ width: 100%;
 }
 
 .l_chat_message_input {
-    height: 60px;
+    font-size: 12px;
+    height: 50px;
     width: 90%;
     border: none;
     background-color: transparent;
     outline: none;
     resize: none;
 }
+
 
 .l_info_title {
     font-weight: bold;
@@ -869,18 +866,23 @@ width: 100%;
 
 .l_vip_review_comment {
     line-height: 25px;
-    margin: 50px 0 20px;
-    font-size: 15px;
+    margin: 0 0 20px;
+    font-size: 14px;
 }
 
 .l_commentary_input {
-    height: 38px;
-    padding-top: 10px;
-    width: 92%;
-    border: none;
+    font-size: 12px;
     background-color: transparent;
     outline: none;
     resize: none;
+    width: 88%;
+    border-radius: 8px;
+    border: 0.5px solid var(--primary_01);
+    margin: 8px;
+    padding: 15px 20px;
+    height: 50px;
+    display: flex;
+    align-items: center;
 }
 
 .l_commentary_title {
@@ -892,15 +894,21 @@ width: 100%;
 }
 
 .l_review_button {
-    font-size: 13px;
+    font-size: 12px;
     border: none;
     background-color: transparent;
 }
 
 .l_vip_review_button {
-    font-size: 13px;
-    border: none;
+    font-size: 12px;
     background-color: transparent;
+    outline: none;
+    resize: none;
+    width: 12%;
+    border-radius: 8px;
+    border: 0.5px solid var(--primary_01);
+    margin: 8px 2px;
+    height: 50px;
 }
 
 .l_review_set_button  {
@@ -969,9 +977,7 @@ width: 100%;
 
 .l_participant img {
     border-radius: 50%;
-    margin-right: 10px;
-    width: 40px;
-    height: 40px;
+    width: 32px;
 }
 
 .l_participant_user img {
@@ -996,7 +1002,8 @@ width: 100%;
 }
 
 .l_participant span {
-    font-weight: bolder;
+    font-size: 12px;
+    padding-top: 2px;
 }
 
 .l_participant_user span {
@@ -1262,10 +1269,9 @@ width: 100%;
 #l_online_navbar {
     width: 100%;
     color: var(--point_05);
-    font-weight: bold;
     letter-spacing: 0.025em;
     margin-top: 30px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 #l_online_navbar ul {
@@ -1308,8 +1314,8 @@ width: 100%;
 
 .l_info_p {
     margin: 30px 0 50px;
-    font-size: 18px;
-    line-height: 30px;
+    font-size: 14px;
+    line-height: 24px;
 }
 
 

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
-<body class="l_body">
     <div id="n_select_movie">
     <h5>선택하신 영화는 "${choiceDayDTO.movieName}"입니다. 원하시는 좌석을 선택해주세요!</h5>
     </div>
