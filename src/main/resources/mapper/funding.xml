@@ -415,11 +415,11 @@
             MAX(mt.director_awards_film) AS director_awards_film
         FROM
             funding_tb ft
-                JOIN movie_tb mt ON ft.movie_id = mt.id
-                JOIN movie_photo_tb mpt ON mt.id = mpt.movie_id
-                JOIN movie_staff_tb mst ON mt.id = mst.movie_id
+                left outer join movie_tb mt ON ft.movie_id = mt.id
+                left outer JOIN movie_photo_tb mpt ON mt.id = mpt.movie_id
+                left outer JOIN movie_staff_tb mst ON mt.id = mst.movie_id
         WHERE
-            ft.id = #{id};
+            ft.id = #{id}
     </select>
 
     <resultMap id="AdminFundingUpdateFormDTOResultMap" type="com.tenco.indiepicter.funding.response.AdminFundingUpdateFormDTO">

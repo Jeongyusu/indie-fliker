@@ -65,7 +65,7 @@
             <div class="p_section2">
                 <h3>영화</h3>
                 <ul>
-                    <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/funding-ready-listr">펀딩 등록 승인</a></li>
+                    <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/funding-ready-list">펀딩 등록 승인</a></li>
                     <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/funding/confirm">펀딩 현황 확인</a></li>
                     <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/funding-management">펀딩 수정 / 종료</a></li>
                 </ul>
@@ -84,18 +84,12 @@
             </div>
 
             <div class="p_section4">
-                <h3>온라인 상영 가능 영화</h3>
+                <h3>기간 설정</h3>
                 <ul>
-                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/movie-open-setting/">온라인 상영 기간 설정/채팅 오픈 시간 설정</a></li>
-                    <li><i class="fa-solid fa-comment p_icon2"></i><a href="/admin/off-movie-open-setting/">오프라인 상영 기간 설정</a></li>
-                    <li><i class="fa-solid fa-note-sticky p_icon3"></i><a href="/admin/review">감상평 관리</a></li>
+                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/movie-open/setting">온라인 상영 기간 설정/채팅 오픈 시간 설정</a></li>
+                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/off-movie-open/setting">오프라인 상영 기간 설정</a></li>
                 </ul>
                 <div class="p_line"></div>
-            </div>
-
-            <div class="p_section5">
-                <i class="fa-solid fa-gear p_icon1"></i>
-                <a href="">환경설정</a>
             </div>
 
         </div>
@@ -128,14 +122,15 @@
                 </div>
                 <!--모달-->
                 <div class="j_custom_modal" id="j_fund_modal${status.index}">
-                    <iframe src="/admin/funding/detail/${funding.fundingId}" id="chat_iframe" style=" width: 100%;
-   height: 100%;
-   border: none;">대체 내용</iframe>
+                    <iframe src="/admin/funding/detail/${funding.fundingId}" id="chat_iframe" style=" width: 100%; height: 100%; border: none;">대체 내용</iframe>
                     <button class="j_close" style="background-color: var(--primary_02);" onclick="closeModal(${status.index})">창 닫기</button>
                 </div>
             </c:forEach>
             </div>
 
+        </div>
+        <div>
+            <button id="scrollToTopBtn"><img src="/images/icons/upArrow.gif" class="j_up_button"></button>
         </div>
 
         <!--컨테이너2 끝-->
@@ -175,12 +170,10 @@
 
     // fetch로 새로운 데이터 받아오기
     async function fetchFundingList(page) {
-        let response = await fetch('/admin/funding/confirm/more-data?page=${page}');
+        let response = await fetch('/admin/funding/confirm/more-data?page=' + page);
         let responseBody = await response.json();
 
-        console.log("fetch펀딩 내부 제이슨 변환완료");
         if (responseBody.success) {
-            console.log("success 진입");
             return responseBody.response;
         } else {
             throw new Error(responseBody.error);
@@ -198,8 +191,9 @@
         // 로딩 딜레이 주기
         setTimeout(async () => {
             try {
-                let container = document.getElementById('data-container');
+                const container = document.getElementById('data-container');
                 const newData = await fetchFundingList(currentPage);
+
                 newData.forEach((funding, index) => {
                     const newElement = document.createElement('div');
                     newElement.classList.add('p_section1', 'p_box');
@@ -274,21 +268,39 @@
 
                     // Append the new element to the container
                     container.appendChild(newElement);
-
-                    // const footer = document.querySelector('footer');
-                    // document.body.appendChild(footer);
                 });
-
-                // 현재 페이지 증가 및 로딩 상태 변경
                 currentPage++;
-                console.log("-----------현재 페이지 확인----------")
-                console.log(currentPage)
             } catch (error) {
                 console.error('Error fetching data:', error);
             } finally {
                 isLoading = false;
             }
         }, 1000);
+
+        var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        window.addEventListener("scroll", function() {
+            // 현재 스크롤 위치 가져오기
+            var scrollPosition = window.scrollY;
+
+            // 스크롤 위치가 300px 이상이면 버튼 표시, 아니면 숨김
+            if (scrollPosition > 500) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        });
+
+        // 버튼 클릭 시 맨 위로 스크롤하는 함수
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth" // 부드러운 스크롤 적용
+            });
+        }
+
+        // 버튼에 클릭 이벤트 리스너 추가
+        scrollToTopBtn.addEventListener("click", scrollToTop);
     }
 
     function formatPrice(number) {
@@ -296,33 +308,8 @@
         return formatter.format(number);
     }
 
-    // var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        // 버튼에 클릭 이벤트 리스너 추가
 
-        // 스크롤 이벤트에 이벤트 리스너 추가
-        // window.addEventListener("scroll", function() {
-        //     // 현재 스크롤 위치 가져오기
-        //     var scrollPosition = window.scrollY;
-        //
-        //     // 스크롤 위치가 300px 이상이면 버튼 표시, 아니면 숨김
-        //     if (scrollPosition > 500) {
-        //         scrollToTopBtn.style.display = "block";
-        //     } else {
-        //         scrollToTopBtn.style.display = "none";
-        //     }
-        // });
-
-        // 버튼 클릭 시 맨 위로 스크롤하는 함수
-    //     function scrollToTop() {
-    //         window.scrollTo({
-    //             top: 0,
-    //             behavior: "smooth" // 부드러운 스크롤 적용
-    //         });
-    //     }
-    //
-    //     // 버튼에 클릭 이벤트 리스너 추가
-    //     scrollToTopBtn.addEventListener("click", scrollToTop);
-    //
-    // }
 
 
 </script>
