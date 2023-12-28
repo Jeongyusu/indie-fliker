@@ -439,6 +439,18 @@
     margin: 0;
 }
 
+.l_on_theater_button {
+    border-radius: 5px;
+    border: none;
+    background-color: var(--primary_01);
+    color: var(--def_wh);
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: normal;
+    margin-top: 10px;
+}
+
 .l_ranking_card {
     max-width: 250px;
     padding: 10px;

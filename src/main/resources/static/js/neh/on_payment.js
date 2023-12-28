@@ -36,7 +36,7 @@ function inputDonation(){
 
     // 최종 결제 금액
     let totalPrice = document.querySelector("#n_total_price");
-    if(inputDonationPrice === 0){
+    if(inputDonationPrice === 0 || inputDonationPrice === ""){
         totalPrice.innerHTML = ticket_price;
     }else{
         totalPrice.innerHTML = totalStringPrice;

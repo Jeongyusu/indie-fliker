@@ -11,9 +11,11 @@
             <label class="k_profile_pic">프로필 사진</label>
             <div style="text-align: center">
                 <input type="hidden" name="id" id="id" value ="${sessionScope.principal.id}">
-                <img id="preview" class="k_profile" alt="" id="pic" src="${sessionScope.principal.pic}" onclick="return false;">
                 <div class="k_file_button">
-                    <input type="file" id="file" name="file" onchange="changeUserPic(event)">
+                    <label id="file_button" for="file" style="background-color: transparent">
+                        <img id="preview" class="k_profile" alt="" id="pic" src="${sessionScope.principal.pic}" onclick="return false;">
+                    </label>
+                    <input type="file" id="file" name="file" onchange="changeUserPic(event)" style="display: none">
                 </div>
             </div>
         </div>

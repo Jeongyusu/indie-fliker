@@ -125,8 +125,10 @@
 			<div class="k_isWithdrawal_modal_background" id="modalBackground" onclick="closeModal()"></div>
 			<div class="k_isWithdrawal_modal" id="myModal">
 				<h2>정말 탈퇴하겠습니까?</h2>
-				<button class="close" onclick="closeModal()">취소</button>
-				<a href="/user/isWithdrawal">탈퇴</a>
+				<div class="k_withdrawal_button">
+					<input type="button" class="close" onclick="closeModal()" value="취소">
+					<a href="/user/isWithdrawal">탈퇴</a>
+				</div>
 			</div>
 		</div>
 	</div>

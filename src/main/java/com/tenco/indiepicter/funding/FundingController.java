@@ -89,7 +89,9 @@ public class FundingController {
         FundingDetailDTO fundingDetailDTO = fundingService.detailFunding(id);
         boolean isLiked = scrabService.checkIsLiked(1, id); // 추후 1을 sessionUser.getId()로 변경
         fundingDetailDTO.setLiked(isLiked);
+        List<FundingDTO> moviesByMainDTOs = fundingService.moviesByMain(1, 10);
         model.addAttribute("fundingDetailDTO", fundingDetailDTO);
+        model.addAttribute("moviesByMainDTOs", moviesByMainDTOs);
         return "fund/on_detail";
     }
 
@@ -97,6 +99,8 @@ public class FundingController {
     public String detailOfflineMovie(@PathVariable Integer id, Model model){
         OfflineMovieDetailDTO offlineMovieDetailDTO = fundingService.detailOfflineMovie(id);
         model.addAttribute("offlineMovieDetailDTO", offlineMovieDetailDTO);
+        List<FundingDTO> moviesByMainDTOs = fundingService.moviesByMain(1, 10);
+        model.addAttribute("moviesByMainDTOs", moviesByMainDTOs);
         return "fund/off_detail";
     }
 
