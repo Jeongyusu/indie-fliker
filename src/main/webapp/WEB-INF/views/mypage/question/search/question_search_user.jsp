@@ -3,7 +3,6 @@
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<body>
 <div class="k_ask_container">
     <h1 class="k_ask_main">자주 묻는 질문</h1>
     <form action="/question/search">

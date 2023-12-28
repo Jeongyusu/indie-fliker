@@ -2,12 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../layout/header.jsp" %>
 
-<body class="l_body">
 
 	<div class="k_my_main">
 		<div class="k_my_group">
 			<div class="k_left_my">
-				<img class="k_profile" src="${userInfo.pic}" alt="My Image">
+				<img class="k_profile" src="${sessionScope.principal.pic}" alt="My Image">
 				<p class="k_m_name">${userInfo.username} 님</p>
 				<div class="k_user_grade">
 					<c:choose>
@@ -125,8 +124,10 @@
 			<div class="k_isWithdrawal_modal_background" id="modalBackground" onclick="closeModal()"></div>
 			<div class="k_isWithdrawal_modal" id="myModal">
 				<h2>정말 탈퇴하겠습니까?</h2>
-				<button class="close" onclick="closeModal()">취소</button>
-				<a href="/user/isWithdrawal">탈퇴</a>
+				<div class="k_withdrawal_button">
+					<input type="button" class="close" onclick="closeModal()" value="취소">
+					<a href="/user/isWithdrawal">탈퇴</a>
+				</div>
 			</div>
 		</div>
 	</div>

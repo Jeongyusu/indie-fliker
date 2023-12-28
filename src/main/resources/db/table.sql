@@ -170,7 +170,8 @@ create table reservation_tb
     user_id          int         not null,
     seat_id          int,
     foreign KEY (user_id) references user_tb (id),
-    foreign KEY (seat_id) references seat_tb (id)
+    foreign KEY (seat_id) references seat_tb (id),
+    CONSTRAINT unique_constraint_name UNIQUE (id, user_id)
 );
 
 create table order_tb

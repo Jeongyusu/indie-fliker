@@ -22,7 +22,7 @@ public class RunningScheduleController {
     // 오프라인 영화 상영 일정(달력) 페이지 요청(GET)
     @GetMapping("/{movieId}/select-day")
     public String selectDay(@PathVariable Integer movieId, Model model) {
-        TotalDayDTO totalDayDTO = runningScheduleService.totalDay(1);
+        TotalDayDTO totalDayDTO = runningScheduleService.totalDay(movieId);
         model.addAttribute("totalDayDTO", totalDayDTO);
         return "runningschedule/select_day";
     }

@@ -2,7 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="../layout/header.jsp" %>
 
-<body class="l_body">
 <div class="k_funding_save">
     <p>검색어 : ${keyword}</p>
 </div>

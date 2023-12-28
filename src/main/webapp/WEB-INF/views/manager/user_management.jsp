@@ -91,7 +91,7 @@
         <!--컨테이너2 시작-->
         <div class="p_usermanagement_container2">
             <div class="p_title">
-                <h3>회원 관리</h3>
+                <h3>일반 회원 관리</h3>
             </div>
 
 
@@ -139,16 +139,16 @@
                 </table>
             </div>
 
-            <div class="p_usermanagement_bottom">
+            <div class="p_paging p_user_management_paging">
                 <c:choose>
                     <%-- 현재 페이지가 1페이지이면 이전 글자만 보여줌 --%>
                     <c:when test="${paging.page <= 1}">
-                        <a>[이전]</a>
+                        <a class="p_priveous">이전</a>
                     </c:when>
 
                     <c:otherwise>
                         <%-- 이전을 누르면 컨트롤러에 현재 페이지보다 1 작은 페이지로 요청 --%>
-                        <a href="/admin/user-management?page=${paging.page-1}">[이전]</a>
+                        <a class="p_priveous" href="/admin/user-management?page=${paging.page-1}">이전</a>
                     </c:otherwise>
                 </c:choose>
 
@@ -162,7 +162,7 @@
 
                         <c:otherwise>
                             <%-- 다른 페이지 이동이 필요할때 컨트롤러에 요청 --%>
-                            <a href="/admin/user-management?page=${i}">${i}</a>
+                            <a class="page_number" href="/admin/user-management?page=${i}" style="color: #7f7f7f">${i}</a>
                         </c:otherwise>
                     </c:choose>
                 </c:forEach>
@@ -170,11 +170,11 @@
                 <%-- 현재 페이지가 가장 끝 페이지이면 다음이라는 text만 나오게 함 --%>
                 <c:choose>
                     <c:when test="${paging.page >= paging.maxPage}">
-                        <a>[다음]</a>
+                        <a class="p_next">다음</a>
                     </c:when>
                     <%-- 다음을 누르면 현재 페이지보다 1 큰 페이지로 요청 --%>
                     <c:otherwise>
-                        <a href="/admin/user-management?page=${paging.page+1}">[다음]</a>
+                        <a class="p_next" href="/admin/user-management?page=${paging.page+1}">다음</a>
                     </c:otherwise>
                 </c:choose>
             </div>

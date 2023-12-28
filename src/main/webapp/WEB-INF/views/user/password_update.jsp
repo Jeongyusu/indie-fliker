@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
-<body class="l_body">
     <div class="container k_login_container">
         <div id="k_search_user">
             <div class="text-left k_login">비밀번호 변경</div>
@@ -22,3 +21,4 @@
         </div>
     </div>
 <%@ include file="../layout/footer.jsp" %>
+

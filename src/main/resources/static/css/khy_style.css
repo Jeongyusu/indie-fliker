@@ -469,6 +469,8 @@ div.main i {
 .k_profile_main img{
     width: 130px;
     border-radius: 50%;
+    position: relative;
+    z-index: -1;
 }
 
 .k_file_button {
@@ -516,6 +518,7 @@ div.main i {
     width: 80px;
     height: 80px;
     border-radius: 50%;
+
 }
 
 .k_left_my .k_m_name {
@@ -553,14 +556,15 @@ div.main i {
 }
 
 .k_left_my .kakao_login{
-    /*position: absolute;*/
-    top: 260px;
-    left: 50px;
+    margin-bottom: 20px;
 }
 
 .k_left_my .kakao_login img{
-    /*position: relative;*/
-    top: 8px;
+    width: 11px;
+}
+
+.k_left_my .kakao_login span{
+    font-size: 13px;
 }
 
 .k_body .kakao_profile{
@@ -569,6 +573,9 @@ div.main i {
     border-radius: 50%;
 }
 
+.k_pading_button {
+    text-align: center;
+}
 
 .k_left_my .nomral_login{
 margin-bottom: 20px;
@@ -810,7 +817,7 @@ margin-bottom: 10px;
 .k_isWithdrawal_modal {
     display: none; /* 모달 초기에는 숨김 상태 */
     position: fixed;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
@@ -818,47 +825,48 @@ margin-bottom: 10px;
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1;
-    width: 300px;
-    height: 200px;
+    width: 240px;
+    height: 150px;
+    border-radius: 5px;
 }
 
 .k_isWithdrawal_modal h2{
-    position: absolute;
-    top: 50px;
-    left: 30px;
-    font-size: 25px;
+    font-size: 16px;
+    margin: 20px 0;
+    text-align: center;
 }
 
 .k_isWithdrawal_modal .close{
-    bottom: 45px;
-    position: absolute;
-    left: 20px;
-    width: 120px;
-    height: 50px;
+    font-size: 16px;
+    color: var(--def_bl);
+    font-weight: 100;
+    text-decoration: none;
+    width: 90px;
+    height: 40px;
     border-radius: 10px;
     border: none;
-    background-color: #ea6161;
+    background-color: var(--point_04);
+    line-height: 37px;
 }
 
-.k_isWithdrawal_modal button:hover{
-    color:white;
+.k_isWithdrawal_modal input:hover{
+    color:var(--def_wh);
 }
 
 .k_isWithdrawal_modal a{
-    bottom: 45px;
-    position: absolute;
-    right: 20px;
-    width: 120px;
-    height: 50px;
+    font-size: 16px;
+    width: 90px;
+    height: 40px;
+    text-decoration: none;
     border-radius: 10px;
     border: none;
-    background-color: #01DFD7;
-    line-height: 48px;
+    background-color: var(--primary_01);
+    line-height: 37px;
     text-align: center;
 }
 
 .k_isWithdrawal_modal a:hover{
-    color:white;
+    color:var(--def_wh);
 }
 
 /* 모달 백그라운드 스타일 */
@@ -873,7 +881,11 @@ margin-bottom: 10px;
     z-index: 1;
 }
 
-
+.k_withdrawal_button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
 
 /*자주 묻는 질문 페이지*/
@@ -1419,6 +1431,11 @@ k_ask_s_container a{
     margin-right: 5px;
 }
 
+.k_camera_icon {
+    width: 18px;
+    margin-right: 4px;
+}
+
 .k_funding_upload_select_photo_pic2 {
     background-color: var(--back_02);
     height: 100px;
@@ -1585,6 +1602,22 @@ k_ask_s_container a{
     color: var(--def_wh);
     height: 60px;
     background-color: var(--font_01);
+}
+
+.k_funding_save_form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    margin-bottom: 45px;
+}
+
+.k_funding_save_form button {
+    border-radius: 5px;
+    background-color: var(--def_bl);
+    width: 30%;
+    color: var(--def_wh);
+    height: 60px;
 }
 
 .k_plus_button {

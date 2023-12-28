@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../layout/header.jsp" %>
 
-<body class="l_body">
     <div class="container l_main_margin_bottom">
         <div class="container l_movie_list_title">
             <p class="l_list_title">구매한 온라인 개봉 영화</p>
@@ -26,6 +25,9 @@
                             <div class="l_period">${orderMovie.period()}</div>
                             <input type="hidden" value="${orderMovie.reservatedAt}" id="reservatedDay${status.count}">
                         </div>
+                        <form action="/movie/${orderMovie.movieId}/on-theater">
+                            <button type="submit" class="l_on_theater_button"> 상영관 입장 </button>
+                        </form>
                     </div>
                 </c:forEach>
             </div>

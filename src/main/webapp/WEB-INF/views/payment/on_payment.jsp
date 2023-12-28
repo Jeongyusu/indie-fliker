@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
-
 <div id="n_select_movie">
     <h5>독립 영화의 매력을 느끼러 가보세요! 독립 영화는 예측 불허의 감동과 특별한 이야기로 가득 차 있습니다.</h5>
 </div>
-<main>
-    <div>
+<div class="n_flex_center">
+    <div class="n_thousand_body n_body_margin">
         <div class="n_body">
             <div class="row justify-content-center n_select_row">
                 <div class="n_select_form">
@@ -136,6 +135,6 @@
             </div>
         </div>
     </div>
-</main>
+</div>
 <script src="../../../../js/neh/on_payment.js"></script>
 <%@ include file="../layout/footer.jsp" %>

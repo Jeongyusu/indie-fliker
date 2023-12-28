@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="/WEB-INF/views/layout/header.jsp"%>
-
-<body style="overflow: hidden">
+<%@ include file="../layout/header.jsp" %>
 
 <div class="container-fluid">
     <div class="row">
@@ -33,7 +31,7 @@
         <c:forEach var="chat" items="${openMovieChatDTOs}" varStatus="status">
             <div class="l_chat_room" id="movie_chat${chat.movieId}">
                 <input id="movieTitle${chat.movieId}" value="${chat.movieName}" type="hidden" />
-                <div class="l_chat_message_box col-12">
+                <div class="l_chat_message_box">
                     <div class="l_chat_messages" id="chatMessages${chat.movieId}">
                         <!-- 채팅 메시지들 -->
                     </div>

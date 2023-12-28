@@ -9,13 +9,15 @@ function onLoadImg(){
     let gradeImg = document.querySelector("#n_grade_img");
     let runningGrade = document.querySelector("#n_runningGrade").value;
     let src = "";
-    if(runningGrade === "전체 관람가"){
+    if(runningGrade === "전체관람가"){
         src = "/images/icons/movie_level_all.png";
-    }else if(runningGrade === "12세 이상 관람가"){
+    }else if(runningGrade === "12세이상 관람가"){
         src = "/images/icons/movie_level_12.png";
-    }else if(runningGrade === "15세 이상 관람가"){
+    }else if(runningGrade === "15세이상 관람가"){
         src = "/images/icons/movie_level_15.png";
-    }else {
+    }else if(runningGrade === "등급 미분류"){
+        src = "/images/icons/movie_level_no.png";
+    }else{
         src = "/images/icons/movie_level_19.png";
     }
     gradeImg.src = src;
@@ -31,10 +33,7 @@ function discount() {
     let totalPayInt = parseFloat(totalPay.replace(/,/g, ''));
     let totalCountElement = document.querySelector("#n_people_count");
     let totalCount = totalCountElement.innerHTML;
-    // let userGrade = document.querySelector("#userGrade").value;
-    // TODO : 로그인 시 위의 주석 풀고, 아래의 String userGrade 지우기
-
-    let userGrade = "VIP";
+    let userGrade = document.querySelector("#userGrade").value;
 
     if(userGrade === "VIP"){
         let changePrice = totalPayInt - (discountPay * totalCount);

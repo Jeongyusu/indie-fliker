@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
-<body class="l_body">
 
 	<div class="container k_login_container">
 		<div class="text-left k_login">로그인</div>
@@ -30,4 +29,5 @@
 			<a href="/user/join" class="k_join">회원가입</a>
 		</div>
 	</div>
+
 <%@ include file="../layout/footer.jsp" %>

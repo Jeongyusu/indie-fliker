@@ -3,7 +3,6 @@
 <%@ include file="../layout/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div class="l_body">
     <div class="container">
         <div class="l_my_page_title">펀딩한 내역</div>
         <div class="text-center">
@@ -68,13 +67,6 @@
             </c:otherwise>
         </c:choose>
     </c:forEach>
-
-
-        <nav aria-label="Page navigation ">
-            <ul class="pagination justify-content-center" id="l_pagination">
-            </ul>
-        </nav>
-</div>
 
 
 <script src="../../../../js/lsr/off_payment.js"></script>

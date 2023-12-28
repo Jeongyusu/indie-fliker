@@ -324,7 +324,7 @@ public class UserController {
 				throw new MyDynamicException("파일 크기는 20MB 이상 클 수 없습니다.", HttpStatus.BAD_REQUEST);
 			}
 		}
-		// 아래 주석 과정을 이 코드로 수정!!
+		// 아래 주석한 과정을 이 코드로 수정!!
 		dto.setUploadFileName(PicToStringUtil.picToString(dto.getFile()));
 //		try {
 //			// 업로드 파일 경로(로컬 저장소)
@@ -362,7 +362,7 @@ public class UserController {
 
 		User user = this.userService.findById(sessionUser.getId());
 		session.setAttribute(Define.PRINCIPAL, user);
-		return "mypage/mypage";
+		return "redirect:/user/mypage";
 	}
 	
 //----------------------------------------------------------------------------------------------------------------	
@@ -372,6 +372,7 @@ public class UserController {
 	public String isWithdrawal(){
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
 		this.userService.userIsWithdrawal(principal.getId());
+		session.invalidate();
 		return "redirect:/user/login";
 	}
 
@@ -389,7 +390,7 @@ public class UserController {
 	public ResponseEntity<?> findEmail(FindUserInfoDTO findUserInfoDTO) {
 		// 이름 유효성 검사
 		if(findUserInfoDTO.getUsername() == null || findUserInfoDTO.getUsername().isEmpty()) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiUtils.error("이메일을 입력해주세요.", HttpStatus.BAD_REQUEST));
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiUtils.error("이름을 입력해주세요.", HttpStatus.BAD_REQUEST));
 		}
 		// 전화번호 유효성 검사
 		if(findUserInfoDTO.getTel() == null || findUserInfoDTO.getTel().isEmpty()) {
@@ -452,7 +453,7 @@ public class UserController {
 
 //----------------------------------------------------------------------------------------------------------------
 
-	// 12-27 18:07 학원 작업중 ~~
+	// 12-28 18:38 학원 작업중~
 
 	@GetMapping("/open-movie")
 	public String openOnMovieByOrder (Model model){

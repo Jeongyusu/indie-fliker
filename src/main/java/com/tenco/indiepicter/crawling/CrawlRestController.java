@@ -9,11 +9,19 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class RestHomeController {
+public class CrawlRestController {
+    @Autowired
+    private MovieCrawlRepository movieCrawlRepository;
 
     @Autowired
     private WebCrawlerService webCrawlerService;
-    // http://localhost/ctest1 < 반드시 먼저 실행
+    // http://localhost/crawl-ready < 반드시 먼저 실행
+    @GetMapping("/crawl-ready")
+    public String crawlReady() {
+        movieCrawlRepository.deleteDummyMovieData();
+        movieCrawlRepository.resetAutoIncrement();
+        return "데이터 삭제 완료 및 초기화 ";
+    }
     // http://localhost:80/api-webcrawler
     @GetMapping("/api-webcrawler")
     public List<MovieCrawl> testCrawl() {

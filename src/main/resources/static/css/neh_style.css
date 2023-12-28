@@ -18,6 +18,23 @@
     margin: 40px auto;
 }
 
+.n_body_margin {
+    margin: 70px auto;
+}
+
+.n_thousand_body{
+    max-width: 1000px;
+}
+
+.n_thousand_add_body{
+    max-width: 1140px;
+}
+
+.n_flex_center{
+    display: flex;
+    justify-content: center
+}
+
 .n_custom_container_fluid {
     width: 1200px;
     display: flex;
@@ -45,28 +62,32 @@
     flex-shrink: 0;
     cursor: pointer;
     padding: 0 0 0 4px;
-    height: 54px;
+    height: 48px;
     text-align: center;
     overflow: hidden;
 }
 #n_fund_attention li{
-    margin-right: 30px;
+    margin-right: 20px;
     list-style: none;
     flex-basis: min-content;
     font-size: 13px;
 }
 .n_fund{
     display: inline-block;
-    margin-bottom: 4px;
-    width: 32px;
-    height: 32px;
 }
+
+.n_fund img {
+    width: 24px;
+}
+
 .n_refund{
     display: inline-block;
-    margin-bottom: 4px;
-    width: 32px;
-    height: 32px;
 }
+
+.n_refund img{
+    width: 24px;
+}
+
 .n_attention {
     margin-top: 14px;
     border-top: solid;
@@ -88,6 +109,7 @@
 #n_movie_info {
     margin: 40px 0 0
 }
+
 #n_movie_info h3 {
     color: var(--def_bl);
     font-weight: bold;
@@ -108,13 +130,16 @@
     color: var(--font_03);
     padding: 0 14px;
     font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
 }
+
 #n_movie_info .n_movie_text {
-    padding: 40px 0;
+    margin: 40px 0;
 }
 
 #n_movie_info .n_movie_img {
-    padding: 40px 0;
+    margin: 40px 0;
 }
 #n_movie_info .n_movie_img img {
     width: 100%;
@@ -124,6 +149,12 @@
     width: 50%;
     padding: 0 14px;
 }
+
+.n_staff_table {
+    font-size: 14px;
+    line-height: 24px;
+}
+
 .n_movie_text th {
     width: 20%;
     background-color: var(--back_02);
@@ -144,6 +175,10 @@
     color: var(--primary_01);
     margin: 0px 0 40px;
 }
+
+
+
+
 #n_more_movie{
     margin-top: 20px;
 }
@@ -155,42 +190,46 @@
 }
 
 #n_more_movie p {
-    margin: 5px 0;
+    margin: 3px 0;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 #n_more_movie .n_more_movie {
-    width: 25%;
     margin-bottom: 30px;
 }
 
 #n_more_movie .n_more_movie img {
     width: 100%;
+    margin-bottom: 5px;
+}
+
+.n_movie_list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
 }
 
 .n_more_movie .n_achieve {
-    font-size: 18px;
+    font-size: 14px;
     color: var(--primary_01);
-
   font-weight: bold;
 }
 .n_more_movie .n_title {
-    display: block;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 14px;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 }
 .n_more_movie .n_content{
-    display: block;
-    font-size: 13px;
+    font-size: 11px;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+    line-height: 16px;
 }
 .n_more_movie .n_directer {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--font_02);
     display: -webkit-box;
     -webkit-line-clamp: 1;
@@ -213,11 +252,20 @@
 }
 .n_movie_category #n_category{
     font-weight: 500;
-    font-size: 13px;
+    font-size: 12px;
 }
 
-.n_col_sm_5 p {
+.n_detail_info {
+    width: 62%;
+}
+
+.n_detail_pay {
+    width: 38%;
+}
+
+.n_detail_pay p {
     margin: 0;
+    font-size: 12px;
 }
 
 .n_sell_img{
@@ -230,6 +278,7 @@
 }
 .n_sell_img img {
     padding-right: 5px;
+    width: 20px;
 }
 .n_movie_title {
     display: flex;
@@ -268,7 +317,7 @@
 }
 
 .n_sell_archive #n_percent{
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
     color: var(--primary_01);
 }
@@ -288,7 +337,6 @@
 
 .n_sell_archive #n_dday p{
     font-size: 11px;
-    height: 12px;
 }
 
 .n_sell_fund_state {
@@ -305,7 +353,7 @@
 }
 
 .n_sell_fund_state #n_price{
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
     color: var(--def_bl);
 }
@@ -325,7 +373,6 @@
 
 .n_sell_fund_state #n_play p{
     font-size: 11px;
-    height: 12px;
 }
 .n_sell_period {
     width: 80%;
@@ -363,7 +410,7 @@
 .n_ticket_type #price {
     font-weight: bold;
     font-size: 20px;
-    padding-bottom: 10px;
+    padding-bottom: 24px;
 }
 
 .n_ticket_type {
@@ -381,13 +428,12 @@
 }
 #n_sell_button .bookmark_button{
     width: 13%;
-    height: 60px;
+    height: 50px;
     background-color: transparent;
     border-radius: 8px;
-    border-color: var(--line_01);
     box-shadow: none;
     margin: 0 12px 0 0;
-    border-width: thin;
+    border: 0.5px solid var(--line_01);
 }
 #n_sell_button .bookmark_button img {
     height: 22px;
@@ -399,13 +445,24 @@
 
 #n_sell_button .n_buy_button {
     background-color: var(--point_05);
-    height: 60px;
+    height: 50px;
     width: 100%;
     border-radius: 8px;
     border-color: transparent;
     color: var(--def_wh);
-    font-size: 20px;
+    font-size: 16px;
 }
+
+#n_sell_button .n_reservation_button {
+    background-color: var(--point_03);
+    height: 50px;
+    width: 100%;
+    border-radius: 8px;
+    border-color: transparent;
+    color: var(--def_wh);
+    font-size: 16px;
+}
+
 
 /*/////////////////////////////////////////////////////*/
 /* off-detail */

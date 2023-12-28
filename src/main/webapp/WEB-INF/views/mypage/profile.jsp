@@ -2,7 +2,6 @@
 <%@ include file="../layout/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<body class="l_body">
 
 <div class="k_profile_main">
     <div class="k_profile_info_set">프로필 정보 설정</div>
@@ -11,9 +10,11 @@
             <label class="k_profile_pic">프로필 사진</label>
             <div style="text-align: center">
                 <input type="hidden" name="id" id="id" value ="${sessionScope.principal.id}">
-                <img id="preview" class="k_profile" alt="" id="pic" src="${sessionScope.principal.pic}" onclick="return false;">
                 <div class="k_file_button">
-                    <input type="file" id="file" name="file" onchange="changeUserPic(event)">
+                    <label id="file_button" for="file" style="background-color: transparent">
+                        <img id="preview" class="k_profile" alt="" id="pic" src="${sessionScope.principal.pic}" onclick="return false;">
+                    </label>
+                    <input type="file" id="file" name="file" onchange="changeUserPic(event)" style="display: none">
                 </div>
             </div>
         </div>
