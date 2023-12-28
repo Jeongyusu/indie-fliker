@@ -31,10 +31,7 @@ function discount() {
     let totalPayInt = parseFloat(totalPay.replace(/,/g, ''));
     let totalCountElement = document.querySelector("#n_people_count");
     let totalCount = totalCountElement.innerHTML;
-    // let userGrade = document.querySelector("#userGrade").value;
-    // TODO : 로그인 시 위의 주석 풀고, 아래의 String userGrade 지우기
-
-    let userGrade = "VIP";
+    let userGrade = document.querySelector("#userGrade").value;
 
     if(userGrade === "VIP"){
         let changePrice = totalPayInt - (discountPay * totalCount);

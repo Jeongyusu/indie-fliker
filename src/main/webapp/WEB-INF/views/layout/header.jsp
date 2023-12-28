@@ -49,7 +49,7 @@
                     <a href="/fund/funding-plus">
                         <img class="j_logo" src="/images/logo/IndieFliker.png" alt="로고">
                     </a>
-                    <a class="j_logo_text_padding" href="#">
+                    <a class="j_logo_text_padding" href="/fund/funding-plus">
                     <span class="j_logo_text">IndieFliker</span>
                     </a>
                 </div>

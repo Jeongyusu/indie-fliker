@@ -372,6 +372,7 @@ public class UserController {
 	public String isWithdrawal(){
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
 		this.userService.userIsWithdrawal(principal.getId());
+		session.invalidate();
 		return "redirect:/user/login";
 	}
 
