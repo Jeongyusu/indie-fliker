@@ -5,6 +5,7 @@ import com.tenco.indiepicter.funding.FundingService;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyService;
 import com.tenco.indiepicter.funding.request.AdminRequestFundingUpdateFormDTO;
 import com.tenco.indiepicter.funding.response.*;
+import com.tenco.indiepicter.scrab.ScrabService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,9 @@ public class AdminFundingController {
 
     @Autowired
     private FundingReadyService fundingReadyService;
+
+    @Autowired
+    private ScrabService scrabService;
 
 
     // 펀딩 등록 / 삭제 페이지 호출
@@ -114,7 +118,12 @@ public class AdminFundingController {
     @GetMapping("/funding/detail/{id}")
     public String detailFunding(@PathVariable Integer id, Model model){
         FundingDetailDTO fundingDetailDTO = fundingService.detailFunding(id);
+        boolean isLiked = scrabService.checkIsLiked(1, id); // 추후 1을 sessionUser.getId()로 변경
+        List<FundingDTO> moviesByMainDTOs = fundingService.moviesByMain(1, 10);
+
         model.addAttribute("fundingDetailDTO", fundingDetailDTO);
+        model.addAttribute("moviesByMainDTOs", moviesByMainDTOs);
+        model.addAttribute("isLiked", isLiked);
         return "manager/funding_ready_preview";
     }
 
