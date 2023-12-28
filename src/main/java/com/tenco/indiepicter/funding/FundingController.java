@@ -85,10 +85,11 @@ public class FundingController {
 
     @GetMapping("/funding/{id}")
     public String detailFunding(@PathVariable Integer id, Model model){
-
+        User pricipal = (User) session.getAttribute(Define.PRINCIPAL);
         FundingDetailDTO fundingDetailDTO = fundingService.detailFunding(id);
         boolean isLiked = scrabService.checkIsLiked(1, id); // 추후 1을 sessionUser.getId()로 변경
         List<FundingDTO> moviesByMainDTOs = fundingService.moviesByMain(1, 10);
+
         model.addAttribute("fundingDetailDTO", fundingDetailDTO);
         model.addAttribute("moviesByMainDTOs", moviesByMainDTOs);
         model.addAttribute("isLiked", isLiked);

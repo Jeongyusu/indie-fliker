@@ -66,4 +66,46 @@
         ALTER TABLE movie_photo_tb AUTO_INCREMENT = 1;
     </update>
 
+    <update id="updateDate">
+        UPDATE MOVIE_TB
+        SET
+            online_release_date = CASE
+                                      WHEN id BETWEEN 1 AND 60 THEN '2023-12-20'
+                                      WHEN id BETWEEN 61 AND 119 THEN '2023-12-01'
+                                      WHEN id BETWEEN 120 AND 180 THEN '2024-01-01'
+                                      ELSE online_release_date
+                END,
+            online_end_date = CASE
+                                  WHEN id BETWEEN 1 AND 60 THEN '2024-01-30'
+                                  WHEN id BETWEEN 61 AND 119 THEN '2023-12-20'
+                                  WHEN id BETWEEN 120 AND 180 THEN '2024-02-01'
+                                  ELSE online_end_date
+                END,
+            offline_release_date = CASE
+                                       WHEN id BETWEEN 1 AND 60 THEN '2024-02-01'
+                                       WHEN id BETWEEN 61 AND 119 THEN '2023-12-20'
+                                       WHEN id BETWEEN 120 AND 180 THEN '2024-02-02'
+                                       ELSE offline_release_date
+                END,
+            offline_end_date = CASE
+                                   WHEN id BETWEEN 1 AND 60 THEN '2024-02-28'
+                                   WHEN id BETWEEN 61 AND 119 THEN '2024-01-20'
+                                   WHEN id BETWEEN 120 AND 180 THEN '2024-03-01'
+                                   ELSE offline_end_date
+                END,
+            d_day = CASE
+                        WHEN id BETWEEN 1 AND 60 THEN '2023-12-20'
+                        WHEN id BETWEEN 61 AND 119 THEN '2023-12-01'
+                        WHEN id BETWEEN 120 AND 180 THEN '2024-01-01'
+                        ELSE d_day
+                END,
+            chat_time = CASE
+                            WHEN id BETWEEN 1 AND 60 THEN '2023-12-20'
+                            WHEN id BETWEEN 61 AND 119 THEN '2023-12-01'
+                            WHEN id BETWEEN 120 AND 180 THEN '2024-01-01'
+                            ELSE chat_time
+                END
+        WHERE id BETWEEN 1 AND 180;
+    </update>
+
 </mapper>

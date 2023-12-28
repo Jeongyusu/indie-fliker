@@ -32,30 +32,26 @@
         <div class="k_form_group">
             <label class="k_input_label">비밀번호</label><br>
             <div class="input-group k_input">
-
                 <input type="password" class="form-control k_pwd_backcolor" id="password1" name="password1" value=""
-
                        placeholder="비밀번호를 입력하세요."
                        onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 입력를 입력하세요.'"
                        style="border-radius: 0.25rem">
                 <p id="password1Ckeck"></p>
-                <div class="eyes" id="togglePassword1">
+                <div class="eyes" id="togglePassword1" onclick="togglePasswordVisibility('password1', 'togglePassword1')">
                     <img src="/images/icons/eye.png" alt="비밀번호 표시">
                 </div>
             </div>
             <div class="input-group k_input">
-
-                <input type="password" class="form-control k_pwd_backcolor k_pwd_input_margin" id="password2"
-                       name="password2" value=""
-
+                <input type="password" class="form-control k_pwd_backcolor k_pwd_input_margin" id="password2" name="password2" value=""
                        placeholder="비밀번호 확인"
                        onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 확인'"
                        style="border-radius: 0.25rem">
                 <p id="password2Ckeck"></p>
-                <div class="eyes2" id="togglePassword2">
+                <div class="eyes2" id="togglePassword2" onclick="togglePasswordVisibility('password2', 'togglePassword2')">
                     <img src="/images/icons/eye.png" alt="비밀번호 표시">
                 </div>
             </div>
+
         </div>
 
         <div class="k_form_group">
@@ -91,8 +87,30 @@
                 }
             }
 
+        });
+
+</script>
+
+<script>
+    function togglePasswordVisibility(passwordFieldId, toggleButtonId) {
+        var passwordField = $("#" + passwordFieldId);
+        var toggleButton = $("#" + toggleButtonId);
+
+        var type = passwordField.attr('type') === 'password' ? 'text' : 'password';
+        passwordField.attr('type', type);
+
+        // 이미지 변경
+        if (type === 'password') {
+            toggleButton.html('<img src="/images/icons/eye.png" alt="비밀번호 표시">');
+        } else {
+            toggleButton.html('<img src="/images/icons/eye-off.png" alt="비밀번호 가리기">');
+        }
+    }
+
+
         })
     });
+  
 </script>
 <%--<script>--%>
 <%--    // 이메일 정규표현식으로 유효성 검사--%>

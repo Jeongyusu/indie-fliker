@@ -208,13 +208,14 @@
                         <button type="button" class="bookmark_button">
                             <c:choose>
                                 <c:when test="${isLiked}">
-                                    <img class="scrap_icon" src="/images/icons/icons8-heart-24-red.png">
+                                    <img class="scrap_icon red-heart" src="/images/icons/icons8-heart-24-red.png">
                                 </c:when>
                                 <c:otherwise>
-                                    <img class="scrap_icon" src="/images/icons/icons8-heart-24-black.png">
+                                    <img class="scrap_icon black-heart" src="/images/icons/icons8-heart-24-black.png">
                                 </c:otherwise>
                             </c:choose>
                         </button>
+
                         <form action="/payment/${fundingDetailDTO.movieId}/on" method="get" id="n_funding_button">
                             <button type="submit" class="n_buy_button">펀딩하기</button>
                         </form>
@@ -223,7 +224,11 @@
             </div>
         </div>
     </div>
-</div>
-<script src="../../../../js/neh/on_detail.js"></script>
 
+</main>
+
+
+<script src="../../../../js/neh/on_detail.js">
+    console.log("isLiked 값 확인:", isLiked);
+</script>
 <%@ include file="../layout/footer.jsp" %>
