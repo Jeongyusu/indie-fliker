@@ -222,7 +222,7 @@
         var title = button.data('name');
         // 모달 팝업에 데이터 집어넣기
         var modal = $(this);
-        $('#fund_frame').attr('src', '/fund/funding/' + id);
+        $('#fund_frame').attr('src', '/admin/funding/detail/' + id);
         $('#modal_title').text(title);
         $('#hidden_id').attr('value', id);
     })
