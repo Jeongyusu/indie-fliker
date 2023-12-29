@@ -8,13 +8,15 @@ function onLoadImg(){
     let gradeImg = document.querySelector("#n_grade_img_on");
     let runningGrade = document.querySelector("#n_runningGrade").value;
     let src = "";
-    if(runningGrade === "전체 관람가"){
+    if(runningGrade === "전체관람가"){
         src = "/images/icons/movie_level_all.png";
-    }else if(runningGrade === "12세 이상 관람가"){
+    }else if(runningGrade === "12세이상 관람가"){
         src = "/images/icons/movie_level_12.png";
-    }else if(runningGrade === "15세 이상 관람가"){
+    }else if(runningGrade === "15세이상 관람가"){
         src = "/images/icons/movie_level_15.png";
-    }else {
+    }else if(runningGrade === "등급 미분류"){
+        src = "/images/icons/movie_level_no.png";
+    }else{
         src = "/images/icons/movie_level_19.png";
     }
     gradeImg.src = src;
@@ -205,7 +207,7 @@ async function savePayment(movieId, dto) {
         if (response.ok) {
             console.log("결제 정보 저장 완료");
             // 방금 예매한 예매 번호 GET 요청
-            selectReservationId(movieId);
+            await selectReservationId(movieId);
         } else {
             console.error("실패", response.statusText);
         }
@@ -228,10 +230,11 @@ async function selectReservationId(movieId) {
             let responseData = await response.json();
 
             let reservationIdDTO = responseData.response; // body
-            reservationId = reservationIdDTO.reservationId;
+            let reservationId = reservationIdDTO.reservationId;
+            console.log("예약번호 : " + reservationId);
 
             // 티켓 화면 GET 요청
-            onReservationTicket(movieId, reservationId);
+            await onReservationTicket(movieId, reservationId);
 
         } else {
             console.error("실패", response.statusText);
@@ -257,7 +260,7 @@ async function onReservationTicket(movieId, reservationId) {
             console.log("이동");
             console.log("movieId" + movieId);
             console.log("reservationId" + reservationId);
-            window.location.href = `/reservation/${movieId}/on-ticket?reservationId=${reservationId}`; // 예시: 성공 페이지 URL
+            // window.location.href = `/reservation/${movieId}/on-ticket?reservationId=${reservationId}`; // 예시: 성공 페이지 URL
         } else {
             console.error("실패", response.statusText);
         }

@@ -29,5 +29,6 @@ public interface MovieCrawlRepository {
     // Id 리셋
     void  resetAutoIncrement();
 
+    void  updateDate();
 
 }

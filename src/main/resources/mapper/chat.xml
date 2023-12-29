@@ -8,7 +8,7 @@
      <!-- 오늘 개봉하는 영화 목록 - 시간까지 -->
     <select id="findByOpenMovie"  resultMap="OpenMovieChatDTOResultMap">
         SELECT
-            f.id AS funding_id,
+            distinct(f.id) AS funding_id,
             m.id AS movie_id,
             m.movie_name,
             m.thumbnail,

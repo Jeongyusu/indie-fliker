@@ -2,7 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="../layout/header.jsp" %>
 
-<body class="l_body">
 
 <!-- 영화 목록 (20개씩 비동기로 받아올 예정) -->
 <div class="container l_main_margin_bottom">

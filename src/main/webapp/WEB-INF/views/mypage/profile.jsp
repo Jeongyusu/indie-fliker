@@ -2,7 +2,6 @@
 <%@ include file="../layout/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<body class="l_body">
 
 <div class="k_profile_main">
     <div class="k_profile_info_set">프로필 정보 설정</div>

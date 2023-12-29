@@ -84,16 +84,12 @@ public class WebCrawlerService {
                     String[] photoUrls = movieCrawl.getMoviePic().split(", ");
                     List<String> moviePicList = Arrays.asList(photoUrls);
 
-                    // 더미 데이터 삭제
-//                    movieCrawlRepository.deleteDummyMovieData();
-//                    // Id 값 초기화
-//                    movieCrawlRepository.resetAutoIncrement();
-                    //testSaveCrawlingDataToDB();
+
 
 
                     // 영화 데이터 삽입 - 한건에 데이터 가 들어 가능 상황
                     movieCrawlRepository.insertMovie(movie);
-
+                    movieCrawlRepository.updateDate();
 
                     Integer moviePk = movie.getId();
 
@@ -184,9 +180,7 @@ public class WebCrawlerService {
         String synopsis = getElementText(element, ".movie_story .library_view_title:containsOwn(시놉시스) + dd"); // 시놉시스
         String directingIntension = getElementText(element, ".movie_story .library_view_title:containsOwn(연출의도) + dd"); // 연출의도
 
-        String directorAwardsFilm = formatDirectorAwardsFilm(element, ".movie_story .library_view_title:containsOwn(영화제 상영 및 수상작) + dd");
-        // 영화제 상영 및 수상작
-
+        String directorAwardsFilm = formatDirectorAwardsFilm(element, ".movie_story .library_view_title:containsOwn(영화제 상영 및 수상작) + dd"); // 영화제 상영 및 수상작
         String directorCareers = extractAndFormatDirectorCareers(element); // 감독 수상경력
         //=================================
         String eDirector = getStaffInfo(element, "감독");

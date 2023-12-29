@@ -71,7 +71,8 @@ public class FundingController {
 
     @GetMapping("/on-dday")
     public String onDDayMovies(Model model){
-        List<OnDDayMovieDTO> onDDayMovieDTOs = fundingService.onDDayMovies();
+        List<OnDDayMovieDTO> onDDayMovieDTOs = fundingService.onDDayMovies(1, 15);
+        log.debug("사이즈" + onDDayMovieDTOs.size());
         model.addAttribute("onDDayMovieDTOs", onDDayMovieDTOs);
         return "main/on_d_day_list";
     }
@@ -85,10 +86,11 @@ public class FundingController {
 
     @GetMapping("/funding/{id}")
     public String detailFunding(@PathVariable Integer id, Model model){
-
+        User pricipal = (User) session.getAttribute(Define.PRINCIPAL);
         FundingDetailDTO fundingDetailDTO = fundingService.detailFunding(id);
         boolean isLiked = scrabService.checkIsLiked(1, id); // 추후 1을 sessionUser.getId()로 변경
         List<FundingDTO> moviesByMainDTOs = fundingService.moviesByMain(1, 10);
+
         model.addAttribute("fundingDetailDTO", fundingDetailDTO);
         model.addAttribute("moviesByMainDTOs", moviesByMainDTOs);
         model.addAttribute("isLiked", isLiked);

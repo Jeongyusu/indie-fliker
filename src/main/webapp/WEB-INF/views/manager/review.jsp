@@ -37,11 +37,6 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" placeholder="검색 하기">
             </div>
-
-            <div class="p_inform">
-                <a href=""><i class="fa-regular fa-bell"></i></a>
-            </div>
-
         </div>
         <!--탑 끝-->
 

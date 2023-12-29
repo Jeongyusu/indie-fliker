@@ -52,7 +52,6 @@ public class ScrabService {
     public boolean checkIsLiked(Integer userId, Integer fundingId) {
         Integer scrabExists = scrabRepository.isScrabExists(userId, fundingId);
         return scrabExists != null;
-
     }
 
     // 좋아요 list

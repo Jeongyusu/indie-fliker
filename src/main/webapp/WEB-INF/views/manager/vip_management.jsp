@@ -42,11 +42,6 @@
                     <input type="text" name="keyword" placeholder="검색 하기">
                 </div>
             </form>
-
-<%--            <div class="p_inform">--%>
-<%--                <a href=""><i class="fa-regular fa-bell"></i></a>--%>
-<%--            </div>--%>
-
         </div>
         <!--탑 끝-->
 
@@ -98,10 +93,6 @@
             <div class="p_title">
                 <h3>VIP회원 관리</h3>
             </div>
-<%--            <div class="p_filter">--%>
-<%--                <a href=""><button><span>Filter</span></button></a>--%>
-<%--                <i class="fa-solid fa-filter"></i>--%>
-<%--            </div>--%>
 
             <div class="p_section1">
                 <table class="table table-hover">
