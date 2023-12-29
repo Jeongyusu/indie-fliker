@@ -16,12 +16,9 @@ public class UserRestController {
 		@PostMapping("/emailCkeck")
 		@ResponseBody
 		public int emailCkeck(String userEmail) throws Exception{
-		 
 			int result = this.userService.findByEmailCheck(userEmail);
-			
 			return result;
 		}
 	//--------------------------------------------------------------------------------------------------------------
-
 
 }

@@ -152,8 +152,9 @@ public class AdminService {
 // ------------------------------------------------------------------------------------------
 
     // 일반 회원, VIP 회원 관리(회원 탈퇴)
-    public void isWithdrawal(Integer id) {
-        this.adminRepository.adminUserUpdate(id);
+    public int isWithdrawal(Integer id) {
+        int resultCount = this.adminRepository.adminUserUpdate(id);
+        return resultCount;
     }
 
 // ------------------------------------------------------------------------------------------
