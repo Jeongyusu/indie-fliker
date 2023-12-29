@@ -251,3 +251,5 @@ public class AdminController {
 		return "manager/vip_management_search";
 	}
 }
+
+// 12-29 19:47 학원 작업중~
