@@ -12,6 +12,7 @@ import java.util.List;
 public class FundingReadyDetailDTO {
     // 펀딩 ID(PK)
     private int fundingId;
+    private int movieId;
     // 펀딩 대표 사진
     private String movieThumbnail;
     // 개봉 여부
