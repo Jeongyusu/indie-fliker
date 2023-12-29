@@ -97,7 +97,7 @@
             <div class="p_section1">
                 <table class="table table-hover">
                     <thead>
-                        <tr>
+                        <tr id="custom_container">
                             <th>#</th>
                             <th>회원 ID</th>
                             <th>회원 닉네임</th>
@@ -177,18 +177,20 @@
 
     <script>
         async function deleteById(userId){
-            let response = await fetch('/admin/user-management-isWithdrawal?userId=' + userId)
+            let response = await fetch('/admin/vip-management-isWithdrawal?userId=' + userId)
             let responseBody = await response.json();
-
-            if(responseBody.success){
-                alert('삭제에 성공했습니다.');
-                let parent = document.getElementById('custom_container');
-                parent.innerHTML='';
-                // let originData = ``;
-                // parent.appendChild(originData);
-                location.reload();
-            } else {
-                alert('삭제에 실패했습니다.');
+            const userConfirmed = window.confirm('정말로 삭제하시겠습니까?');
+            if (userConfirmed){
+                if(responseBody.success){
+                    alert('삭제에 성공했습니다.');
+                    let parent = document.getElementById('custom_container');
+                    parent.innerHTML='';
+                    // let originData = ``;
+                    // parent.appendChild(originData);
+                    location.reload();
+                } else {
+                    alert('삭제에 실패했습니다.');
+                }
             }
         }
     </script>

@@ -139,7 +139,7 @@
                             <h2>초청권 발급</h2>
                             <button class="close" onclick="closeModal()">닫기</button>
                             <div class="modal_from">
-                                <form action="/admin/vip-issued" method="post">
+<%--                                <form action="/admin/vip-issued" method="post">--%>
                                     <input type="hidden" id="userId" name="userId" value ="${user.id}">
                                     <label>날짜 및 시간 선택</label><br>
                                     <input type="text" id="movieTime" name="movieTime" placeholder="날짜 및 시간 선택"><br>
@@ -151,8 +151,8 @@
                                     <input type="text" id="theaterName" name="theaterName" placeholder="극장 이름 입력"><br>
                                     <label>극장 주소</label><br>
                                     <input type="text" id="theaterAddress" name="theaterAddress" placeholder="극장 주소 입력"><br>
-                                    <button class="submit" type="submit">발급 하기</button>
-                                </form>
+                                    <button class="submit" id="submit" onclick="invitation()">발급 하기</button>
+<%--                                </form>--%>
                             </div>
                         </div>
                         <!----------------------------------- 모달 ------------------------------------------------>
@@ -228,6 +228,38 @@
         });
     </script>
     <!--------------------------------- 달력 -------------------------------------------------->
+    <script>
+        async function invitation(){
+            let userId = document.getElementById('userId').value;
+            let movieTime = document.getElementById('movieTime').value;
+            let invitationCode = document.getElementById('invitationCode').value;
+            let movieName = document.getElementById('movieName').value;
+            let theaterName = document.getElementById('theaterName').value;
+            let theaterAddress = document.getElementById('theaterAddress').value;
+
+            let response = await fetch(`/admin/vip-issued`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userId: userId,
+                    movieTime: movieTime,
+                    invitationCode: invitationCode,
+                    movieName: movieName,
+                    theaterName: theaterName,
+                    theaterAddress: theaterAddress
+                }),
+            });
+            let responseBody = await response.json();
+
+            if(responseBody.success){
+                alert('초청권을 전달했습니다!');
+            } else {
+                alert('초청권 전달을 실패했습니다.');
+            }
+        }
+    </script>
     
 </body>
 

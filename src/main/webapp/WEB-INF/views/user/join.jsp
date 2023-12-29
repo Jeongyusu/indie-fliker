@@ -84,14 +84,8 @@
                     alert("사용 가능한 이메일입니다.");
                 }
             }
-
-<<<<<<< HEAD
         })
     });
-=======
-        });
-    })
->>>>>>> dev
 
 </script>
 
@@ -110,12 +104,6 @@
             toggleButton.html('<img src="/images/icons/eye-off.png" alt="비밀번호 가리기">');
         }
     }
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> dev
 </script>
 <script>
     // 이메일 정규표현식으로 유효성 검사
