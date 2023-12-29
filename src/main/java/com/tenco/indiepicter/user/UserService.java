@@ -126,6 +126,10 @@ public class UserService {
 		
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
 
+		String username = this.userRepository.findBySameUsername(dto.getUsername());
+//		if (dto.getUsername().equals(username)){
+//			throw new MyDynamicException("이미 존재하는 닉네임입니다.", HttpStatus.BAD_REQUEST);
+//		}
 		if(!dto.getPassword1().equals(dto.getPassword2())) {
 			throw new MyDynamicException("비밀번호를 다시 확인해주세요.", HttpStatus.BAD_REQUEST);
 		}
@@ -139,7 +143,6 @@ public class UserService {
 			this.userRepository.profileUpdate(dto);
 		}
 
-
 //		if(resultRowCount != 1) {
 //			throw new MyDynamicException("수정 실패", HttpStatus.INTERNAL_SERVER_ERROR);
 //		}
@@ -148,6 +151,11 @@ public class UserService {
 //		session.setAttribute("sessionUser", sessionUser);
 //
 //		return resultRowCount;
+	}
+
+	// DB에 등록된 전화번호가 존재하는지 조회
+	public String userTel(UserProfileRequestDTO dto){
+		return this.userRepository.findByTel(dto.getTel());
 	}
 
 //--------------------------------------------------------------------------------
@@ -170,7 +178,13 @@ public class UserService {
 	// 카카오 간편 로그인 회원만 조회
 	public User kakaoLoginUser(){ return this.userRepository.findByKakao(); }
 //--------------------------------------------------------------------------------
+	// 이름, 전화번호로 이메일 조회
+	public String nameAndTelToEmail(FindUserInfoDTO findUserInfoDTO){
+		return this.userRepository.findByNameAndTelToEmail(findUserInfoDTO.getUsername(), findUserInfoDTO.getTel());
+	}
+//--------------------------------------------------------------------------------
 
+//--------------------------------------------------------------------------------
 	// 회원 이름, 전화번호를 이용해서 이메일 찾기
 	public String userEmail(@RequestParam String username, @RequestParam String tel){
 
@@ -241,7 +255,7 @@ public class UserService {
 		User user = this.userRepository.findByUserEmail(dto.getUserEmail());
 
 		if (user == null){
-			throw new MyDynamicException("이메일을 잘못 입력했습니다.",	HttpStatus.BAD_REQUEST);
+			throw new MyDynamicException("존재하지 않은 이메일입니다.",	HttpStatus.BAD_REQUEST);
 		}
 
 		String userEmail = dto.getUserEmail();
@@ -252,5 +266,8 @@ public class UserService {
 
 	}
 //--------------------------------------------------------------------------------
+
+
+
 
 }

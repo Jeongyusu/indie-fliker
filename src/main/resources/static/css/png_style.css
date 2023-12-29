@@ -2161,6 +2161,11 @@
     position: relative;
     left: 45%;
 }
+/* 자주 묻는 질문 페이지(검색) */
+.p_question_search_paging{
+    position: relative;
+    left: 45%;
+}
 /* 나의 초청권 현황 페이지 */
 .p_my_invitation_paging{
     position: relative;

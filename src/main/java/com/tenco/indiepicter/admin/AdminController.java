@@ -4,6 +4,7 @@ import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
 import com.tenco.indiepicter._core.utils.TimeStampUtil;
 import com.tenco.indiepicter.admin.response.AdminPagingResponseDTO;
 import com.tenco.indiepicter.funding.response.AdminOfflineStreamingSearchDTO;
+import com.tenco.indiepicter.invitation.request.InvitationRequestDTO;
 import com.tenco.indiepicter.invitation.response.InvitationResponseDTO;
 import com.tenco.indiepicter.user.User;
 import com.tenco.indiepicter.user.UserService;
@@ -85,25 +86,25 @@ public class AdminController {
 
 	// VIP 초청권 발급
 	@PostMapping("/vip-issued")
-	public String vipIssued(InvitationResponseDTO responseDto, Errors errors){
+	public String vipIssued(InvitationRequestDTO invitationRequestDto, Errors errors){
 
-		if(responseDto.getMovieTime() == null || responseDto.getMovieTime().isEmpty()){
+		if(invitationRequestDto.getMovieTime() == null || invitationRequestDto.getMovieTime().isEmpty()){
 			throw new MyDynamicException("날짜와 시간을 지정해 주세요.", HttpStatus.BAD_REQUEST);
 		}
-		if(responseDto.getInvitationCode() == null || responseDto.getInvitationCode().isEmpty()){
+		if(invitationRequestDto.getInvitationCode() == null || invitationRequestDto.getInvitationCode().isEmpty()){
 			throw new MyDynamicException("초청권 코드를 입력하세요.", HttpStatus.BAD_REQUEST);
 		}
-		if(responseDto.getMovieName() == null || responseDto.getMovieName().isEmpty()){
+		if(invitationRequestDto.getMovieName() == null || invitationRequestDto.getMovieName().isEmpty()){
 			throw new MyDynamicException("영화 제목을 입력해 주세요.", HttpStatus.BAD_REQUEST);
 		}
-		if(responseDto.getTheaterName() == null || responseDto.getTheaterName().isEmpty()){
+		if(invitationRequestDto.getTheaterName() == null || invitationRequestDto.getTheaterName().isEmpty()){
 			throw new MyDynamicException("극장 이름을 입력해 주세요.", HttpStatus.BAD_REQUEST);
 		}
-		if(responseDto.getTheaterAddress() == null || responseDto.getTheaterAddress().isEmpty()){
+		if(invitationRequestDto.getTheaterAddress() == null || invitationRequestDto.getTheaterAddress().isEmpty()){
 			throw new MyDynamicException("극장 주소를 입력해 주세요.", HttpStatus.BAD_REQUEST);
 		}
 
-		this.adminService.vipIssued(responseDto);
+		this.adminService.vipIssued(invitationRequestDto);
 
 		return "redirect:/admin/invitation";
 	}
