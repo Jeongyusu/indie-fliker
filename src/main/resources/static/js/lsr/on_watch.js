@@ -19,15 +19,21 @@ let chatGetTime = new Date(chatTime).getTime();
 
 // 채팅 시작 시간
 let chatFirstTime = new Date(chatTime);
+console.dir("채팅 시작 : " + chatFirstTime);
+
 
 // 채팅 종료 시간
 let chatLastTime = new Date(chatGetTime + 2 * 60 * 60 * 1000);
+console.dir("채팅 종료 : " + chatLastTime);
+
 
 // 채팅 안내 시간(채팅시간 1시간 전)
 let chatInfoTime = new Date(chatGetTime - 60 * 60 * 1000);
+console.dir("채팅 안내시간 : " + chatInfoTime);
 
 // 현재시간
 let currentDate = new Date();
+console.log("현재시간 : " + currentDate)
 
 // 영향을 줄 요소
 let chatForm = document.getElementById('chatForm');
@@ -35,8 +41,10 @@ let chatForm = document.getElementById('chatForm');
 // 채팅 입장 Form
 if(currentDate >= chatFirstTime && currentDate <= chatLastTime){
     chatForm.style.display = 'block';
+    console.dir("나옴");
 }else {
     chatForm.style.display = 'none';
+    console.dir("숨김");
 }
 // 채팅 안내 Form
 if(currentDate >= chatInfoTime && currentDate <= chatLastTime){

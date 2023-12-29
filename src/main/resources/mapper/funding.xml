@@ -529,31 +529,26 @@
     <!-- 유저가 구매한 온라인 상영중 영화 조회(구매가 빠른 순) -->
     <select id="findByUserToOnAir" resultMap="OnAirMovieByUserDTOResultMap">
         SELECT
-            mt.thumbnail,
-            ft.id AS funding_id,
-            mt.id AS movie_id,
-            mt.movie_name,
-            mt.synopsis,
-            mt.running_grade,
-            mt.online_release_date,
-            mt.online_end_date,
-            ft.present_price / (ft.target_price / 10) * 10 AS funding_rate,
-            mt.production,
-            rt.reservated_at
-        FROM
-            funding_tb ft
-                JOIN
-            movie_tb mt ON ft.movie_id = mt.id
-                JOIN
-            order_tb ot ON ft.id = ot.funding_id
-                JOIN
-            reservation_tb rt ON ot.user_id = rt.user_id
-        WHERE
-            ot.user_id = #{principalId}
-          AND ot.selected_seats IS NULL
-          AND curdate() BETWEEN mt.online_release_date AND mt.online_end_date
-        ORDER BY
-            rt.reservated_at ASC
+            DISTINCT rt.id as reservation_id,
+                     mt.thumbnail,
+                     ft.id AS funding_id,
+                     mt.id AS movie_id,
+                     mt.movie_name,
+                     mt.running_grade,
+                     mt.online_release_date,
+                     mt.online_end_date,
+                     ROUND(ft.present_price / (ft.target_price / 10) * 10) AS funding_rate,
+                     mt.production,
+                     rt.reservated_at
+        FROM funding_tb ft
+                 JOIN movie_tb mt ON ft.movie_id = mt.id
+                 JOIN order_tb ot ON ft.id = ot.funding_id
+                 JOIN reservation_tb rt ON ot.id = rt.id -- 여기를  수정해보세요
+        WHERE ot.user_id = #{principal}
+          AND rt.seat_id IS NULL
+          AND CURDATE() BETWEEN mt.online_release_date
+            AND mt.online_end_date
+        ORDER BY rt.reservated_at ASC
     </select>
 
     <resultMap id="OnAirMovieByUserDTOResultMap" type="com.tenco.indiepicter.funding.response.OnAirMovieByUserDTO">

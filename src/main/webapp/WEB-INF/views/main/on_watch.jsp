@@ -55,7 +55,7 @@
                                             class="l_font_pupple">다양한 평론</a>을 느껴보세요!
                                     </div>
                                 </div>
-<%--                                <c:if test="${principal.grade == 'VIP'}">--%>
+                                <c:if test="${principal.grade == 'VIP'}">
                                     <div class="l_vip_review_comment">"${onMovieDetailDTO.movieName}"의 매력을 어떻게 느끼셨나요?
                                         <br/>
                                         독립영화를 사랑하시는 VIP 여러분들의 소중한 평론은 <a class="l_green">1번</a>만 작성가능합니다. 편안하게 의견을 나누어 주세요!</div>
@@ -84,7 +84,7 @@
                                             </div>
                                         </div>
                                     </div>
-<%--                                </c:if>--%>
+                                </c:if>
                                 <div id="l_vip_review_element"></div>
                             </div>
                             <!-- 영화 포토 -->
