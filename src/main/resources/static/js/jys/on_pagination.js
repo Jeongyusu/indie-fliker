@@ -1,138 +1,112 @@
 let currentPage = 2;
 let isLoading = false;
-
 window.onload = function () {
-    // 영화 등급 이미지 로드
-    onLoadImg();
-
     console.log("온로드 실행");
-    loadMoreData();
+    onLoadImg();
+    isLoading = false;
+};
 
-    // 스크롤 이벤트에 이벤트 리스너를 추가
-    document.getElementById('data-container').addEventListener('scroll', function () {
+$(window).scroll(function() {
+    // 스크롤 이동 시 실행되는 코드
+    console.log("제이쿼리 스크롤");
+    if ($(window).scrollTop() + $(window).height() >= $(document).height() / 2 + 100) {
+        // 페이지 하단에 도달했을 때만 추가 데이터 로드
         loadMoreData();
-    })};
+    }
 
-// 현재 URL에서 쿼리스트링을 가져오기
-function getQueryStringValue(key) {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    return urlParams.get(key);
-}
+});
+
 
 // fetch로 새로운 데이터 받아오기
-async function fetchMovieList(page) {
-    let response = await fetch(`/api/on-movies?page=${page}`);
+async function fetchFundingList(page) {
+    let response = await fetch('/api/on-movies?page=' + page);
     let responseBody = await response.json();
-    console.log("fetch펀딩 내부 제이슨 변환완료");
+
     if (responseBody.success) {
-        console.log("success 진입" + responseBody.response);
         return responseBody.response;
     } else {
         throw new Error(responseBody.error);
     }
 }
 
-
 // 마우스 스크롤 감지 후 새로운 데이터를 받아온 후 새로운 요소 생성하기
 function loadMoreData() {
-    console.log("loadMoreData 진입");
 
     if (isLoading) {
         return;
     }
+    isLoading = true;
 
-    const container = document.getElementById('data-container');
+    // 로딩 딜레이 주기
+    setTimeout(async () => {
+        try {
+            const newData = await fetchFundingList(currentPage);
+            newData.forEach((funding) => {
+                var newElement = '<div class="col my-4 l_movie_card_form">' +
+                    '<div class="card l_main_card">' +
+                    '<div class="l_movie_image">' +
+                    '<figure class="l_front">' +
+                    '<img src="' + funding.movieThumbnail + '" class="card-img" alt="...">' +
+                    '</figure>' +
+                    '<div class="l_overlay_button l_back">' +
+                    '<a href="/fund/funding/' + funding.fundingId + '"><button class="btn btn-outline-success l_button">예매하기</button></a>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="l_percent l_mint l_strong">' + funding.fundingRate + '% 달성</div>' +
+                    '<div class="l_movie_online_title">' +
+                    '<img src="" class="l_grade_img">' +
+                    '<div class="l_title">' + funding.movieName + '</div>' +
+                    '<input type="hidden" value="' + funding.runningGrade + '" class="grade">' +
+                    '</div>' +
+                    '<div class="l_period">상영 : ' + formatPeriod(timeStampToDate(funding.onlineReleaseDate), timeStampToDate(funding.onlineEndDate))
+                    + '</div>' +
+                    '<div class="l_content">' + funding.synopsis + '</div>' +
+                    '<div class="l_production">' + funding.production + '</div>' +
+                    '</div>' +
+                    '</div>';
 
-    // 유저 스크롤 현재 위치 감지
-    if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
-        isLoading = true;
-        console.log("ajax진입 전");
-        // 로딩 딜레이 주기
-        setTimeout(async () => {
-            try {
-                const newData = await fetchMovieList(currentPage);
-                console.log("newData 확인" + newData);
-                // Append new data to the container
-                const row = document.querySelector('#data-container'); // Assuming you have a row element to append the new columns
-                newData.forEach(funding => {
-                    const col = document.createElement('div');
-                    col.className = 'col my-4';
-                    col.classList.add('l_movie_card_form');
-
-                    const card = document.createElement('div');
-                    card.className = 'card';
-                    card.classList.add('l_main_card');
-
-                    const a = document.createElement('a');
-                    a.href = `/fund/funding/${funding.fundingId}`;
-
-                    const img = document.createElement('img');
-                    img.src = funding.movieThumbnail;
-                    img.className = 'card-img';
-
-                    const h4 = document.createElement('div');
-                    h4.className = 'l_percent';
-                    h4.classList.add('l_mint');
-                    h4.classList.add('l_strong');
-                    h4.textContent = `${funding.fundingRate}% 달성`;
-
-                    const h5 = document.createElement('div');
-                    h5.className = 'l_movie_online_title';
-
-                    const grade = document.createElement('img');
-                    grade.className = 'l_grade_img';
-
-                    const name = document.createElement('div');
-                    name.className = 'l_title';
-                    name.innerHTML = funding.movieName;
-
-                    const input = document.createElement('input');
-                    input.type = 'hidden';
-                    input.className = 'grade';
-                    input.value = funding.runningGrade;
-
-                    const period = document.createElement('div');
-                    period.className = 'l_period';
-                    period.innerHTML = '상영 : ' + funding.period();
-
-                    const synopsis = document.createElement('div');
-                    synopsis.className = 'l_content';
-                    synopsis.innerHTML = funding.synopsis;
-
-                    const product = document.createElement('div');
-                    product.className = 'l_production';
-                    product.innerHTML = funding.production;
-
-                    a.appendChild(img);
-                    h5.appendChild(grade);
-                    h5.appendChild(name);
-                    h5.appendChild(input);
-                    card.appendChild(a);
-                    card.appendChild(h4);
-                    card.appendChild(h5);
-                    card.appendChild(period);
-                    card.appendChild(synopsis);
-                    card.appendChild(product);
-                    col.appendChild(card);
-
-                    row.appendChild(col);
-                    const footer = document.querySelector('footer');
-                    document.body.appendChild(footer);
-
-                });
-
-                // 현재 페이지 증가 및 로딩 상태 변경
-                currentPage++;
-                isLoading = false;
-            } catch (error) {
-                console.error('Error fetching data:');
-            }  finally {
+                // Append new content to the container with id 'data-container'
+                $('#data-container').append(newElement);
+            });
+            currentPage++;
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        } finally {
             isLoading = false;
-            }
-        }, 1000);
+        }
+    }, 1000);
+
+    var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+    window.addEventListener("scroll", function() {
+        // 현재 스크롤 위치 가져오기
+        var scrollPosition = window.scrollY;
+
+        // 스크롤 위치가 300px 이상이면 버튼 표시, 아니면 숨김
+        if (scrollPosition > 500) {
+            scrollToTopBtn.style.display = "block";
+        } else {
+            scrollToTopBtn.style.display = "none";
+        }
+    });
+
+    // 버튼 클릭 시 맨 위로 스크롤하는 함수
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth" // 부드러운 스크롤 적용
+        });
     }
+
+    // 버튼에 클릭 이벤트 리스너 추가
+    scrollToTopBtn.addEventListener("click", scrollToTop);
 }
+
+function formatPrice(number) {
+    const formatter = new Intl.NumberFormat('en-US');
+    return formatter.format(number);
+}
+
 
 function onLoadImg(){
     let gradeImgs = document.querySelectorAll(".l_grade_img");
@@ -160,3 +134,16 @@ function onLoadImg(){
         })
     })
 }
+
+function timeStampToDate(timeStamp) {
+    var date = new Date(timeStamp);
+    var year = date.getFullYear();
+    var month = ('0' + (date.getMonth() + 1)).slice(-2); // Months are zero-based
+    var day = ('0' + date.getDate()).slice(-2);
+    return year + '-' + month + '-' + day;
+}
+
+function formatPeriod(releaseDate, endDate) {
+    return releaseDate + " ~ " + endDate;
+}
+

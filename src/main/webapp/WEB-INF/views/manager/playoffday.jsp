@@ -97,7 +97,7 @@
             <div class="j_font_style">
                 <h3>오프라인 상영 기간 설정</h3>
             </div>
-            <div class="p_section1">
+            <div class="p_section1" id="j_data_container">
                 <c:forEach var="funding" items="${adminOfflineStreamingDTOs}" varStatus="status">
                     <div class="p_menu1" >
                         <img src="${funding.thumbnail}" alt="">
@@ -133,13 +133,11 @@
                         <button class="j_streaming_close2" style="background-color: var(--point_05);" type="button" onclick="closeMovieSettingModal()">닫기</button>
                 </div>
             </div>
-
-
         </div>
-        <!--컨테이너2 끝-->
-
-        
 	</div>
+    <div>
+        <button id="scrollToTopBtn"><img src="/images/icons/upArrow.gif" class="j_up_button"></button>
+    </div>
 <script>
         <!--------------------------------- 달력 -------------------------------------------------->
 
@@ -206,7 +204,7 @@
             newInput3.type = 'text';
             newInput3.id = 'off_funding_end';
             newInput3.placeholder = '날짜 및 시간을 선택하세요';
-            newInput3.value = "기존 설정 시간 : " + responseBody.response.endDate;
+            newInput3.value = "펀딩 종료일 : " + responseBody.response.endDate;
             newInput3.disabled = true;
             newInput3.style = "width : 250px;"
             parent3.appendChild(newInput3);
@@ -311,6 +309,96 @@
     }
 
 
+        let currentPage = 2;
+        let isLoading = false;
+        window.onload = function () {
+            console.log("온로드 실행");
+            isLoading = false;
+        };
+
+        $(window).scroll(function() {
+            // 스크롤 이동 시 실행되는 코드
+            console.log("제이쿼리 스크롤");
+            if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
+                // 페이지 하단에 도달했을 때만 추가 데이터 로드
+                loadMoreData();
+            }
+
+        });
+
+
+        // fetch로 새로운 데이터 받아오기
+        async function fetchFundingList(page) {
+            let response = await fetch('/admin/funding/offline-period-setting/more-data?page=' + page);
+            let responseBody = await response.json();
+
+            if (responseBody.success) {
+                return responseBody.response;
+            } else {
+                throw new Error(responseBody.error);
+            }
+        }
+
+        // 마우스 스크롤 감지 후 새로운 데이터를 받아온 후 새로운 요소 생성하기
+        function loadMoreData() {
+
+            if (isLoading) {
+                return;
+            }
+            isLoading = true;
+
+            // 로딩 딜레이 주기
+            setTimeout(async () => {
+                try {
+                    const newData = await fetchFundingList(currentPage);
+                    newData.forEach((funding) => {
+                        var newElement = '<div class="p_menu1" >' +
+                            '<img src="' + funding.thumbnail + '" alt="">' +
+                            '<p>' + funding.movieName + '</p>' +
+                            '<button onclick="openMovieSettingModal(' + funding.movieId + ')">오프라인 상영기간 설정</button>' +
+                            '</div>';
+
+                        // Append new content to the container with class 'p_section1'
+                        $('#j_data_container').append(newElement);
+                    });
+                    currentPage++;
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                } finally {
+                    isLoading = false;
+                }
+            }, 1000);
+
+            var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+            window.addEventListener("scroll", function() {
+                // 현재 스크롤 위치 가져오기
+                var scrollPosition = window.scrollY;
+
+                // 스크롤 위치가 300px 이상이면 버튼 표시, 아니면 숨김
+                if (scrollPosition > 500) {
+                    scrollToTopBtn.style.display = "block";
+                } else {
+                    scrollToTopBtn.style.display = "none";
+                }
+            });
+
+            // 버튼 클릭 시 맨 위로 스크롤하는 함수
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth" // 부드러운 스크롤 적용
+                });
+            }
+
+            // 버튼에 클릭 이벤트 리스너 추가
+            scrollToTopBtn.addEventListener("click", scrollToTop);
+        }
+
+        function formatPrice(number) {
+            const formatter = new Intl.NumberFormat('en-US');
+            return formatter.format(number);
+        }
 
 
 

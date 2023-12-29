@@ -31,15 +31,13 @@
     <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
     <!-- 카카오 환불하기   -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-
+    <div class="k_funding_save">
+        <p>펀딩 수정 페이지</p>
+    </div>
     <title>IndieFliker</title>
 </head>
 <body>
 <form action="/admin/funding/update" method="post" enctype="multipart/form-data">
-<div class="k_funding_save">
-    <p>펀딩 등록하기</p>
-</div>
 <div class="k_funding_main">
     <div class="k_funding_upload">
         <div class="k_funding_upload_container">
@@ -360,7 +358,7 @@
     </div>
     <div class="k_funding_save">
         <button type="submit" class="k_custom_button">
-            <p>펀딩 등록하기</p>
+            <p>펀딩 수정하기</p>
         </button>
     </div>
 </form>
@@ -735,5 +733,4 @@
 
 
 </script>
-<%@ include file="../layout/footer.jsp" %>
 
