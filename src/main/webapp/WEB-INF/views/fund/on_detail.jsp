@@ -224,6 +224,11 @@
         </div>
     </div>
 </div>
+</body>
+</main>
+
+
 
 <script src="../../../../js/neh/on_detail.js"></script>
+
 <%@ include file="../layout/footer.jsp" %>
