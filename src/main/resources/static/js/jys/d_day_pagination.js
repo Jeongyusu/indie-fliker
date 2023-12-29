@@ -19,7 +19,7 @@ $(window).scroll(function() {
 
 // fetch로 새로운 데이터 받아오기
 async function fetchFundingList(page) {
-    let response = await fetch('/api/off-movies?page=' + page);
+    let response = await fetch('/api/to-be-open-movies?page=' + page);
     let responseBody = await response.json();
 
     if (responseBody.success) {
@@ -41,33 +41,20 @@ function loadMoreData() {
     setTimeout(async () => {
         try {
             const newData = await fetchFundingList(currentPage);
-            newData.forEach(function(funding) {
+            newData.forEach(function(dday) {
                 var newElement = document.createElement('div');
                 newElement.classList.add('col', 'my-4', 'l_movie_card_form');
 
-                newElement.innerHTML = '<div class="card l_main_card">' +
-                    '<div class="l_movie_image">' +
-                    '<figure class="l_front">' +
-                    '<img src="' + funding.movieThumbnail + '" class="card-img" alt="...">' +
-                    '</figure>' +
-                    '<div class="l_overlay_button l_back">' +
-                    '<a href="/fund/funding/' + funding.fundingId + '"><button class="btn btn-outline-success l_button">예매하기</button></a>' +
+                newElement.innerHTML = '<div class="card l_movie_card">' +
+                    '<a href="/fund/funding/' + dday.fundingId + '"><img src="' + dday.movieThumbnail + '" class="card-img" alt="..."></a>' +
                     '</div>' +
-                    '</div>' +
-                    '<div class="l_percent l_mint l_strong">' + funding.fundingRate + '% 달성</div>' +
-                    '<div class="l_movie_online_title">' +
-                    '<img src="" class="l_grade_img">' +
-                    '<div class="l_title">' + funding.movieName + '</div>' +
-                    '<input type="hidden" value="' + funding.runningGrade + '" class="grade">' +
-                    '</div>' +
-                    '<div class="l_period">상영 : ' + formatPeriod(timeStampToDate(funding.offlineReleaseDate), timeStampToDate(funding.offlineEndDate)) + '</div>' +
-                    '<div class="l_content">' + funding.synopsis + '</div>' +
-                    '<div class="l_production">' + funding.production + '</div>' +
-                    '</div>' +
-                    '</div>';
+                    '<div class="l_percent l_mint l_strong">' + dday.fundingRate + '% 달성</div>' +
+                    '<div class="l_title">' + dday.movieName + '</div>' +
+                    '<div class="l_content">' + dday.synopsis + '</div>' +
+                    '<div class="l_production">' + dday.production + '</div>';
 
                 // Append new content to the container with id 'data-container'
-                $('#data-container').append(newElement);
+               $('#data-container').append(newElement);
             });
             currentPage++;
         } catch (error) {

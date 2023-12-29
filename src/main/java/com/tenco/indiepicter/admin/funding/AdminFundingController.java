@@ -5,6 +5,7 @@ import com.tenco.indiepicter.funding.FundingService;
 import com.tenco.indiepicter.funding.fundingready.FundingReadyService;
 import com.tenco.indiepicter.funding.request.AdminRequestFundingUpdateFormDTO;
 import com.tenco.indiepicter.funding.response.*;
+import com.tenco.indiepicter.scrab.ScrabService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,11 +25,14 @@ public class AdminFundingController {
     @Autowired
     private FundingReadyService fundingReadyService;
 
+    @Autowired
+    private ScrabService scrabService;
+
 
     // 펀딩 등록 / 삭제 페이지 호출
     @GetMapping("/funding-management")
-    public String funding(Model model) {
-        List<AdminFundingModifyDTO> adminFundingModifyDTOs = fundingService.findAllAdminFundingModify();
+    public String funding(@RequestParam(name="page", defaultValue = "1") Integer page ,Model model) {
+        List<AdminFundingModifyDTO> adminFundingModifyDTOs = fundingService.findAllAdminFundingModify(page, 8);
         model.addAttribute("adminFundingModifyDTOs", adminFundingModifyDTOs);
         return "manager/update_delete";
     }
@@ -52,19 +56,15 @@ public class AdminFundingController {
     }
 
     @GetMapping("/funding/movie-open/setting")
-    public String moviePlayDay(Model model){
-        List<AdminOnlineStreamingDTO> adminOnlineStreamingDTOs = fundingService.findAllAdminPeriodSetting();
-        log.debug("==============================");
-        log.debug(adminOnlineStreamingDTOs.toString());
+    public String moviePlayDay(@RequestParam(name = "page", defaultValue = "1") Integer page, Model model){
+        List<AdminOnlineStreamingDTO> adminOnlineStreamingDTOs = fundingService.findAllAdminPeriodSetting(page, 8);
         model.addAttribute("adminOnlineStreamingDTOs", adminOnlineStreamingDTOs);
         return "manager/playday";
     }
 
     @GetMapping("/funding/off-movie-open/setting")
-    public String offMoviePlayDay(Model model){
-        List<AdminOfflineStreamingDTO> adminOfflineStreamingDTOs = fundingService.findAllAdminOfflinePeriodSetting();
-        log.debug("==============================");
-        log.debug(adminOfflineStreamingDTOs.toString());
+    public String offMoviePlayDay(@RequestParam(name = "page", defaultValue = "1") Integer page, Model model){
+        List<AdminOfflineStreamingDTO> adminOfflineStreamingDTOs = fundingService.findAllAdminOfflinePeriodSetting(page, 8);
         model.addAttribute("adminOfflineStreamingDTOs", adminOfflineStreamingDTOs);
         return "manager/playoffday";
     }
@@ -72,7 +72,7 @@ public class AdminFundingController {
     @PostMapping("/funding/update")
     public @ResponseBody String saveFunding(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO){
         fundingService.updateById(adminRequestFundingUpdateFormDTO);
-        return Script.href("/admin/funding-management", "펀딩 업데이트 성공!");
+        return Script.href("/admin/funding/detail/" + adminRequestFundingUpdateFormDTO.getFundingId(),"펀딩 업데이트 성공!");
     }
 
     @GetMapping("/funding-management/search")
@@ -114,7 +114,12 @@ public class AdminFundingController {
     @GetMapping("/funding/detail/{id}")
     public String detailFunding(@PathVariable Integer id, Model model){
         FundingDetailDTO fundingDetailDTO = fundingService.detailFunding(id);
+        boolean isLiked = scrabService.checkIsLiked(1, id); // 추후 1을 sessionUser.getId()로 변경
+        List<FundingDTO> moviesByMainDTOs = fundingService.moviesByMain(1, 10);
+
         model.addAttribute("fundingDetailDTO", fundingDetailDTO);
+        model.addAttribute("moviesByMainDTOs", moviesByMainDTOs);
+        model.addAttribute("isLiked", isLiked);
         return "manager/funding_ready_preview";
     }
 

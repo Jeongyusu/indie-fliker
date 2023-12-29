@@ -71,7 +71,8 @@ public class FundingController {
 
     @GetMapping("/on-dday")
     public String onDDayMovies(Model model){
-        List<OnDDayMovieDTO> onDDayMovieDTOs = fundingService.onDDayMovies();
+        List<OnDDayMovieDTO> onDDayMovieDTOs = fundingService.onDDayMovies(1, 15);
+        log.debug("사이즈" + onDDayMovieDTOs.size());
         model.addAttribute("onDDayMovieDTOs", onDDayMovieDTOs);
         return "main/on_d_day_list";
     }
