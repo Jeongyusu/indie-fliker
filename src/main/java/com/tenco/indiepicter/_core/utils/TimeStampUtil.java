@@ -27,12 +27,12 @@ public class TimeStampUtil {
     // d-day
     public static String dDayFormatToDate(Timestamp date) {
         // 변환
-        LocalDateTime dueDateTime = date.toLocalDateTime();
+        LocalDateTime dueDateTime = date.toLocalDateTime().plusDays(3);
 
         // 구매 종료(+3일)
         Integer year = dueDateTime.getYear();
         Integer month = dueDateTime.getMonthValue();
-        Integer day = dueDateTime.getDayOfMonth() + 3;
+        Integer day = dueDateTime.getDayOfMonth();
 
         // 현재일 - 마감일
         LocalDate dueDate = LocalDate.of(year, month, day);
