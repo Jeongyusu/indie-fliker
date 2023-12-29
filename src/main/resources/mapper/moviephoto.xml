@@ -5,9 +5,36 @@
 <mapper namespace="com.tenco.indiepicter.movie.moviephoto.MoviePhotoRepository">
 
 
-     <!-- 영화 이미지 조회 -->
+    <!-- 영화 이미지 조회 -->
     <select id="findByMovieId" resultType="com.tenco.indiepicter.movie.moviephoto.MoviePhoto">
         select * from movie_photo_tb where movie_id = #{movieId}
     </select>
+
+    <!-- 영화 포토 등록 -->
+    <insert id="saveMoviePhoto">
+        insert into movie_photo_tb(movie_pic, movie_id) values (#{moviePic}, #{movieId})
+    </insert>
+
+    <!-- 영화 포토 업데이트 -->
+    <update id="updateById">
+        UPDATE movie_photo_tb
+        set movie_pic = #{moviePic}
+        WHERE movie_id = #{movieId} AND id = #{id}
+    </update>
+    <!-- 해당 영화 포토 전부 삭제 -->
+    <delete id="deleteAllById">
+        delete from movie_photo_tb where movie_id = #{movieId}
+    </delete>
+
+    <!-- 해당 영화 포토 일부 삭제 -->
+    <delete id="deleteById">
+        delete from movie_photo_tb where movie_id = #{movieId} and id = #{id}
+    </delete>
+
+    <!-- 해당 포토 찾기 -->
+    <select id="findById" resultType="com.tenco.indiepicter.movie.moviephoto.MoviePhoto">
+        select * from movie_photo_tb where id = #{id}
+    </select>
+
 
 </mapper>
