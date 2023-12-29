@@ -3,7 +3,6 @@
 <%@ include file="../../layout/header.jsp" %>
 
 
-<body class="l_body">
 <div class="container l_main_margin_bottom">
     <div class="k_ask_container">
         <h1 class="k_ask_main">자주 묻는 질문</h1>

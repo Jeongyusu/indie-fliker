@@ -2,7 +2,6 @@
 		 pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<body class="l_body">
 
 <main>
 	<div class="n_custom_fluid">

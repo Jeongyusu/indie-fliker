@@ -77,7 +77,7 @@
                 END,
             online_end_date = CASE
                                   WHEN id BETWEEN 1 AND 60 THEN '2024-02-29'
-                                  WHEN id BETWEEN 61 AND 119 THEN '2023-12-31'
+                                  WHEN id BETWEEN 61 AND 119 THEN '2024-01-31'
                                   WHEN id BETWEEN 120 AND 180 THEN '2024-02-01'
                                   ELSE online_end_date
                 END,
@@ -89,7 +89,7 @@
                 END,
             offline_end_date = CASE
                                    WHEN id BETWEEN 1 AND 60 THEN '2024-02-01'
-                                   WHEN id BETWEEN 61 AND 119 THEN '2024-12-30'
+                                   WHEN id BETWEEN 61 AND 119 THEN '2024-01-30'
                                    WHEN id BETWEEN 120 AND 180 THEN '2024-01-31'
                                    ELSE offline_end_date
                 END,

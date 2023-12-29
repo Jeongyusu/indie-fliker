@@ -2,7 +2,6 @@
          pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
 
-<body class="l_body">
     <div class="n_flex_center">
         <div class="n_thousand_body n_body_margin">
             <div class="row justify-content-center">

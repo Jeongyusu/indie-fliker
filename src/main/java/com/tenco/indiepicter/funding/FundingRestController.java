@@ -39,14 +39,22 @@ public class FundingRestController {
     // 온라인 영화 페이징
     @GetMapping ("/api/on-movies")
     public ResponseEntity<?> onlineMoviePlus(@RequestParam(name="page", defaultValue = "1") Integer page) {
-        List<OnAirMoviePageDTO> onAirMoviePageDTOs = fundingService.onAirMoviePage(page, 4);
+        List<OnAirMoviePageDTO> onAirMoviePageDTOs = fundingService.onAirMoviePage(page, 20);
         return ResponseEntity.ok().body(ApiUtils.success(onAirMoviePageDTOs));
     }
 
     // 오프라인 영화 페이징
     @GetMapping ("/api/off-movies")
     public ResponseEntity<?> offlineMoviePlus(@RequestParam(name="page", defaultValue = "1") Integer page) {
-        List<OffAirMoviePageDTO> offAirMoviePageDTOs = fundingService.offAirMoviePage(page, 4);
+        List<OffAirMoviePageDTO> offAirMoviePageDTOs = fundingService.offAirMoviePage(page, 12);
         return ResponseEntity.ok().body(ApiUtils.success(offAirMoviePageDTOs));
     }
+
+    // 온라인 개봉 예정 영화 페이징
+    @GetMapping ("/api/to-be-open-movies")
+    public ResponseEntity<?> toBeOpenMoviePlus(@RequestParam(name="page", defaultValue = "1") Integer page) {
+        List<OnDDayMovieDTO> onDDayMovieDTOs = fundingService.onDDayMovies(page, 15);
+        return ResponseEntity.ok().body(ApiUtils.success(onDDayMovieDTOs));
+    }
+
 }

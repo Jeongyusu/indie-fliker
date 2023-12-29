@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<body class="l_body">
 	<!-- header -->
 	<div id="l_off_banner" class="carousel slide" data-bs-ride="carousel">
 		<div class="carousel-inner">
@@ -122,6 +121,9 @@
 			놓치지 마세요!
 		</div>
 	</div>
+<div>
+	<button id="scrollToTopBtn"><img src="/images/icons/upArrow.gif" class="j_up_button"></button>
+</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 	<script type="module" src="/js/jys/off_pagination.js"></script>
 	<%@ include file="../layout/footer.jsp" %>

@@ -3,7 +3,6 @@
 <%@ include file="../layout/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<body class="l_body">
 <div class="n_flex_center">
     <div class="n_thousand_add_body">
         <div class="body n_body">
@@ -229,7 +228,7 @@
 </main>
 
 
-<script src="../../../../js/neh/on_detail.js">
-    console.log("isLiked 값 확인:", isLiked);
-</script>
+
+<script src="../../../../js/neh/on_detail.js"></script>
+
 <%@ include file="../layout/footer.jsp" %>

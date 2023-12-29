@@ -82,6 +82,9 @@ function loadMoreData(genre) {
                     h4.classList.add('l_strong');
                     h4.textContent = `${funding.fundingRate}% 달성`;
 
+                    const gradeImg = document.createElement('img');
+                    gradeImg.className = 'l_grade_img';
+
                     const h5 = document.createElement('div');
                     h5.className = 'l_title';
                     h5.textContent = funding.movieName;
@@ -166,16 +169,17 @@ function onLoadImg(){
     gradeImgs.forEach((gradeImg) => {
         runningGrades.forEach((grade) => {
             let src = "";
-            if(grade.value === "전체 관람가"){
+            if(grade.value === "전체관람가"){
                 src = "/images/icons/movie_level_all.png";
-            }else if(grade.value === "12세 이상 관람가"){
+            }else if(grade.value === "12세이상 관람가"){
                 src = "/images/icons/movie_level_12.png";
-            }else if(grade.value === "15세 이상 관람가"){
+            }else if(grade.value === "15세이상 관람가"){
                 src = "/images/icons/movie_level_15.png";
-            }else {
+            }else if(grade.value === "등급 미분류"){
+                src = "/images/icons/movie_level_no.png";
+            }else{
                 src = "/images/icons/movie_level_19.png";
             }
-
             gradeImg.src = src;
             console.log("src : " + gradeImg.src);
         })

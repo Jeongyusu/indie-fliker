@@ -33,7 +33,7 @@ public class ReservationService {
 		// 온라인 영화 예매 시 seats id는 없으므로 디폴트 null 처리
 		Integer seatsNumber = null;
 
-		Seat seats = seatRepository.findByRunningDateIdAndUserId(requestDTO.getRunningDateId(), 1);
+		Seat seats = seatRepository.findByRunningDateIdAndUserId(requestDTO.getRunningDateId(), principalId);
 
 		if(seats != null){
 			seatsNumber = seats.getId();
