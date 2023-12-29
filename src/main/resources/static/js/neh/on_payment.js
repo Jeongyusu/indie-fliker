@@ -260,7 +260,7 @@ async function onReservationTicket(movieId, reservationId) {
             console.log("이동");
             console.log("movieId" + movieId);
             console.log("reservationId" + reservationId);
-            // window.location.href = `/reservation/${movieId}/on-ticket?reservationId=${reservationId}`; // 예시: 성공 페이지 URL
+            window.location.href = `/reservation/${movieId}/on-ticket?reservationId=${reservationId}`; // 예시: 성공 페이지 URL
         } else {
             console.error("실패", response.statusText);
         }

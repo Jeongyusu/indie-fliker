@@ -11,6 +11,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.tenco.indiepicter._core.handler.exception.MyUnAuthorizedException;
 import com.tenco.indiepicter._core.utils.ApiUtils;
 import com.tenco.indiepicter._core.utils.PicToStringUtil;
 import com.tenco.indiepicter.funding.FundingService;
@@ -280,7 +281,7 @@ public class UserController {
 	public String myPage(Model model, Integer id) {
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
 		if(principal == null) {
-			throw new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
+			throw new MyUnAuthorizedException("로그인이 필요합니다.", HttpStatus.UNAUTHORIZED);
 		}
 		User userInfo = this.userService.userinfo(principal.getId());
 		Integer invitationCount = this.userService.userInvitation(principal.getId());
