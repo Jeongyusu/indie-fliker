@@ -10,7 +10,7 @@
     <title>관리자 페이지 - 회원 등급 수정( grade_update ) 완료!</title>
 
     <!-- style.css와 연결 -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/CSS/png_style.css">
 
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -25,7 +25,6 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">
-
 
 </head>
 <body>

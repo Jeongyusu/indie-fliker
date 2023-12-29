@@ -1,6 +1,7 @@
 package com.tenco.indiepicter.admin;
 
 import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
+import com.tenco.indiepicter._core.utils.ApiUtils;
 import com.tenco.indiepicter._core.utils.TimeStampUtil;
 import com.tenco.indiepicter.admin.response.AdminPagingResponseDTO;
 import com.tenco.indiepicter.funding.response.AdminOfflineStreamingSearchDTO;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -124,11 +126,15 @@ public class AdminController {
 	}
 
 	// 일반 회원 관리(회원 탈퇴)
-	@GetMapping("/user-management-isWithdrawal/{id}")
-	public String userManagementIsWithdrawal(@PathVariable Integer id){
-		this.adminService.isWithdrawal(id);
-		return "redirect:/admin/user-management";
+	@GetMapping("/user-management-isWithdrawal")
+	@ResponseBody
+	public ResponseEntity<?> userManagementIsWithdrawal(@RequestParam Integer userId){
+		log.debug("--------구분---" + userId + "=================");
+		int resultCount = this.adminService.isWithdrawal(userId);
+		System.out.println("--------------------- " + resultCount + " ----------------------");
+		return ResponseEntity.ok().body(ApiUtils.success(null));
 	}
+
 //---------------------------------------------------------------------------------
 
 	// VIP 회원 관리
@@ -145,7 +151,7 @@ public class AdminController {
 		return "manager/vip_management";
 	}
 
-	// 일반 회원 관리(회원 탈퇴)
+	// VIP 회원 관리(회원 탈퇴)
 	@GetMapping("/vip-management-isWithdrawal/{id}")
 	public String vipManagementIsWithdrawal(@PathVariable Integer id){
 		this.adminService.isWithdrawal(id);
