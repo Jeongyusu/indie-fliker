@@ -100,12 +100,12 @@
 
     <!-- 페이징 일반 회원만 전체 갯수 조회 -->
     <select id="normalPageCount" resultType="Integer">
-        select count(id) from user_tb where grade = 'NORMAL'
+        select count(id) from user_tb where grade = 'NORMAL' and is_withdrawal=false
     </select>
 
     <!-- 페이징 VIP 회원만 전체 갯수 조회 -->
     <select id="vipPageCount" resultType="Integer">
-        select count(id) from user_tb where grade = 'VIP'
+        select count(id) from user_tb where grade = 'VIP' and is_withdrawal=false
     </select>
 
 </mapper>

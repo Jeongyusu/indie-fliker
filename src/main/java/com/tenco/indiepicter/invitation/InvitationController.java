@@ -45,5 +45,3 @@ public class InvitationController {
     }
 
 }
-
-// 12-21 18:53 학원 작업 끝

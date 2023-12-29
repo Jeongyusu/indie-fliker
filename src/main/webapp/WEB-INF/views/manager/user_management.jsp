@@ -177,16 +177,19 @@
     async function deleteById(userId){
         let response = await fetch('/admin/user-management-isWithdrawal?userId=' + userId)
         let responseBody = await response.json();
+        const userConfirmed = window.confirm('정말로 삭제하시겠습니까?');
 
-        if(responseBody.success){
-            alert('삭제에 성공했습니다.');
-            let parent = document.getElementById('custom_container');
-            parent.innerHTML='';
-            // let originData = ``;
-            // parent.appendChild(originData);
-            location.reload();
-        } else {
-            alert('삭제에 실패했습니다.');
+        if (userConfirmed){
+            if(responseBody.success){
+                alert('삭제에 성공했습니다.');
+                let parent = document.getElementById('custom_container');
+                parent.innerHTML='';
+                // let originData = ``;
+                // parent.appendChild(originData);
+                location.reload();
+            } else {
+                alert('삭제에 실패했습니다.');
+            }
         }
     }
 </script>
