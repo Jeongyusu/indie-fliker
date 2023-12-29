@@ -6,7 +6,7 @@ create table user_tb
     username      varchar(10)            not null,
     pic           varchar(300),
     grade         enum ('NORMAL', 'VIP') not null,
-    tel           varchar(30)            not null,
+    tel           varchar(30)            not null unique,
     gubun         enum ('NORMAL', 'DIRECTOR', 'ADMIN'),
     is_withdrawal boolean                         default false,
     created_at    timestamp              not null default now()

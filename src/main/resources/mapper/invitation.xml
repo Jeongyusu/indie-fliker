@@ -13,13 +13,14 @@
     <select id="findByInvitationPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.invitation.Invitation">
         select *
         from invitation_tb
+        where user_id = #{principalId}
         order by created_at desc
-        limit #{pageStart}, #{pageLimit}
+        limit #{pagingParams.pageStart}, #{pagingParams.pageLimit}
     </select>
 
     <!-- 나의 초청권 전체 갯수 조회 -->
     <select id="pageCount" resultType="Integer">
-        select count(id) from invitation_tb
+        select count(id) from invitation_tb where user_id = #{principalId}
     </select>
 
 </mapper>

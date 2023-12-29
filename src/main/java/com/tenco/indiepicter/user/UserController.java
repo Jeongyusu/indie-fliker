@@ -246,7 +246,7 @@ public class UserController {
 		oldUser.setUserPassword(null);
 		session.setAttribute(Define.PRINCIPAL, oldUser);
 		
-		return "redirect:/fund/funding-plus";
+		return "redirect:/user/kakao-login-profile-update";
 		
 	}
 	
@@ -388,6 +388,9 @@ public class UserController {
 	@PostMapping("/find-email")
 	@ResponseBody
 	public ResponseEntity<?> findEmail(FindUserInfoDTO findUserInfoDTO) {
+
+		String email = this.userService.nameAndTelToEmail(findUserInfoDTO);
+
 		// 이름 유효성 검사
 		if(findUserInfoDTO.getUsername() == null || findUserInfoDTO.getUsername().isEmpty()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiUtils.error("이름을 입력해주세요.", HttpStatus.BAD_REQUEST));
@@ -395,6 +398,10 @@ public class UserController {
 		// 전화번호 유효성 검사
 		if(findUserInfoDTO.getTel() == null || findUserInfoDTO.getTel().isEmpty()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiUtils.error("전화번호를 입력해주세요.", HttpStatus.BAD_REQUEST));
+		}
+		// 이메일이 존재하지 않은 상태 유효성 검사
+		if(email == null) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiUtils.error("이메일이 존재하지 않습니다.", HttpStatus.BAD_REQUEST));
 		}
 		String userEmail = this.userService.userEmail(findUserInfoDTO.getUsername(), findUserInfoDTO.getTel());
 
@@ -409,12 +416,10 @@ public class UserController {
 		if (sendEmailDto.getUserEmail() == null || sendEmailDto.getUserEmail().isEmpty()){
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiUtils.error("이메일을 입력해주세요.", HttpStatus.BAD_REQUEST));
 		}
-
 		String userEmail = this.userService.emailSearch(sendEmailDto.getUserEmail());
 		if (userEmail == null){
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiUtils.error("존재하지 않은 이메일입니다.", HttpStatus.BAD_REQUEST));
 		}
-
 		MailDTO mailDto =  this.userService.sendEail(sendEmailDto);
 		this.userService.mailSend(mailDto);
 
@@ -437,7 +442,7 @@ public class UserController {
 			throw new MyDynamicException("이메일을 입력해 주세요.", HttpStatus.BAD_REQUEST);
 		}
 		if(dto.getPassword1() == null || dto.getPassword1().isEmpty()){
-			throw new MyDynamicException("변경할 비밀번호를 입력해 주세요..", HttpStatus.BAD_REQUEST);
+			throw new MyDynamicException("변경할 비밀번호를 입력해 주세요.", HttpStatus.BAD_REQUEST);
 		}
 		if(dto.getPassword2() == null || dto.getPassword2().isEmpty()){
 			throw new MyDynamicException("변경할 비밀번호를 확인해 주세요.", HttpStatus.BAD_REQUEST);
@@ -453,7 +458,62 @@ public class UserController {
 
 //----------------------------------------------------------------------------------------------------------------
 
-	// 12-28 18:38 학원 작업중~
+	// 카카오 간편 로그인 회원 (프로필 수정) 페이지 접근
+	@GetMapping("/kakao-login-profile-update")
+	public String kakaoLoginProfileUpdatePage(){
+		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+		if (principal.getTel().equals("카카오")){
+			return "user/kakao_login_profile_update";
+		}else {
+			return "redirect:/fund/funding-plus";
+		}
+	}
+
+	// 카카오 간편 로그인 회원 (프로필 수정)
+	@PostMapping("/kakao-login-profile-update")
+	public String kakaoLoginProfileUpdate(UserProfileRequestDTO dto){
+
+		User principal = (User)session.getAttribute(Define.PRINCIPAL);
+		String userTel = this.userService.userTel(dto);
+
+		MultipartFile file = dto.getFile();
+		if(file.isEmpty() == false) {
+			// 파일 사이즈 체크
+			if(file.getSize() > Define.MAX_FILE_SIZE) {
+				throw new MyDynamicException("파일 크기는 20MB 이상 클 수 없습니다.", HttpStatus.BAD_REQUEST);
+			}
+		}
+
+		if(dto.getUsername() == null || dto.getUsername().isEmpty()){
+			throw new MyDynamicException("닉네임은 필수 항목입니다.", HttpStatus.BAD_REQUEST);
+		}
+		if(dto.getTel() == null || dto.getTel().isEmpty()){
+			throw new MyDynamicException("전화번호는 필수 항목입니다.", HttpStatus.BAD_REQUEST);
+		}
+		if (dto.getPassword1() == null || dto.getPassword1().isEmpty()){
+			throw new MyDynamicException("비밀번호는 필수 항목입니다.", HttpStatus.BAD_REQUEST);
+		}
+		if (dto.getPassword2() == null || dto.getPassword2().isEmpty()){
+			throw new MyDynamicException("비밀번호를 확인해주세요.", HttpStatus.BAD_REQUEST);
+		}
+		if (!dto.getPassword1().equals(dto.getPassword2())){
+			throw new MyDynamicException("비밀번호를 다시 확인해주세요.", HttpStatus.BAD_REQUEST);
+		}
+		if (userTel != null){
+			throw new MyDynamicException("이미 존재하는 전화번호입니다.", HttpStatus.BAD_REQUEST);
+		}
+		dto.setUploadFileName(PicToStringUtil.picToString(dto.getFile()));
+
+		this.userService.profileUpdate(dto);
+
+		User user = this.userService.findById(principal.getId());
+
+		session.setAttribute(Define.PRINCIPAL, user);
+
+		return "redirect:/fund/funding-plus";
+	}
+
+//----------------------------------------------------------------------------------------------------------------
 
 	@GetMapping("/open-movie")
 	public String openOnMovieByOrder (Model model){

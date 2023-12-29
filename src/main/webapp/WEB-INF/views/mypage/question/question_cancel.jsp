@@ -25,15 +25,15 @@
                 <a href="/question/VIP">VIP</a>
             </div>
 
-            <c:forEach var="questionResponseDTO" items="${questionCancelPagingLists}">
+            <c:forEach var="questionResponseDTO" items="${questionCancelPagingLists}" varStatus="status">
                 <div class="k_member_info">${questionResponseDTO.category}</div>
                 <div class="k_member_how_info">
                         ${questionResponseDTO.questionTitle}
                     <div class="k_clickMe">
-                        <button type="button" class="k_clickMeSymbol" onclick="handleClick(1)">∨</button>
+                        <button type="button" class="k_clickMeSymbol" onclick="handleClick(${status.index})">∨</button>
                     </div>
                 </div>
-                <div class="k_hiddenDiv" id="hiddenDiv1">
+                <div class="k_hiddenDiv" id="hiddenDiv${status.index}">
                         ${questionResponseDTO.content}
                 </div>
                 <hr>

@@ -4,6 +4,7 @@ import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
 import com.tenco.indiepicter._core.utils.TimeStampUtil;
 import com.tenco.indiepicter.admin.response.AdminPagingResponseDTO;
 import com.tenco.indiepicter.invitation.Invitation;
+import com.tenco.indiepicter.invitation.request.InvitationRequestDTO;
 import com.tenco.indiepicter.invitation.response.InvitationResponseDTO;
 import com.tenco.indiepicter.notice.Notice;
 import com.tenco.indiepicter.notice.response.NoticePagingResponseDTO;
@@ -159,15 +160,15 @@ public class AdminService {
 
     // VIP 초청권 발급
     @Transactional
-    public int vipIssued(InvitationResponseDTO responseDto) {
+    public int vipIssued(InvitationRequestDTO invitationRequestDto) {
 
         Invitation invitation = Invitation.builder()
-                .invitationCode(responseDto.getInvitationCode())
-                .movieName(responseDto.getMovieName())
-                .theaterName(responseDto.getTheaterName())
-                .theaterAddress(responseDto.getTheaterAddress())
-                .movieTime(responseDto.getMovieTime())
-                .userId(responseDto.getUserId())
+                .invitationCode(invitationRequestDto.getInvitationCode())
+                .movieName(invitationRequestDto.getMovieName())
+                .theaterName(invitationRequestDto.getTheaterName())
+                .theaterAddress(invitationRequestDto.getTheaterAddress())
+                .movieTime(invitationRequestDto.getMovieTime())
+                .userId(invitationRequestDto.getUserId())
                 .build();
 
         int resultInvitationCount = this.adminRepository.insert(invitation);

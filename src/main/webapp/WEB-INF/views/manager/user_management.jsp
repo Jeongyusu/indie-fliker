@@ -126,21 +126,22 @@
                             </td>
                             <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${user.createdAt}"/></td>
                             <td>${user.grade}</td>
-                            <td><a href="/admin/user-management-isWithdrawal/${user.id}"><button>삭제</button></a></td>
+                            <td>
+                                <a href="/admin/user-management-isWithdrawal/${user.id}"><button>삭제</button></a>
+                            </td>
 
-<%--                    <c:choose>--%>
-<%--                        <c:when test="${user.isWithdrawal eq true}">--%>
-<%--                             <td><a href="/admin/user-management-isWithdrawal/${user.id}"><button>삭제</button></a></td>--%>
-<%--                        </c:when>--%>
-<%--                        <c:otherwise>--%>
-<%--                             <td><a><button>삭제 완료</button></a></td>--%>
-<%--                        </c:otherwise>--%>
-<%--                    </c:choose>--%>
+<%--                            <c:choose>--%>
+<%--                                <c:when test="${user.isWithdrawal eq false}">--%>
+<%--                                    <a href="/admin/user-management-isWithdrawal/${user.id}"><button>삭제</button></a>--%>
+<%--                                </c:when>--%>
+<%--                                <c:otherwise>--%>
+<%--                                    <span>탈퇴 유저</span>--%>
+<%--                                </c:otherwise>--%>
+<%--                            </c:choose>--%>
 
                         </tr>
                     </tbody>
                     </c:forEach>
-
                 </table>
             </div>
 
