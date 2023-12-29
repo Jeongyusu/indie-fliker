@@ -35,7 +35,7 @@
     height: 75px;
 }
 
-.p_top .p_title {
+.p_top .p_page_title {
     font-weight: bold;
     font-size: 28px;
     color: var(--primary_01);
@@ -671,45 +671,41 @@
 /* 관리자 페이지 현황 확인 ( check )*/
 /*---------------------------------------------------------------------*/
 .p_check_container2 {
-    /* background-color: antiquewhite; */
-    position: relative;
-    width: 1300px;
-    height: 650px;
-    top: 50px;
-    left: 380px;
+    height: 100%;
+    width: 77%;
+    padding: 0 28px;
 }
 
-.p_check_container2 .p_title {
-    margin-bottom: 30px;
+.p_fund_form {
+    display: grid;
+    place-items: center;
 }
 
 .p_check_container2 .p_box {
-    /* background-color: #E6E6E6; */
     margin-bottom: 20px;
-    width: 100%;
+    width: 80%;
     height: 180px;
-    border: 0.5px solid;
+    border: 0.5px solid var(--line_01);
+    display: flex;
+    padding: 10px 16px;
+    border-radius: 5px;
 }
 
 .p_check_container2 .p_box img {
-    /* background-color: black; */
-    width: 180px;
-    height: 150px;
-    margin-top: 14px;
-    margin-left: 18px;
+    width: 100px;
     border-radius: 5px;
 }
 
 .p_check_container2 .p_box .p_list {
-    /* background-color: bisque; */
-    position: relative;
-    bottom: 150px;
-    left: 240px;
+    margin-left: 20px;
+    padding: 10px;
 }
 
 .p_check_container2 .p_box .p_list .p_flex {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
+
 }
 
 .p_check_container2 .p_box .p_list .p_p1 {
@@ -719,64 +715,60 @@
 
 .p_check_container2 .p_box .p_list .p_p2 {
     font-size: 15px;
+    margin-top: 10px;
 }
 
 .p_check_container2 .p_box .p_list .p_p3 {
-    color: #01DFD7;
-    position: relative;
-    font-size: 30px;
+    color: var(--primary_01);
+    font-size: 20px;
     font-weight: bold;
-    bottom: 15px;
+    margin-top: 5px;
 }
 
 .p_check_container2 .p_box .p_list .p_p4 {
-    color: #01DFD7;
-    position: relative;
+    color: var(--primary_01);
     top: 5px;
     left: 10px;
 }
 
 .p_check_container2 .p_box .p_list .p_p5 {
-    color: #01DFD7;
-    position: relative;
-    top: 0px;
-    left: 25px;
-    background-color: #A9F5F2;
-    width: 90px;
-    height: 30px;
+    color: var(--point_05);
+    background-color: var(--point_01);
+    width: 68px;
+    height: 24px;
     text-align: center;
-    line-height: 30px;
+    line-height: 24px;
     border-radius: 5px;
+    font-size: 11px;
 }
 
 .p_check_container2 .p_box .p_list .p_p6 {
-    position: relative;
-    bottom: 30px;
-    font-size: 30px;
+    margin-top: 18px;
+    font-size: 24px;
     font-weight: bold;
 }
 
 .p_check_container2 .p_box .p_list .p_p7 {
-    position: relative;
-    bottom: 12px;
-    left: 10px;
+    margin-top: 18px;
 }
 
 .p_check_container2 .p_box .p_list .p_p8 {
     color: #424242;
-    position: relative;
     bottom: 20px;
     left: 35px;
     background-color: #E6E6E6;
-    width: 90px;
-    height: 30px;
+    width: 64px;
+    height: 23px;
     text-align: center;
-    line-height: 30px;
+    line-height: 20px;
     border-radius: 5px;
+    margin-left: 5px;
+    margin-top: 15px;
+    font-size: 12px;
+    padding-top: 2px;
 }
 
 .p_check_bottom {
-    position: relative;
     top: 20px;
     left: 420px;
 }
@@ -883,18 +875,18 @@
     height: 650px;
 }
 
-.p_review_container2 .p_title {
+.p_review_container2 .p_container_title {
     /* background-color: #424242; */
     width: 100%;
     height: 80px;
     margin-bottom: 20px;
 }
 
-.p_review_container2 .p_title h3 {
+.p_review_container2 .p_container_title h3 {
     font-weight: bold;
 }
 
-.p_review_container2 .p_title h4 {
+.p_review_container2 .p_container_title h4 {
     color: red;
 }
 
@@ -1009,12 +1001,30 @@
 /* 관리자 페이지 펀딩 등록 삭제 ( update_delete ) */
 /*---------------------------------------------------------------------*/
 .p_update_delete_container2 {
-    /* background-color: antiquewhite; */
-    position: relative;
-    width: 1200px;
-    height: 640px;
-    top: 80px;
-    left: 400px;
+    height: 100%;
+    width: 77%;
+    padding: 0 28px;
+}
+
+.p_movie_update_button {
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    background: var(--primary_01);
+    color: white;
+    border-radius: 5px
+}
+.p_movie_delete_button {
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    background: var(--point_04);
+    color: white;
+    border-radius: 5px
+}
+
+.p_modal_close_button {
+
 }
 
 .p_update_delete_container2 .p_section1 {
@@ -1079,15 +1089,15 @@
     /* background-color: #E6E6E6; */
 }
 
-.p_update_delete_container2 button {
-    background-color: #01DFD7;
-    border: none;
-    border-radius: 5px;
-    width: 120px;
-    height: 30px;
-    text-decoration: none;
-    transition-duration: 0.5s;
-}
+/*.p_update_delete_container2 button {*/
+/*    background-color: #01DFD7;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    width: 120px;*/
+/*    height: 30px;*/
+/*    text-decoration: none;*/
+/*    transition-duration: 0.5s;*/
+/*}*/
 
 .p_update_delete_container2 button:hover {
     text-decoration: none;
@@ -1126,6 +1136,7 @@
     position: relative;
     top: 100px;
     left: 820px;
+    display: none;
 }
 
 /*---------------------------------------------------------------------*/
@@ -1913,7 +1924,7 @@
     border-radius: 15px;
 }
 
-.p_password_update_main .p_title {
+.p_password_update_main .p_container_title {
     position: relative;
     top: 20px;
     left: 20px;
