@@ -13,7 +13,7 @@
 
 // -------------------------------- 회원 이메일 찾기 -------------------------------------------<script>
     // 회원 이메일 찾기
-    $(document).ready(function(){
+$(document).ready(function(){
     $("#findEmail").click(function(){
         console.log("진입확인")
         $.ajax({

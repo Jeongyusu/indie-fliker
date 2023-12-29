@@ -24,30 +24,30 @@
         <a href="/question/VIP">VIP</a>
     </div>
 
-    <c:forEach var="questionResponseDTO" items="${questionSearchPagingLists}">
+    <c:forEach var="questionResponseDTO" items="${questionSearchPagingLists}" varStatus="status">
     <div class="k_member_info">${questionResponseDTO.category}</div>
     <div class="k_member_how_info">
         ${questionResponseDTO.questionTitle}
         <div class="k_clickMe">
-            <button type="button" class="k_clickMeSymbol" onclick="handleClick(1)">∨</button>
+            <button type="button" class="k_clickMeSymbol" onclick="handleClick(${status.index})">∨</button>
         </div>
     </div>
-    <div class="k_hiddenDiv" id="hiddenDiv1">
+    <div class="k_hiddenDiv" id="hiddenDiv${status.index}">
         ${questionResponseDTO.content}
     </div>
     <hr>
     </c:forEach>
 
-    <div>
+    <div class="p_paging p_question_search_paging">
         <c:choose>
             <%-- 현재 페이지가 1페이지이면 이전 글자만 보여줌 --%>
             <c:when test="${paging.page <= 1}">
-                <a>[이전]</a>
+                <a class="p_priveous">이전</a>
             </c:when>
 
             <c:otherwise>
                 <%-- 이전을 누르면 컨트롤러에 현재 페이지보다 1 작은 페이지로 요청 --%>
-                <a href="/question/user?page=${paging.page-1}&keyword=${keyword}">[이전]</a>
+                <a class="p_priveous" href="/question/user?page=${paging.page-1}&keyword=${keyword}">이전</a>
             </c:otherwise>
         </c:choose>
 
@@ -61,7 +61,7 @@
 
                 <c:otherwise>
                     <%-- 다른 페이지 이동이 필요할때 컨트롤러에 요청 --%>
-                    <a href="/question/search?page=${i}&keyword=${keyword}">${i}</a>
+                    <a class="page_number" href="/question/search?page=${i}&keyword=${keyword}" style="color: #7f7f7f">${i}</a>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
@@ -69,11 +69,11 @@
         <%-- 현재 페이지가 가장 끝 페이지이면 다음이라는 text만 나오게 함 --%>
         <c:choose>
             <c:when test="${paging.page >= paging.maxPage}">
-                <a>[다음]</a>
+                <a class="p_next">다음</a>
             </c:when>
             <%-- 다음을 누르면 현재 페이지보다 1 큰 페이지로 요청 --%>
             <c:otherwise>
-                <a href="/question/user?page=${paging.page+1}&keyword=${keyword}">[다음]</a>
+                <a class="p_next" href="/question/user?page=${paging.page+1}&keyword=${keyword}">다음</a>
             </c:otherwise>
         </c:choose>
     </div>

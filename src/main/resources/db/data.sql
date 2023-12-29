@@ -13,43 +13,43 @@ values('sara@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiX
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
 values('apple@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '사과', '/images/userbasicpic/userimg.jpg', 'VIP', '010-1234-5678', 'NORMAL', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('con@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '콘', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1122-3344', 'NORMAL', now());
+values('con@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '콘', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-0122-3344', 'NORMAL', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('push@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '푸쉬', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-8455-6677', 'NORMAL', now());
+values('push@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '푸쉬', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-8435-6677', 'NORMAL', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('root@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '루트', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-9855-6677', 'DIRECTOR', now());
+values('root@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '루트', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-9845-6677', 'DIRECTOR', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('zzang@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '짱짱짱', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-7765-6688', 'DIRECTOR', now());
+values('zzang@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '짱짱짱', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-8765-6688', 'DIRECTOR', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('what@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '왓더', '/images/userbasicpic/userimg.jpg', 'VIP', '010-3221-6677', 'DIRECTOR', now());
+values('what@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '왓더', '/images/userbasicpic/userimg.jpg', 'VIP', '010-3220-6677', 'DIRECTOR', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('kind@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '친절', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4594-6677', 'DIRECTOR', now());
+values('kind@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '친절', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4594-6607', 'DIRECTOR', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('namgyu1@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '바보1', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1234-5678', 'NORMAL', now());
+values('namgyu1@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '바보1', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1234-0678', 'NORMAL', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('namgyu2@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '바보2', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1234-5678', 'NORMAL', now());
+values('namgyu2@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '바보2', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1274-5678', 'NORMAL', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('namgyu3@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '바보3', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1234-5678', 'NORMAL', now());
+values('namgyu3@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '바보3', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1230-5678', 'NORMAL', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('namgyu4@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '바보4', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1234-5678', 'NORMAL', now());
+values('namgyu4@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '바보4', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1234-5078', 'NORMAL', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('namgyu5@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '바보5', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-1234-5678', 'NORMAL', now());
+values('namgyu5@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '바보5', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-0034-5678', 'NORMAL', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('red@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '빨강', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4594-6677', 'DIRECTOR', now());
+values('red@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '빨강', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4594-6600', 'DIRECTOR', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('blue@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '파랑', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4594-6677', 'DIRECTOR', now());
+values('blue@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '파랑', '/images/userbasicpic/userimg.jpg', 'VIP', '011-4594-6677', 'DIRECTOR', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('green@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '초록', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4594-6677', 'DIRECTOR', now());
+values('green@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '초록', '/images/userbasicpic/userimg.jpg', 'VIP', '010-1584-6677', 'DIRECTOR', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('yellow@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '노랑', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4594-6677', 'DIRECTOR', now());
+values('yellow@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '노랑', '/images/userbasicpic/userimg.jpg', 'VIP', '011-4590-6677', 'DIRECTOR', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('gray@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '회색', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4594-6677', 'DIRECTOR', now());
+values('gray@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '회색', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4504-6077', 'DIRECTOR', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('greens@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '초록스', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-4594-6677', 'DIRECTOR', now());
+values('greens@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '초록스', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-4597-6670', 'DIRECTOR', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('yellows@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '노랑스', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4594-6677', 'DIRECTOR', now());
+values('yellows@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '노랑스', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4595-6607', 'DIRECTOR', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
-values('grays@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '회색스', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-4594-6677', 'DIRECTOR', now());
+values('grays@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '회색스', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-4590-6600', 'DIRECTOR', now());
 
 
 insert into theater_tb(theater_pic, theater_name, theater_description, tel, address, park, total_seat) values ('/images/theaterpic/theater1.png', '그린시네마 부산 부전동 지점', '그린시네마 부전동 지점은 편안하고 넓은 좌석과 첨단 음향 시스템으로 최신 영화를 즐기기에 이상적인 장소입니다. 다양한 푸드 옵션과 아늑한 분위기가 영화관람을 더욱 특별하게 만듭니다. 특히, 최신 4D 기술을 도입하여 관객들에게 몰입감 넘치는 경험을 제공하고 있습니다. 영화를 넘어 다양한 이벤트와 혜택으로 관객들에게 특별한 추억을 선사합니다.', '051-494-1004', '부산시 부산진구 부전동 1004-1', '주차장 협소', 124);
@@ -725,7 +725,88 @@ insert into running_schedule_tb (running_time, running_date, start_time, end_tim
 insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2024-01-01', '20:33', '22:02', 2, 2);
 insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2024-01-02', '15:27', '16:56', 2, 2);
 insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2024-01-03', '09:19', '10:48', 2, 2);
-insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2024-01-04', '13:14', '14:43', 2, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (89, '2024-01-05', '13:14', '14:43', 2, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (50, '2024-01-04', '13:00', '13:50', 3, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (50, '2024-01-04', '14:00', '14:50', 3, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (50, '2024-01-05', '13:00', '13:50', 3, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (50, '2024-01-05', '14:00', '14:50', 3, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (50, '2024-01-05', '15:00', '15:50', 3, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (50, '2024-01-06', '13:00', '13:50', 3, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (50, '2024-01-06', '14:00', '14:50', 3, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (50, '2024-01-06', '15:00', '15:50', 3, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (50, '2024-01-06', '16:00', '16:50', 3, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (50, '2024-01-06', '17:00', '17:50', 3, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-04', '10:00', '11:05', 4, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-04', '11:30', '12:05', 4, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-04', '12:10', '13:15', 4, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-05', '13:30', '14:35', 4, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-05', '15:00', '16:05', 4, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-05', '16:15', '17:20', 4, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-05', '11:00', '12:05', 4, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-06', '12:40', '13:45', 4, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-06', '14:00', '15:05', 4, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-06', '15:45', '16:50', 4, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (90, '2024-01-07', '09:00', '10:30', 5, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (90, '2024-01-07', '11:00', '12:30', 5, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (90, '2024-01-07', '13:00', '14:30', 5, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (90, '2024-01-07', '15:00', '16:30', 5, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (90, '2024-01-08', '10:00', '11:30', 5, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (90, '2024-01-08', '12:00', '13:30', 5, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (90, '2024-01-08', '14:00', '15:30', 5, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (90, '2024-01-08', '16:00', '17:30', 5, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (90, '2024-01-09', '13:00', '14:30', 5, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (90, '2024-01-09', '16:00', '17:30', 5, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (75, '2024-01-04', '09:00', '10:15', 6, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (75, '2024-01-04', '10:40', '11:55', 6, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (75, '2024-01-04', '13:00', '14:15', 6, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (75, '2024-01-04', '15:00', '16:15', 6, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (75, '2024-01-05', '11:00', '12:15', 6, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (75, '2024-01-05', '13:00', '14:15', 6, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (75, '2024-01-05', '15:00', '16:15', 6, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (75, '2024-01-05', '17:00', '18:15', 6, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (75, '2024-01-06', '11:00', '12:15', 6, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (75, '2024-01-06', '16:00', '17:15', 6, 5);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-02', '16:00', '17:15', 7, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-02', '16:00', '17:15', 7, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-02', '16:00', '17:15', 7, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-02', '16:00', '17:15', 7, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-03', '16:00', '17:15', 7, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-03', '16:00', '17:15', 7, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-03', '16:00', '17:15', 7, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-04', '16:00', '17:15', 7, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-04', '16:00', '17:15', 7, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (65, '2024-01-04', '16:00', '17:15', 7, 4);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (80, '2024-01-02', '10:00', '11:20', 8, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (80, '2024-01-02', '11:50', '13:10', 8, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (80, '2024-01-02', '13:30', '14:50', 8, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (80, '2024-01-02', '16:20', '17:40', 8, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (80, '2024-01-03', '11:00', '12:20', 8, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (80, '2024-01-03', '12:50', '14:10', 8, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (80, '2024-01-03', '14:40', '16:00', 8, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (80, '2024-01-03', '17:00', '17:20', 8, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (80, '2024-01-04', '11:00', '12:20', 8, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (80, '2024-01-04', '16:00', '17:20', 8, 3);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (55, '2024-01-01', '09:00', '09:55', 9, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (55, '2024-01-01', '10:30', '11:25', 9, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (55, '2024-01-01', '12:00', '12:55', 9, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (55, '2024-01-01', '13:30', '14:35', 9, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (55, '2024-01-02', '11:00', '11:55', 9, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (55, '2024-01-02', '12:30', '13:25', 9, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (55, '2024-01-02', '14:00', '14:55', 9, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (55, '2024-01-02', '15:30', '16:25', 9, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (55, '2024-01-03', '10:00', '10:55', 9, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (55, '2024-01-03', '11:20', '12:15', 9, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (55, '2024-01-03', '13:00', '13:55', 9, 2);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (100, '2024-01-02', '09:00', '10:40', 10, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (100, '2024-01-02', '11:00', '12:40', 10, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (100, '2024-01-02', '13:00', '14:40', 10, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (100, '2024-01-02', '15:00', '16:40', 10, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (100, '2024-01-03', '10:00', '11:40', 10, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (100, '2024-01-03', '12:00', '13:40', 10, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (100, '2024-01-03', '14:00', '15:40', 10, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (100, '2024-01-03', '16:00', '17:40', 10, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (100, '2024-01-04', '09:00', '10:40', 10, 1);
+insert into running_schedule_tb (running_time, running_date, start_time, end_time, movie_id, theater_id) values (100, '2024-01-04', '16:00', '17:50', 10, 1);
 
 
 insert into banner_tb(banner_pic, genre, movie_id) values ('/images/banner/sen.png', '극영화', 1);

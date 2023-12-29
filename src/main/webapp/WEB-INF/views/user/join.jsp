@@ -5,7 +5,7 @@
 <div class="container k_login_container">
     <div class="text-left k_login">이메일 간편 가입</div>
 
-    <form action="/user/join" method="post" enctype="multipart/form-data">
+    <form id="form" action="/user/join" method="post" enctype="multipart/form-data">
         <div class="k_form_group">
             <label class="k_input_label">이메일</label><br>
             <div class="k_input_group input">
@@ -57,7 +57,6 @@
             <label class="k_input_label">전화번호</label><br>
 
             <input type="text" class="form-control input" id="tel" name="tel" value=""
-
                    placeholder="전화번호 입력를 입력하세요."
                    onfocus="this.placeholder = ''" onblur="this.placeholder = '전화번호를 입력해주세요. (- 생략)'">
             <p id="telCkeck"></p>
@@ -86,7 +85,13 @@
                 }
             }
 
+<<<<<<< HEAD
+        })
+    });
+=======
         });
+    })
+>>>>>>> dev
 
 </script>
 
@@ -106,70 +111,123 @@
         }
     }
 
+<<<<<<< HEAD
+=======
 
-        })
-    });
-  
+
+>>>>>>> dev
 </script>
-<%--<script>--%>
-<%--    // 이메일 정규표현식으로 유효성 검사--%>
-<%--    $('#userEmail').focusout(function() {--%>
-<%--        let email = $('#userEmail').val()--%>
-<%--        let emailCheck =  /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/--%>
-<%--        if (!emailCheck.test(email)){--%>
-<%--            $('#userEmailCkeck').html('이메일을 형식에 맞게 정확히 입력하세요.').css('color', 'red');--%>
-<%--            return false--%>
-<%--        }--%>
-<%--        $('#userEmailCkeck').html('')--%>
-<%--    });--%>
-<%--</script>--%>
-<%--<script>--%>
-<%--    // 이름 정규표현식으로 유효성 검사--%>
-<%--    $('#username').focusout(function() {--%>
+<script>
+    // 이메일 정규표현식으로 유효성 검사
+    $('#userEmail').focusout(function() {
+        let email = $('#userEmail').val()
+        let emailCheck =  /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+        if (!emailCheck.test(email)){
+            $('#userEmailCkeck').html('이메일을 형식에 맞게 정확히 입력하세요.').css('color', 'red');
+            return false
+        }
+        $('#userEmailCkeck').html('')
+    });
+    $('#form').on('submit', function() {
+        let email = $('#userEmail').val()
+        let emailCheck =  /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+        if (!emailCheck.test(email)){
+            $('#userEmailCkeck').html('이메일을 형식에 맞게 정확히 입력하세요.').css('color', 'red');
+            $('#userEmail').focus()
+            return false
+        }
+        $('#userEmailCkeck').html('')
+    });
+</script>
+<script>
+    // 이름 정규표현식으로 유효성 검사
+    $('#username').focusout(function() {
 
-<%--        let nickname = $('#username').val()--%>
-<%--        let nicknameCheck =  /^[가-힣a-zA-Z]{2,15}$/--%>
-<%--        if (!nicknameCheck.test(nickname)){--%>
-<%--            $('#usernameCkeck').html('한글, 영문 이름 2~15자 이내로 입력해주세요.').css('color', 'red');--%>
-<%--            return false--%>
-<%--        }--%>
-<%--        $('#usernameCkeck').html('')--%>
-<%--    });--%>
-<%--</script>--%>
-<%--<script>--%>
-<%--    // 비밀번호 정규표현식으로 유효성 검사--%>
-<%--    $('#password1').focusout(function() {--%>
-<%--        let pwdval = $('#password1').val()--%>
-<%--        let pwdcheck =  /^[a-zA-Z0-9~!@#$%^&*()`_+?:;'"{}]{1,16}$/--%>
+        let nickname = $('#username').val()
+        let nicknameCheck =  /^[가-힣a-zA-Z]{2,15}$/
+        if (!nicknameCheck.test(nickname)){
+            $('#usernameCkeck').html('한글, 영문 이름 2~15자 이내로 입력해주세요.').css('color', 'red');
+            return false
+        }
+        $('#usernameCkeck').html('')
+    });
+    $('#form').on('submit', function() {
+        let nickname = $('#username').val()
+        let nicknameCheck =  /^[가-힣a-zA-Z]{2,15}$/
+        if (!nicknameCheck.test(nickname)){
+            $('#usernameCkeck').html('한글, 영문 이름 2~15자 이내로 입력해주세요.').css('color', 'red');
+            $('#username').focus()
+            return false
+        }
+        $('#usernameCkeck').html('')
+    })
+</script>
+<script>
+    // 비밀번호 정규표현식으로 유효성 검사
+    $('#password1').focusout(function() {
+        let pwdval = $('#password1').val()
+        let pwdcheck =  /^[a-zA-Z0-9~!@#$%^&*()`_+?:;'"{}]{1,16}$/
 
-<%--        if (!pwdcheck.test(pwdval) || pwdval.length<8){--%>
-<%--            $('#password1Ckeck').html('비밀번호는 영대소문자,숫자로 구성된 8글자 이상으로 조합하세요.').css('color', 'red');--%>
-<%--            return false--%>
-<%--        }--%>
-<%--        $("#password1Ckeck").html('')--%>
-<%--    });--%>
-<%--    $('#password2').focusout(function() {--%>
-<%--        let pwdval = $('#password2').val()--%>
-<%--        let pwdcheck =  /^[a-zA-Z0-9~!@#$%^&*()`_+?:;'"{}]{1,16}$/--%>
+        if (!pwdcheck.test(pwdval) || pwdval.length<8){
+            $('#password1Ckeck').html('비밀번호는 영대소문자,숫자로 구성된 8글자 이상으로 조합하세요.').css('color', 'red');
+            return false
+        }
+        $("#password1Ckeck").html('')
+    });
+    $('#form').on('submit', function() {
+        let pwdval = $('#password1').val()
+        let pwdcheck =  /^[a-zA-Z0-9~!@#$%^&*()`_+?:;'"{}]{1,16}$/
 
-<%--        if (!pwdcheck.test(pwdval) || pwdval.length<8){--%>
-<%--            $('#password2Ckeck').html('비밀번호는 영대소문자,숫자로 구성된 8글자 이상으로 조합하세요.').css('color', 'red');--%>
-<%--            return false--%>
-<%--        }--%>
-<%--        $("#password2Ckeck").html('')--%>
-<%--    });--%>
-<%--</script>--%>
-<%--<script>--%>
-<%--    // 전화번호 정규표현식으로 유효성 검사--%>
-<%--    $('#tel').focusout(function() {--%>
-<%--        let mobile = $('#tel').val()--%>
-<%--        let mobileCheck =  /^\d{8}$/--%>
-<%--        if (!mobileCheck.test(mobile)){--%>
-<%--            $('#telCkeck').html('전화번호 8자리를 올바르게 입력하세요.').css('color', 'red');--%>
-<%--            return false--%>
-<%--        }--%>
-<%--        $('#telCkeck').html('')--%>
-<%--    });--%>
-<%--</script>--%>
+        if (!pwdcheck.test(pwdval) || pwdval.length<8){
+            $('#password1Ckeck').html('비밀번호는 영대소문자,숫자로 구성된 8글자 이상으로 조합하세요.').css('color', 'red');
+            $('#password1').focus()
+            return false
+        }
+        $("#password1Ckeck").html('')
+    })
+    $('#password2').focusout(function() {
+        let pwdval = $('#password2').val()
+        let pwdcheck =  /^[a-zA-Z0-9~!@#$%^&*()`_+?:;'"{}]{1,16}$/
+
+        if (!pwdcheck.test(pwdval) || pwdval.length<8){
+            $('#password2Ckeck').html('비밀번호는 영대소문자,숫자로 구성된 8글자 이상으로 조합하세요.').css('color', 'red');
+            return false
+        }
+        $("#password2Ckeck").html('')
+    });
+    $('#form').on('submit', function() {
+        let pwdval = $('#password2').val()
+        let pwdcheck =  /^[a-zA-Z0-9~!@#$%^&*()`_+?:;'"{}]{1,16}$/
+
+        if (!pwdcheck.test(pwdval) || pwdval.length<8){
+            $('#password2Ckeck').html('비밀번호는 영대소문자,숫자로 구성된 8글자 이상으로 조합하세요.').css('color', 'red');
+            $('#password2').focus()
+            return false
+        }
+        $("#password2Ckeck").html('')
+    })
+</script>
+<script>
+    // 전화번호 정규표현식으로 유효성 검사
+    $('#tel').focusout(function() {
+        let mobile = $('#tel').val()
+        let mobileCheck =  /^\d{11}$/
+        if (!mobileCheck.test(mobile)){
+            $('#telCkeck').html('전화번호 11자리를 올바르게 입력하세요.').css('color', 'red');
+            return false
+        }
+        $('#telCkeck').html('')
+    });
+    $('#form').on('submit', function() {
+        let mobile = $('#tel').val()
+        let mobileCheck =  /^\d{11}$/
+        if (!mobileCheck.test(mobile)){
+            $('#telCkeck').html('전화번호 11자리를 올바르게 입력하세요.').css('color', 'red');
+            $('#tel').focus()
+            return false
+        }
+        $('#telCkeck').html('')
+    });
+</script>
 <%@ include file="../layout/footer.jsp" %>
 

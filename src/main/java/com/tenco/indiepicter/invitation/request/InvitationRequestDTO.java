@@ -1,4 +1,4 @@
-package com.tenco.indiepicter.invitation.response;
+package com.tenco.indiepicter.invitation.request;
 
 import lombok.Builder;
 import lombok.Data;
@@ -6,7 +6,8 @@ import lombok.Data;
 import java.sql.Timestamp;
 
 @Data
-public class InvitationResponseDTO {
+@Builder
+public class InvitationRequestDTO {
     private String invitationCode;
     private String movieName;
     private String theaterName;

@@ -56,7 +56,7 @@ function loadMoreData() {
                     '</div>' +
                     '<div class="l_percent l_mint l_strong">' + funding.fundingRate + '% 달성</div>' +
                     '<div class="l_movie_online_title">' +
-                    '<img src="" class="l_grade_img">' +
+                    '<img src="" class="l_grade_img" alt="">' +
                     '<div class="l_title">' + funding.movieName + '</div>' +
                     '<input type="hidden" value="' + funding.runningGrade + '" class="grade">' +
                     '</div>' +
