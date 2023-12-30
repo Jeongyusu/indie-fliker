@@ -78,7 +78,7 @@
         select *
         from user_tb ut
         where grade not in('NORMAL')
-        and ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%')
+        and ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%') and is_withdrawal not in(true)
         order by created_at desc
         limit #{pagingParams.pageStart}, #{pagingParams.pageLimit}
     </select>
@@ -88,7 +88,7 @@
         select *
         from user_tb ut
         where grade not in('VIP')
-            and ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%')
+            and ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%') and is_withdrawal not in(true) 
         order by created_at desc
         limit #{pagingParams.pageStart}, #{pagingParams.pageLimit}
     </select>
