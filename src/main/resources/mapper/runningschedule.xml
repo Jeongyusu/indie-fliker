@@ -152,5 +152,4 @@
         select * from running_schedule_tb
     </select>
 
-
 </mapper>

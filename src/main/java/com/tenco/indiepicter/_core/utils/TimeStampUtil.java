@@ -1,12 +1,13 @@
 package com.tenco.indiepicter._core.utils;
 
-import java.sql.Date;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
 public class TimeStampUtil {
     public static String timeStampToString(Timestamp time) {
@@ -43,6 +44,31 @@ public class TimeStampUtil {
             return "D-Day";
         } else {
             return "D - " + daysDifference;
+        }
+    }
+
+    public static Timestamp StringToTimestamp(String dateString) {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date parsedDate = dateFormat.parse(dateString);
+            return new Timestamp(parsedDate.getTime());
+        } catch (ParseException e) {
+            // 날짜 파싱 실패 시 예외 처리
+            e.printStackTrace();
+            return null; //
+        }
+
+    }
+
+    public static Time StringToTime(String timeString) {
+        try {
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+            Date parsedTime = timeFormat.parse(timeString);
+            return new Time(parsedTime.getTime());
+        } catch (ParseException e) {
+            // 시간 파싱 실패 시 예외 처리
+            e.printStackTrace();
+            return null;
         }
     }
 }
