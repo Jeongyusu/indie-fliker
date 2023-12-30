@@ -10,6 +10,7 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
+    
 # 이메일 전송 설정
   mail:
     host: smtp.gmail.com
