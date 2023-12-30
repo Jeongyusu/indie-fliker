@@ -1,9 +1,11 @@
 package com.tenco.indiepicter.admin;
 
 import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
+import com.tenco.indiepicter._core.utils.ApiUtils;
 import com.tenco.indiepicter._core.utils.TimeStampUtil;
 import com.tenco.indiepicter.admin.response.AdminPagingResponseDTO;
 import com.tenco.indiepicter.funding.response.AdminOfflineStreamingSearchDTO;
+import com.tenco.indiepicter.invitation.request.InvitationRequestDTO;
 import com.tenco.indiepicter.invitation.response.InvitationResponseDTO;
 import com.tenco.indiepicter.user.User;
 import com.tenco.indiepicter.user.UserService;
@@ -11,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -85,27 +88,28 @@ public class AdminController {
 
 	// VIP 초청권 발급
 	@PostMapping("/vip-issued")
-	public String vipIssued(InvitationResponseDTO responseDto, Errors errors){
+	@ResponseBody
+	public ResponseEntity<?> vipIssued(@RequestBody InvitationRequestDTO invitationRequestDto, Errors errors){
 
-		if(responseDto.getMovieTime() == null || responseDto.getMovieTime().isEmpty()){
+		if(invitationRequestDto.getMovieTime() == null || invitationRequestDto.getMovieTime().isEmpty()){
 			throw new MyDynamicException("날짜와 시간을 지정해 주세요.", HttpStatus.BAD_REQUEST);
 		}
-		if(responseDto.getInvitationCode() == null || responseDto.getInvitationCode().isEmpty()){
+		if(invitationRequestDto.getInvitationCode() == null || invitationRequestDto.getInvitationCode().isEmpty()){
 			throw new MyDynamicException("초청권 코드를 입력하세요.", HttpStatus.BAD_REQUEST);
 		}
-		if(responseDto.getMovieName() == null || responseDto.getMovieName().isEmpty()){
+		if(invitationRequestDto.getMovieName() == null || invitationRequestDto.getMovieName().isEmpty()){
 			throw new MyDynamicException("영화 제목을 입력해 주세요.", HttpStatus.BAD_REQUEST);
 		}
-		if(responseDto.getTheaterName() == null || responseDto.getTheaterName().isEmpty()){
+		if(invitationRequestDto.getTheaterName() == null || invitationRequestDto.getTheaterName().isEmpty()){
 			throw new MyDynamicException("극장 이름을 입력해 주세요.", HttpStatus.BAD_REQUEST);
 		}
-		if(responseDto.getTheaterAddress() == null || responseDto.getTheaterAddress().isEmpty()){
+		if(invitationRequestDto.getTheaterAddress() == null || invitationRequestDto.getTheaterAddress().isEmpty()){
 			throw new MyDynamicException("극장 주소를 입력해 주세요.", HttpStatus.BAD_REQUEST);
 		}
 
-		this.adminService.vipIssued(responseDto);
+		this.adminService.vipIssued(invitationRequestDto);
 
-		return "redirect:/admin/invitation";
+		return ResponseEntity.ok().body(ApiUtils.success(null));
 	}
 
 //---------------------------------------------------------------------------------
@@ -123,11 +127,13 @@ public class AdminController {
 	}
 
 	// 일반 회원 관리(회원 탈퇴)
-	@GetMapping("/user-management-isWithdrawal/{id}")
-	public String userManagementIsWithdrawal(@PathVariable Integer id){
-		this.adminService.isWithdrawal(id);
-		return "redirect:/admin/user-management";
+	@GetMapping("/user-management-isWithdrawal")
+	@ResponseBody
+	public ResponseEntity<?> userManagementIsWithdrawal(@RequestParam Integer userId){
+		int resultCount = this.adminService.isWithdrawal(userId);
+		return ResponseEntity.ok().body(ApiUtils.success(null));
 	}
+
 //---------------------------------------------------------------------------------
 
 	// VIP 회원 관리
@@ -144,11 +150,12 @@ public class AdminController {
 		return "manager/vip_management";
 	}
 
-	// 일반 회원 관리(회원 탈퇴)
-	@GetMapping("/vip-management-isWithdrawal/{id}")
-	public String vipManagementIsWithdrawal(@PathVariable Integer id){
-		this.adminService.isWithdrawal(id);
-		return "redirect:/admin/vip-management";
+	// VIP 회원 관리(회원 탈퇴)
+	@GetMapping("/vip-management-isWithdrawal")
+	@ResponseBody
+	public ResponseEntity<?> vipManagementIsWithdrawal(@RequestParam Integer userId){
+		this.adminService.isWithdrawal(userId);
+		return ResponseEntity.ok().body(ApiUtils.success(null));
 	}
 
 //---------------------------------------------------------------------------------
@@ -244,3 +251,5 @@ public class AdminController {
 		return "manager/vip_management_search";
 	}
 }
+
+// 12-29 19:47 학원 작업중~

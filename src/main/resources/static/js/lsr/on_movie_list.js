@@ -45,10 +45,13 @@ function endMovie(){
     movies.forEach((movie) => {
         // 구매 날짜
         let reservatedDate = new Date(movie.value);
+        console.log("구매날짜 : " + reservatedDate);
 
-        // 종료 날짜
-        let addDay =  reservatedDate.setDate(reservatedDate.getDate() + 3);
-        let endDate = new Date(addDay);
+        // 종료 날짜 계산
+        let addDate = new Date(reservatedDate); // 새로운 Date 객체를 생성하여 기존 날짜를 복사
+        let endDay = reservatedDate.setDate(reservatedDate.getDate() + 3); // 3일을 더한 날짜로 설정
+        let endDate = new Date(endDay);
+        console.log("종료 날짜 : " + endDate);
 
         // 현재 날짜
         let currentDate = new Date();

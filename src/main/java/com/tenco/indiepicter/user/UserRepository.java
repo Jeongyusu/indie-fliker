@@ -58,6 +58,16 @@ public interface UserRepository {
 	// 회원 비밀번호 수정
 	public void passwordUpdate(@RequestParam String userEmail, @RequestParam String encodingPassword);
 
-	// 입력한 이메일로 DB에 저장된 이메일 찾기
+	// DB에 등록된 이메일 존재하는지 죄회
 	public String findByMail(@RequestParam String userEmail);
+
+	// 전화번호로 이메일 조회
+	public String findByNameAndTelToEmail(@RequestParam String username, @RequestParam String tel);
+
+	// 같은 닉네임 회원 찾기
+	public String findBySameUsername(@RequestParam String username);
+
+	// DB에 등록된 전화번호가 존재하는지 조회
+	public String findByTel(@RequestParam String tel);
+
 }

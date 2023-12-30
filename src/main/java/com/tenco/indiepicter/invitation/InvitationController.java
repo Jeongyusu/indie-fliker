@@ -33,11 +33,11 @@ public class InvitationController {
             Model model){
 
         User principal = (User)session.getAttribute(Define.PRINCIPAL);
-//        if (principal == null){
-//            throw  new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
-//        }
-        List<Invitation> myInvitationPagingLists = this.invitationService.myInvitationPagingLists(page);
-        InvitationPagingResponseDTO invitationPagingResponseDTO = this.invitationService.pagingParam(page);
+        if (principal == null){
+            throw  new MyDynamicException("로그인을 먼저 해주세요.", HttpStatus.BAD_REQUEST);
+        }
+        List<Invitation> myInvitationPagingLists = this.invitationService.myInvitationPagingLists(page, principal.getId());
+        InvitationPagingResponseDTO invitationPagingResponseDTO = this.invitationService.pagingParam(page, principal.getId());
         model.addAttribute("myInvitationPagingLists", myInvitationPagingLists);
         model.addAttribute("paging", invitationPagingResponseDTO);
 
@@ -45,5 +45,3 @@ public class InvitationController {
     }
 
 }
-
-// 12-21 18:53 학원 작업 끝

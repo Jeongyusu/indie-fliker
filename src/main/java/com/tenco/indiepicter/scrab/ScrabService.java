@@ -33,7 +33,7 @@ public class ScrabService {
                 scrabRepository.deleteScrab(userId, fundingId);
                 log.info("좋아요를 취소했습니다.");
             } catch (Exception e) {
-                throw new MyDynamicException("로그인이 필요합니다.", HttpStatus.INTERNAL_SERVER_ERROR);
+                throw new MyDynamicException("좋아요 기능 작동중 에러.", HttpStatus.INTERNAL_SERVER_ERROR);
             }
             return false;
         } else {
@@ -41,7 +41,7 @@ public class ScrabService {
                 scrabRepository.insertScrab(userId, fundingId);
                 log.info("좋아요를 추가했습니다.");
             } catch (Exception e) {
-                throw new MyDynamicException("로그인이 필요합니다.", HttpStatus.INTERNAL_SERVER_ERROR);
+                throw new MyDynamicException("좋아요 기능 작동중 에러.", HttpStatus.INTERNAL_SERVER_ERROR);
             }
             return true;
         }
