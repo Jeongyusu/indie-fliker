@@ -88,8 +88,8 @@ public class AdminController {
 
 	// VIP 초청권 발급
 	@PostMapping("/vip-issued")
-	public String vipIssued(InvitationRequestDTO invitationRequestDto, Errors errors){
-
+	@ResponseBody
+	public ResponseEntity<?> vipIssued(@RequestBody InvitationRequestDTO invitationRequestDto, Errors errors){
 		if(invitationRequestDto.getMovieTime() == null || invitationRequestDto.getMovieTime().isEmpty()){
 			throw new MyDynamicException("날짜와 시간을 지정해 주세요.", HttpStatus.BAD_REQUEST);
 		}
@@ -108,7 +108,7 @@ public class AdminController {
 
 		this.adminService.vipIssued(invitationRequestDto);
 
-		return "redirect:/admin/invitation";
+		return ResponseEntity.ok().body(ApiUtils.success(null));
 	}
 
 //---------------------------------------------------------------------------------
@@ -129,9 +129,7 @@ public class AdminController {
 	@GetMapping("/user-management-isWithdrawal")
 	@ResponseBody
 	public ResponseEntity<?> userManagementIsWithdrawal(@RequestParam Integer userId){
-		log.debug("--------구분---" + userId + "=================");
 		int resultCount = this.adminService.isWithdrawal(userId);
-		System.out.println("--------------------- " + resultCount + " ----------------------");
 		return ResponseEntity.ok().body(ApiUtils.success(null));
 	}
 
@@ -152,10 +150,11 @@ public class AdminController {
 	}
 
 	// VIP 회원 관리(회원 탈퇴)
-	@GetMapping("/vip-management-isWithdrawal/{id}")
-	public String vipManagementIsWithdrawal(@PathVariable Integer id){
-		this.adminService.isWithdrawal(id);
-		return "redirect:/admin/vip-management";
+	@GetMapping("/vip-management-isWithdrawal")
+	@ResponseBody
+	public ResponseEntity<?> vipManagementIsWithdrawal(@RequestParam Integer userId){
+		this.adminService.isWithdrawal(userId);
+		return ResponseEntity.ok().body(ApiUtils.success(null));
 	}
 
 //---------------------------------------------------------------------------------
@@ -252,4 +251,4 @@ public class AdminController {
 	}
 }
 
-// 12-29 19:47 학원 작업중~
+// 12-30 23:47 작업 시작~~
