@@ -195,6 +195,7 @@
             <input type="hidden" name="username" id="principalUsername" value="${principal.username}">
             <input type="hidden" name="pic" id="principalPic" value="${principal.pic}">
             <input type="hidden" name="username" id="principalId" value="${principal.id}">
+            <input type="hidden" name="username" id="principalGrade" value="${principal.grade}">
             <a id="l_back_to_top">
                 <icon><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M11 8.414V18h2V8.414l4.293 4.293 1.414-1.414L12 4.586l-6.707 6.707 1.414 1.414z"></path></svg></icon>
             </a>
