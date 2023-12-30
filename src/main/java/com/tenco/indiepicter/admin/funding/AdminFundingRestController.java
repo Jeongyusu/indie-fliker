@@ -110,7 +110,11 @@ public class AdminFundingRestController {
 
     @PostMapping("/funding/end")
     public ResponseEntity<?> deleteFunding(@RequestBody Map<String, Integer> Index){
-        fundingService.updateEndDateById(Index.get("fundingId"));
+        try {
+            fundingService.updateEndDateById(Index.get("fundingId"));
+        }catch (Exception e) {
+            return ResponseEntity.ok().body(ApiUtils.error("펀딩 종료에 실패했습니다.", HttpStatus.BAD_REQUEST));
+        }
         return ResponseEntity.ok().body(ApiUtils.success(null));
     }
 

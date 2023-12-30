@@ -63,7 +63,7 @@
                             <span id="n_toggle_more" style="display: none">
                                 <div class="n_movie_text">
                                     <h3>감독 작품 경력</h3>
-                                    <img id="n_director_img" src="${offlineMovieDetailDTO.directorPic}">
+                                    <img id="n_director_img" src="${offlineMovieDetailDTO.directorPic}" alt="">
                                     <h5>${offlineMovieDetailDTO.director}</h5>
                                     <p>
                                         ${offlineMovieDetailDTO.directorCareers}
