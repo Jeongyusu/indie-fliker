@@ -179,8 +179,13 @@
         async function deleteById(userId){
             let response = await fetch('/admin/vip-management-isWithdrawal?userId=' + userId)
             let responseBody = await response.json();
+<<<<<<< HEAD
             const userConfirmed = window.confirm('정말로 삭제하시겠습니까?'); 
             if(userConfirmed){
+=======
+            const userConfirmed = window.confirm('정말로 삭제하시겠습니까?');
+            if (userConfirmed){
+>>>>>>> dev
                 if(responseBody.success){
                     alert('삭제에 성공했습니다.');
                     let parent = document.getElementById('custom_container');

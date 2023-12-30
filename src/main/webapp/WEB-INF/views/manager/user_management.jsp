@@ -178,7 +178,12 @@
         let response = await fetch('/admin/user-management-isWithdrawal?userId=' + userId)
         let responseBody = await response.json();
         const userConfirmed = window.confirm('정말로 삭제하시겠습니까?');
+<<<<<<< HEAD
         if(userConfirmed){
+=======
+
+        if (userConfirmed){
+>>>>>>> dev
             if(responseBody.success){
                 alert('삭제에 성공했습니다.');
                 let parent = document.getElementById('custom_container');
@@ -188,7 +193,11 @@
                 location.reload();
             } else {
                 alert('삭제에 실패했습니다.');
+<<<<<<< HEAD
             }	
+=======
+            }
+>>>>>>> dev
         }
     }
 </script>

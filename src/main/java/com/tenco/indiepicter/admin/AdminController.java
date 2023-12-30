@@ -90,6 +90,7 @@ public class AdminController {
 	@PostMapping("/vip-issued")
 	@ResponseBody
 	public ResponseEntity<?> vipIssued(@RequestBody InvitationRequestDTO invitationRequestDto, Errors errors){
+
 		if(invitationRequestDto.getMovieTime() == null || invitationRequestDto.getMovieTime().isEmpty()){
 			throw new MyDynamicException("날짜와 시간을 지정해 주세요.", HttpStatus.BAD_REQUEST);
 		}
