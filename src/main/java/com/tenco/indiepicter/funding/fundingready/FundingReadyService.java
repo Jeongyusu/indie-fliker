@@ -41,7 +41,9 @@ public class FundingReadyService {
 
         FundingReady fundingReady = FundingReady.builder()
                 .targetPrice(requestDTO.getTargetPrice())
+                .presentPrice(0)
                 .pricePerOnetime(requestDTO.getPricePerOnetime())
+                .peopleCount(0)
                 .releaseDate(DateUtil.stringToDate(requestDTO.getFundingPeriodStart()))
                 .endDate(DateUtil.stringToDate(requestDTO.getFundingPeriodEnd()))
                 .movieId(movieId)

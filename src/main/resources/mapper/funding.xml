@@ -500,6 +500,7 @@
     <select id="findAllAboutFundingProceeding" resultType="com.tenco.indiepicter.funding.response.AdminFundingProceedingDTO">
         select ft.id funding_id, mt.thumbnail movie_thumbnail, mt.movie_name, mt.director, ft.present_price / (ft.target_price/10) * 10 funding_rate, ft.present_price, ft.end_date
              , ft.people_count from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
+        order by ft.id desc
         limit #{pageSize} offset #{offset}
     </select>
 

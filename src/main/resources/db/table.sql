@@ -92,10 +92,10 @@ create table movie_file_tb
 create table funding_tb
 (
     id                int auto_increment primary key,
-    target_price      int  not null,
-    present_price     int,
-    price_per_onetime int  not null,
-    people_count      int,
+    target_price      int  not null default 0,
+    present_price     int default 0,
+    price_per_onetime int  not null default 0,
+    people_count      int default 0,
     release_date      date not null,
     end_date          date not null,
     movie_id          int  not null,

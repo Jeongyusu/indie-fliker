@@ -318,7 +318,7 @@
     width: 3%;
     position: fixed;
     bottom: 20%;
-    right: 15%;
+    right: 5%;
     display: block;
     padding: 10px;
     border: none;
@@ -378,4 +378,10 @@
     border-color: transparent;
     color: var(--def_wh);
     font-size: 16px;
+}
+
+.j_custom_font_style {
+    font-size: x-large;
+    font-style: italic;
+    color: darkgray;
 }

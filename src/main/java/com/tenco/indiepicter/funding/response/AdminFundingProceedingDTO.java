@@ -18,6 +18,11 @@ public class AdminFundingProceedingDTO {
 
     public String formatPrice(){
         DecimalFormat df = new DecimalFormat("###,###");
-        return df.format(presentPrice);
+        if(presentPrice == 0){
+            return presentPrice.toString();
+        }
+        else {
+            return df.format(presentPrice);
+        }
     }
 }
