@@ -346,13 +346,14 @@
                 try {
                     const newData = await fetchFundingList(currentPage);
                     newData.forEach((funding) => {
-                        var newElement = '<div class="p_menu1" >' +
+                        var newElement =
+                            '<div class="p_movie_card">' +
                             '<img src="' + funding.thumbnail + '" alt="">' +
-                            '<p>' + funding.movieName + '</p>' +
-                            '<button onclick="openMovieSettingModal(' + funding.movieId + ')">상영기간 및 채팅오픈시간 설정</button>' +
+                            '<p class="p_movie_title">' + funding.movieName + '</p>' +
+                            '<button class="p_movie_period_button" onclick="openMovieSettingModal(' + funding.movieId + ')">상영기간·채팅오픈시간 설정</button>' +
                             '</div>';
 
-                        // Append new content to the container with class 'p_section1'
+                        // Append new content to the container (assumes you have a container with id 'j_data_container')
                         $('#j_data_container').append(newElement);
                     });
                     currentPage++;
