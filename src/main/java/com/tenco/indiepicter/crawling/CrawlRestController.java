@@ -1,5 +1,6 @@
 package com.tenco.indiepicter.crawling;
 
+import com.tenco.indiepicter.runningschedule.RunningScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,10 @@ public class CrawlRestController {
 
     @Autowired
     private WebCrawlerService webCrawlerService;
+
+    @Autowired
+    private RunningScheduleService runningScheduleService;
+
     // http://localhost/crawl-ready < 반드시 먼저 실행
     @GetMapping("/crawl-ready")
     public String crawlReady() {
@@ -30,6 +35,7 @@ public class CrawlRestController {
                 "https://indieground.kr",
                 "/indie/dbList.do"
         );
+        runningScheduleService.insertRunningSchedule();
 
         return result;
     }

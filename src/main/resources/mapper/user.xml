@@ -64,6 +64,11 @@
 		select id from user_tb where user_email like 'OAuth_%'
 	</select>
 
+	<!-- 같은 닉네임 회원 찾기 -->
+	<select	id="findBySameUsername" resultType="java.lang.String">
+		select username from user_tb where username = #{username}
+	</select>
+
 	<!-- 회원 이름과 전화번호로 이메일 조회 -->
 	<select id="findByEmail" resultType="java.lang.String">
 		select user_email from user_tb where username = #{username} and tel = #{tel}
@@ -81,9 +86,20 @@
 		where user_email = #{userEmail}
 	</select>
 
-	<!-- 입력한 이메일로 DB에 저장된 이메일 찾기 -->
+	<!-- DB에 등록된 이메일 존재하는지 죄회 -->
 	<select id="findByMail" resultType="java.lang.String">
 		select user_email from user_tb where user_email = #{userEmail}
 	</select>
+
+	<!-- 이름, 전화번호로 이메일 조회 -->
+	<select id="findByNameAndTelToEmail" resultType="java.lang.String">
+		select user_email from user_tb where username = #{username} and tel = #{tel}
+	</select>
+
+	<!-- DB에 등록된 전화번호가 존재하는지 조회 -->
+	<select id="findByTel" resultType="java.lang.String">
+		select tel from user_tb where tel = #{tel}
+	</select>
+
 
 </mapper>

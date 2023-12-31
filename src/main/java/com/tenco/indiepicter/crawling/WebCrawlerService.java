@@ -17,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,7 +38,7 @@ public class WebCrawlerService {
 
     @Transactional
     public List<MovieCrawl> saveCrawlingDataToDB(String domain, String path) {
-        int maxPage = 20; // 여기서 데이터 값 조정
+        int maxPage = 20; // 여기서 데이터 값 조정 // 20 고정<<<
 
         List<MovieCrawl> movieCrawlList = new ArrayList<>();
         for (int i = 1; i <= maxPage; i++) {
@@ -62,19 +63,19 @@ public class WebCrawlerService {
 
 
             Movie movie = Movie.builder()
-                    .makeYear(movieCrawl.getMakeYear())
-                    .production(movieCrawl.getProduction())
-                    .movieName(movieCrawl.getMovieName())
-                    .synopsis(movieCrawl.getSynopsis())
-                    .thumbnail(movieCrawl.getThumbnail())
-                    .directingIntension(movieCrawl.getDirectingIntension())
-                    .genre(movieCrawl.getGenre())
-                    .runningGrade(movieCrawl.getRunningGrade())
-                    .director(movieCrawl.getEDirector())
-                    .directorPic(null)
-                    .actor(movieCrawl.getActor())
-                    .directorCareers(movieCrawl.getDirectorCareers())
-                    .directorAwardsFilm(movieCrawl.getDirectorAwardsFilm())
+                    .makeYear(Optional.ofNullable(movieCrawl.getMakeYear()).orElse(""))
+                    .production(Optional.ofNullable(movieCrawl.getProduction()).orElse(""))
+                    .movieName(Optional.ofNullable(movieCrawl.getMovieName()).orElse(""))
+                    .synopsis(Optional.ofNullable(movieCrawl.getSynopsis()).orElse(""))
+                    .thumbnail(Optional.ofNullable(movieCrawl.getThumbnail()).orElse(""))
+                    .directingIntension(Optional.ofNullable(movieCrawl.getDirectingIntension()).orElse(""))
+                    .genre(Optional.ofNullable(movieCrawl.getGenre()).orElse(""))
+                    .runningGrade(Optional.ofNullable(movieCrawl.getRunningGrade()).orElse(""))
+                    .director(Optional.ofNullable(movieCrawl.getEDirector()).orElse(""))
+                    .directorPic(Optional.ofNullable(movieCrawl.getEDirector()).orElse(""))
+                    .actor(Optional.ofNullable(movieCrawl.getActor()).orElse(""))
+                    .directorCareers(Optional.ofNullable(movieCrawl.getDirectorCareers()).orElse(""))
+                    .directorAwardsFilm(Optional.ofNullable(movieCrawl.getDirectorAwardsFilm()).orElse(""))
                     .build();
 
             if (movieCrawlRepository.countMovies(movieCrawl) == 0) {
@@ -84,9 +85,6 @@ public class WebCrawlerService {
                     String[] photoUrls = movieCrawl.getMoviePic().split(", ");
                     List<String> moviePicList = Arrays.asList(photoUrls);
 
-
-
-
                     // 영화 데이터 삽입 - 한건에 데이터 가 들어 가능 상황
                     movieCrawlRepository.insertMovie(movie);
                     movieCrawlRepository.updateDate();
@@ -94,15 +92,15 @@ public class WebCrawlerService {
                     Integer moviePk = movie.getId();
 
                     MovieStaff movieStaff = MovieStaff.builder()
-                            .director(movieCrawl.getEDirector())
-                            .filming(movieCrawl.getFilming())
-                            .art(movieCrawl.getArt())
-                            .sound(movieCrawl.getSound())
-                            .clothes(movieCrawl.getClothes())
-                            .script(movieCrawl.getScript())
-                            .lighting(movieCrawl.getLighting())
-                            .editing(movieCrawl.getEditing())
-                            .music(movieCrawl.getMusic())
+                            .director(Optional.ofNullable(movieCrawl.getEDirector()).orElse(""))
+                            .filming(Optional.ofNullable(movieCrawl.getFilming()).orElse(""))
+                            .art(Optional.ofNullable(movieCrawl.getArt()).orElse(""))
+                            .sound(Optional.ofNullable(movieCrawl.getSound()).orElse(""))
+                            .clothes(Optional.ofNullable(movieCrawl.getClothes()).orElse(""))
+                            .script(Optional.ofNullable(movieCrawl.getScript()).orElse(""))
+                            .lighting(Optional.ofNullable(movieCrawl.getLighting()).orElse(""))
+                            .editing(Optional.ofNullable(movieCrawl.getEditing()).orElse(""))
+                            .music(Optional.ofNullable(movieCrawl.getMusic()).orElse(""))
                             .movieId(moviePk)
                             .build();
 
@@ -112,10 +110,9 @@ public class WebCrawlerService {
                     for (String photoUrl : moviePicList) {
                         // 이미지 URL을 기반으로 고유한 값을 생성
                         String uniqueId = generateUniqueId(photoUrl);
-
                         // MoviePhoto 객체 생성
                         MoviePhoto moviePhoto = MoviePhoto.builder()
-                                .moviePic(photoUrl.trim())
+                                .moviePic(photoUrl != null ? photoUrl.trim() : "/images/icons/alt.png")
                                 .movieId(moviePk)
                                 .build();
 

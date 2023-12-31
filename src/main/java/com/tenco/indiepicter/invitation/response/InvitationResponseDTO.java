@@ -6,9 +6,7 @@ import lombok.Data;
 import java.sql.Timestamp;
 
 @Data
-@Builder
 public class InvitationResponseDTO {
-
     private String invitationCode;
     private String movieName;
     private String theaterName;
@@ -16,5 +14,4 @@ public class InvitationResponseDTO {
     private String movieTime;
     private Timestamp createdAt;
     private Integer userId;
-
 }

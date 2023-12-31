@@ -216,10 +216,10 @@
                     <label id="director_pic" for="director_photo" class="k_funding_upload_select_photo_pic">
                         <c:choose>
                              <c:when test="${adminFundingUpdateFormDTO.directorPhoto != null}">
-                              <img src="${adminFundingUpdateFormDTO.directorPhoto}" class="k_funding_upload_select_photo_pic"></label>
+                              <img src="${adminFundingUpdateFormDTO.directorPhoto}" class="k_funding_upload_select_photo_pic" alt=""></label>
                              </c:when>
                         <c:otherwise>
-                            <i id="fa-camera" class="fas fa-camera"></i>사진 선택 <span class="k_star_class">*</span></label>
+                            <img src="${adminFundingUpdateFormDTO.directorPhoto}" class="k_funding_upload_select_photo_pic" alt=""></label>
                         </c:otherwise>
                         </c:choose>
                     </label>
@@ -228,12 +228,12 @@
                 <div class="k_funding_directer_career">
                     <div id="career_movies" class="k_career_movie_style">
                         <c:forEach var="careerMovie" items="${adminFundingUpdateFormDTO.extractNames()}" varStatus="status">
-                            <input type=text id="career_movie${status.index}" class="k_funding_upload_career_input" placeholder="작품 이름" name="directorCareers" value="${careerMovie}"}>
+                            <input type=text id="career_movie${status.index}" class="k_funding_upload_career_input" placeholder="작품 이름" name="directorCareers" value="${careerMovie}" oninput="preventSpecialCharacters(this)" }>
                         </c:forEach>
                     </div>
                     <div id="career_movie_years" class="k_funding_upload_head_limit">
                         <c:forEach var="careerYear" items="${adminFundingUpdateFormDTO.extractYears()}" varStatus="status">
-                            <input type="text" id="career_movie_year${status.index}"  class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorCareerYears" value="${careerYear}">
+                            <input type="number" id="career_movie_year${status.index}"  class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorCareerYears" value="${careerYear}" oninput="validateYearInput(this,2024)">
                         </c:forEach>
 
                     </div>
@@ -253,12 +253,12 @@
             <div class="k_funding_directer_career">
                 <div id="awards_movie" class="k_career_movie_style">
                     <c:forEach var="award" items="${adminFundingUpdateFormDTO.extractAwardTitles()}" varStatus="status">
-                        <input type=text id="awards_movie${status.index}" class="k_funding_awards_movie_input" placeholder="작품 이름" name="directorAwards" value="${award}">
+                        <input type=text id="awards_movie${status.index}" class="k_funding_awards_movie_input" placeholder="작품 이름" name="directorAwards" value="${award}" oninput="preventSpecialCharacters(this)">
                     </c:forEach>
                 </div>
                 <div id="awards_movie_year" class="k_funding_upload_head_limit">
                     <c:forEach var="awardYear" items="${adminFundingUpdateFormDTO.extractAwardYears()}" varStatus="status">
-                        <input type="text" id="awards_movie_year${status.index}" class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorAwardYears" value="${awardYear}">
+                        <input type="number" id="awards_movie_year${status.index}" class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorAwardYears" value="${awardYear}">
                     </c:forEach>
                 </div>
             </div>
@@ -282,7 +282,7 @@
         <div class="k_funding_directer_career">
             <div id="movie_actor" class="k_career_movie_style">
                 <c:forEach var="actorName" items="${adminFundingUpdateFormDTO.parseActor().get(0)}" varStatus="status">
-                    <input type=text id="movie_actor${status.index}" class="k_funding_awards_movie_input" placeholder="배우 이름" name="actors" value="${actorName}">
+                    <input type=text id="movie_actor${status.index}" class="k_funding_awards_movie_input" placeholder="배우 이름" name="actors" oninput="setDefaultIfEmpty(this, '미정')" value="${actorName}">
                 </c:forEach>
             </div>
             <div id="movie_actor_role" class="k_funding_upload_head_limit">
@@ -697,22 +697,6 @@
         alert('변경 불가능한 값입니다.');
     }
 
-
-    //수정할 사진을 선택하지 않았을 때 기존 사진이 들어가게 하고, 사진을 선택하면 업로드한 사진의 값이 히든 인풋의 밸류에 들어가게하기
-    // function updateHiddenInput(inputFile) {
-    //     var hiddenInput = document.getElementById('movieThumbnail');
-    //     // 파일이 선택되었을 때만 hidden input의 값을 업데이트
-    //     if (inputFile.files.length > 0) {
-    //         var file = inputFile.files[0];
-    //         var reader = new FileReader();
-    //
-    //         reader.onload = function (e) {
-    //             hiddenInput.value = e.target.result;
-    //         };
-    //         reader.readAsDataURL(file);
-    //     }
-    // }
-
     function callMultipleFunctionsAboutThumbnail(inputFile) {
         updateHiddenInput(inputFile);
         changeUserPic('thumbnail', 'basicPic', 'k_funding_thumbnail_style', event);
@@ -731,6 +715,48 @@
         maxDate: "2030-01-01", // 현재 월의 말일까지
     });
 
+    // 올바른 연도 값만 입력가능
+    // 이전 값을 저장할 연도 객체
+    const previousYearValues = {};
+    function validateYearInput(inputElement, maxYear) {
+        const inputId = inputElement.id;
+        const inputValue = inputElement.value;
+
+        // 이전 값이 현재 값과 다르다면 검증 수행
+        if (previousValues[inputId] !== inputValue) {
+            // 정규표현식을 사용하여 4글자 숫자인지 검사
+            const isValidYear = /^\d{0,4}$/.test(inputValue);
+
+            if (!isValidYear || (inputValue !== "" && parseInt(inputValue) > maxYear)) {
+                alert("올바른 연도를 입력하세요. (4자리 숫자, 최대 " + maxYear + "까지)");
+                // 현재 입력값이 유효하지 않은 경우, 이전 값으로 복원
+                inputElement.value = previousYearValues[inputId] || "";
+            }
+        }
+
+        // 현재 값을 저장
+        previousYearValues[inputId] = inputValue;
+    }
+
+    //특수문자 입력 방지
+    const previousValue = { inputField: "" };
+
+    function preventSpecialCharacters(inputElement) {
+        const inputValue = inputElement.value;
+
+        // 정규표현식을 사용하여 특수문자가 포함되었는지 검사
+        const hasSpecialCharacters = /[!@#$%^&*(),.?":{}|<>]/.test(inputValue);
+
+        if (hasSpecialCharacters) {
+            alert("특수문자는 입력할 수 없습니다.");
+            // 특수문자가 포함된 경우, 이전 값으로 복원
+            inputElement.value = previousValue[inputElement.id] || "";
+        } else {
+            // 특수문자가 포함되지 않은 경우, 현재 값을 저장
+            previousValue[inputElement.id] = inputValue;
+        }
+    }
 
 </script>
+
 

@@ -138,7 +138,6 @@
                             <h2>초청권 발급</h2>
                             <button class="close" onclick="closeModal()">닫기</button>
                             <div class="modal_from">
-                                <form action="/admin/vip-issued" method="post">
                                     <input type="hidden" id="userId" name="userId" value ="${user.id}">
                                     <label>날짜 및 시간 선택</label><br>
                                     <input type="text" id="movieTime" name="movieTime" placeholder="날짜 및 시간 선택"><br>
@@ -150,8 +149,7 @@
                                     <input type="text" id="theaterName" name="theaterName" placeholder="극장 이름 입력"><br>
                                     <label>극장 주소</label><br>
                                     <input type="text" id="theaterAddress" name="theaterAddress" placeholder="극장 주소 입력"><br>
-                                    <button class="submit" type="submit">발급 하기</button>
-                                </form>
+                                    <button class="submit" type="button" onclick="invitation()" >발급 하기</button>
                             </div>
                         </div>
                         <!----------------------------------- 모달 ------------------------------------------------>
@@ -220,36 +218,91 @@
     <!--------------------------------- 모달 버튼 ---------------------------------------------->
     <!--------------------------------- 달력 -------------------------------------------------->
     <script>
+        // 모달 열기
+        function openModal() {
+            document.getElementById('myModal').style.display = 'block';
+            document.getElementById('modalBackground').style.display = 'block';
+        }
+
+        // 모달 닫기
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+            document.getElementById('modalBackground').style.display = 'none';
+        }
+    </script>
+    <!--------------------------------- 모달 버튼 ---------------------------------------------->
+    <!--------------------------------- 달력 -------------------------------------------------->
+    <script>
         let choiceDay = document.getElementById('movieTime');
         flatpickr(choiceDay, {
             enableTime: true,
             dateFormat: "Y-m-d H:i",
         });
-
-        // 현재 URL에서 쿼리스트링을 가져오기
-        function getQueryStringValue(key) {
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
-            return urlParams.get(key);
-        }
-
-        let keyword = "";
-
-        window.onload = function () {
-            // 영화 등급 이미지 로드
-            onLoadImg();
-
-            console.log("온로드 실행");
-            // genre를 현재 URL의 쿼리스트링 키 값을 검색해서 가져오기
-            keyword = getQueryStringValue('keyword');
-            console.log("keyword: " + keyword);
-            if(keyword === null){
-                keyword = "";
-            }
-        };
-
     </script>
     <!--------------------------------- 달력 -------------------------------------------------->
+    <script>
+        async function invitation(){
+            let userId = document.getElementById('userId').value;
+            let movieTime = document.getElementById('movieTime').value;
+            let invitationCode = document.getElementById('invitationCode').value;
+            let movieName = document.getElementById('movieName').value;
+            let theaterName = document.getElementById('theaterName').value;
+            let theaterAddress = document.getElementById('theaterAddress').value;
+
+            let response = await fetch(`/admin/vip-issued`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userId: userId,
+                    movieTime: movieTime,
+                    invitationCode: invitationCode,
+                    movieName: movieName,
+                    theaterName: theaterName,
+                    theaterAddress: theaterAddress
+                }),
+            });
+            let responseBody = await response.json();
+
+            if(responseBody.success){
+                alert('초청권을 전달했습니다!');
+            } else {
+                alert('초청권 전달을 실패했습니다.');
+            }
+        }
+    </script>
+    <!--------------------------------- 달력 -------------------------------------------------->
+    <script>
+        async function invitation(){
+            let userId = document.getElementById('userId').value;
+            let movieTime = document.getElementById('movieTime').value;
+            let invitationCode = document.getElementById('invitationCode').value;
+            let movieName = document.getElementById('movieName').value;
+            let theaterName = document.getElementById('theaterName').value;
+            let theaterAddress = document.getElementById('theaterAddress').value;
+            let response = await fetch(`/admin/vip-issued`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userId: userId,
+                    movieTime: movieTime,
+                    invitationCode: invitationCode,
+                    movieName: movieName,
+                    theaterName: theaterName,
+                    theaterAddress: theaterAddress
+                }),
+            });
+            let responseBody = await response.json();
+            if(responseBody.success){
+                alert('초청권을 전달했습니다!');
+            } else {
+                alert('초청권 전달을 실패했습니다.');
+            }
+        }
+    </script>
     
 </body>
 

@@ -31,7 +31,7 @@ public interface AdminRepository {
     public Integer vipPageCount();
 
     // 일반 회원, VIP 회원 관리(회원 탈퇴)
-    public void adminUserUpdate(Integer id);
+    public int adminUserUpdate(Integer id);
 
     // VIP 초청권 발급
     public int insert(Invitation invitation);

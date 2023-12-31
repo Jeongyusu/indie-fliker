@@ -82,6 +82,9 @@ function loadMoreData(genre) {
                     h4.classList.add('l_strong');
                     h4.textContent = `${funding.fundingRate}% 달성`;
 
+                    const gradeImg = document.createElement('img');
+                    gradeImg.className = 'l_grade_img';
+
                     const h5 = document.createElement('div');
                     h5.className = 'l_title';
                     h5.textContent = funding.movieName;
