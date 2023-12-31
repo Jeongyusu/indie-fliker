@@ -151,6 +151,7 @@ public class FundingService {
         Funding funding = Funding.builder()
                 .id(fundingReady.getId())
                 .targetPrice(fundingReady.getTargetPrice())
+                .presentPrice(fundingReady.getPresentPrice())
                 .pricePerOnetime(fundingReady.getPricePerOnetime())
                 .peopleCount(fundingReady.getPeopleCount())
                 .releaseDate(fundingReady.getReleaseDate())
