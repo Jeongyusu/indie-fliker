@@ -143,9 +143,14 @@ public class UserController {
 		
 		// 서비스 호출
 		User principal = userService.login(requestDto);
-		
+
 		// 세션 메모리에 유저정보 저장
 		session.setAttribute(Define.PRINCIPAL, principal);
+
+		// 일반유저, 관리자 유저 gubun 필드에 따라 분기시킴
+		if (principal.getGubun().equals("ADMIN")) {
+			return "redirect:/admin/funding-management";
+		}
 		return "redirect:/fund/funding-plus";
 	}
 	

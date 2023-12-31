@@ -50,6 +50,8 @@ insert into user_tb(user_email, password, username, pic, grade, tel, gubun, crea
 values('yellows@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '노랑스', '/images/userbasicpic/userimg.jpg', 'VIP', '010-4595-6607', 'DIRECTOR', now());
 insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
 values('grays@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '회색스', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-4590-6600', 'DIRECTOR', now());
+insert into user_tb(user_email, password, username, pic, grade, tel, gubun, created_at)
+values('admin@nate.com', '$2a$10$rA2AHSOCwW2b8mRhrvoIkODGLjkDSg7RjnVoLIM9PaNEDGiXf23x2', '회색스', '/images/userbasicpic/userimg.jpg', 'NORMAL', '010-4590-6620', 'ADMIN', now());
 
 
 insert into theater_tb(theater_pic, theater_name, theater_description, tel, address, park, total_seat) values ('/images/theaterpic/theater1.png', '그린시네마 부산 부전동 지점', '그린시네마 부전동 지점은 편안하고 넓은 좌석과 첨단 음향 시스템으로 최신 영화를 즐기기에 이상적인 장소입니다. 다양한 푸드 옵션과 아늑한 분위기가 영화관람을 더욱 특별하게 만듭니다. 특히, 최신 4D 기술을 도입하여 관객들에게 몰입감 넘치는 경험을 제공하고 있습니다. 영화를 넘어 다양한 이벤트와 혜택으로 관객들에게 특별한 추억을 선사합니다.', '051-494-1004', '부산시 부산진구 부전동 1004-1', '주차장 협소', 124);

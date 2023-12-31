@@ -51,7 +51,7 @@ function loadMoreData() {
                     '<img src="' + funding.movieThumbnail + '" class="card-img" alt="...">' +
                     '</figure>' +
                     '<div class="l_overlay_button l_back">' +
-                    '<a href="/fund/funding/' + funding.fundingId + '"><button class="btn btn-outline-success l_button">예매하기</button></a>' +
+                    '<a href="/fund/offline-movie/' + funding.fundingId + '"><button class="btn btn-outline-success l_button">예매하기</button></a>' +
                     '</div>' +
                     '</div>' +
                     '<div class="l_percent l_mint l_strong">' + funding.fundingRate + '% 달성</div>' +
