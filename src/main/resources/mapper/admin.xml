@@ -12,11 +12,20 @@
             limit #{pageStart}, #{pageLimit}
     </select>
 
+    <!-- 일반 회원, VIP 회원 전체 페이징 조회(탈퇴 회원 제외) -->
+    <select id="findByAllPagingListsExWithdrawal" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
+        select *
+        from user_tb
+        where is_withdrawal not in(true)
+        order by created_at desc
+            limit #{pageStart}, #{pageLimit}
+    </select>
+
     <!-- 일반 회원 관리 페이징 조회 -->
     <select id="findByAdminUserPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
         select *
         from user_tb
-        where grade not in('VIP') and is_withdrawal not in(true)
+        where grade not in('VIP')
         order by created_at desc
             limit #{pageStart}, #{pageLimit}
     </select>
@@ -25,7 +34,7 @@
     <select id="findByAdminVipPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
         select *
         from user_tb
-        where grade not in('NORMAL') and is_withdrawal not in(true)
+        where grade not in('NORMAL')
         order by created_at desc
             limit #{pageStart}, #{pageLimit}
     </select>
@@ -68,7 +77,9 @@
     <select id="findByAllPagingListsAboutKeyword" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
         select *
         from user_tb ut
-        where ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%')
+        where
+            is_withdrawal not in(true)
+            and ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%')
         order by created_at desc
         limit #{pagingParams.pageStart}, #{pagingParams.pageLimit}
     </select>
@@ -78,7 +89,7 @@
         select *
         from user_tb ut
         where grade not in('NORMAL')
-        and ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%') and is_withdrawal not in(true)
+            and ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%')
         order by created_at desc
         limit #{pagingParams.pageStart}, #{pagingParams.pageLimit}
     </select>
@@ -88,7 +99,7 @@
         select *
         from user_tb ut
         where grade not in('VIP')
-            and ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%') and is_withdrawal not in(true) 
+            and ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%')
         order by created_at desc
         limit #{pagingParams.pageStart}, #{pagingParams.pageLimit}
     </select>

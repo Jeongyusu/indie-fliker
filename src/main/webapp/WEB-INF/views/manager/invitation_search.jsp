@@ -88,28 +88,23 @@
                         <!-- 모달 -->
                         <div class="p_modal" id="myModal">
                             <div class="p_modal_flex">
-                                <div style="margin: 0 20px">
-                                    <img class="p_logo" src="/images/logo/IndieFliker.png" alt="">
-                                </div>
-                                <div class="modal_from">
-                                    <form action="/admin/vip-issued" method="post">
-                                        <h2>초청권 발급</h2>
-                                        <input type="hidden" id="userId" name="userId" value ="${user.id}">
-                                        <label>날짜 및 시간 선택</label><br>
-                                        <input type="text" id="movieTime" name="movieTime" placeholder="날짜 및 시간 선택"><br>
-                                        <label>초청권 코드</label><br>
-                                        <input type="text" id="invitationCode" name="invitationCode" placeholder="초청권 코드 입력"><br>
-                                        <label>영화 제목</label><br>
-                                        <input type="text" id="movieName" name="movieName" placeholder="영화 제목 입력"><br>
-                                        <label>극장 이름</label><br>
-                                        <input type="text" id="theaterName" name="theaterName" placeholder="극장 이름 입력"><br>
-                                        <label>극장 주소</label><br>
-                                        <input type="text" id="theaterAddress" name="theaterAddress" placeholder="극장 주소 입력"><br>
-                                        <button class="submit" type="submit">발급 하기</button>
-                                    </form>
-                                </div>
-                                <div style="margin: 0 10px">
-                                    <button class="close" onclick="closeModal()">닫기</button>
+                                <div class="p_in_modal_from">
+                                    <h2>초청권 발급</h2>
+                                    <input type="hidden" id="userId" name="userId" value ="${user.id}">
+                                    <label>날짜 및 시간 선택</label><br>
+                                    <input type="text" id="movieTime" name="movieTime" placeholder="날짜 및 시간 선택"><br>
+                                    <label>초청권 코드</label><br>
+                                    <input type="text" id="invitationCode" name="invitationCode" placeholder="초청권 코드 입력"><br>
+                                    <label>영화 제목</label><br>
+                                    <input type="text" id="movieName" name="movieName" placeholder="영화 제목 입력"><br>
+                                    <label>극장 이름</label><br>
+                                    <input type="text" id="theaterName" name="theaterName" placeholder="극장 이름 입력"><br>
+                                    <label>극장 주소</label><br>
+                                    <input type="text" id="theaterAddress" name="theaterAddress" placeholder="극장 주소 입력"><br>
+                                    <div class="p_modal_flex_between">
+                                        <button class="p_submit" type="button" onclick="invitation()">발급 하기</button>
+                                        <button type="button" class="p_close" onclick="closeModal()">닫기</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -162,109 +157,64 @@
         <!--컨테이너2 끝-->
     </div>
 </div>
-    <!--------------------------------- 모달 버튼 ---------------------------------------------->
-    <script>
-        // 모달 열기
-        function openModal() {
-            document.getElementById('myModal').style.display = 'block';
-            document.getElementById('modalBackground').style.display = 'block';
-        }
+<!--------------------------------- 모달 버튼 ---------------------------------------------->
+<script>
+    // 모달 열기
+    function openModal() {
+        document.getElementById('myModal').style.display = 'block';
+        document.getElementById('modalBackground').style.display = 'block';
+    }
 
-        // 모달 닫기
-        function closeModal() {
-            document.getElementById('myModal').style.display = 'none';
-            document.getElementById('modalBackground').style.display = 'none';
-        }
-    </script>
-    <!--------------------------------- 모달 버튼 ---------------------------------------------->
-    <!--------------------------------- 달력 -------------------------------------------------->
-    <script>
-        // 모달 열기
-        function openModal() {
-            document.getElementById('myModal').style.display = 'block';
-            document.getElementById('modalBackground').style.display = 'block';
-        }
+    // 모달 닫기
+    function closeModal() {
+        document.getElementById('myModal').style.display = 'none';
+        document.getElementById('modalBackground').style.display = 'none';
+    }
+</script>
+<!--------------------------------- 모달 버튼 ---------------------------------------------->
+<!--------------------------------- 달력 -------------------------------------------------->
+<script>
+    let choiceDay = document.getElementById('movieTime');
+    flatpickr(choiceDay, {
+        minDate: "today",
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+    });
+</script>
+<!--------------------------------- 달력 -------------------------------------------------->
+<script>
+    async function invitation(){
+        let userId = document.getElementById('userId').value;
+        let movieTime = document.getElementById('movieTime').value;
+        let invitationCode = document.getElementById('invitationCode').value;
+        let movieName = document.getElementById('movieName').value;
+        let theaterName = document.getElementById('theaterName').value;
+        let theaterAddress = document.getElementById('theaterAddress').value;
 
-        // 모달 닫기
-        function closeModal() {
-            document.getElementById('myModal').style.display = 'none';
-            document.getElementById('modalBackground').style.display = 'none';
-        }
-    </script>
-    <!--------------------------------- 모달 버튼 ---------------------------------------------->
-    <!--------------------------------- 달력 -------------------------------------------------->
-    <script>
-        let choiceDay = document.getElementById('movieTime');
-        flatpickr(choiceDay, {
-            enableTime: true,
-            dateFormat: "Y-m-d H:i",
+        let response = await fetch(`/admin/vip-issued`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userId: userId,
+                movieTime: movieTime,
+                invitationCode: invitationCode,
+                movieName: movieName,
+                theaterName: theaterName,
+                theaterAddress: theaterAddress
+            }),
         });
-    </script>
-    <!--------------------------------- 달력 -------------------------------------------------->
-    <script>
-        async function invitation(){
-            let userId = document.getElementById('userId').value;
-            let movieTime = document.getElementById('movieTime').value;
-            let invitationCode = document.getElementById('invitationCode').value;
-            let movieName = document.getElementById('movieName').value;
-            let theaterName = document.getElementById('theaterName').value;
-            let theaterAddress = document.getElementById('theaterAddress').value;
+        let responseBody = await response.json();
 
-            let response = await fetch(`/admin/vip-issued`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    userId: userId,
-                    movieTime: movieTime,
-                    invitationCode: invitationCode,
-                    movieName: movieName,
-                    theaterName: theaterName,
-                    theaterAddress: theaterAddress
-                }),
-            });
-            let responseBody = await response.json();
-
-            if(responseBody.success){
-                alert('초청권을 전달했습니다!');
-            } else {
-                alert('초청권 전달을 실패했습니다.');
-            }
+        if(responseBody.success){
+            alert('초청권을 전달했습니다!');
+        } else {
+            alert('초청권 전달을 실패했습니다.');
         }
-    </script>
-    <!--------------------------------- 달력 -------------------------------------------------->
-    <script>
-        async function invitation(){
-            let userId = document.getElementById('userId').value;
-            let movieTime = document.getElementById('movieTime').value;
-            let invitationCode = document.getElementById('invitationCode').value;
-            let movieName = document.getElementById('movieName').value;
-            let theaterName = document.getElementById('theaterName').value;
-            let theaterAddress = document.getElementById('theaterAddress').value;
-            let response = await fetch(`/admin/vip-issued`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    userId: userId,
-                    movieTime: movieTime,
-                    invitationCode: invitationCode,
-                    movieName: movieName,
-                    theaterName: theaterName,
-                    theaterAddress: theaterAddress
-                }),
-            });
-            let responseBody = await response.json();
-            if(responseBody.success){
-                alert('초청권을 전달했습니다!');
-            } else {
-                alert('초청권 전달을 실패했습니다.');
-            }
-        }
-    </script>
-    
+    }
+</script>
+</script>
 </body>
 
 

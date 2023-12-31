@@ -78,7 +78,14 @@
                             <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${user.createdAt}"/></td>
                             <td>${user.grade}</td>
                             <td>
-                               <button id="userDelete" data-id="${user.id}" onclick="deleteById(${user.id})">삭제</button>
+                                <c:choose>
+                                    <c:when test="${user.withdrawal == true}">
+                                        <button class="alreadyDeletedButton" id="userAlreadyDelete" data-id="${user.id}" disabled>삭제완료</button>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <button class="deleteButton" id="userDelete" data-id="${user.id}" onclick="deleteById(${user.id})">삭제</button>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                     </tbody>

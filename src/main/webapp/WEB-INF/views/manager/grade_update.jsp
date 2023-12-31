@@ -78,8 +78,16 @@
                             <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${user.createdAt}"/></td>
                             <td>${user.grade}</td>
                             <td>
-                                <a href="/admin/grade-update-vip/${user.id}" class="p_vip">VIP</a>
-                                <a href="/admin/grade-update-normal/${user.id}" class="p_normal">NORMAL</a>
+                                <c:choose>
+                                    <c:when test="${user.grade == 'VIP'}">
+                                        <a href="/admin/grade-update-vip/${user.id}" class="p_vip">VIP</a>
+                                        <a href="/admin/grade-update-normal/${user.id}" class="p_normal" style="background-color: lightgrey; color: black">NORMAL</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="/admin/grade-update-vip/${user.id}" class="p_vip" style="background-color: lightgrey; color: black">VIP</a>
+                                        <a href="/admin/grade-update-normal/${user.id}" class="p_normal">NORMAL</a>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                         </tbody>
