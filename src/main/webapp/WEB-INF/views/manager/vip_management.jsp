@@ -78,7 +78,14 @@
                             <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${user.createdAt}"/></td>
                             <td>${user.grade}</td>
                             <td>
-                                <button id="userDelete" data-id="${user.id}" onclick="deleteById(${user.id})">삭제</button>
+                                <c:choose>
+                                    <c:when test="${user.withdrawal == true}">
+                                        <button class="alreadyDeletedButton" id="userAlreadyDelete" data-id="${user.id}" disabled>삭제완료</button>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <button class="deleteButton" id="userDelete" data-id="${user.id}" onclick="deleteById(${user.id})">삭제</button>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                     </tbody>
@@ -95,7 +102,7 @@
 
                     <c:otherwise>
                         <%-- 이전을 누르면 컨트롤러에 현재 페이지보다 1 작은 페이지로 요청 --%>
-                        <a class="p_priveous" href="/admin/user-management?page=${paging.page-1}">이전</a>
+                        <a class="p_priveous" href="/admin/vip-management?page=${paging.page-1}">이전</a>
                     </c:otherwise>
                 </c:choose>
 
@@ -109,7 +116,7 @@
 
                         <c:otherwise>
                             <%-- 다른 페이지 이동이 필요할때 컨트롤러에 요청 --%>
-                            <a class="page_number" href="/admin/user-management?page=${i}" style="color: #7f7f7f">${i}</a>
+                            <a class="page_number" href="/admin/vip-management?page=${i}" style="color: #7f7f7f">${i}</a>
                         </c:otherwise>
                     </c:choose>
                 </c:forEach>
@@ -121,7 +128,7 @@
                     </c:when>
                     <%-- 다음을 누르면 현재 페이지보다 1 큰 페이지로 요청 --%>
                     <c:otherwise>
-                        <a class="p_next" href="/admin/user-management?page=${paging.page+1}">다음</a>
+                        <a class="p_next" href="/admin/vip-management?page=${paging.page+1}">다음</a>
                     </c:otherwise>
                 </c:choose>
             </div>

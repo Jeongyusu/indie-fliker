@@ -97,7 +97,7 @@
 </div>
 </div>
     <div>
-    <button id="scrollToTopBtn"><img src="/images/icons/upArrow.gif" class="j_up_button"></button>
+    <button id="scrollToTopBtn"><img src="/images/icons/upArrow.gif" class="j_admin_up_button"></button>
     </div>
 
 <script>

@@ -166,7 +166,7 @@ public class AdminController {
 			@RequestParam(value="page", required=false, defaultValue="1") Integer page,
 			Model model) {
 
-		List<User> adminGradeUpdatePagingLists = this.adminService.adminAllPagingLists(page);
+		List<User> adminGradeUpdatePagingLists = this.adminService.findByAllPagingListsExWithdrawal(page);
 		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.pagingParam(page);
 		model.addAttribute("adminGradeUpdatePagingLists", adminGradeUpdatePagingLists);
 		model.addAttribute("paging", adminPagingResponseDTO);
