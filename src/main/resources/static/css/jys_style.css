@@ -327,6 +327,19 @@
     outline: none;
 }
 
+.j_admin_up_button {
+    width: 3%;
+    position: fixed;
+    bottom: 20%;
+    right: 3%;
+    display: block;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    outline: none;
+}
+
 .j_font_style {
     font-size: 27px;
     font-weight: 500;
