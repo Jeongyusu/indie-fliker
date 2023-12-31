@@ -1,79 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="../manager/layout/manager_header.jsp" %>
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 페이지 - 초청권( invitation ) 완료!</title>
-    
-    <!-- style.css와 연결 -->
-    <link href="/css/png_style.css" rel="stylesheet">
-    
-    <!-- fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-                           integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-                           crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">
-
-
-</head>
-<body>
-
+<div class="p_flex_center">
     <div class="p_main">
-        <!--탑 시작-->
-        <div class="p_top">
-
-            <div class="p_title">
-                <div class="p_line"></div>
-                <a href=""><h2>IndiFlinker</h2></a>
-            </div>
-
-            <form id="search-form" action="/admin/invitation/search" method="get">
-                <div class="p_search">
-                    <button type="submit">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                    <input type="text" name="keyword" placeholder="검색 하기">
-                </div>
-            </form>
-
-        </div>
-        <!--탑 끝-->
-
-        <!--컨테이너1 시작-->
         <div class="p_container1">
-
             <div class="p_section1">
-                <div class="p_dashboard">
-                    <i class="fa-solid fa-table-cells-large"></i>
-                    <a href="">대시보드</a>
-                </div>
-            </div>
-
-            <div class="p_section2">
-                <h3>영화</h3>
-                <ul>
+                <div class="p_section_title">영화</div>
+                <ul class="p_section_ul">
                     <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/funding-ready-list">펀딩 등록 승인</a></li>
                     <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/funding/confirm">펀딩 현황 확인</a></li>
-                    <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/funding-management">펀딩 수정 / 종료</a></li>
+                    <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/funding-management">펀딩 수정 · 종료</a></li>
                 </ul>
                 <div class="p_line"></div>
             </div>
 
-            <div class="p_section3">
-                <h3>회원</h3>
-                <ul>
+            <div class="p_section2">
+                <div class="p_section_title">회원</div>
+                <ul class="p_section_ul">
                     <li><i class="fa-solid fa-ticket-simple p_icon1"></i><a href="/admin/invitation">VIP 초청권 발급</a></li>
                     <li><i class="fa-solid fa-user p_icon2"></i><a href="/admin/user-management">일반 회원 관리</a></li>
                     <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/vip-management">VIP 회원 관리</a></li>
@@ -82,25 +27,30 @@
                 <div class="p_line"></div>
             </div>
 
-            <div class="p_section4">
-                <h3>기간 설정</h3>
-                <ul>
-                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/movie-open/setting">온라인 상영 기간 설정/채팅 오픈 시간 설정</a></li>
+            <div class="p_section3">
+                <div class="p_section_title">기간 설정</div>
+                <ul class="p_section_ul">
+                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/movie-open/setting">온라인 상영 기간 · 채팅 오픈 설정</a></li>
                     <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/off-movie-open/setting">오프라인 상영 기간 설정</a></li>
                 </ul>
                 <div class="p_line"></div>
             </div>
-
         </div>
         <!--컨테이너1 끝-->
-
         <!--컨테이너2 시작-->
         <div class="p_invitation_container2">
-            <div class="p_title">
+            <div class="p_container_title">
                 <h3>VIP 초청권 발급</h3>
             </div>
-
-            <div class="p_section1">
+            <form id="search-form" action="/admin/invitation/search" method="get">
+                <div class="p_search">
+                    <input type="text" name="keyword" placeholder="검색 하기">
+                    <button type="submit" class="p_search_button">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </form>
+            <div class="p_invitation_form">
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -119,10 +69,10 @@
                             <td>${i}</td>
                             <td>#${user.userEmail}</td>
                             <td>
-                                <div>
+                                <div class="p_user_form">
                                     <img src="${user.pic}" alt="">
+                                    <span class="p_name1 p_name">${user.username}</span>
                                 </div>
-                                <span class="p_name1 p_name">${user.username}</span>
                             </td>
                             <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${user.createdAt}"/></td>
                             <td>${user.grade}</td>
@@ -135,30 +85,27 @@
 
                         <!-- 모달 -->
                         <div class="p_modal" id="myModal">
-                            <img src="/images/logo/IndieFliker.png" alt="">
-                            <h2>초청권 발급</h2>
-                            <button class="close" onclick="closeModal()">닫기</button>
-                            <div class="modal_from">
-<<<<<<< HEAD
-=======
-<%--                                <form action="/admin/vip-issued" method="post">--%>
->>>>>>> dev
-                                    <input type="hidden" id="userId" name="userId" value ="${user.id}">
-                                    <label>날짜 및 시간 선택</label><br>
-                                    <input type="text" id="movieTime" name="movieTime" placeholder="날짜 및 시간 선택"><br>
-                                    <label>초청권 코드</label><br>
-                                    <input type="text" id="invitationCode" name="invitationCode" placeholder="초청권 코드 입력"><br>
-                                    <label>영화 제목</label><br>
-                                    <input type="text" id="movieName" name="movieName" placeholder="영화 제목 입력"><br>
-                                    <label>극장 이름</label><br>
-                                    <input type="text" id="theaterName" name="theaterName" placeholder="극장 이름 입력"><br>
-                                    <label>극장 주소</label><br>
-                                    <input type="text" id="theaterAddress" name="theaterAddress" placeholder="극장 주소 입력"><br>
-                                    <button class="submit" id="submit" onclick="invitation()">발급 하기</button>
-<<<<<<< HEAD
-=======
-<%--                                </form>--%>
->>>>>>> dev
+                            <div class="p_modal_flex">
+                                <div class="modal_from">
+                                    <form action="/admin/vip-issued" method="post">
+                                        <h2>초청권 발급</h2>
+                                        <input type="hidden" id="userId" name="userId" value ="${user.id}">
+                                        <label>날짜 및 시간 선택</label><br>
+                                        <input type="text" id="movieTime" name="movieTime" placeholder="날짜 및 시간 선택"><br>
+                                        <label>초청권 코드</label><br>
+                                        <input type="text" id="invitationCode" name="invitationCode" placeholder="초청권 코드 입력"><br>
+                                        <label>영화 제목</label><br>
+                                        <input type="text" id="movieName" name="movieName" placeholder="영화 제목 입력"><br>
+                                        <label>극장 이름</label><br>
+                                        <input type="text" id="theaterName" name="theaterName" placeholder="극장 이름 입력"><br>
+                                        <label>극장 주소</label><br>
+                                        <input type="text" id="theaterAddress" name="theaterAddress" placeholder="극장 주소 입력"><br>
+                                        <div class="p_modal_flex_between">
+                                            <button class="p_submit" type="submit">발급 하기</button>
+                                            <button type="button" class="p_close" onclick="closeModal()">닫기</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                         <!----------------------------------- 모달 ------------------------------------------------>
@@ -209,6 +156,7 @@
         </div>
         <!--컨테이너2 끝-->
     </div>
+</div>
 
     <!--------------------------------- 모달 버튼 ---------------------------------------------->
     <script>
@@ -242,10 +190,7 @@
             let movieName = document.getElementById('movieName').value;
             let theaterName = document.getElementById('theaterName').value;
             let theaterAddress = document.getElementById('theaterAddress').value;
-<<<<<<< HEAD
-=======
 
->>>>>>> dev
             let response = await fetch(`/admin/vip-issued`, {
                 method: 'POST',
                 headers: {
@@ -261,10 +206,7 @@
                 }),
             });
             let responseBody = await response.json();
-<<<<<<< HEAD
-=======
 
->>>>>>> dev
             if(responseBody.success){
                 alert('초청권을 전달했습니다!');
             } else {
@@ -272,7 +214,6 @@
             }
         }
     </script>
-    
 </body>
 
 

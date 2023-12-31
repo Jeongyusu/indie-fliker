@@ -57,4 +57,13 @@ public interface AdminRepository {
 
     // 일반 회원관리 전체 페이징 검색어 조회
     public List<User> findByAdminNormalPagingKeywordLists(@Param("pagingParams") Map<String, Integer> pagingParams, @Param("keyword") String keyword);
+
+    //전체 회원 키워드 검색어 결과 총 개수 조회
+    public Integer keywordPageCount(String keyword);
+
+    //일반회원 관리 키워드 검색어 결과 총 개수 조회
+    public Integer keywordNormalPageCount(String keyword);
+
+    //VIP회원 관리 키워드 검색어 결과 총 개수 조회
+    public Integer keywordVipPageCount(String keyword);
 }
