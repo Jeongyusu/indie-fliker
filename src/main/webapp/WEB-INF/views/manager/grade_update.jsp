@@ -81,10 +81,10 @@
                                 <c:choose>
                                     <c:when test="${user.grade == 'VIP'}">
                                         <a href="/admin/grade-update-vip/${user.id}" class="p_vip">VIP</a>
-                                        <a href="/admin/grade-update-normal/${user.id}" class="p_normal" style="background-color: lightgrey; color: rgb(128,128,128)">NORMAL</a>
+                                        <a href="/admin/grade-update-normal/${user.id}" class="p_normal" style="background-color: lightgrey; color: black">NORMAL</a>
                                     </c:when>
                                     <c:otherwise>
-                                        <a href="/admin/grade-update-vip/${user.id}" class="p_vip" style="background-color: lightgrey; color: rgb(128,128,128)">VIP</a>
+                                        <a href="/admin/grade-update-vip/${user.id}" class="p_vip" style="background-color: lightgrey; color: black">VIP</a>
                                         <a href="/admin/grade-update-normal/${user.id}" class="p_normal">NORMAL</a>
                                     </c:otherwise>
                                 </c:choose>
