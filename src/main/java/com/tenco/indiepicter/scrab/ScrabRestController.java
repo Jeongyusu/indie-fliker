@@ -1,5 +1,6 @@
 package com.tenco.indiepicter.scrab;
 
+import com.tenco.indiepicter._core.handler.exception.MyUnAuthorizedException;
 import com.tenco.indiepicter._core.utils.ApiUtils;
 import com.tenco.indiepicter._core.utils.Define;
 import com.tenco.indiepicter.scrab.response.ScrabResponseDTO;
@@ -37,6 +38,9 @@ public class ScrabRestController {
     @PostMapping("/api/scrabs/toggle")
     public ResponseEntity<?> toggleScrab(@RequestBody Scrab scrab) {
         User pricipal = (User) session.getAttribute(Define.PRINCIPAL);
+        if (pricipal == null){
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiUtils.error("로그인이 필요합니다.", HttpStatus.BAD_REQUEST));
+        }
         boolean scrabs = scrabService.toggleScrab(pricipal.getId(), scrab.getFundingId());
         return ResponseEntity.ok().body(ApiUtils.success(new ToggleResponseDTO(scrabs)));
 

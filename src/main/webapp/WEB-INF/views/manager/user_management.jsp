@@ -54,7 +54,7 @@
             <div class="p_usermanagement_form">
                 <table class="table table-hover">
                     <thead>
-                        <tr>
+                        <tr id="custom_container">
                             <th>#</th>
                             <th>회원 ID</th>
                             <th>회원 닉네임</th>
@@ -77,21 +77,12 @@
                             </td>
                             <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${user.createdAt}"/></td>
                             <td>${user.grade}</td>
-                            <td><a href="/admin/user-management-isWithdrawal/${user.id}"><button>삭제</button></a></td>
-
-<%--                    <c:choose>--%>
-<%--                        <c:when test="${user.isWithdrawal eq true}">--%>
-<%--                             <td><a href="/admin/user-management-isWithdrawal/${user.id}"><button>삭제</button></a></td>--%>
-<%--                        </c:when>--%>
-<%--                        <c:otherwise>--%>
-<%--                             <td><a><button>삭제 완료</button></a></td>--%>
-<%--                        </c:otherwise>--%>
-<%--                    </c:choose>--%>
-
+                            <td>
+                               <button id="userDelete" data-id="${user.id}" onclick="deleteById(${user.id})">삭제</button>
+                            </td>
                         </tr>
                     </tbody>
                     </c:forEach>
-
                 </table>
             </div>
 
@@ -134,11 +125,30 @@
                     </c:otherwise>
                 </c:choose>
             </div>
-        
         </div>
-
         <!--컨테이너2 끝-->
     </div>
-    </div>
 </div>
+
+<script>
+    async function deleteById(userId){
+        let response = await fetch('/admin/user-management-isWithdrawal?userId=' + userId)
+        let responseBody = await response.json();
+        const userConfirmed = window.confirm('정말로 삭제하시겠습니까?');
+
+        if (userConfirmed){
+            if(responseBody.success){
+                alert('삭제에 성공했습니다.');
+                let parent = document.getElementById('custom_container');
+                parent.innerHTML='';
+                // let originData = ``;
+                // parent.appendChild(originData);
+                location.reload();
+            } else {
+                alert('삭제에 실패했습니다.');
+
+            }
+        }
+    }
+</script>
 </body>

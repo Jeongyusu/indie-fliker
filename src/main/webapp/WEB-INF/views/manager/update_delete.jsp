@@ -64,7 +64,7 @@
                             data-id="${funding.fundingId}" data-name="${funding.movieName}">
                         펀딩 수정
                     </button>
-                    <button class="p_movie_delete_button" onclick="updateById()">펀딩 종료</button>
+                    <button class="p_movie_delete_button" id="j_data_button" data-id="${funding.fundingId}" onclick="updateById(${funding.fundingId})">펀딩 종료</button>
                 </div>
             </c:forEach>
         </div>
@@ -101,7 +101,6 @@
     </div>
 
 <script>
-
     let currentPage = 2;
     let isLoading = false;
     window.onload = function () {
@@ -152,11 +151,9 @@
                         '<button type="button" class="p_movie_update_button" data-bs-toggle="modal" data-bs-target="#j_fund_modal" data-id="' + funding.fundingId + '" data-name="' + funding.movieName + '">' +
                         '펀딩 수정' +
                         '</button>' +
-                        '<button class="p_movie_delete_button" onclick="updateById()">펀딩 종료</button>' +
+                        '<button class="p_movie_delete_button" data-id="' + funding.fundingId + '" onclick="updateById(' + funding.fundingId + ')">펀딩 종료</button>' +
                         '</div>';
-
-                    // Append new content to the container (assumes you have a container with class 'p_section1')
-                    $('#fund_update_container').append(newElement);
+                    $('#j_data_container').append(newElement);
                 });
                 currentPage++;
             } catch (error) {
@@ -197,57 +194,55 @@
         return formatter.format(number);
     }
 
+    let hidden = 0;
+
+
     $('#j_fund_modal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
-        var id = button.data('id');
+        hidden = button.data('id');
         var title = button.data('name');
         // 모달 팝업에 데이터 집어넣기
         var modal = $(this);
-        $('#fund_frame').attr('src', '/admin/funding/' + id + '/updateForm');
+        $('#fund_frame').attr('src', '/admin/funding/' + hidden + '/updateForm');
         $('#modal_title').text(title);
-        $('#hidden_id').attr('value', id);
+        $('#hidden_id').attr('value', hidden);
     });
 
+        async function updateById(id) {
+            const userConfirmed = window.confirm('정말로 종료하시겠습니까?');
+            console.log("버튼 데이터 이이디 출력")
+            // 확인을 누른 경우에만 서버로 통신 시작
+            if (userConfirmed) {
+                try {
+                    let response = await fetch('/admin/funding/end', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({fundingId: id}),
+                    });
+                    console.log("여기까지 진입2");
+                    let responseBody = await response.json();
 
-    async function updateById() {
-        // 확인 창 띄우기
-        const userConfirmed = window.confirm('정말로 삭제하시겠습니까?');
-        let fundingId = document.getElementById('hidden_id').value;
+                    console.log("내부 제이슨 변환 완료");
+                    console.log(responseBody);
+                    console.log(responseBody.success);
 
-        // 확인을 누른 경우에만 서버로 통신 시작
-        if (userConfirmed) {
-            try {
-                let response = await fetch('/admin/funding/end', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ fundingId: fundingId }),
-                });
-
-                console.log("여기까지 진입2");
-
-                let responseBody = await response.json();
-                console.log("내부 제이슨 변환 완료");
-                console.log(responseBody);
-
-                console.log(responseBody.success);
-
-                if (responseBody.success) {
-                    alert("펀딩 종료 성공");
-                    location.reload();
-                } else {
-                    throw new Error(responseBody.error);
+                    if (responseBody.success) {
+                        alert("펀딩 종료 성공");
+                        location.reload();
+                    } else {
+                        throw new Error(responseBody.error.message);
+                    }
+                } catch (error) {
+                    console.error('에러가 발생했습니다:' + error.message);
+                    alert('에러 발생 : ' + error.message);
                 }
-            } catch (error) {
-                console.error('에러가 발생했습니다:' + error.message);
-                alert('에러 발생 : ' + error.message);
+            } else {
+                // 사용자가 취소를 누른 경우
+                alert('취소되었습니다.');
             }
-        } else {
-            // 사용자가 취소를 누른 경우
-            alert('취소되었습니다.');
         }
-    }
 
 </script>
 </body>

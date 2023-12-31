@@ -16,7 +16,7 @@
     <select id="findByAdminUserPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
         select *
         from user_tb
-        where grade not in('VIP')
+        where grade not in('VIP') and is_withdrawal not in(true)
         order by created_at desc
             limit #{pageStart}, #{pageLimit}
     </select>
@@ -25,7 +25,7 @@
     <select id="findByAdminVipPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
         select *
         from user_tb
-        where grade != 'NORMAL'
+        where grade not in('NORMAL') and is_withdrawal not in(true)
         order by created_at desc
             limit #{pageStart}, #{pageLimit}
     </select>
@@ -78,7 +78,7 @@
         select *
         from user_tb ut
         where grade not in('NORMAL')
-        and ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%')
+        and ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%') and is_withdrawal not in(true)
         order by created_at desc
         limit #{pagingParams.pageStart}, #{pagingParams.pageLimit}
     </select>
@@ -88,7 +88,7 @@
         select *
         from user_tb ut
         where grade not in('VIP')
-            and ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%')
+            and ut.username LIKE CONCAT('%', #{keyword}, '%') or ut.user_email LIKE CONCAT('%', #{keyword}, '%') and is_withdrawal not in(true) 
         order by created_at desc
         limit #{pagingParams.pageStart}, #{pagingParams.pageLimit}
     </select>
@@ -100,12 +100,12 @@
 
     <!-- 페이징 일반 회원만 전체 갯수 조회 -->
     <select id="normalPageCount" resultType="Integer">
-        select count(id) from user_tb where grade = 'NORMAL'
+        select count(id) from user_tb where grade = 'NORMAL' and is_withdrawal=false
     </select>
 
     <!-- 페이징 VIP 회원만 전체 갯수 조회 -->
     <select id="vipPageCount" resultType="Integer">
-        select count(id) from user_tb where grade = 'VIP'
+        select count(id) from user_tb where grade = 'VIP' and is_withdrawal=false
     </select>
 
 </mapper>

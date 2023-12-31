@@ -85,15 +85,19 @@ public class FundingController {
     }
 
     @GetMapping("/funding/{id}")
-    public String detailFunding(@PathVariable Integer id, Model model){
-        User pricipal = (User) session.getAttribute(Define.PRINCIPAL);
+    public String detailFunding(@PathVariable Integer id, Model model, HttpSession session){
+        User principal = (User) session.getAttribute(Define.PRINCIPAL);
+
+        // pricipal이 null이면 null을 사용하여 isLiked를 체크
+        boolean isLiked = principal != null && scrabService.checkIsLiked(principal.getId(), id);
+
         FundingDetailDTO fundingDetailDTO = fundingService.detailFunding(id);
-        boolean isLiked = scrabService.checkIsLiked(1, id); // 추후 1을 sessionUser.getId()로 변경
         List<FundingDTO> moviesByMainDTOs = fundingService.moviesByMain(1, 10);
 
         model.addAttribute("fundingDetailDTO", fundingDetailDTO);
         model.addAttribute("moviesByMainDTOs", moviesByMainDTOs);
         model.addAttribute("isLiked", isLiked);
+
         return "fund/on_detail";
     }
 

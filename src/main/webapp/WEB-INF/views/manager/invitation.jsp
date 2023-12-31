@@ -182,7 +182,38 @@
         });
     </script>
     <!--------------------------------- 달력 -------------------------------------------------->
-    
+    <script>
+        async function invitation(){
+            let userId = document.getElementById('userId').value;
+            let movieTime = document.getElementById('movieTime').value;
+            let invitationCode = document.getElementById('invitationCode').value;
+            let movieName = document.getElementById('movieName').value;
+            let theaterName = document.getElementById('theaterName').value;
+            let theaterAddress = document.getElementById('theaterAddress').value;
+
+            let response = await fetch(`/admin/vip-issued`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userId: userId,
+                    movieTime: movieTime,
+                    invitationCode: invitationCode,
+                    movieName: movieName,
+                    theaterName: theaterName,
+                    theaterAddress: theaterAddress
+                }),
+            });
+            let responseBody = await response.json();
+
+            if(responseBody.success){
+                alert('초청권을 전달했습니다!');
+            } else {
+                alert('초청권 전달을 실패했습니다.');
+            }
+        }
+    </script>
 </body>
 
 
