@@ -55,25 +55,29 @@
             </form>
             <div class="p_fund_form" id="fund_container">
                 <c:forEach var="funding" items="${searchResultDTOs}" varStatus="status">
-                <div class="p_section1 p_box">
-                    <button style="border: none; background: transparent" onclick="openModal(${status.index})"><img
-                            src="${funding.movieThumbnail}" alt="영화사진"></button>
-                    <div class="p_list">
-                        <p class="p_p1">${funding.movieName}</p>
-                        <p class="p_p2">감독 : ${funding.director}</p><br>
-                        <div class="p_flex">
-                            <p class="p_p3">${funding.fundingRate}</p>
-                            <p class="p_p4" style="margin-left: 5px">% 달성</p><br>
-                            <p class="p_p5">${funding.endDate}</p><br>
-                        </div>
-                        <div class="p_flex">
-                            <p class="p_p6" style="margin-top: 25px">${funding.formatPrice()}</p>
-                            <p class="p_p7" style="margin-top: 15px">원 달성</p><br>
-                            <p class="p_p8" style="margin-left: 5px">
-                                참여 ${funding.peopleCount}</p>
+                    <div class="p_section1 p_box">
+                        <button type="button" style="border: none; background: transparent"
+                                data-bs-toggle="modal" data-bs-target="#j_fund_modal" data-id="${funding.fundingId}"
+                                data-name="${funding.movieName}">
+                            <img src="${funding.movieThumbnail}" alt="영화사진">
+                        </button>
+                        <div class="p_list">
+                            <p class="p_p1">${funding.movieName}</p>
+                            <p class="p_p2">감독 : ${funding.director}</p><br>
+                            <div class="p_flex">
+                                <p class="p_p3">${funding.fundingRate}</p>
+                                <p class="p_p4" style="margin-left: 5px">% 달성</p><br>
+                                <p class="p_p5">${funding.endDate}</p><br>
+                            </div>
+                            <div class="p_flex">
+                                <p class="p_p6" style="margin-top: 25px">${funding.formatPrice()}</p>
+                                <p class="p_p7" style="margin-top: 15px">원 달성</p><br>
+                                <p class="p_p8" style="margin-left: 5px">
+                                    참여 ${funding.peopleCount}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </c:forEach>
                 <!--모달-->
                 <div class="modal" id="j_fund_modal">
                     <div class="modal-dialog" style="max-width: none; width: 70%">
@@ -87,7 +91,7 @@
                             <!-- Modal body -->
                             <div class="modal-body">
                                 <iframe id="fund_frame" style="width: 100%; height: 100%;
-                                      border: none;">대체 내용
+                              border: none;">대체 내용
                                 </iframe>
                             </div>
                             <!-- Modal footer -->
@@ -99,7 +103,6 @@
                 </div>
                 <input type="hidden" id="hidden_id">
             </div>
-            </c:forEach>
         </div>
     </div>
     <!--컨테이너2 끝-->

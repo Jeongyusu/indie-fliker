@@ -86,25 +86,23 @@
                         <!-- 모달 -->
                         <div class="p_modal" id="myModal">
                             <div class="p_modal_flex">
-                                <div class="modal_from">
-                                    <form action="/admin/vip-issued" method="post">
-                                        <h2>초청권 발급</h2>
-                                        <input type="hidden" id="userId" name="userId" value ="${user.id}">
-                                        <label>날짜 및 시간 선택</label><br>
-                                        <input type="text" id="movieTime" name="movieTime" placeholder="날짜 및 시간 선택"><br>
-                                        <label>초청권 코드</label><br>
-                                        <input type="text" id="invitationCode" name="invitationCode" placeholder="초청권 코드 입력"><br>
-                                        <label>영화 제목</label><br>
-                                        <input type="text" id="movieName" name="movieName" placeholder="영화 제목 입력"><br>
-                                        <label>극장 이름</label><br>
-                                        <input type="text" id="theaterName" name="theaterName" placeholder="극장 이름 입력"><br>
-                                        <label>극장 주소</label><br>
-                                        <input type="text" id="theaterAddress" name="theaterAddress" placeholder="극장 주소 입력"><br>
-                                        <div class="p_modal_flex_between">
-                                            <button class="p_submit" type="submit">발급 하기</button>
-                                            <button type="button" class="p_close" onclick="closeModal()">닫기</button>
-                                        </div>
-                                    </form>
+                                <div class="p_in_modal_from">
+                                    <h2>초청권 발급</h2>
+                                    <input type="hidden" id="userId" name="userId" value ="${user.id}">
+                                    <label>날짜 및 시간 선택</label><br>
+                                    <input type="text" id="movieTime" name="movieTime" placeholder="날짜 및 시간 선택"><br>
+                                    <label>초청권 코드</label><br>
+                                    <input type="text" id="invitationCode" name="invitationCode" placeholder="초청권 코드 입력"><br>
+                                    <label>영화 제목</label><br>
+                                    <input type="text" id="movieName" name="movieName" placeholder="영화 제목 입력"><br>
+                                    <label>극장 이름</label><br>
+                                    <input type="text" id="theaterName" name="theaterName" placeholder="극장 이름 입력"><br>
+                                    <label>극장 주소</label><br>
+                                    <input type="text" id="theaterAddress" name="theaterAddress" placeholder="극장 주소 입력"><br>
+                                    <div class="p_modal_flex_between">
+                                        <button class="p_submit" type="button" onclick="invitation()">발급 하기</button>
+                                        <button type="button" class="p_close" onclick="closeModal()">닫기</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -177,6 +175,7 @@
     <script>
         let choiceDay = document.getElementById('movieTime');
         flatpickr(choiceDay, {
+            minDate: "today",
             enableTime: true,
             dateFormat: "Y-m-d H:i",
         });

@@ -7,92 +7,96 @@
 <div class="p_flex_center">
     <div class="p_main">
     <!--컨테이너1 시작-->
-    <div class="p_container1">
-    <div class="p_section1">
-        <div class="p_section_title">영화</div>
-        <ul class="p_section_ul">
-            <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/funding-ready-list">펀딩 등록 승인</a></li>
-            <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/funding/confirm">펀딩 현황 확인</a></li>
-            <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/funding-management">펀딩 수정 · 종료</a></li>
-        </ul>
-        <div class="p_line"></div>
-    </div>
-
-    <div class="p_section2">
-        <div class="p_section_title">회원</div>
-        <ul class="p_section_ul">
-            <li><i class="fa-solid fa-ticket-simple p_icon1"></i><a href="/admin/invitation">VIP 초청권 발급</a></li>
-            <li><i class="fa-solid fa-user p_icon2"></i><a href="/admin/user-management">일반 회원 관리</a></li>
-            <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/vip-management">VIP 회원 관리</a></li>
-            <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/grade-update">회원 등급 수정</a></li>
-        </ul>
-        <div class="p_line"></div>
-    </div>
-
-    <div class="p_section3">
-        <div class="p_section_title">기간 설정</div>
-        <ul class="p_section_ul">
-            <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/movie-open/setting">온라인 상영 기간 · 채팅 오픈 설정</a></li>
-            <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/off-movie-open/setting">오프라인 상영 기간 설정</a></li>
-        </ul>
-        <div class="p_line"></div>
-    </div>
-</div>
-    <!--컨테이너1 끝-->
-    <!--컨테이너2 시작-->
-    <div class="p_playday_container2">
-        <div class="p_container_title">
-            <h3>온라인 상영 기간 설정 · 채팅 오픈 시간 설정</h3>
-        </div>
-        <form id="search-form" action="/admin/movie-open-setting/search" method="get">
-            <div class="p_search">
-                <input type="text" name="keyword" placeholder="검색 하기">
-                <button type="submit" class="p_search_button">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
+        <div class="p_container1">
+            <div class="p_section1">
+                <div class="p_section_title">영화</div>
+                <ul class="p_section_ul">
+                    <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/funding-ready-list">펀딩 등록 승인</a></li>
+                    <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/funding/confirm">펀딩 현황 확인</a></li>
+                    <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/funding-management">펀딩 수정 · 종료</a></li>
+                </ul>
+                <div class="p_line"></div>
             </div>
-        </form>
-        <div class="p_movie_form" id="j_data_container">
-            <c:forEach var="funding" items="${searchResultDTOs}" varStatus="status">
-                <div class="p_movie_card" >
-                    <img src="${funding.thumbnail}" alt="">
-                    <p class="p_movie_title">${funding.movieName}</p>
-                    <button class="p_movie_period_button" onclick="openMovieSettingModal(${funding.movieId})">상영기간 및 채팅오픈시간 설정</button>
-                </div>
-            </c:forEach>
-            <!----------------------------------- 모달 ------------------------------------------------>
-            <!-- 모달 백그라운드 -->
-            <!-- 모달 -->
-            <div class="j_custom_streaming_modal" id="j_streaming_modal" >
-                <input type="hidden" id="selected_movie_id">
-                <input type="hidden" id="funding_end_date">
-                <div id="movie_name_container">
-                    <span id="j_movie_name">영화 이름</span>
-                </div>
-                <p> 온라인 상영기간 설정</p><br>
-                <label>온라인 스트리밍 개봉일 설정</label><br>
-                <input type="text" id="release_date_choice" name="onlineReleaseDate" placeholder="날짜 선택"><br>
-                <div id="release_date_container">
-                    <input type="text" id="release_date" placeholder="날짜 선택"><br>
-                </div>
-                <label>온라인 스트리밍 종료일 설정</label><br>
-                <input type="text" id="end_date_choice" name="onlineEndDate" placeholder="날짜 선택"><br>
-                <div id="end_date_container">
-                    <input type="text" id="end_date" placeholder="날짜 선택"><br>
-                </div>
-                <label>온라인 채팅 오픈 시간 설정</label><br>
-                <input type="text" id="chat_time_choice" name="chatTime" placeholder="날짜 및 시간 선택"><br>
-                <div id="chat_time_container">
-                    <input type="text" id="chat_time" placeholder="날짜 및 시간 선택"><br>
-                </div>
-                <button class="j_streaming_close" type="submit" onclick="saveMovieOpenInfo()">설정 하기</button>
-                <button class="j_streaming_close2" style="background-color: var(--point_05);" type="button" onclick="closeMovieSettingModal()">닫기</button>
+
+            <div class="p_section2">
+                <div class="p_section_title">회원</div>
+                <ul class="p_section_ul">
+                    <li><i class="fa-solid fa-ticket-simple p_icon1"></i><a href="/admin/invitation">VIP 초청권 발급</a></li>
+                    <li><i class="fa-solid fa-user p_icon2"></i><a href="/admin/user-management">일반 회원 관리</a></li>
+                    <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/vip-management">VIP 회원 관리</a></li>
+                    <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/grade-update">회원 등급 수정</a></li>
+                </ul>
+                <div class="p_line"></div>
+            </div>
+
+            <div class="p_section3">
+                <div class="p_section_title">기간 설정</div>
+                <ul class="p_section_ul">
+                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/movie-open/setting">온라인 상영 기간 · 채팅 오픈 설정</a></li>
+                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/off-movie-open/setting">오프라인 상영 기간 설정</a></li>
+                </ul>
+                <div class="p_line"></div>
             </div>
         </div>
-
-
-    </div>
-    <!--컨테이너2 끝-->
+        <!--컨테이너1 끝-->
+        <!--컨테이너2 시작-->
+        <div class="p_playday_container2">
+            <div class="p_container_title">
+                <h3>온라인 상영 기간 설정 · 채팅 오픈 시간 설정</h3>
+            </div>
+            <form id="search-form" action="/admin/movie-open-setting/search" method="get">
+                <div class="p_search">
+                    <input type="text" name="keyword" placeholder="검색 하기">
+                    <button type="submit" class="p_search_button">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </form>
+            <div class="p_movie_form" id="j_data_container">
+                <c:forEach var="funding" items="${searchResultDTOs}" varStatus="status">
+                    <div class="p_movie_card" >
+                        <img src="${funding.thumbnail}" alt="">
+                        <p class="p_movie_title">${funding.movieName}</p>
+                        <button class="p_movie_period_button" onclick="openMovieSettingModal(${funding.movieId})">상영기간 및 채팅오픈시간 설정</button>
+                    </div>
+                </c:forEach>
+                <!----------------------------------- 모달 ------------------------------------------------>
+                <!-- 모달 백그라운드 -->
+                <!-- 모달 -->
+                <div class="p_modal" id="j_streaming_modal">
+                    <input type="hidden" id="selected_movie_id">
+                    <input type="hidden" id="funding_end_date">
+                    <div class="p_modal_flex">
+                        <div class="p_modal_from">
+                            <h2 id="j_movie_name">영화 이름</h2>
+                            <p>온라인 상영기간 설정</p><br>
+                            <label>온라인 스트리밍 개봉일 설정</label><br>
+                            <input type="text" id="release_date_choice" name="onlineReleaseDate"
+                                   placeholder="날짜 선택"><br>
+                            <div id="release_date_container">
+                                <input type="text" id="release_date" placeholder="날짜 선택">
+                            </div>
+                            <label>온라인 스트리밍 종료일 설정</label><br>
+                            <input type="text" id="end_date_choice" name="onlineEndDate" placeholder="날짜 선택"><br>
+                            <div id="end_date_container">
+                                <input type="text" id="end_date" placeholder="날짜 선택">
+                            </div>
+                            <hr style="margin-bottom: 30px; margin-top: 0">
+                            <p>온라인 채팅 오픈 시간 설정</p><br>
+                            <input type="text" id="chat_time_choice" name="chatTime" placeholder="날짜 및 시간 선택">
+                            <div id="chat_time_container">
+                                <input type="text" id="chat_time" placeholder="날짜 및 시간 선택"><br>
+                            </div>
+                            <div class="p_modal_flex_between" style="margin-top: 12px">
+                                <button class="p_submit" type="submit" onclick="saveMovieOpenInfo()">설정 하기</button>
+                                <button class="p_close" type="button" onclick="closeMovieSettingModal()">닫기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--컨테이너2 끝-->
     </div>
     <div>
         <button id="scrollToTopBtn"><img src="/images/icons/upArrow.gif" class="j_up_button"></button>
@@ -128,9 +132,8 @@
                 let selectedMovieId = document.getElementById('selected_movie_id');
                 selectedMovieId.value = responseBody.response.id;
 
-                let movieNameContainer = document.getElementById('movie_name_container');
-                movieNameContainer.innerHTML = '';
-                movieNameContainer.innerHTML = `<span id="j_movie_name">` + '[' + responseBody.response.movieName +']'+ `</span>`;
+                let movieNameContainer = document.getElementById('j_movie_name');
+                movieNameContainer.innerHTML = responseBody.response.movieName;
 
                 let child = document.getElementById('release_date');
                 child.parentNode.removeChild(child);
@@ -141,7 +144,6 @@
                 newInput.value = "기존 설정일 : " + responseBody.response.onlineReleaseDate;
                 newInput.disabled = true;
                 newInput.className = "j_custom_margin_bottom"
-                newInput.style = "width : 180px;"
                 let parent = document.getElementById('release_date_container');
                 parent.appendChild(newInput);
 
@@ -154,7 +156,6 @@
                 newInput2.value = "기존 설정일 : " + responseBody.response.onlineEndDate;
                 newInput2.disabled = true;
                 newInput2.className = "j_custom_margin_bottom"
-                newInput2.style = "width : 180px;"
                 let parent2 = document.getElementById('end_date_container');
                 parent2.appendChild(newInput2);
 
@@ -180,7 +181,6 @@
                 newInput3.placeholder = '날짜 및 시간을 선택하세요';
                 newInput3.value = "기존 설정 시간 : " + formattedChatTime;
                 newInput3.disabled = true;
-                newInput3.style = "width : 300px;"
                 parent3.appendChild(newInput3);
 
                 document.querySelector("#release_date_choice").value = null;
@@ -266,7 +266,6 @@
             newInput.value = "기존 설정일 : " + releaseDate;
             newInput.disabled = true;
             newInput.className = "j_custom_margin_bottom"
-            newInput.style = "width : 180px;"
             let parent = document.getElementById('release_date_container');
             parent.appendChild(newInput);
 
@@ -279,7 +278,6 @@
             newInput2.value = "기존 설정일 : " + endDate;
             newInput2.disabled = true;
             newInput2.className = "j_custom_margin_bottom"
-            newInput2.style = "width : 180px;"
             let parent2 = document.getElementById('end_date_container');
             parent2.appendChild(newInput2);
 
@@ -292,7 +290,6 @@
             newInput3.placeholder = '날짜 및 시간을 선택하세요';
             newInput3.value = "기존 설정 시간 : " + chatTime;
             newInput3.disabled = true;
-            newInput3.style = "width : 300px;"
             parent3.appendChild(newInput3);
         } else {
             throw new Error(responseBody.error);
@@ -343,10 +340,10 @@
             try {
                 const newData = await fetchFundingList(currentPage);
                 newData.forEach((funding) => {
-                    var newElement = '<div class="p_menu1" >' +
+                    var newElement = '<div class="p_movie_card" >' +
                         '<img src="' + funding.thumbnail + '" alt="">' +
-                        '<p>' + funding.movieName + '</p>' +
-                        '<button onclick="openMovieSettingModal(' + funding.movieId + ')">상영기간 및 채팅오픈시간 설정</button>' +
+                        '<p class="p_movie_title">' + funding.movieName + '</p>' +
+                        '<button class="p_movie_period_button" onclick="openMovieSettingModal(' + funding.movieId + ')">상영기간 및 채팅오픈시간 설정</button>' +
                         '</div>';
 
                     // Append new content to the container with class 'p_section1'

@@ -160,17 +160,17 @@
                         '<img src="' + funding.movieThumbnail + '" alt="영화사진">' +
                         '</button>' +
                         '<div class="p_list">' +
-                        '<p class="p_p1">' + funding.movieName + '</p><br>' +
-                        '<p class="p_p2">디렉터:' + funding.director + '</p><br>' +
+                        '<p class="p_p1">' + funding.movieName + '</p>' +
+                        '<p class="p_p2">감독:' + funding.director + '</p><br>' +
                         '<div class="p_flex">' +
-                        '<p class="p_p3" style="margin-top: 15px">' + funding.fundingRate + '</p>' +
-                        '<p class="p_p4" style="margin-top: 3px">% 달성</p><br>' +
+                        '<p class="p_p3">' + funding.fundingRate + '</p>' +
+                        '<p class="p_p4" style="margin-left: 5px">% 달성</p><br>' +
                         '<p class="p_p5">' + funding.endDate + '</p><br>' +
                         '</div>' +
                         '<div class="p_flex">' +
                         '<p class="p_p6" style="margin-top: 25px">' + formatPrice(funding.presentPrice) + '</p>' +
                         '<p class="p_p7" style="margin-top: 15px">원 달성</p><br>' +
-                        '<p class="p_p8" style="margin-left: 15px;>참여 ' + funding.peopleCount + '</p>' +
+                        '<p class="p_p8" style="margin-left: 5px;>참여 ' + funding.peopleCount + '</p>' +
                         '</div>' +
                         '</div>' +
                         '</div>';

@@ -1651,28 +1651,29 @@
     justify-content: space-between;
 }
 
-.modal_from {
-    width: 300px;
+.p_in_modal_from {
+    width: 320px;
     text-align: center;
 }
 
-.modal_from p {
+.p_in_modal_from p {
     font-size: 18px;
     font-weight: bold;
     text-align: start;
 }
 
-.modal_from label{
+.p_in_modal_from label{
     display: flex;
-    width: 300px;
+    width: 320px;
 }
 
-.modal_from input {
+.p_in_modal_from input {
     margin-bottom: 20px;
-    width: 300px;
+    width: 320px;
     height: 40px;
     border-radius: 5px;
     border: 0.5px solid var(--line_01);
+    background-color: transparent;
     padding: 10px;
 }
 
@@ -1685,7 +1686,7 @@
 }
 
 .p_modal_from {
-    width: 300px;
+    width: 320px;
     text-align: center;
 }
 
@@ -1698,22 +1699,32 @@
 
 .p_modal_from label{
     display: flex;
-    width: 300px;
+    width: 320px;
 }
 
 .p_modal_from input {
-    width: 300px;
+    width: 320px;
     height: 40px;
     border-radius: 5px;
     border: 0.5px solid var(--line_01);
+    background-color: transparent;
     padding: 10px;
+}
+
+.p_modal_from div {
+    width: 100%;
 }
 
 #release_date_container input, #end_date_container input, #chat_time_container input {
     border: none;
     padding: 0;
     color: var(--point_02);
+    text-align: center;
 }
+
+#off_funding_end_container {
+    width: 320px;
+ }
 
 .p_submit {
     background-color: var(--primary_01);
