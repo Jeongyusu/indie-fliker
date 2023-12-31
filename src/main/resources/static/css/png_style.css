@@ -18,10 +18,11 @@
 .p_flex_center {
     display: flex;
     justify-content: center;
+    margin-top: 40px;
 }
 
 .p_main {
-    width: 1280px;
+    width: 1600px;
     height: 100%;
     display: flex;
 }
@@ -33,12 +34,12 @@
 .p_top {
     width: 100%;
     height: 75px;
+    background-color: var(--def_bl);
 }
 
 .p_top .p_page_title {
     font-weight: bold;
     font-size: 28px;
-    color: var(--primary_01);
     padding-bottom: 3px;
     height: 75px;
     display: flex;
@@ -46,9 +47,14 @@
     margin: 0 40px;
 }
 
+.p_top .p_page_title a {
+    text-decoration: none;
+    color: var(--def_wh);
+}
+
 .p_search {
     text-align: end;
-    margin-bottom: 24px;
+    margin-bottom: 40px;
 }
 
 .p_search input {
@@ -107,18 +113,18 @@
 /*--------------------------------------*/
 .p_container1 {
     height: 100%;
-    width: 23%;
+    width: 20%;
     margin: 40px 0;
     border-right: 0.1px solid var(--back_02);
     padding: 0 28px;
 }
 
 .p_section_title {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .p_section_ul {
-    font-size: 15px;
+    font-size: 16px;
     list-style: none;
 }
 
@@ -560,7 +566,7 @@
 /*---------------------------------------------------------------------*/
 .p_register_container2 {
     height: 100%;
-    width: 77%;
+    width: 80%;
     padding: 0 28px;
 }
 
@@ -582,7 +588,7 @@
 }
 
 .p_movie_card img {
-    width: 100%;
+    width: 90%;
     border-radius: 5px;
 }
 
@@ -608,6 +614,15 @@
     border-radius: 5px;
     font-size: 14px;
     margin-top: 5px;
+}
+
+.p_movie_period_button {
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    background: var(--primary_01);
+    color: white;
+    border-radius: 5px;
 }
 
 .p_register_container2 .p_section2 {
@@ -672,7 +687,7 @@
 /*---------------------------------------------------------------------*/
 .p_check_container2 {
     height: 100%;
-    width: 77%;
+    width: 80%;
     padding: 0 28px;
 }
 
@@ -780,12 +795,9 @@
 /* 관리자 페이지 초청권 ( invitation )*/
 /*---------------------------------------------------------------------*/
 .p_invitation_container2 {
-    /* background-color: antiquewhite; */
-    position: relative;
-    width: 1300px;
-    height: 550px;
-    top: 120px;
-    left: 380px;
+    height: 100%;
+    width: 80%;
+    padding: 0 28px;
 }
 
 .p_invitation_container2 .p_filter {
@@ -822,35 +834,50 @@
     right: 15px;
 }
 
-.p_invitation_container2 .p_section1 {
-    position: relative;
-    top: 20px;
+.p_user_form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.p_invitation_container2 .p_section1 .table img {
+.p_invitation_form {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.p_invitation_form .table th {
+    text-align: center;
+    padding: 12px 10px;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+.p_invitation_form .table td {
+    padding: 12px 10px;
+    vertical-align: middle;
+    text-align: center;
+    border-top: 1px solid #dee2e6;
+}
+
+
+.p_invitation_form .table img {
     background-color: #01DFD7;
-    width: 30px;
-    height: 30px;
+    width: 25px;
     border-radius: 15px;
+    margin-right: 8px;
 }
+.p_invitation_form .table .p_name {
 
-.p_invitation_container2 .p_section1 .table .p_name {
-    position: relative;
-    bottom: 27px;
-    left: 40px;
 }
-
-.p_invitation_container2 .p_section1 .table button {
-    background-color: #01DFD7;
+.p_invitation_form .table button {
+    background-color: var(--primary_01);
     width: 90px;
-    height: 30px;
+    height: 35px;
     border-radius: 5px;
     border: none;
-    border-color: white;
     transition-duration: 0.2s;
 }
-
-.p_invitation_container2 .p_section1 .table button:hover {
+.p_invitation_form .table button:hover {
     color: white;
 }
 
@@ -1002,7 +1029,7 @@
 /*---------------------------------------------------------------------*/
 .p_update_delete_container2 {
     height: 100%;
-    width: 77%;
+    width: 80%;
     padding: 0 28px;
 }
 
@@ -1021,10 +1048,6 @@
     background: var(--point_04);
     color: white;
     border-radius: 5px
-}
-
-.p_modal_close_button {
-
 }
 
 .p_update_delete_container2 .p_section1 {
@@ -1146,12 +1169,9 @@
 /* 관리자 페이지 오프라인 기간 설정 ( playday ) */
 /*---------------------------------------------------------------------*/
 .p_playday_container2 {
-    /* background-color: antiquewhite; */
-    position: relative;
-    width: 1200px;
-    height: 640px;
-    top: 70px;
-    left: 420px;
+    height: 100%;
+    width: 80%;
+    padding: 0 28px;
 }
 
 .p_playday_container2 .p_section1 {
@@ -1215,15 +1235,15 @@
     /* background-color: #E6E6E6; */
 }
 
-.p_playday_container2 button {
-    background-color: #01DFD7;
-    border: none;
-    border-radius: 5px;
-    width: 200px;
-    height: 30px;
-    text-decoration: none;
-    transition-duration: 0.5s;
-}
+/*.p_playday_container2 button {*/
+/*    background-color: #01DFD7;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    width: 200px;*/
+/*    height: 30px;*/
+/*    text-decoration: none;*/
+/*    transition-duration: 0.5s;*/
+/*}*/
 
 .p_playday_container2 button:hover {
     text-decoration: none;
@@ -1360,12 +1380,9 @@
 /* 관리자 페이지 일반 회원 관리 ( usermanagerment ) */
 /*---------------------------------------------------------------------*/
 .p_usermanagement_container2 {
-    /* background-color: antiquewhite; */
-    position: relative;
-    width: 1300px;
-    height: 550px;
-    top: 120px;
-    left: 380px;
+    height: 100%;
+    width: 80%;
+    padding: 0 28px;
 }
 
 .p_usermanagement_container2 .p_filter {
@@ -1402,32 +1419,45 @@
     right: 15px;
 }
 
-.p_usermanagement_container2 .p_section1 {
-    position: relative;
-    top: 20px;
+.p_usermanagement_form {
+    margin-top: 20px;
+    font-size: 16px;
 }
 
-.p_usermanagement_container2 .p_section1 .table img {
+.p_usermanagement_form .table th {
+    text-align: center;
+    padding: 12px 10px;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+.p_usermanagement_form .table td {
+    padding: 12px 10px;
+    vertical-align: middle;
+    text-align: center;
+    border-top: 1px solid #dee2e6;
+}
+
+
+.p_usermanagement_form .table img {
     background-color: #01DFD7;
-    width: 30px;
-    height: 30px;
+    width: 25px;
     border-radius: 15px;
+    margin-right: 8px;
 }
+.p_usermanagement_form .table .p_name {
 
-.p_usermanagement_container2 .p_section1 .table .p_name {
-    position: relative;
-    bottom: 27px;
-    left: 40px;
 }
-
-.p_usermanagement_container2 .p_section1 .table button {
-    background-color: #ea6161;
+.p_usermanagement_form .table button {
+    background-color: var(--point_04);
     width: 90px;
-    height: 30px;
+    height: 35px;
     border-radius: 5px;
     border: none;
-    border-color: white;
     transition-duration: 0.2s;
+}
+.p_usermanagement_form .table button:hover {
+    color: white;
 }
 
 .p_usermanagement_container2 .p_section1 .table button:hover {
@@ -1447,12 +1477,9 @@
 /* 관리자 페이지 VIP 관리 ( vipmanagerment ) */
 /*---------------------------------------------------------------------*/
 .p_vipmanagement_container2 {
-    /* background-color: antiquewhite; */
-    position: relative;
-    width: 1300px;
-    height: 550px;
-    top: 120px;
-    left: 380px;
+    height: 100%;
+    width: 80%;
+    padding: 0 28px;
 }
 
 .p_vipmanagement_container2 .p_filter {
@@ -1585,81 +1612,125 @@
 /* 초청권 발급 모달 스타일 */
 /*---------------------------------------------------------------------*/
 .p_modal {
-    display: none; /* 모달 초기에는 숨김 상태 */
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 20px;
+    padding: 20px 0;
     background-color: #fff;
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1;
-    width: 40%;
-    height: 70%;
+    width: 538px;
+    height: 632px;
+    border-radius: 5px;
 }
 
 .p_modal img {
-    position: relative;
-    top: 5px;
-    left: 10px;
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
 }
 
 .p_modal h2 {
-    position: relative;
+    font-weight: bold;
     bottom: 70px;
     left: 88%;
-    transform: translate(-50%, 0px);
+    font-size: 20px;
+    padding: 10px 0 15px;
+    margin-bottom: 14px;
 }
 
-.p_modal .modal_from {
-    position: relative;
-    top: 60px;
-    left: 0px;
-    width: 100%;
-    height: 80%;
+.p_modal_flex {
+    display: flex;
+    justify-content: center;
 }
 
-.p_modal .modal_from label {
-    position: relative;
-    bottom: 110px;
-    left: 210px;
+.p_modal_flex_between {
+    display: flex;
+    justify-content: space-between;
 }
 
-.p_modal .modal_from input {
-    position: relative;
-    bottom: 110px;
-    left: 50%;
-    transform: translate(-50%, 0px);
+.modal_from {
+    width: 300px;
+    text-align: center;
+}
+
+.modal_from p {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: start;
+}
+
+.modal_from label{
+    display: flex;
+    width: 300px;
+}
+
+.modal_from input {
     margin-bottom: 20px;
     width: 300px;
     height: 40px;
-    border-radius: 10px;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
+    padding: 10px;
 }
 
-.p_modal .modal_from .submit {
-    position: relative;
-    background-color: #01DFD7;
-    bottom: 100px;
-    left: 50%;
-    transform: translate(-50%, 0px);
+.p_modal_from h2 {
+    font-weight: bold;
+    bottom: 70px;
+    left: 88%;
+    font-size: 20px;
+    padding: 15px;
+}
+
+.p_modal_from {
+    width: 300px;
+    text-align: center;
+}
+
+.p_modal_from p {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: start;
+    margin-top: 14px;
+}
+
+.p_modal_from label{
+    display: flex;
+    width: 300px;
+}
+
+.p_modal_from input {
     width: 300px;
     height: 40px;
-    border-radius: 10px;
-    border: none;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
+    padding: 10px;
 }
 
-.p_modal .close {
-    top: 10px;
-    position: absolute;
-    right: 15px;
-    width: 100px;
-    height: 30px;
-    border-radius: 10px;
+#release_date_container input, #end_date_container input, #chat_time_container input {
     border: none;
-    background-color: #01DFD7;
+    padding: 0;
+    color: var(--point_02);
+}
+
+.p_submit {
+    background-color: var(--primary_01);
+    width: 45%;
+    height: 45px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 10px;
+}
+
+.p_close {
+    background-color: var(--point_04);
+    width: 45%;
+    height: 45px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 10px;
 }
 
 .p_modal button:hover {
@@ -1678,18 +1749,18 @@
     z-index: 1;
 }
 
+
+
+
 /*---------------------------------------------------------------------*/
 /* 초청권 발급 모달 스타일 */
 
 /* 관리자 페이지 - 회원 등급 수정( grade_update ) */
 /*---------------------------------------------------------------------*/
 .p_grade_update_container2 {
-    /* background-color: antiquewhite; */
-    position: relative;
-    width: 1300px;
-    height: 550px;
-    top: 120px;
-    left: 380px;
+    height: 100%;
+    width: 80%;
+    padding: 0 28px;
 }
 
 .p_grade_update_container2 .p_filter {
@@ -1765,13 +1836,14 @@
 }
 
 .p_grade_update_container2 .p_vip {
-    background-color: #00c4c4;
+    background-color: var(--point_03);
     width: 80px;
     height: 35px;
     text-align: center;
     line-height: 33px;
     border-radius: 10px;
     text-decoration: none;
+    font-size: 14px;
 }
 
 .p_grade_update_container2 .p_vip:hover {
@@ -1779,13 +1851,14 @@
 }
 
 .p_grade_update_container2 .p_normal {
-    background-color: #ea6161;
+    background-color: var(--primary_01);
     width: 80px;
     height: 35px;
     text-align: center;
     line-height: 33px;
     border-radius: 10px;
     text-decoration: none;
+    font-size: 14px;
 }
 
 .p_grade_update_container2 .p_normal:hover {
@@ -1981,7 +2054,7 @@
 /* 전체 페이징 버튼 스타일 */
 /*---------------------------------------------------------------------*/
 .p_paging .p_priveous {
-    background-color: var(--primary_01);
+    background-color: var(--line_01);
     width: 45px;
     height: 35px;
     border-top-left-radius: 30px;
@@ -1993,6 +2066,8 @@
     text-decoration: none;
     color: black;
     font-weight: bold;
+    font-size: 13px;
+    padding-left: 2px;
 }
 
 .p_paging .p_priveous:hover {
@@ -2000,7 +2075,7 @@
 }
 
 .p_paging .p_next {
-    background-color: var(--primary_01);
+    background-color: var(--line_01);
     width: 45px;
     height: 35px;
     border-top-right-radius: 30px;
@@ -2012,6 +2087,8 @@
     text-decoration: none;
     color: black;
     font-weight: bold;
+    font-size: 13px;
+    padding-right: 2px;
 }
 
 .p_paging .p_next:hover {
@@ -2022,7 +2099,8 @@
     margin-left: 10px;
     margin-right: 10px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .p_paging .page_number:hover {
@@ -2030,7 +2108,12 @@
 }
 
 .p_paging span {
-    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--primary_01);
 }
 
 /*---------------------------------------------------------------------*/
