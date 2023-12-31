@@ -1,103 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../manager/layout/manager_header.jsp" %>
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 - 펀딩 수정 / 종료</title>
-    <!-- fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="/css/style.css" rel="stylesheet">
-</head>
-<body>
-
-<div class="p_main">
-    <!--탑 시작-->
-    <div class="p_top">
-
-        <div class="p_title">
-            <div class="p_line"></div>
-            <a href=""><h2>IndiFlinker</h2></a>
-        </div>
-
-        <form id="search-form" action="/admin/funding-management/search" method="get">
-            <div class="p_search">
-                <button type="submit">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-                <input type="text" name="keyword" placeholder="검색 하기">
+<!--컨테이너1 시작-->
+<div class="p_flex_center">
+    <div class="p_main">
+        <div class="p_container1">
+            <div class="p_section1">
+                <div class="p_section_title">영화</div>
+                <ul class="p_section_ul">
+                    <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/funding-ready-list">펀딩 등록 승인</a>
+                    </li>
+                    <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/funding/confirm">펀딩 현황 확인</a></li>
+                    <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/funding-management">펀딩 수정 · 종료</a></li>
+                </ul>
+                <div class="p_line"></div>
             </div>
-        </form>
-    </div>
-    <!--탑 끝-->
 
-    <!--컨테이너1 시작-->
-    <div class="p_container1">
+            <div class="p_section2">
+                <div class="p_section_title">회원</div>
+                <ul class="p_section_ul">
+                    <li><i class="fa-solid fa-ticket-simple p_icon1"></i><a href="/admin/invitation">VIP 초청권 발급</a></li>
+                    <li><i class="fa-solid fa-user p_icon2"></i><a href="/admin/user-management">일반 회원 관리</a></li>
+                    <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/vip-management">VIP 회원 관리</a></li>
+                    <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/grade-update">회원 등급 수정</a></li>
+                </ul>
+                <div class="p_line"></div>
+            </div>
 
-        <div class="p_section1">
-            <div class="p_dashboard">
-                <i class="fa-solid fa-table-cells-large"></i>
-                <a href="">대시보드</a>
+            <div class="p_section3">
+                <div class="p_section_title">기간 설정</div>
+                <ul class="p_section_ul">
+                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/movie-open/setting">온라인
+                        상영 기간 · 채팅 오픈 설정</a></li>
+                    <li><i class="fa-solid fa-calendar-days p_icon1"></i><a
+                            href="/admin/funding/off-movie-open/setting">오프라인 상영 기간 설정</a></li>
+                </ul>
+                <div class="p_line"></div>
             </div>
         </div>
+        <!--컨테이너1 끝-->
 
-        <div class="p_section2">
-            <h3>영화</h3>
-            <ul>
-                <li><i class="fa-solid fa-clapperboard p_icon1"></i><a href="/admin/funding-ready-list">펀딩 등록 승인</a></li>
-                <li><i class="fa-solid fa-chart-line p_icon2"></i><a href="/admin/funding/confirm">펀딩 현황 확인</a></li>
-                <li><i class="fa-solid fa-pen p_icon3"></i><a href="/admin/funding-management">펀딩 수정 / 종료</a></li>
-            </ul>
-            <div class="p_line"></div>
-        </div>
-
-        <div class="p_section3">
-            <h3>회원</h3>
-            <ul>
-                <li><i class="fa-solid fa-ticket-simple p_icon1"></i><a href="/admin/invitation">VIP 초청권 발급</a></li>
-                <li><i class="fa-solid fa-user p_icon2"></i><a href="/admin/user-management">일반 회원 관리</a></li>
-                <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/vip-management">VIP 회원 관리</a></li>
-                <li><i class="fa-solid fa-user-group p_icon3"></i><a href="/admin/grade-update">회원 등급 수정</a></li>
-            </ul>
-            <div class="p_line"></div>
-        </div>
-
-        <div class="p_section4">
-            <h3>기간 설정</h3>
-            <ul>
-                <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/movie-open/setting">온라인 상영 기간 설정/채팅 오픈 시간 설정</a></li>
-                <li><i class="fa-solid fa-calendar-days p_icon1"></i><a href="/admin/funding/off-movie-open/setting">오프라인 상영 기간 설정</a></li>
-            </ul>
-            <div class="p_line"></div>
-        </div>
-
-    </div>
     <!--컨테이너2 시작-->
     <div class="p_update_delete_container2">
-        <div class="j_font_style">
+        <div class="p_container_title">
             <h3>펀딩 수정 / 종료</h3>
         </div>
-        <div class="p_section1" id="j_data_container">
+        <form id="search-form" action="/admin/funding-management/search" method="get">
+            <div class="p_search">
+                <input type="text" name="keyword" placeholder="검색 하기">
+                <button type="submit" class="p_search_button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </form>
+        <div class="p_fund_update_form" id="fund_update_container">
+
             <c:forEach var="funding" items="${adminFundingModifyDTOs}" varStatus="status">
-                <div class="p_menu1">
+                <div class="p_movie_card">
                     <img src="${funding.movieThumbnail}">
-                    <p>${funding.movieName}</p>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#j_fund_modal"
+                    <p class="p_movie_title">${funding.movieName}</p>
+                    <button type="button" class="p_movie_update_button" data-bs-toggle="modal" data-bs-target="#j_fund_modal"
                             data-id="${funding.fundingId}" data-name="${funding.movieName}">
-                         펀딩 수정
+                        펀딩 수정
                     </button>
-                    <button class="p_button2" id="j_data_button" data-id="${funding.fundingId}" onclick="updateById(${funding.fundingId})">펀딩 종료</button>
+                    <button class="p_movie_delete_button" id="j_data_button" data-id="${funding.fundingId}" onclick="updateById(${funding.fundingId})">펀딩 종료</button>
                 </div>
             </c:forEach>
         </div>
@@ -126,40 +93,12 @@
         <input type="hidden" id="hidden_id">
         <!-- 모달 끝-->
         <!--컨테이너2 끝-->
-
-        <div class="p_update_delete_bottom">
-            <nav aria-label="...">
-                <ul class="pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link previous" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item active paging" aria-current="page" style="color:#01DFD7;">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">4</a>
-                    </li>
-                    <li class="page-item paging">
-                        <a class="page-link" href="#">5</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link next" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
     </div>
 </div>
-<div>
-    <button id="scrollToTopBtn"><img src="/images/icons/upArrow.gif" class="j_up_button"></button>
 </div>
+    <div>
+    <button id="scrollToTopBtn"><img src="/images/icons/upArrow.gif" class="j_up_button"></button>
+    </div>
 
 <script>
     let currentPage = 2;
@@ -206,13 +145,13 @@
                 const newData = await fetchFundingList(currentPage);
                 newData.forEach((funding) => {
                     var newElement =
-                        '<div class="p_menu1">' +
+                        '<div class="p_movie_card">' +
                         '<img src="' + funding.movieThumbnail + '">' +
-                        '<p>' + funding.movieName + '</p>' +
-                        '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#j_fund_modal" data-id="' + funding.fundingId + '" data-name="' + funding.movieName + '">' +
+                        '<p class="p_movie_title">' + funding.movieName + '</p>' +
+                        '<button type="button" class="p_movie_update_button" data-bs-toggle="modal" data-bs-target="#j_fund_modal" data-id="' + funding.fundingId + '" data-name="' + funding.movieName + '">' +
                         '펀딩 수정' +
                         '</button>' +
-                        '<button class="p_button2" data-id="' + funding.fundingId + '" onclick="updateById(' + funding.fundingId + ')">펀딩 종료</button>' +
+                        '<button class="p_movie_delete_button" data-id="' + funding.fundingId + '" onclick="updateById(' + funding.fundingId + ')">펀딩 종료</button>' +
                         '</div>';
                     $('#j_data_container').append(newElement);
                 });
