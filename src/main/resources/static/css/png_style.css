@@ -1448,7 +1448,7 @@
 .p_usermanagement_form .table .p_name {
 
 }
-.p_usermanagement_form .table button {
+.p_usermanagement_form .deleteButton {
     background-color: var(--point_04);
     width: 90px;
     height: 35px;
@@ -1456,7 +1456,17 @@
     border: none;
     transition-duration: 0.2s;
 }
-.p_usermanagement_form .table button:hover {
+
+.p_usermanagement_form .alreadyDeletedButton {
+    background-color: var(--line_01);
+    width: 90px;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    transition-duration: 0.2s;
+}
+
+.p_usermanagement_form .deleteButton:hover {
     color: white;
 }
 

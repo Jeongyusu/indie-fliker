@@ -202,8 +202,8 @@
                         // lastDay에 적용
                         lastDayFlatpickr.set('minDate', firstDay.value);
                         lastDayFlatpickr.set('maxDate', day.value);
-                        chatTime.setAttribute('minDate', firstDay.value);
-                        chatTime.set('maxDate', day.value);
+                        chatTimeFlatpicker.set('minDate', firstDay.value);
+                        chatTimeFlatpicker.set('maxDate', firstDay.value);
                     },
                 });
 
@@ -216,7 +216,7 @@
                 });
 
                 let chatTime = document.getElementById('chat_time_choice');
-                flatpickr(chatTime, {
+                let chatTimeFlatpicker = flatpickr(chatTime, {
                     enableTime: true,
                     dateFormat: "Y-m-d H:i",
                 });
