@@ -41,7 +41,7 @@
         <!--컨테이너2 시작-->
         <div class="p_grade_update_container2">
             <div class="p_container_title">
-                <h3>VIP 초청권 발급</h3>
+                <h3>회원 등급 수정</h3>
             </div>
             <form id="search-form" action="/admin/grade/search" method="get">
                 <div class="p_search">

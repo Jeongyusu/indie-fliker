@@ -15,6 +15,10 @@ public interface AdminRepository {
     // 일반 회원, VIP 회원 전체 페이징 조회
     public List<User> findByAllPagingLists(Map<String, Integer> pagingParams);
 
+    // 일반 회원, VIP 회원 전체 페이징 조회(탈퇴 회원 제외)
+
+    public List<User> findByAllPagingListsExWithdrawal(Map<String, Integer> pagingParams);
+
     // 일반 회원 관리 페이징 조회
     public List<User> findByAdminUserPagingLists(Map<String, Integer> pagingParams);
 
@@ -57,4 +61,15 @@ public interface AdminRepository {
 
     // 일반 회원관리 전체 페이징 검색어 조회
     public List<User> findByAdminNormalPagingKeywordLists(@Param("pagingParams") Map<String, Integer> pagingParams, @Param("keyword") String keyword);
+
+    //전체 회원 키워드 검색어 결과 총 개수 조회
+    public Integer keywordPageCount(String keyword);
+
+    //일반회원 관리 키워드 검색어 결과 총 개수 조회
+    public Integer keywordNormalPageCount(String keyword);
+
+    //VIP회원 관리 키워드 검색어 결과 총 개수 조회
+    public Integer keywordVipPageCount(String keyword);
+
+
 }

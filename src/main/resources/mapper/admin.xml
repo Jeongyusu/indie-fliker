@@ -12,6 +12,15 @@
             limit #{pageStart}, #{pageLimit}
     </select>
 
+    <!-- 일반 회원, VIP 회원 전체 페이징 조회(탈퇴 회원 제외) -->
+    <select id="findByAllPagingListsExWithdrawal" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
+        select *
+        from user_tb
+        where is_withdrawal not in(true)
+        order by created_at desc
+            limit #{pageStart}, #{pageLimit}
+    </select>
+
     <!-- 일반 회원 관리 페이징 조회 -->
     <select id="findByAdminUserPagingLists" parameterType="java.util.HashMap" resultType="com.tenco.indiepicter.user.User">
         select *
@@ -106,6 +115,25 @@
     <!-- 페이징 VIP 회원만 전체 갯수 조회 -->
     <select id="vipPageCount" resultType="Integer">
         select count(id) from user_tb where grade = 'VIP' and is_withdrawal=false
+    </select>
+
+    <!-- 회원 키워드 검색 페이징 전체 갯수 조회 -->
+    <select id="keywordPageCount" resultType="Integer">
+        select count(id) from user_tb
+        where is_withdrawal=false and username LIKE CONCAT('%', #{keyword}, '%') or user_email LIKE CONCAT('%', #{keyword}, '%')
+    </select>
+
+    <!-- 회원 키워드 검색 페이징 일반 회원만 전체 갯수 조회 -->
+    <select id="keywordNormalPageCount" resultType="Integer">
+        select count(id) from user_tb where grade = 'NORMAL' and is_withdrawal=false
+        and username LIKE CONCAT('%', #{keyword}, '%') or user_email LIKE CONCAT('%', #{keyword}, '%')
+
+    </select>
+
+    <!-- 회원 키워드 검색 페이징 VIP 회원만 전체 갯수 조회 -->
+    <select id="keywordVipPageCount" resultType="Integer">
+        select count(id) from user_tb where grade = 'VIP' and is_withdrawal=false
+        and username LIKE CONCAT('%', #{keyword}, '%') or user_email LIKE CONCAT('%', #{keyword}, '%')
     </select>
 
 </mapper>

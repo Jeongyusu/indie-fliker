@@ -102,10 +102,8 @@
         <button id="scrollToTopBtn"><img src="/images/icons/upArrow.gif" class="j_up_button"></button>
     </div>
 </div>
-
 <script>
     <!--------------------------------- 달력 -------------------------------------------------->
-
 
     // 모달 열기
     async function openMovieSettingModal(id) {
@@ -179,7 +177,7 @@
                 newInput3.type = 'text';
                 newInput3.id = 'chat_time';
                 newInput3.placeholder = '날짜 및 시간을 선택하세요';
-                newInput3.value = "기존 설정 시간 : " + formattedChatTime;
+                newInput3.value = "기존 시간 : " + formattedChatTime;
                 newInput3.disabled = true;
                 parent3.appendChild(newInput3);
 
@@ -204,6 +202,8 @@
                         // lastDay에 적용
                         lastDayFlatpickr.set('minDate', firstDay.value);
                         lastDayFlatpickr.set('maxDate', day.value);
+                        chatTime.setAttribute('minDate', firstDay.value);
+                        chatTime.set('maxDate', day.value);
                     },
                 });
 
@@ -340,13 +340,14 @@
             try {
                 const newData = await fetchFundingList(currentPage);
                 newData.forEach((funding) => {
-                    var newElement = '<div class="p_movie_card" >' +
+                    var newElement =
+                        '<div class="p_movie_card">' +
                         '<img src="' + funding.thumbnail + '" alt="">' +
                         '<p class="p_movie_title">' + funding.movieName + '</p>' +
-                        '<button class="p_movie_period_button" onclick="openMovieSettingModal(' + funding.movieId + ')">상영기간 및 채팅오픈시간 설정</button>' +
+                        '<button class="p_movie_period_button" onclick="openMovieSettingModal(' + funding.movieId + ')">상영기간·채팅오픈시간 설정</button>' +
                         '</div>';
 
-                    // Append new content to the container with class 'p_section1'
+                    // Append new content to the container (assumes you have a container with id 'j_data_container')
                     $('#j_data_container').append(newElement);
                 });
                 currentPage++;
@@ -387,15 +388,6 @@
         const formatter = new Intl.NumberFormat('en-US');
         return formatter.format(number);
     }
-
-
-
-
-
-
-
-
-
 </script>
 </body>
 </html>

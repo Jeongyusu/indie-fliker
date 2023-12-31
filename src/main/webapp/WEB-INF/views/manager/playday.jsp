@@ -109,27 +109,26 @@
 <script>
     <!--------------------------------- 달력 -------------------------------------------------->
 
-
     // 모달 열기
     async function openMovieSettingModal(id) {
-        try {
+        try{
             document.getElementById('j_streaming_modal').style.display = 'block';
             let response = await fetch(`/admin/movie-open/` + id)
             let responseBody = await response.json();
             console.log("제이슨 변환 완료");
             console.log(responseBody);
             console.log(responseBody.response.onlineReleaseDate);
-            if (responseBody.success) {
+            if(responseBody.success){
 
-                if (responseBody.response.onlineReleaseDate == null) {
+                if(responseBody.response.onlineReleaseDate == null){
                     responseBody.response.onlineReleaseDate = '미설정';
                 }
 
-                if (responseBody.response.onlineEndDate == null) {
+                if(responseBody.response.onlineEndDate == null){
                     responseBody.response.onlineEndDate = '미설정';
                 }
 
-                if (responseBody.response.chatTime == null) {
+                if(responseBody.response.chatTime == null){
                     responseBody.response.chatTime = '미설정';
                 }
                 let selectedMovieId = document.getElementById('selected_movie_id');
@@ -163,7 +162,7 @@
                 parent2.appendChild(newInput2);
 
                 let parent3 = document.getElementById('chat_time_container');
-                parent3.innerHTML = '';
+                parent3.innerHTML='';
 
                 let chatTimeString = responseBody.response.chatTime;
                 let chatTimeConvert = new Date(chatTimeString);
@@ -228,7 +227,7 @@
             } else {
                 throw new Error('요청 실패');
             }
-        } catch (error) {
+        } catch(error) {
             console.error('에러가 발생했습니다' + error.message);
             alert('에러 발생 :' + error.message);
         }
@@ -240,7 +239,7 @@
 
     }
 
-    async function saveMovieOpenInfo() {
+    async function saveMovieOpenInfo () {
         let movieId = document.getElementById('selected_movie_id').value;
         let releaseDate = document.getElementById('release_date_choice').value;
         let endDate = document.getElementById('end_date_choice').value;
@@ -251,8 +250,7 @@
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                id: movieId, onlineReleaseDate: releaseDate, onlineEndDate: endDate,
+            body: JSON.stringify({id: movieId, onlineReleaseDate: releaseDate, onlineEndDate: endDate,
                 chatTime: chatTime
             }),
         });
@@ -288,7 +286,7 @@
             parent2.appendChild(newInput2);
 
             let parent3 = document.getElementById('chat_time_container');
-            parent3.innerHTML = '';
+            parent3.innerHTML='';
 
             let newInput3 = document.createElement('input');
             newInput3.type = 'text';
@@ -310,7 +308,7 @@
         isLoading = false;
     };
 
-    $(window).scroll(function () {
+    $(window).scroll(function() {
         // 스크롤 이동 시 실행되는 코드
         console.log("제이쿼리 스크롤");
         if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
@@ -346,13 +344,14 @@
             try {
                 const newData = await fetchFundingList(currentPage);
                 newData.forEach((funding) => {
-                    var newElement = '<div class="p_movie_card" >' +
+                    var newElement =
+                        '<div class="p_movie_card">' +
                         '<img src="' + funding.thumbnail + '" alt="">' +
                         '<p class="p_movie_title">' + funding.movieName + '</p>' +
-                        '<button class="p_movie_period_button" onclick="openMovieSettingModal(' + funding.movieId + ')">상영기간 및 채팅오픈시간 설정</button>' +
+                        '<button class="p_movie_period_button" onclick="openMovieSettingModal(' + funding.movieId + ')">상영기간·채팅오픈시간 설정</button>' +
                         '</div>';
 
-                    // Append new content to the container with class 'p_section1'
+                    // Append new content to the container (assumes you have a container with id 'j_data_container')
                     $('#j_data_container').append(newElement);
                 });
                 currentPage++;
@@ -365,7 +364,7 @@
 
         var scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
-        window.addEventListener("scroll", function () {
+        window.addEventListener("scroll", function() {
             // 현재 스크롤 위치 가져오기
             var scrollPosition = window.scrollY;
 
@@ -393,8 +392,6 @@
         const formatter = new Intl.NumberFormat('en-US');
         return formatter.format(number);
     }
-
-
 </script>
 </body>
 </html>
