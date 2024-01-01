@@ -9,14 +9,14 @@
     <select id="findByOpenMovie"  resultMap="OpenMovieChatDTOResultMap">
         SELECT
             distinct(f.id) AS funding_id,
-            m.id AS movie_id,
-            m.movie_name,
-            m.thumbnail,
-            m.director,
-            m.genre,
-            m.running_grade,
-            m.online_release_date,
-            m.chat_time
+                    m.id AS movie_id,
+                    m.movie_name,
+                    m.thumbnail,
+                    m.director,
+                    m.genre,
+                    m.running_grade,
+                    m.online_release_date,
+                    m.chat_time
         FROM
             movie_tb AS m
                 INNER JOIN
@@ -24,7 +24,7 @@
                 INNER JOIN
             order_tb AS o ON o.funding_id = f.id
         WHERE
-            o.user_id = #{principalId} and m.online_release_date = current_date();
+            o.user_id = #{principalId} and o.selected_seats is null and m.online_release_date = current_date()
     </select>
     <resultMap id="OpenMovieChatDTOResultMap" type="com.tenco.indiepicter.chat.response.OpenMovieChatDTO">
         <result property="fundingId" column="funding_id"/>
