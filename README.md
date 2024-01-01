@@ -1,14 +1,21 @@
+<p align="center">
+    <img width="20%" height="20%" src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/a85bc00b-7d04-49eb-8d14-7de46d89dd41" alt="Your Image Alt Text">
+</p>
+
 ## 🎬 프로젝트 개요
 인디픽터는 독립영화에 대한 접근성을 높이고자 만든 독립영화 전문 온/오프라인 영화 상영 사이트입니다.\
 온라인 스트리밍, 오프라인 극장 예매, 채팅기능을 주요기능으로 제공합니다.
-
+<br>
+<br>
 ## 🗓 프로젝트 기간
 23.12.04 ~ 23.12.26 (총 23일)
-
+<br>
+<br>
 ## 👨‍👨‍👧‍👦 팀원 소개 및 담당기능
 |Name|정유수(팀장)|남은혜|박남규|김하율|이사라|
 |---|---|---|---|---|---|
 |Task|펀딩 CRUD,관리자/펀딩|예매,스트리밍,결제/환불,후기/평론|회원 일반,카카오로그인,관리자/회원|크롤링,찜하기,감상평관리|채팅|
+<br>
 
 ## 📚기술스택
 <div align=center> 
@@ -40,10 +47,22 @@
   <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
   <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
 
-  <br>
+
 </div>
 
-### ⛓ERD
+<br>
+
+## 🪄ERD
+<img width="1094" alt="MySQL Workbench 2024-01-02 04-30-57" src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/f98b2a62-d847-40c7-9b09-78c28727ac51">
+
+<br>
+<br>
+
+## 사이트 맵
+<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/ac7b7dd4-771f-49d5-bc68-a91dc042b064">
+<br>
+<img width="60%" height="60%" src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/027734e5-04a6-4ae0-b554-fadf889ed63c">
+<br>
 
 
 
