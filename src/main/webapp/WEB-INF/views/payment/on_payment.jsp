@@ -85,13 +85,13 @@
                                     <div class="modal-content">
 
                                         <!-- Modal Header -->
-                                        <div class="modal-header n_modal_header">
-                                            <p class="modal-title n_modal_title">결제 수단</p>
+                                        <div class="n_modal_header">
+                                            <p class="n_modal_title">결제 수단</p>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                         </div>
 
                                         <!-- Modal body -->
-                                        <div class="modal-body">
+                                        <div class="n_modal_body">
                                             <div>
                                                 <label class="n_box_radio_button">
                                                     <input type="radio" id="radio-1" name="payment" value="1" onclick="selectPay(this)">

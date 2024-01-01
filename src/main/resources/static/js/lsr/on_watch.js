@@ -491,7 +491,8 @@ async function findVipReview(movieId) {
                                     </div>
                                      <div class="l_vip_text_container">
                                         <input type="text" class="l_vip_message_name" value="${vipReview.username}" disabled>
-                                        <input type="text" class="l_vip_message_text" value="${vipReview.vipReviewContent}" disabled onkeyup="enterVipReviewKey(this)">
+                                        <textarea class="l_vip_message_text" disabled onkeyup="enterVipReviewKey(this)">${vipReview.vipReviewContent}
+                                        </textarea>
                                         <input type="hidden" class="vipReviewId" value="${vipReview.vipReviewId}">
                                         <input type="hidden" class="vipReviewUserId" value=${vipReview.userId}">
                                     </div>
