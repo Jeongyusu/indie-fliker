@@ -1119,12 +1119,27 @@
     background-color: var(--def_bl);
     color: var(--def_wh);
     font-weight: bold;
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
 }
 
 .n_modal_header button {
     background-color: var(--def_wh);
 }
 
+.n_modal_body {
+    position: relative;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1rem;
+}
 
 
 /* reservation_ticket */
