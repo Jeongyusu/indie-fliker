@@ -2216,3 +2216,13 @@
 
 /*---------------------------------------------------------------------*/
 /* 전체 페이지 페이징 위치 잡기 */
+
+.p_fund_update_form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.p_movie_form {
+    display: flex;
+    flex-wrap: wrap;
+}

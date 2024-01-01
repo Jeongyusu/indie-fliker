@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../manager/layout/manager_header.jsp" %>
 
+
 <!--컨테이너1 시작-->
 <div class="p_flex_center">
     <div class="p_main">
@@ -125,6 +126,8 @@
         let responseBody = await response.json();
 
         if (responseBody.success) {
+            console.log("추가데이터 받아오기 성공")
+            console.log(responseBody.response)
             return responseBody.response;
         } else {
             throw new Error(responseBody.error);
@@ -134,6 +137,7 @@
     // 마우스 스크롤 감지 후 새로운 데이터를 받아온 후 새로운 요소 생성하기
     function loadMoreData() {
 
+        console.log("로드몰데이타 실행")
         if (isLoading) {
             return;
         }
@@ -153,7 +157,7 @@
                         '</button>' +
                         '<button class="p_movie_delete_button" data-id="' + funding.fundingId + '" onclick="updateById(' + funding.fundingId + ')">펀딩 종료</button>' +
                         '</div>';
-                    $('#j_data_container').append(newElement);
+                    $('#fund_update_container').append(newElement);
                 });
                 currentPage++;
             } catch (error) {

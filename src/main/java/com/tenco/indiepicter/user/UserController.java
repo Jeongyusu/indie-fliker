@@ -14,6 +14,7 @@ import javax.validation.Valid;
 import com.tenco.indiepicter._core.handler.exception.MyUnAuthorizedException;
 import com.tenco.indiepicter._core.utils.ApiUtils;
 import com.tenco.indiepicter._core.utils.PicToStringUtil;
+import com.tenco.indiepicter._core.utils.Script;
 import com.tenco.indiepicter.funding.FundingService;
 import com.tenco.indiepicter.funding.response.OnAirMovieByUserDTO;
 import com.tenco.indiepicter.invitation.Invitation;
@@ -87,6 +88,7 @@ public class UserController {
 	}
 	
 	// 회원 가입 페이지 요청(POST)
+	@ResponseBody
 	@PostMapping("/join")
 	public String joinUpProc(@Valid UserRequestDTO.JoinDTO requestDto, Errors errors) {
 		
@@ -117,7 +119,7 @@ public class UserController {
 		
 		this.userService.join(requestDto);
 		
-		return "redirect:/user/login";
+		return Script.href("/login", "회원가입을 축하합니다. 로그인 창으로 이동합니다.");
 	}
 	
 //--------------------------------------------------------------------------------------------------------------
@@ -476,6 +478,8 @@ public class UserController {
 	}
 
 	// 카카오 간편 로그인 회원 (프로필 수정)
+
+	@ResponseBody
 	@PostMapping("/kakao-login-profile-update")
 	public String kakaoLoginProfileUpdate(UserProfileRequestDTO dto){
 
@@ -508,7 +512,13 @@ public class UserController {
 		if (userTel != null){
 			throw new MyDynamicException("이미 존재하는 전화번호입니다.", HttpStatus.BAD_REQUEST);
 		}
-		dto.setUploadFileName(PicToStringUtil.picToString(dto.getFile()));
+
+		if(dto.getFile().getSize() > 0) {
+			dto.setUploadFileName(PicToStringUtil.picToString(dto.getFile()));
+		} else {
+			dto.setUploadFileName(Define.userbasicpic);
+		}
+
 
 		this.userService.profileUpdate(dto);
 
@@ -516,7 +526,7 @@ public class UserController {
 
 		session.setAttribute(Define.PRINCIPAL, user);
 
-		return "redirect:/fund/funding-plus";
+		return Script.href("/fund/main", "회원가입을 축하합니다." );
 	}
 
 //----------------------------------------------------------------------------------------------------------------

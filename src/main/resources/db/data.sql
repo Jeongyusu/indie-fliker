@@ -63,7 +63,7 @@ insert into theater_tb(theater_pic, theater_name, theater_description, tel, addr
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, director_pic, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day, chat_time)
 values ('2023', '(주)시네마프로덕션', '스트리머','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
 ', '/images/moviethumbnail/gk/streamer.jpeg', '부산형제복지원 사건 모티브', '극영화', '12세 이상 관람가','장형모', '/images/movieDirector/the_boy_miyazaki.jpg','이푸름(손흥민역), 권민혁(김민재역), 김모범(정우영역), 김준형(이정재역), 심소영(황희찬역)', '[스트리머](2023)</br>[아기공룡둘리](2021)</br>[그린영화제](2021)</br>', '청룡영화제 우수작(2023)</br>제19회 서울인디애니페스트 – KIAFA 특별상(2022)</br>제26회 부천국제판타스틱영화제(2022)</br>Philadelphia Film Festival(2022)</br>Uppsala Short Film Festival(2022)
-</br>Lanterna Mágica International Animation Festival(2022)</br>Winter Cicle Film Festival(2023)</br>','2023-12-31', '2024-12-15', '2023-12-01', '2023-12-30', '2023-11-29', '2023-12-31 21:00:00');
+</br>Lanterna Mágica International Animation Festival(2022)</br>Winter Cicle Film Festival(2023)</br>','2023-12-31', '2024-12-31', '2023-01-02', '2023-12-30', '2023-01-05', '2023-12-31 21:00:00');
 
 insert into movie_tb(make_year, production, movie_name, synopsis, thumbnail, directing_intension, genre, running_grade, director, director_pic, actor, director_careers, director_awards_film, online_release_date, online_end_date, offline_release_date, offline_end_date, d_day, chat_time)
 values ('2023', '(주)시네마프로덕션', '만해한용운','한 BJ가 남긴 기괴한 영상의 진위를 밝히겠다며 한 폐건물로 모인 5명의 스트리머들. 각자 라이브 방송을 진행하며 건물을 살펴보던 그들의 섬뜩하고 소름 끼치는 현장은 그야말로 리얼하게 생중계 되는데…
@@ -887,46 +887,6 @@ insert into notice_tb(notice_title, content, category, created_at)
 values('채팅방 정책 안내', '채팅방 정책 안내 내용~~~', '수정', now());
 insert into notice_tb(notice_title, content, category, created_at)
 values('인디영화 등록 안내', '인디영화 등록 안내 내용~~~', '회원가입', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('11111', '11111 내용~~~', '펀딩', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('22222', '22222 내용~~~', '수정', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('33333', '33333 내용~~~', '회원가입', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('44444', '44444 내용~~~', '수정', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('55555', '55555 내용~~~', '회원가입', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('사과', '사과 내용~~~', '펀딩', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('딸기', '딸기 내용~~~', '수정', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('배추', '배추 내용~~~', '회원가입', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('양파', '양파 내용~~~', '수정', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('오이', '오이 내용~~~', '회원가입', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('호랑이', '호랑이 내용~~~', '펀딩', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('기린', '기린 내용~~~', '수정', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('하마', '하마 내용~~~', '회원가입', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('사자', '사자 내용~~~', '수정', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('코끼리', '코끼리 내용~~~', '회원가입', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('빨강', '빨강 내용~~~', '펀딩', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('노랑', '노랑 내용~~~', '수정', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('초록', '초록 내용~~~', '회원가입', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('파랑', '파랑 내용~~~', '수정', now());
-insert into notice_tb(notice_title, content, category, created_at)
-values('주황', '주황 내용~~~', '회원가입', now());
 
 insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy1.jpg', 1);
 insert into movie_photo_tb(movie_pic, movie_id) values ('/images/moviePhoto/the_boy2.jpg', 1);
@@ -1136,43 +1096,39 @@ values ('소진된 인간', '/movies/forest.mp4', 'an exhausted human being', '2
 
 
 insert into question_tb(question_title, content, category, created_at)
-values('회원 정보 변경은 어떻게 하나요?', '회원 정보 변경은 그냥 하면 됩니다.', '회원정보', now());
+values('회원 정보 변경은 어떻게 하나요?', '회원 정보 변경 마이페이지 메뉴에서 수정하실 수 있습니다.', '회원정보', now());
 insert into question_tb(question_title, content, category, created_at)
-values('회원 정보 변경은 어떻게 하나요?', '회원 정보 변경은 그냥 하면 됩니다.', '회원정보', now());
+values('회원 아이디 찾기는 어떻게 하나요?', '로그인 화면 하단 아이디 찾기를 이용해주세요.', '회원정보', now());
 insert into question_tb(question_title, content, category, created_at)
-values('회원 정보 변경은 어떻게 하나요?', '회원 정보 변경은 그냥 하면 됩니다.', '회원정보', now());
+values('회원 탈퇴는 어떻게 하나요?', '회원 탈퇴는 마이페이지 메뉴에서 탈퇴하기 메뉴로 가능합니다.', '회원정보', now());
 insert into question_tb(question_title, content, category, created_at)
-values('회원 정보 변경은 어떻게 하나요?', '회원 정보 변경은 그냥 하면 됩니다.', '회원정보', now());
+values('회원 이메일은 변경이 가능한가요?', '회원 이메일 변경은 불가능합니다.', '회원정보', now());
 insert into question_tb(question_title, content, category, created_at)
-values('회원 정보 변경은 어떻게 하나요?', '회원 정보 변경은 그냥 하면 됩니다.', '회원정보', now());
+values('회원 가입은 어떻게 하나요?', '홈페이지 우측 상단 회원가입 메뉴를 활용해주세요', '회원정보', now());
 insert into question_tb(question_title, content, category, created_at)
-values('회원 정보 변경은 어떻게 하나요?', '회원 정보 변경은 그냥 하면 됩니다.', '회원정보', now());
+values('회원 실명 변경은 어떻게 하나요?', '회원 실명 변경은 불가능합니다.', '회원정보', now());
 
 insert into question_tb(question_title, content, category, created_at)
-values('결제는 어떻게 하나요?', '결제는 그냥 하면 됩니다.', '결제', now());
+values('결제시 간편결제로 가능한가요?', '간편결제로 카카오페이,이니시스,페이코를 지원합니다.', '결제', now());
 insert into question_tb(question_title, content, category, created_at)
-values('결제는 어떻게 하나요?', '결제는 그냥 하면 됩니다.', '결제', now());
+values('결제는 카드로 가능한가요?', '간편결제만 지원합니다..', '결제', now());
 insert into question_tb(question_title, content, category, created_at)
-values('결제는 어떻게 하나요?', '결제는 그냥 하면 됩니다.', '결제', now());
+values('결제시 어떤 정보가 필요한가요?', '간편결제로 지원가능합니다.', '결제', now());
 insert into question_tb(question_title, content, category, created_at)
-values('결제는 어떻게 하나요?', '결제는 그냥 하면 됩니다.', '결제', now());
-insert into question_tb(question_title, content, category, created_at)
-values('결제는 어떻게 하나요?', '결제는 그냥 하면 됩니다.', '결제', now());
-insert into question_tb(question_title, content, category, created_at)
-values('결제는 어떻게 하나요?', '결제는 그냥 하면 됩니다.', '결제', now());
+values('결제 진행 방법이 궁금합니다.?', '결제는 그냥 하면 됩니다.', '결제', now());
+-- insert into question_tb(question_title, content, category, created_at)
+-- values('결제 취소가 가능한가요?', '결제는 그냥 하면 됩니다.', '결제', now());
+-- insert into question_tb(question_title, content, category, created_at)
+-- values('결제시 무통장입금으로 결제 가능한가요?', '결제는 그냥 하면 됩니다.', '결제', now());
 
 insert into question_tb(question_title, content, category, created_at)
-values('취소/환불는 어떻게 하나요?', '취소/환불은 그냥 하면 됩니다.', '취소/환불', now());
+values('취소/환불은 어떻게 하나요?', '취소/환불은 그냥 하면 됩니다.', '취소/환불', now());
 insert into question_tb(question_title, content, category, created_at)
-values('취소/환불는 어떻게 하나요?', '취소/환불은 그냥 하면 됩니다.', '취소/환불', now());
+values('취소/환불 신청시 언제 승인되나요?', '승인시점은 영업일 기준 2~3일 입니다.', '취소/환불', now());
 insert into question_tb(question_title, content, category, created_at)
-values('취소/환불는 어떻게 하나요?', '취소/환불은 그냥 하면 됩니다.', '취소/환불', now());
+values('취소/환불은 언제까지 신청되나요?', '펀딩 종료전까지는 가능합니다.', '취소/환불', now());
 insert into question_tb(question_title, content, category, created_at)
-values('취소/환불는 어떻게 하나요?', '취소/환불은 그냥 하면 됩니다.', '취소/환불', now());
-insert into question_tb(question_title, content, category, created_at)
-values('취소/환불는 어떻게 하나요?', '취소/환불은 그냥 하면 됩니다.', '취소/환불', now());
-insert into question_tb(question_title, content, category, created_at)
-values('취소/환불는 어떻게 하나요?', '취소/환불은 그냥 하면 됩니다.', '취소/환불', now());
+values('취소/환불시 유의사항이 있나요?', '취소, 환불시 승인까지 2~3일 정도 걸리니 유의해주세요.', '취소/환불', now());
 
 insert into question_tb(question_title, content, category, created_at)
 values('영화예매는 어떻게 하나요?', '영화예매는 그냥 하면 됩니다.', '영화예매', now());

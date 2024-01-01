@@ -40,7 +40,7 @@ create table movie_tb
     director             varchar(30)   null,
     director_pic         varchar(300)  null,
     actor                varchar(200)  null,
-    director_careers     varchar(1000),
+    director_careers     varchar(4000),
     director_awards_film varchar(4000),
     online_release_date  Date,
     online_end_date      Date,

@@ -37,8 +37,10 @@
     <header>
         <!--탑 시작-->
         <div class="p_top">
-            <div class="p_page_title">
+            <div class="p_page_title" style="display: flex; justify-content: space-between">
                 <a href="">IndiFlinker <span class="p_mini_font"> _admin</span></a>
+                <a href="/fund/main"><span class="p_mini_font" style="margin-left: 20px">인디픽터 메인 페이지 이동</span></a>
+
             </div>
         </div>
         <!--탑 끝-->

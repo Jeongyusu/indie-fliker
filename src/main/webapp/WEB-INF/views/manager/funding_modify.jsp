@@ -79,7 +79,7 @@
             <div class="k_funding_upload_first_title">영화 제목
                 <span class="k_star_class">*</span>
             </div>
-            <input type=text class="k_funding_upload_movie_name" name="movieTitle" value="${adminFundingUpdateFormDTO.movieName}">
+            <input type=text class="k_funding_upload_movie_name j_special_check" name="movieTitle" value="${adminFundingUpdateFormDTO.movieName}">
         </div>
         <div class="k_funding_upload_container_third">
             <div id="k_fund">
@@ -152,7 +152,7 @@
                 </div>
             </div>
             <div class="k_funding_upload_container_two">
-                <textarea class="k_funding_upload_sibnob" name="synopsis">${adminFundingUpdateFormDTO.synopsis}</textarea>
+                <textarea class="k_funding_upload_sibnob j_special_check" name="synopsis">${adminFundingUpdateFormDTO.synopsis}</textarea>
             </div>
         </div>
         <div class="k_margin_top">
@@ -162,7 +162,7 @@
                 </div>
             </div>
             <div class="k_funding_upload_container_two">
-                <textarea class="k_funding_upload_sibnob" name="directingIntension">${adminFundingUpdateFormDTO.directingIntension}</textarea>
+                <textarea class="k_funding_upload_sibnob j_special_check" name="directingIntension">${adminFundingUpdateFormDTO.directingIntension}</textarea>
             </div>
         </div>
         <div class="k_margin_top">
@@ -215,27 +215,26 @@
             <div class="k_funding_upload_container_four">
                     <label id="director_pic" for="director_photo" class="k_funding_upload_select_photo_pic">
                         <c:choose>
-                             <c:when test="${adminFundingUpdateFormDTO.directorPhoto != null}">
-                              <img src="${adminFundingUpdateFormDTO.directorPhoto}" class="k_funding_upload_select_photo_pic" alt=""></label>
-                             </c:when>
-                        <c:otherwise>
-                            <img src="${adminFundingUpdateFormDTO.directorPhoto}" class="k_funding_upload_select_photo_pic" alt=""></label>
-                        </c:otherwise>
+                            <c:when test="${adminFundingUpdateFormDTO.directorPhoto.contains('/images')}">
+                                <img src="${adminFundingUpdateFormDTO.directorPhoto}" class="k_funding_upload_select_photo_pic" alt="">
+                            </c:when>
+                            <c:otherwise>
+                            <i id="fa-camera" class="fas fa-camera"></i>사진 선택 <span class="k_star_class">*</span></label>
+                            </c:otherwise>
                         </c:choose>
                     </label>
                     <input type="file" id="director_photo" name="directorPhoto" accept="image/*" onchange="changeUserPic(this.id, 'director_pic', 'k_funding_movie_director_style', event)" class="k_funding_upload_label">
                     <br>
                 <div class="k_funding_directer_career">
                     <div id="career_movies" class="k_career_movie_style">
-                        <c:forEach var="careerMovie" items="${adminFundingUpdateFormDTO.extractNames()}" varStatus="status">
-                            <input type=text id="career_movie${status.index}" class="k_funding_upload_career_input" placeholder="작품 이름" name="directorCareers" value="${careerMovie}" oninput="preventSpecialCharacters(this)" }>
+                        <c:forEach var="careerMovie" items="${not empty adminFundingUpdateFormDTO.extractNames() ? adminFundingUpdateFormDTO.extractNames() : (empty adminFundingUpdateFormDTO.extractNames() ? [''] : null)}" varStatus="status">
+                            <input type="text" id="career_movie${status.index}" class="k_funding_upload_career_input j_special_check" placeholder="작품 이름" name="directorCareers" value="${careerMovie}" oninput="setDefaultIfEmpty(this, '미정')" />
                         </c:forEach>
                     </div>
                     <div id="career_movie_years" class="k_funding_upload_head_limit">
-                        <c:forEach var="careerYear" items="${adminFundingUpdateFormDTO.extractYears()}" varStatus="status">
-                            <input type="number" id="career_movie_year${status.index}"  class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorCareerYears" value="${careerYear}" oninput="validateYearInput(this,2024)">
+                        <c:forEach var="careerYear" items="${not empty adminFundingUpdateFormDTO.extractYears() ? adminFundingUpdateFormDTO.extractYears() : (empty adminFundingUpdateFormDTO.extractYears() ? [''] : null)}" varStatus="status">
+                            <input type="number" id="career_movie_year${status.index}" class="k_funding_upload_movie_year" placeholder="작품 년도(YYYY)" name="directorCareerYears" value="${careerYear}" min="1900" max="2024" oninput="validateYearInput(this)">
                         </c:forEach>
-
                     </div>
                 </div>
         </div>
@@ -252,13 +251,13 @@
         </div>
             <div class="k_funding_directer_career">
                 <div id="awards_movie" class="k_career_movie_style">
-                    <c:forEach var="award" items="${adminFundingUpdateFormDTO.extractAwardTitles()}" varStatus="status">
-                        <input type=text id="awards_movie${status.index}" class="k_funding_awards_movie_input" placeholder="작품 이름" name="directorAwards" value="${award}" oninput="preventSpecialCharacters(this)">
+                    <c:forEach var="award" items="${not empty adminFundingUpdateFormDTO.extractAwardTitles() ? adminFundingUpdateFormDTO.extractAwardTitles() : (empty adminFundingUpdateFormDTO.extractAwardTitles() ? [''] : null)}" varStatus="status">
+                        <input type="text" id="awards_movie${status.index}" class="k_funding_awards_movie_input j_special_check" placeholder="작품 이름" name="directorAwards" value="${award}" oninput="setDefaultIfEmpty(this, '미정')">
                     </c:forEach>
                 </div>
                 <div id="awards_movie_year" class="k_funding_upload_head_limit">
-                    <c:forEach var="awardYear" items="${adminFundingUpdateFormDTO.extractAwardYears()}" varStatus="status">
-                        <input type="number" id="awards_movie_year${status.index}" class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorAwardYears" value="${awardYear}">
+                    <c:forEach var="awardYear" items="${not empty adminFundingUpdateFormDTO.extractAwardYears() ? adminFundingUpdateFormDTO.extractAwardYears() : (empty adminFundingUpdateFormDTO.extractAwardYears() ? [''] : null)}" varStatus="status">
+                        <input type="number" id="awards_movie_year${status.index}" class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorAwardYears" value="${awardYear}" min="1900" max="2024" oninput="validateYearInput(this)">
                     </c:forEach>
                 </div>
             </div>
@@ -281,13 +280,13 @@
         </div>
         <div class="k_funding_directer_career">
             <div id="movie_actor" class="k_career_movie_style">
-                <c:forEach var="actorName" items="${adminFundingUpdateFormDTO.parseActor().get(0)}" varStatus="status">
-                    <input type=text id="movie_actor${status.index}" class="k_funding_awards_movie_input" placeholder="배우 이름" name="actors" oninput="setDefaultIfEmpty(this, '미정')" value="${actorName}">
+                <c:forEach var="actorName" items="${not empty adminFundingUpdateFormDTO.parseActor().get(0) ? adminFundingUpdateFormDTO.parseActor().get(0) : (empty adminFundingUpdateFormDTO.parseActor().get(0) ? [''] : null)}" varStatus="status">
+                    <input type="text" id="movie_actor${status.index}" class="k_funding_awards_movie_input j_special_check" placeholder="배우 이름" name="actors" oninput="setDefaultIfEmpty(this, '미정')" value="${actorName}">
                 </c:forEach>
             </div>
             <div id="movie_actor_role" class="k_funding_upload_head_limit">
-                <c:forEach var="actorRole" items="${adminFundingUpdateFormDTO.parseActor().get(1)}" varStatus="status">
-                    <input type="text" id="movie_actor_role${status.index}" class="k_funding_upload_movie_year" placeholder="배역" name="actorRoles" oninput="setDefaultIfEmpty(this, '미정')" value="${actorRole}">
+                <c:forEach var="actorRole" items="${not empty adminFundingUpdateFormDTO.parseActor().get(1) ? adminFundingUpdateFormDTO.parseActor().get(1) : (empty adminFundingUpdateFormDTO.parseActor().get(1) ? [''] : null)}" varStatus="status">
+                    <input type="text" id="movie_actor_role${status.index}" class="k_funding_upload_movie_year j_special_check" placeholder="배역" name="actorRoles" oninput="setDefaultIfEmpty(this, '미정')" value="${actorRole}">
                 </c:forEach>
             </div>
         </div>
@@ -300,47 +299,47 @@
                     <tr>
                         <th>감독</th>
                         <td>
-                            <input type="text" name="staff.director" value="${adminFundingUpdateFormDTO.staff.director}">
+                            <input type="text" class="j_special_check" name="staff.director" value="${adminFundingUpdateFormDTO.staff.director}">
                         </td>
                         <th>각본</th>
                         <td>
-                            <input type="text" name="staff.script" value="${adminFundingUpdateFormDTO.staff.script}">
+                            <input type="text" class="j_special_check" name="staff.script" value="${adminFundingUpdateFormDTO.staff.script}">
                         </td>
                     </tr>
                     <tr>
                         <th>촬영</th>
                         <td>
-                            <input type="text" name="staff.filming" value="${adminFundingUpdateFormDTO.staff.filming}">
+                            <input type="text" class="j_special_check" name="staff.filming" value="${adminFundingUpdateFormDTO.staff.filming}">
                         </td>
                         <th>조명</th>
                         <td>
-                            <input type="text" name="staff.lighting" value="${adminFundingUpdateFormDTO.staff.lighting}">
+                            <input type="text" class="j_special_check" name="staff.lighting" value="${adminFundingUpdateFormDTO.staff.lighting}">
                         </td>
                     </tr>
                     <tr>
                         <th>미술</th>
                         <td>
-                            <input type="text" name="staff.art" value="${adminFundingUpdateFormDTO.staff.art}">
+                            <input type="text" class="j_special_check" name="staff.art" value="${adminFundingUpdateFormDTO.staff.art}">
                         </td>
                         <th>편집</th>
                         <td>
-                            <input type="text" name="staff.editing" value="${adminFundingUpdateFormDTO.staff.editing}">
+                            <input type="text" class="j_special_check" name="staff.editing" value="${adminFundingUpdateFormDTO.staff.editing}">
                         </td>
                     </tr>
                     <tr>
                         <th>사운드</th>
                         <td>
-                            <input type="text" name="staff.sound" value="${adminFundingUpdateFormDTO.staff.sound}">
+                            <input type="text" class="j_special_check" name="staff.sound" value="${adminFundingUpdateFormDTO.staff.sound}">
                         </td>
                         <th>음악</th>
                         <td>
-                            <input type="text" name="staff.music" value="${adminFundingUpdateFormDTO.staff.music}">
+                            <input type="text" class="j_special_check" name="staff.music" value="${adminFundingUpdateFormDTO.staff.music}">
                         </td>
                     </tr>
                     <tr>
                         <th>의상</th>
                         <td>
-                            <input type="text" name="staff.clothes" value="${adminFundingUpdateFormDTO.staff.clothes}">
+                            <input type="text" class="j_special_check" name="staff.clothes" value="${adminFundingUpdateFormDTO.staff.clothes}">
                         </td>
                         <th></th>
                         <td></td>
@@ -716,46 +715,45 @@
     });
 
     // 올바른 연도 값만 입력가능
-    // 이전 값을 저장할 연도 객체
-    const previousYearValues = {};
-    function validateYearInput(inputElement, maxYear) {
-        const inputId = inputElement.id;
-        const inputValue = inputElement.value;
+    function validateYearInput(inputElement) {
+        var year = inputElement.value.trim();
 
-        // 이전 값이 현재 값과 다르다면 검증 수행
-        if (previousValues[inputId] !== inputValue) {
-            // 정규표현식을 사용하여 4글자 숫자인지 검사
-            const isValidYear = /^\d{0,4}$/.test(inputValue);
+        if (year.length === 4) {
+            year = parseInt(year);
 
-            if (!isValidYear || (inputValue !== "" && parseInt(inputValue) > maxYear)) {
-                alert("올바른 연도를 입력하세요. (4자리 숫자, 최대 " + maxYear + "까지)");
-                // 현재 입력값이 유효하지 않은 경우, 이전 값으로 복원
-                inputElement.value = previousYearValues[inputId] || "";
+            if (isNaN(year) || year < 1900 || year > 2024) {
+                alert("올바른 년도를 입력하세요 (1900부터 2024까지).");
+                inputElement.value = '';
             }
-        }
-
-        // 현재 값을 저장
-        previousYearValues[inputId] = inputValue;
-    }
-
-    //특수문자 입력 방지
-    const previousValue = { inputField: "" };
-
-    function preventSpecialCharacters(inputElement) {
-        const inputValue = inputElement.value;
-
-        // 정규표현식을 사용하여 특수문자가 포함되었는지 검사
-        const hasSpecialCharacters = /[!@#$%^&*(),.?":{}|<>]/.test(inputValue);
-
-        if (hasSpecialCharacters) {
-            alert("특수문자는 입력할 수 없습니다.");
-            // 특수문자가 포함된 경우, 이전 값으로 복원
-            inputElement.value = previousValue[inputElement.id] || "";
         } else {
-            // 특수문자가 포함되지 않은 경우, 현재 값을 저장
-            previousValue[inputElement.id] = inputValue;
+            // 입력이 4자리가 아니면 여기에서 다른 처리를 할 수 있습니다.
+            // 현재는 아무 동작도 하지 않고 있습니다.
+        }
+
+        if (!inputElement.value.trim()) {
+            inputElement.value = '2024';
         }
     }
+
+    // 특정 클래스가 설정된 인풋 요소들을 선택합니다.
+    var inputElements = document.querySelectorAll('.j_special_check');
+
+    // 각각의 인풋 요소에 대해 이벤트 리스너를 등록합니다.
+    inputElements.forEach(function(inputElement) {
+        inputElement.addEventListener('input', function(event) {
+            // 입력된 값에서 특수문자 여부를 확인합니다.
+            var inputValue = event.target.value;
+            var containsSpecialCharacters = /[!@#$%^&*(),.?":{}|<>]/.test(inputValue);
+
+            // 특수문자가 포함된 경우 해당 특수문자를 찾아서 제거합니다.
+            if (containsSpecialCharacters) {
+                var modifiedValue = inputValue.replace(/[!@#$%^&*(),.?":{}|<>]/g, '');
+                event.target.value = modifiedValue;
+                alert('특수문자는 사용 불가능합니다.');
+            }
+        });
+    });
+
 
 </script>
 

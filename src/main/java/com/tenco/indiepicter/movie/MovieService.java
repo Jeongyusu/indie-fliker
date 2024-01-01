@@ -36,6 +36,12 @@ public class MovieService {
 
     @Transactional
     public int saveMovie(FundingSaveDTO fundingSaveDTO){
+        String directorPic = "";
+        if(fundingSaveDTO.getDirectorPhoto().getSize() > 0){
+            directorPic = PicToStringUtil.picToString(fundingSaveDTO.getDirectorPhoto());
+        } else {
+            directorPic = "/images/icons/alt.png";
+        }
         Movie movie = Movie.builder()
                 .makeYear(fundingSaveDTO.getMakeYear())
                 .production(fundingSaveDTO.getProduction())
@@ -46,7 +52,7 @@ public class MovieService {
                 .genre(fundingSaveDTO.getGenre())
                 .runningGrade(fundingSaveDTO.getRunningGrade())
                 .director(fundingSaveDTO.getStaff().getDirector())
-                .directorPic(PicToStringUtil.picToString(fundingSaveDTO.getDirectorPhoto()))
+                .directorPic(directorPic)
                 .actor(StringUtil.stringJoin(StringUtil.listToString(fundingSaveDTO.getActors()), StringUtil.listToString(fundingSaveDTO.getActorRoles())))
                 .directorCareers(StringUtil.stringBrJoin(StringUtil.listToString(fundingSaveDTO.getDirectorCareers()), StringUtil.listToString(fundingSaveDTO.getDirectorCareerYears())))
                 .directorAwardsFilm(StringUtil.stringBrJoin(StringUtil.listToString(fundingSaveDTO.getDirectorAwards()), StringUtil.listToString(fundingSaveDTO.getDirectorAwardYears())))
@@ -101,75 +107,52 @@ public class MovieService {
 
     @Transactional
     public void updateById(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO) {
-        String moviePic = "";
-        String directorPic ="";
-        log.debug("무비 디버그11");
 
+        log.debug("디렉터포토, 무비사진 입력확인");
         log.debug("movieThumbnail: {}", adminRequestFundingUpdateFormDTO.getMovieThumbnail());
         log.debug("directorPhoto: {}", adminRequestFundingUpdateFormDTO.getDirectorPhoto());
 
-        if (adminRequestFundingUpdateFormDTO.getMovieThumbnail() == null || adminRequestFundingUpdateFormDTO.getMovieThumbnail().isEmpty()) {
-            log.debug("movieThumbnail is null or empty");
-            moviePic = null;
-        } else {
-            log.debug("Setting moviePic");
+        String moviePic = findByIdAboutMovie(adminRequestFundingUpdateFormDTO.getMovieId()).getThumbnail();
+        String directorPic = findByIdAboutMovie(adminRequestFundingUpdateFormDTO.getMovieId()).getDirectorPic();
+        if (adminRequestFundingUpdateFormDTO.getMovieThumbnail().getSize() > 0) {
             moviePic = PicToStringUtil.picToString(adminRequestFundingUpdateFormDTO.getMovieThumbnail());
         }
 
-        if (adminRequestFundingUpdateFormDTO.getDirectorPhoto() == null || adminRequestFundingUpdateFormDTO.getDirectorPhoto().isEmpty()) {
-            log.debug("directorPhoto is null or empty");
-            directorPic = null;
-        } else {
-            log.debug("Setting directorPic");
+        log.debug("디렉터포토, 무비사진 입력확인2");
+
+
+        if(adminRequestFundingUpdateFormDTO.getDirectorPhoto().getSize() > 0){
             directorPic = PicToStringUtil.picToString(adminRequestFundingUpdateFormDTO.getDirectorPhoto());
+        } else {
+            if(!directorPic.contains("/images")){
+            directorPic = "/images/icons/alt.png";}
         }
+        log.debug("커리어 테스트" + StringUtil.stringBrJoin(StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorCareers()), StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorCareerYears())));
 
-           log.debug("무비 디버그0");
+        try {
+                Movie movie = Movie.builder()
+               .id(adminRequestFundingUpdateFormDTO.getMovieId())
+               .makeYear(adminRequestFundingUpdateFormDTO.getMakeYear())
+               .production(adminRequestFundingUpdateFormDTO.getProduction())
+               .movieName(adminRequestFundingUpdateFormDTO.getMovieTitle())
+               .synopsis(adminRequestFundingUpdateFormDTO.getSynopsis())
+               .thumbnail(moviePic)
+               .directingIntension(adminRequestFundingUpdateFormDTO.getDirectingIntension())
+               .genre(adminRequestFundingUpdateFormDTO.getGenre())
+               .runningGrade(adminRequestFundingUpdateFormDTO.getRunningGrade())
+               .director(adminRequestFundingUpdateFormDTO.getStaff().getDirector())
+               .directorPic(directorPic)
+               .actor(StringUtil.stringJoin(StringUtil.listToString(adminRequestFundingUpdateFormDTO.getActors()), StringUtil.listToString(adminRequestFundingUpdateFormDTO.getActorRoles())))
+               .directorCareers(StringUtil.stringBrJoin(StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorCareers()), StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorCareerYears())))
+               .directorAwardsFilm(StringUtil.stringAwardBrJoin(StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorAwards()), StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorAwardYears())))
+               .dDay(DateUtil.stringToDate(adminRequestFundingUpdateFormDTO.getDDay()))
+               .build();
 
-          try{ Movie movie = Movie.builder()
-                   .id(adminRequestFundingUpdateFormDTO.getMovieId())
-                   .makeYear(adminRequestFundingUpdateFormDTO.getMakeYear())
-                   .production(adminRequestFundingUpdateFormDTO.getProduction())
-                   .movieName(adminRequestFundingUpdateFormDTO.getMovieTitle())
-                   .synopsis(adminRequestFundingUpdateFormDTO.getSynopsis())
-                   .thumbnail(moviePic)
-                   .directingIntension(adminRequestFundingUpdateFormDTO.getDirectingIntension())
-                   .genre(adminRequestFundingUpdateFormDTO.getGenre())
-                   .runningGrade(adminRequestFundingUpdateFormDTO.getRunningGrade())
-                   .director(adminRequestFundingUpdateFormDTO.getStaff().getDirector())
-                   .directorPic(directorPic)
-                   .actor(StringUtil.stringJoin(StringUtil.listToString(adminRequestFundingUpdateFormDTO.getActors()), StringUtil.listToString(adminRequestFundingUpdateFormDTO.getActorRoles())))
-                   .directorCareers(StringUtil.stringBrJoin(StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorCareers()), StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorCareerYears())))
-                   .directorAwardsFilm(StringUtil.stringAwardBrJoin(StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorAwards()), StringUtil.listToString(adminRequestFundingUpdateFormDTO.getDirectorAwardYears())))
-                   .dDay(DateUtil.stringToDate(adminRequestFundingUpdateFormDTO.getDDay()))
-                   .build();
-
-           log.debug("무비 디버그1");
-
-//           log.debug("무비 디버그0");
-//
-           if(adminRequestFundingUpdateFormDTO.getDirectorPhoto() == null || adminRequestFundingUpdateFormDTO.getDirectorPhoto().isEmpty()){
-               movie.setDirectorPic(null);
-           }
-           log.debug("무비 디버그1");
-
-
-           if(adminRequestFundingUpdateFormDTO.getMovieThumbnail() == null || adminRequestFundingUpdateFormDTO.getMovieThumbnail().isEmpty()){
-               movie.setThumbnail(null);
-           }
-           log.debug("무비 디버그2");
+        log.debug("무비 업데이트 전까지 정상실행 확인");
            movieRepository.updateById(movie);
        } catch (Exception e){
            throw new MyDynamicException("영화 업데이트 실패", HttpStatus.INTERNAL_SERVER_ERROR);
        }
-//       log.debug("테스트-나요기1");
-//        int resultRowCount = movieRepository.updateById(movie);
-//        log.debug("테스트-나요기2");
-//
-//        if (resultRowCount != 1) {
-//            throw new MyDynamicException("영화 업데이트 실패", HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//        return resultRowCount;
     }
 
     @Transactional
@@ -179,6 +162,11 @@ public class MovieService {
             throw new MyDynamicException("영화 삭제 실패", HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return resultRowCount;
+    }
+
+    //무비 아이디로 무비 객체 조회
+    public Movie findByIdAboutMovie(Integer id){
+        return movieRepository.findByIdAboutMovie(id);
     }
 
 }

@@ -39,4 +39,7 @@ public interface MovieRepository {
     // 어드민 페이지 펀딩 삭제
     public int deleteById(Integer id);
 
+    //무비 아이디로 무비 객체 조회
+    public Movie findByIdAboutMovie(Integer id);
+
 }
