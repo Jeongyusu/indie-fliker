@@ -79,28 +79,34 @@
     <update id="updateById">
         update movie_tb
         <set>
-        <if test="makeYear != null">make_year = #{makeYear},</if>
-        <if test="production != null">production = #{production},</if>
-        <if test="movieName != null">movie_name = #{movieName},</if>
-        <if test="synopsis != null">synopsis = #{synopsis},</if>
+        <if test="makeYear != null and makeYear != ''">make_year = #{makeYear},</if>
+        <if test="production != null and production != ''">production = #{production},</if>
+        <if test="movieName != null and movieName != ''">movie_name = #{movieName},</if>
+        <if test="synopsis != null and synopsis != ''">synopsis = #{synopsis},</if>
         <if test="thumbnail != null and thumbnail != ''">thumbnail = #{thumbnail},</if>
-        <if test="directingIntension != null">directing_intension = #{directingIntension},</if>
-        <if test="genre != null">genre = #{genre},</if>
-        <if test="runningGrade != null">running_grade = #{runningGrade},</if>
-        <if test="director != null">director = #{director},</if>
-        <if test="directorPic != null and directorPic !=''">director_pic = #{directorPic},</if>
-        <if test="actor != null">actor = #{actor},</if>
-        <if test="directorCareers != null">director_careers = #{directorCareers},</if>
-        <if test="directorAwardsFilm != null">director_awards_film = #{directorAwardsFilm},</if>
-        <if test="onlineReleaseDate != null">online_release_date = #{onlineReleaseDate},</if>
-        <if test="offlineEndDate != null">offline_end_date = #{offlineEndDate},</if>
+        <if test="directingIntension != null and directingIntension != ''">directing_intension = #{directingIntension},</if>
+        <if test="genre != null and genre != ''">genre = #{genre},</if>
+        <if test="runningGrade != null and runningGrade != ''">running_grade = #{runningGrade},</if>
+        <if test="director != null and director != ''">director = #{director},</if>
+        <if test="directorPic != null and directorPic != ''">director_pic = #{directorPic},</if>
+        <if test="actor != null and actor != ''">actor = #{actor},</if>
+        <if test="directorCareers != null and directorCareers != ''">director_careers = #{directorCareers},</if>
+        <if test="directorAwardsFilm != null and directorAwardsFilm != ''">director_awards_film = #{directorAwardsFilm},</if>
+        <if test="onlineReleaseDate != null and onlineReleaseDate != ''">online_release_date = #{onlineReleaseDate},</if>
+        <if test="offlineEndDate != null and offlineEndDate != ''">offline_end_date = #{offlineEndDate},</if>
         <if test="dDay != null">d_day = #{dDay}</if>
         </set>
         where id = #{id}
     </update>
 
+
     <delete id="deleteById">
         delete from movie_tb where id = #{id}
     </delete>
+
+    <!-- 아이디로 무비 객체 조회 -->
+    <select id="findByIdAboutMovie" resultType="com.tenco.indiepicter.movie.Movie">
+        select * from movie_tb where id = #{id}
+    </select>
 
 </mapper>

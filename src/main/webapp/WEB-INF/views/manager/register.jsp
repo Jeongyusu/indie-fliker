@@ -68,7 +68,8 @@
                     <c:otherwise>
                         <p class="j_custom_font_style">등록 대기중인 펀딩이 없습니다.</p><br>
                         <p class="j_custom_font_style">등록신청을 기다려주세요!</p>
-                        <img src="/images/icons/giphy.gif" alt="">
+                        <img src="/images/icons/giphy.gif" class="j_custom_img"  alt="">
+
                     </c:otherwise>
                 </c:choose>
             </div>

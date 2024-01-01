@@ -5,7 +5,7 @@
 <body class="l_body">
 
 <div class="k_profile_main">
-    <div class="k_profile_info_set">카카오 간편 로그인 회원 - 프로필 수정</div>
+    <div class="k_profile_info_set">카카오 간편 로그인 회원가입</div>
     <form id="form" action="/user/kakao-login-profile-update" method="post" enctype="multipart/form-data">
         <div class="k_form_group">
             <label class="k_profile_pic">프로필 사진</label>

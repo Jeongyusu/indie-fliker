@@ -215,27 +215,26 @@
             <div class="k_funding_upload_container_four">
                     <label id="director_pic" for="director_photo" class="k_funding_upload_select_photo_pic">
                         <c:choose>
-                             <c:when test="${adminFundingUpdateFormDTO.directorPhoto != null}">
-                              <img src="${adminFundingUpdateFormDTO.directorPhoto}" class="k_funding_upload_select_photo_pic" alt=""></label>
-                             </c:when>
-                        <c:otherwise>
-                            <img src="${adminFundingUpdateFormDTO.directorPhoto}" class="k_funding_upload_select_photo_pic" alt=""></label>
-                        </c:otherwise>
+                            <c:when test="${adminFundingUpdateFormDTO.directorPhoto.contains('/images')}">
+                                <img src="${adminFundingUpdateFormDTO.directorPhoto}" class="k_funding_upload_select_photo_pic" alt="">
+                            </c:when>
+                            <c:otherwise>
+                            <i id="fa-camera" class="fas fa-camera"></i>사진 선택 <span class="k_star_class">*</span></label>
+                            </c:otherwise>
                         </c:choose>
                     </label>
                     <input type="file" id="director_photo" name="directorPhoto" accept="image/*" onchange="changeUserPic(this.id, 'director_pic', 'k_funding_movie_director_style', event)" class="k_funding_upload_label">
                     <br>
                 <div class="k_funding_directer_career">
                     <div id="career_movies" class="k_career_movie_style">
-                        <c:forEach var="careerMovie" items="${adminFundingUpdateFormDTO.extractNames()}" varStatus="status">
-                            <input type=text id="career_movie${status.index}" class="k_funding_upload_career_input" placeholder="작품 이름" name="directorCareers" value="${careerMovie}" oninput="preventSpecialCharacters(this)" }>
+                        <c:forEach var="careerMovie" items="${not empty adminFundingUpdateFormDTO.extractNames() ? adminFundingUpdateFormDTO.extractNames() : (empty adminFundingUpdateFormDTO.extractNames() ? [''] : null)}" varStatus="status">
+                            <input type="text" id="career_movie${status.index}" class="k_funding_upload_career_input" placeholder="작품 이름" name="directorCareers" value="${careerMovie}" oninput="preventSpecialCharacters(this)" />
                         </c:forEach>
                     </div>
                     <div id="career_movie_years" class="k_funding_upload_head_limit">
-                        <c:forEach var="careerYear" items="${adminFundingUpdateFormDTO.extractYears()}" varStatus="status">
-                            <input type="number" id="career_movie_year${status.index}"  class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorCareerYears" value="${careerYear}" oninput="validateYearInput(this,2024)">
+                        <c:forEach var="careerYear" items="${not empty adminFundingUpdateFormDTO.extractYears() ? adminFundingUpdateFormDTO.extractYears() : (empty adminFundingUpdateFormDTO.extractYears() ? [''] : null)}" varStatus="status">
+                            <input type="number" id="career_movie_year${status.index}" class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorCareerYears" value="${careerYear}" oninput="validateYearInput(this,2024)">
                         </c:forEach>
-
                     </div>
                 </div>
         </div>
@@ -252,12 +251,12 @@
         </div>
             <div class="k_funding_directer_career">
                 <div id="awards_movie" class="k_career_movie_style">
-                    <c:forEach var="award" items="${adminFundingUpdateFormDTO.extractAwardTitles()}" varStatus="status">
-                        <input type=text id="awards_movie${status.index}" class="k_funding_awards_movie_input" placeholder="작품 이름" name="directorAwards" value="${award}" oninput="preventSpecialCharacters(this)">
+                    <c:forEach var="award" items="${not empty adminFundingUpdateFormDTO.extractAwardTitles() ? adminFundingUpdateFormDTO.extractAwardTitles() : (empty adminFundingUpdateFormDTO.extractAwardTitles() ? [''] : null)}" varStatus="status">
+                        <input type="text" id="awards_movie${status.index}" class="k_funding_awards_movie_input" placeholder="작품 이름" name="directorAwards" value="${award}" oninput="preventSpecialCharacters(this)">
                     </c:forEach>
                 </div>
                 <div id="awards_movie_year" class="k_funding_upload_head_limit">
-                    <c:forEach var="awardYear" items="${adminFundingUpdateFormDTO.extractAwardYears()}" varStatus="status">
+                    <c:forEach var="awardYear" items="${not empty adminFundingUpdateFormDTO.extractAwardYears() ? adminFundingUpdateFormDTO.extractAwardYears() : (empty adminFundingUpdateFormDTO.extractAwardYears() ? [''] : null)}" varStatus="status">
                         <input type="number" id="awards_movie_year${status.index}" class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorAwardYears" value="${awardYear}">
                     </c:forEach>
                 </div>
@@ -281,12 +280,12 @@
         </div>
         <div class="k_funding_directer_career">
             <div id="movie_actor" class="k_career_movie_style">
-                <c:forEach var="actorName" items="${adminFundingUpdateFormDTO.parseActor().get(0)}" varStatus="status">
-                    <input type=text id="movie_actor${status.index}" class="k_funding_awards_movie_input" placeholder="배우 이름" name="actors" oninput="setDefaultIfEmpty(this, '미정')" value="${actorName}">
+                <c:forEach var="actorName" items="${not empty adminFundingUpdateFormDTO.parseActor().get(0) ? adminFundingUpdateFormDTO.parseActor().get(0) : (empty adminFundingUpdateFormDTO.parseActor().get(0) ? [''] : null)}" varStatus="status">
+                    <input type="text" id="movie_actor${status.index}" class="k_funding_awards_movie_input" placeholder="배우 이름" name="actors" oninput="setDefaultIfEmpty(this, '미정')" value="${actorName}">
                 </c:forEach>
             </div>
             <div id="movie_actor_role" class="k_funding_upload_head_limit">
-                <c:forEach var="actorRole" items="${adminFundingUpdateFormDTO.parseActor().get(1)}" varStatus="status">
+                <c:forEach var="actorRole" items="${not empty adminFundingUpdateFormDTO.parseActor().get(1) ? adminFundingUpdateFormDTO.parseActor().get(1) : (empty adminFundingUpdateFormDTO.parseActor().get(1) ? [''] : null)}" varStatus="status">
                     <input type="text" id="movie_actor_role${status.index}" class="k_funding_upload_movie_year" placeholder="배역" name="actorRoles" oninput="setDefaultIfEmpty(this, '미정')" value="${actorRole}">
                 </c:forEach>
             </div>

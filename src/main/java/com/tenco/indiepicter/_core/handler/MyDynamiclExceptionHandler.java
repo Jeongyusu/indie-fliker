@@ -5,6 +5,7 @@ import com.tenco.indiepicter._core.handler.exception.MyUnAuthorizedException;
 import com.tenco.indiepicter._core.handler.exception.MyValidationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;

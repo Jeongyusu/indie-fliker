@@ -385,3 +385,8 @@
     font-style: italic;
     color: darkgray;
 }
+
+.j_custom_img {
+    margin-right: 300px;
+    pointer-events: none;
+}

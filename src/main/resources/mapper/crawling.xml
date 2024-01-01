@@ -70,7 +70,7 @@
         UPDATE MOVIE_TB
         SET
             online_release_date = CASE
-                                      WHEN id BETWEEN 1 AND 60 THEN '2023-12-20'
+                                      WHEN id BETWEEN 1 AND 60 THEN '2024-01-01'
                                       WHEN id BETWEEN 61 AND 119 THEN '2023-12-01'
                                       WHEN id BETWEEN 120 AND 180 THEN '2024-01-01'
                                       ELSE online_release_date
@@ -100,7 +100,7 @@
                         ELSE d_day
                 END,
             chat_time = CASE
-                            WHEN id BETWEEN 1 AND 60 THEN '2023-12-20'
+                            WHEN id BETWEEN 1 AND 60 THEN '2024-01-01 05:00'
                             WHEN id BETWEEN 61 AND 119 THEN '2023-12-01'
                             WHEN id BETWEEN 120 AND 180 THEN '2024-01-01'
                             ELSE chat_time
