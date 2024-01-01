@@ -51,17 +51,26 @@
                 </div>
             </form>
             <div class="p_movie_form" id="movie_container">
-                <c:forEach var="fundingReady" items="${fundingReadyDTOs}" varStatus="status">
-                    <div class="p_movie_card">
-                        <img src="${fundingReady.thumbnail}" alt="영화 사진">
-                        <p class="p_movie_title">${fundingReady.movieName}</p>
-                        <p class="p_movie_director">감독 : ${fundingReady.director}</p>
-                        <button type="button" class="p_movie_card_button" data-bs-toggle="modal" data-bs-target="#j_fund_modal" data-id="${fundingReady.fundingReadyId}"
-                                data-name="${fundingReady.movieName}">
-                            영화 등록 하기
-                        </button>
-                    </div>
-                </c:forEach>
+                <c:choose>
+                    <c:when test="${not empty fundingReadyDTOs}">
+                        <c:forEach var="fundingReady" items="${fundingReadyDTOs}" varStatus="status">
+                            <div class="p_movie_card">
+                                <img src="${fundingReady.thumbnail}" alt="영화 사진">
+                                <p class="p_movie_title">${fundingReady.movieName}</p>
+                                <p class="p_movie_director">감독 : ${fundingReady.director}</p>
+                                <button type="button" class="p_movie_card_button" data-bs-toggle="modal" data-bs-target="#j_fund_modal" data-id="${fundingReady.fundingReadyId}"
+                                        data-name="${fundingReady.movieName}">
+                                    영화 등록 하기
+                                </button>
+                            </div>
+                        </c:forEach>
+                    </c:when>
+                    <c:otherwise>
+                        <p class="j_custom_font_style">등록 대기중인 펀딩이 없습니다.</p><br>
+                        <p class="j_custom_font_style">등록신청을 기다려주세요!</p>
+                        <img src="/images/icons/giphy.gif" alt="">
+                    </c:otherwise>
+                </c:choose>
             </div>
             <div class="modal" id="j_fund_modal">
                 <div class="modal-dialog" style="max-width: none; width: 70%" >

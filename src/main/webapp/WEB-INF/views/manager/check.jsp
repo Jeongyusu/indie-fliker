@@ -212,8 +212,12 @@
     }
 
     function formatPrice(number) {
-        const formatter = new Intl.NumberFormat('en-US');
-        return formatter.format(number);
+        if(number === 0){
+            return 0;
+        } else {
+            const formatter = new Intl.NumberFormat('en-US');
+            return formatter.format(number);
+        }
     }
 
     $('#j_fund_modal').on('show.bs.modal', function (event) {
