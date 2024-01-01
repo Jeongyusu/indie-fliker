@@ -52,3 +52,40 @@ function count(type){
     count.innerHTML = number;
     console.log("number : " + number);
 }
+
+$(document).ready(function () {
+    $(".bookmark_button").on('click', function () {
+        let fundingId = document.getElementById('k_funding_id').value;
+        console.log("펀딩 아이디 : " + fundingId);
+
+        // 클릭된 버튼 안에서 .scrap_icon 찾기
+        var scrapIcon = $(this).find(".scrap_icon");
+
+        // AJAX POST 요청
+        var sendData = {
+            fundingId: fundingId
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "/api/scrabs/toggle",
+            data: JSON.stringify(sendData),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json"
+        }).done(function (data, textStatus, xhr) {
+            console.log(typeof data);
+            console.log(data + "이지롱");
+
+            // 좋아요가 추가된 경우
+            if (data.response.scrabbed) {
+                scrapIcon.attr("src", "/images/icons/icons8-heart-24-red.png");
+            } else {
+                // 좋아요가 제거된 경우
+                scrapIcon.attr("src", "/images/icons/icons8-heart-24-black.png");
+            }
+
+        }).fail(function (error) {
+            alert("로그인이 필요합니다.");
+        });
+    });
+});
