@@ -47,8 +47,16 @@
 
 
 
-### 기능 - 회원
-|회원가입|카카오 회원가입|
+## 💡기능 - 회원
+- 회원가입, 소셜 회원가입&로그인
+- 아이디 중복체크, 비밀번호 찾기
+- 찜하기, 온라인 펀딩 및 결제
+- 오프라인 좌석 예매, 환불
+- 온라인 스트리밍, 후기 작성
+- 채팅하기
+<br>
+
+|회원가입|카카오 회원가입&로그인|
 |--|--|
 |<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/98a2cf63-69de-438e-8db6-664429ec937c">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/c5c1a93f-8950-4099-87ac-57bb95ea2836">|
 |회원정보수정|비밀번호찾기|
@@ -62,14 +70,22 @@
 |스트리밍, 후기 작성|채팅 하기|
 |<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/f5241996-daf2-4dfb-8737-03819579591d">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/e9569a42-4eda-4329-b7bb-ad27d4d5f6a2">|
 
+<br>
 
-### 기능 - 관리자
+## 💡기능 - 관리자
+- 펀딩 등록 승인, 펀딩 현황보기
+- 펀딩 수정, 종료
+- 온라인 상영기간/채팅방 오픈시간 설정, 오프라인 상영기간 설정
+- 회원관리, 회원 삭제
+- 회원 등급 변경, 초청권 발급
+
+  <br>
 |펀딩 승인, 현황보기|펀딩 수정|
 |--|--|
 |<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/321fb609-64a5-4f50-9927-b14e9425069b">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/f21f2d5e-c2ce-49d1-9e78-b5d0fb65e660">|
 |펀딩 종료, 현황보기|온/오프라인 상영기간 설정|
 |<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/321fb609-64a5-4f50-9927-b14e9425069b">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/84387cb0-e149-4fbb-8837-88dc0e4bed04">|
-|회원관리|회원정보수정, 초청권 발급|
+|회원관리|회원등급변경, 초청권 발급|
 |<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/57770421-a4b9-43b9-9923-ff66627630f4">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/fa2a567d-0cac-47f9-9753-5a706fe58a90">|
 
 
