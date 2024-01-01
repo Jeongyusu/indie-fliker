@@ -103,10 +103,18 @@ public class FundingController {
 
     @GetMapping("/offline-movie/{id}")
     public String detailOfflineMovie(@PathVariable Integer id, Model model){
+        User principal = (User) session.getAttribute(Define.PRINCIPAL);
+
+        // pricipal이 null이면 null을 사용하여 isLiked를 체크
+        boolean isLiked = principal != null && scrabService.checkIsLiked(principal.getId(), id);
+        System.out.println("isLiked : " + isLiked);
+
         OfflineMovieDetailDTO offlineMovieDetailDTO = fundingService.detailOfflineMovie(id);
-        model.addAttribute("offlineMovieDetailDTO", offlineMovieDetailDTO);
         List<FundingDTO> moviesByMainDTOs = fundingService.moviesByMain(1, 10);
+
+        model.addAttribute("offlineMovieDetailDTO", offlineMovieDetailDTO);
         model.addAttribute("moviesByMainDTOs", moviesByMainDTOs);
+        model.addAttribute("isLiked", isLiked);
         return "fund/off_detail";
     }
 
