@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
-    <form action="/funding-ready/save" method="post" enctype="multipart/form-data">
+<form action="/funding-ready/save" method="post" enctype="multipart/form-data">
     <div class="k_funding_save">
         <p>펀딩 등록하기</p>
     </div>
@@ -12,10 +12,10 @@
                     <div id="pic_container" class="k_funding_pic_title">영화 대표 사진 <span class="k_star_class">*</span></div>
                     <label id="basicPic" for="thumbnail" class="k_funding_upload_select_photo_pic2">
                         <img src="/images/icons/add_camera.png" class="k_camera_icon">
-                            사진 선택 <span class="k_star_class">*</span></label>
+                        사진 선택 <span class="k_star_class">*</span></label>
                     <input type="file" id="thumbnail" name="movieThumbnail" accept="image/*" onchange="changeUserPic(this.id, 'basicPic', 'k_funding_thumbnail_style', event)" class="k_funding_upload_label">
                 </div>
-                    <br>
+                <br>
 
                 <div class="grade_wrap">
                     <div class="k_custom_margin">
@@ -38,7 +38,7 @@
                 <div class="k_funding_upload_first_title">영화 제목
                     <span class="k_star_class">*</span>
                 </div>
-                <input type=text class="k_funding_upload_movie_name" name="movieTitle">
+                <input type=text class="k_funding_upload_movie_name j_special_check" name="movieTitle">
             </div>
             <div class="k_funding_upload_container_third">
                 <div id="k_fund">
@@ -56,10 +56,10 @@
             <div class="k_funding_genre_container">
                 <div class="k_funding_genre_grade_title">영화 장르<span class="k_star_class">*</span></div>
                 <select class="k_funding_genre_select_option" name="genre">
-                <option value="극영화">극영화</option>
-                <option value="애니메이션">애니메이션</option>
-                <option value="다큐멘터리">다큐멘터리</option>
-                <option value="실험영화">실험영화</option>
+                    <option value="극영화">극영화</option>
+                    <option value="애니메이션">애니메이션</option>
+                    <option value="다큐멘터리">다큐멘터리</option>
+                    <option value="실험영화">실험영화</option>
                 </select>
 
                 <div class="k_funding_make_year k_funding_upload_movie_schedule">제작 년도
@@ -102,7 +102,7 @@
                     </div>
                 </div>
                 <div class="k_funding_upload_container_two">
-                    <textarea class="k_funding_upload_sibnob" name="synopsis"></textarea>
+                    <textarea class="k_funding_upload_sibnob j_special_check" name="synopsis"></textarea>
                 </div>
             </div>
             <div class="k_margin_top">
@@ -112,7 +112,7 @@
                     </div>
                 </div>
                 <div class="k_funding_upload_container_two">
-                    <textarea class="k_funding_upload_sibnob" name="directingIntension"></textarea>
+                    <textarea class="k_funding_upload_sibnob j_special_check" name="directingIntension"></textarea>
                 </div>
             </div>
             <div class="k_margin_top">
@@ -130,11 +130,11 @@
             </div>
 
             <div id="pic_plus" class="k_funding_upload_container_four">
-                    <label id="movie_pic" for="movie_photo" class="k_funding_upload_select_photo_pic">
-                        <img src="/images/icons/add_camera.png" class="k_camera_icon">
-                        사진 선택 <span class="k_star_class">*</span></label>
-                    <input type="file" id="movie_photo" name="moviePhotos" accept="image/*" onchange="changeUserPic(this.id, 'movie_pic', 'k_funding_movie_pic_style', event)" class="k_funding_upload_label">
-                    <br>
+                <label id="movie_pic" for="movie_photo" class="k_funding_upload_select_photo_pic">
+                    <img src="/images/icons/add_camera.png" class="k_camera_icon">
+                    사진 선택 <span class="k_star_class">*</span></label>
+                <input type="file" id="movie_photo" name="moviePhotos" accept="image/*" onchange="changeUserPic(this.id, 'movie_pic', 'k_funding_movie_pic_style', event)" class="k_funding_upload_label">
+                <br>
 
             </div>
             <div class="k_margin_top">
@@ -146,55 +146,55 @@
                         <div class="k_funding_upload_head_Career k_funding_upload_titles k_padding_right70">감독 작품 경력</div>
                     </div>
                     <div class="k_plus_content">
-                            <button type="button" class="k_plus_button" onclick="plusCareerMovie()">
-                                <img src="/images/icons/plus.png">
-                            </button>
-                            <button type="button" class="k_minus_button" onclick="minusCareerMovie()">
-                                <img src="/images/icons/minus.png" class="k_minus_img k_padding_bottom5">
-                            </button>
+                        <button type="button" class="k_plus_button" onclick="plusCareerMovie()">
+                            <img src="/images/icons/plus.png">
+                        </button>
+                        <button type="button" class="k_minus_button" onclick="minusCareerMovie()">
+                            <img src="/images/icons/minus.png" class="k_minus_img k_padding_bottom5">
+                        </button>
                     </div>
                 </div>
                 <div class="k_funding_upload_container_four">
-                        <label id="director_pic" for="director_photo" class="k_funding_upload_select_photo_pic">
-                            <img src="/images/icons/add_camera.png" class="k_camera_icon">
-                            사진 선택 <span class="k_star_class">*</span>
-                        </label>
-                        <input type="file" id="director_photo" name="directorPhoto" accept="image/*" onchange="changeUserPic(this.id, 'director_pic', 'k_funding_movie_director_style', event)" class="k_funding_upload_label">
-                        <br>
+                    <label id="director_pic" for="director_photo" class="k_funding_upload_select_photo_pic">
+                        <img src="/images/icons/add_camera.png" class="k_camera_icon">
+                        사진 선택 <span class="k_star_class">*</span>
+                    </label>
+                    <input type="file" id="director_photo" name="directorPhoto" accept="image/*" onchange="changeUserPic(this.id, 'director_pic', 'k_funding_movie_director_style', event)" class="k_funding_upload_label">
+                    <br>
                     <div class="k_funding_directer_career">
                         <div id="career_movie" class="k_career_movie_style">
-                            <input type=text class="k_funding_upload_career_input" placeholder="작품 이름" name="directorCareers">
+                            <input type=text class="k_funding_upload_career_input j_special_check" placeholder="작품 이름" name="directorCareers" oninput="setDefaultIfEmpty(this, '미정')">
                         </div>
                         <div id="career_movie_year" class="k_funding_upload_head_limit">
-                        <input type="text" class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorCareerYears">
+                            <input type="number" class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorCareerYears" min="1900" max="2024" oninput="validateYearInput(this)">
                         </div>
                     </div>
-            </div>
-            <div id="k_cm_margin_top">
-            </div>
-            <div class="k_funding_upload_container_three">
-                <div class="k_funding_upload_titles k_funding_upload_pride">영화제 상영 및 수상작 <span class="k_star_class">*</span></div>
+                </div>
+                <div id="k_cm_margin_top">
+                </div>
+                <div class="k_funding_upload_container_three">
+                    <div class="k_funding_upload_titles k_funding_upload_pride">영화제 상영 및 수상작 <span class="k_star_class">*</span></div>
                     <button type="button" class="k_plus_button" onclick="plusAwardsMovie()">
                         <img src="/images/icons/plus.png">
                     </button>
                     <button type="button" class="k_minus_button" onclick="minusAwardsMovie()">
                         <img src="/images/icons/minus.png" class="k_minus_img">
                     </button>
-            </div>
+                </div>
                 <div class="k_funding_directer_career">
                     <div id="awards_movie" class="k_career_movie_style">
-                        <input type=text class="k_funding_awards_movie_input" placeholder="작품 이름" name="directorAwards">
+                        <input type=text class="k_funding_awards_movie_input j_special_check" placeholder="작품 이름" name="directorAwards" oninput="setDefaultIfEmpty(this, '미정')">
                     </div>
                     <div id="awards_movie_year" class="k_funding_upload_head_limit">
-                        <input type="text" class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorAwardYears">
+                        <input type="number" class="k_funding_upload_movie_year" placeholder="작품 년도" name="directorAwardYears" min="1900" max="2024" oninput="validateYearInput(this)">
                     </div>
                 </div>
-            <div class="k_funding_upload_career">
-                영화제 상영 및 수상작과 수상 년도를 작성해주세요.예) 2022 Nshville Film Festival / 예) 2022
-            </div>
-            <div class="k_funding_upload_career">
-                영화제 상영 및 수상작은 최대 10까지 등록 가능합니다.
-            </div>
+                <div class="k_funding_upload_career">
+                    영화제 상영 및 수상작과 수상 년도를 작성해주세요.예) 2022 Nshville Film Festival / 예) 2022
+                </div>
+                <div class="k_funding_upload_career">
+                    영화제 상영 및 수상작은 최대 10까지 등록 가능합니다.
+                </div>
                 <div class="k_custom_flex">
                     <div class="k_funding_upload_titles k_funding_upload_pride">출연 배우<span class="k_star_class">*</span></div>
                     <button type="button" class="k_plus_button" onclick="plusActor()">
@@ -208,10 +208,10 @@
             </div>
             <div class="k_funding_directer_career">
                 <div id="movie_actor" class="k_career_movie_style">
-                    <input type=text class="k_funding_awards_movie_input" placeholder="배우 이름" name="actors">
+                    <input type=text class="k_funding_awards_movie_input j_special_check" placeholder="배우 이름" name="actors" oninput="setDefaultIfEmpty(this, '미정')">
                 </div>
                 <div id="movie_actor_role" class="k_funding_upload_head_limit">
-                    <input type="text" class="k_funding_upload_movie_year" placeholder="배역" name="actorRoles">
+                    <input type="text" class="k_funding_upload_movie_year j_special_check" placeholder="배역" name="actorRoles" oninput="setDefaultIfEmpty(this, '미정')">
                 </div>
             </div>
 
@@ -223,47 +223,47 @@
                         <tr>
                             <th>감독</th>
                             <td>
-                                <input type="text" name="staff.director">
+                                <input class="j_special_check" type="text" name="staff.director">
                             </td>
                             <th>각본</th>
                             <td>
-                                <input type="text" name="staff.script">
+                                <input type="text" class="j_special_check" name="staff.script">
                             </td>
                         </tr>
                         <tr>
                             <th>촬영</th>
                             <td>
-                                <input type="text" name="staff.filming">
+                                <input type="text" class="j_special_check" name="staff.filming">
                             </td>
                             <th>조명</th>
                             <td>
-                                <input type="text" name="staff.lighting">
+                                <input type="text" class="j_special_check" name="staff.lighting">
                             </td>
                         </tr>
                         <tr>
                             <th>미술</th>
                             <td>
-                                <input type="text" name="staff.art">
+                                <input type="text" class="j_special_check" name="staff.art">
                             </td>
                             <th>편집</th>
                             <td>
-                                <input type="text" name="staff.editing">
+                                <input type="text" class="j_special_check" name="staff.editing">
                             </td>
                         </tr>
                         <tr>
                             <th>사운드</th>
                             <td>
-                                <input type="text" name="staff.sound">
+                                <input type="text" class="j_special_check" name="staff.sound">
                             </td>
                             <th>음악</th>
                             <td>
-                                <input type="text" name="staff.music">
+                                <input type="text" class="j_special_check" name="staff.music">
                             </td>
                         </tr>
                         <tr>
                             <th>의상</th>
                             <td>
-                                <input type="text" name="staff.clothes">
+                                <input type="text" class="j_special_check" name="staff.clothes">
                             </td>
                             <th></th>
                             <td></td>
@@ -273,18 +273,18 @@
                 </div>
             </div>
         </div>
-      </div>
-        <div class="k_custom_gif_container">
-            <img src="/images/icons/down-arrow.gif" class="k_custom_gif">
-    <%--        <div style="width: 30px"></div>--%>
-    <%--        <img src="/images/icons/down-arrow.gif" class="k_custom_gif">--%>
-        </div>
-        <div class="k_funding_save_form">
-            <button type="submit" class="k_custom_button">
-                <p>펀딩 등록하기</p>
-            </button>
-        </div>
-    </form>
+    </div>
+    <div class="k_custom_gif_container">
+        <img src="/images/icons/down-arrow.gif" class="k_custom_gif">
+        <%--        <div style="width: 30px"></div>--%>
+        <%--        <img src="/images/icons/down-arrow.gif" class="k_custom_gif">--%>
+    </div>
+    <div class="k_funding_save_form">
+        <button type="submit" class="k_custom_button">
+            <p>펀딩 등록하기</p>
+        </button>
+    </div>
+</form>
 
 
 <script>
@@ -550,6 +550,53 @@
         alert('변경 불가능한 값입니다.');
     }
 
+    function setDefaultIfEmpty(inputElement, defaultValue) {
+        if (inputElement.value === '') {
+            inputElement.value = defaultValue;
+        }
+    }
+
+    // 올바른 연도 값만 입력가능
+    function validateYearInput(inputElement) {
+        var year = inputElement.value.trim();
+
+        if (year.length === 4) {
+            year = parseInt(year);
+
+            if (isNaN(year) || year < 1900 || year > 2024) {
+                alert("올바른 년도를 입력하세요 (1900부터 2024까지).");
+                inputElement.value = '';
+            }
+        } else {
+            // 입력이 4자리가 아니면 여기에서 다른 처리를 할 수 있습니다.
+            // 현재는 아무 동작도 하지 않고 있습니다.
+        }
+
+        if (!inputElement.value.trim()) {
+            inputElement.value = '2024';
+        }
+    }
+
+    // 특정 클래스가 설정된 인풋 요소들을 선택합니다.
+    var inputElements = document.querySelectorAll('.j_special_check');
+
+    // 각각의 인풋 요소에 대해 이벤트 리스너를 등록합니다.
+    inputElements.forEach(function(inputElement) {
+        inputElement.addEventListener('input', function(event) {
+            // 입력된 값에서 특수문자 여부를 확인합니다.
+            var inputValue = event.target.value;
+            var containsSpecialCharacters = /[!@#$%^&*(),.?":{}|<>]/.test(inputValue);
+
+            // 특수문자가 포함된 경우 해당 특수문자를 찾아서 제거합니다.
+            if (containsSpecialCharacters) {
+                var modifiedValue = inputValue.replace(/[!@#$%^&*(),.?":{}|<>]/g, '');
+                event.target.value = modifiedValue;
+                alert('특수문자는 사용 불가능합니다.');
+            }
+        });
+    });
+
 
 </script>
 <%@ include file="../layout/footer.jsp" %>
+

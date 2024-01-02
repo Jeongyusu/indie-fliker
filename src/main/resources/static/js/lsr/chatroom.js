@@ -67,7 +67,7 @@ function chatTime(){
 
 
 
-
+let hasEntered = false;
 // 해당 채팅 버튼을 클릭 시 채팅 내용 뜨기
 chatButtons.forEach((chatButton) => {
     chatButton.addEventListener('click', ()=> {

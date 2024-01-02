@@ -1,6 +1,8 @@
 package com.tenco.indiepicter.funding;
 
+import com.tenco.indiepicter._core.handler.exception.MyApiException;
 import com.tenco.indiepicter._core.handler.exception.MyDynamicException;
+import com.tenco.indiepicter._core.handler.exception.MyPageException;
 import com.tenco.indiepicter._core.utils.DateUtil;
 import com.tenco.indiepicter._core.utils.ParamStore;
 import com.tenco.indiepicter.funding.fundingready.FundingReady;
@@ -149,6 +151,7 @@ public class FundingService {
         Funding funding = Funding.builder()
                 .id(fundingReady.getId())
                 .targetPrice(fundingReady.getTargetPrice())
+                .presentPrice(fundingReady.getPresentPrice())
                 .pricePerOnetime(fundingReady.getPricePerOnetime())
                 .peopleCount(fundingReady.getPeopleCount())
                 .releaseDate(fundingReady.getReleaseDate())
@@ -216,6 +219,7 @@ public class FundingService {
 
     @Transactional
     public int updateEndDateById(Integer id){
+        System.out.println("삭제Id입니다" + id);
         int resultRowCount =  fundingRepository.updateEndDateById(id);
         if(resultRowCount != 1) {
             throw new MyDynamicException("펀딩 종료 실패", HttpStatus.INTERNAL_SERVER_ERROR);

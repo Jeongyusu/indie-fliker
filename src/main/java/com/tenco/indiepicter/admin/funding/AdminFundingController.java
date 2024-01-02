@@ -10,8 +10,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Slf4j
@@ -33,6 +35,8 @@ public class AdminFundingController {
     @GetMapping("/funding-management")
     public String funding(@RequestParam(name="page", defaultValue = "1") Integer page ,Model model) {
         List<AdminFundingModifyDTO> adminFundingModifyDTOs = fundingService.findAllAdminFundingModify(page, 8);
+        log.debug("--------펀딩수정테스트-----");
+        log.debug(adminFundingModifyDTOs.toString());
         model.addAttribute("adminFundingModifyDTOs", adminFundingModifyDTOs);
         return "manager/update_delete";
     }
@@ -57,20 +61,20 @@ public class AdminFundingController {
 
     @GetMapping("/funding/movie-open/setting")
     public String moviePlayDay(@RequestParam(name = "page", defaultValue = "1") Integer page, Model model){
-        List<AdminOnlineStreamingDTO> adminOnlineStreamingDTOs = fundingService.findAllAdminPeriodSetting(page, 8);
+        List<AdminOnlineStreamingDTO> adminOnlineStreamingDTOs = fundingService.findAllAdminPeriodSetting(page, 12);
         model.addAttribute("adminOnlineStreamingDTOs", adminOnlineStreamingDTOs);
         return "manager/playday";
     }
 
     @GetMapping("/funding/off-movie-open/setting")
     public String offMoviePlayDay(@RequestParam(name = "page", defaultValue = "1") Integer page, Model model){
-        List<AdminOfflineStreamingDTO> adminOfflineStreamingDTOs = fundingService.findAllAdminOfflinePeriodSetting(page, 8);
+        List<AdminOfflineStreamingDTO> adminOfflineStreamingDTOs = fundingService.findAllAdminOfflinePeriodSetting(page, 12);
         model.addAttribute("adminOfflineStreamingDTOs", adminOfflineStreamingDTOs);
         return "manager/playoffday";
     }
 
     @PostMapping("/funding/update")
-    public @ResponseBody String saveFunding(AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO){
+    public @ResponseBody String saveFunding(@Valid AdminRequestFundingUpdateFormDTO adminRequestFundingUpdateFormDTO, Errors errors){
         fundingService.updateById(adminRequestFundingUpdateFormDTO);
         return Script.href("/admin/funding/detail/" + adminRequestFundingUpdateFormDTO.getFundingId(),"펀딩 업데이트 성공!");
     }
@@ -114,6 +118,8 @@ public class AdminFundingController {
     @GetMapping("/funding/detail/{id}")
     public String detailFunding(@PathVariable Integer id, Model model){
         FundingDetailDTO fundingDetailDTO = fundingService.detailFunding(id);
+        log.debug("제작중입니다.");
+        log.debug(fundingDetailDTO.toString());
         boolean isLiked = scrabService.checkIsLiked(1, id); // 추후 1을 sessionUser.getId()로 변경
         List<FundingDTO> moviesByMainDTOs = fundingService.moviesByMain(1, 10);
 

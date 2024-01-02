@@ -197,7 +197,7 @@
                                                                                                                                                                                                      WHEN curdate() >= mt.online_release_date THEN 'true'
                                                                                                                                                                                                      ELSE 'false' END open
         from funding_tb ft join movie_tb mt on ft.movie_id = mt.id join movie_photo_tb mpt on mt.id = mpt.movie_id join movie_staff_tb mst on mt.id = mst.movie_id
-        where curdate() BETWEEN ft.release_date AND ft.end_date AND ft.id = #{fundingId}
+        where ft.id = #{fundingId}
     </select>
 
     <resultMap id="FundingDetailDTOResultOMap" type="com.tenco.indiepicter.funding.response.FundingDetailDTO">
@@ -479,7 +479,7 @@
     <!-- 어드민 페이지 오프라인 오픈기간 설정 영화 조회-->
     <select id="findAllAdminOfflinePeriodSetting" resultType="com.tenco.indiepicter.funding.response.AdminOfflineStreamingDTO">
         select mt.id movie_id, mt.thumbnail, mt.movie_name, ft.end_date from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
-        where curdate() > ft.end_date limit #{pageSize} offset #{offset}
+        where curdate() BETWEEN ft.release_date AND ft.end_date limit #{pageSize} offset #{offset}
     </select>
 
     <!-- 어드민 페이지 온라인 오픈기간 설정 영화 검색어 조회-->
@@ -500,6 +500,7 @@
     <select id="findAllAboutFundingProceeding" resultType="com.tenco.indiepicter.funding.response.AdminFundingProceedingDTO">
         select ft.id funding_id, mt.thumbnail movie_thumbnail, mt.movie_name, mt.director, ft.present_price / (ft.target_price/10) * 10 funding_rate, ft.present_price, ft.end_date
              , ft.people_count from funding_tb ft join movie_tb mt on ft.movie_id = mt.id
+        order by ft.id desc
         limit #{pageSize} offset #{offset}
     </select>
 

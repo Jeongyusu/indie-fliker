@@ -1,101 +1,107 @@
 @import url(common.css);
 
 /* 수정 완 2 */
-*{
-    margin: 0; padding: 0;
+* {
+    margin: 0;
+    padding: 0;
 }
 
 /* 관리자 페이지 메인 */
 /*--------------------------------------*/
 /* 탑 시작 */
-.p_top{
-    /* background-color: beige; */
-    position: relative;
+
+.p_body {
+    height: 100%;
     width: 100%;
-    height: 100px;
 }
 
-.p_top .p_title{
-    position: absolute;
-    /* background-color: #E6E6E6; */
-    width: 200px;
-    height: 70px;
-    text-align: center;
-    line-height: 65px;
-    top: 15px;
-    left: 15px;
+.p_flex_center {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
 }
 
-.p_top .p_title h2{
-    position: absolute;
-    top: 25px;
-    left: 25px;
-    color: #424242
+.p_main {
+    width: 1600px;
+    height: 100%;
+    display: flex;
 }
 
-.p_top .p_title .p_line{
-    background-color: #E6E6E6;
-    position: absolute;
-    width: 200px;
-    height: 1px;
-    top: 10px;
+.p_mini_font {
+    font-size: 16px;
 }
 
-.p_top .p_search{
-    /* background-color: aquamarine; */
-    position: absolute;
-    top: 30px;
-    left: 430px;
-    width: 500px;
-    height: 60px;
-    text-align: center;
-    line-height: 65px;
-    border: 2px solid #424242;
-    border-radius: 10px;
+.p_top {
+    width: 100%;
+    height: 75px;
+    background-color: var(--def_bl);
 }
 
-.p_top .p_search i{
-    position: absolute;
-    content: "\f0f3";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    font-size: 30px;
-    color: #424242;
-    top: 50%;
-    transform: translate(0, -50%);
-    left: 10px;
+.p_top .p_page_title {
+    font-weight: bold;
+    font-size: 28px;
+    padding-bottom: 3px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    margin: 0 40px;
 }
 
-.p_top .p_search input{
-    position: absolute;
-    width: 440px;
-    height: 50px;
-    top: 3px;
-    left: 50px;
+.p_top .p_page_title a {
+    text-decoration: none;
+    color: var(--def_wh);
+}
+
+.p_search {
+    text-align: end;
+    margin-bottom: 40px;
+}
+
+.p_search input {
+    height: 44px;
+    width: 36%;
+    border-radius: 5px;
+    border: 1px solid var(--font_01);
+    padding: 10px;
+}
+
+.p_search_button {
+    width: 0;
+    background-color: transparent;
     border: none;
-    outline: none;
 }
 
-.p_main .p_top .p_inform{
-    position: absolute;
-    top: 30px;
-    right: 150px;
-    width: 50px;
-    height: 50px;
-}
-
-.p_top .p_inform a{
-    top: 50px;
-    right: 120px;
+.p_search i{
+    position: relative;
     content: "\f0f3";
-    font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    font-size: 30px;
-    color: #424242;
-    transition-duration: 0.5s;
+    font-size: 20px;
+    color: var(--font_01);
+    top: 10px;
+    transform: translate(0, -50%);
+    right: 40px;
 }
 
-.p_top .p_inform a:hover{
+/*.p_main .p_top .p_inform{*/
+/*    !*position: absolute;*!*/
+/*    top: 30px;*/
+/*    right: 150px;*/
+/*    width: 50px;*/
+/*    height: 50px;*/
+/*}*/
+
+/*.p_top .p_inform a{*/
+/*    top: 50px;*/
+/*    right: 120px;*/
+/*    content: "\f0f3";*/
+/*    font-family: "Font Awesome 5 Free";*/
+/*    font-weight: 900;*/
+/*    font-size: 30px;*/
+/*    color: #424242;*/
+/*    transition-duration: 0.5s;*/
+/*}*/
+
+.p_top .p_inform a:hover {
     color: #01DFD7;
 }
 
@@ -105,244 +111,105 @@
 
 /* 컨테이너1 시작 */
 /*--------------------------------------*/
-.p_container1{
-    /* background-color: bisque; */
-    position: absolute;
+.p_container1 {
     height: 100%;
-    top: 100px;
+    width: 20%;
+    margin: 40px 0;
+    border-right: 0.1px solid var(--back_02);
+    padding: 0 28px;
+}
+
+.p_section_title {
+    font-size: 16px;
+}
+
+.p_section_ul {
+    font-size: 16px;
+    list-style: none;
+}
+
+.p_section_ul li {
+    margin-top: 15px;
+}
+
+.p_section_ul a {
+    margin-left: 10px;
+    color: #424242;
+    transition-duration: 0.2s;
+}
+
+.p_section_ul a:hover {
+    text-decoration: none;
+    color: #01DFD7;
+}
+
+.p_line {
+    background-color: #E6E6E6;
+    width: 100%;
+    height: 1px;
+    margin: 20px 0;
 }
 
 /* 섹션1 시작 */
-.p_container1 .p_section1{
-    /* background-color: #FE2E64; */
-    margin-bottom: 30px;
-    width: 250px;
-    height: 50px;
-
+.p_container1 .p_section1 {
+    margin-bottom: 20px;
 }
 
-.p_container1 .p_section1 .p_dashboard{
-    position: absolute;
-    background-color: #424242;
-    right: 35px;
-    top: 0px;
-    width: 200px;
-    height: 50px;
-    border-radius: 15px;
+.p_container1 .p_section1 .p_icon1 {
+    content: "\e131";
+    color: #424242;
 }
 
-.p_container1 .p_section1 i{
-    position: absolute;
-    top: 13px;
-    left: 20px;
-    content: "\f009";
-    font-family: "Font Awesome 5 Free";
-    font-size: 25px;
-    color: #01DFD7;
+.p_container1 .p_section1 .p_icon2 {
+    content: "\f201";
+    color: #424242;
 }
 
-.p_container1 .p_section1 a{
-    position: absolute;
-    top: 11px;
-    left: 68px;
-    font-size: 18px;
-    text-decoration: none;
-    color: #01DFD7;
-    transition-duration: 0.2s;
+.p_container1 .p_section1 .p_icon3 {
+    content: "\f304";
+    color: #424242;
 }
-
-.p_container1 .p_section1 a:hover{
-    color:white;
-}
-
-/* 섹션1 끝 */
 
 /* 섹션2 시작 */
-.p_container1 .p_section2{
-    /* background-color: #F6CED8; */
-    width: 100%;
-    height: 150px;
-}
-        
-.p_container1 .p_section2 h3{
-    margin-left: 15px;
-    font-size: 12px;
+.p_container1 .p_section2 {
+    margin-bottom: 20px;
 }
 
-.p_container1 .p_section2 ul{
-    margin-top: 10px;
-    margin-left: 20px;
-    font-size: 15px;
-    list-style: none;
-}
-
-.p_container1 .p_section2 .p_icon1{
-    content: "\e131";
-    font-family: "Font Awesome 5 Free";
+.p_container1 .p_section2 .p_icon1 {
+    content: "\f3ff";
     color: #424242;
 }
 
-.p_container1 .p_section2 .p_icon2{
-    content: "\f201";
-    font-family: "Font Awesome 5 Free";
+.p_container1 .p_section2 .p_icon2 {
+    content: "\f007";
     color: #424242;
 }
 
-.p_container1 .p_section2 .p_icon3{
-    content: "\f304";
-    font-family: "Font Awesome 5 Free";
+.p_container1 .p_section2 .p_icon3 {
+    content: "\f500";
     color: #424242;
 }
-
-.p_container1 .p_section2 a{
-    margin-left: 10px;
-    color:#424242;
-    transition-duration: 0.2s;
-}
-
-.p_container1 .p_section2 a:hover{
-   text-decoration: none;
-   color: #01DFD7;
-}
-
-.p_container1 .p_section2 ul li{
-    margin-top: 15px;
-}
-
-.p_container1 .p_section2 .p_line{
-    background-color: #E6E6E6;
-    width: 230px;
-    height: 1px;
-    top: 20px;
-}
-/* 섹션2 끝 */
 
 /* 섹션3 시작 */
-.p_container1 .p_section3{
-    /* background-color: #F5A9F2; */
-    position: relative;
-    width: 100%;
-    height: 150px;
-    top: 15px;
-}
 
-.p_container1 .p_section3 h3{
-    margin-left: 15px;
-    font-size: 12px;
-}
-
-.p_container1 .p_section3 ul{
-    margin-top: 10px;
-    margin-left: 20px;
-    font-size: 15px;
-    list-style: none;
-}
-
-.p_container1 .p_section3 ul li{
-    margin-top: 15px;
-}
-
-.p_container1 .p_section3 a{
-    margin-left: 10px;
-    color: #424242;
-    transition-duration: 0.2s;
-}
-
-.p_container1 .p_section3 a:hover{
-    text-decoration: none;
-    color: #01DFD7;
-}
-
-.p_container1 .p_section3 .p_icon1{
-    content: "\f3ff";
-    font-family: "Font Awesome 5 Free";
-    color: #424242;
-}
-
-.p_container1 .p_section3 .p_icon2{
-    content: "\f007";
-    font-family: "Font Awesome 5 Free";
-    color: #424242;
-}
-
-.p_container1 .p_section3 .p_icon3{
+.p_container1 .p_section3 .p_icon1 {
     content: "\f500";
-    font-family: "Font Awesome 5 Free";
     color: #424242;
 }
 
-.p_container1 .p_section3 .p_line{
-    background-color: #E6E6E6;
-    width: 230px;
-    height: 1px;
-    top: 20px;
-}
-/* 섹션3 끝 */
-
-/* 섹션4 시작 */
-.p_container1 .p_section4{
-    /* background-color: #A9A9F5; */
-    position: relative;
-    width: 100%;
-    height: 150px;
-    top: 75px;
-}
-
-.p_container1 .p_section4 h3{
-    margin-left: 15px;
-    font-size: 12px;
-}
-
-.p_container1 .p_section4 ul{
-    margin-top: 10px;
-    margin-left: 20px;
-    font-size: 15px;
-    list-style: none;
-}
-
-.p_container1 .p_section4 ul li{
-    margin-top: 15px;
-}
-
-.p_container1 .p_section4 a{
-    margin-left: 10px;
-    color: #424242;
-    transition-duration: 0.2s;
-}
-
-.p_container1 .p_section4 a:hover{
-    text-decoration: none;
-    color: #01DFD7;
-}
-
-.p_container1 .p_section4 .p_icon1{
-    content: "\f500";
-    font-family: "Font Awesome 5 Free";
-    color: #424242;
-}
-
-.p_container1 .p_section4 .p_icon2{
+.p_container1 .p_section3 .p_icon2 {
     content: "\f075";
-    font-family: "Font Awesome 5 Free";
     color: #424242;
 }
 
-.p_container1 .p_section4 .p_icon3{
+.p_container1 .p_section3 .p_icon3 {
     content: "\f249";
-    font-family: "Font Awesome 5 Free";
     color: #424242;
 }
 
-.p_container1 .p_section4 .p_line{
-    background-color: #E6E6E6;
-    width: 230px;
-    height: 1px;
-    top: 20px;
-}
-/* 섹션4 끝 */
 
 /* 섹션5 시작 */
-.p_container1 .p_section5{
+.p_container1 .p_section5 {
     /* background-color: #A9F5D0; */
     width: 100%;
     height: 50px;
@@ -350,7 +217,7 @@
     margin-left: 10px;
 }
 
-.p_container1 .p_section5 i{
+.p_container1 .p_section5 i {
     position: relative;
     top: 1px;
     margin-left: 35px;
@@ -359,14 +226,14 @@
     color: #424242;
 }
 
-.p_container1 .p_section5 a{
+.p_container1 .p_section5 a {
     font-size: 12px;
     margin-left: 5px;
     color: #424242;
     transition-duration: 0.2s;
 }
 
-.p_container1 .p_section5 a:hover{
+.p_container1 .p_section5 a:hover {
     text-decoration: none;
     color: #01DFD7;
 }
@@ -378,7 +245,7 @@
 
 /* 컨테이너2 시작 */
 /*--------------------------------------*/
-.p_container2{
+.p_container2 {
     /* background-color: aqua; */
     position: relative;
     width: 1400px;
@@ -387,8 +254,14 @@
     left: 350px;
 }
 
+.p_container_title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
 /* 섹션1 시작 */
-.p_container2 .p_section1{
+.p_container2 .p_section1 {
     /* background-color: beige; */
     position: absolute;
     width: 450px;
@@ -397,7 +270,7 @@
     top: 50px;
 }
 
-.p_container2 .p_section1 i{
+.p_container2 .p_section1 i {
     position: absolute;
     content: "\e533";
     font-family: "Font Awesome 5 Free";
@@ -409,7 +282,7 @@
     left: 2px;
 }
 
-.p_container2 .p_section1 .p_menu1{
+.p_container2 .p_section1 .p_menu1 {
     /* background-color: bisque; */
     position: absolute;
     top: 0px;
@@ -417,33 +290,33 @@
     height: 100%;
 }
 
-.p_container2 .p_section1 .p_menu1 i{
+.p_container2 .p_section1 .p_menu1 i {
     /* background-color: aqua; */
     position: absolute;
     top: 50px;
 }
 
-.p_container2 .p_section1 .p_menu1 h3{
+.p_container2 .p_section1 .p_menu1 h3 {
     /* background-color: aquamarine; */
     position: absolute;
     left: 50px;
     top: 50px;
 }
 
-.p_container2 .p_section1 .p_menu1 p{
+.p_container2 .p_section1 .p_menu1 p {
     position: absolute;
     top: 100px;
     font-size: 30px;
     font-weight: bold;
 }
 
-.p_container2 .p_section1 .p_menu1 span{
+.p_container2 .p_section1 .p_menu1 span {
     position: absolute;
     top: 150px;
     color: #01DFD7;
 }
 
-.p_container2 .p_section1 .p_menu2{
+.p_container2 .p_section1 .p_menu2 {
     /* background-color: blueviolet; */
     position: absolute;
     width: 180px;
@@ -452,14 +325,14 @@
     right: 0px;
 }
 
-.p_container2 .p_section1 .p_menu2 progress{
+.p_container2 .p_section1 .p_menu2 progress {
     width: 180px;
     height: 70px;
     position: absolute;
     top: 20px;
 }
 
-.p_container2 .p_section1 .p_menu2 span{
+.p_container2 .p_section1 .p_menu2 span {
     position: absolute;
     right: 10px;
     bottom: 40px;
@@ -469,7 +342,7 @@
 /* 섹션1 끝 */
 
 /* 섹션2 시작 */
-.p_container2 .p_section2{
+.p_container2 .p_section2 {
     /* background-color: blanchedalmond; */
     position: absolute;
     width: 700px;
@@ -478,19 +351,19 @@
     top: -10px;
 }
 
-.p_container2 .p_section2 .p_menu1{
+.p_container2 .p_section2 .p_menu1 {
     /* background-color: aqua; */
     position: absolute;
     width: 200px;
     height: 40px;
 }
 
-.p_container2 .p_section2 .p_menu1 h3{
+.p_container2 .p_section2 .p_menu1 h3 {
     position: absolute;
     left: 0px;
 }
 
-.p_container2 .p_section2 .p_menu2{
+.p_container2 .p_section2 .p_menu2 {
     /* background-color: aqua; */
     position: absolute;
     width: 50px;
@@ -499,18 +372,18 @@
     right: 50px;
 }
 
-.p_container2 .p_section2 .p_menu2 a{
+.p_container2 .p_section2 .p_menu2 a {
     text-decoration: none;
     color: black;
     transition-duration: 0.2s;
 }
 
-.p_container2 .p_section2 .p_menu2 a:hover{
+.p_container2 .p_section2 .p_menu2 a:hover {
     color: #01DFD7;
     text-decoration: none;
 }
 
-.p_container2 .p_section2 .p_menu3{
+.p_container2 .p_section2 .p_menu3 {
     /* background-color: aliceblue; */
     position: relative;
     width: 680px;
@@ -518,7 +391,7 @@
     top: 40px;
 }
 
-.p_container2 .p_section2 .p_menu3 .p_movie{
+.p_container2 .p_section2 .p_menu3 .p_movie {
     /* background-color: beige; */
     width: 30%;
     height: 290px;
@@ -528,7 +401,7 @@
     border-radius: 10px;
 }
 
-.p_container2 .p_section2 .p_menu3 .p_movie img{
+.p_container2 .p_section2 .p_menu3 .p_movie img {
     width: 180px;
     height: 180px;
     border-radius: 10px;
@@ -536,21 +409,21 @@
     margin-top: 10px;
 }
 
-.p_container2 .p_section2 .p_menu3 .p_movie p{
+.p_container2 .p_section2 .p_menu3 .p_movie p {
     margin: 5px 10px;
     overflow: hidden; /* 넘치는 내용을 감추기 */
     white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
     text-overflow: ellipsis; /* 텍스트가 넘칠 경우 마침표로 표시 */
 }
 
-.p_container2 .p_section2 .p_menu3 .p_movie .p_p{
+.p_container2 .p_section2 .p_menu3 .p_movie .p_p {
     color: #01DFD7;
     overflow: hidden; /* 넘치는 내용을 감추기 */
     white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
     text-overflow: ellipsis; /* 텍스트가 넘칠 경우 마침표로 표시 */
 }
 
-.p_container2 .p_section2 .p_menu3 .p_movie button{
+.p_container2 .p_section2 .p_menu3 .p_movie button {
     background-color: #01DFD7;
     width: 160px;
     height: 30px;
@@ -559,13 +432,13 @@
     margin-left: 20px;
 }
 
-.p_container2 .p_section2 .p_menu3 .p_movie a{
+.p_container2 .p_section2 .p_menu3 .p_movie a {
     text-decoration: none;
     color: #424242;
     transition-duration: 0.2s;
 }
 
-.p_container2 .p_section2 .p_menu3 .p_movie a:hover{
+.p_container2 .p_section2 .p_menu3 .p_movie a:hover {
     text-decoration: none;
     color: white;
 }
@@ -576,7 +449,7 @@
 
 /* 컨테이너3 시작 */
 /*--------------------------------------*/
-.p_container3{
+.p_container3 {
     /* background-color: whitesmoke; */
     position: relative;
     width: 1400px;
@@ -586,7 +459,7 @@
 }
 
 /* 섹션2 시작 */
-.p_container3 .p_section2{
+.p_container3 .p_section2 {
     /* background-color: aqua; */
     position: absolute;
     top: 20px;
@@ -597,7 +470,7 @@
     border-radius: 10px;
 }
 
-.p_container3 .p_section2 a{
+.p_container3 .p_section2 a {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
@@ -608,12 +481,12 @@
     transition-duration: 0.2s;
 }
 
-.p_container3 .p_section2 a:hover{
+.p_container3 .p_section2 a:hover {
     text-decoration: none;
     color: #01DFD7;
 }
 
-.p_container3 .p_section2 i{
+.p_container3 .p_section2 i {
     position: absolute;
     content: "\f0b0";
     font-family: "Font Awesome 5 Free";
@@ -623,11 +496,12 @@
     top: 50%;
     transform: translate(0, -50%);
 }
+
 /* 섹션2 끝 */
 
 
 /* 섹션3 시작 */
-.p_container3 .p_section3 .table{
+.p_container3 .p_section3 .table {
     /* background-color: bisque; */
     position: relative;
     width: 100%;
@@ -636,14 +510,14 @@
     top: 20px;
 }
 
-.p_container3 .p_section3 .table img{
+.p_container3 .p_section3 .table img {
     /* background-color: aquamarine; */
     width: 30px;
     height: 30px;
     border-radius: 50%;
 }
 
-.p_container3 .p_section3 .table .p_name1{
+.p_container3 .p_section3 .table .p_name1 {
     position: absolute;
     top: 65px;
     left: 320px;
@@ -652,7 +526,7 @@
 /* 섹션3 끝 */
 
 /* 섹션4 시작 */
-.p_container3 .p_bottom{
+.p_container3 .p_bottom {
     /* background-color: antiquewhite; */
     position: absolute;
     left: 50%;
@@ -661,81 +535,103 @@
     transform: translate(-50%, 0);
 }
 
-.p_container3 .p_bottom ul{
+.p_container3 .p_bottom ul {
     margin-right: 10px;
 }
 
-.p_container3 .p_bottom .p_previous{
+.p_container3 .p_bottom .p_previous {
     position: absolute;
     left: 2%;
 }
 
-.p_container3 .p_bottom .p_next{
+.p_container3 .p_bottom .p_next {
     position: absolute;
     right: 2%;
 }
 
-.p_main_bottom{
+.p_main_bottom {
     position: absolute;
     top: 395px;
     left: 50%;
     transform: translate(-50%, 0);
 }
+
 /* 섹션4 끝 */
 /* 컨테이너3 끝  저장 */
 /*---------------------------------------------------------------------*/
 /* 관리자 페이지 메인 */
 
 
-
 /* 관리자 페이지 등록 허가 ( register )*/
 /*---------------------------------------------------------------------*/
-.p_register_container2{
-    /* background-color: antiquewhite; */
-    position: relative;
-    width: 1200px;
-    height: 640px;
-    top: 60px;
-    left: 420px;
+.p_register_container2 {
+    height: 100%;
+    width: 80%;
+    padding: 0 28px;
 }
 
-.p_register_container2 .p_section1{
+.p_register_container2 .p_section1 {
     /* background-color: #01DFD7; */
     height: 50%;
 }
 
-.p_register_container2 .p_section1 .p_menu1{
+.p_movie_card {
     float: left;
     width: 23%;
-    height: 300px;
-    background-color: white;
+    background-color: transparent;
     margin-right: 2%;
-    border-radius: 15px;
     text-align: center;
-    box-shadow: rgb(66, 66, 66) 5px 5px 5px;
-    border-radius: 10px;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
-.p_register_container2 .p_section1 .p_menu1 img{
-    width: 30px;
-    height: 50px;
-    width: 200px;
-    height: 160px;
-    margin-top: 20px;
-    border-radius: 15px;
+.p_movie_card img {
+    width: 90%;
+    border-radius: 5px;
 }
 
-.p_register_container2 .p_section1 .p_menu1 p{
-    /* background-color: #E6E6E6; */
+.p_movie_title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
-.p_register_container2 .p_section2{
+.p_movie_director {
+    margin: 10px;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.p_movie_card_button {
+    background-color: var(--point_05);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.p_movie_period_button {
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    background: var(--primary_01);
+    color: white;
+    border-radius: 5px;
+}
+
+.p_register_container2 .p_section2 {
     /* background-color:aquamarine; */
     height: 50%;
 }
 
 
-.p_register_container2 .p_section2 .p_menu2{
+.p_register_container2 .p_section2 .p_menu2 {
     float: left;
     width: 23%;
     height: 300px;
@@ -747,7 +643,7 @@
     border-radius: 10px;
 }
 
-.p_register_container2 .p_section2 .p_menu2 img{
+.p_register_container2 .p_section2 .p_menu2 img {
     width: 30px;
     height: 50px;
     width: 200px;
@@ -756,165 +652,155 @@
     border-radius: 15px;
 }
 
-.p_register_container2 .p_section2 .p_menu2 p{
+.p_register_container2 .p_section2 .p_menu2 p {
     /* background-color: #E6E6E6; */
 }
 
-.p_register_container2 button{
-    background-color: #01DFD7;
-    border: none;
-    border-radius: 5px;
-    width: 120px;
-    height: 30px;
-    text-decoration: none;
-    transition-duration: 0.5s;
-    margin-left: 10px;
-    margin-bottom: 10px;
-}
+/*.p_register_container2 button {*/
+/*    background-color: #01DFD7;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    width: 120px;*/
+/*    height: 30px;*/
+/*    text-decoration: none;*/
+/*    transition-duration: 0.5s;*/
+/*    margin-left: 10px;*/
+/*    margin-bottom: 10px;*/
+/*}*/
 
-.p_register_container2 button:hover{
+.p_register_container2 button:hover {
     text-decoration: none;
     color: white;
 }
 
-.p_register_bottom{
+.p_register_bottom {
     position: relative;
     top: 20px;
     left: 420px;
 }
+
 /*---------------------------------------------------------------------*/
 /* 관리자 페이지 등록 허가 ( register )*/
 
 
-
 /* 관리자 페이지 현황 확인 ( check )*/
 /*---------------------------------------------------------------------*/
-.p_check_container2{
-    /* background-color: antiquewhite; */
-    position: relative;
-    width: 1300px;
-    height: 650px;
-    top: 50px;
-    left: 380px;
+.p_check_container2 {
+    height: 100%;
+    width: 80%;
+    padding: 0 28px;
 }
 
-.p_check_container2 .p_title{
-    margin-bottom: 30px;
+.p_fund_form {
+    display: grid;
+    place-items: center;
 }
 
-.p_check_container2 .p_box{
-	/* background-color: #E6E6E6; */
+.p_check_container2 .p_box {
     margin-bottom: 20px;
-    width: 100%;
+    width: 80%;
     height: 180px;
-    border: 0.5px solid;
-}
-
-.p_check_container2 .p_box img{
-	/* background-color: black; */
-    width: 180px;
-    height: 150px;
-    margin-top: 14px;
-    margin-left: 18px;
+    border: 0.5px solid var(--line_01);
+    display: flex;
+    padding: 10px 16px;
     border-radius: 5px;
 }
 
-.p_check_container2 .p_box .p_list{
-    /* background-color: bisque; */
-    position: relative;
-    bottom: 150px;
-    left: 240px;
+.p_check_container2 .p_box img {
+    width: 100px;
+    border-radius: 5px;
 }
 
-.p_check_container2 .p_box .p_list .p_flex{
+.p_check_container2 .p_box .p_list {
+    margin-left: 20px;
+    padding: 10px;
+}
+
+.p_check_container2 .p_box .p_list .p_flex {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
+
 }
 
-.p_check_container2 .p_box .p_list .p_p1{
+.p_check_container2 .p_box .p_list .p_p1 {
     font-size: 20px;
     font-weight: bold;
 }
 
-.p_check_container2 .p_box .p_list .p_p2{
+.p_check_container2 .p_box .p_list .p_p2 {
     font-size: 15px;
+    margin-top: 10px;
 }
 
-.p_check_container2 .p_box .p_list .p_p3{
-    color: #01DFD7;
-    position: relative;
-    font-size: 30px;
+.p_check_container2 .p_box .p_list .p_p3 {
+    color: var(--primary_01);
+    font-size: 20px;
     font-weight: bold;
-    bottom: 15px;
+    margin-top: 5px;
 }
 
-.p_check_container2 .p_box .p_list .p_p4{
-    color: #01DFD7;
-    position: relative;
+.p_check_container2 .p_box .p_list .p_p4 {
+    color: var(--primary_01);
     top: 5px;
     left: 10px;
 }
 
-.p_check_container2 .p_box .p_list .p_p5{
-    color: #01DFD7;
-    position: relative;
-    top: 0px;
-    left: 25px;
-    background-color: #A9F5F2;
-    width: 90px;
-    height: 30px;
+.p_check_container2 .p_box .p_list .p_p5 {
+    color: var(--point_05);
+    background-color: var(--point_01);
+    width: 68px;
+    height: 24px;
     text-align: center;
-    line-height: 30px;
+    line-height: 24px;
     border-radius: 5px;
+    font-size: 11px;
 }
 
-.p_check_container2 .p_box .p_list .p_p6{
-    position: relative;
-    bottom: 30px;
-    font-size: 30px;
+.p_check_container2 .p_box .p_list .p_p6 {
+    margin-top: 18px;
+    font-size: 24px;
     font-weight: bold;
 }
 
-.p_check_container2 .p_box .p_list .p_p7{
-    position: relative;
-    bottom: 12px;
-    left: 10px;
+.p_check_container2 .p_box .p_list .p_p7 {
+    margin-top: 18px;
 }
 
-.p_check_container2 .p_box .p_list .p_p8{
-    color:#424242;
-    position: relative;
+.p_check_container2 .p_box .p_list .p_p8 {
+    color: #424242;
     bottom: 20px;
     left: 35px;
-    background-color:#E6E6E6;
-    width: 90px;
-    height: 30px;
+    background-color: #E6E6E6;
+    width: 64px;
+    height: 23px;
     text-align: center;
-    line-height: 30px;
+    line-height: 20px;
     border-radius: 5px;
+    margin-left: 5px;
+    margin-top: 15px;
+    font-size: 12px;
+    padding-top: 2px;
 }
 
-.p_check_bottom{
-    position: relative;
+.p_check_bottom {
     top: 20px;
     left: 420px;
 }
+
 /*---------------------------------------------------------------------*/
 /* 관리자 페이지 현황 확인 ( check )*/
 
 
 /* 관리자 페이지 초청권 ( invitation )*/
 /*---------------------------------------------------------------------*/
-.p_invitation_container2{
-    /* background-color: antiquewhite; */
-    position: relative;
-    width: 1300px;
-    height: 550px;
-    top: 120px;
-    left: 380px;
+.p_invitation_container2 {
+    height: 100%;
+    width: 80%;
+    padding: 0 28px;
 }
 
-.p_invitation_container2 .p_filter{
+.p_invitation_container2 .p_filter {
     position: absolute;
     right: 20px;
     top: 0px;
@@ -922,23 +808,23 @@
     height: 40px;
 }
 
-.p_invitation_container2 .p_filter button{
+.p_invitation_container2 .p_filter button {
     width: 100%;
     height: 100%;
     border-radius: 15px;
     background-color: transparent;
 }
 
-.p_invitation_container2 .p_filter button:hover{
+.p_invitation_container2 .p_filter button:hover {
     color: #01DFD7;
 }
 
-.p_invitation_container2 .p_filter span{
+.p_invitation_container2 .p_filter span {
     position: relative;
     right: 15px;
 }
 
-.p_invitation_container2 .p_filter i{
+.p_invitation_container2 .p_filter i {
     position: absolute;
     content: "\f0b0";
     font-family: "Font Awesome 5 Free";
@@ -948,50 +834,66 @@
     right: 15px;
 }
 
-.p_invitation_container2 .p_section1{
-    position: relative;
-    top: 20px;
+.p_user_form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.p_invitation_container2 .p_section1 .table img{
+.p_invitation_form {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.p_invitation_form .table th {
+    text-align: center;
+    padding: 12px 10px;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+.p_invitation_form .table td {
+    padding: 12px 10px;
+    vertical-align: middle;
+    text-align: center;
+    border-top: 1px solid #dee2e6;
+}
+
+
+.p_invitation_form .table img {
     background-color: #01DFD7;
-    width: 30px;
-    height: 30px;
+    width: 25px;
     border-radius: 15px;
+    margin-right: 8px;
 }
+.p_invitation_form .table .p_name {
 
-.p_invitation_container2 .p_section1 .table .p_name{
-    position: relative;
-    bottom: 27px;
-    left: 40px;
 }
-
-.p_invitation_container2 .p_section1 .table button{
-    background-color: #01DFD7;
+.p_invitation_form .table button {
+    background-color: var(--primary_01);
     width: 90px;
-    height: 30px;
+    height: 35px;
     border-radius: 5px;
     border: none;
-    border-color: white;
     transition-duration: 0.2s;
 }
-
-.p_invitation_container2 .p_section1 .table button:hover{
-    color:white;
+.p_invitation_form .table button:hover {
+    color: white;
 }
 
-.p_invitation_bottom{
+.p_invitation_bottom {
     position: relative;
     top: 20px;
     left: 420px;
 }
+
 /*---------------------------------------------------------------------*/
 /* 관리자 페이지 초청권 ( invitation ) */
 
 
 /* 관리자 페이지 감상평 관리 ( review )*/
 /*---------------------------------------------------------------------*/
-.p_review_container2{
+.p_review_container2 {
     /* background-color: antiquewhite; */
     position: relative;
     top: 60px;
@@ -1000,22 +902,22 @@
     height: 650px;
 }
 
-.p_review_container2 .p_title{
+.p_review_container2 .p_container_title {
     /* background-color: #424242; */
     width: 100%;
     height: 80px;
     margin-bottom: 20px;
 }
 
-.p_review_container2 .p_title h3{
+.p_review_container2 .p_container_title h3 {
     font-weight: bold;
 }
 
-.p_review_container2 .p_title h4{
+.p_review_container2 .p_container_title h4 {
     color: red;
 }
 
-.p_review_container2 .p_section1{
+.p_review_container2 .p_section1 {
     /* background-color: bisque; */
     top: 100px;
     left: 0px;
@@ -1023,7 +925,7 @@
     height: 550px;
 }
 
-.p_review_container2 .p_section1 .p_list{
+.p_review_container2 .p_section1 .p_list {
     /* background-color: darkgoldenrod; */
     top: 0px;
     left: 0px;
@@ -1032,7 +934,7 @@
     margin-bottom: 10px;
 }
 
-.p_review_container2 .p_section1 .p_list .p_frofile{
+.p_review_container2 .p_section1 .p_list .p_frofile {
     /* background-color: cadetblue; */
     top: 0px;
     left: 0px;
@@ -1040,7 +942,7 @@
     height: 100%;
 }
 
-.p_review_container2 .p_section1 .p_list .p_frofile img{
+.p_review_container2 .p_section1 .p_list .p_frofile img {
     /* background-color: black; */
     position: relative;
     top: 0px;
@@ -1050,7 +952,7 @@
     border-radius: 50%;
 }
 
-.p_review_container2 .p_section1 .p_list .p_frofile p{
+.p_review_container2 .p_section1 .p_list .p_frofile p {
     position: relative;
     top: 3px;
     left: 50%;
@@ -1061,7 +963,7 @@
     text-overflow: ellipsis; /* 텍스트가 넘칠 경우 마침표로 표시 */
 }
 
-.p_review_container2 .p_section1 .p_score{
+.p_review_container2 .p_section1 .p_score {
     /* background-color: brown; */
     position: relative;
     bottom: 60px;
@@ -1071,12 +973,12 @@
     text-align: center;
 }
 
-.p_review_container2 .p_section1 .p_list .p_score span{
+.p_review_container2 .p_section1 .p_list .p_score span {
     /* color: #01DFD7; */
     font-size: 20px;
 }
 
-.p_review_container2 .p_section1 .p_list .p_coment{
+.p_review_container2 .p_section1 .p_list .p_coment {
     background-color: #01DFD7;
     position: relative;
     bottom: 120px;
@@ -1087,7 +989,7 @@
     border-radius: 15px;
 }
 
-.p_review_container2 .p_section1 .p_list .p_coment p{
+.p_review_container2 .p_section1 .p_list .p_coment p {
     position: relative;
     width: 1000px;
     left: 20px;
@@ -1096,7 +998,7 @@
     text-overflow: ellipsis; /* 텍스트가 넘칠 경우 마침표로 표시 */
 }
 
-.p_review_container2 .p_section1 .p_list .p_delet{
+.p_review_container2 .p_section1 .p_list .p_delet {
     /* background-color: darkmagenta; */
     position: relative;
     bottom: 180px;
@@ -1107,51 +1009,66 @@
     line-height: 60px;
 }
 
-.p_review_container2 .p_section1 .p_list .p_delet button{
+.p_review_container2 .p_section1 .p_list .p_delet button {
     background-color: transparent;
     border: none;
     color: red;
 }
 
-.p_review_bottom{
+.p_review_bottom {
     position: relative;
     top: 100px;
     left: 900px;
 }
+
 /*---------------------------------------------------------------------*/
 /* 관리자 페이지 감상평 관리 ( review ) */
 
 
 /* 관리자 페이지 펀딩 등록 삭제 ( update_delete ) */
 /*---------------------------------------------------------------------*/
-.p_update_delete_container2{
-    /* background-color: antiquewhite; */
-    position: relative;
-    width: 1200px;
-    height: 640px;
-    top: 80px;
-    left: 400px;
+.p_update_delete_container2 {
+    height: 100%;
+    width: 80%;
+    padding: 0 28px;
 }
 
-.p_update_delete_container2 .p_section1{
+.p_movie_update_button {
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    background: var(--primary_01);
+    color: white;
+    border-radius: 5px
+}
+.p_movie_delete_button {
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    background: var(--point_04);
+    color: white;
+    border-radius: 5px
+}
+
+.p_update_delete_container2 .p_section1 {
     /* background-color: #01DFD7; */
     height: 50%;
 }
 
-.p_update_delete_container2 .p_section1 .p_menu1{
-        float: left;
-        width: 23%;
-        height: 300px;
-        background-color: white;
-        margin-right: 2%;
-        border-radius: 15px;
-        text-align: center;
-        border-radius: 10px;
-        border: 1px solid lightgray;
-        margin-bottom: 2%;
+.p_update_delete_container2 .p_section1 .p_menu1 {
+    float: left;
+    width: 23%;
+    height: 300px;
+    background-color: white;
+    margin-right: 2%;
+    border-radius: 15px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    margin-bottom: 2%;
 }
 
-.p_update_delete_container2 .p_section1 .p_menu1 img{
+.p_update_delete_container2 .p_section1 .p_menu1 img {
     width: 30px;
     height: 50px;
     width: 200px;
@@ -1160,17 +1077,17 @@
     border-radius: 15px;
 }
 
-.p_update_delete_container2 .p_section1 .p_menu1 p{
+.p_update_delete_container2 .p_section1 .p_menu1 p {
     /* background-color: #E6E6E6; */
     padding-bottom: 20px;
 }
 
-.p_update_delete_container2 .p_section2{
+.p_update_delete_container2 .p_section2 {
     /* background-color:aquamarine; */
     height: 50%;
 }
 
-.p_update_delete_container2 .p_section2 .p_menu2{
+.p_update_delete_container2 .p_section2 .p_menu2 {
     float: left;
     width: 23%;
     height: 300px;
@@ -1182,7 +1099,7 @@
     border-radius: 10px;
 }
 
-.p_update_delete_container2 .p_section2 .p_menu2 img{
+.p_update_delete_container2 .p_section2 .p_menu2 img {
     width: 30px;
     height: 50px;
     width: 200px;
@@ -1191,80 +1108,78 @@
     border-radius: 15px;
 }
 
-.p_update_delete_container2 .p_section2 .p_menu2 p{
+.p_update_delete_container2 .p_section2 .p_menu2 p {
     /* background-color: #E6E6E6; */
 }
 
-.p_update_delete_container2 button{
-    background-color: #01DFD7;
-    border: none;
-    border-radius: 5px;
-    width: 120px;
-    height: 30px;
-    text-decoration: none;
-    transition-duration: 0.5s;
-}
+/*.p_update_delete_container2 button {*/
+/*    background-color: #01DFD7;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    width: 120px;*/
+/*    height: 30px;*/
+/*    text-decoration: none;*/
+/*    transition-duration: 0.5s;*/
+/*}*/
 
-.p_update_delete_container2 button:hover{
+.p_update_delete_container2 button:hover {
     text-decoration: none;
     color: white;
 }
 
-.p_update_delete_container2 .p_section1 p{
+.p_update_delete_container2 .p_section1 p {
     position: relative;
     top: 20px;
 }
 
-.p_update_delete_container2 .p_section1 button{
+.p_update_delete_container2 .p_section1 button {
     position: relative;
     top: 20px;
 }
 
-.p_update_delete_container2 .p_section2 p{
+.p_update_delete_container2 .p_section2 p {
     position: relative;
     top: 20px;
 }
 
-.p_update_delete_container2 .p_section2 button{
+.p_update_delete_container2 .p_section2 button {
     position: relative;
     top: 20px;
 }
 
-.p_update_delete_container2 .p_button1{
+.p_update_delete_container2 .p_button1 {
     background-color: #01DFD7;
 }
 
-.p_update_delete_container2 .p_button2{
+.p_update_delete_container2 .p_button2 {
     background-color: #FE2E64;
 }
 
-.p_update_delete_bottom{
+.p_update_delete_bottom {
     position: relative;
     top: 100px;
     left: 820px;
+    display: none;
 }
+
 /*---------------------------------------------------------------------*/
 /* 관리자 페이지 펀딩 등록 삭제 ( update_delete ) */
 
 
-
 /* 관리자 페이지 오프라인 기간 설정 ( playday ) */
 /*---------------------------------------------------------------------*/
-.p_playday_container2{
-    /* background-color: antiquewhite; */
-    position: relative;
-    width: 1200px;
-    height: 640px;
-    top: 70px;
-    left: 420px;
+.p_playday_container2 {
+    height: 100%;
+    width: 80%;
+    padding: 0 28px;
 }
 
-.p_playday_container2 .p_section1{
+.p_playday_container2 .p_section1 {
     /* background-color: #01DFD7; */
     height: 50%;
 }
 
-.p_playday_container2 .p_section1 .p_menu1{
+.p_playday_container2 .p_section1 .p_menu1 {
     float: left;
     width: 23%;
     height: 300px;
@@ -1276,7 +1191,7 @@
     border-radius: 10px;
 }
 
-.p_playday_container2 .p_section1 .p_menu1 img{
+.p_playday_container2 .p_section1 .p_menu1 img {
     width: 30px;
     height: 50px;
     width: 200px;
@@ -1285,17 +1200,17 @@
     border-radius: 15px;
 }
 
-.p_playday_container2 .p_section1 .p_menu1 p{
+.p_playday_container2 .p_section1 .p_menu1 p {
     /* background-color: #E6E6E6; */
 }
 
-.p_playday_container2 .p_section2{
+.p_playday_container2 .p_section2 {
     /* background-color:aquamarine; */
     height: 50%;
 }
 
 
-.p_playday_container2 .p_section2 .p_menu2{
+.p_playday_container2 .p_section2 .p_menu2 {
     float: left;
     width: 23%;
     height: 300px;
@@ -1307,7 +1222,7 @@
     border-radius: 10px;
 }
 
-.p_playday_container2 .p_section2 .p_menu2 img{
+.p_playday_container2 .p_section2 .p_menu2 img {
     width: 30px;
     height: 50px;
     width: 200px;
@@ -1316,38 +1231,38 @@
     border-radius: 15px;
 }
 
-.p_playday_container2 .p_section2 .p_menu2 p{
+.p_playday_container2 .p_section2 .p_menu2 p {
     /* background-color: #E6E6E6; */
 }
 
-.p_playday_container2 button{
-    background-color: #01DFD7;
-    border: none;
-    border-radius: 5px;
-    width: 200px;
-    height: 30px;
-    text-decoration: none;
-    transition-duration: 0.5s;
-}
+/*.p_playday_container2 button {*/
+/*    background-color: #01DFD7;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    width: 200px;*/
+/*    height: 30px;*/
+/*    text-decoration: none;*/
+/*    transition-duration: 0.5s;*/
+/*}*/
 
-.p_playday_container2 button:hover{
+.p_playday_container2 button:hover {
     text-decoration: none;
     color: white;
 }
 
-.p_playday_bottom{
+.p_playday_bottom {
     position: relative;
     top: 100px;
     left: 840px;
 }
+
 /*---------------------------------------------------------------------*/
 /* 관리자 페이지 오프라인 기간 설정 ( playday ) */
 
 
-
 /* 관리자 페이지 채팅방 ( chatting ) */
 /*---------------------------------------------------------------------*/
-.p_chatting_container2{
+.p_chatting_container2 {
     /* background-color: antiquewhite; */
     position: relative;
     width: 1200px;
@@ -1356,12 +1271,12 @@
     left: 420px;
 }
 
-.p_chatting_container2 .p_section1{
+.p_chatting_container2 .p_section1 {
     /* background-color: #01DFD7; */
     height: 50%;
 }
 
-.p_chatting_container2 .p_section1 .p_menu1{
+.p_chatting_container2 .p_section1 .p_menu1 {
     float: left;
     width: 23%;
     height: 300px;
@@ -1373,7 +1288,7 @@
     border-radius: 10px;
 }
 
-.p_chatting_container2 .p_section1 .p_menu1 img{
+.p_chatting_container2 .p_section1 .p_menu1 img {
     width: 30px;
     height: 50px;
     width: 200px;
@@ -1382,7 +1297,7 @@
     border-radius: 15px;
 }
 
-.p_chatting_container2 .p_section1 .p_menu1 .p_p1{
+.p_chatting_container2 .p_section1 .p_menu1 .p_p1 {
     /* background-color: yellow; */
     position: relative;
     top: 10px;
@@ -1394,25 +1309,25 @@
     text-overflow: ellipsis;
 }
 
-.p_chatting_container2 .p_section1 .p_menu1 .p_p2{
-        /* background-color: yellow; */
-        position: relative;
-        top: 10px;
-        left: 12px;
-        font-weight: bold;
-        width: 250px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        color: #01DFD7;
+.p_chatting_container2 .p_section1 .p_menu1 .p_p2 {
+    /* background-color: yellow; */
+    position: relative;
+    top: 10px;
+    left: 12px;
+    font-weight: bold;
+    width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #01DFD7;
 }
 
-.p_chatting_container2 .p_section2{
+.p_chatting_container2 .p_section2 {
     /* background-color:aquamarine; */
     height: 50%;
 }
 
-.p_chatting_container2 .p_section2 .p_menu2{
+.p_chatting_container2 .p_section2 .p_menu2 {
     float: left;
     width: 23%;
     height: 300px;
@@ -1424,7 +1339,7 @@
     border-radius: 10px;
 }
 
-.p_chatting_container2 .p_section2 .p_menu2 img{
+.p_chatting_container2 .p_section2 .p_menu2 img {
     width: 30px;
     height: 50px;
     width: 200px;
@@ -1433,11 +1348,11 @@
     border-radius: 15px;
 }
 
-.p_chatting_container2 .p_section2 .p_menu2 p{
+.p_chatting_container2 .p_section2 .p_menu2 p {
     /* background-color: #E6E6E6; */
 }
 
-.p_chatting_container2 button{
+.p_chatting_container2 button {
     background-color: #01DFD7;
     border: none;
     border-radius: 5px;
@@ -1447,33 +1362,30 @@
     transition-duration: 0.2s;
 }
 
-.p_chatting_container2 button:hover{
+.p_chatting_container2 button:hover {
     text-decoration: none;
     color: white;
 }
 
-.p_chatting_bottom{
+.p_chatting_bottom {
     position: relative;
     top: 90px;
     left: 835px;
 }
+
 /*---------------------------------------------------------------------*/
 /* 관리자 페이지 채팅방 ( chatting ) */
 
 
-
 /* 관리자 페이지 일반 회원 관리 ( usermanagerment ) */
 /*---------------------------------------------------------------------*/
-.p_usermanagement_container2{
-    /* background-color: antiquewhite; */
-    position: relative;
-    width: 1300px;
-    height: 550px;
-    top: 120px;
-    left: 380px;
+.p_usermanagement_container2 {
+    height: 100%;
+    width: 80%;
+    padding: 0 28px;
 }
 
-.p_usermanagement_container2 .p_filter{
+.p_usermanagement_container2 .p_filter {
     position: absolute;
     right: 20px;
     top: 0px;
@@ -1481,23 +1393,23 @@
     height: 40px;
 }
 
-.p_usermanagement_container2 .p_filter button{
+.p_usermanagement_container2 .p_filter button {
     width: 100%;
     height: 100%;
     border-radius: 15px;
     background-color: transparent;
 }
 
-.p_usermanagement_container2 .p_filter button:hover{
+.p_usermanagement_container2 .p_filter button:hover {
     color: #01DFD7;
 }
 
-.p_usermanagement_container2 .p_filter span{
+.p_usermanagement_container2 .p_filter span {
     position: relative;
     right: 15px;
 }
 
-.p_usermanagement_container2 .p_filter i{
+.p_usermanagement_container2 .p_filter i {
     position: absolute;
     content: "\f0b0";
     font-family: "Font Awesome 5 Free";
@@ -1507,83 +1419,104 @@
     right: 15px;
 }
 
-.p_usermanagement_container2 .p_section1{
-    position: relative;
-    top: 20px;
+.p_usermanagement_form {
+    margin-top: 20px;
+    font-size: 16px;
 }
 
-.p_usermanagement_container2 .p_section1 .table img{
+.p_usermanagement_form .table th {
+    text-align: center;
+    padding: 12px 10px;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+.p_usermanagement_form .table td {
+    padding: 12px 10px;
+    vertical-align: middle;
+    text-align: center;
+    border-top: 1px solid #dee2e6;
+}
+
+
+.p_usermanagement_form .table img {
     background-color: #01DFD7;
-    width: 30px;
-    height: 30px;
+    width: 25px;
     border-radius: 15px;
+    margin-right: 8px;
 }
+.p_usermanagement_form .table .p_name {
 
-.p_usermanagement_container2 .p_section1 .table .p_name{
-    position: relative;
-    bottom: 27px;
-    left: 40px;
 }
-
-.p_usermanagement_container2 .p_section1 .table button{
-    background-color: #ea6161;
+.p_usermanagement_form .deleteButton {
+    background-color: var(--point_04);
     width: 90px;
-    height: 30px;
+    height: 35px;
     border-radius: 5px;
     border: none;
-    border-color: white;
     transition-duration: 0.2s;
 }
 
-.p_usermanagement_container2 .p_section1 .table button:hover{
-    color:white;
+.p_usermanagement_form .alreadyDeletedButton {
+    background-color: var(--line_01);
+    width: 90px;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    transition-duration: 0.2s;
 }
 
-.p_usermanagement_bottom{
+.p_usermanagement_form .deleteButton:hover {
+    color: white;
+}
+
+.p_usermanagement_container2 .p_section1 .table button:hover {
+    color: white;
+}
+
+.p_usermanagement_bottom {
     position: relative;
     top: 20px;
     left: 420px;
 }
+
 /*---------------------------------------------------------------------*/
 /* 관리자 페이지 일반 회원 관리 ( usermanagerment ) */
 
 
 /* 관리자 페이지 VIP 관리 ( vipmanagerment ) */
 /*---------------------------------------------------------------------*/
-.p_vipmanagement_container2{
-    /* background-color: antiquewhite; */
-    position: relative;
-    width: 1300px;
-    height: 550px;
-    top: 120px;
-    left: 380px;
+.p_vipmanagement_container2 {
+    height: 100%;
+    width: 80%;
+    padding: 0 28px;
 }
 
-.p_vipmanagement_container2 .p_filter{
+.p_vipmanagement_container2 .p_filter {
     position: absolute;
     right: 20px;
     top: 0px;
     width: 100px;
     height: 40px;
 }
-   
-.p_vipmanagement_container2 .p_filter button{
+
+.p_vipmanagement_container2 .p_filter button {
     width: 100%;
     height: 100%;
     border-radius: 15px;
     background-color: transparent;
 }
 
-.p_vipmanagement_container2 .p_filter button:hover{
+.p_vipmanagement_container2 .p_filter button:hover {
     color: #01DFD7;
 }
 
-.p_vipmanagement_container2 .p_filter span{
+.p_vipmanagement_container2 .p_filter span {
     position: relative;
     right: 15px;
 }
 
-.p_vipmanagement_container2 .p_filter i{
+.p_vipmanagement_container2 .p_filter i {
     position: absolute;
     content: "\f0b0";
     font-family: "Font Awesome 5 Free";
@@ -1593,25 +1526,25 @@
     right: 15px;
 }
 
-.p_vipmanagement_container2 .p_section1{
+.p_vipmanagement_container2 .p_section1 {
     position: relative;
     top: 20px;
 }
 
-.p_vipmanagement_container2 .p_section1 .table img{
+.p_vipmanagement_container2 .p_section1 .table img {
     background-color: #01DFD7;
     width: 30px;
     height: 30px;
     border-radius: 15px;
 }
 
-.p_vipmanagement_container2 .p_section1 .table .p_name{
+.p_vipmanagement_container2 .p_section1 .table .p_name {
     position: relative;
     bottom: 27px;
     left: 40px;
 }
 
-.p_vipmanagement_container2 .p_section1 .table button{
+.p_vipmanagement_container2 .p_section1 .table button {
     background-color: #ea6161;
     width: 90px;
     height: 30px;
@@ -1621,21 +1554,22 @@
     transition-duration: 0.2s;
 }
 
-.p_vipmanagement_container2 .p_section1 .table button:hover{
-    color:white;
+.p_vipmanagement_container2 .p_section1 .table button:hover {
+    color: white;
 }
 
-.p_vipmanagement_bottom{
+.p_vipmanagement_bottom {
     position: relative;
     top: 20px;
     left: 420px;
 }
+
 /*---------------------------------------------------------------------*/
 /* 관리자 페이지 VIP 관리 ( vipmanagerment ) */
 
 /* 공지사항 디테일 */
 /*---------------------------------------------------------------------*/
-.p_noticedetail_title{
+.p_noticedetail_title {
     display: flex;
     max-width: 1000px;
     flex-direction: column;
@@ -1645,35 +1579,35 @@
     font-weight: bold;
 }
 
-.p_noticedetail_img{
+.p_noticedetail_img {
     display: flex;
     align-items: center;
 }
 
-.p_noticedetail_img img{
+.p_noticedetail_img img {
     width: 50px;
     border-radius: 50%;
     margin-right: 8px;
 }
 
-.p_noticedetail_img p{
+.p_noticedetail_img p {
     font-size: 14px;
     margin-bottom: 5px;
 }
 
-.p_noticedetail_coment{
+.p_noticedetail_coment {
     margin: 40px 0;
     line-height: 20px;
     font-size: 14px;
 }
 
-.p_noticedetail_contnet h3{
+.p_noticedetail_contnet h3 {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
-.p_noticedetail_contnet p{
+.p_noticedetail_contnet p {
     line-height: 20px;
     font-size: 14px;
 }
@@ -1681,91 +1615,147 @@
 .p_custom_margin_bottom {
     margin-bottom: 20px;
 }
+
 /*---------------------------------------------------------------------*/
 /* 공지사항 디테일 */
 
 /* 초청권 발급 모달 스타일 */
 /*---------------------------------------------------------------------*/
- .p_modal {
-     display: none; /* 모달 초기에는 숨김 상태 */
-     position: fixed;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-     padding: 20px;
-     background-color: #fff;
-     border: 1px solid #ccc;
-     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-     z-index: 1;
-     width: 40%;
-     height: 70%;
- }
+.p_modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    width: 538px;
+    height: 632px;
+    border-radius: 5px;
+}
 
- .p_modal img{
-     position: relative;
-     top: 5px;
-     left: 10px;
-     width: 100px;
-     height: 100px;
- }
+.p_modal img {
+    width: 70px;
+    height: 70px;
+}
 
-.p_modal h2{
-    position: relative;
+.p_modal h2 {
+    font-weight: bold;
     bottom: 70px;
     left: 88%;
-    transform: translate(-50%, 0px);
+    font-size: 20px;
+    padding: 10px 0 15px;
+    margin-bottom: 14px;
 }
 
-.p_modal .modal_from{
-    position: relative;
-    top: 60px;
-    left: 0px;
-    width: 100%;
-    height: 80%;
+.p_modal_flex {
+    display: flex;
+    justify-content: center;
 }
 
-.p_modal .modal_from label{
-    position: relative;
-    bottom: 110px;
-    left: 210px;
+.p_modal_flex_between {
+    display: flex;
+    justify-content: space-between;
 }
 
-.p_modal .modal_from input{
-    position: relative;
-    bottom: 110px;
-    left: 50%;
-    transform: translate(-50%, 0px);
+.p_in_modal_from {
+    width: 320px;
+    text-align: center;
+}
+
+.p_in_modal_from p {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: start;
+}
+
+.p_in_modal_from label{
+    display: flex;
+    width: 320px;
+}
+
+.p_in_modal_from input {
     margin-bottom: 20px;
-    width: 300px;
+    width: 320px;
     height: 40px;
-    border-radius: 10px;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
+    background-color: transparent;
+    padding: 10px;
 }
 
-.p_modal .modal_from .submit{
-    position: relative;
-    background-color: #01DFD7;
-    bottom: 100px;
-    left: 50%;
-    transform: translate(-50%, 0px);
-    width: 300px;
+.p_modal_from h2 {
+    font-weight: bold;
+    bottom: 70px;
+    left: 88%;
+    font-size: 20px;
+    padding: 15px;
+}
+
+.p_modal_from {
+    width: 320px;
+    text-align: center;
+}
+
+.p_modal_from p {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: start;
+    margin-top: 14px;
+}
+
+.p_modal_from label{
+    display: flex;
+    width: 320px;
+}
+
+.p_modal_from input {
+    width: 320px;
     height: 40px;
-    border-radius: 10px;
-    border: none;
+    border-radius: 5px;
+    border: 0.5px solid var(--line_01);
+    background-color: transparent;
+    padding: 10px;
 }
 
-.p_modal .close{
-    top: 10px;
-    position: absolute;
-    right: 15px;
-    width: 100px;
-    height: 30px;
-    border-radius: 10px;
-    border: none;
-    background-color: #01DFD7;
+.p_modal_from div {
+    width: 100%;
 }
 
-.p_modal button:hover{
-    color:white;
+#release_date_container input, #end_date_container input, #chat_time_container input {
+    border: none;
+    padding: 0;
+    color: var(--point_02);
+    text-align: center;
+}
+
+#off_funding_end_container {
+    width: 320px;
+ }
+
+.p_submit {
+    background-color: var(--primary_01);
+    width: 45%;
+    height: 45px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 10px;
+}
+
+.p_close {
+    background-color: var(--point_04);
+    width: 45%;
+    height: 45px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 10px;
+}
+
+.p_modal button:hover {
+    color: white;
 }
 
 /* 모달 백그라운드 스타일 */
@@ -1779,21 +1769,22 @@
     background-color: rgba(0, 0, 0, 0.5); /* 반투명한 검은 배경 */
     z-index: 1;
 }
+
+
+
+
 /*---------------------------------------------------------------------*/
 /* 초청권 발급 모달 스타일 */
 
 /* 관리자 페이지 - 회원 등급 수정( grade_update ) */
 /*---------------------------------------------------------------------*/
-.p_grade_update_container2{
-    /* background-color: antiquewhite; */
-    position: relative;
-    width: 1300px;
-    height: 550px;
-    top: 120px;
-    left: 380px;
+.p_grade_update_container2 {
+    height: 100%;
+    width: 80%;
+    padding: 0 28px;
 }
 
-.p_grade_update_container2 .p_filter{
+.p_grade_update_container2 .p_filter {
     position: absolute;
     right: 20px;
     top: 0px;
@@ -1801,23 +1792,23 @@
     height: 40px;
 }
 
-.p_grade_update_container2 .p_filter button{
+.p_grade_update_container2 .p_filter button {
     width: 100%;
     height: 100%;
     border-radius: 15px;
     background-color: transparent;
 }
 
-.p_grade_update_container2 .p_filter button:hover{
+.p_grade_update_container2 .p_filter button:hover {
     color: #01DFD7;
 }
 
-.p_grade_update_container2 .p_filter span{
+.p_grade_update_container2 .p_filter span {
     position: relative;
     right: 15px;
 }
 
-.p_grade_update_container2 .p_filter i{
+.p_grade_update_container2 .p_filter i {
     position: absolute;
     content: "\f0b0";
     font-family: "Font Awesome 5 Free";
@@ -1827,25 +1818,25 @@
     right: 15px;
 }
 
-.p_grade_update_container2 .p_section1{
+.p_grade_update_container2 .p_section1 {
     position: relative;
     top: 20px;
 }
 
-.p_grade_update_container2 .p_section1 .table img{
+.p_grade_update_container2 .p_section1 .table img {
     background-color: #01DFD7;
     width: 30px;
     height: 30px;
     border-radius: 15px;
 }
 
-.p_grade_update_container2 .p_section1 .table .p_name{
+.p_grade_update_container2 .p_section1 .table .p_name {
     position: relative;
     bottom: 27px;
     left: 40px;
 }
 
-.p_grade_update_container2 .p_section1 .table button{
+.p_grade_update_container2 .p_section1 .table button {
     background-color: #01DFD7;
     width: 90px;
     height: 30px;
@@ -1855,49 +1846,52 @@
     transition-duration: 0.2s;
 }
 
-.p_grade_update_container2 .p_section1 .table button:hover{
-    color:white;
+.p_grade_update_container2 .p_section1 .table button:hover {
+    color: white;
 }
 
-.p_grade_update_bottom{
+.p_grade_update_bottom {
     position: relative;
     top: 20px;
     left: 420px;
 }
 
-.p_grade_update_container2 .p_vip{
-    background-color: #00c4c4;
+.p_grade_update_container2 .p_vip {
+    background-color: var(--point_03);
     width: 80px;
     height: 35px;
     text-align: center;
     line-height: 33px;
     border-radius: 10px;
     text-decoration: none;
+    font-size: 14px;
 }
 
-.p_grade_update_container2 .p_vip:hover{
+.p_grade_update_container2 .p_vip:hover {
     color: white;
 }
 
-.p_grade_update_container2 .p_normal{
-    background-color: #ea6161;
+.p_grade_update_container2 .p_normal {
+    background-color: var(--primary_01);
     width: 80px;
     height: 35px;
     text-align: center;
     line-height: 33px;
     border-radius: 10px;
     text-decoration: none;
+    font-size: 14px;
 }
 
-.p_grade_update_container2 .p_normal:hover{
+.p_grade_update_container2 .p_normal:hover {
     color: white;
 }
+
 /*---------------------------------------------------------------------*/
 /* 관리자 페이지 - 회원 등급 수정( grade_update ) */
 
 /* 이메일, 비밀번호 찾기 페이지 ( find_email_pw ) */
 /*---------------------------------------------------------------------*/
-.p_find_email_pw_main{
+.p_find_email_pw_main {
     background-color: #D9D9D9;
     position: relative;
     top: 150px;
@@ -1908,14 +1902,14 @@
     border-radius: 15px;
 }
 
-.p_find_email_pw_main .p_menu{
+.p_find_email_pw_main .p_menu {
     position: relative;
     top: 30px;
     left: 85px;
     font-size: 25px;
 }
 
-.p_find_email_pw_main .p_find_email{
+.p_find_email_pw_main .p_find_email {
     position: relative;
     top: 70px;
     left: 50%;
@@ -1924,14 +1918,14 @@
     height: 400px;
 }
 
-.p_find_email_pw_main .p_find_email label{
+.p_find_email_pw_main .p_find_email label {
     position: relative;
     top: 50px;
     left: 100px;
     font-size: 20px;
 }
 
-.p_find_email_pw_main .p_find_email input{
+.p_find_email_pw_main .p_find_email input {
     position: relative;
     top: 60px;
     left: 50%;
@@ -1942,7 +1936,7 @@
     border-radius: 10px;
 }
 
-.p_find_email_pw_main .p_find_email button{
+.p_find_email_pw_main .p_find_email button {
     position: relative;
     top: 74px;
     left: 50%;
@@ -1953,12 +1947,12 @@
     border: none;
 }
 
-.p_find_email_pw_main .p_find_email button:hover{
+.p_find_email_pw_main .p_find_email button:hover {
     background-color: #8AF9CD;
     color: white;
 }
 
-.p_find_email_pw_main .p_find_password{
+.p_find_email_pw_main .p_find_password {
     position: relative;
     top: 70px;
     left: 50%;
@@ -1967,18 +1961,20 @@
     height: 300px;
 }
 
-.p_find_email_pw_main .p_find_password p{
+.p_find_email_pw_main .p_find_password p {
     position: relative;
     top: 30px;
     left: 80px;
 }
-.p_find_email_pw_main .p_find_password label{
+
+.p_find_email_pw_main .p_find_password label {
     position: relative;
     top: 90px;
     left: 100px;
     font-size: 20px;
 }
-.p_find_email_pw_main .p_find_password input{
+
+.p_find_email_pw_main .p_find_password input {
     position: relative;
     top: 100px;
     left: 50%;
@@ -1988,7 +1984,8 @@
     margin-bottom: 50px;
     border-radius: 10px;
 }
-.p_find_email_pw_main .p_find_password button{
+
+.p_find_email_pw_main .p_find_password button {
     position: relative;
     top: 74px;
     left: 50%;
@@ -1999,17 +1996,18 @@
     border: none;
 }
 
-.p_find_email_pw_main .p_find_password button:hover{
+.p_find_email_pw_main .p_find_password button:hover {
     background-color: #8AF9CD;
     color: white;
 }
+
 /*---------------------------------------------------------------------*/
 /* 이메일, 비밀번호 찾기 페이지 ( find_email_pw ) */
 
 
 /* 비밀번호 수정 페이지 ( password_update ) */
 /*---------------------------------------------------------------------*/
-.p_password_update_main{
+.p_password_update_main {
     position: relative;
     background-color: #D9D9D9;
     top: 150px;
@@ -2020,14 +2018,14 @@
     border-radius: 15px;
 }
 
-.p_password_update_main .p_title{
+.p_password_update_main .p_container_title {
     position: relative;
     top: 20px;
     left: 20px;
     font-size: 25px;
 }
 
-.p_password_update_main .p_menu{
+.p_password_update_main .p_menu {
     position: relative;
     top: 60px;
     left: 50%;
@@ -2036,13 +2034,14 @@
     height: 400px;
 }
 
-.p_password_update_main .p_menu label{
+.p_password_update_main .p_menu label {
     position: relative;
     top: 15px;
     left: 105px;
     font-size: 15px;
 }
-.p_password_update_main .p_menu input{
+
+.p_password_update_main .p_menu input {
     position: relative;
     top: 20px;
     left: 50%;
@@ -2052,7 +2051,8 @@
     margin-bottom: 40px;
     border-radius: 10px;
 }
-.p_password_update_main .p_menu button{
+
+.p_password_update_main .p_menu button {
     position: relative;
     top: 30px;
     left: 50%;
@@ -2064,17 +2064,18 @@
     border: none;
 }
 
-.p_password_update_main .p_menu button:hover{
+.p_password_update_main .p_menu button:hover {
     background-color: #8AF9CD;
     color: white;
 }
+
 /*---------------------------------------------------------------------*/
 /* 비밀번호 수정 페이지 ( password_update ) */
 
 /* 전체 페이징 버튼 스타일 */
 /*---------------------------------------------------------------------*/
-.p_paging .p_priveous{
-    background-color: var(--primary_01);
+.p_paging .p_priveous {
+    background-color: var(--line_01);
     width: 45px;
     height: 35px;
     border-top-left-radius: 30px;
@@ -2086,14 +2087,16 @@
     text-decoration: none;
     color: black;
     font-weight: bold;
+    font-size: 13px;
+    padding-left: 2px;
 }
 
-.p_paging .p_priveous:hover{
+.p_paging .p_priveous:hover {
     color: white;
 }
 
-.p_paging .p_next{
-    background-color: var(--primary_01);
+.p_paging .p_next {
+    background-color: var(--line_01);
     width: 45px;
     height: 35px;
     border-top-right-radius: 30px;
@@ -2105,25 +2108,33 @@
     text-decoration: none;
     color: black;
     font-weight: bold;
+    font-size: 13px;
+    padding-right: 2px;
 }
 
-.p_paging .p_next:hover{
+.p_paging .p_next:hover {
     color: white;
 }
 
-.p_paging .page_number{
+.p_paging .page_number {
     margin-left: 10px;
     margin-right: 10px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: bold;
 }
 
-.p_paging .page_number:hover{
+.p_paging .page_number:hover {
     color: #ea6161;
 }
 
-.p_paging span{
-    font-size: 20px;
+.p_paging span {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--primary_01);
 }
 
 /*---------------------------------------------------------------------*/
@@ -2132,64 +2143,86 @@
 /* 전체 페이지 페이징 위치 잡기 */
 /*---------------------------------------------------------------------*/
 /* 공지사항 페이지 */
-.p_notice_paging{
+.p_notice_paging {
     position: relative;
     left: 42%;
 }
+
 /* 자주 묻는 질문 페이지(회원 정보) */
-.p_question_user_paging{
+.p_question_user_paging {
     position: relative;
     left: 45%;
 }
+
 /* 자주 묻는 질문 페이지(결제) */
-.p_question_pay_paging{
+.p_question_pay_paging {
     position: relative;
     left: 45%;
 }
+
 /* 자주 묻는 질문 페이지(취소/환불) */
-.p_question_cancle_paging{
+.p_question_cancle_paging {
     position: relative;
     left: 45%;
 }
+
 /* 자주 묻는 질문 페이지(영화 예매) */
-.p_question_reservation_paging{
+.p_question_reservation_paging {
     position: relative;
     left: 45%;
 }
+
 /* 자주 묻는 질문 페이지(VIP) */
-.p_question_vip_paging{
+.p_question_vip_paging {
     position: relative;
     left: 45%;
 }
+
 /* 자주 묻는 질문 페이지(검색) */
 .p_question_search_paging{
     position: relative;
     left: 45%;
 }
+
 /* 나의 초청권 현황 페이지 */
-.p_my_invitation_paging{
+.p_my_invitation_paging {
     position: relative;
     left: 42%;
 }
+
 /* 관리자 페이지(VIP 초청권 발급) */
-.p_invitation_paging{
+.p_invitation_paging {
     position: relative;
     left: 42%;
 }
+
 /* 관리자 페이지(일반 회원 관리) */
-.p_user_management_paging{
+.p_user_management_paging {
     position: relative;
     left: 42%;
 }
+
 /* 관리자 페이지(VIP 회원 관리) */
-.p_vip_management_paging{
+.p_vip_management_paging {
     position: relative;
     left: 42%;
 }
+
 /* 관리자 페이지(회원 등급 수정) */
-.p_grage_update_paging{
+.p_grage_update_paging {
     position: relative;
     left: 42%;
 }
+
 /*---------------------------------------------------------------------*/
 /* 전체 페이지 페이징 위치 잡기 */
+
+.p_fund_update_form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.p_movie_form {
+    display: flex;
+    flex-wrap: wrap;
+}

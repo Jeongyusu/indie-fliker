@@ -166,7 +166,7 @@ public class AdminController {
 			@RequestParam(value="page", required=false, defaultValue="1") Integer page,
 			Model model) {
 
-		List<User> adminGradeUpdatePagingLists = this.adminService.adminAllPagingLists(page);
+		List<User> adminGradeUpdatePagingLists = this.adminService.findByAllPagingListsExWithdrawal(page);
 		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.pagingParam(page);
 		model.addAttribute("adminGradeUpdatePagingLists", adminGradeUpdatePagingLists);
 		model.addAttribute("paging", adminPagingResponseDTO);
@@ -215,16 +215,18 @@ public class AdminController {
 	@GetMapping("/invitation/search")
 	public String userInvitationSearch(@RequestParam( name ="keyword") String keyword, @RequestParam(value="page", required=false, defaultValue="1") Integer page, Model model){
 		List<User> adminInvitationPagingLists = adminService.adminUserPagingKeywordLists(page,keyword);
-		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.pagingParam(page);
+		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.keywordPagingParam(page, keyword);
 		model.addAttribute("adminInvitationPagingLists", adminInvitationPagingLists);
 		model.addAttribute("paging", adminPagingResponseDTO);
+		log.debug("페이징값테스트");
+		log.debug(adminPagingResponseDTO.toString());
 		return "manager/invitation_search";
 	}
 	 //회원 등급 검색어 조회
 	@GetMapping("/grade/search")
 	public String userGradeSearch(@RequestParam( name ="keyword") String keyword, @RequestParam(value="page", required=false, defaultValue="1") Integer page, Model model){
 		List<User> adminGradeUpdatePagingLists = adminService.adminUserPagingKeywordLists(page,keyword);
-		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.pagingParam(page);
+		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.keywordPagingParam(page, keyword);
 		model.addAttribute("adminGradeUpdatePagingLists", adminGradeUpdatePagingLists);
 		model.addAttribute("paging", adminPagingResponseDTO);
 		return "manager/grade_update_search";
@@ -234,7 +236,7 @@ public class AdminController {
 	@GetMapping("/normal/search")
 	public String userNormalSearch(@RequestParam( name ="keyword") String keyword, @RequestParam(value="page", required=false, defaultValue="1") Integer page, Model model){
 		List<User> adminUserPagingLists = adminService.findByAdminNormalPagingKeywordLists(page,keyword);
-		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.pagingParam(page);
+		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.keywordNormalPagingParams(page, keyword);
 		model.addAttribute("adminUserPagingLists", adminUserPagingLists);
 		model.addAttribute("paging", adminPagingResponseDTO);
 		return "manager/user_management_search";
@@ -245,11 +247,11 @@ public class AdminController {
 	public String userVIPSearch(@RequestParam( name ="keyword") String keyword, @RequestParam(value="page", required=false, defaultValue="1") Integer page, Model model){
 		List<User> adminVipPagingLists = adminService.findByAdminVipPagingKeywordLists(page,keyword);
 		log.debug("출력결과 : " + adminVipPagingLists.toString());
-		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.pagingParam(page);
+		AdminPagingResponseDTO adminPagingResponseDTO = this.adminService.keywordVIPPagingParams(page, keyword);
 		model.addAttribute("adminVipPagingLists", adminVipPagingLists);
 		model.addAttribute("paging", adminPagingResponseDTO);
 		return "manager/vip_management_search";
 	}
 }
 
-// 01-02 8:87 학원 작업 시작~
+

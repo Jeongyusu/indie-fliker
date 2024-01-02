@@ -63,7 +63,7 @@
                             <span id="n_toggle_more" style="display: none">
                                 <div class="n_movie_text">
                                     <h3>감독 작품 경력</h3>
-                                    <img id="n_director_img" src="${offlineMovieDetailDTO.directorPic}">
+                                    <img id="n_director_img" src="${offlineMovieDetailDTO.directorPic}" alt="">
                                     <h5>${offlineMovieDetailDTO.director}</h5>
                                     <p>
                                         ${offlineMovieDetailDTO.directorCareers}
@@ -112,7 +112,7 @@
                                 </div>
                             </span>
                             <button id="n_toggle_button" onclick="toggleMore()">프로젝트 더 보기</button>
-                            <input type="hidden" id="k_funding_id" value="${fundingDetailDTO.fundingId}">
+                            <input type="hidden" id="k_funding_id" value="${offlineMovieDetailDTO.fundingId}">
                         </div>
                         <!-- 기대되는 영화 목록 -->
                         <div id="n_more_movie">
@@ -200,10 +200,10 @@
                             <button type="button" class="bookmark_button">
                                 <c:choose>
                                     <c:when test="${isLiked}">
-                                        <img id="scrap_icon" src="/images/icons/icons8-heart-24-red.png">
+                                        <img class="scrap_icon red-heart" src="/images/icons/icons8-heart-24-red.png">
                                     </c:when>
                                     <c:otherwise>
-                                        <img id="scrap_icon" src="/images/icons/icons8-heart-24-black.png">
+                                        <img class="scrap_icon black-heart" src="/images/icons/icons8-heart-24-black.png">
                                     </c:otherwise>
                                 </c:choose>
                             </button>
@@ -218,42 +218,42 @@
     </div>
 <script src="../../../../js/neh/off_detail.js"></script>
 
-<script>
-    $(document).ready(function () {
-        $(".bookmark_button").on('click', function () {
-            let fundingId = document.getElementById('k_funding_id').value;
+<%--<script>--%>
+<%--    $(document).ready(function () {--%>
+<%--        $(".bookmark_button").on('click', function () {--%>
+<%--            let fundingId = document.getElementById('k_funding_id').value;--%>
 
-            // 클릭된 버튼 안에서 .scrap_icon 찾기
-            var scrapIcon = $(this).find(".scrap_icon");
+<%--            // 클릭된 버튼 안에서 .scrap_icon 찾기--%>
+<%--            var scrapIcon = $(this).find(".scrap_icon");--%>
 
-            // AJAX POST 요청
-            var sendData = {
-                fundingId: fundingId
-            };
+<%--            // AJAX POST 요청--%>
+<%--            var sendData = {--%>
+<%--                fundingId: fundingId--%>
+<%--            };--%>
 
-            $.ajax({
-                type: "POST",
-                url: "/api/scrabs/toggle",
-                data: JSON.stringify(sendData),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json"
-            }).done(function (data, textStatus, xhr) {
-                console.log(typeof data);
-                console.log(data);
-                // 좋아요가 추가된 경우
-                if (data.response.scrabbed) {
-                    scrapIcon.attr("src", "/images/icons/icons8-heart-24-red.png");
-                } else {
-                    // 좋아요가 제거된 경우
-                    scrapIcon.attr("src", "/images/icons/icons8-heart-24-black.png");
-                }
-            }).fail(function (error) {
-                console.log("000에러00000")
-                console.log(error)
-            });
-        });
-    });
-</script>
+<%--            $.ajax({--%>
+<%--                type: "POST",--%>
+<%--                url: "/api/scrabs/toggle",--%>
+<%--                data: JSON.stringify(sendData),--%>
+<%--                contentType: "application/json; charset=utf-8",--%>
+<%--                dataType: "json"--%>
+<%--            }).done(function (data, textStatus, xhr) {--%>
+<%--                console.log(typeof data);--%>
+<%--                console.log(data);--%>
+<%--                // 좋아요가 추가된 경우--%>
+<%--                if (data.response.scrabbed) {--%>
+<%--                    scrapIcon.attr("src", "/images/icons/icons8-heart-24-red.png");--%>
+<%--                } else {--%>
+<%--                    // 좋아요가 제거된 경우--%>
+<%--                    scrapIcon.attr("src", "/images/icons/icons8-heart-24-black.png");--%>
+<%--                }--%>
+<%--            }).fail(function (error) {--%>
+<%--                console.log("000에러00000")--%>
+<%--                console.log(error)--%>
+<%--            });--%>
+<%--        });--%>
+<%--    });--%>
+<%--</script>--%>
 
 
 

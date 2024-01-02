@@ -6,6 +6,7 @@ let onlineReleaseDate = document.querySelector("#onlineReleaseDate");
 let userId = document.querySelector("#principalId").value;
 let username = document.querySelector("#principalUsername").value;
 let userPic = document.querySelector("#principalPic").value;
+let userGrade = document.querySelector("#principalGrade").value;
 
 let reviewButton = document.querySelector(".l_review_button");
 let vipReviewButton = document.querySelector(".l_vip_review_button");
@@ -39,12 +40,12 @@ console.log("현재시간 : " + currentDate)
 let chatForm = document.getElementById('chatForm');
 
 // 채팅 입장 Form
-if(currentDate >= chatFirstTime && currentDate <= chatLastTime){
-    chatForm.style.display = 'block';
-    console.dir("나옴");
-}else {
-    chatForm.style.display = 'none';
-    console.dir("숨김");
+if(chatForm != null){
+    if(currentDate >= chatFirstTime && currentDate <= chatLastTime){
+        chatForm.style.display = 'block';
+    }else {
+        chatForm.style.display = 'none';
+    }
 }
 // 채팅 안내 Form
 if(currentDate >= chatInfoTime && currentDate <= chatLastTime){
@@ -283,39 +284,42 @@ async function findNormalReview(movieId) {
 // score 값 가져오기
 
 // 평론 - 평론쓰기 버튼 클릭시 저장
-vipReviewButton.addEventListener("click", function () {
-    let vipReviewContent = document.querySelector(".l_commentary_input").value;
-    let vipReviewPoint = document.querySelector("#l_score_point").value;
-    let movieId = document.querySelector("#movieId").value;
+if(userGrade === 'VIP'){
+    vipReviewButton.addEventListener("click", function () {
+        let vipReviewContent = document.querySelector(".l_commentary_input").value;
+        let vipReviewPoint = document.querySelector("#l_score_point").value;
+        let movieId = document.querySelector("#movieId").value;
 
-    // 공백 입력 막기
-    if(vipReviewContent.trim() === ""){
-        alert("공백은 입력할 수 없습니다.");
-        return;
-    }
-
-    // 평론을 이미 작성한 유저는 막기
-    let vipReviewUsers = document.querySelectorAll(".vipReviewUserId");
-    vipReviewUsers.forEach(function (vipReviewUser) {
-
-        if (Array.from(vipReviewUsers).some(vipReviewUser => vipReviewUser.value.includes(userId))) {
-            alert("영화 평론은 1번만 작성 가능합니다.");
-            // 중복된 경우, 여기서 더 이상의 코드 실행을 막을 수 있습니다.
-            // 예를 들어, 함수를 종료하거나 다른 처리를 추가할 수 있습니다.
-
-            vipReviewUser.preventDefault();
+        // 공백 입력 막기
+        if(vipReviewContent.trim() === ""){
+            alert("공백은 입력할 수 없습니다.");
             return;
         }
+
+        // 평론을 이미 작성한 유저는 막기
+        let vipReviewUsers = document.querySelectorAll(".vipReviewUserId");
+        vipReviewUsers.forEach(function (vipReviewUser) {
+
+            if (Array.from(vipReviewUsers).some(vipReviewUser => vipReviewUser.value.includes(userId))) {
+                alert("영화 평론은 1번만 작성 가능합니다.");
+                // 중복된 경우, 여기서 더 이상의 코드 실행을 막을 수 있습니다.
+                // 예를 들어, 함수를 종료하거나 다른 처리를 추가할 수 있습니다.
+
+                vipReviewUser.preventDefault();
+                return;
+            }
+        })
+
+        let vipReviewSaveDTO = {
+            vipReviewContent: vipReviewContent,
+            vipReviewPoint: vipReviewPoint,
+            movieId: movieId
+        };
+
+        saveVipReview(vipReviewSaveDTO);
     })
+}
 
-    let vipReviewSaveDTO = {
-        vipReviewContent: vipReviewContent,
-        vipReviewPoint: vipReviewPoint,
-        movieId: movieId
-    };
-
-    saveVipReview(vipReviewSaveDTO);
-})
 
 
 // 평론 수정 시 Enter 클릭
@@ -487,7 +491,8 @@ async function findVipReview(movieId) {
                                     </div>
                                      <div class="l_vip_text_container">
                                         <input type="text" class="l_vip_message_name" value="${vipReview.username}" disabled>
-                                        <input type="text" class="l_vip_message_text" value="${vipReview.vipReviewContent}" disabled onkeyup="enterVipReviewKey(this)">
+                                        <textarea class="l_vip_message_text" disabled onkeyup="enterVipReviewKey(this)">${vipReview.vipReviewContent}
+                                        </textarea>
                                         <input type="hidden" class="vipReviewId" value="${vipReview.vipReviewId}">
                                         <input type="hidden" class="vipReviewUserId" value=${vipReview.userId}">
                                     </div>
