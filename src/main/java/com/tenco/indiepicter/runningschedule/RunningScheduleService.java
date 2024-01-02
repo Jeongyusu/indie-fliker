@@ -47,7 +47,7 @@ public class RunningScheduleService {
     // 영화 스케쥴 더미데이터 생성
     public void insertRunningSchedule(){
 
-    for(int i=11; i<46; i++) {
+    for(int i=11; i<51; i++) {
         RunningSchedule runningSchedule = RunningSchedule.builder()
                 .runningTime(90)
                 .runningDate(TimeStampUtil.StringToTimestamp("2023-01-20 00:00:00"))
@@ -63,21 +63,21 @@ public class RunningScheduleService {
         }
     }
 
-//    for(int i=51; i<91; i++){
-//        RunningSchedule runningSchedule = RunningSchedule.builder()
-//                .runningTime(120)
-//                .runningDate(TimeStampUtil.StringToTimestamp("2023-01-30 00:00:00"))
-//                .startTime(TimeStampUtil.StringToTime("15:00:00"))
-//                .endTime(TimeStampUtil.StringToTime("17:00:00"))
-//                .movieId(i)
-//                .theaterId(2)
-//                .build();
-//        try {
-//            runningScheduleRepository.insert(runningSchedule);
-//        }catch(Exception e) {
-//            throw new MyPageException("runningSchedule_tb 더미 삽입실패", HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
+    for(int i=51; i<91; i++){
+        RunningSchedule runningSchedule = RunningSchedule.builder()
+                .runningTime(120)
+                .runningDate(TimeStampUtil.StringToTimestamp("2023-01-30 00:00:00"))
+                .startTime(TimeStampUtil.StringToTime("15:00:00"))
+                .endTime(TimeStampUtil.StringToTime("17:00:00"))
+                .movieId(i)
+                .theaterId(2)
+                .build();
+        try {
+            runningScheduleRepository.insert(runningSchedule);
+        }catch(Exception e) {
+            throw new MyPageException("runningSchedule_tb 더미 삽입실패", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 //        for(int i=91; i<121; i++) {
 //            RunningSchedule runningSchedule = RunningSchedule.builder()
