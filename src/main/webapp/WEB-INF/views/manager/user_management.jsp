@@ -153,7 +153,6 @@
                 location.reload();
             } else {
                 alert('삭제에 실패했습니다.');
-
             }
         }
     }

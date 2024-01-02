@@ -26,5 +26,4 @@ public class MailConfig {
         return jms;
     }
 
-
 }

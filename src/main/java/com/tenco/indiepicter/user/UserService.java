@@ -213,7 +213,7 @@ public class UserService {
 		return password;
 	}
 
-	// 이메일 보내기 (이메일 작성 후 ~ㄴ 임시 비밀번호로 회원 비밀번호 업데이트)
+	// 이메일 보내기 (이메일 작성 후 ~ 임시 비밀번호로 회원 비밀번호 업데이트)
 	public MailDTO sendEail(SendEmailDTO sendEmailDto){
 		String pw = tempPassword(); // 임시 비밀번호 생성
 		MailDTO maildto = new MailDTO();
@@ -236,7 +236,6 @@ public class UserService {
 		message.setText(mailDto.getMessage());
 		message.setFrom("indiefliker@gmail.com");
 		message.setReplyTo("indiefliker@gmail.com");
-//		System.out.println("message" + message);
 		javaMailSender.send(message);
 	}
 
