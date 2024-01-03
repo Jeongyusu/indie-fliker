@@ -28,8 +28,7 @@ public class NoticeController {
 	// defaultValue="1" : 기본값 1로 설정
 	@GetMapping("/paging")
 	public String paging(
-			@RequestParam(value="page", required=false, defaultValue="1") Integer page,
-			Model model) {
+			@RequestParam(value="page", required=false, defaultValue="1") Integer page, Model model) {
 		
 		List<NoticeResponseDTO> noticePagingLists = this.noticeService.noticePagingLists(page);
 		NoticePagingResponseDTO noticePagingResponseDTO = this.noticeService.pagingParam(page);

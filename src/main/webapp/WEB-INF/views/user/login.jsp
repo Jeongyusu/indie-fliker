@@ -17,7 +17,7 @@
 				<button type="submit">이메일로 로그인</button>
 			</div>
 			<div class="k_kakao">
-				<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=eaa873dc471f9ad17affff6005825aef&redirect_uri=http://localhost:80/user/kakao-callback">
+				<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=eaa873dc471f9ad17affff6005825aef&redirect_uri=http://localhost:80/user/kakao-callback&prompt=login">
 					<img alt="" src="/images/kakao/kakao_login_medium_wide.png">
 				</a>
 			</div>

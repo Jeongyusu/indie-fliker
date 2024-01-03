@@ -264,7 +264,6 @@ public class UserController {
 	@GetMapping("/logout")
 	public String logout() {
 		session.invalidate();
-
 		return "redirect:/fund/main";
 	}
 	
@@ -542,4 +541,4 @@ public class UserController {
 }
 
 
-
+// 1-2 13:25 학원 작업중~
