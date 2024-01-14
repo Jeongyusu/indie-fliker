@@ -101,11 +101,11 @@
   <br>
 |펀딩 승인, 현황보기|펀딩 수정|
 |--|--|
-|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/321fb609-64a5-4f50-9927-b14e9425069b">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/f21f2d5e-c2ce-49d1-9e78-b5d0fb65e660">|
+|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/d8359697-752d-47f5-8112-4c553fb1c08b">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/ca0f3bf7-7a70-4494-9024-00994fde94f0">|
 |펀딩 종료, 현황보기|온/오프라인 상영기간 설정|
-|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/321fb609-64a5-4f50-9927-b14e9425069b">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/84387cb0-e149-4fbb-8837-88dc0e4bed04">|
+|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/c24177cd-9f2c-4a3d-80ee-86b767b9fdc2">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/bce2f538-f888-4448-bf64-0b4a00e20526">|
 |회원관리|회원등급변경, 초청권 발급|
-|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/57770421-a4b9-43b9-9923-ff66627630f4">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/fa2a567d-0cac-47f9-9753-5a706fe58a90">|
+|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/4e7d3c1e-03aa-40a3-8aee-37f5340894bf">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/e4cc8b9f-879f-47bc-a33c-e826fc1a10ac">|
 
 
 
