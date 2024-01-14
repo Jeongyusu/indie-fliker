@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="20%" height="20%" src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/a85bc00b-7d04-49eb-8d14-7de46d89dd41" alt="Your Image Alt Text">
+    <img width="100%" height="100%" src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/55d80290-452a-4ba9-8940-29685cefd770" alt="Your Image Alt Text">
 </p>
 
 ## 🎬 프로젝트 개요
