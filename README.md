@@ -77,17 +77,17 @@
 
 |회원가입|카카오 회원가입&로그인|
 |--|--|
-|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/98a2cf63-69de-438e-8db6-664429ec937c">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/c5c1a93f-8950-4099-87ac-57bb95ea2836">|
+|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/f5391f5f-410c-4dda-bbd2-3b96f5e0638e">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/75d10837-54d6-4de4-83b6-f456355db8b0">|
 |회원정보수정|비밀번호찾기|
-|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/aa43d4f9-b844-4989-a7e4-55091f0cfd0e">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/d80a330b-5a9c-405e-85a8-bc041656dcfa">|
+|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/e315b1d8-88cb-4808-a634-572dffaf7914">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/fa986533-85e2-4267-8842-8e4efa7b2d08">|
 |메인|찜하기|
-|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/019f22ee-84d6-4388-b3e8-2af7ec0f4b8c">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/bbca8edb-42ec-44aa-95ec-0a249af34c4a">|
+|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/019f22ee-84d6-4388-b3e8-2af7ec0f4b8c">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/5c2c2a04-d09d-43a3-af4f-c2f2bd48be50">|
 |자주묻는질문&공지사항|온라인 펀딩 및 결제|
-|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/3b56c6bb-d57a-4f65-8003-1938f33ab674">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/bd4219d7-b04c-4bd5-976c-41dcb7651e50">|
+|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/3d28e738-80a9-4b49-95ee-3c4ed0b1df5d">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/fcecf076-cc18-4984-945f-ad704fc1b3e4">|
 |오프라인 좌석예매&환불|펀딩 등록|
-|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/e9798940-75cf-43b6-9eb6-4f3fd6c50db3">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/ac3a5a55-bfec-4e02-b7c7-e6666729dca0">|
+|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/f3b18f09-841a-4943-ba24-cda731003bd7">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/1da2ddff-c67d-4d55-ab5b-b4d197353dd7">|
 |스트리밍, 후기 작성|채팅 하기|
-|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/f5241996-daf2-4dfb-8737-03819579591d">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/e9569a42-4eda-4329-b7bb-ad27d4d5f6a2">|
+|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/cd8517d2-6f1c-4b21-9a65-6746f585c7d9">|<img src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/3ef0121b-bc82-4f1d-a845-7385a29d9bb0">|
 
 <br>
 
